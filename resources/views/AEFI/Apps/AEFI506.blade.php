@@ -33,7 +33,7 @@
               <i class="fa fa-download bg-blue"></i>
 
               <div class="timeline-item">
-                <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
+                <span class="time"><i class="fa fa-clock-o"></i> </span>
 
                 <h3 class="timeline-header"><a href="http://www.boe.moph.go.th/boedb/surdata/506wk/y62/d65_0562.pdf">สรุปสถานการณ์ ปี 62รายสัปดาห์ </a></h3>
 
@@ -49,7 +49,7 @@
               <i class="fa fa-download bg-blue"></i>
 
               <div class="timeline-item">
-                <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
+                <span class="time"><i class="fa fa-clock-o"></i> </span>
 
                 <h3 class="timeline-header"><a href="#">จำนวนป่วย - เสียชีวิต รายเดือน(ข้อมูลผู้ป่วยรายจังหวัด) </a></h3>
 
@@ -64,7 +64,7 @@
 			  <i class="fa fa-download bg-blue"></i>
 
 			  <div class="timeline-item">
-				<span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
+				<span class="time"><i class="fa fa-clock-o"></i> </span>
 
 				<h3 class="timeline-header"><a href="#">อัตราป่วย - เสียชีวิต(ข้อมูลผู้ป่วยรายจังหวัด) </a></h3>
 
@@ -79,7 +79,7 @@
 			  <i class="fa fa-download bg-blue"></i>
 
 			  <div class="timeline-item">
-				<span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
+				<span class="time"><i class="fa fa-clock-o"></i> </span>
 
 				<h3 class="timeline-header"><a href="#">จำนวนป่วย แยกตามกลุ่มอายุ(ข้อมูลผู้ป่วยรายจังหวัด) </a></h3>
 
@@ -94,7 +94,7 @@
 			  <i class="fa fa-download bg-blue"></i>
 
 			  <div class="timeline-item">
-				<span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
+				<span class="time"><i class="fa fa-clock-o"></i> </span>
 
 				<h3 class="timeline-header"><a href="#">จำนวนเสียชีวิต แยกตามกลุ่มอายุ(ข้อมูลผู้ป่วยรายจังหวัด) </a></h3>
 
@@ -109,7 +109,7 @@
 			  <i class="fa fa-download bg-blue"></i>
 
 			  <div class="timeline-item">
-				<span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
+				<span class="time"><i class="fa fa-clock-o"></i> </span>
 
 				<h3 class="timeline-header"><a href="#">เชื้อชาติ(ข้อมูลผู้ป่วยรายจังหวัด) </a></h3>
 
@@ -124,7 +124,7 @@
 			  <i class="fa fa-download bg-blue"></i>
 
 			  <div class="timeline-item">
-				<span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
+				<span class="time"><i class="fa fa-clock-o"></i> </span>
 
 				<h3 class="timeline-header"><a href="#">จำนวนป่วย แยกตามกลุ่มอาชีพ(ข้อมูลผู้ป่วยรายจังหวัด) </a></h3>
 
@@ -139,7 +139,7 @@
 			  <i class="fa fa-download bg-blue"></i>
 
 			  <div class="timeline-item">
-				<span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
+				<span class="time"><i class="fa fa-clock-o"></i> </span>
 
 				<h3 class="timeline-header"><a href="#">จำนวนเสียชีวิต แยกตามกลุ่มอาชีพ(ข้อมูลผู้ป่วยรายจังหวัด) </a></h3>
 
@@ -154,7 +154,7 @@
 			  <i class="fa fa-download bg-blue"></i>
 
 			  <div class="timeline-item">
-				<span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
+				<span class="time"><i class="fa fa-clock-o"></i> </span>
 
 				<h3 class="timeline-header"><a href="#">จำนวนป่วย แยกตามกลุ่มอายุ เพศ รายเดือน(ข้อมูลผู้ป่วยรายจังหวัด) </a></h3>
 
@@ -169,7 +169,7 @@
 			  <i class="fa fa-download bg-blue"></i>
 
 			  <div class="timeline-item">
-				<span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
+				<span class="time"><i class="fa fa-clock-o"></i> </span>
 
 				<h3 class="timeline-header"><a href="#">จำนวนตาย แยกตามกลุ่มอายุ เพศ รายเดือน(ข้อมูลผู้ป่วยรายจังหวัด) </a></h3>
 
@@ -184,7 +184,7 @@
 			  <i class="fa fa-download bg-blue"></i>
 
 			  <div class="timeline-item">
-				<span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
+				<span class="time"><i class="fa fa-clock-o"></i> </span>
 
 				<h3 class="timeline-header"><a href="#">จำนวนป่วย-เสียชีวิต รายเดือน(ข้อมูลผู้ป่วยรายอำเภอ) </a></h3>
 
@@ -208,7 +208,7 @@
 			  <i class="fa fa-download bg-blue"></i>
 
 			  <div class="timeline-item">
-				<span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
+				<span class="time"><i class="fa fa-clock-o"></i> </span>
 
 				<h3 class="timeline-header"><a href="#">สรุปสถานการณ์ประจำปี </a></h3>
 
@@ -246,7 +246,7 @@
 			  <i class="fa fa-download bg-blue"></i>
 
 			  <div class="timeline-item">
-				<span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
+				<span class="time"><i class="fa fa-clock-o"></i> </span>
 
 				<h3 class="timeline-header"><a href="#">จำนวนผู้ป่วย - เสียชีวิตรายเดือน แยกรายจังหวัด  </a></h3>
 
@@ -277,7 +277,7 @@
 			  <i class="fa fa-download bg-blue"></i>
 
 			  <div class="timeline-item">
-				<span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
+				<span class="time"><i class="fa fa-clock-o"></i> </span>
 
 				<h3 class="timeline-header"><a href="#">จำนวนและอัตราป่วย-ตายต่อแสนประชากร แยกรายจังหวัด </a></h3>
 
@@ -307,7 +307,7 @@
 			  <i class="fa fa-download bg-blue"></i>
 
 			  <div class="timeline-item">
-				<span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
+				<span class="time"><i class="fa fa-clock-o"></i> </span>
 
 				<h3 class="timeline-header"><a href="#">จำนวนป่วย แยกตามกลุ่มอายุและจังหวัด </a></h3>
 
@@ -337,7 +337,7 @@
 			  <i class="fa fa-download bg-blue"></i>
 
 			  <div class="timeline-item">
-				<span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
+				<span class="time"><i class="fa fa-clock-o"></i> </span>
 
 				<h3 class="timeline-header"><a href="#">จำนวนเสียชีวิต แยกตามกลุ่มอายุและจังหวัด </a></h3>
 
@@ -367,7 +367,7 @@
 			  <i class="fa fa-download bg-blue"></i>
 
 			  <div class="timeline-item">
-				<span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
+				<span class="time"><i class="fa fa-clock-o"></i> </span>
 
 				<h3 class="timeline-header"><a href="#">จำนวนผู้ป่วย-เสียชีวิต แยกตามเชื้อชาติและจังหวัด </a></h3>
 
@@ -396,7 +396,7 @@
 			  <i class="fa fa-download bg-blue"></i>
 
 			  <div class="timeline-item">
-				<span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
+				<span class="time"><i class="fa fa-clock-o"></i> </span>
 
 				<h3 class="timeline-header"><a href="#">จำนวนผู้ป่วย แยกตามอาชีพ </a></h3>
 
@@ -423,7 +423,7 @@
 			  <i class="fa fa-download bg-blue"></i>
 
 			  <div class="timeline-item">
-				<span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
+				<span class="time"><i class="fa fa-clock-o"></i> </span>
 
 				<h3 class="timeline-header"><a href="#">จำนวนผู้เสียชีวิต แยกตามอาชีพ </a></h3>
 

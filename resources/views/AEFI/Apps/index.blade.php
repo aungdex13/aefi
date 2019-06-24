@@ -7,9 +7,7 @@
   <small>AEFI</small>
 </h1>
 <ol class="breadcrumb">
-  <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-  <li><a href="#">Forms</a></li>
-  <li class="active">Advanced Elements</li>
+
 </ol>
 
 </section>
@@ -31,21 +29,21 @@
 				</ol>
 				<div class="carousel-inner">
 				  <div class="item active">
-					<img src="asset/dist/img/baner1.png" alt="First slide">
+					<img src="asset/dist/img/photo41.jpg" alt="First slide">
 
 					<div class="carousel-caption">
 					  First Slide
 					</div>
 				  </div>
 				  <div class="item">
-					<img src="asset/dist/img/baner1.png" alt="Second slide">
+					<img src="asset/dist/img/photo41.jpg" alt="Second slide">
 
 					<div class="carousel-caption">
 					  Second Slide
 					</div>
 				  </div>
 				  <div class="item">
-					<img src="asset/dist/img/baner1.png" alt="Third slide">
+					<img src="asset/dist/img/photo41.jpg" alt="Third slide">
 
 					<div class="carousel-caption">
 					  Third Slide
@@ -216,7 +214,7 @@
 					<div class="icon">
 						<i class="fa fa-building"></i>
 					</div>
-					<a href="https://ddc.moph.go.th/th/site/index" class="small-box-footer">
+					<a href="https://ddc.moph.go.th/th/site/home" class="small-box-footer">
 					  More info <i class="fa fa-arrow-circle-right"></i>
 					</a>
 				  </div>
@@ -231,7 +229,7 @@
 		            <div class="icon">
 		              <i class="fa fa-calendar"></i>
 		            </div>
-		            <a href="http://www.boeeoc.moph.go.th/eventbase/user/login/" class="small-box-footer">
+		            <a href="https://e-reports.boe.moph.go.th/eventbase/user/login/" class="small-box-footer">
 		              More info <i class="fa fa-arrow-circle-right"></i>
 		            </a>
 		          </div>
@@ -246,7 +244,7 @@
 					<div class="icon">
 					  <i class="fa fa-search"></i>
 					</div>
-					<a href="http://www.boeeoc.moph.go.th/jit/user/login.php" class="small-box-footer">
+					<a href="https://e-reports.boe.moph.go.th/eventbase/user/login/" class="small-box-footer">
 					  More info <i class="fa fa-arrow-circle-right"></i>
 					</a>
 				  </div>

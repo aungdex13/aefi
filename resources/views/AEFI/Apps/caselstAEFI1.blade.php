@@ -18,9 +18,7 @@ $arr_manufacturer = load_manufacturer();
   <small>AEFI</small>
 </h1>
 <ol class="breadcrumb">
-  <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-  <li><a href="#">Forms</a></li>
-  <li class="active">Advanced Elements</li>
+
 </ol>
 
 </section>
@@ -63,7 +61,7 @@ $arr_manufacturer = load_manufacturer();
 						  <td>
 							  <div class="btn-group">
 								<a href="{{ route('EditAEFI1') }}?id_case={{ $value->id_case }}" type="button" class="btn btn-warning btn-flat"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>แก้ไขข้อมูล</a>
-								<button type="button" class="btn btn-danger btn-flat"><i class="fa fa-trash" aria-hidden="true"></i>ลบ</button>
+								<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-warning">ลบข้อมูล</button>
 							  </div>
 						  </td>
 		                </tr>
@@ -74,7 +72,29 @@ $arr_manufacturer = load_manufacturer();
 						  								 <div class="col-sm-2">
 						  									 <input type="text" name="req_count[]" >
 						  								 </div> --}}
-		            </div>
+
+														         <div class="modal modal-danger fade" id="modal-warning">
+														           <div class="modal-dialog modal-md">
+														             <div class="modal-content">
+														               <div class="modal-header">
+														                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+														                   <span aria-hidden="true">&times;</span></button>
+														                 <h4 class="modal-title">ลบข้อมูล</h4>
+														               </div>
+														               <div class="modal-body">
+														                 <p>หากท่านกดปุ่มตกลงข้อมูลของผู้ป่วยรายนี้จะถูกลบทั้งหมด&hellip;</p>
+														               </div>
+														               <div class="modal-footer">
+														                 <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">ยกเลิก</button>
+														                 {{-- <a href="{{ route('deleteAEFI1') }}?id_case={{ $value->id_case }}" type="button" class="btn btn-outline">ลบข้อมูล</a> --}}
+														               </div>
+														             </div>
+														             <!-- /.modal-content -->
+														           </div>
+														           <!-- /.modal-dialog -->
+														         </div>
+														         <!-- /.modal -->
+					</div>
 				</div>
 			</div>
 			<!-- /.box -->

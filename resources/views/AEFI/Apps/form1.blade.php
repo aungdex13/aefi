@@ -28,9 +28,7 @@ foreach ($aecode as $value) {
 }
 @endphp --}}
 <ol class="breadcrumb">
-  <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-  <li><a href="#">Forms</a></li>
-  <li class="active">Advanced Elements</li>
+
 </ol>
 
 </section>
@@ -595,103 +593,463 @@ foreach ($aecode as $value) {
 		            </div>
 		            <!-- /.box-header -->
 		            <div class="box-body">
-		              <table class="table table-bordered" id="tb">
-		                <tr>
-		                  <th>ชื่อวัคซีน</th>
-		                  <th>ปริมานที่ให้</th>
-		                  <th>วิธีที่ให้</th>
-						  <th>ตำแหน่ง</th>
-						  <th>เข็มที่/ครั้งที่</th>
-						  <th>ว/ด/ปที่ได้รับ</th>
-						  <th>เวลาที่ได้รับ</th>
-						  <th>ชื่อผู้ผลิต</th>
-						  <th>เลขที่ผลิต</th>
-						  <th>วันหมดอายุ</th>
-						  <th>ชื่อตัวทำละลาย</th>
-						  <th>เลขที่ผลิต</th>
-						  <th>วันหมดอายุ</th>
-						  <th>ว/ด/ปที่ผสม</th>
-		                  <th>เวลาที่ผสม</th>
-						  <th><a href="javascript:void(0);" style="font-size:18px;" id="addMore" title="Add More Person"><span class="glyphicon glyphicon-plus"></span></a></th>
-		                </tr>
-		                <tr class="data-contact-person">
-		                  <td>
-								  <select  id="name_of_vaccine" name="name_of_vaccine[]" class="form-control select2 name_of_vaccine01" style="width: 100%;" onkeyup="autocomplet()">
-									  <?php
-										foreach ($groupproduct as $value) { ?>
-											<option class="badge filter badge-info" data-color="info" value="<?php echo $value->PDTGRPCD ; ?>"><?php echo $value->PDTGRPNMENG ; ?></option>
-									<?php } ?>
-								  </select>
-						  </td>
-						  <td>
-								  <select  id="vaccine_volume" name="vaccine_volume[]" class="form-control select2 vaccine_volume01" style="width: 100%;" onkeyup="autocomplet()">
-									  <?php
-										foreach ($arr_vaccine_volume as $k=>$v) { ?>
-											<option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
-									<?php } ?>
-								  </select>
-						  </td>
-						  <td>
-								  <select  id="route_of_vaccination" name="route_of_vaccination[]" class="form-control select2 route_of_vaccination01" style="width: 100%;" onkeyup="autocomplet()">
-									  <?php
-										foreach ($arr_route_of_vaccination as $k=>$v) { ?>
-											<option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
-									<?php } ?>
-								  </select>
-						  </td>
-						  <td>
-								  <select  id="vaccination_site" name="vaccination_site[]" class="form-control select2 vaccination_site01" style="width: 100%;" onkeyup="autocomplet()">
-									  <?php
-										foreach ($arr_vaccination_site as $k=>$v) { ?>
-											<option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
-									<?php } ?>
-								  </select>
-						  </td>
-						  <td><input type="text" id="dose" name="dose[]"  class="form-control Dose01" onkeyup="autocomplet()"></td>
-						  <td>
-						  <div class="input-group date">
-							</div>
-								<input type="text" name="date_of_vaccination[]"  class="form-control pull-right" id="datepicker">
-						</td>
-						<td><input type="text" id="time_of_vaccination" name="time_of_vaccination[]"  class="form-control time_of_vaccination01" onkeyup="autocomplet()"></td>
+						<table class="table table-bordered" id="maintable">
+  		                <tr>
+						  <th>idx</th>
+  		                  <th>ชื่อวัคซีน</th>
+  		                  <th>ปริมานที่ให้</th>
+  		                  <th>วิธีที่ให้</th>
+  						  <th>ตำแหน่ง</th>
+  						  <th>เข็มที่/ครั้งที่</th>
+  						  <th>ว/ด/ปที่ได้รับ</th>
+  						  <th>เวลาที่ได้รับ</th>
+  						  <th>ชื่อผู้ผลิต</th>
+  						  <th>เลขที่ผลิต</th>
+  						  <th>วันหมดอายุ</th>
+  						  <th>ชื่อตัวทำละลาย</th>
+  						  <th>เลขที่ผลิต</th>
+  						  <th>วันหมดอายุ</th>
+  						  <th>ว/ด/ปที่ผสม</th>
+  		                  <th>เวลาที่ผสม</th>
+  		                </tr>
+						<tr class="data-contact-person">
+  						<td>
+  						<select type="text" id="name_of_vaccine" name="name_of_vaccine[]" value=""class=form-control>
+							<?php
+  								foreach ($arr_history_of_vaccine as $k=>$v) {
+							?>
+  						<option class=badge filter badge-info data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+  									<?php } ?>
+  						</select>
+  						</td>
+  					<td>
+  					<select type="text" id="vaccine_volume" name="vaccine_volume[]" value=""class="form-control">
+							<?php
+							foreach ($arr_vaccine_volume as $k=>$v) {
+							?>
+  					<option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+  								<?php } ?>
+  					</select>
+  					</td>
+  				<td>
+  				<select type="text" id="route_of_vaccination" name="route_of_vaccination[]" value="" class="form-control">
+					<?php
+  						foreach ($arr_route_of_vaccination as $k=>$v) {
+					?>
+  				<option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+  							<?php } ?>
+  				</select>
+  				</td>
+  			<td>
+  			<select type="text" id="vaccination_site" name="vaccination_site[]" value="" class="form-control">
+				<?php
+  					foreach ($arr_vaccination_site as $k=>$v) {
+				?>
+  			<option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+  							<?php } ?>
+  			</select>
+  			</td>
+  		<td>
+  		<input type="text" id="dose" name="dose[]" value="" class="form-control">
+  		</td>
+  		<td><input type="text" id="datepicker" name="date_of_vaccination[]" value="" class="form-control"></td>
+
+  		<td>
+  		<input type="text" id="time_of_vaccination" name="time_of_vaccination[]" value="" class="form-control">
+  		</td>
+  						<td>
+  						<select type="text" id="manufacturer" name="manufacturer[]" value="" class="form-control">
+							<?php
+  								foreach ($arr_manufacturer as $k=>$v) {
+							?>
+  						<option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+  									 <?php } ?>
+  						</select>
+  						</td>
+  						<td>
+  						<input type="text" id="lot_number" name="lot_number[]" value="" class="form-control">
+  						</td>
+  						<td>
+  						<input type="text" id="datepicker_expiry_date" name="expiry_date[]" value="" class="form-control">
+  						</td>
+  						<td>
+  						<input type="text" id="name_of_diluent" name="name_of_diluent[]" value=""class="form-control">
+  						</td>
+  						<td>
+  						<input type="text" id="lot_number_diluent" name="lot_number_diluent[]" value="" class="form-control">
+  						</td>
+  						<td>
+  						<input type="text" id="datepicker_expiry_date_diluent" name="expiry_date_diluent[]" value="" class="form-control">
+  						</td>
+  						<td><input type="text" id="datepicker_date_of_reconstitution" name="date_of_reconstitution[]" value="" class="form-control"></td>
+  						<td><input type="text" id="time_of_reconstitution" name="time_of_reconstitution[]" value="" class="form-control"></td>
+  						</tr>
+
+						<tr class="data-contact-person">
 						<td>
-								<select  id="manufacturer" name="manufacturer[]" class="form-control select2 manufacturer01" style="width: 100%;" onkeyup="autocomplet()">
-									<?php
-									  foreach ($arr_manufacturer as $k=>$v) { ?>
-										  <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
-								  <?php } ?>
-								</select>
+						<select type="text" id="name_of_vaccine" name="name_of_vaccine[]" value=""class=form-control>
+							<?php
+								foreach ($arr_history_of_vaccine as $k=>$v) {
+							?>
+						<option class=badge filter badge-info data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+									<?php } ?>
+						</select>
 						</td>
-						  <td><input type="text" id="lot_number" name="lot_number[]"  class="form-control Lot_number01" onkeyup="autocomplet()"></td>
-						  <td>
-						  <div class="input-group date">
-							</div>
-								<input type="text" name="expiry_date[]"  class="form-control pull-right" id="datepicker_expiry_date">
-						  </td>
-						  <td><input type="text" id="name_of_diluent" name="name_of_diluent[]"  class="form-control name_of_diluent01" onkeyup="autocomplet()"></td>
-						  <td><input type="text" id="lot_number_diluent" 	name="lot_number_diluent[]"  class="form-control lot_number_diluent01" onkeyup="autocomplet()"></td>
-						  <td>
-						  <div class="input-group date">
-							</div>
-								<input type="text" name="expiry_date_diluent[]"  class="form-control pull-right" id="datepicker_expiry_date_diluent">
-						  </td>
-						  <td>
-						  <div class="input-group date">
-							</div>
-								<input type="text" name="date_of_reconstitution[]"  class="form-control pull-right" id="datepicker_date_of_reconstitution">
-						  </td>
-						  <td><input type="text" id="time_of_reconstitution" name="time_of_reconstitution[]"  class="form-control dtime_of_reconstitution01" onkeyup="autocomplet()"></td>
-						<td><a href='javascript:void(0);'  class='remove'><span class='glyphicon glyphicon-remove'></span></a></td>
+					<td>
+					<select type="text" id="vaccine_volume" name="vaccine_volume[]" value=""class="form-control">
+							<?php
+							foreach ($arr_vaccine_volume as $k=>$v) {
+							?>
+					<option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+								<?php } ?>
+					</select>
+					</td>
+				<td>
+				<select type="text" id="route_of_vaccination" name="route_of_vaccination[]" value="" class="form-control">
+					<?php
+						foreach ($arr_route_of_vaccination as $k=>$v) {
+					?>
+				<option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+							<?php } ?>
+				</select>
+				</td>
+			<td>
+			<select type="text" id="vaccination_site" name="vaccination_site[]" value="" class="form-control">
+				<?php
+					foreach ($arr_vaccination_site as $k=>$v) {
+				?>
+			<option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+							<?php } ?>
+			</select>
+			</td>
+		<td>
+		<input type="text" id="dose" name="dose[]" value="" class="form-control">
+		</td>
+		<td><input type="text" id="datepicker" name="date_of_vaccination[]" value="" class="form-control"></td>
+
+		<td>
+		<input type="text" id="time_of_vaccination" name="time_of_vaccination[]" value="" class="form-control">
+		</td>
+						<td>
+						<select type="text" id="manufacturer" name="manufacturer[]" value="" class="form-control">
+							<?php
+								foreach ($arr_manufacturer as $k=>$v) {
+							?>
+						<option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+									 <?php } ?>
+						</select>
+						</td>
+						<td>
+						<input type="text" id="lot_number" name="lot_number[]" value="" class="form-control">
+						</td>
+						<td>
+						<input type="text" id="datepicker_expiry_date" name="expiry_date[]" value="" class="form-control">
+						</td>
+						<td>
+						<input type="text" id="name_of_diluent" name="name_of_diluent[]" value=""class="form-control">
+						</td>
+						<td>
+						<input type="text" id="lot_number_diluent" name="lot_number_diluent[]" value="" class="form-control">
+						</td>
+						<td>
+						<input type="text" id="datepicker_expiry_date_diluent" name="expiry_date_diluent[]" value="" class="form-control">
+						</td>
+						<td><input type="text" id="datepicker_date_of_reconstitution" name="date_of_reconstitution[]" value="" class="form-control"></td>
+						<td><input type="text" id="time_of_reconstitution" name="time_of_reconstitution[]" value="" class="form-control"></td>
 						</tr>
 
+						<tr class="data-contact-person">
+						<td>
+						<select type="text" id="name_of_vaccine" name="name_of_vaccine[]" value=""class=form-control>
+							<?php
+								foreach ($arr_history_of_vaccine as $k=>$v) {
+							?>
+						<option class=badge filter badge-info data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+									<?php } ?>
+						</select>
+						</td>
+					<td>
+					<select type="text" id="vaccine_volume" name="vaccine_volume[]" value=""class="form-control">
+							<?php
+							foreach ($arr_vaccine_volume as $k=>$v) {
+							?>
+					<option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+								<?php } ?>
+					</select>
+					</td>
+				<td>
+				<select type="text" id="route_of_vaccination" name="route_of_vaccination[]" value="" class="form-control">
+					<?php
+						foreach ($arr_route_of_vaccination as $k=>$v) {
+					?>
+				<option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+							<?php } ?>
+				</select>
+				</td>
+			<td>
+			<select type="text" id="vaccination_site" name="vaccination_site[]" value="" class="form-control">
+				<?php
+					foreach ($arr_vaccination_site as $k=>$v) {
+				?>
+			<option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+							<?php } ?>
+			</select>
+			</td>
+		<td>
+		<input type="text" id="dose" name="dose[]" value="" class="form-control">
+		</td>
+		<td><input type="text" id="datepicker" name="date_of_vaccination[]" value="" class="form-control"></td>
 
+		<td>
+		<input type="text" id="time_of_vaccination" name="time_of_vaccination[]" value="" class="form-control">
+		</td>
+						<td>
+						<select type="text" id="manufacturer" name="manufacturer[]" value="" class="form-control">
+							<?php
+								foreach ($arr_manufacturer as $k=>$v) {
+							?>
+						<option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+									 <?php } ?>
+						</select>
+						</td>
+						<td>
+						<input type="text" id="lot_number" name="lot_number[]" value="" class="form-control">
+						</td>
+						<td>
+						<input type="text" id="datepicker_expiry_date" name="expiry_date[]" value="" class="form-control">
+						</td>
+						<td>
+						<input type="text" id="name_of_diluent" name="name_of_diluent[]" value=""class="form-control">
+						</td>
+						<td>
+						<input type="text" id="lot_number_diluent" name="lot_number_diluent[]" value="" class="form-control">
+						</td>
+						<td>
+						<input type="text" id="datepicker_expiry_date_diluent" name="expiry_date_diluent[]" value="" class="form-control">
+						</td>
+						<td><input type="text" id="datepicker_date_of_reconstitution" name="date_of_reconstitution[]" value="" class="form-control"></td>
+						<td><input type="text" id="time_of_reconstitution" name="time_of_reconstitution[]" value="" class="form-control"></td>
+						</tr>
 
-		              </table>
-						  {{-- <button type="button" id="btnAdd" class="btn btn-xs btn-primary classAdd">Add More</button> --}}
-{{--
-						  								 <div class="col-sm-2">
-						  									 <input type="text" name="req_count[]" >
-						  								 </div> --}}
+						<tr class="data-contact-person">
+						<td>
+						<select type="text" id="name_of_vaccine" name="name_of_vaccine[]" value=""class=form-control>
+							<?php
+								foreach ($arr_history_of_vaccine as $k=>$v) {
+							?>
+						<option class=badge filter badge-info data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+									<?php } ?>
+						</select>
+						</td>
+					<td>
+					<select type="text" id="vaccine_volume" name="vaccine_volume[]" value=""class="form-control">
+							<?php
+							foreach ($arr_vaccine_volume as $k=>$v) {
+							?>
+					<option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+								<?php } ?>
+					</select>
+					</td>
+				<td>
+				<select type="text" id="route_of_vaccination" name="route_of_vaccination[]" value="" class="form-control">
+					<?php
+						foreach ($arr_route_of_vaccination as $k=>$v) {
+					?>
+				<option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+							<?php } ?>
+				</select>
+				</td>
+			<td>
+			<select type="text" id="vaccination_site" name="vaccination_site[]" value="" class="form-control">
+				<?php
+					foreach ($arr_vaccination_site as $k=>$v) {
+				?>
+			<option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+							<?php } ?>
+			</select>
+			</td>
+		<td>
+		<input type="text" id="dose" name="dose[]" value="" class="form-control">
+		</td>
+		<td><input type="text" id="datepicker" name="date_of_vaccination[]" value="" class="form-control"></td>
+
+		<td>
+		<input type="text" id="time_of_vaccination" name="time_of_vaccination[]" value="" class="form-control">
+		</td>
+						<td>
+						<select type="text" id="manufacturer" name="manufacturer[]" value="" class="form-control">
+							<?php
+								foreach ($arr_manufacturer as $k=>$v) {
+							?>
+						<option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+									 <?php } ?>
+						</select>
+						</td>
+						<td>
+						<input type="text" id="lot_number" name="lot_number[]" value="" class="form-control">
+						</td>
+						<td>
+						<input type="text" id="datepicker_expiry_date" name="expiry_date[]" value="" class="form-control">
+						</td>
+						<td>
+						<input type="text" id="name_of_diluent" name="name_of_diluent[]" value=""class="form-control">
+						</td>
+						<td>
+						<input type="text" id="lot_number_diluent" name="lot_number_diluent[]" value="" class="form-control">
+						</td>
+						<td>
+						<input type="text" id="datepicker_expiry_date_diluent" name="expiry_date_diluent[]" value="" class="form-control">
+						</td>
+						<td><input type="text" id="datepicker_date_of_reconstitution" name="date_of_reconstitution[]" value="" class="form-control"></td>
+						<td><input type="text" id="time_of_reconstitution" name="time_of_reconstitution[]" value="" class="form-control"></td>
+						</tr>
+
+						<tr class="data-contact-person">
+						<td>
+						<select type="text" id="name_of_vaccine" name="name_of_vaccine[]" value=""class=form-control>
+							<?php
+								foreach ($arr_history_of_vaccine as $k=>$v) {
+							?>
+						<option class=badge filter badge-info data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+									<?php } ?>
+						</select>
+						</td>
+					<td>
+					<select type="text" id="vaccine_volume" name="vaccine_volume[]" value=""class="form-control">
+							<?php
+							foreach ($arr_vaccine_volume as $k=>$v) {
+							?>
+					<option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+								<?php } ?>
+					</select>
+					</td>
+				<td>
+				<select type="text" id="route_of_vaccination" name="route_of_vaccination[]" value="" class="form-control">
+					<?php
+						foreach ($arr_route_of_vaccination as $k=>$v) {
+					?>
+				<option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+							<?php } ?>
+				</select>
+				</td>
+			<td>
+			<select type="text" id="vaccination_site" name="vaccination_site[]" value="" class="form-control">
+				<?php
+					foreach ($arr_vaccination_site as $k=>$v) {
+				?>
+			<option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+							<?php } ?>
+			</select>
+			</td>
+		<td>
+		<input type="text" id="dose" name="dose[]" value="" class="form-control">
+		</td>
+		<td><input type="text" id="datepicker" name="date_of_vaccination[]" value="" class="form-control"></td>
+
+		<td>
+		<input type="text" id="time_of_vaccination" name="time_of_vaccination[]" value="" class="form-control">
+		</td>
+						<td>
+						<select type="text" id="manufacturer" name="manufacturer[]" value="" class="form-control">
+							<?php
+								foreach ($arr_manufacturer as $k=>$v) {
+							?>
+						<option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+									 <?php } ?>
+						</select>
+						</td>
+						<td>
+						<input type="text" id="lot_number" name="lot_number[]" value="" class="form-control">
+						</td>
+						<td>
+						<input type="text" id="datepicker_expiry_date" name="expiry_date[]" value="" class="form-control">
+						</td>
+						<td>
+						<input type="text" id="name_of_diluent" name="name_of_diluent[]" value=""class="form-control">
+						</td>
+						<td>
+						<input type="text" id="lot_number_diluent" name="lot_number_diluent[]" value="" class="form-control">
+						</td>
+						<td>
+						<input type="text" id="datepicker_expiry_date_diluent" name="expiry_date_diluent[]" value="" class="form-control">
+						</td>
+						<td><input type="text" id="datepicker_date_of_reconstitution" name="date_of_reconstitution[]" value="" class="form-control"></td>
+						<td><input type="text" id="time_of_reconstitution" name="time_of_reconstitution[]" value="" class="form-control"></td>
+						</tr>
+
+						<tr class="data-contact-person">
+						<td>
+						<select type="text" id="name_of_vaccine" name="name_of_vaccine[]" value=""class=form-control>
+							<?php
+								foreach ($arr_history_of_vaccine as $k=>$v) {
+							?>
+						<option class=badge filter badge-info data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+									<?php } ?>
+						</select>
+						</td>
+					<td>
+					<select type="text" id="vaccine_volume" name="vaccine_volume[]" value=""class="form-control">
+							<?php
+							foreach ($arr_vaccine_volume as $k=>$v) {
+							?>
+					<option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+								<?php } ?>
+					</select>
+					</td>
+				<td>
+				<select type="text" id="route_of_vaccination" name="route_of_vaccination[]" value="" class="form-control">
+					<?php
+						foreach ($arr_route_of_vaccination as $k=>$v) {
+					?>
+				<option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+							<?php } ?>
+				</select>
+				</td>
+			<td>
+			<select type="text" id="vaccination_site" name="vaccination_site[]" value="" class="form-control">
+				<?php
+					foreach ($arr_vaccination_site as $k=>$v) {
+				?>
+			<option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+							<?php } ?>
+			</select>
+			</td>
+		<td>
+		<input type="text" id="dose" name="dose[]" value="" class="form-control">
+		</td>
+		<td><input type="text" id="datepicker" name="date_of_vaccination[]" value="" class="form-control"></td>
+
+		<td>
+		<input type="text" id="time_of_vaccination" name="time_of_vaccination[]" value="" class="form-control">
+		</td>
+						<td>
+						<select type="text" id="manufacturer" name="manufacturer[]" value="" class="form-control">
+							<?php
+								foreach ($arr_manufacturer as $k=>$v) {
+							?>
+						<option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+									 <?php } ?>
+						</select>
+						</td>
+						<td>
+						<input type="text" id="lot_number" name="lot_number[]" value="" class="form-control">
+						</td>
+						<td>
+						<input type="text" id="datepicker_expiry_date" name="expiry_date[]" value="" class="form-control">
+						</td>
+						<td>
+						<input type="text" id="name_of_diluent" name="name_of_diluent[]" value=""class="form-control">
+						</td>
+						<td>
+						<input type="text" id="lot_number_diluent" name="lot_number_diluent[]" value="" class="form-control">
+						</td>
+						<td>
+						<input type="text" id="datepicker_expiry_date_diluent" name="expiry_date_diluent[]" value="" class="form-control">
+						</td>
+						<td><input type="text" id="datepicker_date_of_reconstitution" name="date_of_reconstitution[]" value="" class="form-control"></td>
+						<td><input type="text" id="time_of_reconstitution" name="time_of_reconstitution[]" value="" class="form-control"></td>
+						</tr>
+  		              </table>
 
 		            </div>
 				</div>

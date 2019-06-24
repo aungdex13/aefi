@@ -277,6 +277,7 @@ for ($i = 0; $i < count(array_filter($name_of_vaccine)); $i++) {
 			'time_of_reconstitution'=>$time_of_reconstitution[$i],
 			'date_entry'=>$date_entry
 		);
+		//dd($data_vac);
 			DB::table('aefi_form_1_vac')->insert($data_vac);
 		}
 

@@ -36,6 +36,8 @@ Route::post('/insertform2', 'Aefi\InsertController@insertform2')->name('insertfo
 // update Data
 Route::post('/updateform1', 'Aefi\UpdateController@updateform1')->name('updateform1');
 Route::post('/updateform2', 'Aefi\UpdateController@updateform2')->name('updateform2');
+// delete Data
+Route::get('/deleteAEFI1', 'Aefi\DeleteController@deletedata1')->name('deleteAEFI1');
 // edit Data
 Route::get('/EditAEFI1', 'Aefi\SelectController@selectalldataAEFI1')->name('EditAEFI1');
 Route::get('/EditAEFI2', 'Aefi\SelectController@selectalldataAEFI2')->name('EditAEFI2');

@@ -38,7 +38,7 @@ class Form1Controller extends Controller
 
 	}
 	public function groupproduct(){
-		$this->result = DB::table('dt_groupproduct')
+		$this->result = DB::table('VAC_tbl')
 		->get();
 		return $this->result;
 

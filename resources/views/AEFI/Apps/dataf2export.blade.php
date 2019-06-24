@@ -7,9 +7,7 @@
   <small>AEFI</small>
 </h1>
 <ol class="breadcrumb">
-  <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-  <li><a href="#">Forms</a></li>
-  <li class="active">Advanced Elements</li>
+
 </ol>
 
 </section>
@@ -26,45 +24,32 @@
 			<div class="box-body">
 				<!-- Custom Tabs -->
 				<table id="example" class="display nowrap" style="width:100%">
-				        <thead>
-				            <tr>
-							    <th>เลขที่ผู้ป่วย</th>
+						<thead>
+							<tr>
+								<th>เลขที่ผู้ป่วย</th>
 								<th>รหัสผู้ป่วย</th>
-				                <th>ชื่อ</th>
-				                <th>นามสกุล</th>
-				                <th>ที่อยู่ขณะเริ่มป่วย</th>
-				                <th>เพศ</th>
-				                <th>อายุขณะป่วย</th>
-				                <th>อาการภายหลังได้รับการสร้างภูมิคุ้มกันโรค</th>
-				            </tr>
-				        </thead>
+								<th>ชื่อ</th>
+								<th>นามสกุล</th>
+								<th>ที่อยู่ขณะเริ่มป่วย</th>
+								<th>เพศ</th>
+								<th>อายุขณะป่วย</th>
+								<th>อาการภายหลังได้รับการสร้างภูมิคุ้มกันโรค</th>
+							</tr>
+						</thead>
 				        <tbody>
 							<?php foreach($selectdata2 as $value) : ?>
 				            <tr>
 				                <td>{{ $value->id_case }}</td>
-								<td>{{ $value->id_case }}</td>
-				                <td>{{ $value->id_case }}</td>
-				                <td>{{ $value->id_case }}</td>
-				                <td>{{ $value->id_case }}</td>
-				                <td>{{ $value->id_case }}</td>
-								<td>{{ $value->id_case }}</td>
-								<td>{{ $value->id_case }}</td>
+								<td>{{ $value->prior_to_immunization_1}}</td>
+				                <td>{{ $value->prior_to_immunization_2 }}</td>
+				                <td>{{ $value->prior_to_immunization_3 }}</td>
+				                <td>{{ $value->prior_to_immunization_4 }}</td>
+				                <td>{{ $value->prior_to_immunization_5 }}</td>
+								<td>{{ $value->symptoms_2 }}</td>
+								<td>{{ $value->symptoms_2_1 }}</td>
 				            </tr>
 							<?php endforeach;?>
-				        </tbody>
-				        {{-- <tfoot>
-				            <tr>
-								<th>เลขที่ผู้ป่วย</th>
-				                <th>ชื่อ</th>
-				                <th>นามสกุล</th>
-				                <th>ที่อยู่ขณะเริ่มป่วย</th>
-				                <th>เพศ</th>
-				                <th>อายุขณะป่วย</th>
-				                <th>อาการภายหลังได้รับการสร้างภูมิคุ้มกันโรค</th>
-				            </tr>
-				        </tfoot> --}}
-
-				    </table>
+					</table>
 			</div>
 			<!-- /.box-body -->
 		  </div>

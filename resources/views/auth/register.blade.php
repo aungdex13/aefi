@@ -51,6 +51,32 @@
                             </div>
                         </div>
 						<div class="form-group row">
+							<label for="position" class="col-md-4 col-form-label text-md-right">{{ __('ตำแหน่ง') }}</label>
+
+							<div class="col-md-6">
+								<input id="position" type="text" class="form-control{{ $errors->has('position') ? ' is-invalid' : '' }}" name="position" value="{{ old('position') }}" required autofocus>
+
+								@if ($errors->has('position'))
+									<span class="invalid-feedback" role="alert">
+										<strong>{{ $errors->first('position') }}</strong>
+									</span>
+								@endif
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="division" class="col-md-4 col-form-label text-md-right">{{ __('หน่วยงาน') }}</label>
+
+							<div class="col-md-6">
+								<input id="division" type="text" class="form-control{{ $errors->has('division') ? ' is-invalid' : '' }}" name="division" value="{{ old('division') }}" required autofocus>
+
+								@if ($errors->has('division'))
+									<span class="invalid-feedback" role="alert">
+										<strong>{{ $errors->first('division') }}</strong>
+									</span>
+								@endif
+							</div>
+						</div>
+						<div class="form-group row">
                             <label for="username" class="col-md-4 col-form-label text-md-right">{{ __('username') }}</label>
 
                             <div class="col-md-6">

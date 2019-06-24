@@ -77,59 +77,59 @@
 
     //Date picker
     $('#datepicker').datepicker({
-      autoclose: true
+      dateFormat: "yy-mm-dd"
     })
 	//Date picker
     $('#datepicker_found_event').datepicker({
-      autoclose: true
+      dateFormat: "yy-mm-dd"
     })
 	//Date picker
 	$('#datepicker_send_reported').datepicker({
-	  autoclose: true
+	  dateFormat: "yy-mm-dd"
 	})
 	//Date picker
 	$('#datepicker_resiver').datepicker({
-	  autoclose: true
+	  dateFormat: "yy-mm-dd"
 	})
 	//Date picker
 	$('#datepicker_bdate').datepicker({
-	  autoclose: true
+	  dateFormat: "yy-mm-dd"
 	})
 	//Date picker
 	$('#datepicker_stdiag').datepicker({
-	  autoclose: true
+	  dateFormat: "yy-mm-dd"
 	})
 	//Date picker
 	$('#datepicker_hdate').datepicker({
-	  autoclose: true
+	  dateFormat: "yy-mm-dd"
 	})
 	//Date picker
 	$('#datepicker_sell').datepicker({
-	  autoclose: true
+	  dateFormat: "yy-mm-dd"
 	})
 	//Date picker
 	$('#datepicker_invest').datepicker({
-	  autoclose: true
+	  dateFormat: "yy-mm-dd"
 	})
 	//Date picker
 	$('#datepicker_dead').datepicker({
-	  autoclose: true
+	  dateFormat: "yy-mm-dd"
 	})
 	//Date picker
 	$('#datepicker_Date_of_vaccination').datepicker({
-	  autoclose: true
+	  dateFormat: "yy-mm-dd"
 	})
 	//Date picker
 	$('#datepicker_expiry_date_diluent').datepicker({
-	  autoclose: true
+	  dateFormat: "yy-mm-dd"
 	})
 	//Date picker
 	$('#datepicker_expiry_date').datepicker({
-	  autoclose: true
+	  dateFormat: "yy-mm-dd"
 	})
 	//Date picker
 	$('#datepicker_date_of_reconstitution').datepicker({
-	  autoclose: true
+	  dateFormat: "yy-mm-dd"
 	})
 
     //iCheck for checkbox and radio inputs

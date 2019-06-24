@@ -867,7 +867,8 @@
 													<div class="col-lg-6">
 														<div id="">
 																<label>Select File for Upload</label>
-																	<input type="file" name="other_instruction_1">
+																<p style="color:green">ชื่อไฟล์ : {{ $data[0]->other_instruction_1 }}</p>
+																<input type="file" name="other_instruction_1" value="{{ $data[0]->other_instruction_1 }}">
 														</div>
 														</div>
 												</div>

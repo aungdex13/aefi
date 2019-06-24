@@ -1,7 +1,7 @@
 
 		<header class="main-header">
   <!-- Logo -->
-  <a href="../../index2.html" class="logo">
+  <a href="index" class="logo">
 	<!-- mini logo for sidebar mini 50x50 pixels -->
 	<span class="logo-mini"><b>AE</b>FI</span>
 	<!-- logo for regular state and mobile devices -->
@@ -20,203 +20,6 @@
 	<div class="navbar-custom-menu">
 	  <ul class="nav navbar-nav">
 		<!-- Messages: style can be found in dropdown.less-->
-		<li class="dropdown messages-menu">
-		  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-			<i class="fa fa-envelope-o"></i>
-			<span class="label label-success">4</span>
-		  </a>
-		  <ul class="dropdown-menu">
-			<li class="header">You have 4 messages</li>
-			<li>
-			  <!-- inner menu: contains the actual data -->
-			  <ul class="menu">
-				<li><!-- start message -->
-				  <a href="#">
-					<div class="pull-left">
-					  <img src="/asset/dist/img/avatar04.png" class="img-circle" alt="User Image">
-					</div>
-					<h4>
-					  Support Team
-					  <small><i class="fa fa-clock-o"></i> 5 mins</small>
-					</h4>
-					<p>Why not buy a new awesome theme?</p>
-				  </a>
-				</li>
-				<!-- end message -->
-				<li>
-				  <a href="#">
-					<div class="pull-left">
-					  <img src="/asset/dist/img/avatar04.png" class="img-circle" alt="User Image">
-					</div>
-					<h4>
-					  AdminLTE Design Team
-					  <small><i class="fa fa-clock-o"></i> 2 hours</small>
-					</h4>
-					<p>Why not buy a new awesome theme?</p>
-				  </a>
-				</li>
-				<li>
-				  <a href="#">
-					<div class="pull-left">
-					  <img src="/asset/dist/img/avatar04.png" class="img-circle" alt="User Image">
-					</div>
-					<h4>
-					  Developers
-					  <small><i class="fa fa-clock-o"></i> Today</small>
-					</h4>
-					<p>Why not buy a new awesome theme?</p>
-				  </a>
-				</li>
-				<li>
-				  <a href="#">
-					<div class="pull-left">
-					  <img src="/asset/dist/img/avatar04.png" class="img-circle" alt="User Image">
-					</div>
-					<h4>
-					  Sales Department
-					  <small><i class="fa fa-clock-o"></i> Yesterday</small>
-					</h4>
-					<p>Why not buy a new awesome theme?</p>
-				  </a>
-				</li>
-				<li>
-				  <a href="#">
-					<div class="pull-left">
-					  <img src="/asset/dist/img/avatar04.png" class="img-circle" alt="User Image">
-					</div>
-					<h4>
-					  Reviewers
-					  <small><i class="fa fa-clock-o"></i> 2 days</small>
-					</h4>
-					<p>Why not buy a new awesome theme?</p>
-				  </a>
-				</li>
-			  </ul>
-			</li>
-			<li class="footer"><a href="#">See All Messages</a></li>
-		  </ul>
-		</li>
-		<!-- Notifications: style can be found in dropdown.less -->
-		<li class="dropdown notifications-menu">
-		  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-			<i class="fa fa-bell-o"></i>
-			<span class="label label-warning">10</span>
-		  </a>
-		  <ul class="dropdown-menu">
-			<li class="header">You have 10 notifications</li>
-			<li>
-			  <!-- inner menu: contains the actual data -->
-			  <ul class="menu">
-				<li>
-				  <a href="#">
-					<i class="fa fa-users text-aqua"></i> 5 new members joined today
-				  </a>
-				</li>
-				<li>
-				  <a href="#">
-					<i class="fa fa-warning text-yellow"></i> Very long description here that may not fit into the
-					page and may cause design problems
-				  </a>
-				</li>
-				<li>
-				  <a href="#">
-					<i class="fa fa-users text-red"></i> 5 new members joined
-				  </a>
-				</li>
-
-				<li>
-				  <a href="#">
-					<i class="fa fa-shopping-cart text-green"></i> 25 sales made
-				  </a>
-				</li>
-				<li>
-				  <a href="#">
-					<i class="fa fa-user text-red"></i> You changed your username
-				  </a>
-				</li>
-			  </ul>
-			</li>
-			<li class="footer"><a href="#">View all</a></li>
-		  </ul>
-		</li>
-		<!-- Tasks: style can be found in dropdown.less -->
-		<li class="dropdown tasks-menu">
-		  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-			<i class="fa fa-flag-o"></i>
-			<span class="label label-danger">9</span>
-		  </a>
-		  <ul class="dropdown-menu">
-			<li class="header">You have 9 tasks</li>
-			<li>
-			  <!-- inner menu: contains the actual data -->
-			  <ul class="menu">
-				<li><!-- Task item -->
-				  <a href="#">
-					<h3>
-					  Design some buttons
-					  <small class="pull-right">20%</small>
-					</h3>
-					<div class="progress xs">
-					  <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar"
-						   aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-						<span class="sr-only">20% Complete</span>
-					  </div>
-					</div>
-				  </a>
-				</li>
-				<!-- end task item -->
-				<li><!-- Task item -->
-				  <a href="#">
-					<h3>
-					  Create a nice theme
-					  <small class="pull-right">40%</small>
-					</h3>
-					<div class="progress xs">
-					  <div class="progress-bar progress-bar-green" style="width: 40%" role="progressbar"
-						   aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-						<span class="sr-only">40% Complete</span>
-					  </div>
-					</div>
-				  </a>
-				</li>
-				<!-- end task item -->
-				<li><!-- Task item -->
-				  <a href="#">
-					<h3>
-					  Some task I need to do
-					  <small class="pull-right">60%</small>
-					</h3>
-					<div class="progress xs">
-					  <div class="progress-bar progress-bar-red" style="width: 60%" role="progressbar"
-						   aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-						<span class="sr-only">60% Complete</span>
-					  </div>
-					</div>
-				  </a>
-				</li>
-				<!-- end task item -->
-				<li><!-- Task item -->
-				  <a href="#">
-					<h3>
-					  Make beautiful transitions
-					  <small class="pull-right">80%</small>
-					</h3>
-					<div class="progress xs">
-					  <div class="progress-bar progress-bar-yellow" style="width: 80%" role="progressbar"
-						   aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-						<span class="sr-only">80% Complete</span>
-					  </div>
-					</div>
-				  </a>
-				</li>
-				<!-- end task item -->
-			  </ul>
-			</li>
-			<li class="footer">
-			  <a href="#">View all tasks</a>
-			</li>
-		  </ul>
-		</li>
 		<!-- User Account: style can be found in dropdown.less -->
 		<li class="dropdown user user-menu">
 		  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -230,12 +33,12 @@
 
 			  <p>
 				{{ Auth::user()->name }} <span class="caret"></span>
-				<small>Member since Nov. 2012</small>
+				<small>Member since {{ Auth::user()->created_at}}</small>
 			  </p>
 			</li>
 			<!-- Menu Body -->
 			<li class="user-body">
-			  <div class="row">
+			  {{-- <div class="row">
 				<div class="col-xs-4 text-center">
 				  <a href="#">Followers</a>
 				</div>
@@ -245,7 +48,7 @@
 				<div class="col-xs-4 text-center">
 				  <a href="#">Friends</a>
 				</div>
-			  </div>
+			  </div> --}}
 			  <!-- /.row -->
 			</li>
 			<!-- Menu Footer-->
@@ -280,40 +83,52 @@ window.onload = function () {
 var chart = new CanvasJS.Chart("chartContainer", {
 	animationEnabled: true,
 	title:{
-		text: "Company Revenue by Year"
+		text: "จำนวนผู้ป่วยรายเดือน"
 	},
+	axisX: {
+	valueFormatString: "MMMM"
+},
 	axisY: {
-		title: "Revenue in USD",
-		valueFormatString: "#0,,.",
-		suffix: "mn",
-		prefix: "$"
+		title: "จำนวน",
 	},
-	data: [{
-		type: "splineArea",
-		color: "rgba(54,158,173,.7)",
-		markerSize: 5,
-		xValueFormatString: "YYYY",
-		yValueFormatString: "$#,##0.##",
+	data: [
+		{
+		type: "line",
+		name: "AEFI1",
 		dataPoints: [
-			{ x: new Date(2000, 0), y: 3289000 },
-			{ x: new Date(2001, 0), y: 3830000 },
-			{ x: new Date(2002, 0), y: 2009000 },
-			{ x: new Date(2003, 0), y: 2840000 },
-			{ x: new Date(2004, 0), y: 2396000 },
-			{ x: new Date(2005, 0), y: 1613000 },
-			{ x: new Date(2006, 0), y: 2821000 },
-			{ x: new Date(2007, 0), y: 2000000 },
-			{ x: new Date(2008, 0), y: 1397000 },
-			{ x: new Date(2009, 0), y: 2506000 },
-			{ x: new Date(2010, 0), y: 2798000 },
-			{ x: new Date(2011, 0), y: 3386000 },
-			{ x: new Date(2012, 0), y: 6704000},
-			{ x: new Date(2013, 0), y: 6026000 },
-			{ x: new Date(2014, 0), y: 2394000 },
-			{ x: new Date(2015, 0), y: 1872000 },
-			{ x: new Date(2016, 0), y: 2140000 }
+			{ x: new Date(2019, 00), y: 1613000 },
+			{ x: new Date(2019, 01), y: 2821000 },
+			{ x: new Date(2019, 02), y: 2000000 },
+			{ x: new Date(2019, 03), y: 1397000 },
+			{ x: new Date(2019, 04), y: 2506000 },
+			{ x: new Date(2019, 05), y: 2798000 },
+			{ x: new Date(2019, 06), y: 3386000 },
+			{ x: new Date(2019, 07), y: 6704000},
+			{ x: new Date(2019, 08), y: 6026000 },
+			{ x: new Date(2019, 09), y: 2394000 },
+			{ x: new Date(2019, 10), y: 2140000 },
+			{ x: new Date(2019, 11), y: 2140000 }
 		]
-	}]
+	},
+	{
+		type: "line",
+		name: "AEFI2",
+		dataPoints: [
+			{ x: new Date(2019, 00, 01), y: 2140000 },
+			{ x: new Date(2019, 01, 01), y: 6704000 },
+			{ x: new Date(2019, 02, 01), y: 1190000 },
+			{ x: new Date(2019, 03, 01), y: 1180000 },
+			{ x: new Date(2019, 04, 01), y: 2140000 },
+			{ x: new Date(2019, 05, 01), y: 1270000 },
+			{ x: new Date(2019, 06, 01), y: 1003000 },
+			{ x: new Date(2019, 07, 01), y: 1000300 },
+			{ x: new Date(2019, 08, 01), y: 1358000 },
+			{ x: new Date(2019, 09, 01), y: 1400010 },
+			{ x: new Date(2019, 10, 01), y: 1480000 },
+			{ x: new Date(2019, 11, 01), y: 1000500 },
+		]
+	},
+]
 	});
 chart.render();
 
@@ -327,11 +142,11 @@ var chart = new CanvasJS.Chart("piechartContainer", {
 		yValueFormatString: "##0.00\"%\"",
 		indexLabel: "{label} {y}",
 		dataPoints: [
-			{y: 79.45, label: "Google"},
-			{y: 7.31, label: "Bing"},
-			{y: 7.06, label: "Baidu"},
-			{y: 4.91, label: "Yahoo"},
-			{y: 1.26, label: "Others"}
+			{y: 59.45, label: "หัด"},
+			{y: 10.31, label: "วัณโรค"},
+			{y: 7.06, label: "ตับอักเสบบี"},
+			{y: 4.91, label: "หัด"},
+			{y: 10.26, label: "โรคไข้กาฬหลังแอ่น"}
 		]
 	}]
 });
