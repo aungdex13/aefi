@@ -29,12 +29,7 @@ $arr_manufacturer = load_manufacturer();
 			<div class="col-md-12">
 			<!-- general form elements -->
 			<div class="box box-info">
-				<div class="box-header with-border">
-				<h3 class="box-title"><a href="{{ route('form1') }}" type="button" class="btn btn-success btn-flat"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>เพิ่มผู้ป่วย AEFI ราย Case</a></h3>
-				</div>
-				<div class="box-header with-border">
-				<h3 class="box-title"><a href="{{ route('lstf1group') }}" type="button" class="btn btn-warning btn-flat"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>เพิ่มผู้ป่วย AEFI รายกลุ่ม</a></h3>
-				</div>
+
 				<!-- /.box-header -->
 				<!-- form start -->
 		            <!-- /.box-header -->
@@ -42,9 +37,7 @@ $arr_manufacturer = load_manufacturer();
 		              <table class="table table-bordered" id="case_lst" class="display" style="width:100%">
 						<thead>
 		                <tr>
-		                  <th>เลขที่ผู้ป่วย HN</th>
-		                  <th>เลขที่ผู้ป่วย AN</th>
-		                  <th>ชื่อ-นามสกุลผู้ป่วย</th>
+		                  <th>เลขที่ผู้ป่วย Eventbase</th>
 						  <th>อายุ</th>
 						  <th>เชื้อชาติ</th>
 						  <th>ที่อยู่</th>
@@ -55,8 +48,6 @@ $arr_manufacturer = load_manufacturer();
 					<?php foreach($data as $value) : ?>
 		                <tr class="data-contact-person">
 		                  <td><p style="text-align:center;">{{ $value->hn }}</p></td>
-						  <td><p style="text-align:center;">{{ $value->an }}</p></td>
-						  <td><p style="text-align:center;">{{ $value->first_name }} {{ $value->sur_name }}</p></td>
 						  <td><p style="text-align:center;">{{ $value->age_while_sick_year }}</p></td>
 						  <td><p style="text-align:center;">{{ $value->nationality }} {{ $value->other_nationality }}</p></td>
 						  <td><p style="text-align:center;">ตำบล : {{ $value->sub_district }}<br> อำเภอ : {{ $value->district }}<br>  จังหวัด : {{ $value->province }}</p></td>
@@ -64,7 +55,7 @@ $arr_manufacturer = load_manufacturer();
 						  <td>
 							  <div class="btn-group">
 								<a href="{{ route('EditAEFI1') }}?id_case={{ $value->id_case }}" type="button" class="btn btn-warning btn-flat"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>แก้ไขข้อมูล</a>
-								<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-warning">ลบข้อมูล</button>
+									<a href="{{ route('form1group') }}" type="button" class="btn btn-success btn-flat"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>กรอกข้อมูล</a>
 							  </div>
 						  </td>
 		                </tr>

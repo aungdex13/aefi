@@ -25,7 +25,18 @@ class Form1Controller extends Controller
 				'groupproduct'=>$groupproduct
 			]);
 	}
-
+	public function indexform1group(){
+		$list=$this->form1();
+		$aecode=$this->aecode();
+		$groupproduct=$this->groupproduct();
+		// dd($list);
+		return view('AEFI.Apps.form1group',
+			[
+				'list'=>$list ,
+				'aecode'=>$aecode,
+				'groupproduct'=>$groupproduct
+			]);
+	}
 	public function form1(){
 		$list=DB::table('tbl_provinces')->get();
 		 // return view('AEFI.Apps.form1')->with('list',$list);

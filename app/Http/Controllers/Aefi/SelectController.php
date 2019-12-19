@@ -37,6 +37,26 @@
 		 return view('AEFI.Apps.caselstAEFI1')->with('data', $caselstF1);
 
 	 	}
+		public function selectdatatablecaseAEFI1group()
+		{
+		$caselstF1group = DB::select('select id_case,hn,
+		an,
+		first_name,
+		sur_name,
+		age_while_sick_year,
+		nationality,
+		gender,
+		other_nationality,
+		village_no,
+		province,
+		district,
+		sub_district,
+		necessary_to_investigate
+		FROM aefi_form_1' );
+		 //dd($caselst);
+		 return view('AEFI.Apps.caselstAEFI1group')->with('data', $caselstF1group);
+
+		}
 		public function selectdatatablecaseAEFI2()
 		{
 		$caselstF2 = DB::select('select id_case, hn,

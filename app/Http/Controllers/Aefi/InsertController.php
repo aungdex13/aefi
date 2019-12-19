@@ -17,7 +17,7 @@
 		public function insertform1(Request $req)
 	 	{
 
-		$id_case = time();
+		$id_case = (isset($_POST['id_case'])) ? $_POST['id_case'] : '0';
 		$hn = $req ->input ('hn');
 		$an = $req ->input ('an');
 		$id_number = $req ->input ('id_number');
@@ -238,51 +238,52 @@
 	//dd($data);
 	$res1	= DB::table('aefi_form_1')->insert($data);
 	 // dd($res1);
-	if ($res1)
-	 {
-		$name_of_vaccine = $req->input('name_of_vaccine');
-		$vaccine_volume = $req ->input ('vaccine_volume');
-		$route_of_vaccination = $req ->input ('route_of_vaccination');
-		$vaccination_site = $req ->input ('vaccination_site');
-		$dose = $req ->input ('dose');
-		$date_of_vaccination = $req ->input ('date_of_vaccination');
-		$time_of_vaccination = $req ->input ('time_of_vaccination');
-		$manufacturer = $req ->input ('manufacturer');
-		$lot_number = $req ->input ('lot_number');
-		$expiry_date = $req ->input ('expiry_date');
-		$name_of_diluent = $req ->input ('name_of_diluent');
-		$lot_number_diluent = $req ->input ('lot_number_diluent');
-		$expiry_date_diluent = $req ->input ('expiry_date_diluent');
-		$date_of_reconstitution = $req ->input ('date_of_reconstitution');
-		$time_of_reconstitution = $req ->input ('time_of_reconstitution');
-
-for ($i = 0; $i < count(array_filter($name_of_vaccine)); $i++) {
-		$data_vac= array(
-			'id_case'=>$id_case,
-			'hn'=>$hn,
-			'name_of_vaccine'=>$name_of_vaccine[$i],
-			'vaccine_volume'=>$vaccine_volume[$i],
-			'route_of_vaccination'=>$route_of_vaccination[$i],
-			'vaccination_site'=>$vaccination_site[$i],
-			'dose'=>$dose[$i],
-			'date_of_vaccination'=>$date_of_vaccination[$i],
-			'time_of_vaccination'=>$time_of_vaccination[$i],
-			'manufacturer'=>$manufacturer[$i],
-			'lot_number'=>$lot_number[$i],
-			'expiry_date'=>$expiry_date[$i],
-			'name_of_diluent'=>$name_of_diluent[$i],
-			'lot_number_diluent'=>$lot_number_diluent[$i],
-			'expiry_date_diluent'=>$expiry_date_diluent[$i],
-			'date_of_reconstitution'=>$date_of_reconstitution[$i],
-			'time_of_reconstitution'=>$time_of_reconstitution[$i],
-			'date_entry'=>$date_entry
-		);
-		//dd($data_vac);
-			DB::table('aefi_form_1_vac')->insert($data_vac);
-		}
-
-	}
-	if ($data_vac){
+// 	if ($res1)
+// 	 {
+// 		$name_of_vaccine = (isset($_POST['name_of_vaccine'])) ? $_POST['name_of_vaccine'] : '0';
+// 		$vaccine_volume = (isset($_POST['vaccine_volume'])) ? $_POST['vaccine_volume'] : '0';
+// 		$route_of_vaccination = (isset($_POST['route_of_vaccination'])) ? $_POST['route_of_vaccination'] : '0';
+// 		$vaccination_site = (isset($_POST['vaccination_site'])) ? $_POST['vaccination_site'] : '0';
+// 		$dose = (isset($_POST['dose'])) ? $_POST['dose'] : '0';
+// 		$date_of_vaccination = (isset($_POST['date_of_vaccination'])) ? $_POST['date_of_vaccination'] : '0';
+// 		$time_of_vaccination = (isset($_POST['time_of_vaccination'])) ? $_POST['time_of_vaccination'] : '0';
+// 		$manufacturer =(isset($_POST['manufacturer'])) ? $_POST['manufacturer'] : '0';
+// 		$lot_number = (isset($_POST['lot_number'])) ? $_POST['lot_number'] : '0';
+// 		$expiry_date = (isset($_POST['expiry_date'])) ? $_POST['expiry_date'] : '0';
+// 		$name_of_diluent = (isset($_POST['name_of_diluent'])) ? $_POST['name_of_diluent'] : '0';
+// 		$lot_number_diluent = (isset($_POST['lot_number_diluent'])) ? $_POST['lot_number_diluent'] : '0';
+// 		$expiry_date_diluent = (isset($_POST['expiry_date_diluent'])) ? $_POST['expiry_date_diluent'] : '0';
+// 		$date_of_reconstitution = (isset($_POST['date_of_reconstitution'])) ? $_POST['date_of_reconstitution'] : '0';
+// 		$time_of_reconstitution = (isset($_POST['time_of_reconstitution'])) ? $_POST['time_of_reconstitution'] : '0';
+//
+// for ($i = 0; $i < $name_of_vaccine; $i++) {
+// 		$data_vac= array(
+// 			'id_case'=>$id_case,
+// 			'hn'=>$hn,
+// 			'name_of_vaccine'=>$name_of_vaccine[$i],
+// 			'vaccine_volume'=>$vaccine_volume[$i],
+// 			'route_of_vaccination'=>$route_of_vaccination[$i],
+// 			'vaccination_site'=>$vaccination_site[$i],
+// 			'dose'=>$dose[$i],
+// 			'date_of_vaccination'=>$date_of_vaccination[$i],
+// 			'time_of_vaccination'=>$time_of_vaccination[$i],
+// 			'manufacturer'=>$manufacturer[$i],
+// 			'lot_number'=>$lot_number[$i],
+// 			'expiry_date'=>$expiry_date[$i],
+// 			'name_of_diluent'=>$name_of_diluent[$i],
+// 			'lot_number_diluent'=>$lot_number_diluent[$i],
+// 			'expiry_date_diluent'=>$expiry_date_diluent[$i],
+// 			'date_of_reconstitution'=>$date_of_reconstitution[$i],
+// 			'time_of_reconstitution'=>$time_of_reconstitution[$i],
+// 			'date_entry'=>$date_entry
+// 		);
+// 		 dd($data_vac);
+// 			DB::table('aefi_form_1_vac')->insert($data_vac);
+// 		}
+//
+// 	}
+	// if ($data_vac){
+	if ($res1){
 		$msg = " ส่งข้อมูลสำเร็จ";
 		$url_rediect = "<script>alert('".$msg."'); window.location='lstf1';</script> ";
 	}else{
@@ -292,7 +293,46 @@ for ($i = 0; $i < count(array_filter($name_of_vaccine)); $i++) {
 		echo $url_rediect;
 
 }
-
+public function vaccineform1(Request $reqvac)
+	{
+		$id_case = (isset($_POST['id_case'])) ? $_POST['id_case'] : '0';
+		$name_of_vaccine = (isset($_POST['name_of_vaccine'])) ? $_POST['name_of_vaccine'] : '0';
+		$vaccine_volume = (isset($_POST['vaccine_volume'])) ? $_POST['vaccine_volume'] : '0';
+		$route_of_vaccination = (isset($_POST['route_of_vaccination'])) ? $_POST['route_of_vaccination'] : '0';
+		$vaccination_site = (isset($_POST['vaccination_site'])) ? $_POST['vaccination_site'] : '0';
+		$dose = (isset($_POST['dose'])) ? $_POST['dose'] : '0';
+		$date_of_vaccination = (isset($_POST['date_of_vaccination'])) ? $_POST['date_of_vaccination'] : '0';
+		$time_of_vaccination = (isset($_POST['time_of_vaccination'])) ? $_POST['time_of_vaccination'] : '0';
+		$manufacturer =(isset($_POST['manufacturer'])) ? $_POST['manufacturer'] : '0';
+		$lot_number = (isset($_POST['lot_number'])) ? $_POST['lot_number'] : '0';
+		$expiry_date = (isset($_POST['expiry_date'])) ? $_POST['expiry_date'] : '0';
+		$name_of_diluent = (isset($_POST['name_of_diluent'])) ? $_POST['name_of_diluent'] : '0';
+		$lot_number_diluent = (isset($_POST['lot_number_diluent'])) ? $_POST['lot_number_diluent'] : '0';
+		$expiry_date_diluent = (isset($_POST['expiry_date_diluent'])) ? $_POST['expiry_date_diluent'] : '0';
+		$date_of_reconstitution = (isset($_POST['date_of_reconstitution'])) ? $_POST['date_of_reconstitution'] : '0';
+		$time_of_reconstitution = (isset($_POST['time_of_reconstitution'])) ? $_POST['time_of_reconstitution'] : '0';
+					$data_vac= array(
+						'id_case'=>$id_case,
+						'name_of_vaccine'=>$name_of_vaccine,
+						'vaccine_volume'=>$vaccine_volume,
+						'route_of_vaccination'=>$route_of_vaccination,
+						'vaccination_site'=>$vaccination_site,
+						'dose'=>$dose,
+						'date_of_vaccination'=>$date_of_vaccination,
+						'time_of_vaccination'=>$time_of_vaccination,
+						'manufacturer'=>$manufacturer,
+						'lot_number'=>$lot_number,
+						'expiry_date'=>$expiry_date,
+						'name_of_diluent'=>$name_of_diluent,
+						'lot_number_diluent'=>$lot_number_diluent,
+						'expiry_date_diluent'=>$expiry_date_diluent,
+						'date_of_reconstitution'=>$date_of_reconstitution,
+						'time_of_reconstitution'=>$time_of_reconstitution
+					);
+					 // dd($data_vac);
+						DB::table('aefi_form_1_vac')->insert($data_vac);
+	 // dd($res1);
+}
 public function insertform2(Request $req2)
 {
 	//dd($_FILES['other_instruction_1']);

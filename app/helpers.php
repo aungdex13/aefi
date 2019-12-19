@@ -1,6 +1,4 @@
 <?php
-
-
 if (! function_exists('load_history_of_vaccine')) {
     function load_history_of_vaccine() {
 

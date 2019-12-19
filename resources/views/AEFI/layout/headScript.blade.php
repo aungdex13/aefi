@@ -23,12 +23,8 @@
 		 folder instead of downloading all of them to reduce the load. -->
 	  <link rel="stylesheet" href="/asset/dist/css/skins/_all-skins.min.css">
 	  <!-- Theme style -->
-	  <link rel="stylesheet" href="/asset/bower_components/1543-image-hover/css/style.css">
+
 	  <link rel="stylesheet" href="/asset/bower_components/jvectormap/jquery-jvectormap.css">
-	  <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-	  <script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
-	  <script src="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"></script>
-	  <script src="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css"></script>
 {{--
 
 	  <link rel="stylesheet" href="/asset/bower_components/index/hover.css"> --}}

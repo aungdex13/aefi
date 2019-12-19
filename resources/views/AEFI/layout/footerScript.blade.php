@@ -30,10 +30,7 @@
 <!-- jvectormap  -->
 <script src="/asset/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
 <script src="/asset/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-
-<script src="/asset/bower_components/chart.js/Chart.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="/asset/dist/js/pages/chart_1.js"></script>
 {{-- <script src="/asset/dist/js/pages/chartdashbard.js"></script> --}}
 <!-- AdminLTE for demo purposes -->
 <script src="/asset/dist/js/demo.js"></script>
