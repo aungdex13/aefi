@@ -41,7 +41,9 @@
   $(function () {
     //Initialize Select2 Elements
     $('.select2').select2()
-
+    $('#datepicker').datepicker({
+      autoclose: true
+    })
     //Datemask dd/mm/yyyy
     $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
     //Datemask2 mm/dd/yyyy
@@ -73,9 +75,9 @@
     )
 
     //Date picker
-    $('#datepicker').datepicker({
-      dateFormat: "yy-mm-dd"
-    })
+    // $('#datepicker').datepicker({
+    //   dateFormat: "yy-mm-dd"
+    // })
 	//Date picker
     $('#datepicker_found_event').datepicker({
       dateFormat: "yy-mm-dd"
@@ -128,6 +130,30 @@
 	$('#datepicker_date_of_reconstitution').datepicker({
 	  dateFormat: "yy-mm-dd"
 	})
+  //Date picker
+	$('#date_of_vaccination1').datepicker({
+	  dateFormat: "yy-mm-dd"
+	})
+  //Date picker
+  $('#date_of_vaccination2').datepicker({
+    dateFormat: "yy-mm-dd"
+  })
+
+  //Date picker
+	$('#date_of_vaccination3').datepicker({
+	  dateFormat: "yy-mm-dd"
+	})
+
+  //Date picker
+	$('#date_of_vaccination4').datepicker({
+	  dateFormat: "yy-mm-dd"
+	})
+
+  //Date picker
+	$('#date_of_vaccination5').datepicker({
+	  dateFormat: "yy-mm-dd"
+	})
+
 
     //iCheck for checkbox and radio inputs
     $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
@@ -340,3 +366,19 @@ showHideRemove($(this).parents(".section-container").find(".remove-item"), 2);
 	});
 		});
 </script> --}}
+<script>
+$(function(){
+    $('#addMore').on('click', function() {
+              var data = $("#tb tr:eq(1)").clone(true).appendTo("#tb");
+              data.find("input").val('');
+     });
+     $(document).on('click', '.remove', function() {
+         var trIndex = $(this).closest("tr").index();
+            if(trIndex>1) {
+             $(this).closest("tr").remove();
+           } else {
+             alert("Sorry!! Can't remove first row!");
+           }
+      });
+});
+</script>
