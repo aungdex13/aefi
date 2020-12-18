@@ -32,12 +32,10 @@ Route::get('/AEFI506', 'Aefi\AEFIController@AEFI506')->name('AEFI506');
 Route::get('/lstf1', 'Aefi\SelectController@selectdatatablecaseAEFI1')->name('lstf1');
 Route::get('/lstf2', 'Aefi\SelectController@selectdatatablecaseAEFI2')->name('lstf2');
 Route::get('/lstf1group', 'Aefi\SelectController@selectdatatablecaseAEFI1group')->name('lstf1group');
-
 // insert Data
 Route::post('/insertform1', 'Aefi\InsertController@insertform1')->name('insertform1');
 Route::post('/vaccineform1', 'Aefi\InsertController@vaccineform1')->name('vaccineform1');
 Route::post('/insertform2', 'Aefi\InsertController@insertform2')->name('insertform2');
-
 // update Data
 Route::post('/updateform1', 'Aefi\UpdateController@updateform1')->name('updateform1');
 Route::post('/updateform2', 'Aefi\UpdateController@updateform2')->name('updateform2');

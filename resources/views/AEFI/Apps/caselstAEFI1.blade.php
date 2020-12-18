@@ -70,7 +70,7 @@ $arr_manufacturer = load_manufacturer();
                 <p style="text-align:center;">{{ $value->nationality }} {{ $value->other_nationality }}</p>
               </td>
               <td>
-                <p style="text-align:center;">ตำบล : {{ $value->sub_district }}<br> อำเภอ : {{ $value->district }}<br> จังหวัด : {{ $value->province }}</p>
+                <p style="text-align:center;">ตำบล : {{ $value->subdistrict }}<br> อำเภอ : {{ $value->district }}<br> จังหวัด : {{ $value->province }}</p>
               </td>
               <td>
                 <p style="text-align:center;">{{ $value->necessary_to_investigate }}</p>
@@ -78,10 +78,32 @@ $arr_manufacturer = load_manufacturer();
               <td>
                 <div class="btn-group">
                   <a href="{{ route('EditAEFI1') }}?id_case={{ $value->id_case }}" type="button" class="btn btn-warning btn-flat"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>แก้ไขข้อมูล</a>
-                  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-warning">ลบข้อมูล</button>
+                  {{-- <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-warning">ลบข้อมูล</button> --}}
+                    <a href="{{ route('deleteAEFI1') }}?id_case={{ $value->id_case }}" id="btnDelete" type="button" class="btn btn-danger">ลบข้อมูล</a>
                 </div>
               </td>
             </tr>
+            <div class="modal modal-danger fade" id="modal-warning">
+              <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">ลบข้อมูล</h4>
+                  </div>
+                  <div class="modal-body">
+                    <p>หากท่านกดปุ่มตกลงข้อมูลของผู้ป่วยรายนี้จะถูกลบทั้งหมด&hellip;</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">ยกเลิก</button>
+                    <a href="{{ route('deleteAEFI1') }}?id_case={{ $value->id_case }}" type="button" class="btn btn-outline">ลบข้อมูล</a>
+                  </div>
+                </div>
+                <!-- /.modal-content -->
+              </div>
+              <!-- /.modal-dialog -->
+            </div>
+            <!-- /.modal -->
             <?php endforeach;?>
           </table>
           {{-- <button type="button" id="btnAdd" class="btn btn-xs btn-primary classAdd">Add More</button> --}}
@@ -90,27 +112,7 @@ $arr_manufacturer = load_manufacturer();
 						  									 <input type="text" name="req_count[]" >
 						  								 </div> --}}
 
-          <div class="modal modal-danger fade" id="modal-warning">
-            <div class="modal-dialog modal-md">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title">ลบข้อมูล</h4>
-                </div>
-                <div class="modal-body">
-                  <p>หากท่านกดปุ่มตกลงข้อมูลของผู้ป่วยรายนี้จะถูกลบทั้งหมด&hellip;</p>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">ยกเลิก</button>
-                  {{-- <a href="{{ route('deleteAEFI1') }}?id_case={{ $value->id_case }}" type="button" class="btn btn-outline">ลบข้อมูล</a> --}}
-                </div>
-              </div>
-              <!-- /.modal-content -->
-            </div>
-            <!-- /.modal-dialog -->
-          </div>
-          <!-- /.modal -->
+
         </div>
       </div>
     </div>
@@ -121,4 +123,11 @@ $arr_manufacturer = load_manufacturer();
 
 @include('AEFI.layout.footercaselstScript')
 <!-- /.content -->
+<script>
+$(document).ready(function() {
+    $("#btnDelete").click(function(){
+        alert("button");
+    });
+});
+</script>
 @stop

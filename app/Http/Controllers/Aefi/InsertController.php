@@ -16,11 +16,11 @@
 
 		public function insertform1(Request $req)
 	 	{
-
 		$id_case = (isset($_POST['id_case'])) ? $_POST['id_case'] : '0';
 		$hn = $req ->input ('hn');
 		$an = $req ->input ('an');
-		$id_number = $req ->input ('id_number');
+		$id_number_n = $req ->input ('id_number');
+		$id_number = str_replace(' ', '', $id_number_n);
 		$title_name = $req ->input ('title_name');
 		$first_name = $req ->input ('first_name');
 		$sur_name = $req ->input ('sur_name');
@@ -45,14 +45,15 @@
 		$village_no = $req ->input ('village_no');
 		$province = $req ->input ('province');
 		$district = $req ->input ('district');
-		$sub_district = $req ->input ('sub_district');
-		$phone_number = $req ->input ('phone_number');
+		$subdistrict = $req ->input ('subdistrict');
+		$phone_number_n = $req ->input ('phone_number');
+		$phone_number = str_replace('-', '', $phone_number_n);
 		$parent_name = $req ->input ('parent_name');
 		$parent_sur_name = $req ->input ('parent_sur_name');
-		$parent_phone_number = $req ->input ('parent_phone_number');
+		$parent_phone_number = str_replace('-', '', $req ->input ('parent_phone_number'));
 		$date_dead = $req ->input ('date_dead');
-		$rash = $req ->input ('Rash');
-		$erythema = $req ->input ('Erythema');
+		$rash = $req ->input('rash');
+		$erythema = $req ->input ('erythema');
 		$urticaria = $req ->input ('urticaria');
 		$itching = $req ->input ('itching');
 		$edema = $req ->input ('edema');
@@ -118,12 +119,21 @@
 		$province_found_event = $req ->input ('province_found_event');
 		$unit_reported = $req ->input ('unit_reported');
 		$province_reported = $req ->input ('province_reported');
-		$tel_reported = $req ->input ('tel_reported');
+		$tel_reported = str_replace('-', '', $req ->input ('tel_reported'));
 		$email_reported = $req ->input ('email_reported');
 		$datepicker_send_reported = $req ->input ('datepicker_send_reported');
 		$datepicker_resiver = $req ->input ('datepicker_resiver');
 		$more_reviews = $req ->input ('more_reviews');
-		$assessment = $req ->input ('assessment');
+		$assessment1 = $req ->input ('assessment1');
+		$assessment2 = $req ->input ('assessment2');
+		$assessment3 = $req ->input ('assessment3');
+		$assessment4 = $req ->input ('assessment4');
+		$assessment5 = $req ->input ('assessment5');
+		$assessment6 = $req ->input ('assessment6');
+		$assessment7 = $req ->input ('assessment7');
+		$assessment8 = $req ->input ('assessment8');
+		$assessment9 = $req ->input ('assessment9');
+		$assessment10 = $req ->input ('assessment10');
 		$date_entry = date('Y-m-d') ;
 		$data = array(
 			'id_case'=>$id_case,
@@ -153,7 +163,7 @@
 			'village_no'=>$village_no,
 			'province'=>$province,
 			'district'=>$district,
-			'sub_district'=>$sub_district,
+			'subdistrict'=>$subdistrict,
 			'phone_number'=>$phone_number,
 			'parent_name'=>$parent_name,
 			'parent_sur_name'=>$parent_sur_name,
@@ -231,14 +241,23 @@
 			'datepicker_send_reported'=>$datepicker_send_reported,
 			'datepicker_resiver'=>$datepicker_resiver,
 			'more_reviews'=>$more_reviews,
-			'assessment'=>$assessment,
+			'assessment1'=>$assessment1,
+			'assessment2'=>$assessment2,
+			'assessment3'=>$assessment3,
+			'assessment4'=>$assessment4,
+			'assessment5'=>$assessment5,
+			'assessment6'=>$assessment6,
+			'assessment7'=>$assessment7,
+			'assessment8'=>$assessment8,
+			'assessment9'=>$assessment9,
+			'assessment10'=>$assessment10,
 			'date_entry'=>$date_entry
 
 		);
 	// echo($data);
-	// $res1	= DB::table('aefi_form_1')->insert($data);
-	 // dd($res1);
-	if ($data)
+	  $res1	= DB::table('aefi_form_1')->insert($data);
+	 // dd($data);
+	if ($res1)
 	 {
 		$no_lab1 = (isset($_POST['no_lab1'])) ? $_POST['no_lab1'] : '0';
 		$name_of_vaccine1 = (isset($_POST['name_of_vaccine1'])) ? $_POST['name_of_vaccine1'] : '0';
@@ -256,7 +275,7 @@
 		$expiry_date_diluent1 = (isset($_POST['expiry_date_diluent1'])) ? $_POST['expiry_date_diluent1'] : '0';
 		$date_of_reconstitution1 = (isset($_POST['date_of_reconstitution1'])) ? $_POST['date_of_reconstitution1'] : '0';
 		$time_of_reconstitution1 = (isset($_POST['time_of_reconstitution1'])) ? $_POST['time_of_reconstitution1'] : '0';
-
+// dd($no_lab1);
 		$no_lab2 = (isset($_POST['no_lab2'])) ? $_POST['no_lab2'] : '0';
 		$name_of_vaccine2 = (isset($_POST['name_of_vaccine2'])) ? $_POST['name_of_vaccine2'] : '0';
 		$vaccine_volume2 = (isset($_POST['vaccine_volume2'])) ? $_POST['vaccine_volume2'] : '0';
@@ -324,8 +343,9 @@
 		$expiry_date_diluent5 = (isset($_POST['expiry_date_diluent5'])) ? $_POST['expiry_date_diluent5'] : '0';
 		$date_of_reconstitution5 = (isset($_POST['date_of_reconstitution5'])) ? $_POST['date_of_reconstitution5'] : '0';
 		$time_of_reconstitution5 = (isset($_POST['time_of_reconstitution5'])) ? $_POST['time_of_reconstitution5'] : '0';
-echo $no_lab5;
-exit;
+// echo $no_lab5;
+// exit;
+// dd($no_lab1,$no_lab2,$no_lab3,$no_lab4,$no_lab5);
 if ($no_lab1 == 1) {
 	$data_vac1 = array(
 		'id_case'=>$id_case,
@@ -347,15 +367,8 @@ if ($no_lab1 == 1) {
 		'time_of_reconstitution'=>$time_of_reconstitution1,
 		'date_entry'=>$date_entry
 	);
-	 dd($data,$data_vac1);
-		// DB::table('aefi_form_1_vac')->insert($data_vac);
-			$msg = " ส่งข้อมูลสำเร็จ";
-			$url_rediect = "<script>alert('".$msg."'); window.location='lstf1';</script> ";
-		}else{
-			$msg = " ส่งข้อมูลไม่สำเร็จ";
-			$url_rediect = "<script>alert('".$msg."'); window.location='form1';</script> ";
-			}
-			echo $url_rediect;
+		DB::table('aefi_form_1_vac')->insert($data_vac1);
+		}
 			if ($no_lab2 == 2) {
 				$data_vac2 = array(
 					'id_case'=>$id_case,
@@ -377,16 +390,8 @@ if ($no_lab1 == 1) {
 					'time_of_reconstitution'=>$time_of_reconstitution2,
 					'date_entry'=>$date_entry
 				);
-				 dd($data,$data_vac2);
-					// DB::table('aefi_form_1_vac')->insert($data_vac);
-					$msg = " ส่งข้อมูลสำเร็จ";
-					$url_rediect = "<script>alert('".$msg."'); window.location='lstf1';</script> ";
-				}else{
-					$msg = " ส่งข้อมูลไม่สำเร็จ";
-					$url_rediect = "<script>alert('".$msg."'); window.location='form1';</script> ";
-					}
-					echo $url_rediect;
-
+				DB::table('aefi_form_1_vac')->insert($data_vac2);
+			}
 					if ($no_lab3 == 3) {
 						$data_vac3 = array(
 							'id_case'=>$id_case,
@@ -408,17 +413,9 @@ if ($no_lab1 == 1) {
 							'time_of_reconstitution'=>$time_of_reconstitution1,
 							'date_entry'=>$date_entry
 						);
-						 dd($data,$data_vac3);
-							// DB::table('aefi_form_1_vac')->insert($data_vac);
-								$msg = " ส่งข้อมูลสำเร็จ";
-								$url_rediect = "<script>alert('".$msg."'); window.location='lstf1';</script> ";
-							}else{
-								$msg = " ส่งข้อมูลไม่สำเร็จ";
-								$url_rediect = "<script>alert('".$msg."'); window.location='form1';</script> ";
-								}
-								echo $url_rediect;
-
-								if ($no_lab4 == 4) {
+						DB::table('aefi_form_1_vac')->insert($data_vac3);
+					}
+							if ($no_lab4 == 4) {
 									$data_vac4 = array(
 										'id_case'=>$id_case,
 										'hn'=>$hn,
@@ -439,16 +436,8 @@ if ($no_lab1 == 1) {
 										'time_of_reconstitution'=>$time_of_reconstitution1,
 										'date_entry'=>$date_entry
 									);
-									 dd($data,$data_vac4);
-										// DB::table('aefi_form_1_vac')->insert($data_vac);
-											$msg = " ส่งข้อมูลสำเร็จ";
-											$url_rediect = "<script>alert('".$msg."'); window.location='lstf1';</script> ";
-										}else{
-											$msg = " ส่งข้อมูลไม่สำเร็จ";
-											$url_rediect = "<script>alert('".$msg."'); window.location='form1';</script> ";
-											}
-											echo $url_rediect;
-
+									DB::table('aefi_form_1_vac')->insert($data_vac4);
+								}
 											if ($no_lab5 == 5) {
 												$data_vac5 = array(
 													'id_case'=>$id_case,
@@ -470,59 +459,18 @@ if ($no_lab1 == 1) {
 													'time_of_reconstitution'=>$time_of_reconstitution1,
 													'date_entry'=>$date_entry
 												);
-												 dd($data,$data_vac5);
-													// DB::table('aefi_form_1_vac')->insert($data_vac);
-														$msg = " ส่งข้อมูลสำเร็จ";
-														$url_rediect = "<script>alert('".$msg."'); window.location='lstf1';</script> ";
-													}else{
-														$msg = " ส่งข้อมูลไม่สำเร็จ";
-														$url_rediect = "<script>alert('".$msg."'); window.location='form1';</script> ";
+												DB::table('aefi_form_1_vac')->insert($data_vac5);
+											}
+											if ($res1 == 1 || $res2 == 2) {
+												$msg = " ส่งข้อมูลสำเร็จ";
+												$url_rediect = "<script>alert('".$msg."'); window.location='lstf1';</script> ";
+											}else{
+												$msg = " ส่งข้อมูลไม่สำเร็จ";
+												$url_rediect = "<script>alert('".$msg."'); window.location='form1';</script> ";
 														}
-														echo $url_rediect;
+												echo $url_rediect;
 		}
 }
-	// if ($data_vac){
-
-// public function vaccineform1(Request $reqvac)
-// 	{
-// 		$id_case = (isset($_POST['id_case'])) ? $_POST['id_case'] : '0';
-// 		$name_of_vaccine = (isset($_POST['name_of_vaccine'])) ? $_POST['name_of_vaccine'] : '0';
-// 		$vaccine_volume = (isset($_POST['vaccine_volume'])) ? $_POST['vaccine_volume'] : '0';
-// 		$route_of_vaccination = (isset($_POST['route_of_vaccination'])) ? $_POST['route_of_vaccination'] : '0';
-// 		$vaccination_site = (isset($_POST['vaccination_site'])) ? $_POST['vaccination_site'] : '0';
-// 		$dose = (isset($_POST['dose'])) ? $_POST['dose'] : '0';
-// 		$date_of_vaccination = (isset($_POST['date_of_vaccination'])) ? $_POST['date_of_vaccination'] : '0';
-// 		$time_of_vaccination = (isset($_POST['time_of_vaccination'])) ? $_POST['time_of_vaccination'] : '0';
-// 		$manufacturer =(isset($_POST['manufacturer'])) ? $_POST['manufacturer'] : '0';
-// 		$lot_number = (isset($_POST['lot_number'])) ? $_POST['lot_number'] : '0';
-// 		$expiry_date = (isset($_POST['expiry_date'])) ? $_POST['expiry_date'] : '0';
-// 		$name_of_diluent = (isset($_POST['name_of_diluent'])) ? $_POST['name_of_diluent'] : '0';
-// 		$lot_number_diluent = (isset($_POST['lot_number_diluent'])) ? $_POST['lot_number_diluent'] : '0';
-// 		$expiry_date_diluent = (isset($_POST['expiry_date_diluent'])) ? $_POST['expiry_date_diluent'] : '0';
-// 		$date_of_reconstitution = (isset($_POST['date_of_reconstitution'])) ? $_POST['date_of_reconstitution'] : '0';
-// 		$time_of_reconstitution = (isset($_POST['time_of_reconstitution'])) ? $_POST['time_of_reconstitution'] : '0';
-// 					$data_vac= array(
-// 						'id_case'=>$id_case,
-// 						'name_of_vaccine'=>$name_of_vaccine,
-// 						'vaccine_volume'=>$vaccine_volume,
-// 						'route_of_vaccination'=>$route_of_vaccination,
-// 						'vaccination_site'=>$vaccination_site,
-// 						'dose'=>$dose,
-// 						'date_of_vaccination'=>$date_of_vaccination,
-// 						'time_of_vaccination'=>$time_of_vaccination,
-// 						'manufacturer'=>$manufacturer,
-// 						'lot_number'=>$lot_number,
-// 						'expiry_date'=>$expiry_date,
-// 						'name_of_diluent'=>$name_of_diluent,
-// 						'lot_number_diluent'=>$lot_number_diluent,
-// 						'expiry_date_diluent'=>$expiry_date_diluent,
-// 						'date_of_reconstitution'=>$date_of_reconstitution,
-// 						'time_of_reconstitution'=>$time_of_reconstitution
-// 					);
-// 					 // dd($data_vac);
-// 						DB::table('aefi_form_1_vac')->insert($data_vac);
-// 	 // dd($res1);
-// }
 public function insertform2(Request $req2)
 {
 	//dd($_FILES['other_instruction_1']);

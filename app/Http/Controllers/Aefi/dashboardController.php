@@ -25,7 +25,7 @@
 		village_no,
 		province,
 		district,
-		sub_district,
+		subdistrict,
 		necessary_to_investigate
 		FROM aefi_form_1' );
 		 //dd($caselst);
@@ -45,7 +45,7 @@
 		village_no,
 		province,
 		district,
-		sub_district,
+		subdistrict,
 		necessary_to_investigate
 		FROM aefi_form_1' );
 		 //dd($caselst);

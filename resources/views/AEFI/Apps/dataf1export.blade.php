@@ -43,7 +43,7 @@
 								<td>{{ $value->hn }}</td>
 				                <td>{{ $value->first_name }}</td>
 				                <td>{{ $value->sur_name }}</td>
-				                <td>{{ $value->house_number }}{{ $value->village_no }}{{ $value->sub_district }}{{ $value->district }}{{ $value->province }}</td>
+				                <td>{{ $value->house_number }}{{ $value->village_no }}{{ $value->subdistrict }}{{ $value->district }}{{ $value->province }}</td>
 				                <td>{{ $value->gender }}</td>
 								<td>{{ $value->age_while_sick_year }}{{ $value->age_while_sick_month }}{{ $value->age_while_sick_day }}</td>
 								<td>{{ $value->id_case }}</td>

@@ -199,7 +199,7 @@
 					<div class="icon">
 					  <i class="fa fa-home"></i>
 					</div>
-					<a href="https://ddc.moph.go.th/th/site/office/view/boe" class="small-box-footer">
+					<a href="https://apps.doe.moph.go.th/" class="small-box-footer">
 					  More info <i class="fa fa-arrow-circle-right"></i>
 					</a>
 				  </div>
@@ -214,7 +214,7 @@
 					<div class="icon">
 						<i class="fa fa-building"></i>
 					</div>
-					<a href="https://ddc.moph.go.th/th/site/home" class="small-box-footer">
+					<a href="https://ddc.moph.go.th" class="small-box-footer">
 					  More info <i class="fa fa-arrow-circle-right"></i>
 					</a>
 				  </div>
@@ -229,7 +229,7 @@
 		            <div class="icon">
 		              <i class="fa fa-calendar"></i>
 		            </div>
-		            <a href="https://e-reports.boe.moph.go.th/eventbase/user/login/" class="small-box-footer">
+		            <a href="https://e-reports.doe.moph.go.th/eventbase/user/login/" class="small-box-footer">
 		              More info <i class="fa fa-arrow-circle-right"></i>
 		            </a>
 		          </div>
@@ -244,7 +244,7 @@
 					<div class="icon">
 					  <i class="fa fa-search"></i>
 					</div>
-					<a href="https://e-reports.boe.moph.go.th/eventbase/user/login/" class="small-box-footer">
+					<a href="https://e-reports.doe.moph.go.th/eventbase/user/login/" class="small-box-footer">
 					  More info <i class="fa fa-arrow-circle-right"></i>
 					</a>
 				  </div>

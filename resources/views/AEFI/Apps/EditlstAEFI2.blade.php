@@ -57,7 +57,7 @@ $arr_manufacturer = load_manufacturer();
 						  <td><p style="text-align:center;">{{ $value->birthdate }}</p></td>
 						  <td><p style="text-align:center;">{{ $value->gender }}</p></td>
 						  <td><p style="text-align:center;">{{ $value->nationality }}</p></td>
-						  <td><p style="text-align:center;">{{ $value->province }} {{ $value->district }} {{ $value->sub_district }}</p></td>
+						  <td><p style="text-align:center;">{{ $value->province }} {{ $value->district }} {{ $value->subdistrict }}</p></td>
 						  <td>
 							  <div class="btn-group">
 								<a href="{{ route('EditAEFI2') }}?id_case={{ $value->id_case }}" type="button" class="btn btn-warning btn-flat"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>แก้ไข AEFI2</a>

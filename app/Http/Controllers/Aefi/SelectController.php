@@ -19,20 +19,23 @@
 		}
 		public function selectdatatablecaseAEFI1()
 		{
-		$caselstF1 = DB::select('select id_case,hn,
-		an,
-		first_name,
-		sur_name,
-		age_while_sick_year,
-		nationality,
-		gender,
-		other_nationality,
-		village_no,
-		province,
-		district,
-		sub_district,
-		necessary_to_investigate
-		FROM aefi_form_1' );
+		$caselstF1 = DB::table('aefi_form_1')
+		->select('id_case',
+							'hn',
+							'an',
+							'first_name',
+							'sur_name',
+							'age_while_sick_year',
+							'nationality',
+							'gender',
+							'other_nationality',
+							'village_no',
+							'province',
+							'district',
+							'subdistrict',
+							'necessary_to_investigate')
+		 ->where('status',null)
+		 ->get();
 		 //dd($caselst);
 		 return view('AEFI.Apps.caselstAEFI1')->with('data', $caselstF1);
 
@@ -50,7 +53,7 @@
 		village_no,
 		province,
 		district,
-		sub_district,
+		subdistrict,
 		necessary_to_investigate
 		FROM aefi_form_1' );
 		 //dd($caselst);
@@ -70,7 +73,7 @@
 		village_no,
 		province,
 		district,
-		sub_district,
+		subdistrict,
 		necessary_to_investigate
 		FROM aefi_form_1 WHERE necessary_to_investigate = ?', [2] );
 		 // dd($caselstF2);
@@ -92,8 +95,18 @@
 			if ($EditAEFI1) {
 				$EditAEFI1vac = DB::table('aefi_form_1_vac')->select('*')->where('id_case', [$req->id_case] )->get();
 			}
+			$list=$this->form1();
+			$listProvince=$this->listProvince();
+			$listDistrict=$this->listDistrict();
+			$listsubdistrict=$this->listsubdistrict();
 			//dd($EditAEFI1vac);
-		 return view('AEFI.Apps.EditAEFI1')->with('data', $EditAEFI1)->with('datavac', $EditAEFI1vac);
+		 return view('AEFI.Apps.EditAEFI1')
+		 				->with('data', $EditAEFI1)
+						->with('datavac', $EditAEFI1vac)
+						->with('list', $list)
+						->with('listProvince', $listProvince)
+						->with('listDistrict', $listDistrict)
+						->with('listsubdistrict', $listsubdistrict);
 
 		}
 		public function selectalldataAEFI2(Request $req)
@@ -125,7 +138,7 @@
 		'aefi_form_1.nationality',
 		'aefi_form_1.province',
 		'aefi_form_1.district',
-		'aefi_form_1.sub_district')
+		'aefi_form_1.subdistrict')
 		->get();
 		 // dd($caselstF2);
 		 return view('AEFI.Apps.EditlstAEFI2')->with('data', $ecaselstF2);
@@ -136,5 +149,37 @@
 			->get();
 			return view('AEFI.Apps.form1')->with('dataaecode', $this->result);
 
+		}
+		public function form1(){
+			$list=DB::table('tbl_provinces')->get();
+			 // return view('AEFI.Apps.form1')->with('list',$list);
+			 return $list;
+		}
+		protected function listProvince(){
+			$province = DB::table('tbl_provinces')
+			->select('province_code','province_name')
+			->orderBy('province_code', 'ASC')
+			->get();
+			foreach ($province as  $value) {
+				$province_arr[$value->province_code] =trim($value->province_name);
+			}
+			// dd($province_arr);
+			return $province_arr;
+		}
+		protected function listDistrict(){
+			$district = DB::table('tbl_amphures')->select('amphur_id','amphur_name')->get();
+			foreach ($district as  $value) {
+				$district_arr[$value->amphur_id] =trim($value->amphur_name);
+			}
+			// dd($province_arr);
+			return $district_arr;
+		}
+	  protected function listsubdistrict(){
+			$subdistrict = DB::table('tbl_districts')->select('district_code','district_name')->get();
+			foreach ($subdistrict as  $value) {
+				$district_arr[$value->district_code] =trim($value->district_name);
+			}
+			// dd($province_arr);
+			return $district_arr;
 		}
 }

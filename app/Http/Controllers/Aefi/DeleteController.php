@@ -12,13 +12,25 @@ class DeleteController extends Controller
 	public function __construct(){
 		$this->result = null;
 	}
-
 	public function deletedata1(Request $req){
-		$deletedata1 = DB::table('aefi_form_1')->where('id_case','=', $req->id_case)->delete();
-		 if ($deletedata1) {
-			$deletedatavac1 = DB::table('aefi_form_1_vac')->where('id_case','=', $req->id_case)->delete();
+		$deletedata = DB::table('aefi_form_1')
+              				->where('id_case', $req->id_case)
+              				->update(['status' => 1]);
+		 if ($deletedata) {
+			 $deletedata_vac = DB::table('aefi_form_1_vac')
+												 ->where('id_case', $req->id_case)
+												 ->update(['status' => 1]);
+				if ($deletedata_vac) {
+					$msg = " ส่งข้อมูลสำเร็จ";
+					$url_rediect = "<script>alert('".$msg."');location.href='lstf1';</script> ";
+				}else {
+					$msg = "ส่งข้อมูลไม่สำเร็จ";
+					$url_rediect = "<script>alert('".$msg."');location.href='lstf1';</script> ";
+				}
 		}else {
-			dd('fail');
+			$msg = "ส่งข้อมูลไม่สำเร็จ";
+			$url_rediect = "<script>alert('".$msg."');location.href='lstf1';</script> ";
 		}
+		echo $url_rediect;
 	}
 }

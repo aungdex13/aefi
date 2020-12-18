@@ -57,7 +57,7 @@ $arr_manufacturer = load_manufacturer();
 						  <td><p style="text-align:center;">{{ $value->first_name }} {{ $value->sur_name }}</p></td>
 						  <td><p style="text-align:center;">{{ $value->age_while_sick_year }}</p></td>
 						  <td><p style="text-align:center;">{{ $value->nationality }} {{ $value->other_nationality }}</p></td>
-						  <td><p style="text-align:center;">ตำบล : {{ $value->sub_district }}<br> อำเภอ : {{ $value->district }}<br>  จังหวัด : {{ $value->province }}</p></td>
+						  <td><p style="text-align:center;">ตำบล : {{ $value->subdistrict }}<br> อำเภอ : {{ $value->district }}<br>  จังหวัด : {{ $value->province }}</p></td>
 						  <td><p style="text-align:center;">{{ $value->necessary_to_investigate }}</p></td>
 						  <td>
 							  <div class="btn-group">
