@@ -1,4 +1,5 @@
 <!-- jQuery 3 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>;
 <script src="/asset/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="/asset/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -25,7 +26,6 @@
 <script src="/asset/bower_components/fastclick/lib/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="/asset/dist/js/adminlte.min.js"></script>
-
 <!-- jvectormap  -->
 <script src="/asset/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
 <script src="/asset/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
@@ -36,6 +36,58 @@
 
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <!-- Page script -->
+<script>
+$(document).ready(function() {
+  $(document).on("click", ".classAdd", function() { //
+    var rowCount = $('.data-contact-person').length + 1;
+    var contactdiv = '<tr class="data-contact-person">' +
+      '<td><input type="text" id="memberteam' + rowCount + '" name="memberteam[]' + rowCount + '"  class="memberteam01" " />' +
+      // '<td><input type="text" id="lastname' + rowCount + '" name="lastname[]' + rowCount + '"  class="lastname01" " />' +
+      '<td><select name="position[]' + rowCount + '""  title="ตำแหน่งในทีม">' +
+      '<option value="1">Supervisor</option>'+
+      '<option value="2">PI/Co-PI</option>'+
+      '<option value="3">Data</option>'+
+      '<option value="4">Interview</option>'+
+      '<option value="5">Logistics</option>'+
+      '<option value="6">Screen</option>'+
+      '<option value="7">พขร.</option>'+
+      '</select></td>' +
+      '<td><select name="division[]' + rowCount + '"  title="ตำแหน่งในทีม" >' +
+      '<option value="1">กองระบาดวิทยา</option>'+
+      '<option value="3">กองโรคติดต่อนำโดยแมลง</option>'+
+      '<option value="5">สถาบันเวชศาสตร์ป้องกันศึกษา</option>'+
+      '<option value="6">กองโรคไม่ติดต่อ</option>'+
+      '<option value="7">สถาบันราชประชาสมาสัย</option>'+
+      '<option value="8">กองวัณโรค</option>'+
+      '<option value="9">กองโรคจากการประกอบอาชีพและสิ่งแวดล้อม </option>'+
+      '<option value="10">กองโรคป้องกันด้วยวัคซีน</option>'+
+      '<option value="11">สำนักสำนักงานคณะกรรมการผู้ทรงคุณวุฒิ</option>'+
+      '<option value="12">กองโรคเอดส์ และโรคติดต่อทางเพศสัมพันธ์</option>'+
+      '<option value="13">กองโรคติดต่อทั่วไป</option>'+
+      '<option value="14">สำนักงานความร่วมมือระหว่างประเทศ</option>'+
+      '<option value="15">สถาบันบำราศนราดูร</option>'+
+      '<option value="16">กองงานคณะกรรมการควบคุมผลิตภัณฑ์ยาสูบ</option>'+
+      '<option value="17">สำนักงานคณะกรรมการควบคุมเครื่องดื่มแอลกอฮอล์ </option>'+
+      '<option value="18">สถาบันวิจัย จัดการความรู้ และมาตรฐานการควบคุมโรค</option>'+
+      '<option value="19">กองควบคุมโรคและภัยสุขภาพในภาวะฉุกเฉิน</option>'+
+      '<option value="20">กองนวัตกรรมและวิจัย</option>'+
+      '<option value="21">กองป้องกันการบาดเจ็บ</option>'+
+      '<option value="22">กองยุทธศาสตร์และแผนงาน</option>'+
+      '<option value="23">กองโรคป้องกันด้วยวัคซีน</option>'+
+      '<option value="24">ศูนย์นวัตกรรมด้านสุขภาพและป้องกันควบคุมโรค</option>'+
+      '<option value="25">ศูนย์พัฒนาวิชาการอาชีวอนามัยและสิ่งแวดล้อม จ.สมุทรปราการ</option>'+
+      '<option value="26">ศูนย์สารสนเทศ</option>'+
+      '</select></td>' +
+      '<td><button type="button" id="btnAdd" class="btn btn-xs btn-primary classAdd">เพิ่มสมาชิกทีมสอบสวนโรค</button>' +
+      '<button type="button" id="btnDelete" class="deleteContact btn btn btn-danger btn-xs">ลบรายชื่อ</button></td>' +
+      '</tr>';
+    $('#maintable').append(contactdiv); // Adding these controls to Main table class
+  });
+  $(document).on("click", ".deleteContact", function() {
+    $(this).closest("tr").remove(); // closest used to remove the respective 'tr' in which I have my controls
+  });
+});
+</script>
 <script>
   $(function() {
     //Initialize Select2 Elements
@@ -376,18 +428,54 @@
   });
 </script>
 <script>
-  $(function() {
-    $('#addMore').on('click', function() {
-      var data = $("#tb tr:eq(1)").clone(true).appendTo("#tb");
-      data.find("input").val('');
-    });
-    $(document).on('click', '.remove', function() {
-      var trIndex = $(this).closest("tr").index();
-      if (trIndex > 1) {
-        $(this).closest("tr").remove();
-      } else {
-        alert("Sorry!! Can't remove first row!");
-      }
-    });
+$(document).ready(function() {
+  $(document).on("click", ".classAdd", function() { //
+    var rowCount = $('.data-contact-person').length + 1;
+    var contactdiv = '<tr class="data-contact-person">' +
+      '<td><input type="text" id="memberteam' + rowCount + '" name="memberteam[]' + rowCount + '"  class="memberteam01" " />' +
+      // '<td><input type="text" id="lastname' + rowCount + '" name="lastname[]' + rowCount + '"  class="lastname01" " />' +
+      '<td><select name="position[]' + rowCount + '""  title="ตำแหน่งในทีม">' +
+      '<option value="1">Supervisor</option>'+
+      '<option value="2">PI/Co-PI</option>'+
+      '<option value="3">Data</option>'+
+      '<option value="4">Interview</option>'+
+      '<option value="5">Logistics</option>'+
+      '<option value="6">Screen</option>'+
+      '<option value="7">พขร.</option>'+
+      '</select></td>' +
+      '<td><select name="division[]' + rowCount + '"  title="ตำแหน่งในทีม" >' +
+      '<option value="1">กองระบาดวิทยา</option>'+
+      '<option value="3">กองโรคติดต่อนำโดยแมลง</option>'+
+      '<option value="5">สถาบันเวชศาสตร์ป้องกันศึกษา</option>'+
+      '<option value="6">กองโรคไม่ติดต่อ</option>'+
+      '<option value="7">สถาบันราชประชาสมาสัย</option>'+
+      '<option value="8">กองวัณโรค</option>'+
+      '<option value="9">กองโรคจากการประกอบอาชีพและสิ่งแวดล้อม </option>'+
+      '<option value="10">กองโรคป้องกันด้วยวัคซีน</option>'+
+      '<option value="11">สำนักสำนักงานคณะกรรมการผู้ทรงคุณวุฒิ</option>'+
+      '<option value="12">กองโรคเอดส์ และโรคติดต่อทางเพศสัมพันธ์</option>'+
+      '<option value="13">กองโรคติดต่อทั่วไป</option>'+
+      '<option value="14">สำนักงานความร่วมมือระหว่างประเทศ</option>'+
+      '<option value="15">สถาบันบำราศนราดูร</option>'+
+      '<option value="16">กองงานคณะกรรมการควบคุมผลิตภัณฑ์ยาสูบ</option>'+
+      '<option value="17">สำนักงานคณะกรรมการควบคุมเครื่องดื่มแอลกอฮอล์ </option>'+
+      '<option value="18">สถาบันวิจัย จัดการความรู้ และมาตรฐานการควบคุมโรค</option>'+
+      '<option value="19">กองควบคุมโรคและภัยสุขภาพในภาวะฉุกเฉิน</option>'+
+      '<option value="20">กองนวัตกรรมและวิจัย</option>'+
+      '<option value="21">กองป้องกันการบาดเจ็บ</option>'+
+      '<option value="22">กองยุทธศาสตร์และแผนงาน</option>'+
+      '<option value="23">กองโรคป้องกันด้วยวัคซีน</option>'+
+      '<option value="24">ศูนย์นวัตกรรมด้านสุขภาพและป้องกันควบคุมโรค</option>'+
+      '<option value="25">ศูนย์พัฒนาวิชาการอาชีวอนามัยและสิ่งแวดล้อม จ.สมุทรปราการ</option>'+
+      '<option value="26">ศูนย์สารสนเทศ</option>'+
+      '</select></td>' +
+      '<td><button type="button" id="btnAdd" class="btn btn-xs btn-primary classAdd">เพิ่มสมาชิกทีมสอบสวนโรค</button>' +
+      '<button type="button" id="btnDelete" class="deleteContact btn btn btn-danger btn-xs">ลบรายชื่อ</button></td>' +
+      '</tr>';
+    $('#maintable').append(contactdiv); // Adding these controls to Main table class
   });
+  $(document).on("click", ".deleteContact", function() {
+    $(this).closest("tr").remove(); // closest used to remove the respective 'tr' in which I have my controls
+  });
+});
 </script>
