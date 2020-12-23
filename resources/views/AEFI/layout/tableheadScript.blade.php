@@ -17,7 +17,7 @@
 	  <!-- Select2 -->
 	  <link rel="stylesheet" href="/asset/bower_components/select2/dist/css/select2.min.css">
 	  <!-- Theme style -->
-	  <link rel="stylesheet" href="/asset/dist/css/AdminLTE.min.css">
+	  <link rel="stylesheet" href="/asset/dist/css/AdminLTE.css">
 	  <link rel="stylesheet" href="/asset/bower_components/font-awesome/css/font-awesome.min.css">
 	  <!-- AdminLTE Skins. Choose a skin from the css/skins
 		 folder instead of downloading all of them to reduce the load. -->
@@ -28,5 +28,5 @@
 
 	  <!-- Google Font -->
 	  <link rel="stylesheet"href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-	  
+
 	</head>

@@ -1,5 +1,5 @@
 @extends('AEFI.layout.template')
-<style>
+{{-- <style>
 table {
   border-collapse: collapse;
   border-spacing: 0;
@@ -15,7 +15,7 @@ th, td {
 }
 
 tr:nth-child(even){background-color: #f2f2f2}
-</style>
+</style> --}}
 @section('content')
 <section class="content-header">
 
@@ -44,6 +44,35 @@ foreach ($aecode as $value) {
     echo $value->AENAMETHA;
 }
 @endphp --}}
+<style>
+  #customers {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 200%;
+  }
+
+  #customers td,
+  #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+
+  #customers tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  #customers tr:hover {
+    background-color: #ddd;
+  }
+
+  #customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+  }
+</style>
 </section>
 <!-- Main content -->
 <section class="content">
@@ -118,17 +147,35 @@ foreach ($aecode as $value) {
 										<!-- /.form group -->
 
 									<!-- คำนำหน้าชื่อ -->
-									<div class="form-group">
-										<div class="row">
-											<div class="col-lg-3">
-												<label>คำนำหน้า:</label>
-											</div>
-											<div class="col-lg-3">
-												<input type="text" id="title_name" name="title_name" value="{{ $data[0]->title_name }}" class="form-control" placeholder="คำนำหน้าชื่อ">
-											<!-- /.p_id tname  -->
-											</div>
-										</div>
-									</div>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-lg-3">
+                        <label>
+                          <font style="color:red;">*</font> คำนำหน้า:
+                        </label>
+                      </div>
+                      <div class="col-lg-4">
+                        <select type="text" class="form-control" id="title_name" name="title_name" required onchange="showDiv1('hidden_div1', this)">
+                          <option value="{{ $data[0]->title_name }}">{{ $data[0]->title_name }}</option>
+                          <option value="">กรุณาเลือก</option>
+                          {{-- < ?php foreach ($mas_title_th as $key_title => $value_title) : ?> --}}
+                          {{-- } --}}
+                          <option value="1">นาย</option>
+                          <option value="2">นางสาว</option>
+                          <option value="3">นาง</option>
+                          <option value="99">อื่นๆ</option>
+                          {{-- < ?php endforeach; ?> --}}
+                        </select>
+                        {{-- <input type="text" id="title_name" name="title_name" class="form-control" placeholder="คำนำหน้าชื่อ"> --}}
+                        <!-- /.p_id tname  -->
+                      </div>
+                      <div class="col-lg-4" id="hidden_div1" style="display: none;">
+                        <input type="text" id="title_name_other" name="title_name_other" class="form-control" placeholder="คำนำหน้าชื่ออื่นๆ">
+                        {{-- <input type="text" id="title_name" name="title_name" class="form-control" placeholder="คำนำหน้าชื่อ"> --}}
+                        <!-- /.p_id tname  -->
+                      </div>
+                    </div>
+                  </div>
 										<!-- /.form group -->
 										<!-- ชื่อ -->
 									<div class="form-group">
@@ -183,7 +230,7 @@ foreach ($aecode as $value) {
 											<div class="form-group">
 												<div class="row">
 													<div class="col-lg-3">
-														<label>วันเดือนปีเกิด:</label>
+														<label>  <font style="color:red;">*</font> วันเดือนปีเกิด:</label>
 													</div>
 													<div class="col-lg-9">
 														<div class="input-group date">
@@ -547,7 +594,7 @@ foreach ($aecode as $value) {
 						<div class="form-group">
 							<div class="row">
 								<div class="col-lg-2">
-									<label>ที่อยู่ขณะเริ่มป่วย :</label>
+									<label><font style="color:red;">*</font> ที่อยู่ขณะเริ่มป่วย :</label>
 								</div>
 								<div class="col-lg-4">
 									<input type="text" id="house_number" name="house_number" value="{{ $data[0]->house_number }}" class="form-control"  placeholder="บ้านเลขที่">
@@ -639,427 +686,436 @@ foreach ($aecode as $value) {
 		<!-- /.box -->
 			</div>
 			<!--หัวข้อที่2 -->
-			<div class="col-md-12">
-			<!-- general form elements -->
-			<div class="box box-info">
-				<div class="box-header with-border">
-				<h3 class="box-title">(2) ข้อมูลวัคซีน / สถานที่รับวัคซีน (รพ./รพ.สต./คลินิก/ศูนย์บริการสาธารณสุข)</h3>
-				</div>
-        <div style="overflow: scroll;">
-          <table class="table" id="tb">
-                       <thead>
-                         <tr>
-                           <th>#</th>
-                           <th>ชื่อวัคซีน</th>
-                           <th>ปริมานที่ให้</th>
-                           <th>วิธีที่ให้</th>
-                           <th>ตำแหน่ง</th>
-                           <th>เข็มที่/ครั้งที่</th>
-                           <th>ว/ด/ปที่ได้รับ</th>
-                           <th>เวลาที่ได้รับ</th>
-                           <th>ชื่อผู้ผลิต</th>
-                           <th>เลขที่ผลิต</th>
-                           <th>วันหมดอายุ</th>
-                           <th>ชื่อตัวทำละลาย</th>
-                           <th>เลขที่ผลิต</th>
-                           <th>วันหมดอายุ</th>
-                           <th>ว/ด/ปที่ผสม</th>
-                           <th>เวลาที่ผสม</th>
-                           {{-- <th><a href="javascript:void(0);" style="font-size:18px;" id="addMore" title="Add More Person"><span class="glyphicon glyphicon-plus"></span></a></th> --}}
-                         </tr>
-                       </thead>
-                       <tbody>
-                         <tr>
-                           <td>
-                             <input type="checkbox" id="checkBoxID1" name="no_lab1" value="1">
-                             {{-- <input type="text" name="no_lab1" value="1" class="form-control"></td> --}}
-                           </td>
-                             <td>
-                               <select type="text" id="name_of_vaccine1" name="name_of_vaccine1" value="" class="form-control divID1">
-                             	  	<?php
-                             	    	foreach ($arr_history_of_vaccine as $k=>$v) {
-                             	  	?>
-                             	    			<option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
-                             	    <?php } ?>
-                             	  </select>
-                             </td>
-                             <td>
-                             <select type="text" id="vaccine_volume1" name="vaccine_volume1" value=""class="form-control divID1">
-                               <?php
+      <div class="col-md-12">
+        <!-- general form elements -->
+        <div class="box box-info">
+          <div class="box-header with-border">
+            <h3 class="box-title">(2) ข้อมูลวัคซีน / สถานที่รับวัคซีน (รพ./รพ.สต./คลินิก/ศูนย์บริการสาธารณสุข)</h3>
+          </div>
+          <div style="overflow: scroll;">
+            <table id="customers">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>
+                    <font style="color:red;">*</font> ชื่อวัคซีน
+                  </th>
+                  <th>ปริมานที่ให้</th>
+                  <th>วิธีที่ให้</th>
+                  <th>ตำแหน่ง</th>
+                  <th>เข็มที่/ครั้งที่</th>
+                  <th>
+                    <font style="color:red;">*</font> ว/ด/ปที่ได้รับ
+                  </th>
+                  <th>
+                    <font style="color:red;">*</font> เวลาที่ได้รับ
+                  </th>
+                  <th>ชื่อผู้ผลิต</th>
+                  <th>
+                    <font style="color:red;">*</font> เลขที่ผลิต
+                  </th>
+                  <th>
+                    <font style="color:red;">*</font> วันหมดอายุ
+                  </th>
+                  <th>ชื่อตัวทำละลาย</th>
+                  <th>
+                    <font style="color:red;">*</font> เลขที่ผลิต
+                  </th>
+                  <th>
+                    <font style="color:red;">*</font> วันหมดอายุ
+                  </th>
+                  <th>
+                    <font style="color:red;">*</font> ว/ด/ปที่ผสม
+                  </th>
+                  <th>
+                    <font style="color:red;">*</font> เวลาที่ผสม
+                  </th>
+                  {{-- <th><a href="javascript:void(0);" style="font-size:18px;" id="addMore" title="Add More Person"><span class="glyphicon glyphicon-plus"></span></a></th> --}}
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <input type="checkbox" id="checkBoxID1" name="no_lab1" value="1">
+                    {{-- <input type="text" name="no_lab1" value="1" class="form-control"></td> --}}
+                  </td>
+                  <td>
+                    <select type="text" id="name_of_vaccine1" name="name_of_vaccine1" value="" class="form-control divID1">
+
+                      @foreach ($vac_list as $row)
+                      <option value="{{$row->VAC_CODE}}">{{$row->VAC_NAME_EN}}</option>
+                      @endforeach
+                    </select>
+                  </td>
+                  <td>
+                    <select type="text" id="vaccine_volume1" name="vaccine_volume1" value="" class="form-control divID1">
+                      <?php
+                         foreach ($arr_vaccine_volume as $k=>$v) {
+                         ?>
+                      <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+                      <?php } ?>
+                    </select>
+                  </td>
+                  <td>
+                    <select type="text" id="route_of_vaccination1" name="route_of_vaccination1" value="" class="form-control divID1">
+                      <?php
+                           foreach ($arr_route_of_vaccination as $k=>$v) {
+                       ?>
+                      <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+                      <?php } ?>
+                    </select>
+                  </td>
+                  <td>
+                    <select type="text" id="vaccination_site1" name="vaccination_site1" value="" class="form-control divID1">
+                      <?php
+                           foreach ($arr_vaccination_site as $k=>$v) {
+                       ?>
+                      <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+                      <?php } ?>
+                    </select>
+                  </td>
+                  <td>
+                    <input type="number" id="dose1" name="dose1" value="" class="form-control divID1" min="1" max="20">
+                  </td>
+                  <td>
+                    <input type="text" name="date_of_vaccination" id="date_of_vaccination1" value="" class="form-control datepicker divID1" data-date-format="yyyy-mm-dd">
+                  </td>
+                  <td>
+                    <input type="text" id="time_of_vaccination1" name="time_of_vaccination1" value="" class="form-control divID1">
+                  </td>
+                  <td>
+                    <select type="text" id="manufacturer1" name="manufacturer1" value="" class="form-control divID1">
+                      <?php
+                           foreach ($arr_manufacturer as $k=>$v) {
+                       ?>
+                      <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+                      <?php } ?>
+                    </select>
+                  </td>
+                  <td>
+                    <input type="text" id="lot_number1" name="lot_number1" value="" class="form-control divID1">
+                  </td>
+                  <td>
+                    <input type="text" id="datepicker_expiry_date1" name="expiry_date1" value="" class="form-control divID1" data-date-format="yyyy-mm-dd">
+                  </td>
+                  <td>
+                    <input type="text" id="name_of_diluent1" name="name_of_diluent1" value="" class="form-control divID1">
+                  </td>
+                  <td>
+                    <input type="text" id="lot_number_diluent1" name="lot_number_diluent1" value="" class="form-control divID1">
+                  </td>
+                  <td>
+                    <input type="text" id="datepicker_expiry_date_diluent1" name="expiry_date_diluent1" value="" class="form-control divID1" data-date-format="yyyy-mm-dd">
+                  </td>
+                  <td><input type="text" id="date_of_reconstitution1" name="date_of_reconstitution1" value="" class="form-control datepicker divID1" data-date-format="yyyy-mm-dd"></td>
+                  <td><input type="text" id="time_of_reconstitution1" name="time_of_reconstitution1" value="" class="form-control divID1"></td>
+                  {{-- <td><a href='javascript:void(0);' class='remove'><span class='glyphicon glyphicon-remove'></span></a></td> --}}
+                </tr>
+                <tr>
+                  <td>
+                    <input type="checkbox" id="checkBoxID2" name="no_lab2" value="2">
+                    {{-- <input type="text" name="no_lab1" value="1" class="form-control"></td> --}}
+                  </td>
+                  <td>
+                    <select type="text" id="name_of_vaccine2" name="name_of_vaccine2" value="" class="form-control divID2">
+                      @foreach ($vac_list as $row)
+                      <option value="{{$row->VAC_CODE}}">{{$row->VAC_NAME_EN}}</option>
+                      @endforeach
+                    </select>
+                  </td>
+                  <td>
+                    <select type="text" id="vaccine_volume2" name="vaccine_volume2" value="" class="form-control divID2">
+                      <?php
+                           foreach ($arr_vaccine_volume as $k=>$v) {
+                           ?>
+                      <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+                      <?php } ?>
+                    </select>
+                  </td>
+                  <td>
+                    <select type="text" id="route_of_vaccination2" name="route_of_vaccination2" value="" class="form-control divID2">
+                      <?php
+                             foreach ($arr_route_of_vaccination as $k=>$v) {
+                         ?>
+                      <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+                      <?php } ?>
+                    </select>
+                  </td>
+                  <td>
+                    <select type="text" id="vaccination_site2" name="vaccination_site2" value="" class="form-control divID2">
+                      <?php
+                             foreach ($arr_vaccination_site as $k=>$v) {
+                         ?>
+                      <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+                      <?php } ?>
+                    </select>
+                  </td>
+                  <td>
+                    <input type="number" id="dose2" name="dose2" value="" class="form-control divID2" min="1" max="20">
+                  </td>
+                  <td>
+                    <input type="text" name="date_of_vaccination" id="date_of_vaccination2" value="" class="form-control datepicker divID2" data-date-format="yyyy-mm-dd">
+                  </td>
+                  <td>
+                    <input type="text" id="time_of_vaccination2" name="time_of_vaccination2" value="" class="form-control divID2">
+                  </td>
+                  <td>
+                    <select type="text" id="manufacturer2" name="manufacturer2" value="" class="form-control divID2">
+                      <?php
+                             foreach ($arr_manufacturer as $k=>$v) {
+                         ?>
+                      <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+                      <?php } ?>
+                    </select>
+                  </td>
+                  <td>
+                    <input type="text" id="lot_number2" name="lot_number2" value="" class="form-control divID2">
+                  </td>
+                  <td>
+                    <input type="text" id="datepicker_expiry_date2" name="expiry_date2" value="" class="form-control divID2" data-date-format="yyyy-mm-dd">
+                  </td>
+                  <td>
+                    <input type="text" id="name_of_diluent2" name="name_of_diluent2" value="" class="form-control divID2">
+                  </td>
+                  <td>
+                    <input type="text" id="lot_number_diluent2" name="lot_number_diluent2" value="" class="form-control divID2">
+                  </td>
+                  <td>
+                    <input type="text" id="datepicker_expiry_date_diluent2" name="expiry_date_diluent2" value="" class="form-control divID2" data-date-format="yyyy-mm-dd">
+                  </td>
+                  <td><input type="text" id="date_of_reconstitution2" name="date_of_reconstitution2" value="" class="form-control datepicker divID2" data-date-format="yyyy-mm-dd"></td>
+                  <td><input type="text" id="time_of_reconstitution2" name="time_of_reconstitution2" value="" class="form-control divID2"></td>
+                  {{-- <td><a href='javascript:void(0);' class='remove'><span class='glyphicon glyphicon-remove'></span></a></td> --}}
+                </tr>
+                <tr>
+                  <td>
+                    <input type="checkbox" id="checkBoxID3" name="no_lab3" value="3">
+                    {{-- <input type="text" name="no_lab1" value="1" class="form-control"></td> --}}
+                  </td>
+                  <td>
+                    <select type="text" id="name_of_vaccine3" name="name_of_vaccine3" value="" class="form-control divID3">
+                      @foreach ($vac_list as $row)
+                      <option value="{{$row->VAC_CODE}}">{{$row->VAC_NAME_EN}}</option>
+                      @endforeach
+                    </select>
+                  </td>
+                  <td>
+                    <select type="text" id="vaccine_volume3" name="vaccine_volume3" value="" class="form-control divID3">
+                      <?php
+                             foreach ($arr_vaccine_volume as $k=>$v) {
+                             ?>
+                      <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+                      <?php } ?>
+                    </select>
+                  </td>
+                  <td>
+                    <select type="text" id="route_of_vaccination3" name="route_of_vaccination3" value="" class="form-control divID3">
+                      <?php
+                               foreach ($arr_route_of_vaccination as $k=>$v) {
+                           ?>
+                      <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+                      <?php } ?>
+                    </select>
+                  </td>
+                  <td>
+                    <select type="text" id="vaccination_site3" name="vaccination_site3" value="" class="form-control divID3">
+                      <?php
+                               foreach ($arr_vaccination_site as $k=>$v) {
+                           ?>
+                      <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+                      <?php } ?>
+                    </select>
+                  </td>
+                  <td>
+                    <input type="number" id="dose3" name="dose3" value="" class="form-control divID3" min="1" max="20">
+                  </td>
+                  <td>
+                    <input type="text" name="date_of_vaccination" id="date_of_vaccination3" value="" class="form-control datepicker divID3" data-date-format="yyyy-mm-dd">
+                  </td>
+                  <td>
+                    <input type="text" id="time_of_vaccination3" name="time_of_vaccination3" value="" class="form-control divID3">
+                  </td>
+                  <td>
+                    <select type="text" id="manufacturer3" name="manufacturer3" value="" class="form-control divID3">
+                      <?php
+                               foreach ($arr_manufacturer as $k=>$v) {
+                           ?>
+                      <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+                      <?php } ?>
+                    </select>
+                  </td>
+                  <td>
+                    <input type="text" id="lot_number3" name="lot_number3" value="" class="form-control divID3">
+                  </td>
+                  <td>
+                    <input type="text" id="datepicker_expiry_date3" name="expiry_date3" value="" class="form-control divID3" data-date-format="yyyy-mm-dd">
+                  </td>
+                  <td>
+                    <input type="text" id="name_of_diluent3" name="name_of_diluent3" value="" class="form-control divID3">
+                  </td>
+                  <td>
+                    <input type="text" id="lot_number_diluent3" name="lot_number_diluent3" value="" class="form-control divID3">
+                  </td>
+                  <td>
+                    <input type="text" id="datepicker_expiry_date_diluent3" name="expiry_date_diluent3" value="" class="form-control divID3" data-date-format="yyyy-mm-dd">
+                  </td>
+                  <td><input type="text" id="date_of_reconstitution3" name="date_of_reconstitution3" value="" class="form-control datepicker divID3" data-date-format="yyyy-mm-dd"></td>
+                  <td><input type="text" id="time_of_reconstitution3" name="time_of_reconstitution3" value="" class="form-control divID3"></td>
+                  {{-- <td><a href='javascript:void(0);' class='remove'><span class='glyphicon glyphicon-remove'></span></a></td> --}}
+                </tr>
+                <tr>
+                  <td>
+                    <input type="checkbox" id="checkBoxID4" name="no_lab4" value="4">
+                    {{-- <input type="text" name="no_lab1" value="1" class="form-control"></td> --}}
+                  </td>
+                  <td>
+                    <select type="text" id="name_of_vaccine4" name="name_of_vaccine4" value="" class="form-control divID4">
+                      @foreach ($vac_list as $row)
+                      <option value="{{$row->VAC_CODE}}">{{$row->VAC_NAME_EN}}</option>
+                      @endforeach
+                    </select>
+                  </td>
+                  <td>
+                    <select type="text" id="vaccine_volume4" name="vaccine_volume4" value="" class="form-control divID4">
+                      <?php
                                foreach ($arr_vaccine_volume as $k=>$v) {
                                ?>
-                             <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
-                                   <?php } ?>
-                             </select>
-                             </td>
-                             <td>
-                             <select type="text" id="route_of_vaccination1" name="route_of_vaccination1" value="" class="form-control divID1">
-                             <?php
+                      <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+                      <?php } ?>
+                    </select>
+                  </td>
+                  <td>
+                    <select type="text" id="route_of_vaccination4" name="route_of_vaccination4" value="" class="form-control divID4 divID4">
+                      <?php
                                  foreach ($arr_route_of_vaccination as $k=>$v) {
                              ?>
-                             <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
-                                   <?php } ?>
-                             </select>
-                             </td>
-                             <td>
-                             <select type="text" id="vaccination_site1" name="vaccination_site1" value="" class="form-control divID1">
-                             <?php
+                      <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+                      <?php } ?>
+                    </select>
+                  </td>
+                  <td>
+                    <select type="text" id="vaccination_site4" name="vaccination_site4" value="" class="form-control divID4">
+                      <?php
                                  foreach ($arr_vaccination_site as $k=>$v) {
                              ?>
-                             <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
-                                     <?php } ?>
-                             </select>
-                             </td>
-                             <td>
-                             <input type="number" id="dose1" name="dose1" value="" class="form-control divID1" min="1" max="20">
-                             </td>
-                             <td>
-                               <input type="text" name="date_of_vaccination" id="date_of_vaccination1" value="" class="form-control datepicker divID1">
-                             </td>
-                             <td>
-                             <input type="text" id="time_of_vaccination1" name="time_of_vaccination1" value="" class="form-control divID1">
-                             </td>
-                             <td>
-                             <select type="text" id="manufacturer1" name="manufacturer1" value="" class="form-control divID1">
-                             <?php
+                      <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+                      <?php } ?>
+                    </select>
+                  </td>
+                  <td>
+                    <input type="number" id="dose4" name="dose4" value="" class="form-control divID4" min="1" max="20">
+                  </td>
+                  <td>
+                    <input type="text" name="date_of_vaccination" id="date_of_vaccination4" value="" class="form-control datepicker divID4" data-date-format="yyyy-mm-dd">
+                  </td>
+                  <td>
+                    <input type="text" id="time_of_vaccination4" name="time_of_vaccination4" value="" class="form-control divID4">
+                  </td>
+                  <td>
+                    <select type="text" id="manufacturer4" name="manufacturer4" value="" class="form-control divID4">
+                      <?php
                                  foreach ($arr_manufacturer as $k=>$v) {
                              ?>
-                             <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
-                                    <?php } ?>
-                             </select>
-                             </td>
-                             <td>
-                             <input type="text" id="lot_number1" name="lot_number1" value="" class="form-control divID1">
-                             </td>
-                             <td>
-                             <input type="text" id="datepicker_expiry_date1" name="expiry_date1" value="" class="form-control divID1">
-                             </td>
-                             <td>
-                             <input type="text" id="name_of_diluent1" name="name_of_diluent1" value=""class="form-control divID1">
-                             </td>
-                             <td>
-                             <input type="text" id="lot_number_diluent1" name="lot_number_diluent1" value="" class="form-control divID1">
-                             </td>
-                             <td>
-                             <input type="text" id="datepicker_expiry_date_diluent1" name="expiry_date_diluent1" value="" class="form-control divID1">
-                             </td>
-                             <td><input type="text" id="date_of_reconstitution1" name="date_of_reconstitution1" value="" class="form-control datepicker divID1"></td>
-                             <td><input type="text" id="time_of_reconstitution1" name="time_of_reconstitution1" value="" class="form-control divID1"></td>
-                             {{-- <td><a href='javascript:void(0);' class='remove'><span class='glyphicon glyphicon-remove'></span></a></td> --}}
-                           </tr>
-                           <tr>
-                             <td>
-                               <input type="checkbox" id="checkBoxID2" name="no_lab2" value="2">
-                               {{-- <input type="text" name="no_lab1" value="1" class="form-control"></td> --}}
-                             </td>
-                               <td>
-                                 <select type="text" id="name_of_vaccine2" name="name_of_vaccine2" value=""class="form-control divID2">
-                                     <?php
-                                       foreach ($arr_history_of_vaccine as $k=>$v) {
-                                     ?>
-                                           <option class=badge filter badge-info data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
-                                     <?php } ?>
-                                   </select>
-                               </td>
-                               <td>
-                               <select type="text" id="vaccine_volume2" name="vaccine_volume2" value=""class="form-control divID2">
-                                 <?php
+                      <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+                      <?php } ?>
+                    </select>
+                  </td>
+                  <td>
+                    <input type="text" id="lot_number4" name="lot_number4" value="" class="form-control divID4">
+                  </td>
+                  <td>
+                    <input type="text" id="datepicker_expiry_date4" name="expiry_date4" value="" class="form-control divID4" data-date-format="yyyy-mm-dd">
+                  </td>
+                  <td>
+                    <input type="text" id="name_of_diluent4" name="name_of_diluent4" value="" class="form-control divID4">
+                  </td>
+                  <td>
+                    <input type="text" id="lot_number_diluent4" name="lot_number_diluent4" value="" class="form-control divID4">
+                  </td>
+                  <td>
+                    <input type="text" id="datepicker_expiry_date_diluent4" name="expiry_date_diluent4" value="" class="form-control divID4" data-date-format="yyyy-mm-dd">
+                  </td>
+                  <td><input type="text" id="date_of_reconstitution4" name="date_of_reconstitution4" value="" class="form-control datepicker divID4" data-date-format="yyyy-mm-dd"></td>
+                  <td><input type="text" id="time_of_reconstitution4" name="time_of_reconstitution4" value="" class="form-control divID4"></td>
+                  {{-- <td><a href='javascript:void(0);' class='remove'><span class='glyphicon glyphicon-remove'></span></a></td> --}}
+                </tr>
+                <tr>
+                  <td>
+                    <input type="checkbox" id="checkBoxID5" name="no_lab5" value="5">
+                    {{-- <input type="text" name="no_lab1" value="1" class="form-control"></td> --}}
+                  </td>
+                  <td>
+                    <select type="text" id="name_of_vaccine5" name="name_of_vaccine5" value="" class="form-control divID5">
+                      @foreach ($vac_list as $row)
+                      <option value="{{$row->VAC_CODE}}">{{$row->VAC_NAME_EN}}</option>
+                      @endforeach
+                    </select>
+                  </td>
+                  <td>
+                    <select type="text" id="vaccine_volume5" name="vaccine_volume5" value="" class="form-control divID5">
+                      <?php
                                  foreach ($arr_vaccine_volume as $k=>$v) {
                                  ?>
-                               <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
-                                     <?php } ?>
-                               </select>
-                               </td>
-                               <td>
-                               <select type="text" id="route_of_vaccination2" name="route_of_vaccination2" value="" class="form-control divID2">
-                               <?php
+                      <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+                      <?php } ?>
+                    </select>
+                  </td>
+                  <td>
+                    <select type="text" id="route_of_vaccination5" name="route_of_vaccination5" value="" class="form-control divID5">
+                      <?php
                                    foreach ($arr_route_of_vaccination as $k=>$v) {
                                ?>
-                               <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
-                                     <?php } ?>
-                               </select>
-                               </td>
-                               <td>
-                               <select type="text" id="vaccination_site2" name="vaccination_site2" value="" class="form-control divID2">
-                               <?php
+                      <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+                      <?php } ?>
+                    </select>
+                  </td>
+                  <td>
+                    <select type="text" id="vaccination_site5" name="vaccination_site5" value="" class="form-control divID5">
+                      <?php
                                    foreach ($arr_vaccination_site as $k=>$v) {
                                ?>
-                               <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
-                                       <?php } ?>
-                               </select>
-                               </td>
-                               <td>
-                               <input type="number" id="dose2" name="dose2" value="" class="form-control divID2" min="1" max="20">
-                               </td>
-                               <td>
-                                 <input type="text" name="date_of_vaccination" id="date_of_vaccination2" value="" class="form-control datepicker divID2">
-                               </td>
-                               <td>
-                               <input type="text" id="time_of_vaccination2" name="time_of_vaccination2" value="" class="form-control divID2">
-                               </td>
-                               <td>
-                               <select type="text" id="manufacturer2" name="manufacturer2" value="" class="form-control divID2">
-                               <?php
+                      <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+                      <?php } ?>
+                    </select>
+                  </td>
+                  <td>
+                    <input type="number" id="dose5" name="dose5" value="" class="form-control divID5" min="1" max="20">
+                  </td>
+                  <td>
+                    <input type="text" name="date_of_vaccination" id="date_of_vaccination5" value="" class="form-control datepicker divID5" data-date-format="yyyy-mm-dd">
+                  </td>
+                  <td>
+                    <input type="text" id="time_of_vaccination5" name="time_of_vaccination5" value="" class="form-control divID5">
+                  </td>
+                  <td>
+                    <select type="text" id="manufacturer5" name="manufacturer5" value="" class="form-control divID5">
+                      <?php
                                    foreach ($arr_manufacturer as $k=>$v) {
                                ?>
-                               <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
-                                      <?php } ?>
-                               </select>
-                               </td>
-                               <td>
-                               <input type="text" id="lot_number2" name="lot_number2" value="" class="form-control divID2">
-                               </td>
-                               <td>
-                               <input type="text" id="datepicker_expiry_date2" name="expiry_date2" value="" class="form-control divID2">
-                               </td>
-                               <td>
-                               <input type="text" id="name_of_diluent2" name="name_of_diluent2" value=""class="form-control divID2">
-                               </td>
-                               <td>
-                               <input type="text" id="lot_number_diluent2" name="lot_number_diluent2" value="" class="form-control divID2">
-                               </td>
-                               <td>
-                               <input type="text" id="datepicker_expiry_date_diluent2" name="expiry_date_diluent2" value="" class="form-control divID2">
-                               </td>
-                               <td><input type="text" id="date_of_reconstitution2" name="date_of_reconstitution2" value="" class="form-control datepicker divID2"></td>
-                               <td><input type="text" id="time_of_reconstitution2" name="time_of_reconstitution2" value="" class="form-control divID2"></td>
-                               {{-- <td><a href='javascript:void(0);' class='remove'><span class='glyphicon glyphicon-remove'></span></a></td> --}}
-                             </tr>
-                             <tr>
-                               <td>
-                                 <input type="checkbox" id="checkBoxID3" name="no_lab3" value="3">
-                                 {{-- <input type="text" name="no_lab1" value="1" class="form-control"></td> --}}
-                               </td>
-                                 <td>
-                                   <select type="text" id="name_of_vaccine3" name="name_of_vaccine3" value=""class="form-control divID3">
-                                       <?php
-                                         foreach ($arr_history_of_vaccine as $k=>$v) {
-                                       ?>
-                                             <option class=badge filter badge-info data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
-                                       <?php } ?>
-                                     </select>
-                                 </td>
-                                 <td>
-                                 <select type="text" id="vaccine_volume3" name="vaccine_volume3" value=""class="form-control divID3">
-                                   <?php
-                                   foreach ($arr_vaccine_volume as $k=>$v) {
-                                   ?>
-                                 <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
-                                       <?php } ?>
-                                 </select>
-                                 </td>
-                                 <td>
-                                 <select type="text" id="route_of_vaccination3" name="route_of_vaccination3" value="" class="form-control divID3">
-                                 <?php
-                                     foreach ($arr_route_of_vaccination as $k=>$v) {
-                                 ?>
-                                 <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
-                                       <?php } ?>
-                                 </select>
-                                 </td>
-                                 <td>
-                                 <select type="text" id="vaccination_site3" name="vaccination_site3" value="" class="form-control divID3">
-                                 <?php
-                                     foreach ($arr_vaccination_site as $k=>$v) {
-                                 ?>
-                                 <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
-                                         <?php } ?>
-                                 </select>
-                                 </td>
-                                 <td>
-                                 <input type="number" id="dose3" name="dose3" value="" class="form-control divID3" min="1" max="20">
-                                 </td>
-                                 <td>
-                                   <input type="text" name="date_of_vaccination" id="date_of_vaccination3" value="" class="form-control datepicker divID3">
-                                 </td>
-                                 <td>
-                                 <input type="text" id="time_of_vaccination3" name="time_of_vaccination3" value="" class="form-control divID3">
-                                 </td>
-                                 <td>
-                                 <select type="text" id="manufacturer3" name="manufacturer3" value="" class="form-control divID3">
-                                 <?php
-                                     foreach ($arr_manufacturer as $k=>$v) {
-                                 ?>
-                                 <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
-                                        <?php } ?>
-                                 </select>
-                                 </td>
-                                 <td>
-                                 <input type="text" id="lot_number3" name="lot_number3" value="" class="form-control divID3">
-                                 </td>
-                                 <td>
-                                 <input type="text" id="datepicker_expiry_date3" name="expiry_date3" value="" class="form-control divID3">
-                                 </td>
-                                 <td>
-                                 <input type="text" id="name_of_diluent3" name="name_of_diluent3" value=""class="form-control divID3">
-                                 </td>
-                                 <td>
-                                 <input type="text" id="lot_number_diluent3" name="lot_number_diluent3" value="" class="form-control divID3">
-                                 </td>
-                                 <td>
-                                 <input type="text" id="datepicker_expiry_date_diluent3" name="expiry_date_diluent3" value="" class="form-control divID3">
-                                 </td>
-                                 <td><input type="text" id="date_of_reconstitution3" name="date_of_reconstitution3" value="" class="form-control datepicker divID3"></td>
-                                 <td><input type="text" id="time_of_reconstitution3" name="time_of_reconstitution3" value="" class="form-control divID3"></td>
-                                 {{-- <td><a href='javascript:void(0);' class='remove'><span class='glyphicon glyphicon-remove'></span></a></td> --}}
-                               </tr>
-                               <tr>
-                                 <td>
-                                   <input type="checkbox" id="checkBoxID4" name="no_lab4" value="4">
-                                   {{-- <input type="text" name="no_lab1" value="1" class="form-control"></td> --}}
-                                 </td>
-                                   <td>
-                                     <select type="text" id="name_of_vaccine4" name="name_of_vaccine4" value=""class="form-control divID4">
-                                         <?php
-                                           foreach ($arr_history_of_vaccine as $k=>$v) {
-                                         ?>
-                                               <option class=badge filter badge-info data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
-                                         <?php } ?>
-                                       </select>
-                                   </td>
-                                   <td>
-                                   <select type="text" id="vaccine_volume4" name="vaccine_volume4" value=""class="form-control divID4">
-                                     <?php
-                                     foreach ($arr_vaccine_volume as $k=>$v) {
-                                     ?>
-                                   <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
-                                         <?php } ?>
-                                   </select>
-                                   </td>
-                                   <td>
-                                   <select type="text" id="route_of_vaccination4" name="route_of_vaccination4" value="" class="form-control divID4 divID4">
-                                   <?php
-                                       foreach ($arr_route_of_vaccination as $k=>$v) {
-                                   ?>
-                                   <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
-                                         <?php } ?>
-                                   </select>
-                                   </td>
-                                   <td>
-                                   <select type="text" id="vaccination_site4" name="vaccination_site4" value="" class="form-control divID4">
-                                   <?php
-                                       foreach ($arr_vaccination_site as $k=>$v) {
-                                   ?>
-                                   <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
-                                           <?php } ?>
-                                   </select>
-                                   </td>
-                                   <td>
-                                   <input type="number" id="dose4" name="dose4" value="" class="form-control divID4" min="1" max="20">
-                                   </td>
-                                   <td>
-                                     <input type="text" name="date_of_vaccination" id="date_of_vaccination4" value="" class="form-control datepicker divID4">
-                                   </td>
-                                   <td>
-                                   <input type="text" id="time_of_vaccination4" name="time_of_vaccination4" value="" class="form-control divID4">
-                                   </td>
-                                   <td>
-                                   <select type="text" id="manufacturer4" name="manufacturer4" value="" class="form-control divID4">
-                                   <?php
-                                       foreach ($arr_manufacturer as $k=>$v) {
-                                   ?>
-                                   <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
-                                          <?php } ?>
-                                   </select>
-                                   </td>
-                                   <td>
-                                   <input type="text" id="lot_number4" name="lot_number4" value="" class="form-control divID4">
-                                   </td>
-                                   <td>
-                                   <input type="text" id="datepicker_expiry_date4" name="expiry_date4" value="" class="form-control divID4">
-                                   </td>
-                                   <td>
-                                   <input type="text" id="name_of_diluent4" name="name_of_diluent4" value=""class="form-control divID4">
-                                   </td>
-                                   <td>
-                                   <input type="text" id="lot_number_diluent4" name="lot_number_diluent4" value="" class="form-control divID4">
-                                   </td>
-                                   <td>
-                                   <input type="text" id="datepicker_expiry_date_diluent4" name="expiry_date_diluent4" value="" class="form-control divID4">
-                                   </td>
-                                   <td><input type="text" id="date_of_reconstitution4" name="date_of_reconstitution4" value="" class="form-control datepicker divID4"></td>
-                                   <td><input type="text" id="time_of_reconstitution4" name="time_of_reconstitution4" value="" class="form-control divID4"></td>
-                                   {{-- <td><a href='javascript:void(0);' class='remove'><span class='glyphicon glyphicon-remove'></span></a></td> --}}
-                                 </tr>
-                                 <tr>
-                                   <td>
-                                     <input type="checkbox" id="checkBoxID5" name="no_lab5" value="5">
-                                     {{-- <input type="text" name="no_lab1" value="1" class="form-control"></td> --}}
-                                   </td>
-                                     <td>
-                                       <select type="text" id="name_of_vaccine5" name="name_of_vaccine5" value=""class="form-control divID5">
-                                           <?php
-                                             foreach ($arr_history_of_vaccine as $k=>$v) {
-                                           ?>
-                                                 <option class=badge filter badge-info data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
-                                           <?php } ?>
-                                         </select>
-                                     </td>
-                                     <td>
-                                     <select type="text" id="vaccine_volume5" name="vaccine_volume5" value=""class="form-control divID5">
-                                       <?php
-                                       foreach ($arr_vaccine_volume as $k=>$v) {
-                                       ?>
-                                     <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
-                                           <?php } ?>
-                                     </select>
-                                     </td>
-                                     <td>
-                                     <select type="text" id="route_of_vaccination5" name="route_of_vaccination5" value="" class="form-control divID5">
-                                     <?php
-                                         foreach ($arr_route_of_vaccination as $k=>$v) {
-                                     ?>
-                                     <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
-                                           <?php } ?>
-                                     </select>
-                                     </td>
-                                     <td>
-                                     <select type="text" id="vaccination_site5" name="vaccination_site5" value="" class="form-control divID5">
-                                     <?php
-                                         foreach ($arr_vaccination_site as $k=>$v) {
-                                     ?>
-                                     <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
-                                             <?php } ?>
-                                     </select>
-                                     </td>
-                                     <td>
-                                     <input type="number" id="dose5" name="dose5" value="" class="form-control divID5" min="1" max="20">
-                                     </td>
-                                     <td>
-                                       <input type="text" name="date_of_vaccination" id="date_of_vaccination5" value="" class="form-control datepicker divID5">
-                                     </td>
-                                     <td>
-                                     <input type="text" id="time_of_vaccination5" name="time_of_vaccination5" value="" class="form-control divID5">
-                                     </td>
-                                     <td>
-                                     <select type="text" id="manufacturer5" name="manufacturer5" value="" class="form-control divID5">
-                                     <?php
-                                         foreach ($arr_manufacturer as $k=>$v) {
-                                     ?>
-                                     <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
-                                            <?php } ?>
-                                     </select>
-                                     </td>
-                                     <td>
-                                     <input type="text" id="lot_number5" name="lot_number3" value="" class="form-control divID5">
-                                     </td>
-                                     <td>
-                                     <input type="text" id="datepicker_expiry_date5" name="expiry_date5" value="" class="form-control divID5">
-                                     </td>
-                                     <td>
-                                     <input type="text" id="name_of_diluent5" name="name_of_diluent5" value=""class="form-control divID5">
-                                     </td>
-                                     <td>
-                                     <input type="text" id="lot_number_diluent5" name="lot_number_diluent5" value="" class="form-control divID5">
-                                     </td>
-                                     <td>
-                                     <input type="text" id="datepicker_expiry_date_diluent5" name="expiry_date_diluent5" value="" class="form-control divID5">
-                                     </td>
-                                     <td><input type="text" id="date_of_reconstitution5" name="date_of_reconstitution5" value="" class="form-control datepicker divID5"></td>
-                                     <td><input type="text" id="time_of_reconstitution5" name="time_of_reconstitution5" value="" class="form-control divID5"></td>
-                                     {{-- <td><a href='javascript:void(0);' class='remove'><span class='glyphicon glyphicon-remove'></span></a></td> --}}
-                                   </tr>
-                       </tbody>
+                      <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+                      <?php } ?>
+                    </select>
+                  </td>
+                  <td>
+                    <input type="text" id="lot_number5" name="lot_number3" value="" class="form-control divID5">
+                  </td>
+                  <td>
+                    <input type="text" id="datepicker_expiry_date5" name="expiry_date5" value="" class="form-control divID5" data-date-format="yyyy-mm-dd">
+                  </td>
+                  <td>
+                    <input type="text" id="name_of_diluent5" name="name_of_diluent5" value="" class="form-control divID5">
+                  </td>
+                  <td>
+                    <input type="text" id="lot_number_diluent5" name="lot_number_diluent5" value="" class="form-control divID5">
+                  </td>
+                  <td>
+                    <input type="text" id="datepicker_expiry_date_diluent5" name="expiry_date_diluent5" value="" class="form-control divID5">
+                  </td>
+                  <td><input type="text" id="date_of_reconstitution5" name="date_of_reconstitution5" value="" class="form-control datepicker divID5" data-date-format="yyyy-mm-dd"></td>
+                  <td><input type="text" id="time_of_reconstitution5" name="time_of_reconstitution5" value="" class="form-control divID5"></td>
+                  {{-- <td><a href='javascript:void(0);' class='remove'><span class='glyphicon glyphicon-remove'></span></a></td> --}}
+                </tr>
+              </tbody>
                      </table>
 			</div>
 			<!-- /.box -->
@@ -1476,23 +1532,29 @@ foreach ($aecode as $value) {
 											Anaphylaxis
 										  </label>
 										</div>
+                    <div class="col-md-12">
+                      <label>
+                        <input name="GBS)" type="checkbox" value="1">
+                        Guillain-Barré syndrome (GBS)
+                      </label>
+                    </div>
 										<div class="col-md-12">
 										  <label>
-											<input name="other_symptoms_later_immunized" type="checkbox"   value="9999"	@if ($data[0]->other_symptoms_later_immunized == '9999')
+											<input name="other_symptoms_later_immunized_chk" type="checkbox"   value="9999"	@if ($data[0]->other_symptoms_later_immunized == '9999')
                         {{ "checked" }}
                         @endif>
 											other
 										  </label>
 										</div>
 										<div class="form-group">
-											<div class="col-lg-12">
-												<div id="other_symptoms_later_immunized" style="display: none">
-                          <input type="text" class="form-control pull-right" id="other_symptoms_later_immunized" name="other_symptoms_later_immunized" value="other_symptoms_later_immunized">
-													{{-- <select  id="other_symptoms_later_immunized" name="other_symptoms_later_immunized" class="form-control select2" style="width: 100%;" onkeyup="autocomplet()">
-
-				  								  </select> --}}
-												</div>
-											</div>
+                      <div class="col-lg-12">
+                        <div id="other_symptoms_later_immunized" style="display: none">
+                          <input type="text" id="other_symptoms_later_immunized_text" name="other_symptoms_later_immunized" class="form-control" placeholder="ระบุตำแหน่ง" hidden="true">
+                        </div>
+                        {{-- <div id="other_symptoms_later_immunized_t" style="display: none">
+                          <input type="text" class="form-control pull-right" id="other_symptoms_later_immunized_text" name="other_symptoms_later_immunized" placeholder="ระบุอาการอื่นๆ">
+                        </div> --}}
+                      </div>
 										</div>
 								</div>
 						</div>
@@ -1582,7 +1644,7 @@ foreach ($aecode as $value) {
 				<div class="box-footer">
 					<div class="form-group">
 						<div class="col-lg-12">
-							  <label>ความร้ายแรงของอาการ</label>
+							  <label>  <font style="color:red;">*</font> ความร้ายแรงของอาการ</label>
 						</div>
 					</div>
 					<div class="form-group">
@@ -1683,7 +1745,7 @@ foreach ($aecode as $value) {
 				<div class="box-footer">
 					<div class="form-group">
 						<div class="col-lg-12">
-							  <label>สภาพผู้ป่วย</label>
+							  <label>  <font style="color:red;">*</font> สภาพผู้ป่วย</label>
 						</div>
 					</div>
 					<div class="form-group">
@@ -2289,5 +2351,20 @@ $("#checkBoxID5").click(function() {
 $(".divID5").attr("disabled", !this.checked);
 });
 </script>
+<script>
+  function showDiv1(divId, element) {
+    document.getElementById(divId).style.display = element.value == 99 ? 'block' : 'none';
+  }
 
+  // function showDiv2(divId, element) {
+  // 	document.getElementById(divId).style.display = element.value == 8 ? 'block' : 'none';
+  // }
+  //
+  // function showDiv3(divId, element) {
+  // 	document.getElementById(divId).style.display = element.value == 999 ? 'block' : 'none';
+  // }
+  // function showDiv4(divId, element) {
+  // 	document.getElementById(divId).style.display = element.value == 5 ? 'block' : 'none';
+  // }
+</script>
 @stop

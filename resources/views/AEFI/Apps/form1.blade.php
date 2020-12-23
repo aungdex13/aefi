@@ -1,24 +1,22 @@
 @extends('AEFI.layout.template')
-<style>
+{{-- <style>
   table {
     border-collapse: collapse;
     border-spacing: 0;
-    width: 100%;
+    width: 200%;
     border: 1px solid #ddd;
   }
 
   th,
   td {
-    width: 25px;
+    width: 500px;
     font-size: 12px;
     text-align: left;
     padding: 8px;
   }
 
-  tr:nth-child(even) {
-    background-color: #f2f2f2
-  }
-</style>
+</style> --}}
+
 @section('content')
 <section class="content-header">
 
@@ -47,6 +45,35 @@ foreach ($aecode as $value) {
     echo $value->AENAMETHA;
 }
 @endphp --}}
+<style>
+  #customers {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 200%;
+  }
+
+  #customers td,
+  #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+
+  #customers tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  #customers tr:hover {
+    background-color: #ddd;
+  }
+
+  #customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+  }
+</style>
 </section>
 <!-- Main content -->
 <section class="content">
@@ -113,7 +140,7 @@ foreach ($aecode as $value) {
                           </div>
                         </div>
                         <div class="col-lg-7">
-                          <input type="text" id="id_number" name="id_number" class="form-control" data-inputmask='"mask": "9   9999   99999   99   9"' data-mask>
+                          <input type="text" id="id_number" name="id_number" class="form-control" data-inputmask='"mask": "9 9999 99999 99 9"' data-mask>
                         </div>
                       </div>
                     </div>
@@ -123,10 +150,28 @@ foreach ($aecode as $value) {
                     <div class="form-group">
                       <div class="row">
                         <div class="col-lg-3">
-                          <label>คำนำหน้า:</label>
+                          <label>
+                            <font style="color:red;">*</font> คำนำหน้า:
+                          </label>
                         </div>
-                        <div class="col-lg-3">
-                          <input type="text" id="title_name" name="title_name" class="form-control" placeholder="คำนำหน้าชื่อ">
+                        <div class="col-lg-4">
+                          <select type="text" class="form-control" id="title_name" name="title_name" required onchange="showDiv1('hidden_div1', this)">
+
+                            <option value="">กรุณาเลือก</option>
+                            {{-- < ?php foreach ($mas_title_th as $key_title => $value_title) : ?> --}}
+                            {{-- } --}}
+                            <option value="1">นาย</option>
+                            <option value="2">นางสาว</option>
+                            <option value="3">นาง</option>
+                            <option value="99">อื่นๆ</option>
+                            {{-- < ?php endforeach; ?> --}}
+                          </select>
+                          {{-- <input type="text" id="title_name" name="title_name" class="form-control" placeholder="คำนำหน้าชื่อ"> --}}
+                          <!-- /.p_id tname  -->
+                        </div>
+                        <div class="col-lg-4" id="hidden_div1" style="display: none;">
+                          <input type="text" id="title_name_other" name="title_name_other" class="form-control" placeholder="คำนำหน้าชื่ออื่นๆ">
+                          {{-- <input type="text" id="title_name" name="title_name" class="form-control" placeholder="คำนำหน้าชื่อ"> --}}
                           <!-- /.p_id tname  -->
                         </div>
                       </div>
@@ -181,14 +226,16 @@ foreach ($aecode as $value) {
                     <div class="form-group">
                       <div class="row">
                         <div class="col-lg-3">
-                          <label>วันเดือนปีเกิด:</label>
+                          <label>
+                            <font style="color:red;">*</font> วันเดือนปีเกิด:
+                          </label>
                         </div>
                         <div class="col-lg-9">
                           <div class="input-group date">
                             <div class="input-group-addon">
                               <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" name="birthdate" class="form-control pull-right" id="datepicker_bdate"  data-date-format="yyyy-mm-dd">
+                            <input type="text" name="birthdate" class="form-control pull-right" id="datepicker_bdate" data-date-format="yyyy-mm-dd" required>
                           </div>
                         </div>
                       </div>
@@ -363,6 +410,7 @@ foreach ($aecode as $value) {
                           <div id="other_vaccination_history" style="display: none">
                             <label>วัคซีนที่แพ้ :</label>
                             <select id="other_vaccination_history_text" name="other_vaccination_history" class="form-control select2" style="width: 100%;">
+<option class="badge filter badge-info" data-color="info" value="">กรุณาเลือก</option>
                               <?php
 										  foreach ($arr_history_of_vaccine as $k=>$v) { ?>
                               <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
@@ -402,6 +450,7 @@ foreach ($aecode as $value) {
                           <div id="other_patient_develop_symptoms_after_previous_vaccination" style="display: none">
                             <label>วัคซีนที่แพ้ :</label>
                             <select id="other_patient_develop_symptoms_after_previous_vaccination_text" name="other_patient_develop_symptoms_after_previous_vaccination" class="form-control select2" style="width: 100%;">
+<option class="badge filter badge-info" data-color="info" value="">กรุณาเลือก</option>
                               <?php
 	  										  foreach ($arr_patient_develop_symptoms_after_previous_vaccination as $k=>$v) { ?>
                               <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
@@ -438,6 +487,7 @@ foreach ($aecode as $value) {
                         <div class="col-lg-12">
                           <div id="other_underlying_disease" style="display: none">
                             <select id="other_underlying_disease_text" name="other_underlying_disease" class="form-control select2" style="width: 100%;">
+<option class="badge filter badge-info" data-color="info" value="">กรุณาเลือก</option>
                               <?php
 												  foreach ($arr_underlying_disease as $k=>$v) { ?>
                               <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
@@ -504,10 +554,12 @@ foreach ($aecode as $value) {
               <div class="form-group">
                 <div class="row">
                   <div class="col-lg-2">
-                    <label>ที่อยู่ขณะเริ่มป่วย :</label>
+                    <label>
+                      <font style="color:red;">*</font> ที่อยู่ขณะเริ่มป่วย :
+                    </label>
                   </div>
                   <div class="col-lg-4">
-                    <input type="text" id="house_number" name="house_number" class="form-control" placeholder="บ้านเลขที่">
+                    <input type="text" id="house_number" name="house_number" class="form-control" placeholder="บ้านเลขที่" required>
                     <!-- /.p_id tname  -->
                   </div>
                   <div class="col-lg-4">
@@ -522,7 +574,7 @@ foreach ($aecode as $value) {
                     <label></label>
                   </div>
                   <div class="col-lg-3">
-                    <select class="form-control provinces" name="province" id="provinces">
+                    <select class="form-control provinces" name="province" id="provinces" required>
                       <option value="0">=== จังหวัด ===</option>
                       @foreach ($list as $row)
                       <option value="{{$row->province_id}}">{{$row->province_name}}</option>
@@ -575,7 +627,7 @@ foreach ($aecode as $value) {
                             <label>โทรศัพท์ผู้ปกครอง :</label>
                           </div>
                           <div class="col-lg-3">
-                            <input type="text" id="parent_phone_number" name="parent_phone_number" class="form-control" placeholder="โทรศัพท์ผู้ปกครอง"data-inputmask='"mask": "99-9999-9999"' data-mask>
+                            <input type="text" id="parent_phone_number" name="parent_phone_number" class="form-control" placeholder="โทรศัพท์ผู้ปกครอง" data-inputmask='"mask": "99-9999-9999"' data-mask>
                             <!-- /.p_id tname  -->
                           </div>
                         </div>
@@ -586,6 +638,7 @@ foreach ($aecode as $value) {
               <!-- /.box -->
             </div>
             <!--หัวข้อที่2 -->
+            {{-- {{$vac_list}} --}}
             <div class="col-md-12">
               <!-- general form elements -->
               <div class="box box-info">
@@ -593,25 +646,43 @@ foreach ($aecode as $value) {
                   <h3 class="box-title">(2) ข้อมูลวัคซีน / สถานที่รับวัคซีน (รพ./รพ.สต./คลินิก/ศูนย์บริการสาธารณสุข)</h3>
                 </div>
                 <div style="overflow: scroll;">
-                  <table class="table" id="tb">
+                  <table id="customers">
                     <thead>
                       <tr>
                         <th>#</th>
-                        <th>ชื่อวัคซีน</th>
+                        <th>
+                          <font style="color:red;">*</font> ชื่อวัคซีน
+                        </th>
                         <th>ปริมานที่ให้</th>
                         <th>วิธีที่ให้</th>
                         <th>ตำแหน่ง</th>
                         <th>เข็มที่/ครั้งที่</th>
-                        <th>ว/ด/ปที่ได้รับ</th>
-                        <th>เวลาที่ได้รับ</th>
+                        <th>
+                          <font style="color:red;">*</font> ว/ด/ปที่ได้รับ
+                        </th>
+                        <th>
+                          <font style="color:red;">*</font> เวลาที่ได้รับ
+                        </th>
                         <th>ชื่อผู้ผลิต</th>
-                        <th>เลขที่ผลิต</th>
-                        <th>วันหมดอายุ</th>
+                        <th>
+                          <font style="color:red;">*</font> เลขที่ผลิต
+                        </th>
+                        <th>
+                          <font style="color:red;">*</font> วันหมดอายุ
+                        </th>
                         <th>ชื่อตัวทำละลาย</th>
-                        <th>เลขที่ผลิต</th>
-                        <th>วันหมดอายุ</th>
-                        <th>ว/ด/ปที่ผสม</th>
-                        <th>เวลาที่ผสม</th>
+                        <th>
+                          <font style="color:red;">*</font> เลขที่ผลิต
+                        </th>
+                        <th>
+                          <font style="color:red;">*</font> วันหมดอายุ
+                        </th>
+                        <th>
+                          <font style="color:red;">*</font> ว/ด/ปที่ผสม
+                        </th>
+                        <th>
+                          <font style="color:red;">*</font> เวลาที่ผสม
+                        </th>
                         {{-- <th><a href="javascript:void(0);" style="font-size:18px;" id="addMore" title="Add More Person"><span class="glyphicon glyphicon-plus"></span></a></th> --}}
                       </tr>
                     </thead>
@@ -623,15 +694,15 @@ foreach ($aecode as $value) {
                         </td>
                         <td>
                           <select type="text" id="name_of_vaccine1" name="name_of_vaccine1" value="" class="form-control divID1">
-                            <?php
-                             	    	foreach ($arr_history_of_vaccine as $k=>$v) {
-                             	  	?>
-                            <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
-                            <?php } ?>
+                            <option value="">กรุณาระบุชื่อวัคซีน</option>
+                            @foreach ($vac_list as $row)
+                            <option value="{{$row->VAC_CODE}}">{{$row->VAC_NAME_EN}}</option>
+                            @endforeach
                           </select>
                         </td>
                         <td>
                           <select type="text" id="vaccine_volume1" name="vaccine_volume1" value="" class="form-control divID1">
+                            <option value="">กรุณาระบุปริมาณที่ให้</option>
                             <?php
                                foreach ($arr_vaccine_volume as $k=>$v) {
                                ?>
@@ -641,6 +712,7 @@ foreach ($aecode as $value) {
                         </td>
                         <td>
                           <select type="text" id="route_of_vaccination1" name="route_of_vaccination1" value="" class="form-control divID1">
+                            <option value="">กรุณาระบุวิธีที่ให้</option>
                             <?php
                                  foreach ($arr_route_of_vaccination as $k=>$v) {
                              ?>
@@ -650,6 +722,7 @@ foreach ($aecode as $value) {
                         </td>
                         <td>
                           <select type="text" id="vaccination_site1" name="vaccination_site1" value="" class="form-control divID1">
+                            <option value="">กรุณาระบุวิธีตำแหน่ง</option>
                             <?php
                                  foreach ($arr_vaccination_site as $k=>$v) {
                              ?>
@@ -668,6 +741,7 @@ foreach ($aecode as $value) {
                         </td>
                         <td>
                           <select type="text" id="manufacturer1" name="manufacturer1" value="" class="form-control divID1">
+                            <option value="">กรุณาระบชื่อผู้ผลิต</option>
                             <?php
                                  foreach ($arr_manufacturer as $k=>$v) {
                              ?>
@@ -701,15 +775,15 @@ foreach ($aecode as $value) {
                         </td>
                         <td>
                           <select type="text" id="name_of_vaccine2" name="name_of_vaccine2" value="" class="form-control divID2">
-                            <?php
-                                       foreach ($arr_history_of_vaccine as $k=>$v) {
-                                     ?>
-                            <option class=badge filter badge-info data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
-                            <?php } ?>
+                            <option value="">กรุณาระบุชื่อวัคซีน</option>
+                            @foreach ($vac_list as $row)
+                            <option value="{{$row->VAC_CODE}}">{{$row->VAC_NAME_EN}}</option>
+                            @endforeach
                           </select>
                         </td>
                         <td>
                           <select type="text" id="vaccine_volume2" name="vaccine_volume2" value="" class="form-control divID2">
+                            <option value="">กรุณาระบุชื่อปริมานที่ให้</option>
                             <?php
                                  foreach ($arr_vaccine_volume as $k=>$v) {
                                  ?>
@@ -719,6 +793,7 @@ foreach ($aecode as $value) {
                         </td>
                         <td>
                           <select type="text" id="route_of_vaccination2" name="route_of_vaccination2" value="" class="form-control divID2">
+                            <option value="">กรุณาระบุชื่อวิธีที่ให้</option>
                             <?php
                                    foreach ($arr_route_of_vaccination as $k=>$v) {
                                ?>
@@ -728,6 +803,7 @@ foreach ($aecode as $value) {
                         </td>
                         <td>
                           <select type="text" id="vaccination_site2" name="vaccination_site2" value="" class="form-control divID2">
+                            <option value="">กรุณาระบุตำแหน่ง</option>
                             <?php
                                    foreach ($arr_vaccination_site as $k=>$v) {
                                ?>
@@ -746,6 +822,7 @@ foreach ($aecode as $value) {
                         </td>
                         <td>
                           <select type="text" id="manufacturer2" name="manufacturer2" value="" class="form-control divID2">
+                            <option value="">กรุณาระบุชื่อผู้ผลิต</option>
                             <?php
                                    foreach ($arr_manufacturer as $k=>$v) {
                                ?>
@@ -779,15 +856,15 @@ foreach ($aecode as $value) {
                         </td>
                         <td>
                           <select type="text" id="name_of_vaccine3" name="name_of_vaccine3" value="" class="form-control divID3">
-                            <?php
-                                         foreach ($arr_history_of_vaccine as $k=>$v) {
-                                       ?>
-                            <option class=badge filter badge-info data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
-                            <?php } ?>
+                            <option value="">กรุณาระบุชื่อผู้ผลิต</option>
+                            @foreach ($vac_list as $row)
+                            <option value="{{$row->VAC_CODE}}">{{$row->VAC_NAME_EN}}</option>
+                            @endforeach
                           </select>
                         </td>
                         <td>
                           <select type="text" id="vaccine_volume3" name="vaccine_volume3" value="" class="form-control divID3">
+                            <option value="">กรุณาระบุปริมาณที่ให้</option>
                             <?php
                                    foreach ($arr_vaccine_volume as $k=>$v) {
                                    ?>
@@ -797,6 +874,7 @@ foreach ($aecode as $value) {
                         </td>
                         <td>
                           <select type="text" id="route_of_vaccination3" name="route_of_vaccination3" value="" class="form-control divID3">
+                            <option value="">กรุณาระบุวิธีให้</option>
                             <?php
                                      foreach ($arr_route_of_vaccination as $k=>$v) {
                                  ?>
@@ -806,6 +884,7 @@ foreach ($aecode as $value) {
                         </td>
                         <td>
                           <select type="text" id="vaccination_site3" name="vaccination_site3" value="" class="form-control divID3">
+                            <option value="">กรุณาระบุตำแหน่ง</option>
                             <?php
                                      foreach ($arr_vaccination_site as $k=>$v) {
                                  ?>
@@ -824,6 +903,7 @@ foreach ($aecode as $value) {
                         </td>
                         <td>
                           <select type="text" id="manufacturer3" name="manufacturer3" value="" class="form-control divID3">
+                            <option value="">กรุณาระบุชื่อผู้ผลิต</option>
                             <?php
                                      foreach ($arr_manufacturer as $k=>$v) {
                                  ?>
@@ -857,15 +937,15 @@ foreach ($aecode as $value) {
                         </td>
                         <td>
                           <select type="text" id="name_of_vaccine4" name="name_of_vaccine4" value="" class="form-control divID4">
-                            <?php
-                                           foreach ($arr_history_of_vaccine as $k=>$v) {
-                                         ?>
-                            <option class=badge filter badge-info data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
-                            <?php } ?>
+                            <option value="">กรุณาระบุชื่อผู้ผลิต</option>
+                            @foreach ($vac_list as $row)
+                            <option value="{{$row->VAC_CODE}}">{{$row->VAC_NAME_EN}}</option>
+                            @endforeach
                           </select>
                         </td>
                         <td>
                           <select type="text" id="vaccine_volume4" name="vaccine_volume4" value="" class="form-control divID4">
+                            <option value="">กรุณาระบุปริมาณที่ให้</option>
                             <?php
                                      foreach ($arr_vaccine_volume as $k=>$v) {
                                      ?>
@@ -875,6 +955,7 @@ foreach ($aecode as $value) {
                         </td>
                         <td>
                           <select type="text" id="route_of_vaccination4" name="route_of_vaccination4" value="" class="form-control divID4 divID4">
+                            <option value="">กรุณาระบุวิธีให้</option>
                             <?php
                                        foreach ($arr_route_of_vaccination as $k=>$v) {
                                    ?>
@@ -884,6 +965,7 @@ foreach ($aecode as $value) {
                         </td>
                         <td>
                           <select type="text" id="vaccination_site4" name="vaccination_site4" value="" class="form-control divID4">
+                            <option value="">กรุณาระบุตำแหน่ง</option>
                             <?php
                                        foreach ($arr_vaccination_site as $k=>$v) {
                                    ?>
@@ -902,6 +984,7 @@ foreach ($aecode as $value) {
                         </td>
                         <td>
                           <select type="text" id="manufacturer4" name="manufacturer4" value="" class="form-control divID4">
+                            <option value="">กรุณาระบุชื่อผู้ผลิต</option>
                             <?php
                                        foreach ($arr_manufacturer as $k=>$v) {
                                    ?>
@@ -935,15 +1018,15 @@ foreach ($aecode as $value) {
                         </td>
                         <td>
                           <select type="text" id="name_of_vaccine5" name="name_of_vaccine5" value="" class="form-control divID5">
-                            <?php
-                                             foreach ($arr_history_of_vaccine as $k=>$v) {
-                                           ?>
-                            <option class=badge filter badge-info data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
-                            <?php } ?>
+                            <option value="">กรุณาระบุชื่อวัคซีน</option>
+                            @foreach ($vac_list as $row)
+                            <option value="{{$row->VAC_CODE}}">{{$row->VAC_NAME_EN}}</option>
+                            @endforeach
                           </select>
                         </td>
                         <td>
                           <select type="text" id="vaccine_volume5" name="vaccine_volume5" value="" class="form-control divID5">
+                            <option value="">กรุณาระบุปริมาณที่ให้</option>
                             <?php
                                        foreach ($arr_vaccine_volume as $k=>$v) {
                                        ?>
@@ -953,6 +1036,7 @@ foreach ($aecode as $value) {
                         </td>
                         <td>
                           <select type="text" id="route_of_vaccination5" name="route_of_vaccination5" value="" class="form-control divID5">
+                            <option value="">กรุณาระบุวิธีให้</option>
                             <?php
                                          foreach ($arr_route_of_vaccination as $k=>$v) {
                                      ?>
@@ -962,6 +1046,7 @@ foreach ($aecode as $value) {
                         </td>
                         <td>
                           <select type="text" id="vaccination_site5" name="vaccination_site5" value="" class="form-control divID5">
+                            <option value="">กรุณาระบุตำแหน่ง</option>
                             <?php
                                          foreach ($arr_vaccination_site as $k=>$v) {
                                      ?>
@@ -980,6 +1065,7 @@ foreach ($aecode as $value) {
                         </td>
                         <td>
                           <select type="text" id="manufacturer5" name="manufacturer5" value="" class="form-control divID5">
+                            <option value="">กรุณาระบุชื่อผู้ผลิต</option>
                             <?php
                                          foreach ($arr_manufacturer as $k=>$v) {
                                      ?>
@@ -1347,20 +1433,24 @@ foreach ($aecode as $value) {
                           </div>
                           <div class="col-md-12">
                             <label>
-                              <input name="other_symptoms_later_immunized" type="checkbox" value="9999">
+                              <input name="GBS)" type="checkbox" value="1">
+                              Guillain-Barré syndrome (GBS)
+                            </label>
+                          </div>
+                          <div class="col-md-12">
+                            <label>
+                              <input name="other_symptoms_later_immunized_chk" type="checkbox" value="9999">
                               other
                             </label>
                           </div>
                           <div class="form-group">
                             <div class="col-lg-12">
                               <div id="other_symptoms_later_immunized" style="display: none">
-                                <select id="other_symptoms_later_immunized" name="other_symptoms_later_immunized" class="form-control select2" style="width: 100%;" onkeyup="autocomplet()">
-                                  <?php
-				  										  foreach ($aecode as $value) { ?>
-                                  <option class="badge filter badge-info" data-color="info" value="<?php echo $value->AECODE ; ?>"><?php echo $value->AENAMETHA ; ?> (<?php echo $value->AENAMEENG ; ?>)</option>
-                                  <?php } ?>
-                                </select>
+                                <input type="text" id="other_symptoms_later_immunized_text" name="other_symptoms_later_immunized" class="form-control" placeholder="ระบุตำแหน่ง" hidden="true">
                               </div>
+                              {{-- <div id="other_symptoms_later_immunized_t" style="display: none">
+                                <input type="text" class="form-control pull-right" id="other_symptoms_later_immunized_text" name="other_symptoms_later_immunized" placeholder="ระบุอาการอื่นๆ">
+                              </div> --}}
                             </div>
                           </div>
                         </div>
@@ -1451,7 +1541,9 @@ foreach ($aecode as $value) {
                 <div class="box-footer">
                   <div class="form-group">
                     <div class="col-lg-12">
-                      <label>ความร้ายแรงของอาการ</label>
+                      <label>
+                        <font style="color:red;">*</font> ความร้ายแรงของอาการ
+                      </label>
                     </div>
                   </div>
                   <div class="form-group">
@@ -1531,7 +1623,9 @@ foreach ($aecode as $value) {
                 <div class="box-footer">
                   <div class="form-group">
                     <div class="col-lg-12">
-                      <label>สภาพผู้ป่วย</label>
+                      <label>
+                        <font style="color:red;">*</font> สภาพผู้ป่วย
+                      </label>
                     </div>
                   </div>
                   <div class="form-group">
@@ -1869,23 +1963,15 @@ foreach ($aecode as $value) {
                                 <input type="text" class="form-control pull-right" id="datepicker_resiver" name="datepicker_resiver" data-date-format="yyyy-mm-dd">
                               </div>
                             </div>
+                            <div class="col-lg-12">
+                              <label>ความคิดเห็นเพิ่มเติม</label>
+                              <textarea class="form-control" rows="3" id="more_reviews" name="more_reviews"></textarea>
+                            </div>
                           </div>
                         </div>
                       </div>
                       <!-- /.box-header -->
-                      <!-- form start -->
-
-                      <div class="box-body">
-                        {{-- input content --}}
-                        <div class="form-group">
-                          <div class="col-lg-12">
-                            <label>ความคิดเห็นเพิ่มเติม</label>
-                            <textarea class="form-control" rows="3" id="more_reviews" name="more_reviews"></textarea>
-                          </div>
-                        </div>
-                      </div>
                       <!-- /.box-body -->
-
                     </div>
                     <!-- /.box -->
                   </div>
@@ -1918,32 +2004,52 @@ foreach ($aecode as $value) {
                                 ปฏิกิริยาของวัคซีน ระดับความสัมพันธ์
                               </label>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-2">
+                              {{-- <label>
+                                <input type="checkbox" name="assessment2" value="1">
+                                ใช่
+                              </label> --}}
+                            </div>
+                            <div class="col-md-5">
                               <label>
                                 <input type="checkbox" name="assessment2" value="1">
                                 ใช่
                               </label>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-5">
                               <label>
                                 <input type="checkbox" name="assessment3" value="1">
                                 น่าจะใช่
                               </label>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-2">
+                              {{-- <label>
+                                <input type="checkbox" name="assessment3" value="1">
+                                น่าจะใช่
+                              </label> --}}
+                            </div>
+                            <div class="col-md-5">
                               <label>
                                 <input type="checkbox" name="assessment4" value="1">
                                 อาจจะใช่
                               </label>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-5">
                               <label>
                                 <input type="checkbox" name="assessment5" value="1">
                                 ไม่ใช่
                               </label>
                             </div>
                           </div>
+                          <div class="col-md-12">
+                          </br>
+                            {{-- <label>
+                              <input type="checkbox" name="assessment7" value="1">
+                              ความคลาดเคลื่อนด้านการให้บริการ
+                            </label> --}}
+                          </div>
                           <div class="form-group">
+                            </br>
                             <div class="col-md-12">
                               <label>
                                 <input type="checkbox" name="assessment6" value="1">
@@ -2061,5 +2167,21 @@ foreach ($aecode as $value) {
   $("#checkBoxID5").click(function() {
     $(".divID5").attr("disabled", !this.checked);
   });
+</script>
+<script>
+  function showDiv1(divId, element) {
+    document.getElementById(divId).style.display = element.value == 99 ? 'block' : 'none';
+  }
+
+  // function showDiv2(divId, element) {
+  // 	document.getElementById(divId).style.display = element.value == 8 ? 'block' : 'none';
+  // }
+  //
+  // function showDiv3(divId, element) {
+  // 	document.getElementById(divId).style.display = element.value == 999 ? 'block' : 'none';
+  // }
+  // function showDiv4(divId, element) {
+  // 	document.getElementById(divId).style.display = element.value == 5 ? 'block' : 'none';
+  // }
 </script>
 @stop

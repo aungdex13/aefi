@@ -211,6 +211,6 @@ $arr_manufacturer = load_manufacturer();
   </div>
 </section>
 
-@include('AEFI.layout.footerScript')
+@include('AEFI.layout.footerScriptDash')
 <!-- /.content -->
 @stop

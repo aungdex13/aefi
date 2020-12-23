@@ -19,6 +19,7 @@ body {
 }
 body {
   font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 1.575em;
   font-weight: 400;
   overflow-x: hidden;
   overflow-y: auto;
@@ -159,6 +160,7 @@ h6,
 .h5,
 .h6 {
   font-family: 'Source Sans Pro', sans-serif;
+  font-size: 1.575em;
 }
 /* General Links */
 a {
@@ -291,6 +293,7 @@ a:focus {
   text-align: center;
   width: 230px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1.575em;
   padding: 0 15px;
   font-weight: 300;
   overflow: hidden;

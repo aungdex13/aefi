@@ -251,40 +251,74 @@
         $('#text_other_seriousness_of_the_symptoms_text').val('');
       }
     });
-    $('input[name="other_symptoms_later_immunized"]').on('click', function() {
-      if ($(this).val() == '9999') {
+    $('input[name="sepsis"]').on('click', function() {
+      if ($(this).is(":checked")) {
+        $('#other_seriousness_of_the_symptoms').show();
+      } else {
+        $('#other_seriousness_of_the_symptoms').hide();
+        $('#other_seriousness_of_the_symptoms_text').val('');
+      }
+    });
+    $('input[name="encephalopathy"]').on('click', function() {
+      if ($(this).is(":checked")) {
+        $('#other_seriousness_of_the_symptoms').show();
+      } else {
+        $('#other_seriousness_of_the_symptoms').hide();
+        $('#other_seriousness_of_the_symptoms_text').val('');
+      }
+    });
+    $('input[name="flaccid_paralysis"]').on('click', function() {
+      if ($(this).is(":checked")) {
+        $('#other_seriousness_of_the_symptoms').show();
+      } else {
+        $('#other_seriousness_of_the_symptoms').hide();
+        $('#other_seriousness_of_the_symptoms_text').val('');
+      }
+    });
+    $('input[name="osteomyelitis"]').on('click', function() {
+      if ($(this).is(":checked")) {
+        $('#other_seriousness_of_the_symptoms').show();
+      } else {
+        $('#other_seriousness_of_the_symptoms').hide();
+        $('#other_seriousness_of_the_symptoms_text').val('');
+      }
+    });
+    $('input[name="other_symptoms_later_immunized_chk"]').on('click', function() {
+            if ($(this).is(":checked")) {
         $('#other_symptoms_later_immunized').show();
       } else {
         $('#other_symptoms_later_immunized').hide();
         $('#other_symptoms_later_immunized_text').val('');
       }
     });
-    $('input[name="History_of_drug_use_within_1_month_before_getting_vaccination"]').on('click', function() {
+    $('input[name="history_of_drug_use_within_1_month_before_getting_vaccination"]').on('click', function() {
       if ($(this).val() == '2') {
-        $('#other_History_of_drug_use_within_1_month_before_getting_vaccination').show();
+        $('#other_history_of_drug_use_within_1_month_vaccination').show();
       } else {
-        $('#other_History_of_drug_use_within_1_month_before_getting_vaccination').hide();
-        $('#other_History_of_drug_use_within_1_month_before_getting_vaccination_text').val('');
+        $('#other_history_of_drug_use_within_1_month_vaccination').hide();
+        $('#other_history_of_drug_use_within_1_month_vaccination_text').val('');
       }
     });
-    $('input[name="Underlying_disease"]').on('click', function() {
+    $('input[name="underlying_disease"]').on('click', function() {
       if ($(this).val() == '2') {
-        $('#other_Underlying_disease').show();
+        $('#other_underlying_disease').show();
       } else {
-        $('#other_Underlying_disease').hide();
-        $('#other_Underlying_disease_text').val('');
+        $('#other_underlying_disease').hide();
+        $('#other_underlying_disease_text').val('');
       }
     });
-    $('input[name="Patient_develop_symptoms_after_previous_vaccination"]').on('click', function() {
+    $('input[name="patient_develop_symptoms_after_previous_vaccination"]').on('click', function() {
       if ($(this).val() == '2') {
-        $('#other_Patient_develop_symptoms_after_previous_vaccination').show();
+        // alert("pass");
+        $('#other_patient_develop_symptoms_after_previous_vaccination').show();
       } else {
-        $('#other_Patient_develop_symptoms_after_previous_vaccination').hide();
+        $('#other_patient_develop_symptoms_after_previous_vaccination').hide();
         $('#other_Patient_develop_symptoms_after_previous_vaccination_text').val('');
       }
     });
-    $('input[name="History_of_vaccine_drug_allergies_of_patient"]').on('click', function() {
+    $('input[name="history_of_vaccine_drug_allergies_of_patient"]').on('click', function() {
       if ($(this).val() == '2') {
+        // alert("pass");
         $('#other_vaccination_history').show();
       } else {
         $('#other_vaccination_history').hide();

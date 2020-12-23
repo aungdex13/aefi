@@ -17,9 +17,11 @@ class Form1Controller extends Controller
 		$list=$this->form1();
 		$aecode=$this->aecode();
 		$groupproduct=$this->groupproduct();
-		// dd($list);
+		$vac_list=$this->vaclist();
+		 // dd($vac_list);
 		return view('AEFI.Apps.form1',
 			[
+				'vac_list'=>$vac_list,
 				'list'=>$list ,
 				'aecode'=>$aecode,
 				'groupproduct'=>$groupproduct
@@ -41,6 +43,19 @@ class Form1Controller extends Controller
 		$list=DB::table('tbl_provinces')->get();
 		 // return view('AEFI.Apps.form1')->with('list',$list);
 		 return $list;
+	}
+	// public function list_vac(){
+	// 	$list_vac=DB::table('vac_tbl')->get();
+	// 	 // return view('AEFI.Apps.form1')->with('list',$list);
+	// 	 return $list_vac;
+	// }
+	protected function vaclist(){
+		$arr_vaclist = DB::table('vac_tbl')
+		->select('VAC_CODE','VAC_NAME_EN')
+		->orderBy('VAC_CODE', 'ASC')
+		->get();
+		 // dd($vaclist);
+		return $arr_vaclist;
 	}
 	public function aecode(){
 		$this->result = DB::table('dt_aecode')

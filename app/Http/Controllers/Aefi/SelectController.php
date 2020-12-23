@@ -99,6 +99,7 @@
 			$listProvince=$this->listProvince();
 			$listDistrict=$this->listDistrict();
 			$listsubdistrict=$this->listsubdistrict();
+				$vac_list=$this->vaclist();
 			//dd($EditAEFI1vac);
 		 return view('AEFI.Apps.EditAEFI1')
 		 				->with('data', $EditAEFI1)
@@ -106,7 +107,8 @@
 						->with('list', $list)
 						->with('listProvince', $listProvince)
 						->with('listDistrict', $listDistrict)
-						->with('listsubdistrict', $listsubdistrict);
+						->with('listsubdistrict', $listsubdistrict)
+						->with('vac_list',$vac_list);
 
 		}
 		public function selectalldataAEFI2(Request $req)
@@ -182,4 +184,13 @@
 			// dd($province_arr);
 			return $district_arr;
 		}
+		protected function vaclist(){
+			$arr_vaclist = DB::table('vac_tbl')
+			->select('VAC_CODE','VAC_NAME_EN')
+			->orderBy('VAC_CODE', 'ASC')
+			->get();
+			 // dd($vaclist);
+			return $arr_vaclist;
+		}
+
 }

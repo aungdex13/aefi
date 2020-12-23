@@ -52,7 +52,7 @@
 												'parent_sur_name' => $req->input('parent_sur_name'),
 												'parent_phone_number' => $req->input('parent_phone_number'),
 												'date_dead' => $req->input('date_dead'),
-												'rash' => $req->input ('Rash'),
+												'rash' => $req->input ('rash'),
 												'erythema' => $req->input('Erythema'),
 												'urticaria' => $req->input('urticaria'),
 												'itching' => $req->input('itching'),
