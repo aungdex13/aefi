@@ -95,11 +95,17 @@
 			if ($EditAEFI1) {
 				$EditAEFI1vac = DB::table('aefi_form_1_vac')->select('*')->where('id_case', [$req->id_case] )->get();
 			}
+			$count_data_vac= DB::table('aefi_form_1_vac')
+                     ->select(DB::raw('count(*) as vac_count'))
+                     ->where('id_case', [$req->id_case])
+                     ->get();
+			// dd($count_data_vac);
 			$list=$this->form1();
 			$listProvince=$this->listProvince();
 			$listDistrict=$this->listDistrict();
 			$listsubdistrict=$this->listsubdistrict();
-				$vac_list=$this->vaclist();
+			$vac_list=$this->vaclist();
+			$listvac_arr=$this->listvac_arr();
 			//dd($EditAEFI1vac);
 		 return view('AEFI.Apps.EditAEFI1')
 		 				->with('data', $EditAEFI1)
@@ -108,7 +114,9 @@
 						->with('listProvince', $listProvince)
 						->with('listDistrict', $listDistrict)
 						->with('listsubdistrict', $listsubdistrict)
-						->with('vac_list',$vac_list);
+						->with('vac_list',$vac_list)
+						->with('count_data_vac',$count_data_vac)
+						->with('listvac_arr',$listvac_arr);
 
 		}
 		public function selectalldataAEFI2(Request $req)
@@ -183,6 +191,14 @@
 			}
 			// dd($province_arr);
 			return $district_arr;
+		}
+		protected function listvac_arr(){
+			$arr_vac = DB::table('vac_tbl')->select('VAC_CODE','VAC_NAME_EN')->get();
+			foreach ($arr_vac as  $value) {
+				$arr_vac[$value->VAC_CODE] =trim($value->VAC_NAME_EN);
+			}
+			// dd($province_arr);
+			return $arr_vac;
 		}
 		protected function vaclist(){
 			$arr_vaclist = DB::table('vac_tbl')

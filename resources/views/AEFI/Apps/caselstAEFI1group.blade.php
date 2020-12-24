@@ -1,8 +1,8 @@
 @extends('AEFI.layout.tabletemplate')
 @section('content')
 <section class="content-header">
-<!-- Content Header (Page header) -->
-<?php
+  <!-- Content Header (Page header) -->
+  <?php
 $arr_history_of_vaccine = load_history_of_vaccine();
 $arr_patient_develop_symptoms_after_previous_vaccination = load_patient_develop_symptoms_after_previous_vaccination();
 $arr_underlying_disease = load_underlying_disease();
@@ -13,86 +13,96 @@ $arr_manufacturer = load_manufacturer();
 
 //dd($data);
  ?>
-<h1>
-  รายชื่อผู้มีอาการภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรค
-  <small>AEFI</small>
-</h1>
-<ol class="breadcrumb">
+  <h1>
+    รายชื่อผู้มีอาการภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรค
+    <small>AEFI</small>
+  </h1>
+  <ol class="breadcrumb">
 
-</ol>
+  </ol>
 
 </section>
 <!-- Main content -->
 <section class="content">
-	<div class="row">
-			<!--หัวข้อที่2 -->
-			<div class="col-md-12">
-			<!-- general form elements -->
-			<div class="box box-info">
+  <div class="row">
+    <!--หัวข้อที่2 -->
+    <div class="col-md-12">
+      <!-- general form elements -->
+      <div class="box box-info">
 
-				<!-- /.box-header -->
-				<!-- form start -->
-		            <!-- /.box-header -->
-		            <div class="box-body">
-		              <table class="table table-bordered" id="case_lst" class="display" style="width:100%">
-						<thead>
-		                <tr>
-		                  <th>เลขที่ผู้ป่วย Eventbase</th>
-						  <th>อายุ</th>
-						  <th>เชื้อชาติ</th>
-						  <th>ที่อยู่</th>
-						  <th>มีความจำเป็นที่จะต้องสอบสวนโรค</th>
-						  <th>***</th>
-		                </tr>
-					</thead>
-					<?php foreach($data as $value) : ?>
-		                <tr class="data-contact-person">
-		                  <td><p style="text-align:center;">{{ $value->hn }}</p></td>
-						  <td><p style="text-align:center;">{{ $value->age_while_sick_year }}</p></td>
-						  <td><p style="text-align:center;">{{ $value->nationality }} {{ $value->other_nationality }}</p></td>
-						  <td><p style="text-align:center;">ตำบล : {{ $value->subdistrict }}<br> อำเภอ : {{ $value->district }}<br>  จังหวัด : {{ $value->province }}</p></td>
-						  <td><p style="text-align:center;">{{ $value->necessary_to_investigate }}</p></td>
-						  <td>
-							  <div class="btn-group">
-								<a href="{{ route('EditAEFI1') }}?id_case={{ $value->id_case }}" type="button" class="btn btn-warning btn-flat"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>แก้ไขข้อมูล</a>
-									<a href="{{ route('form1group') }}" type="button" class="btn btn-success btn-flat"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>กรอกข้อมูล</a>
-							  </div>
-						  </td>
-		                </tr>
-					<?php endforeach;?>
-		              </table>
-						  {{-- <button type="button" id="btnAdd" class="btn btn-xs btn-primary classAdd">Add More</button> --}}
-{{--
+        <!-- /.box-header -->
+        <!-- form start -->
+        <!-- /.box-header -->
+        <div class="box-body">
+          <table class="table table-bordered" id="case_lst" class="display" style="width:100%">
+            <thead>
+              <tr>
+                <th>เลขที่ผู้ป่วย Eventbase</th>
+                <th>อายุ</th>
+                <th>เชื้อชาติ</th>
+                <th>ที่อยู่</th>
+                <th>มีความจำเป็นที่จะต้องสอบสวนโรค</th>
+                <th>***</th>
+              </tr>
+            </thead>
+            <?php foreach($data as $value) : ?>
+            <tr class="data-contact-person">
+              <td>
+                <p style="text-align:center;">{{ $value->hn }}</p>
+              </td>
+              <td>
+                <p style="text-align:center;">{{ $value->age_while_sick_year }}</p>
+              </td>
+              <td>
+                <p style="text-align:center;">{{ $value->nationality }} {{ $value->other_nationality }}</p>
+              </td>
+              <td>
+                <p style="text-align:center;">ตำบล : {{ $value->subdistrict }}<br> อำเภอ : {{ $value->district }}<br> จังหวัด : {{ $value->province }}</p>
+              </td>
+              <td>
+                <p style="text-align:center;">{{ $value->necessary_to_investigate }}</p>
+              </td>
+              <td>
+                <div class="btn-group">
+                  <a href="{{ route('EditAEFI1') }}?id_case={{ $value->id_case }}" type="button" class="btn btn-warning btn-flat"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>แก้ไขข้อมูล</a>
+                  <a href="{{ route('form1group') }}" type="button" class="btn btn-success btn-flat"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>กรอกข้อมูล</a>
+                </div>
+              </td>
+            </tr>
+            <?php endforeach;?>
+          </table>
+          {{-- <button type="button" id="btnAdd" class="btn btn-xs btn-primary classAdd">Add More</button> --}}
+          {{--
 						  								 <div class="col-sm-2">
 						  									 <input type="text" name="req_count[]" >
 						  								 </div> --}}
 
-														         <div class="modal modal-danger fade" id="modal-warning">
-														           <div class="modal-dialog modal-md">
-														             <div class="modal-content">
-														               <div class="modal-header">
-														                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-														                   <span aria-hidden="true">&times;</span></button>
-														                 <h4 class="modal-title">ลบข้อมูล</h4>
-														               </div>
-														               <div class="modal-body">
-														                 <p>หากท่านกดปุ่มตกลงข้อมูลของผู้ป่วยรายนี้จะถูกลบทั้งหมด&hellip;</p>
-														               </div>
-														               <div class="modal-footer">
-														                 <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">ยกเลิก</button>
-														                 {{-- <a href="{{ route('deleteAEFI1') }}?id_case={{ $value->id_case }}" type="button" class="btn btn-outline">ลบข้อมูล</a> --}}
-														               </div>
-														             </div>
-														             <!-- /.modal-content -->
-														           </div>
-														           <!-- /.modal-dialog -->
-														         </div>
-														         <!-- /.modal -->
-					</div>
-				</div>
-			</div>
-			<!-- /.box -->
-			</div>
+          <div class="modal modal-danger fade" id="modal-warning">
+            <div class="modal-dialog modal-md">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title">ลบข้อมูล</h4>
+                </div>
+                <div class="modal-body">
+                  <p>หากท่านกดปุ่มตกลงข้อมูลของผู้ป่วยรายนี้จะถูกลบทั้งหมด&hellip;</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">ยกเลิก</button>
+                  {{-- <a href="{{ route('deleteAEFI1') }}?id_case={{ $value->id_case }}" type="button" class="btn btn-outline">ลบข้อมูล</a> --}}
+                </div>
+              </div>
+              <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+          </div>
+          <!-- /.modal -->
+        </div>
+      </div>
+    </div>
+    <!-- /.box -->
+  </div>
   <!-- /.row -->
 </section>
 

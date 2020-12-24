@@ -62,7 +62,13 @@ class AEFIController extends Controller
 		return view('AEFI.Apps.login');
 	}
 	public function dashboard(){
-		return view('AEFI.Apps.dashboard');
+    $count_prov = $this->count_prov();
+    $listProvince=$this->listProvince();
+    // dd($count_prov);
+		return view('AEFI.Apps.dashboard',compact(
+		 'count_prov',
+     'listProvince'
+	 ));
 	}
 	public function AEFI506(){
 		return view('AEFI.Apps.AEFI506');
@@ -73,4 +79,23 @@ class AEFIController extends Controller
 	public function dataexport(){
 		return view('AEFI.Apps.dataexport');
 	}
+  protected function count_prov(){
+    $count_prov = DB::table('aefi_form_1')
+									 ->select(DB::raw('count(*) as count_prov , province'))
+                   ->groupBy('province')
+									 ->get();
+    // dd($province_arr);
+    return $count_prov;
+  }
+  protected function listProvince(){
+    $province = DB::table('tbl_provinces')
+    ->select('province_code','province_name')
+    ->orderBy('province_code', 'ASC')
+    ->get();
+    foreach ($province as  $value) {
+      $province_arr[$value->province_code] =trim($value->province_name);
+    }
+    // dd($province_arr);
+    return $province_arr;
+  }
 }

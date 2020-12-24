@@ -14,6 +14,98 @@
 	{
 		use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 		public function updateform1(Request $req) {
+					$id = $req->input('id');
+					$id_case = $req->input('id_case');
+					$hn = $req->input('hn');
+					$count_data_vac = $req->input('count_data_vac');
+					// dd($id,$id_case,$count_data_vac);
+					if ($count_data_vac != '0') {
+							$delvac=DB::table('aefi_form_1_vac')->where('id_case', '=', $id_case)->delete();
+							// dd($delvac);
+									$name_of_vaccine = $req ->input('name_of_vaccine');
+									$vaccine_volume = $req ->input('vaccine_volume');
+									$route_of_vaccination = $req ->input('route_of_vaccination');
+									$vaccination_site = $req ->input('vaccination_site');
+									$dose = $req ->input('dose');
+									$date_of_vaccination = $req ->input('date_of_vaccination');
+									$time_of_vaccination = $req ->input('time_of_vaccination');
+									$manufacturer =$req ->input('manufacturer');
+									$lot_number = $req ->input('lot_number');
+									$expiry_date = $req ->input('expiry_date');
+									$name_of_diluent = $req ->input('name_of_diluent');
+									$lot_number_diluent = $req ->input('lot_number_diluent');
+									$expiry_date_diluent = $req ->input('expiry_date_diluent');
+									$date_of_reconstitution = $req ->input('date_of_reconstitution');
+									$time_of_reconstitution = $req ->input('time_of_reconstitution');
+							$x=0;
+								 for ($i=0; $i < count($name_of_vaccine); $i++) {
+									 $data_vac[]  = [
+									'id_case'=>$id_case,
+									'hn'=>$hn,
+									'name_of_vaccine'=>$name_of_vaccine[$i],
+									'vaccine_volume'=>$vaccine_volume[$i],
+									'route_of_vaccination'=>$route_of_vaccination[$i],
+									'vaccination_site'=>$vaccination_site[$i],
+									'dose'=>$dose[$i],
+									'date_of_vaccination'=>$date_of_vaccination[$i],
+									'time_of_vaccination'=>$time_of_vaccination[$i],
+									'manufacturer'=>$manufacturer[$i],
+									'lot_number'=>$lot_number[$i],
+									'expiry_date'=>$expiry_date[$i],
+									'name_of_diluent'=>$name_of_diluent[$i],
+									'lot_number_diluent'=>$lot_number_diluent[$i],
+									'expiry_date_diluent'=>$expiry_date_diluent[$i],
+									'date_of_reconstitution'=>$date_of_reconstitution[$i],
+									'time_of_reconstitution'=>$time_of_reconstitution[$i],
+									'date_entry'=>date('Y-m-d H:i:s')
+									];
+									$x++;
+									}
+									 // dd($data_vac);
+									$res2= DB::table('aefi_form_1_vac')->insert($data_vac);
+						}else {
+							$name_of_vaccine = $req ->input('name_of_vaccine');
+							$vaccine_volume = $req ->input('vaccine_volume');
+							$route_of_vaccination = $req ->input('route_of_vaccination');
+							$vaccination_site = $req ->input('vaccination_site');
+							$dose = $req ->input('dose');
+							$date_of_vaccination = $req ->input('date_of_vaccination');
+							$time_of_vaccination = $req ->input('time_of_vaccination');
+							$manufacturer =$req ->input('manufacturer');
+							$lot_number = $req ->input('lot_number');
+							$expiry_date = $req ->input('expiry_date');
+							$name_of_diluent = $req ->input('name_of_diluent');
+							$lot_number_diluent = $req ->input('lot_number_diluent');
+							$expiry_date_diluent = $req ->input('expiry_date_diluent');
+							$date_of_reconstitution = $req ->input('date_of_reconstitution');
+							$time_of_reconstitution = $req ->input('time_of_reconstitution');
+					$x=0;
+						 for ($i=0; $i < count($name_of_vaccine); $i++) {
+							 $data_vac[]  = [
+							'id_case'=>$id_case,
+							'hn'=>$hn,
+							'name_of_vaccine'=>$name_of_vaccine[$i],
+							'vaccine_volume'=>$vaccine_volume[$i],
+							'route_of_vaccination'=>$route_of_vaccination[$i],
+							'vaccination_site'=>$vaccination_site[$i],
+							'dose'=>$dose[$i],
+							'date_of_vaccination'=>$date_of_vaccination[$i],
+							'time_of_vaccination'=>$time_of_vaccination[$i],
+							'manufacturer'=>$manufacturer[$i],
+							'lot_number'=>$lot_number[$i],
+							'expiry_date'=>$expiry_date[$i],
+							'name_of_diluent'=>$name_of_diluent[$i],
+							'lot_number_diluent'=>$lot_number_diluent[$i],
+							'expiry_date_diluent'=>$expiry_date_diluent[$i],
+							'date_of_reconstitution'=>$date_of_reconstitution[$i],
+							'time_of_reconstitution'=>$time_of_reconstitution[$i],
+							'date_entry'=>date('Y-m-d H:i:s')
+							];
+							$x++;
+							}
+							 // dd($data_vac);
+							$res2= DB::table('aefi_form_1_vac')->insert($data_vac);
+						}
 					$update	= DB::table('aefi_form_1')
 											->where('id', $req->id)
 											->where('id_case', $req->id_case)

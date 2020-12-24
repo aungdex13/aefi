@@ -45,50 +45,50 @@ foreach ($aecode as $value) {
     echo $value->AENAMETHA;
 }
 @endphp --}}
-<style>
-  #customers {
-    font-family: Arial, Helvetica, sans-serif;
-    border-collapse: collapse;
-    width: 200%;
-  }
+  <style>
+    #customers {
+      font-family: Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      width: 200%;
+    }
 
-  #customers td,
-  #customers th {
-    border: 1px solid #ddd;
-    padding: 8px;
-  }
+    #customers td,
+    #customers th {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
 
-  #customers tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
+    #customers tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
 
-  #customers tr:hover {
-    background-color: #ddd;
-  }
+    #customers tr:hover {
+      background-color: #ddd;
+    }
 
-  #customers th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: #4CAF50;
-    color: white;
-  }
-</style>
+    #customers th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #4CAF50;
+      color: white;
+    }
+  </style>
 </section>
 <!-- Main content -->
 <section class="content">
   <form role="form" action="{{ route('insertform1') }}" method="post">
     {{ csrf_field() }}
-  <div class="row">
-    <!--หัวข้อที่5 -->
-    <div class="col-md-12">
-      <!-- general form elements -->
-      <div class="box box-danger">
-        <div class="box-header with-border">
-          <h3 class="box-title">(1)ข้อมูลผู้ป่วย</h3>
-        </div>
-        <!-- /.box-header -->
-        <!-- form start -->
+    <div class="row">
+      <!--หัวข้อที่5 -->
+      <div class="col-md-12">
+        <!-- general form elements -->
+        <div class="box box-danger">
+          <div class="box-header with-border">
+            <h3 class="box-title">(1)ข้อมูลผู้ป่วย</h3>
+          </div>
+          <!-- /.box-header -->
+          <!-- form start -->
 
           @php
           $rannumlet = substr(sha1(mt_rand()),17,6);
@@ -412,7 +412,7 @@ foreach ($aecode as $value) {
                           <div id="other_vaccination_history" style="display: none">
                             <label>วัคซีนที่แพ้ :</label>
                             <select id="other_vaccination_history_text" name="other_vaccination_history" class="form-control select2" style="width: 100%;">
-<option class="badge filter badge-info" data-color="info" value="">กรุณาเลือก</option>
+                              <option class="badge filter badge-info" data-color="info" value="">กรุณาเลือก</option>
                               <?php
 										  foreach ($arr_history_of_vaccine as $k=>$v) { ?>
                               <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
@@ -452,7 +452,7 @@ foreach ($aecode as $value) {
                           <div id="other_patient_develop_symptoms_after_previous_vaccination" style="display: none">
                             <label>วัคซีนที่แพ้ :</label>
                             <select id="other_patient_develop_symptoms_after_previous_vaccination_text" name="other_patient_develop_symptoms_after_previous_vaccination" class="form-control select2" style="width: 100%;">
-<option class="badge filter badge-info" data-color="info" value="">กรุณาเลือก</option>
+                              <option class="badge filter badge-info" data-color="info" value="">กรุณาเลือก</option>
                               <?php
 	  										  foreach ($arr_patient_develop_symptoms_after_previous_vaccination as $k=>$v) { ?>
                               <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
@@ -489,7 +489,7 @@ foreach ($aecode as $value) {
                         <div class="col-lg-12">
                           <div id="other_underlying_disease" style="display: none">
                             <select id="other_underlying_disease_text" name="other_underlying_disease" class="form-control select2" style="width: 100%;">
-<option class="badge filter badge-info" data-color="info" value="">กรุณาเลือก</option>
+                              <option class="badge filter badge-info" data-color="info" value="">กรุณาเลือก</option>
                               <?php
 												  foreach ($arr_underlying_disease as $k=>$v) { ?>
                               <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
@@ -649,7 +649,7 @@ foreach ($aecode as $value) {
                 </div>
                 <div style="overflow: scroll;">
                   <table class="maintable" id="customers">
-										<button type="button" id="btnAdd" class="btn btn-xs btn-primary classAdd">เพิ่มสมาชิกทีมสอบสวนโรค</button>
+                    <button type="button" id="btnAdd" class="btn btn-xs btn-primary classAdd">เพิ่มสมาชิกทีมสอบสวนโรค</button>
                     <thead>
                       <tr>
                         <th>
@@ -689,89 +689,89 @@ foreach ($aecode as $value) {
                         {{-- <th><a href="javascript:void(0);" style="font-size:18px;" id="addMore" title="Add More Person"><span class="glyphicon glyphicon-plus"></span></a></th> --}}
                       </tr>
                     </thead>
-										<tbody>
-                        <tr class="data-contact-person">
-                          <td>
-                            <select type="text" id="name_of_vaccine" name="name_of_vaccine[]" value="" class="form-control">
-                              <option value="">กรุณาระบุชื่อวัคซีน</option>
-                              @foreach ($vac_list as $row)
-                              <option value="{{$row->VAC_CODE}}">{{$row->VAC_NAME_EN}}</option>
-                              @endforeach
-                            </select>
-                          </td>
-                          <td>
-                            <select type="text" id="vaccine_volume" name="vaccine_volume[]" value="" class="form-control">
-                              <option value="">กรุณาระบุปริมาณที่ให้</option>
-                              <?php
+                    <tbody>
+                      <tr class="data-contact-person">
+                        <td>
+                          <select type="text" id="name_of_vaccine" name="name_of_vaccine[]" value="" class="form-control">
+                            <option value="">กรุณาระบุชื่อวัคซีน</option>
+                            @foreach ($vac_list as $row)
+                            <option value="{{$row->VAC_CODE}}">{{$row->VAC_NAME_EN}}</option>
+                            @endforeach
+                          </select>
+                        </td>
+                        <td>
+                          <select type="text" id="vaccine_volume" name="vaccine_volume[]" value="" class="form-control">
+                            <option value="">กรุณาระบุปริมาณที่ให้</option>
+                            <?php
                                  foreach ($arr_vaccine_volume as $k=>$v) {
                                  ?>
-                              <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
-                              <?php } ?>
-                            </select>
-                          </td>
-                          <td>
-                            <select type="text" id="route_of_vaccination1" name="route_of_vaccination[]" value="" class="form-control">
-                              <option value="">กรุณาระบุวิธีที่ให้</option>
-                              <?php
+                            <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+                            <?php } ?>
+                          </select>
+                        </td>
+                        <td>
+                          <select type="text" id="route_of_vaccination1" name="route_of_vaccination[]" value="" class="form-control">
+                            <option value="">กรุณาระบุวิธีที่ให้</option>
+                            <?php
                                    foreach ($arr_route_of_vaccination as $k=>$v) {
                                ?>
-                              <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
-                              <?php } ?>
-                            </select>
-                          </td>
-                          <td>
-                            <select type="text" id="vaccination_site1" name="vaccination_site[]" value="" class="form-control">
-                              <option value="">กรุณาระบุวิธีตำแหน่ง</option>
-                              <?php
+                            <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+                            <?php } ?>
+                          </select>
+                        </td>
+                        <td>
+                          <select type="text" id="vaccination_site1" name="vaccination_site[]" value="" class="form-control">
+                            <option value="">กรุณาระบุวิธีตำแหน่ง</option>
+                            <?php
                                    foreach ($arr_vaccination_site as $k=>$v) {
                                ?>
-                              <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
-                              <?php } ?>
-                            </select>
-                          </td>
-                          <td>
-                            <input type="number" id="dose1" name="dose[]" value="" class="form-control" min="1" max="20">
-                          </td>
-                          <td>
-                            <input type="text" name="date_of_vaccination[]" value="" id="date_of_vaccination1" class="form-control datepicker" data-date-format="yyyy-mm-dd">
-                          </td>
-                          <td>
-                            <input type="text" id="time_of_vaccination1" name="time_of_vaccination[]" value="" class="form-control">
-                          </td>
-                          <td>
-                            <select type="text" id="manufacturer1" name="manufacturer[]" value="" class="form-control">
-                              <option value="">กรุณาระบชื่อผู้ผลิต</option>
-                              <?php
+                            <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+                            <?php } ?>
+                          </select>
+                        </td>
+                        <td>
+                          <input type="number" id="dose1" name="dose[]" value="" class="form-control" min="1" max="20">
+                        </td>
+                        <td>
+                          <input type="text" name="date_of_vaccination[]" value="" id="date_of_vaccination1" class="form-control datepicker" data-date-format="yyyy-mm-dd">
+                        </td>
+                        <td>
+                          <input type="text" id="time_of_vaccination1" name="time_of_vaccination[]" value="" class="form-control">
+                        </td>
+                        <td>
+                          <select type="text" id="manufacturer1" name="manufacturer[]" value="" class="form-control">
+                            <option value="">กรุณาระบชื่อผู้ผลิต</option>
+                            <?php
                                    foreach ($arr_manufacturer as $k=>$v) {
                                ?>
-                              <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
-                              <?php } ?>
-                            </select>
-                          </td>
-                          <td>
-                            <input type="text" id="lot_number1" name="lot_number[]" value="" class="form-control">
-                          </td>
-                          <td>
-                            <input type="text" id="datepicker_expiry_date1" name="expiry_date[]" value="" class="form-control" data-date-format="yyyy-mm-dd">
-                          </td>
-                          <td>
-                            <input type="text" id="name_of_diluent1" name="name_of_diluent[]" value="" class="form-control">
-                          </td>
-                          <td>
-                            <input type="text" id="lot_number_diluent1" name="lot_number_diluent[]" value="" class="form-control">
-                          </td>
-                          <td>
-                            <input type="text" id="datepicker_expiry_date_diluent1" name="expiry_date_diluent[]" value="" class="form-control" data-date-format="yyyy-mm-dd">
-                          </td>
-                          <td><input type="text" id="date_of_reconstitution1" name="date_of_reconstitution[]" value="" class="form-control" data-date-format="yyyy-mm-dd"></td>
-                          <td><input type="text" id="time_of_reconstitution1" name="time_of_reconstitution[]" value="" class="form-control"></td>
-                          {{-- <td><a href='javascript:void(0);' class='remove'><span class='glyphicon glyphicon-remove'></span></a></td> --}}
-                          <td>
-                            <button type="button" id="btnAdd" class="btn btn-xs btn-primary classAdd">เพิ่มสมาชิกทีมสอบสวนโรค</button>
-                          </td>
-                        </tr>
-										</tbody>
-									</table>
+                            <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+                            <?php } ?>
+                          </select>
+                        </td>
+                        <td>
+                          <input type="text" id="lot_number1" name="lot_number[]" value="" class="form-control">
+                        </td>
+                        <td>
+                          <input type="text" id="datepicker_expiry_date1" name="expiry_date[]" value="" class="form-control" data-date-format="yyyy-mm-dd">
+                        </td>
+                        <td>
+                          <input type="text" id="name_of_diluent1" name="name_of_diluent[]" value="" class="form-control">
+                        </td>
+                        <td>
+                          <input type="text" id="lot_number_diluent1" name="lot_number_diluent[]" value="" class="form-control">
+                        </td>
+                        <td>
+                          <input type="text" id="datepicker_expiry_date_diluent1" name="expiry_date_diluent[]" value="" class="form-control" data-date-format="yyyy-mm-dd">
+                        </td>
+                        <td><input type="text" id="date_of_reconstitution1" name="date_of_reconstitution[]" value="" class="form-control" data-date-format="yyyy-mm-dd"></td>
+                        <td><input type="text" id="time_of_reconstitution1" name="time_of_reconstitution[]" value="" class="form-control"></td>
+                        {{-- <td><a href='javascript:void(0);' class='remove'><span class='glyphicon glyphicon-remove'></span></a></td> --}}
+                        <td>
+                          <button type="button" id="btnAdd" class="btn btn-xs btn-primary classAdd">เพิ่มสมาชิกทีมสอบสวนโรค</button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
                 <!-- /.box -->
               </div>
@@ -1720,7 +1720,7 @@ foreach ($aecode as $value) {
                             </div>
                           </div>
                           <div class="col-md-12">
-                          </br>
+                            </br>
                             {{-- <label>
                               <input type="checkbox" name="assessment7" value="1">
                               ความคลาดเคลื่อนด้านการให้บริการ
@@ -1780,10 +1780,10 @@ foreach ($aecode as $value) {
                   </div>
                 </div>
 
-      </div>
-      <!-- /.box -->
-    </div>
-    </form>
+              </div>
+              <!-- /.box -->
+            </div>
+  </form>
   </div>
   <!-- /.row -->
 </section>
@@ -1865,106 +1865,124 @@ foreach ($aecode as $value) {
   // }
 </script>
 <script type="text/javascript">
-	$(document).ready(function() {
-		$(document).on("click", ".classAdd", function() { //
-			var rowCount = $('.data-contact-person').length + 1;
-			var contactdiv = '<tr class="data-contact-person">' +
-      '<td>'+
-        '<select type="text" id="name_of_vaccine1" name="name_of_vaccine[]' + rowCount + '" value="" class="form-control">'+
-          '<option value="">กรุณาระบุชื่อวัคซีน</option>'+
-          @foreach ($vac_list as $row)
-          '<option value="{{$row->VAC_CODE}}">{{$row->VAC_NAME_EN}}</option>'+
-          @endforeach
-        '</select>'+
-      '</td>'+
-      '<td>'+
-        '<select type="text" id="vaccine_volume1" name="vaccine_volume[]' + rowCount + '" value="" class="form-control">'+
-          '<option value="">กรุณาระบุปริมาณที่ให้</option>'+
-          <?php
-             foreach ($arr_vaccine_volume as $k=>$v) {
-             ?>
-        '<option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>'+
-          <?php } ?>
-        '</select>'+
-      '</td>'+
-      '<td>'+
-        '<select type="text" id="route_of_vaccination1" name="route_of_vaccination[]' + rowCount + '" value="" class="form-control">'+
-          '<option value="">กรุณาระบุวิธีที่ให้</option>'+
-          <?php
-               foreach ($arr_route_of_vaccination as $k=>$v) {
-           ?>
-          '<option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>'+
-          <?php } ?>
-        '</select>'+
-      '</td>'+
-      '<td>'+
-        '<select type="text" id="vaccination_site1" name="vaccination_site[]' + rowCount + '" value="" class="form-control">'+
-        '  <option value="">กรุณาระบุวิธีตำแหน่ง</option>'+
-          <?php
-               foreach ($arr_vaccination_site as $k=>$v) {
-           ?>
-          '<option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>'+
-          <?php } ?>
-        '</select>'+
-      '</td>'+
-      '<td>'+
-        '<input type="number" id="dose1" name="dose[]' + rowCount + '" value="" class="form-control" min="1" max="20">'+
-      '</td>'+
-      '<td>'+
-        '<input type="text" name="date_of_vaccination[]' + rowCount + '" value="" id="date_of_vaccination1'+ rowCount +'" class="form-control datepicker" data-date-format="yyyy-mm-dd">'+
-      '</td>'+
-      '<td>'+
-        '<input type="text" id="time_of_vaccination1'+ rowCount +'" name="time_of_vaccination[]' + rowCount + '" value="" class="form-control">'+
-      '</td>'+
-      '<td>'+
-        '<select type="text" id="manufacturer1" name="manufacturer[]' + rowCount + '" value="" class="form-control">'+
-          '<option value="">กรุณาระบชื่อผู้ผลิต</option>'+
-          <?php
-               foreach ($arr_manufacturer as $k=>$v) {
-           ?>
-          '<option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>'+
-          <?php } ?>
-        '</select>'+
-      '</td>'+
-      '<td>'+
-        '<input type="text" id="lot_number1" name="lot_number[]' + rowCount + '" value="" class="form-control">'+
-      '</td>'+
-      '<td>'+
-        '<input type="text" id="datepicker_expiry_date1'+ rowCount +'" name="expiry_date[]' + rowCount + '" value="" class="form-control" data-date-format="yyyy-mm-dd">'+
-      '</td>'+
-      '<td>'+
-        '<input type="text" id="name_of_diluent1" name="name_of_diluent[]' + rowCount + '" value="" class="form-control">'+
-      '</td>'+
-      '<td>'+
-        '<input type="text" id="lot_number_diluent1" name="lot_number_diluent[]' + rowCount + '" value="" class="form-control">'+
-      '</td>'+
-      '<td>'+
-        '<input type="text" id="datepicker_expiry_date_diluent1'+ rowCount +'" name="expiry_date_diluent[]' + rowCount + '" value="" class="form-control" data-date-format="yyyy-mm-dd">'+
-      '</td>'+
-      '<td><input type="text" id="date_of_reconstitution1'+ rowCount +'" name="date_of_reconstitution[]' + rowCount + '" value="" class="form-control datepicker" data-date-format="yyyy-mm-dd"></td>'+
-      '<td><input type="text" id="time_of_reconstitution1" name="time_of_reconstitution[]' + rowCount + '" value="" class="form-control"></td>'+
-				'<td><button type="button" id="btnAdd" class="btn btn-xs btn-primary classAdd">เพิ่มสมาชิกทีมสอบสวนโรค</button>' +
-				'<button type="button" id="btnDelete" class="deleteContact btn btn btn-danger btn-xs">ลบรายชื่อ</button></td>' +
-				'</tr>';
-			$('.maintable').append(contactdiv); // Adding these controls to Main table class
-      $('#date_of_vaccination1'+ rowCount +'').datepicker({
+  $(document).ready(function() {
+    $(document).on("click", ".classAdd", function() { //
+      var rowCount = $('.data-contact-person').length + 1;
+      var contactdiv = '<tr class="data-contact-person">' +
+        '<td>' +
+        '<select type="text" id="name_of_vaccine1" name="name_of_vaccine[]' + rowCount + '" value="" class="form-control">' +
+        '<option value="">กรุณาระบุชื่อวัคซีน</option>' +
+        <
+        blade foreach / > ($vac_list as $row)
+      '<option value="{{$row->VAC_CODE}}">{{$row->VAC_NAME_EN}}</option>' +
+      <
+      blade endforeach / >
+        '</select>' +
+        '</td>' +
+        '<td>' +
+        '<select type="text" id="vaccine_volume1" name="vaccine_volume[]' + rowCount + '" value="" class="form-control">' +
+        '<option value="">กรุณาระบุปริมาณที่ให้</option>' +
+        <
+        ? php
+      foreach($arr_vaccine_volume as $k => $v) {
+          ?
+          >
+          '<option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>' +
+          <
+          ? php
+        } ? >
+        '</select>' +
+        '</td>' +
+        '<td>' +
+        '<select type="text" id="route_of_vaccination1" name="route_of_vaccination[]' + rowCount + '" value="" class="form-control">' +
+        '<option value="">กรุณาระบุวิธีที่ให้</option>' +
+        <
+        ? php
+      foreach($arr_route_of_vaccination as $k => $v) {
+          ?
+          >
+          '<option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>' +
+          <
+          ? php
+        } ? >
+        '</select>' +
+        '</td>' +
+        '<td>' +
+        '<select type="text" id="vaccination_site1" name="vaccination_site[]' + rowCount + '" value="" class="form-control">' +
+        '  <option value="">กรุณาระบุวิธีตำแหน่ง</option>' +
+        <
+        ? php
+      foreach($arr_vaccination_site as $k => $v) {
+          ?
+          >
+          '<option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>' +
+          <
+          ? php
+        } ? >
+        '</select>' +
+        '</td>' +
+        '<td>' +
+        '<input type="number" id="dose1" name="dose[]' + rowCount + '" value="" class="form-control" min="1" max="20">' +
+        '</td>' +
+        '<td>' +
+        '<input type="text" name="date_of_vaccination[]' + rowCount + '" value="" id="date_of_vaccination1' + rowCount + '" class="form-control datepicker" data-date-format="yyyy-mm-dd">' +
+        '</td>' +
+        '<td>' +
+        '<input type="text" id="time_of_vaccination1' + rowCount + '" name="time_of_vaccination[]' + rowCount + '" value="" class="form-control">' +
+        '</td>' +
+        '<td>' +
+        '<select type="text" id="manufacturer1" name="manufacturer[]' + rowCount + '" value="" class="form-control">' +
+        '<option value="">กรุณาระบชื่อผู้ผลิต</option>' +
+        <
+        ? php
+      foreach($arr_manufacturer as $k => $v) {
+          ?
+          >
+          '<option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>' +
+          <
+          ? php
+        } ? >
+        '</select>' +
+        '</td>' +
+        '<td>' +
+        '<input type="text" id="lot_number1" name="lot_number[]' + rowCount + '" value="" class="form-control">' +
+        '</td>' +
+        '<td>' +
+        '<input type="text" id="datepicker_expiry_date1' + rowCount + '" name="expiry_date[]' + rowCount + '" value="" class="form-control" data-date-format="yyyy-mm-dd">' +
+        '</td>' +
+        '<td>' +
+        '<input type="text" id="name_of_diluent1" name="name_of_diluent[]' + rowCount + '" value="" class="form-control">' +
+        '</td>' +
+        '<td>' +
+        '<input type="text" id="lot_number_diluent1" name="lot_number_diluent[]' + rowCount + '" value="" class="form-control">' +
+        '</td>' +
+        '<td>' +
+        '<input type="text" id="datepicker_expiry_date_diluent1' + rowCount + '" name="expiry_date_diluent[]' + rowCount + '" value="" class="form-control" data-date-format="yyyy-mm-dd">' +
+        '</td>' +
+        '<td><input type="text" id="date_of_reconstitution1' + rowCount + '" name="date_of_reconstitution[]' + rowCount + '" value="" class="form-control datepicker" data-date-format="yyyy-mm-dd"></td>' +
+        '<td><input type="text" id="time_of_reconstitution1" name="time_of_reconstitution[]' + rowCount + '" value="" class="form-control"></td>' +
+        '<td><button type="button" id="btnAdd" class="btn btn-xs btn-primary classAdd">เพิ่มสมาชิกทีมสอบสวนโรค</button>' +
+        '<button type="button" id="btnDelete" class="deleteContact btn btn btn-danger btn-xs">ลบรายชื่อ</button></td>' +
+        '</tr>';
+      $('.maintable').append(contactdiv); // Adding these controls to Main table class
+      $('#date_of_vaccination1' + rowCount + '').datepicker({
         dateFormat: "yy-mm-dd"
       })
-      $('#date_of_reconstitution1'+ rowCount +'').datepicker({
+      $('#date_of_reconstitution1' + rowCount + '').datepicker({
         dateFormat: "yy-mm-dd"
       })
-      $('#datepicker_expiry_date1'+ rowCount +'').datepicker({
+      $('#datepicker_expiry_date1' + rowCount + '').datepicker({
         dateFormat: "yy-mm-dd"
       })
-      $('#datepicker_expiry_date_diluent1'+ rowCount +'').datepicker({
+      $('#datepicker_expiry_date_diluent1' + rowCount + '').datepicker({
         dateFormat: "yy-mm-dd"
       })
 
-		});
-		$(document).on("click", ".deleteContact", function() {
-			$(this).closest("tr").remove(); // closest used to remove the respective 'tr' in which I have my controls
-		});
+    });
+    $(document).on("click", ".deleteContact", function() {
+      $(this).closest("tr").remove(); // closest used to remove the respective 'tr' in which I have my controls
+    });
 
-	});
+  });
 </script>
 @stop
