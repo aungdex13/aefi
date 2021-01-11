@@ -30,6 +30,7 @@ $arr_route_of_vaccination = load_route_of_vaccination();
 $arr_vaccination_site = load_vaccination_site();
 $arr_manufacturer = load_manufacturer();
 $arr_provinces = load_provinces();
+$arr_title_name = load_title_name();
  ?>
   <h1>
     แบบรายงานอาการภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรค
@@ -159,7 +160,7 @@ foreach ($aecode as $value) {
                         </div>
                         <div class="col-lg-4">
                           <select type="text" class="form-control" id="title_name" name="title_name" required onchange="showDiv1('hidden_div1', this)">
-                            <option value="{{ $data[0]->title_name }}">{{ $data[0]->title_name }}</option>
+                            <option value="{{ $data[0]->title_name }}">{{ $arr_title_name[$data[0]->title_name] }}</option>
                             <option value="">กรุณาเลือก</option>
                             {{-- < ?php foreach ($mas_title_th as $key_title => $value_title) : ?> --}}
                             {{-- } --}}
@@ -172,7 +173,8 @@ foreach ($aecode as $value) {
                           {{-- <input type="text" id="title_name" name="title_name" class="form-control" placeholder="คำนำหน้าชื่อ"> --}}
                           <!-- /.p_id tname  -->
                         </div>
-                        <div class="col-lg-4" id="hidden_div1" style="display: none;">
+                        <div class="col-lg-4" id="hidden_div1" @if ($data[0]->title_name != 99)
+                          style="display: none;" @endif>
                           <input type="text" id="title_name_other" name="title_name_other" class="form-control" placeholder="คำนำหน้าชื่ออื่นๆ">
                           {{-- <input type="text" id="title_name" name="title_name" class="form-control" placeholder="คำนำหน้าชื่อ"> --}}
                           <!-- /.p_id tname  -->

@@ -270,6 +270,42 @@ if (! function_exists('provinces')) {
 		}
 	}
 
+  if (! function_exists('title_name')) {
+      function load_title_name() {
 
+  		$title_name = array(
+  								'1'=>'นาย',
+  								'2'=>'นางสาว',
+  								'3'=>'นาง',
+  								'99'=>'อื่นๆ',
+  								''=>''
+  														);
+  		return 	$title_name;
+      }
+  }
+  if (! function_exists('nationality')) {
+      function load_nationality() {
 
+  		$nationality = array(
+  								'1'=>'ไทย',
+  								'2'=>'พม่า',
+  								'3'=>'ลาว',
+  								'4'=>'อื่นๆ',
+  								''=>''
+  														);
+  		return 	$nationality;
+      }
+  }
+
+  if (! function_exists('necessary_to_investigate')) {
+      function load_necessary_to_investigate() {
+
+      $necessary_to_investigate = array(
+                  '1'=>'ไม่จำเป็น',
+                  '2'=>'จำเป็น',
+                  ''=>''
+                              );
+      return 	$necessary_to_investigate;
+      }
+  }
  ?>

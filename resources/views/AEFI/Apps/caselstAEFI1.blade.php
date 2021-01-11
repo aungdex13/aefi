@@ -10,6 +10,8 @@ $arr_vaccine_volume = load_vaccine_volume();
 $arr_route_of_vaccination = load_route_of_vaccination();
 $arr_vaccination_site = load_vaccination_site();
 $arr_manufacturer = load_manufacturer();
+$arr_load_nationality = load_nationality();
+$arr_necessary_to_investigate = load_necessary_to_investigate();
 
 //dd($data);
  ?>
@@ -67,13 +69,13 @@ $arr_manufacturer = load_manufacturer();
               <p style="text-align:center;">{{ $value->age_while_sick_year }}</p>
             </td>
             <td>
-              <p style="text-align:center;">{{ $value->nationality }} {{ $value->other_nationality }}</p>
+              <p style="text-align:center;">{{ $arr_load_nationality[$value->nationality] }} {{ $value->other_nationality }}</p>
             </td>
             <td>
-              <p style="text-align:center;">ตำบล : {{ $value->subdistrict }}<br> อำเภอ : {{ $value->district }}<br> จังหวัด : {{ $value->province }}</p>
+              <p style="text-align:center;">ตำบล : {{ isset($listsubdistrict[$value->subdistrict]) ?  $listsubdistrict[$value->subdistrict] : "ไม่ระบุข้อมูล"}}<br> อำเภอ : {{ isset($listDistrict[$value->district]) ? $listDistrict[$value->district]: "ไม่ระบุข้อมูล" }}<br> จังหวัด :{{ isset($listProvince[ $value->province]) ?$listProvince[ $value->province] : "ไม่ระบุข้อมูล"}}</p>
             </td>
             <td>
-              <p style="text-align:center;">{{ $value->necessary_to_investigate }}</p>
+              <p style="text-align:center;">{{ $arr_necessary_to_investigate[$value->necessary_to_investigate] }}</p>
             </td>
             <td>
               <div class="btn-group">

@@ -36,8 +36,16 @@
 							'necessary_to_investigate')
 		 ->where('status',null)
 		 ->get();
+		 $listProvince=$this->listProvince();
+		 $listDistrict=$this->listDistrict();
+		 $listsubdistrict=$this->listsubdistrict();
 		 //dd($caselst);
-		 return view('AEFI.Apps.caselstAEFI1')->with('data', $caselstF1);
+		 return view('AEFI.Apps.caselstAEFI1')
+			->with('listProvince', $listProvince)
+			->with('listDistrict', $listDistrict)
+			->with('listsubdistrict', $listsubdistrict)
+			->with('data', $caselstF1);
+
 
 	 	}
 		public function selectdatatablecaseAEFI1group()

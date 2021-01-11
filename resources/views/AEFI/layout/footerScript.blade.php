@@ -409,6 +409,14 @@ $(document).ready(function() {
         $('#other_symptom_position_text').val('');
       }
     });
+    $('input[name="symptom_position"]').on('click', function() {
+      if ($(this).val() == '4') {
+        $('#other_symptom_position').show();
+      } else {
+        $('#other_symptom_position').hide();
+        $('#other_symptom_position_text').val('');
+      }
+    });
     $('input[name="funeral"]').on('click', function() {
       if ($(this).val() == '3') {
         $('#other_address_funeral').show();
@@ -417,12 +425,12 @@ $(document).ready(function() {
         $('#other_address_funeral_text').val('');
       }
     });
-    $('input[name="seriousness_of_the_symptoms"]').on('click', function() {
-      if ($(this).val() == '2') {
-        $('#other_seriousness_of_the_symptoms').show();
+    $('input[name="nationality"]').on('click', function() {
+      if ($(this).val() == '4') {
+        $('#other_nationality_d').show();
       } else {
-        $('#other_seriousness_of_the_symptoms').hide();
-        $('#other_seriousness_of_the_symptoms_text').val('');
+        $('#other_nationality_d').hide();
+        $('#other_nationality_text').val('');
       }
     });
   });

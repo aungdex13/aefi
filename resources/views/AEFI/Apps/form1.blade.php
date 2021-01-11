@@ -339,8 +339,8 @@ foreach ($aecode as $value) {
                             </div>
                           </div>
                           <div class="col-lg-4">
-                            <div id="other_nationality" style="display: none">
-                              <input type="text" id="other_nationality_text" name="other_nationality" class="form-control" placeholder="ระบุสัญชาติ" hidden="true">
+                            <div id="other_nationality_d" style="display: none">
+                              <input type="text" id="other_nationality_text" name="other_nationality" class="form-control" placeholder="ระบเชื้อชาติ" hidden="true">
                             </div>
                           </div>
                         </div>
