@@ -64,7 +64,7 @@
 		  </span>
 		</a>
 		<ul class="treeview-menu">
-		  <li><a href="{{ route('dataf1export') }}"><i class="fa fa-circle-o"></i>รายงาน AEFI 1 ปี 2562 </a></li>
+		  <li><a href="{{ route('dataf1export') }}"><i class="fa fa-circle-o"></i>รายงาน AEFI 1 </a></li>
 		  <li><a href="{{ route('AEFI506') }}"><i class="fa fa-circle-o"></i>รายงาน ๕๐๖</a></li>
 		</ul>
 	  </li>
