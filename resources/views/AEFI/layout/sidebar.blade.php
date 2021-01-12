@@ -64,11 +64,11 @@
 		  </span>
 		</a>
 		<ul class="treeview-menu">
-		  <li><a href="{{ route('lstf1') }}"><i class="fa fa-circle-o"></i>Dashboard</a></li>
+		  <li><a href="{{ route('dataf1export') }}"><i class="fa fa-circle-o"></i>รายงาน AEFI 1 ปี 2562 </a></li>
 		  <li><a href="{{ route('AEFI506') }}"><i class="fa fa-circle-o"></i>รายงาน ๕๐๖</a></li>
 		</ul>
 	  </li>
-	  <li class="treeview">
+	  {{-- <li class="treeview">
 		<a href="#">
 		  <i class="fa fa-table"></i> <span>รายงาน</span>
 		  <span class="pull-right-container">
@@ -80,7 +80,7 @@
 		  <li><a href="{{ route('dataf2export') }}"><i class="fa fa-circle-o"></i>รายงาน AEFI 2 ปี 2562</a></li>
 		  <li><a href="{{ route('lstf2') }}"><i class="fa fa-circle-o"></i>รายงานการสอบสวนโรค</br>รายจังหวัด ปี 2560</a></li>
 		</ul>
-	  </li>
+	  </li> --}}
 
 	</ul>
   </section>

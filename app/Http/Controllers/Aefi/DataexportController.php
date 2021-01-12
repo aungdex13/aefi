@@ -24,6 +24,7 @@ class DataexportController extends Controller
 
 	public function selectdata(){
 		$this->result = DB::table('aefi_form_1')
+		->where('status','=',null)
 		->get();
 		return $this->result;
 
