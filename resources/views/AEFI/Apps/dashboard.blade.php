@@ -28,7 +28,7 @@ $arr_manufacturer = load_manufacturer();
         <div class="col-md-12">
           <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">Number of AEFI cases by month of onset Year 2019</h3>
+              <h3 class="box-title">Number of AEFI cases by month of onset Year {{$yearnow}}</h3>
 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -52,23 +52,23 @@ $arr_manufacturer = load_manufacturer();
               <div class="row">
                 <div class="col-md-8">
                   <p class="text-center">
-                    <strong>จำนวนผู้ป่วยรายเดือน: 1 มกราคม, 2562 - 31 ธันวาคม, 2562</strong>
+                    <strong>จำนวนผู้ป่วยรายเดือน: 1 มกราคม {{$yearnow+543}} - 31 ธันวาคม {{$yearnow+543}}</strong>
                   </p>
 
                   <div class="chart">
                     <!-- Sales Chart Canvas -->
-                    <div id="chartContainer" style="height: 180px;"></div>
+                    <div id="chartContainer" style="height: 290px;"></div>
                   </div>
                   <!-- /.chart-responsive -->
                 </div>
                 <!-- /.col -->
                 <div class="col-md-4">
                   <p class="text-center">
-                    <strong>จำนวนผู้ป่วยในแต่ละสัปดาห์</strong>
+                    <strong>จำนวนผู้ป่วยรายภาคปี 2564</strong>
                   </p>
 
                   <div class="progress-group">
-                    <span class="progress-text">ผู้ป่วย ชาย</span>
+                    <span class="progress-text">ภาคเหนือ</span>
                     <span class="progress-number"><b>160</b>/คน</span>
 
                     <div class="progress sm">
@@ -77,7 +77,7 @@ $arr_manufacturer = load_manufacturer();
                   </div>
                   <!-- /.progress-group -->
                   <div class="progress-group">
-                    <span class="progress-text">ผู้ป่วย หญิง</span>
+                    <span class="progress-text">ภาคตะวันออกเฉียงเหนือ</span>
                     <span class="progress-number"><b>310</b>/คน</span>
 
                     <div class="progress sm">
@@ -86,7 +86,7 @@ $arr_manufacturer = load_manufacturer();
                   </div>
                   <!-- /.progress-group -->
                   <div class="progress-group">
-                    <span class="progress-text">ผู้ป่วยใน</span>
+                    <span class="progress-text">ภาคตะวันตก</span>
                     <span class="progress-number"><b>480</b>/คน</span>
 
                     <div class="progress sm">
@@ -95,11 +95,29 @@ $arr_manufacturer = load_manufacturer();
                   </div>
                   <!-- /.progress-group -->
                   <div class="progress-group">
-                    <span class="progress-text">ผู้ป่วยนอก</span>
+                    <span class="progress-text">ภาคกลาง</span>
                     <span class="progress-number"><b>250</b>/คน</span>
 
                     <div class="progress sm">
                       <div class="progress-bar progress-bar-yellow" style="width: 80%"></div>
+                    </div>
+                  </div>
+                  <!-- /.progress-group -->
+                  <div class="progress-group">
+                    <span class="progress-text">ภาคตะวันออก</span>
+                    <span class="progress-number"><b>250</b>/คน</span>
+
+                    <div class="progress sm">
+                      <div class="progress-bar progress-bar-Tomato" style="width: 80%"></div>
+                    </div>
+                  </div>
+                  <!-- /.progress-group -->
+                  <div class="progress-group">
+                    <span class="progress-text">ภาคใต้</span>
+                    <span class="progress-number"><b>250</b>/คน</span>
+
+                    <div class="progress sm">
+                      <div class="progress-bar progress-bar-orange" style="width: 80%"></div>
                     </div>
                   </div>
                   <!-- /.progress-group -->

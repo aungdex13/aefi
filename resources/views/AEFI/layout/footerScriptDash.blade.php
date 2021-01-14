@@ -27,6 +27,7 @@
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <script>
 	$(function() {
+
 		var linechart = new CanvasJS.Chart("linechartContainer", {
 			animationEnabled: true,
 			theme: "light2",
@@ -39,7 +40,7 @@
 			data: [{
 				type: "line",
 				dataPoints: [{
-						y: 450
+						y: 4
 					},
 					{
 						y: 414
@@ -178,114 +179,76 @@
 				valueFormatString: "MMMM"
 			},
 			axisY: {
-				title: "จำนวน",
+				title: "จำนวนผู้ป่วย",
 			},
 			data: [{
 					type: "line",
 					name: "AEFI1",
-					dataPoints: [{
-							x: new Date(2019, 00),
-							y: 1613000
+					dataPoints: [
+						// @ foreach($count_month as $row)
+						{
+							x: new Date({{$yearnow}}, 0),
+							y: {{isset($count_month[0]->count_patient) ? $count_month[0]->count_patient : 0}}
 						},
 						{
-							x: new Date(2019, 01),
-							y: 2821000
+							x: new Date({{$yearnow}}, 1),
+							y: {{isset($count_month[1]->count_patient) ? $count_month[1]->count_patient : 0}}
 						},
 						{
-							x: new Date(2019, 02),
-							y: 2000000
+							x: new Date({{$yearnow}}, 2),
+							y: {{isset($count_month[2]->count_patient) ? $count_month[2]->count_patient : 0}}
 						},
 						{
-							x: new Date(2019, 03),
-							y: 1397000
+							x: new Date({{$yearnow}}, 3),
+							y: {{isset($count_month[3]->count_patient) ? $count_month[3]->count_patient : 0}}
 						},
 						{
-							x: new Date(2019, 04),
-							y: 2506000
+							x: new Date({{$yearnow}}, 4),
+							y: {{isset($count_month[4]->count_patient) ? $count_month[4]->count_patient : 0}}
 						},
 						{
-							x: new Date(2019, 05),
-							y: 2798000
+							x: new Date({{$yearnow}}, 5),
+							y: {{isset($count_month[5]->count_patient) ? $count_month[5]->count_patient : 0}}
 						},
 						{
-							x: new Date(2019, 06),
-							y: 3386000
+							x: new Date({{$yearnow}}, 6),
+							y: {{isset($count_month[6]->count_patient) ? $count_month[6]->count_patient : 0}}
 						},
 						{
-							x: new Date(2019, 07),
-							y: 6704000
+							x: new Date({{$yearnow}}, 7),
+							y: {{isset($count_month[7]->count_patient) ? $count_month[7]->count_patient : 0}}
 						},
 						{
-							x: new Date(2019, 08),
-							y: 6026000
+							x: new Date({{$yearnow}}, 8),
+							y: {{isset($count_month[8]->count_patient) ? $count_month[8]->count_patient : 0}}
 						},
 						{
-							x: new Date(2019, 09),
-							y: 2394000
+							x: new Date({{$yearnow}}, 9),
+							y: {{isset($count_month[9]->count_patient) ? $count_month[9]->count_patient : 0}}
 						},
 						{
-							x: new Date(2019, 10),
-							y: 2140000
+							x: new Date({{$yearnow}}, 10),
+							y: {{isset($count_month[10]->count_patient) ? $count_month[10]->count_patient : 0}}
 						},
 						{
-							x: new Date(2019, 11),
-							y: 2140000
-						}
+							x: new Date({{$yearnow}}, 11),
+							y: {{isset($count_month[11]->count_patient) ? $count_month[11]->count_patient : 0}}
+						},
+						// {
+						// 	x: new Date({{$yearnow}}, 12),
+						// 	y: {{isset($count_month[12]->count_patient) ? $count_month[12]->count_patient : 0}}
+						// },
+
+						 // @ endforeach
 					]
 				},
-				{
-					type: "line",
-					name: "AEFI2",
-					dataPoints: [{
-							x: new Date(2019, 00, 01),
-							y: 2140000
-						},
-						{
-							x: new Date(2019, 01, 01),
-							y: 6704000
-						},
-						{
-							x: new Date(2019, 02, 01),
-							y: 1190000
-						},
-						{
-							x: new Date(2019, 03, 01),
-							y: 1180000
-						},
-						{
-							x: new Date(2019, 04, 01),
-							y: 2140000
-						},
-						{
-							x: new Date(2019, 05, 01),
-							y: 1270000
-						},
-						{
-							x: new Date(2019, 06, 01),
-							y: 1003000
-						},
-						{
-							x: new Date(2019, 07, 01),
-							y: 1000300
-						},
-						{
-							x: new Date(2019, 08, 01),
-							y: 1358000
-						},
-						{
-							x: new Date(2019, 09, 01),
-							y: 1400010
-						},
-						{
-							x: new Date(2019, 10, 01),
-							y: 1480000
-						},
-						{
-							x: new Date(2019, 11, 01),
-							y: 1000500
-						},
-					]
-				},
+				// {
+				// 	type: "line",
+				// 	name: "AEFI2",
+				// 	dataPoints: [{
+				// 			x: new Date(2019, 00, 01),
+				// 			y: 2140000
+				// 		},
 			]
 		});
 		chart.render();
@@ -450,8 +413,8 @@
 		var data = google.visualization.arrayToDataTable([
 			['จังหวัด', 'จำนวนผู้ป่วย'],
 			@foreach($count_prov as $row)
-			['{{isset($listProvince[$row->province]) ? $listProvince[$row->province]:""}}', {{$row->count_prov}}], 
-			@endforeach ['อุทัยธานี', 20],
+			['{{isset($listProvince[$row->province]) ? $listProvince[$row->province]:""}}', {{$row->count_prov}}],
+			@endforeach
 		]);
 
 		var options = {

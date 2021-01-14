@@ -61,15 +61,6 @@ class AEFIController extends Controller
 	public function login(){
 		return view('AEFI.Apps.login');
 	}
-	public function dashboard(){
-    $count_prov = $this->count_prov();
-    $listProvince=$this->listProvince();
-    // dd($count_prov);
-		return view('AEFI.Apps.dashboard',compact(
-		 'count_prov',
-     'listProvince'
-	 ));
-	}
 	public function AEFI506(){
 		return view('AEFI.Apps.AEFI506');
 	}
