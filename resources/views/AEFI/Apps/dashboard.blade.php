@@ -33,7 +33,7 @@ $arr_manufacturer = load_manufacturer();
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                 </button>
-                <div class="btn-group">
+                {{-- <div class="btn-group">
                   <button type="button" class="btn btn-box-tool dropdown-toggle" data-toggle="dropdown">
                     <i class="fa fa-wrench"></i></button>
                   <ul class="dropdown-menu" role="menu">
@@ -44,7 +44,7 @@ $arr_manufacturer = load_manufacturer();
                     <li><a href="#">Separated link</a></li>
                   </ul>
                 </div>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button> --}}
               </div>
             </div>
             <!-- /.box-header -->
@@ -69,55 +69,55 @@ $arr_manufacturer = load_manufacturer();
 
                   <div class="progress-group">
                     <span class="progress-text">ภาคเหนือ</span>
-                    <span class="progress-number"><b>160</b>/คน</span>
+                    <span class="progress-number"><b>{{$count_north[0]->count_north}}</b>/คน</span>
 
                     <div class="progress sm">
-                      <div class="progress-bar progress-bar-aqua" style="width: 80%"></div>
+                      <div class="progress-bar progress-bar-aqua" style="width: {{$count_north[0]->count_north}}px"></div>
                     </div>
                   </div>
                   <!-- /.progress-group -->
                   <div class="progress-group">
                     <span class="progress-text">ภาคตะวันออกเฉียงเหนือ</span>
-                    <span class="progress-number"><b>310</b>/คน</span>
+                    <span class="progress-number"><b>{{$count_northeast[0]->count_northeast}}</b>/คน</span>
 
                     <div class="progress sm">
-                      <div class="progress-bar progress-bar-red" style="width: 80%"></div>
+                      <div class="progress-bar progress-bar-red" style="width: {{$count_northeast[0]->count_northeast}}px"></div>
                     </div>
                   </div>
                   <!-- /.progress-group -->
                   <div class="progress-group">
                     <span class="progress-text">ภาคตะวันตก</span>
-                    <span class="progress-number"><b>480</b>/คน</span>
+                    <span class="progress-number"><b>{{$count_western[0]->count_western}}</b>/คน</span>
 
                     <div class="progress sm">
-                      <div class="progress-bar progress-bar-green" style="width: 80%"></div>
+                      <div class="progress-bar progress-bar-green" style="width: {{$count_western[0]->count_western}}px"></div>
                     </div>
                   </div>
                   <!-- /.progress-group -->
                   <div class="progress-group">
                     <span class="progress-text">ภาคกลาง</span>
-                    <span class="progress-number"><b>250</b>/คน</span>
+                    <span class="progress-number"><b>{{$count_central[0]->count_central}}</b>/คน</span>
 
                     <div class="progress sm">
-                      <div class="progress-bar progress-bar-yellow" style="width: 80%"></div>
+                      <div class="progress-bar progress-bar-yellow" style="width: {{$count_central[0]->count_central}}px"></div>
                     </div>
                   </div>
                   <!-- /.progress-group -->
                   <div class="progress-group">
                     <span class="progress-text">ภาคตะวันออก</span>
-                    <span class="progress-number"><b>250</b>/คน</span>
+                    <span class="progress-number"><b>{{$count_eastern[0]->count_eastern}}</b>/คน</span>
 
                     <div class="progress sm">
-                      <div class="progress-bar progress-bar-Tomato" style="width: 80%"></div>
+                      <div class="progress-bar progress-bar-Tomato" style="width: {{$count_eastern[0]->count_eastern}}px"></div>
                     </div>
                   </div>
                   <!-- /.progress-group -->
                   <div class="progress-group">
                     <span class="progress-text">ภาคใต้</span>
-                    <span class="progress-number"><b>250</b>/คน</span>
+                    <span class="progress-number"><b>{{$count_south[0]->count_south}}</b>/คน</span>
 
                     <div class="progress sm">
-                      <div class="progress-bar progress-bar-orange" style="width: 80%"></div>
+                      <div class="progress-bar progress-bar-orange" style="width: {{$count_south[0]->count_south}}px"></div>
                     </div>
                   </div>
                   <!-- /.progress-group -->
@@ -141,7 +141,7 @@ $arr_manufacturer = load_manufacturer();
           <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
             </button>
-            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+            {{-- <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button> --}}
           </div>
         </div>
         <!-- /.box-header -->
@@ -190,7 +190,7 @@ $arr_manufacturer = load_manufacturer();
           <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
             </button>
-            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+            {{-- <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button> --}}
           </div>
         </div>
         <!-- /.box-header -->
