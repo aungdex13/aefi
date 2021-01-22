@@ -28,7 +28,7 @@ $arr_manufacturer = load_manufacturer();
         <div class="col-md-12">
           <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">Number of AEFI cases by month of onset Year {{$yearnow}}</h3>
+              {{-- <h3 class="box-title">Number of AEFI cases by month of onset Year {{$yearnow}}</h3> --}}
 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -52,7 +52,7 @@ $arr_manufacturer = load_manufacturer();
               <div class="row">
                 <div class="col-md-8">
                   <p class="text-center">
-                    <strong>จำนวนผู้ป่วยรายเดือน: 1 มกราคม {{$yearnow+543}} - 31 ธันวาคม {{$yearnow+543}}</strong>
+                    {{-- <strong>จำนวนผู้ป่วยรายเดือน: 1 มกราคม {{$yearnow+543}} - 31 ธันวาคม {{$yearnow+543}}</strong> --}}
                   </p>
 
                   <div class="chart">

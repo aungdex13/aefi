@@ -185,9 +185,9 @@
 			return $province_arr;
 		}
 		protected function listDistrict(){
-			$district = DB::table('tbl_amphures')->select('amphur_id','amphur_name')->get();
+			$district = DB::table('tbl_amphures')->select('amphur_code','amphur_name')->get();
 			foreach ($district as  $value) {
-				$district_arr[$value->amphur_id] =trim($value->amphur_name);
+				$district_arr[$value->amphur_code] =trim($value->amphur_name);
 			}
 			// dd($province_arr);
 			return $district_arr;

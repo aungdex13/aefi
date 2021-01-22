@@ -114,7 +114,7 @@ if (! function_exists('Underlying_disease')) {
 								'15'=>'Diseases of the genitourinary system',
 								'16'=>'Congenital malformations',
  								'17'=>'Deformations',
-  								'18'=>'Chromosomal abnormalities'
+  							'18'=>'Chromosomal abnormalities'
 														);
 		return 	$underlying_disease;
     }
@@ -277,6 +277,8 @@ if (! function_exists('provinces')) {
   								'1'=>'นาย',
   								'2'=>'นางสาว',
   								'3'=>'นาง',
+                  '4'=>'ด.ช.',
+                  '5'=>'ด.ญ.',
   								'99'=>'อื่นๆ',
   								''=>''
   														);

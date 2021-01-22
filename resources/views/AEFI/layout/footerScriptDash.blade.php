@@ -21,7 +21,7 @@
 <script src="/asset/bower_components/chart.js/Chart.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 {{-- <script src="/asset/dist/js/pages/chartdashbard.js"></script> --}}
-<!-- AdminLTE for demo purposes -->
+<!-- AdminLTE for demo purposes s-->
 <script src="/asset/dist/js/demo.js"></script>
 
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>

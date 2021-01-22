@@ -153,6 +153,10 @@
 		$assessment9 = $req ->input ('assessment9');
 		$assessment10 = $req ->input ('assessment10');
 		$date_entry = date('Y-m-d') ;
+		$transverse_myelitis = $req ->input ('transverse_myelitis');
+		$adem = $req ->input ('adem');
+		$acute_myocardial = $req ->input ('acute_myocardial');
+		$ards = $req ->input ('ards');
 		$data = array(
 			'id_case'=>$id_case,
 			'hn'=>$hn,
@@ -269,8 +273,11 @@
 			'assessment8'=>$assessment8,
 			'assessment9'=>$assessment9,
 			'assessment10'=>$assessment10,
+			'transverse_myelitis' => $transverse_myelitis,
+			'adem' => $adem,
+			'acute_myocardial' => $acute_myocardial,
+			'ards' => $ards,
 			'date_entry'=>$date_entry
-
 		);
 	// echo($data);
 	  $res1	= DB::table('aefi_form_1')->insert($data);
@@ -286,11 +293,11 @@ if ($res1) {
 		$manufacturer =$req ->input('manufacturer');
 		$lot_number = $req ->input('lot_number');
 		$expiry_date = $req ->input('expiry_date');
-		$name_of_diluent = $req ->input('name_of_diluent');
+		// $name_of_diluent = $req ->input('name_of_diluent');
 		$lot_number_diluent = $req ->input('lot_number_diluent');
 		$expiry_date_diluent = $req ->input('expiry_date_diluent');
-		$date_of_reconstitution = $req ->input('date_of_reconstitution');
-		$time_of_reconstitution = $req ->input('time_of_reconstitution');
+		// $date_of_reconstitution = $req ->input('date_of_reconstitution');
+		// $time_of_reconstitution = $req ->input('time_of_reconstitution');
 $x=0;
 	 for ($i=0; $i < count($name_of_vaccine); $i++) {
 		 $data_vac[]  = [
@@ -306,11 +313,11 @@ $x=0;
 		'manufacturer'=>$manufacturer[$i],
 		'lot_number'=>$lot_number[$i],
 		'expiry_date'=>$expiry_date[$i],
-		'name_of_diluent'=>$name_of_diluent[$i],
+		// 'name_of_diluent'=>$name_of_diluent[$i],
 		'lot_number_diluent'=>$lot_number_diluent[$i],
 		'expiry_date_diluent'=>$expiry_date_diluent[$i],
-		'date_of_reconstitution'=>$date_of_reconstitution[$i],
-		'time_of_reconstitution'=>$time_of_reconstitution[$i],
+		// 'date_of_reconstitution'=>$date_of_reconstitution[$i],
+		// 'time_of_reconstitution'=>$time_of_reconstitution[$i],
 		'date_entry'=>$date_entry
 		];
 		$x++;

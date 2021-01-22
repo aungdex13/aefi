@@ -26,9 +26,9 @@ class AEFIController extends Controller
 		$id=$request->get('select');
 		$result=array();
 		$query=DB::table('tbl_provinces')
-		->join('tbl_amphures','tbl_provinces.province_id','=','tbl_amphures.province_id')
+		->join('tbl_amphures','tbl_provinces.province_code','=','tbl_amphures.province_code')
 		->select('tbl_amphures.amphur_name','tbl_amphures.amphur_id','tbl_amphures.amphur_code')
-		->where('tbl_provinces.province_id',$id)
+		->where('tbl_provinces.province_code',$id)
 		->get();
 		$output='<option value="">   อำเภอ   </option>';
 			foreach ($query as $row) {
