@@ -1888,7 +1888,7 @@ foreach ($aecode as $value) {
                       <div class="form-group">
                         <div class="col-lg-12">
                           <label>ความคิดเห็นเพิ่มเติม</label>
-                          <textarea class="form-control" rows="3" id="more_reviews" name="more_reviews">{{$data[0]->other_reporter_position}}</textarea>
+                          <textarea class="form-control" rows="3" id="more_reviews" name="more_reviews">{{$data[0]->more_reviews}}</textarea>
                         </div>
                       </div>
                     </div>
