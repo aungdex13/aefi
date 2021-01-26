@@ -44,6 +44,7 @@ $arr_necessary_to_investigate = load_necessary_to_investigate();
         <table class="table table-bordered" id="case_lst" class="display" style="width:100%">
           <thead>
             <tr>
+              <th hidden>เลขที่ผู้ป่วย HN</th>
               <th>เลขที่ผู้ป่วย HN</th>
               <th>เลขที่ผู้ป่วย AN</th>
               <th>ชื่อ-นามสกุลผู้ป่วย</th>
@@ -56,8 +57,11 @@ $arr_necessary_to_investigate = load_necessary_to_investigate();
           </thead>
           <?php foreach($data as $value) : ?>
           <tr class="data-contact-person">
+            <td hidden>
+              <p style="text-align:center;">{{ isset($value->id) ? $value->id : "-"}}</p>
+            </td>
             <td>
-              <p style="text-align:center;">{{ $value->hn }}</p>
+              <p style="text-align:center;">{{ isset($value->hn) ? $value->hn : "-"}}</p>
             </td>
             <td>
               <p style="text-align:center;">{{ $value->an }}</p>

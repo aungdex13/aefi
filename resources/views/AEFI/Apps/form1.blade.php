@@ -1897,7 +1897,7 @@ foreach ($aecode as $value) {
       var contactdiv = '<tr class="data-contact-person">' +
         '<td>' +
         '<select type="text" id="name_of_vaccine1" name="name_of_vaccine[]' + rowCount + '" value="" class="form-control">' +
-        '<option value="">กรุณาระบชนิดวัคซีน</option>' +
+        '<option value="">กรุณาระบุชนิดวัคซีน</option>' +
         @foreach($vac_list as $row)
       '<option value="{{$row->VAC_CODE}}">{{$row->VAC_NAME_EN}}</option>' +
       @endforeach

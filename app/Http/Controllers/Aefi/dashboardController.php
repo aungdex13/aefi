@@ -24,7 +24,9 @@
 			$count_eastern = $this->count_eastern();
 			$count_south = $this->count_south();
 			$count_western = $this->count_western();
-		  // dd($count_south);
+			$count_seriousness_of_the_symptoms = $this->count_seriousness_of_the_symptoms();
+			$count_seriousness_of_the_symptoms_m = $this->count_seriousness_of_the_symptoms_m();
+			$count_seriousness_of_the_symptoms_f = $this->count_seriousness_of_the_symptoms_f();
 			return view('AEFI.Apps.dashboard',compact(
 			 'count_prov',
 			 'listProvince',
@@ -35,25 +37,30 @@
 			 'count_central',
 			 'count_eastern',
 			 'count_south',
-			 'count_western'
+			 'count_western',
+			 'count_seriousness_of_the_symptoms',
+			 'count_seriousness_of_the_symptoms_m',
+			 'count_seriousness_of_the_symptoms_f'
 		 ));
 		}
 		public function selectdatadash()
 		{
-		$caselstF1 = DB::select('select id_case,hn,
-		an,
-		first_name,
-		sur_name,
-		age_while_sick_year,
-		nationality,
-		gender,
-		other_nationality,
-		village_no,
-		province,
-		district,
-		subdistrict,
-		necessary_to_investigate
-		FROM aefi_form_1' );
+		$caselstF1 = DB::table('aefi_form_1')
+										->select('id,
+															id_case,
+															hn,
+															an,
+															first_name,
+															sur_name,
+															age_while_sick_year,
+															nationality,
+															gender,
+															other_nationality,
+															village_no,
+															province,
+															district,
+															subdistrict,
+															necessary_to_investigate');
 		 //dd($caselst);
 		 return view('AEFI.Apps.caselstAEFI1')->with('data', $caselstF1);
 
@@ -274,5 +281,41 @@
 			}
 			// dd($province_arr);
 			return $province_arr;
+		}
+		protected function count_seriousness_of_the_symptoms(){
+				 // dd($south->province_code);
+			$count_seriousness_of_the_symptoms = DB::table('aefi_form_1')
+										 ->select(DB::raw('count(*) as count_seriousness_of_the_symptoms,seriousness_of_the_symptoms'))
+										 ->groupBy('seriousness_of_the_symptoms')
+										 ->where('status',null)
+										 // ->groupBy('count_south')
+										 ->get();
+
+				 // dd($count_south);
+			return $count_seriousness_of_the_symptoms;
+		}
+		protected function count_seriousness_of_the_symptoms_m(){
+				 // dd($south->province_code);
+			$count_seriousness_of_the_symptoms_m = DB::table('aefi_form_1')
+										 ->select(DB::raw('count(*) as count_seriousness_of_the_symptoms,seriousness_of_the_symptoms'))
+										 ->where('gender', '=', '1')
+										 ->where('status',null)
+										 ->groupBy('seriousness_of_the_symptoms')
+										 ->get();
+
+				 // dd($count_south);
+			return $count_seriousness_of_the_symptoms_m;
+		}
+		protected function count_seriousness_of_the_symptoms_f(){
+				 // dd($south->province_code);
+			$count_seriousness_of_the_symptoms_f = DB::table('aefi_form_1')
+										 ->select(DB::raw('count(*) as count_seriousness_of_the_symptoms,seriousness_of_the_symptoms'))
+										 ->where('gender', '=', '2')
+										 ->where('status',null)
+										 ->groupBy('seriousness_of_the_symptoms')
+										 ->get();
+
+				 // dd($count_south);
+			return $count_seriousness_of_the_symptoms_f;
 		}
 }

@@ -310,4 +310,15 @@ if (! function_exists('provinces')) {
       return 	$necessary_to_investigate;
       }
   }
+  if (! function_exists('seriousness_of_the_symptoms')) {
+      function load_seriousness_of_the_symptoms() {
+
+      $seriousness_of_the_symptoms = array(
+                  '1'=>'ไม่ร้ายแรง',
+                  '2'=>'ร้ายแรง',
+                  ''=>''
+                              );
+      return 	$seriousness_of_the_symptoms;
+      }
+  }
  ?>

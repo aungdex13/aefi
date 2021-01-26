@@ -177,6 +177,10 @@ $(document).ready(function() {
       dateFormat: "yy-mm-dd"
     })
     //Date picker
+    $('.datepicker_expiry_date_diluent').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+    //Date picker
     $('#datepicker_expiry_date_diluent1').datepicker({
       dateFormat: "yy-mm-dd"
     })
@@ -234,6 +238,10 @@ $(document).ready(function() {
     })
     //Date picker
     $('#date_of_reconstitution5').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+    //Date picker
+    $('.date_of_vaccination').datepicker({
       dateFormat: "yy-mm-dd"
     })
     //Date picker

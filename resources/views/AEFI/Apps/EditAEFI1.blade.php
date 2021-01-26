@@ -246,7 +246,7 @@ foreach ($aecode as $value) {
                             <div class="input-group-addon">
                               <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" name="birthdate" class="form-control pull-right" id="datepicker_bdate" value="{{$data[0]->birthdate}}">
+                            <input type="text" name="birthdate" class="form-control pull-right" id="datepicker_bdate" value="{{$data[0]->birthdate}}"  data-date-format="yyyy-mm-dd">
                           </div>
                         </div>
                       </div>
@@ -740,6 +740,7 @@ foreach ($aecode as $value) {
                       </tr>
                     </thead>
                     <tbody>
+
                       <?php foreach($datavac as $value) : ?>
                       <tr class="data-contact-person">
                         <td>
@@ -788,7 +789,7 @@ foreach ($aecode as $value) {
                           <input type="number" id="dose1" name="dose[]" value="{{isset($value->dose) ? $value->dose:""}}" class="form-control" min="1" max="20">
                         </td>
                         <td>
-                          <input type="text" name="date_of_vaccination[]" value="{{isset($value->date_of_vaccination) ? $value->date_of_vaccination:""}}" id="date_of_vaccination1" class="form-control datepicker" data-date-format="yyyy-mm-dd">
+                          <input type="text" name="date_of_vaccination[]" value="{{isset($value->date_of_vaccination) ? $value->date_of_vaccination:""}}" id="date_of_vaccination1" class="form-control datepicker date_of_vaccination" data-date-format="yyyy-mm-dd">
                         </td>
                         <td>
                           <input type="text" id="time_of_vaccination1" name="time_of_vaccination[]" value="{{isset($value->vaccination_site) ? $value->time_of_vaccination:""}}" class="form-control">
@@ -817,7 +818,7 @@ foreach ($aecode as $value) {
                           <input type="text" id="lot_number_diluent1" name="lot_number_diluent[]" value="{{isset($value->lot_number_diluent) ? $value->lot_number_diluent:""}}" class="form-control">
                         </td>
                         <td>
-                          <input type="text" id="datepicker_expiry_date_diluent1" name="expiry_date_diluent[]" value="{{isset($value->expiry_date_diluent) ? $value->expiry_date_diluent:""}}" class="form-control" data-date-format="yyyy-mm-dd">
+                          <input type="text" id="datepicker_expiry_date_diluent1" name="expiry_date_diluent[]" value="{{isset($value->expiry_date_diluent) ? $value->expiry_date_diluent:""}}" class="form-control datepicker_expiry_date_diluent" data-date-format="yyyy-mm-dd">
                         </td>
                         {{-- <td><input type="text" id="date_of_reconstitution1" name="date_of_reconstitution[]" value="{{isset($value->date_of_reconstitution) ? $value->date_of_reconstitution:""}}" class="form-control" data-date-format="yyyy-mm-dd"></td> --}}
                         {{-- <td><input type="text" id="time_of_reconstitution1" name="time_of_reconstitution[]" value="{{isset($value->time_of_reconstitution) ? $value->time_of_reconstitution:""}}" class="form-control"></td> --}}
@@ -1649,7 +1650,7 @@ foreach ($aecode as $value) {
                             <div class="input-group-addon">
                               <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control pull-right" id="datepicker_invest" name="necessary_to_investigate_date" value="{{$data[0]->necessary_to_investigate_date}}">
+                            <input type="text" class="form-control pull-right" id="datepicker_invest" name="necessary_to_investigate_date" value="{{$data[0]->necessary_to_investigate_date}}"  data-date-format="yyyy-mm-dd">
                           </div>
                         </label>
                       </div>
@@ -1813,7 +1814,7 @@ foreach ($aecode as $value) {
                               <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                               </div>
-                              <input type="text" class="form-control pull-right" id="datepicker_found_event" name="date_found_event" value="{{$data[0]->date_found_event}}">
+                              <input type="text" class="form-control pull-right" id="datepicker_found_event" name="date_found_event" value="{{$data[0]->date_found_event}}"  data-date-format="yyyy-mm-dd">
                             </div>
                           </div>
                           <div class="col-lg-4">
@@ -1865,7 +1866,7 @@ foreach ($aecode as $value) {
                               <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                               </div>
-                              <input type="text" class="form-control pull-right" id="datepicker_send_reported" name="datepicker_send_reported" value="{{$data[0]->datepicker_send_reported}}">
+                              <input type="text" class="form-control pull-right" id="datepicker_send_reported" name="datepicker_send_reported" value="{{$data[0]->datepicker_send_reported}}"  data-date-format="yyyy-mm-dd">
                             </div>
                           </div>
                           <div class="col-lg-4">
@@ -1874,7 +1875,7 @@ foreach ($aecode as $value) {
                               <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                               </div>
-                              <input type="text" class="form-control pull-right" id="datepicker_resiver" name="datepicker_resiver" value="{{$data[0]->datepicker_resiver}}">
+                              <input type="text" class="form-control pull-right" id="datepicker_resiver" name="datepicker_resiver" value="{{$data[0]->datepicker_resiver}}"   data-date-format="yyyy-mm-dd"s>
                             </div>
                           </div>
                         </div>

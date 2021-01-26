@@ -25,7 +25,7 @@
 <script src="/asset/dist/js/demo.js"></script>
 
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-<script>
+{{-- <script>
 	$(function() {
 
 		var linechart = new CanvasJS.Chart("linechartContainer", {
@@ -166,7 +166,7 @@
 		barchart.render();
 
 	});
-</script>
+</script> --}}
 <script>
 	window.onload = function() {
 
@@ -256,33 +256,20 @@
 		var chart = new CanvasJS.Chart("piechartContainer", {
 			animationEnabled: true,
 			title: {
-				text: "ข้อมูลวัคซีน ที่ได้รับ"
+				text: "ข้อมูลความร้ายแรงของอาการ"
 			},
 			data: [{
 				type: "pie",
 				startAngle: 240,
 				yValueFormatString: "##0.00\"%\"",
 				indexLabel: "{label} {y}",
-				dataPoints: [{
-						y: 59.45,
-						label: "หัด"
-					},
+				dataPoints: [
+					@foreach($count_seriousness_of_the_symptoms as $row)
 					{
-						y: 10.31,
-						label: "วัณโรค"
+						y: {{$row->count_seriousness_of_the_symptoms}},
+						label: "{{$arr_seriousness_of_the_symptoms[$row->seriousness_of_the_symptoms]}}"
 					},
-					{
-						y: 7.06,
-						label: "ตับอักเสบบี"
-					},
-					{
-						y: 4.91,
-						label: "หัด"
-					},
-					{
-						y: 10.26,
-						label: "โรคไข้กาฬหลังแอ่น"
-					}
+					@endforeach
 				]
 			}]
 		});

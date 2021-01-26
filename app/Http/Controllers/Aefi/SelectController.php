@@ -20,7 +20,8 @@
 		public function selectdatatablecaseAEFI1()
 		{
 		$caselstF1 = DB::table('aefi_form_1')
-		->select('id_case',
+		->select(	'id',
+							'id_case',
 							'hn',
 							'an',
 							'first_name',
@@ -35,6 +36,7 @@
 							'subdistrict',
 							'necessary_to_investigate')
 		 ->where('status',null)
+		 ->orderBy('id','desc')
 		 ->get();
 		 $listProvince=$this->listProvince();
 		 $listDistrict=$this->listDistrict();
