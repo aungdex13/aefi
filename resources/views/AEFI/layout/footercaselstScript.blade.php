@@ -273,6 +273,8 @@
 </script>
 <script>
 $(document).ready(function() {
-    $('#case_lst').DataTable();
+    $('#case_lst').DataTable({
+      "order": [[ 0, 'desc' ]]
+});
 } );
  </script>
