@@ -20,8 +20,11 @@
 			$count_north = $this->count_north();
 			// dd($count_north)
 			$count_northeast = $this->count_northeast();
+			// dd($count_northeast);
 			$count_central = $this->count_central();
+
 			$count_eastern = $this->count_eastern();
+// dd($count_eastern );
 			$count_south = $this->count_south();
 			$count_western = $this->count_western();
 			$count_seriousness_of_the_symptoms = $this->count_seriousness_of_the_symptoms();
@@ -89,57 +92,27 @@
 		}
 		protected function count_north(){
 			$yearnow =  now()->year;
-			$north = [	51,
-									50,
-									52,
-									53,
-									54,
-									55,
-									56,
-									57,
-									58,
-							];
-			 // dd($yearnow);
+			$north = [50,51,52,53,54,55,56,57,58];
+			  // dd($yearnow);
 			$count_north = DB::table('aefi_form_1')
 										 ->select(DB::raw('count(*) as count_north'))
 										 ->whereYear('date_entry', '=', "$yearnow")
-										 ->where('status','=',null)
-										 ->where('province','=',$north)
+										 // ->where('status','=',null)
+										  ->wherein('province',[50,51,52,53,54,55,56,57,58])
 										 // ->groupBy('month_entry')
 										 // ->groupBy('count_south')
 										 ->get();
-				// dd($count_north);
+			 // dd($count_north);
 			return $count_north;
 		}
 		protected function count_northeast(){
 			$yearnow =  now()->year;
-			$northeast = [42,
-									97,
-									30,
-									49,
-									48,
-									47,
-									33,
-									34,
-									35,
-									36,
-									37,
-									39,
-									40,
-									41,
-									31,
-									43,
-									44,
-									45,
-									46,
-									32,
-							];
 			 // dd($yearnow);
 			$count_northeast = DB::table('aefi_form_1')
 										 ->select(DB::raw('count(*) as count_northeast'))
 										 ->whereYear('date_entry', '=', "$yearnow")
 										 ->where('status','=',null)
-										 ->where('province','=',$northeast)
+										 ->wherein('province', [42,	97,	30,	49,	48,	47,	33,	34,35,	36,	37,	39,	40,	41,	31,	43,	44,	45,	46,	32])
 										 // ->groupBy('month_entry')
 										 // ->groupBy('count_south')
 										 ->get();
@@ -149,34 +122,12 @@
 		protected function count_central(){
 			$yearnow =  now()->year;
 			 // dd($yearnow);
-			 $central = [	60,
-											74,
-											61,
-											73,
-											72,
-											67,
-											66,
-											65,
-											64,
-											62,
-											75,
-											14,
-											26,
-											18,
-											10,
-											11,
-											12,
-											19,
-											13,
-											17,
-											16,
-											15,
-										];
+			 $central = [	60,	74, 61,	73,	72,	67,	66,	65,	64,	62,	75,	14,	26,	18,	10,	11,	12,	19,	13,	17,	16,	15];
 			$count_central = DB::table('aefi_form_1')
 										 ->select(DB::raw('count(*) as count_central'))
 										 ->whereYear('date_entry', '=', "$yearnow")
 										 ->where('status','=',null)
-										 ->whereIn('province',$central)
+										 ->whereIn('province',[	60,	74, 61,	73,	72,	67,	66,	65,	64,	62,	75,	14,	26,	18,	10,	11,	12,	19,	13,	17,	16,	15])
 										 // ->groupBy('month_entry')
 										 // ->groupBy('count_south')
 										 ->get();
@@ -205,7 +156,21 @@
 										 ->select(DB::raw('count(*) as count_eastern'))
 										 ->whereYear('date_entry', '=', "$yearnow")
 										 ->where('status','=',null)
-										 ->where('province','=',$eastern)
+										 ->wherein('province',[96,
+												 									95,
+												 									94,
+												 									93,
+												 									92,
+												 									91,
+												 									90,
+												 									86,
+												 									84,
+												 									83,
+												 									82,
+												 									81,
+												 									80,
+												 									85
+							 							])
 										 // ->groupBy('month_entry')
 										 // ->groupBy('count_south')
 										 ->get();
@@ -234,7 +199,21 @@
 										 ->select(DB::raw('count(*) as count_western'))
 										 ->whereYear('date_entry', '=', "$yearnow")
 										 ->where('status','=',null)
-										 ->where('province','=',$western)
+										 ->wherein('province',[96,
+												 									95,
+												 									94,
+												 									93,
+												 									92,
+												 									91,
+												 									90,
+												 									86,
+												 									84,
+												 									83,
+												 									82,
+												 									81,
+												 									80,
+												 									85,
+												 							])
 										 // ->groupBy('month_entry')
 										 // ->groupBy('count_south')
 										 ->get();
@@ -263,7 +242,21 @@
 										 ->select(DB::raw('count(*) as count_south'))
 										 ->whereYear('date_entry', '=', "$yearnow")
 										 ->where('status','=',null)
-										 ->where('province','=',$south)
+										 ->wherein('province', [96,
+							 								95,
+							 								94,
+							 								93,
+							 								92,
+							 								91,
+							 								90,
+							 								86,
+							 								84,
+							 								83,
+							 								82,
+							 								81,
+							 								80,
+							 								85,
+							 							])
 										 // ->groupBy('month_entry')
 										 // ->groupBy('count_south')
 										 ->get();
