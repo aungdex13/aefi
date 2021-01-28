@@ -270,7 +270,7 @@ foreach ($aecode as $value) {
                         </div>
                         <!-- /.col-lg-4 -->
                         <div class="col-lg-3">
-                          <input type="text" id="age_while_sick_day" name="age_while_sick_month" class="form-control" placeholder="วัน" value="{{$data[0]->age_while_sick_day}}">
+                          <input type="text" id="age_while_sick_day" name="age_while_sick_day" class="form-control" placeholder="วัน" value="{{$data[0]->age_while_sick_day}}">
                           <!-- /input-group -->
                         </div>
                       </div>
@@ -440,7 +440,9 @@ foreach ($aecode as $value) {
                           </div>
                         </div>
                         <div class="col-lg-12">
-                          <div id="other_vaccination_history" style="display: none">
+                          <div id="other_vaccination_history" @if ($data[0]->history_of_vaccine_drug_allergies_of_patient != 2)
+                            style="display: none"
+                            @endif>
                             <label>วัคซีนที่แพ้ :</label>
                             <select id="other_vaccination_history_text" name="other_vaccination_history" class="form-control select2" style="width: 100%;">
                               <option class="badge filter badge-info" data-color="info" value="{{ $data[0]->other_vaccination_history }}">{{ $data[0]->other_vaccination_history }}</option>
@@ -484,7 +486,9 @@ foreach ($aecode as $value) {
                           </div>
                         </div>
                         <div class="col-lg-12">
-                          <div id="other_patient_develop_symptoms_after_previous_vaccination" style="display: none">
+                          <div id="other_patient_develop_symptoms_after_previous_vaccination" @if ($data[0]->patient_develop_symptoms_after_previous_vaccination != 2)
+                            style="display: none"
+                            @endif>
                             <label>วัคซีนที่แพ้ :</label>
                             <select id="other_patient_develop_symptoms_after_previous_vaccination_text" name="other_patient_develop_symptoms_after_previous_vaccination" class="form-control select2" style="width: 100%;">
                               <option class="badge filter badge-info" data-color="info" value="{{ $data[0]->other_patient_develop_symptoms_after_previous_vaccination }}">{{ $data[0]->other_patient_develop_symptoms_after_previous_vaccination }}
@@ -494,6 +498,8 @@ foreach ($aecode as $value) {
                               <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
                               <?php } ?>
                             </select>
+                            <label>วัคซีนอื่นๆที่แพ้ :</label>
+                            <input type="text" name="other_text_patient_develop_symptoms_after_previous_vaccination" id="other_patient_develop_symptoms_after_previous_vaccination" class="form-control" value="{{ $data[0]->other_text_patient_develop_symptoms_after_previous_vaccination}}">
                           </div>
                         </div>
                       </div>
@@ -527,7 +533,9 @@ foreach ($aecode as $value) {
                           </div>
                         </div>
                         <div class="col-lg-12">
-                          <div id="other_underlying_disease" style="display: none">
+                          <div id="other_underlying_disease"  @if ($data[0]->underlying_disease != 2)
+                            style="display: none"
+                            @endif>
                             <select id="other_underlying_disease_text" name="other_underlying_disease" class="form-control select2" style="width: 100%;">
                               <option class="badge filter badge-info" data-color="info" value="{{ $data[0]->other_underlying_disease }}">{{ $data[0]->other_underlying_disease }}</option>
                               <?php
@@ -535,6 +543,8 @@ foreach ($aecode as $value) {
                               <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
                               <?php } ?>
                             </select>
+                            <label>โรคประจำตัวอื่นๆ :</label>
+                            <input type="text" name="other_text_underlying_disease" id="other_text_underlying_disease" class="form-control" value="{{ $data[0]->other_text_underlying_disease }}">
                           </div>
                         </div>
                       </div>
@@ -568,7 +578,9 @@ foreach ($aecode as $value) {
                           </div>
                         </div>
                         <div class="col-lg-12">
-                          <div id="other_history_of_drug_use_within_1_month_vaccination" style="display: none">
+                          <div id="other_history_of_drug_use_within_1_month_vaccination"  @if ($data[0]->other_history_of_drug_use_within_1_month_vaccination != 2)
+                            style="display: none"
+                            @endif>
                             <input type="text" id="other_history_of_drug_use_within_1_month_vaccination_text" name="other_history_of_drug_use_within_1_month_vaccination" class="form-control" placeholder="ระบุ" hidden="true"
                               value="{{ $data[0]->other_history_of_drug_use_within_1_month_vaccination }}">
                           </div>
@@ -584,7 +596,7 @@ foreach ($aecode as $value) {
                     <div class="form-group">
                       <div class="col-lg-12">
                         <label>ประวัติทางการแพทย์</label>
-                        <textarea class="form-control" name="other_medical_history" rows="3" placeholder="...">{{ $data[0]->other_medical_history }}</textarea>
+                        <textarea class="form-control" name="other_medical_history" rows="3">{{ $data[0]->other_medical_history }}</textarea>
                       </div>
                     </div>
                   </div>
@@ -716,6 +728,7 @@ foreach ($aecode as $value) {
                           <font style="color:red;">*</font> เวลาที่ได้รับ
                         </th>
                         <th>ชื่อผู้ผลิต</th>
+                        <th>ชื่อผู้ผลิตอื่นๆ</th>
                         <th>
                           <font style="color:red;">*</font> เลขที่ผลิต
                         </th>
@@ -804,6 +817,9 @@ foreach ($aecode as $value) {
                             <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
                             <?php } ?>
                           </select>
+                        </td>
+                        <td>
+                          <input type="text" id="other_manufacturer" name="other_manufacturer[]" value="{{isset($value->other_manufacturer) ? $value->other_manufacturer:""}}" class="form-control">
                         </td>
                         <td>
                           <input type="text" id="lot_number1" name="lot_number[]" value="{{isset($value->lot_number) ? $value->lot_number:""}}" class="form-control">
@@ -1288,7 +1304,7 @@ foreach ($aecode as $value) {
                           </div>
                           <div class="col-md-12">
                             <label>
-                              <input name="other_symptoms_later_immunized_chk" type="checkbox" value="9999" @if ($data[0]->other_symptoms_later_immunized == '9999')
+                              <input name="symptoms_later_immunized" type="checkbox" value="9999" @if ($data[0]->symptoms_later_immunized == '9999')
                               {{ "checked" }}
                               @endif>
                                 other
@@ -1296,8 +1312,10 @@ foreach ($aecode as $value) {
                           </div>
                           <div class="form-group">
                             <div class="col-lg-12">
-                              <div id="other_symptoms_later_immunized" style="display: none">
-                                <input type="text" id="other_symptoms_later_immunized_text" name="other_symptoms_later_immunized" class="form-control" placeholder="ระบุตำแหน่ง" hidden="true">
+                              <div id="other_symptoms_later_immunized" @if ($data[0]->symptoms_later_immunized != '9999')
+                              style="display: none"
+                            @endif>
+                                <input type="text" id="other_symptoms_later_immunized_text" name="other_symptoms_later_immunized" class="form-control" value="{{$data[0]->other_symptoms_later_immunized}}" >
                               </div>
                               {{-- <div id="other_symptoms_later_immunized_t" style="display: none">
                           <input type="text" class="form-control pull-right" id="other_symptoms_later_immunized_text" name="other_symptoms_later_immunized" placeholder="ระบุอาการอื่นๆ">
@@ -1373,7 +1391,7 @@ foreach ($aecode as $value) {
                         <div class="form-group">
                           <div class="col-lg-12">
                             <label>รายละเอียดอาการและการตรวจสอบ</label>
-                            <textarea class="form-control" rows="5" name="Symptoms_details" value="{{$data[0]->time_of_treatment}}">{{$data[0]->time_of_treatment}}</textarea>
+                            <textarea class="form-control" rows="5" name="Symptoms_details">{{$data[0]->Symptoms_details}}</textarea>
                           </div>
                         </div>
                         <div class="form-group">
@@ -2004,6 +2022,15 @@ foreach ($aecode as $value) {
                             </label>
                           </div>
                         </div>
+                        <div class="form-group">
+                          <div class="col-md-12">
+                            <hr>
+                            <label>
+                              การตรวจทางห้องปฏิบัติการ
+                            </label>
+                            <textarea class="form-control" rows="3" id="lab_result" name="lab_result">{{$data[0]->lab_result}}</textarea>
+                          </div>
+                        </div>
                       </div>
                     </div>
                     <!-- /.box-body -->
@@ -2191,6 +2218,9 @@ $(function(){
           <?php
         } ?>
         '</select>' +
+        '</td>' +
+        '<td>' +
+        '<input type="text" id="other_manufacturer1" name="other_manufacturer[]' + rowCount + '" value="" class="form-control">' +
         '</td>' +
         '<td>' +
         '<input type="text" id="lot_number1" name="lot_number[]' + rowCount + '" value="" class="form-control">' +

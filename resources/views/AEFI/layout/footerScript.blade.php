@@ -343,7 +343,7 @@ $(document).ready(function() {
         $('#other_seriousness_of_the_symptoms_text').val('');
       }
     });
-    $('input[name="other_symptoms_later_immunized_chk"]').on('click', function() {
+    $('input[name="symptoms_later_immunized"]').on('click', function() {
             if ($(this).is(":checked")) {
         $('#other_symptoms_later_immunized').show();
       } else {

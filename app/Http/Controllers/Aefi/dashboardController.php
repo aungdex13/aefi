@@ -30,6 +30,8 @@
 			$count_seriousness_of_the_symptoms = $this->count_seriousness_of_the_symptoms();
 			$count_seriousness_of_the_symptoms_m = $this->count_seriousness_of_the_symptoms_m();
 			$count_seriousness_of_the_symptoms_f = $this->count_seriousness_of_the_symptoms_f();
+			$count_vacname = $this->count_vacname();
+			$listvac_arr =  $this->listvac_arr();
 			return view('AEFI.Apps.dashboard',compact(
 			 'count_prov',
 			 'listProvince',
@@ -43,7 +45,9 @@
 			 'count_western',
 			 'count_seriousness_of_the_symptoms',
 			 'count_seriousness_of_the_symptoms_m',
-			 'count_seriousness_of_the_symptoms_f'
+			 'count_seriousness_of_the_symptoms_f',
+			 'count_vacname',
+			 'listvac_arr'
 		 ));
 		}
 		public function selectdatadash()
@@ -310,5 +314,26 @@
 
 				 // dd($count_south);
 			return $count_seriousness_of_the_symptoms_f;
+		}
+		protected function count_vacname(){
+				 // dd($south->province_code);
+			$count_vacname = DB::table('aefi_form_1_vac')
+										 ->select(DB::raw('count(aefi_form_1_vac.name_of_vaccine) as vac_count,name_of_vaccine'))
+										 // ->where('gender', '=', '2')
+										 ->where('status','=',null)
+										 ->groupBy('name_of_vaccine')
+										 ->orderBy('name_of_vaccine','DESC')
+										 ->get();
+
+				 // dd($count_south);
+			return $count_vacname;
+		}
+		protected function listvac_arr(){
+			$arr_vac = DB::table('vac_tbl')->select('VAC_CODE','VAC_NAME_EN')->get();
+			foreach ($arr_vac as  $value) {
+				$arr_vac[$value->VAC_CODE] =trim($value->VAC_NAME_EN);
+			}
+			// dd($province_arr);
+			return $arr_vac;
 		}
 }

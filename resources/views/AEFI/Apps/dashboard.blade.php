@@ -174,18 +174,18 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
           <ul class="nav nav-pills nav-stacked">
             <li><a href="#">เพศชาย อาการไม่รุนแรง
               {{-- <i class="fa fa-angle-down"></i> --}}
-                <span class="pull-right text-red"> {{$count_seriousness_of_the_symptoms_m[0]->count_seriousness_of_the_symptoms}} คน</span></a>
+                <span class="pull-right text-light-blue"> {{$count_seriousness_of_the_symptoms_m[0]->count_seriousness_of_the_symptoms}} คน</span></a>
             </li>
             <li><a href="#">เพศหญิง อาการไม่รุนแรง
               {{-- <i class="fa fa-angle-up"></i>  --}}
-              <span class="pull-right text-green">{{$count_seriousness_of_the_symptoms_f[0]->count_seriousness_of_the_symptoms}} คน</span></a>
+              <span class="pull-right text-light-blue">{{$count_seriousness_of_the_symptoms_f[0]->count_seriousness_of_the_symptoms}} คน</span></a>
             </li>
-            <li><a href="#">เพศชาย อาการหรุนแรง
+            <li><a href="#">เพศชาย อาการรุนแรง
               {{-- <i class="fa fa-angle-left"></i> --}}
-                <span class="pull-right text-yellow"> {{$count_seriousness_of_the_symptoms_m[1]->count_seriousness_of_the_symptoms}} คน</span></a></li>
+                <span class="pull-right text-red"> {{$count_seriousness_of_the_symptoms_m[1]->count_seriousness_of_the_symptoms}} คน</span></a></li>
             <li><a href="#">เพศหญิง อาการรุนแรง
               {{-- <i class="fa fa-angle-left"></i> --}}
-                <span class="pull-right text-yellow"> {{$count_seriousness_of_the_symptoms_f[1]->count_seriousness_of_the_symptoms}} คน</span></a></li>
+                <span class="pull-right text-red"> {{$count_seriousness_of_the_symptoms_f[1]->count_seriousness_of_the_symptoms}} คน</span></a></li>
           </ul>
         </div>
         <!-- /.footer -->
@@ -228,6 +228,88 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
                 <span class="pull-right text-yellow"><i class="fa fa-angle-left"></i> 0%</span></a></li>
           </ul>
         </div> --}}
+        <!-- /.footer -->
+      </div>
+      <!-- /.box -->
+    </div>
+    <div class="col-md-6">
+      <div class="box box-default">
+        <div class="box-header with-border">
+          <h3 class="box-title">อัตราของชนิดวัคซิน ของผู้ป่วยทั้งหมดในปี {{$yearnow+543}}</h3>
+
+          <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+            </button>
+            {{-- <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button> --}}
+          </div>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <div class="row">
+            <div class="col-md-8">
+              <div class="chart-responsive">
+                <div id="chartVacname" style="height: 370px; width: 150%;"></div>
+              </div>
+              <!-- ./chart-responsive -->
+            </div>
+            <!-- /.col -->
+            <div class="col-md-4">
+              <ul class="chart-legend clearfix">
+                {{-- <li><i class="fa fa-circle-o text-red"></i> ร้ายแรง</li> --}}
+                {{-- <li><i class="fa fa-circle-o text-green"></i> ตับอักเสบบี</li>
+                <li><i class="fa fa-circle-o text-yellow"></i> บาดทะยัก</li>
+                <li><i class="fa fa-circle-o text-aqua"></i> โปลิโอ</li> --}}
+                {{-- <li><i class="fa fa-circle-o text-light-blue"></i> ไม่ร้ายแรง</li> --}}
+                {{-- <li><i class="fa fa-circle-o text-gray"></i> โรคไข้กาฬหลังแอ่น</li> --}}
+              </ul>
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+        </div>
+        <!-- /.box-body -->
+
+        <!-- /.footer -->
+      </div>
+      <!-- /.box -->
+    </div>
+    <div class="col-md-6">
+      <div class="box box-default">
+        <div class="box-header with-border">
+          <h3 class="box-title">อัตราของชนิดวัคซิน ของผู้ป่วยทั้งหมดในปี {{$yearnow+543}}</h3>
+
+          <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+            </button>
+            {{-- <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button> --}}
+          </div>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <div class="row">
+            <div class="col-md-8">
+              <div class="chart-responsive">
+                <div id="agegroup" style="height: 370px; width: 150%;"></div>
+              </div>
+              <!-- ./chart-responsive -->
+            </div>
+            <!-- /.col -->
+            <div class="col-md-4">
+              <ul class="chart-legend clearfix">
+                {{-- <li><i class="fa fa-circle-o text-red"></i> ร้ายแรง</li> --}}
+                {{-- <li><i class="fa fa-circle-o text-green"></i> ตับอักเสบบี</li>
+                <li><i class="fa fa-circle-o text-yellow"></i> บาดทะยัก</li>
+                <li><i class="fa fa-circle-o text-aqua"></i> โปลิโอ</li> --}}
+                {{-- <li><i class="fa fa-circle-o text-light-blue"></i> ไม่ร้ายแรง</li> --}}
+                {{-- <li><i class="fa fa-circle-o text-gray"></i> โรคไข้กาฬหลังแอ่น</li> --}}
+              </ul>
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+        </div>
+        <!-- /.box-body -->
+
         <!-- /.footer -->
       </div>
       <!-- /.box -->

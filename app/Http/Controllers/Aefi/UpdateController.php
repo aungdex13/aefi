@@ -32,7 +32,7 @@
 									$manufacturer =$req ->input('manufacturer');
 									$lot_number = $req ->input('lot_number');
 									$expiry_date = $req ->input('expiry_date');
-									// $name_of_diluent = $req ->input('name_of_diluent');
+									$other_manufacturer = $req ->input('other_manufacturer');
 									$lot_number_diluent = $req ->input('lot_number_diluent');
 									$expiry_date_diluent = $req ->input('expiry_date_diluent');
 									// $date_of_reconstitution = $req ->input('date_of_reconstitution');
@@ -52,7 +52,7 @@
 									'manufacturer'=>$manufacturer[$i],
 									'lot_number'=>$lot_number[$i],
 									'expiry_date'=>$expiry_date[$i],
-									// 'name_of_diluent'=>$name_of_diluent[$i],
+									'other_manufacturer'=>$other_manufacturer[$i],
 									'lot_number_diluent'=>$lot_number_diluent[$i],
 									'expiry_date_diluent'=>$expiry_date_diluent[$i],
 									// 'date_of_reconstitution'=>$date_of_reconstitution[$i],
@@ -120,6 +120,8 @@
 												'gender' => $req->input('gender'),
 												'birthdate' => $req->input('birthdate'),
 												'age_while_sick_year' => $req->input('age_while_sick_year'),
+												'age_while_sick_month' => $req->input('age_while_sick_month'),
+												'age_while_sick_day' => $req->input('age_while_sick_day'),
 												'group_age' => $req->input ('group_age'),
 												'nationality' => $req->input('nationality'),
 												'other_nationality' => $req->input ('other_nationality'),
@@ -188,7 +190,7 @@
 												'time_of_symptoms' => $req->input('time_of_symptoms'),
 												'date_of_treatment' => $req->input('date_of_treatment'),
 												'time_of_treatment' => $req->input('time_of_treatment'),
-												'symptoms_details' => $req->input('symptoms_details'),
+												'Symptoms_details' => $req->input('Symptoms_details'),
 												'text_other_seriousness_symptoms' => $req->input('text_other_seriousness_symptoms'),
 												'symptoms_later_immunized' => $req->input('symptoms_later_immunized'),
 												'other_symptoms_later_immunized' => $req->input('other_symptoms_later_immunized'),
@@ -230,7 +232,10 @@
 												'adem' => $req ->input ('adem'),
 												'acute_myocardial' => $req ->input ('acute_myocardial'),
 												'ards' => $req ->input ('ards'),
-												'date_entry' => date('Y-m-d H:i:s')
+												'date_entry' => date('Y-m-d H:i:s'),
+												'lab_result'=> $req ->input ('lab_result'),
+												'other_text_patient_develop_symptoms_after_previous_vaccination' => $req ->input ('other_text_patient_develop_symptoms_after_previous_vaccination'),
+												'other_text_underlying_disease' => $req ->input ('other_text_underlying_disease')
 											]);
 		if ($update){
 			$msg = " ส่งข้อมูลสำเร็จ";

@@ -25,148 +25,7 @@
 <script src="/asset/dist/js/demo.js"></script>
 
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-{{-- <script>
-	$(function() {
 
-		var linechart = new CanvasJS.Chart("linechartContainer", {
-			animationEnabled: true,
-			theme: "light2",
-			title: {
-				text: "จำนวนผู้ป่วยรายเดือน"
-			},
-			axisY: {
-				includeZero: false
-			},
-			data: [{
-				type: "line",
-				dataPoints: [{
-						y: 4
-					},
-					{
-						y: 414
-					},
-					{
-						y: 520
-					},
-					{
-						y: 460
-					},
-					{
-						y: 450
-					},
-					{
-						y: 500
-					},
-					{
-						y: 480
-					},
-					{
-						y: 480
-					},
-					{
-						y: 410
-					},
-					{
-						y: 500
-					},
-					{
-						y: 480
-					},
-					{
-						y: 510
-					}
-				]
-			}]
-		});
-		linechart.render();
-
-		var piechart = new CanvasJS.Chart("pieechart", {
-			animationEnabled: true,
-			title: {
-				text: "Desktop Search Engine Market Share - 2016"
-			},
-			data: [{
-				type: "pie",
-				startAngle: 240,
-				yValueFormatString: "##0.00\"%\"",
-				indexLabel: "{label} {y}",
-				dataPoints: [{
-						y: 70.45,
-						label: "Google"
-					},
-					{
-						y: 7.31,
-						label: "Bing"
-					},
-					{
-						y: 7.06,
-						label: "Baidu"
-					},
-					{
-						y: 4.91,
-						label: "Yahoo"
-					},
-					{
-						y: 10.26,
-						label: "Others"
-					}
-				]
-			}]
-		});
-		piechart.render();
-		var barchart = new CanvasJS.Chart("barchartContainer", {
-			animationEnabled: true,
-			theme: "light2", // "light1", "light2", "dark1", "dark2"
-			title: {
-				text: "Top Oil Reserves"
-			},
-			axisY: {
-				title: "Reserves(MMbbl)"
-			},
-			data: [{
-				type: "column",
-				showInLegend: true,
-				legendMarkerColor: "grey",
-				legendText: "MMbbl = one million barrels",
-				dataPoints: [{
-						y: 300878,
-						label: "Venezuela"
-					},
-					{
-						y: 266455,
-						label: "Saudi"
-					},
-					{
-						y: 169709,
-						label: "Canada"
-					},
-					{
-						y: 158400,
-						label: "Iran"
-					},
-					{
-						y: 142503,
-						label: "Iraq"
-					},
-					{
-						y: 101500,
-						label: "Kuwait"
-					},
-					{
-						y: 97800,
-						label: "UAE"
-					},
-					{
-						y: 80000,
-						label: "Russia"
-					}
-				]
-			}]
-		});
-		barchart.render();
-
-	});
-</script> --}}
 <script>
 	window.onload = function() {
 
@@ -275,115 +134,69 @@
 		});
 		chart.render();
 
-
-		var chart = new CanvasJS.Chart("barchartContainer", {
+		var chart = new CanvasJS.Chart("chartVacname", {
 			animationEnabled: true,
-			exportEnabled: true,
-			theme: "light1", // "light1", "light2", "dark1", "dark2"
-			title: {
-				text: "กราฟอัตราป่วยรายจังหวัด"
+
+
+			axisX:{
+				interval: 1
+			},
+			axisY2:{
+				interlacedColor: "rgba(1,77,101,.2)",
+				gridColor: "rgba(1,77,101,.1)",
+				title: "จำนวนของวัคซิน"
 			},
 			data: [{
-				type: "column", //change type to bar, line, area, pie, etc
-				//indexLabel: "{y}", //Shows y value on all Data Points
-				indexLabelFontColor: "#5A5757",
-				indexLabelPlacement: "outside",
-				dataPoints: [{
-						y: 71,
-						label: "กรุงเทพมหานคร"
-					},
-					{
-						y: 55,
-						label: "เชียงใหม่"
-					},
-					{
-						y: 43,
-						label: "กาญจนบุร"
-					},
-					{
-						y: 21,
-						label: "ตาก"
-					},
-					{
-						y: 10,
-						label: "อุบลราชธานี"
-					},
-					{
-						y: 15,
-						label: "สุราษฎร์ธานี"
-					},
-					{
-						y: 30,
-						label: "ชัยภูมิ"
-					},
-					{
-						y: 77,
-						label: "แม่ฮ่องสอน"
-					},
-					{
-						y: 50,
-						label: "เพชรบูรณ์"
-					},
-					{
-						y: 46,
-						label: "ลำปาง"
-					},
-					{
-						y: 59,
-						label: "อุดรธาน"
-					},
-					{
-						y: 39,
-						label: "เชียงราย"
-					},
-					{
-						y: 47,
-						label: "น่าน"
-					},
-					{
-						y: 80,
-						label: "เลย"
-					}
+				type: "bar",
+				name: "companies",
+				axisYType: "secondary",
+				color: "#014D65",
+				dataPoints: [
+					@foreach($count_vacname as $row)
+					{ y: {{ $row->vac_count }}, label: "{{ $listvac_arr[$row->name_of_vaccine]}}" },
+					@endforeach
 				]
 			}]
 		});
 		chart.render();
 
-		// var chart = new CanvasJS.Chart("barchartContainer", {
-		// 	animationEnabled: true,
-		// 	exportEnabled: true,
-		// 	theme: "light1", // "light1", "light2", "dark1", "dark2"
-		// 	title:{
-		// 		text: "กราฟอัตราป่วยรายจังหวัด"
-		// 	},
-		// 	data: [{
-		// 		type: "column", //change type to bar, line, area, pie, etc
-		// 		//indexLabel: "{y}", //Shows y value on all Data Points
-		// 		indexLabelFontColor: "#5A5757",
-		// 		indexLabelPlacement: "outside",
-		// 		dataPoints: [
-		// 			{  y: 71, label: "กรุงเทพมหานคร"},
-		// 			{  y: 55, label: "เชียงใหม่"},
-		// 			{  y: 43, label: "กาญจนบุร"},
-		// 			{  y: 21, label: "ตาก"},
-		// 			{  y: 10, label: "อุบลราชธานี"},
-		// 			{  y: 15, label: "สุราษฎร์ธานี"},
-		// 			{  y: 30, label: "ชัยภูมิ"},
-		// 			{  y: 77, label: "แม่ฮ่องสอน"},
-		// 			{  y: 50, label: "เพชรบูรณ์"},
-		// 			{  y: 46, label: "ลำปาง"},
-		// 			{  y: 59, label: "อุดรธาน"},
-		// 			{  y: 39, label: "เชียงราย"},
-		// 			{  y: 47, label: "น่าน"},
-		// 			{  y: 80, label: "เลย"}
-		//
-		//
-		//
-		// 	}]
-		// });
-		// chart.render();
-
+		var chart = new CanvasJS.Chart("agegroup", {
+	exportEnabled: true,
+	animationEnabled: true,
+	title:{
+		text: "State Operating Funds"
+	},
+	legend:{
+		cursor: "pointer",
+		itemclick: explodePie
+	},
+	data: [{
+		type: "pie",
+		showInLegend: true,
+		toolTipContent: "{name}: <strong>{y}%</strong>",
+		indexLabel: "{name} - {y}%",
+		dataPoints: [
+			{ y: 26, name: "School Aid", exploded: true },
+			{ y: 20, name: "Medical Aid" },
+			{ y: 5, name: "Debt/Capital" },
+			{ y: 3, name: "Elected Officials" },
+			{ y: 7, name: "University" },
+			{ y: 17, name: "Executive" },
+			{ y: 22, name: "Other Local Assistance"}
+		]
+	}]
+});
+chart.render();
 	}
+	function explodePie (e) {
+	if(typeof (e.dataSeries.dataPoints[e.dataPointIndex].exploded) === "undefined" || !e.dataSeries.dataPoints[e.dataPointIndex].exploded) {
+		e.dataSeries.dataPoints[e.dataPointIndex].exploded = true;
+	} else {
+		e.dataSeries.dataPoints[e.dataPointIndex].exploded = false;
+	}
+	e.chart.render();
+
+}
 </script>
 <script type='text/javascript' src='https://www.gstatic.com/charts/loader.js'></script>
 <script type="text/javascript">

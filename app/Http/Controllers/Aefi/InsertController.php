@@ -45,6 +45,8 @@
 		$gender = $req ->input ('gender');
 		$birthdate = $req ->input ('birthdate');
 		$age_while_sick_year = $req ->input ('age_while_sick_year');
+		$age_while_sick_month = $req ->input ('age_while_sick_month');
+		$age_while_sick_day = $req ->input ('age_while_sick_day');
 		$group_age = $req ->input ('group_age');
 		$nationality = $req ->input ('nationality');
 		$other_nationality = $req ->input ('other_nationality');
@@ -114,7 +116,7 @@
 		$time_of_symptoms = $req ->input ('time_of_symptoms');
 		$date_of_treatment = $req ->input ('date_of_treatment');
 		$time_of_treatment = $req ->input ('time_of_treatment');
-		$symptoms_details = $req ->input ('symptoms_details');
+		$Symptoms_details = $req ->input ('Symptoms_details');
 		$text_other_seriousness_symptoms = $req ->input ('text_other_seriousness_symptoms');
 		$symptoms_later_immunized = $req ->input ('symptoms_later_immunized');
 		$other_symptoms_later_immunized = $req ->input ('other_symptoms_later_immunized');
@@ -157,6 +159,9 @@
 		$adem = $req ->input ('adem');
 		$acute_myocardial = $req ->input ('acute_myocardial');
 		$ards = $req ->input ('ards');
+		$lab_result = $req ->input ('lab_result');
+		$other_text_patient_develop_symptoms_after_previous_vaccination = $req ->input ('other_text_patient_develop_symptoms_after_previous_vaccination');
+		$other_text_underlying_disease = $req ->input ('other_text_underlying_disease');
 		$data = array(
 			'id_case'=>$id_case,
 			'hn'=>$hn,
@@ -168,6 +173,8 @@
 			'gender'=>$gender,
 			'birthdate'=>$birthdate,
 			'age_while_sick_year'=>	$age_while_sick_year,
+			'age_while_sick_month'=>	$age_while_sick_month,
+			'age_while_sick_day'=>	$age_while_sick_day,
 			'group_age'=>$group_age,
 			'nationality'=>$nationality,
 			'other_nationality'=>$other_nationality,
@@ -236,7 +243,7 @@
 			'time_of_symptoms'=>$time_of_symptoms,
 			'date_of_treatment'=>$date_of_treatment,
 			'time_of_treatment'=>$time_of_treatment,
-			'symptoms_details'=>$symptoms_details,
+			'Symptoms_details'=>$Symptoms_details,
 			'symptoms_later_immunized'=>$symptoms_later_immunized,
 			'other_symptoms_later_immunized'=>$other_symptoms_later_immunized,
 			'diagnosis'=>$diagnosis,
@@ -277,7 +284,11 @@
 			'adem' => $adem,
 			'acute_myocardial' => $acute_myocardial,
 			'ards' => $ards,
-			'date_entry'=>$date_entry
+			'date_entry'=>$date_entry,
+			'lab_result'=>$lab_result,
+			'other_text_patient_develop_symptoms_after_previous_vaccination'=>$other_text_patient_develop_symptoms_after_previous_vaccination,
+			'other_text_underlying_disease'=>$other_text_underlying_disease
+
 		);
 	// echo($data);
 	  $res1	= DB::table('aefi_form_1')->insert($data);
@@ -296,7 +307,8 @@ if ($res1) {
 		// $name_of_diluent = $req ->input('name_of_diluent');
 		$lot_number_diluent = $req ->input('lot_number_diluent');
 		$expiry_date_diluent = $req ->input('expiry_date_diluent');
-		// $date_of_reconstitution = $req ->input('date_of_reconstitution');
+
+		$other_manufacturer = $req ->input('other_manufacturer');
 		// $time_of_reconstitution = $req ->input('time_of_reconstitution');
 $x=0;
 	 for ($i=0; $i < count($name_of_vaccine); $i++) {
@@ -316,7 +328,7 @@ $x=0;
 		// 'name_of_diluent'=>$name_of_diluent[$i],
 		'lot_number_diluent'=>$lot_number_diluent[$i],
 		'expiry_date_diluent'=>$expiry_date_diluent[$i],
-		// 'date_of_reconstitution'=>$date_of_reconstitution[$i],
+		'other_manufacturer'=>$other_manufacturer[$i],
 		// 'time_of_reconstitution'=>$time_of_reconstitution[$i],
 		'date_entry'=>$date_entry
 		];
