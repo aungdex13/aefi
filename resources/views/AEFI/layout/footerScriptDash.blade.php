@@ -153,7 +153,7 @@
 				color: "#014D65",
 				dataPoints: [
 					@foreach($count_vacname as $row)
-					{ y: {{ $row->vac_count }}, label: "{{ $listvac_arr[$row->name_of_vaccine]}}" },
+					{ y: {{ $row->vac_count }}, label: "{{isset($listvac_arr[$row->name_of_vaccine]) ? $listvac_arr[$row->name_of_vaccine]:""}}" },
 					@endforeach
 				]
 			}]
