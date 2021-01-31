@@ -38,7 +38,7 @@
 									// $date_of_reconstitution = $req ->input('date_of_reconstitution');
 									// $time_of_reconstitution = $req ->input('time_of_reconstitution');
 							$x=0;
-								 for ($i=0; $i < count($id_case); $i++) {
+								 for ($i=0; $i < count($name_of_vaccine); $i++) {
 									 $data_vac[]  = [
 									'id_case'=>$id_case,
 									// 'hn'=>$hn,
