@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Aefi;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use DB;
+use Illuminate\Support\Facades\Storage;
 class DeleteController extends Controller
 {
 	public $result;
@@ -30,6 +31,25 @@ class DeleteController extends Controller
 		}else {
 			$msg = "ส่งข้อมูลไม่สำเร็จ";
 			$url_rediect = "<script>alert('".$msg."');location.href='lstf1';</script> ";
+		}
+		echo $url_rediect;
+	}
+
+	public function deletedata2(Request $req){
+		$id_case = $req->id_case ;
+		$filename = $req->file_name ;
+		// dd($filename);
+		Storage::delete("file_upload/".$filename);
+		$deletedata2 = DB::table('aefi_form_2')
+											->where('id_case', $id_case)
+											->where('file_name', $filename)
+											->update(['status' => 2]);
+		if ($deletedata2) {
+			$msg = " ส่งข้อมูลสำเร็จ";
+			$url_rediect = "<script>alert('".$msg."');location.href='lstf2?id_case=".$req->id_case."';</script> ";
+		}else{
+			$msg = "ส่งข้อมูลไม่สำเร็จ";
+			$url_rediect = "<script>alert('".$msg."');location.href='lstf2?id_case=".$req->id_case."';</script> ";
 		}
 		echo $url_rediect;
 	}

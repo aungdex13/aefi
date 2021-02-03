@@ -41,6 +41,7 @@ Route::post('/updateform1', 'Aefi\UpdateController@updateform1')->name('updatefo
 Route::post('/updateform2', 'Aefi\UpdateController@updateform2')->name('updateform2');
 // delete Data
 Route::get('/deleteAEFI1', 'Aefi\DeleteController@deletedata1')->name('deleteAEFI1');
+Route::get('/deleteAEFI2', 'Aefi\DeleteController@deletedata2')->name('deleteAEFI2');
 // edit Data
 Route::get('/EditAEFI1', 'Aefi\SelectController@selectalldataAEFI1')->name('EditAEFI1');
 Route::get('/EditAEFI2', 'Aefi\SelectController@selectalldataAEFI2')->name('EditAEFI2');
@@ -50,7 +51,10 @@ Auth::routes();
 Route::get('/index', 'HomeController@index')->name('index');
 // Route::post('/insertform1','Aefi\InsertController@welcome')
 // test
- Route::get('/test', 'Aefi\testController@test')->name('test');
-  Route::get('/dataf1export', 'Aefi\DataexportController@dataexport')->name('dataf1export');
-  Route::get('/dataf2export', 'Aefi\Dataexport2Controller@dataexport2')->name('dataf2export');
+Route::get('/test', 'Aefi\testController@test')->name('test');
+Route::get('/dataf1export', 'Aefi\DataexportController@dataexport')->name('dataf1export');
+Route::get('/dataf2export', 'Aefi\Dataexport2Controller@dataexport2')->name('dataf2export');
 // Route::post('/uploadfile', 'Aefi\UploadController@upload');
+// download Data
+Route::get('/downloadaefi2', 'Aefi\DownloadController@dowloaddata2')->name('downloadaefi2');
+// Route::get('/deleteAEFI2', 'Aefi\DeleteController@deletedata2')->name('deleteAEFI2');

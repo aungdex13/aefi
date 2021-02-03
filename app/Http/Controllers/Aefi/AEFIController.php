@@ -55,8 +55,10 @@ class AEFIController extends Controller
 
 
 
-	public function form2(){
-		return view('AEFI.Apps.form2');
+	public function form2(Request $req){
+  $aefiF2id = $req->id_case;
+  // dd($aefiF2id );
+		return view('AEFI.Apps.form2')->with('data', $aefiF2id);
 	}
 	public function login(){
 		return view('AEFI.Apps.login');

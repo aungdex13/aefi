@@ -531,8 +531,39 @@ foreach ($aecode as $value) {
                         </div>
                         <div class="col-lg-12">
                           <div id="other_history_of_drug_use_within_1_month_vaccination" style="display: none">
-                            <input type="text" id="other_history_of_drug_use_within_1_month_vaccination_text" class="form-control" placeholder="ระบุ" hidden="true">
+                            <input type="text" name="other_history_of_drug_use_within_1_month_vaccination_text" id="other_history_of_drug_use_within_1_month_vaccination_text" class="form-control" placeholder="ระบุ" hidden="true">
                           </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- ประวัติการป่วยcovid-->
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <div class="control-label">
+                          <label>เคยป่วยเป็นโควิดหรือไม่ :</label>
+                        </div>
+                      </div>
+                      <div class="col-lg-3">
+                        <div class="radio">
+                          <label>
+                            <input type="radio" name="history_of_covid" value="1" checked>
+                            ไม่เคย
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col-lg-3">
+                        <div class="radio">
+                          <label>
+                            <input type="radio" name="history_of_covid" value="2">
+                            เคย
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col-lg-12">
+                        <div id="other_history_of_covid" style="display: none">
+                          <input type="text" name="other_history_of_covid_text" id="other_history_of_covid_text" class="form-control" placeholder="ระบุเวลาที่เป็น" hidden="true">
                         </div>
                       </div>
                     </div>
@@ -1814,7 +1845,7 @@ foreach ($aecode as $value) {
                   <div class="col-md-3">
                   </div>
                   <div class="col-md-3">
-                    <button type="button" class="btn btn-block btn-danger">ย้อนกลับ</button>
+                    <a href="{{ route('lstf1') }}" class="btn btn-block btn-danger">ย้อนกลับ</a>
                   </div>
                   <div class="col-md-3">
                     <input type="submit" name="submit" value="บันทึกข้อมูล" class="btn btn-block btn-success"></input>

@@ -235,7 +235,9 @@
 												'date_entry' => date('Y-m-d H:i:s'),
 												'lab_result'=> $req ->input ('lab_result'),
 												'other_text_patient_develop_symptoms_after_previous_vaccination' => $req ->input ('other_text_patient_develop_symptoms_after_previous_vaccination'),
-												'other_text_underlying_disease' => $req ->input ('other_text_underlying_disease')
+												'other_text_underlying_disease' => $req ->input ('other_text_underlying_disease'),
+												'history_of_covid' => $req ->input ('history_of_covid'),
+												'other_history_of_covid_text' => $req ->input ('other_history_of_covid_text')
 											]);
 		if ($update){
 			$msg = " ส่งข้อมูลสำเร็จ";

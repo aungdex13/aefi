@@ -359,6 +359,14 @@ $(document).ready(function() {
         $('#other_history_of_drug_use_within_1_month_vaccination_text').val('');
       }
     });
+    $('input[name="history_of_covid"]').on('click', function() {
+      if ($(this).val() == '2') {
+        $('#other_history_of_covid').show();
+      } else {
+        $('#other_history_of_covid').hide();
+        $('#other_history_of_covid_text').val('');
+      }
+    });
     $('input[name="underlying_disease"]').on('click', function() {
       if ($(this).val() == '2') {
         $('#other_underlying_disease').show();

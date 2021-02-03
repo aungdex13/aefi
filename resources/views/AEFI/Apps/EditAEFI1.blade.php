@@ -445,7 +445,7 @@ foreach ($aecode as $value) {
                             @endif>
                             <label>วัคซีนที่แพ้ :</label>
                             <select id="other_vaccination_history_text" name="other_vaccination_history" class="form-control select2" style="width: 100%;">
-                              <option class="badge filter badge-info" data-color="info" value="{{ $data[0]->other_vaccination_history }}">{{ $data[0]->other_vaccination_history }}</option>
+                              <option class="badge filter badge-info" data-color="info" value="{{ $data[0]->other_vaccination_history }}">{{ isset($arr_history_of_vaccine[$data[0]->other_vaccination_history]) ? $arr_history_of_vaccine[$data[0]->other_vaccination_history]:"" }}</option>
                               <?php
 										  foreach ($arr_history_of_vaccine as $k=>$v) { ?>
                               <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
@@ -491,7 +491,7 @@ foreach ($aecode as $value) {
                             @endif>
                             <label>วัคซีนที่แพ้ :</label>
                             <select id="other_patient_develop_symptoms_after_previous_vaccination_text" name="other_patient_develop_symptoms_after_previous_vaccination" class="form-control select2" style="width: 100%;">
-                              <option class="badge filter badge-info" data-color="info" value="{{ $data[0]->other_patient_develop_symptoms_after_previous_vaccination }}">{{ $data[0]->other_patient_develop_symptoms_after_previous_vaccination }}
+                              <option class="badge filter badge-info" data-color="info" value="{{ $data[0]->other_patient_develop_symptoms_after_previous_vaccination }}">{{ isset($arr_patient_develop_symptoms_after_previous_vaccination[$data[0]->other_patient_develop_symptoms_after_previous_vaccination]) ? $arr_patient_develop_symptoms_after_previous_vaccination[$data[0]->other_patient_develop_symptoms_after_previous_vaccination]:"" }}
                               </option>
                               <?php
 	  										  foreach ($arr_patient_develop_symptoms_after_previous_vaccination as $k=>$v) { ?>
@@ -537,7 +537,7 @@ foreach ($aecode as $value) {
                             style="display: none"
                             @endif>
                             <select id="other_underlying_disease_text" name="other_underlying_disease" class="form-control select2" style="width: 100%;">
-                              <option class="badge filter badge-info" data-color="info" value="{{ $data[0]->other_underlying_disease }}">{{ $data[0]->other_underlying_disease }}</option>
+                              <option class="badge filter badge-info" data-color="info" value="{{ $data[0]->other_underlying_disease }}">{{ isset($arr_underlying_disease[$data[0]->other_underlying_disease]) ? $arr_underlying_disease[$data[0]->other_underlying_disease]:"" }}</option>
                               <?php
 												  foreach ($arr_underlying_disease as $k=>$v) { ?>
                               <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
@@ -583,6 +583,44 @@ foreach ($aecode as $value) {
                             @endif>
                             <input type="text" id="other_history_of_drug_use_within_1_month_vaccination_text" name="other_history_of_drug_use_within_1_month_vaccination" class="form-control" placeholder="ระบุ" hidden="true"
                               value="{{ $data[0]->other_history_of_drug_use_within_1_month_vaccination }}">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- ประวัติการป่วยcovid-->
+                    <div class="form-group">
+                      <div class="row">
+                        <div class="col-lg-12">
+                          <div class="control-label">
+                            <label>เคยป่วยเป็นโควิดหรือไม่ :</label>
+                          </div>
+                        </div>
+                        <div class="col-lg-3">
+                          <div class="radio">
+                            <label>
+                              <input type="radio" name="history_of_covid" value="1" @if ($data[0]->history_of_covid == 1)
+                              {{ "checked" }}
+                              @endif>
+                              ไม่เคย
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-lg-3">
+                          <div class="radio">
+                            <label>
+                              <input type="radio" name="history_of_covid"  value="2" @if ($data[0]->history_of_covid == 2)
+                              {{ "checked" }}
+                              @endif>
+                              เคย
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-lg-12">
+                          <div id="other_history_of_covid"  @if ($data[0]->history_of_covid != 2)
+                            style="display: none"
+                            @endif>
+                            <input type="text"  name="other_history_of_covid_text" id="other_history_of_covid_text" class="form-control" placeholder="ระบุเวลาที่เป็น" hidden="true"
+                              value="{{ $data[0]->other_history_of_covid_text }}">
                           </div>
                         </div>
                       </div>
@@ -794,13 +832,13 @@ foreach ($aecode as $value) {
                             </select>
                           </td>
                           <td>
-                            <input type="number" id="dose1" name="dose[]" class="form-control" value="{{$row->dose}}" min="1" max="20">
+                            <input type="number" id="dose1" name="dose[]" class="form-control" min="1" max="20">
                           </td>
                           <td>
-                            <input type="text" name="date_of_vaccination[]" value="{{$row->date_of_vaccination}}" id="date_of_vaccination1" class="form-control datepicker" data-date-format="yyyy-mm-dd">
+                            <input type="text" name="date_of_vaccination[]"  id="date_of_vaccination1" class="form-control datepicker" data-date-format="yyyy-mm-dd">
                           </td>
                           <td>
-                            <input type="text" id="time_of_vaccination1" name="time_of_vaccination[]"  value="{{$row->time_of_vaccination}}" class="form-control">
+                            <input type="text" id="time_of_vaccination1" name="time_of_vaccination[]"   class="form-control">
                           </td>
                           <td>
                             <select type="text" id="manufacturer1" name="manufacturer[]" class="form-control">
@@ -813,22 +851,22 @@ foreach ($aecode as $value) {
                             </select>
                           </td>
                           <td>
-                            <input type="text" id="other_manufacturer" name="other_manufacturer[]" value="{{$row->other_manufacturer}}" class="form-control">
+                            <input type="text" id="other_manufacturer" name="other_manufacturer[]" class="form-control">
                           </td>
                           <td>
-                            <input type="text" id="lot_number1" name="lot_number[]" value="{{$row->lot_number}}" class="form-control">
+                            <input type="text" id="lot_number1" name="lot_number[]" class="form-control">
                           </td>
                           <td>
-                            <input type="text" id="datepicker_expiry_date1" name="expiry_date[]" class="form-control" value="{{$row->expiry_date}}" data-date-format="yyyy-mm-dd">
+                            <input type="text" id="datepicker_expiry_date1" name="expiry_date[]" class="form-control" data-date-format="yyyy-mm-dd">
                           </td>
                           {{-- <td>
                             <input type="text" id="name_of_diluent1" name="name_of_diluent[]" class="form-control">
                           </td> --}}
                           <td>
-                            <input type="text" id="lot_number_diluent1" name="lot_number_diluent[]"  value="{{$row->lot_number_diluent}}" class="form-control">
+                            <input type="text" id="lot_number_diluent1" name="lot_number_diluent[]" class="form-control">
                           </td>
                           <td>
-                            <input type="text" id="datepicker_expiry_date_diluent1" name="expiry_date_diluent[]" value="{{$row->expiry_date_diluent}}" class="form-control" data-date-format="yyyy-mm-dd">
+                            <input type="text" id="datepicker_expiry_date_diluent1" name="expiry_date_diluent[]"  class="form-control" data-date-format="yyyy-mm-dd">
                           </td>
                           {{-- <td><input type="text" id="date_of_reconstitution1" name="date_of_reconstitution[]" class="form-control" data-date-format="yyyy-mm-dd"></td> --}}
                           {{-- <td><input type="text" id="time_of_reconstitution1" name="time_of_reconstitution[]" class="form-control"></td> --}}
@@ -2130,7 +2168,7 @@ foreach ($aecode as $value) {
                 <div class="col-md-3">
                 </div>
                 <div class="col-md-3">
-                  <button type="button" class="btn btn-block btn-danger">ย้อนกลับ</button>
+                  <a href="{{ route('lstf1') }}" class="btn btn-block btn-danger">ย้อนกลับ</a>
                 </div>
                 <div class="col-md-3">
                   <input type="submit" name="submit" value="บันทึกข้อมูล" class="btn btn-block btn-success"></button>

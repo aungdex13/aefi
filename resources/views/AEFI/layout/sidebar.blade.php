@@ -39,7 +39,7 @@
 		<ul class="treeview-menu">
 		  <li><a href="{{ route('lstf1') }}"><i class="fa fa-circle-o"></i> แบบฟอร์ม v1</a></li>
 		  <li class="treeview">
-			{{-- <a href="#"><i class="fa fa-circle-o"></i>  แบบฟอร์ม v2
+			<a href="#"><i class="fa fa-circle-o"></i>  แบบฟอร์ม v2
 			  <span class="pull-right-container">
 				<i class="fa fa-angle-left pull-right"></i>
 			  </span>
@@ -47,7 +47,7 @@
 			<ul class="treeview-menu">
 			  <li><a href="{{ route('lstf2') }}"><i class="fa fa-circle-o"></i> กรอก AEFI2</a></li>
 			   <li><a href="{{ route('lstef2') }}"><i class="fa fa-circle-o"></i> แก้ไข AEFI2</a></li>
-			</ul> --}}
+			</ul>
 		  </li>
 		</ul>
 	  </li>

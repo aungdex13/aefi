@@ -8,6 +8,7 @@
 	use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 	use App\Http\Controllers\Controller;
 	use Illuminate\Http\Request;
+	use Illuminate\Support\Facades\Storage;
 	use DB;
 	use Illuminate\Support\Str;
 	class InsertController extends Controller
@@ -162,6 +163,8 @@
 		$lab_result = $req ->input ('lab_result');
 		$other_text_patient_develop_symptoms_after_previous_vaccination = $req ->input ('other_text_patient_develop_symptoms_after_previous_vaccination');
 		$other_text_underlying_disease = $req ->input ('other_text_underlying_disease');
+		$history_of_covid = $req ->input ('history_of_covid');
+		$other_history_of_covid_text = $req ->input ('other_history_of_covid_text');
 		$data = array(
 			'id_case'=>$id_case,
 			'hn'=>$hn,
@@ -287,7 +290,9 @@
 			'date_entry'=>$date_entry,
 			'lab_result'=>$lab_result,
 			'other_text_patient_develop_symptoms_after_previous_vaccination'=>$other_text_patient_develop_symptoms_after_previous_vaccination,
-			'other_text_underlying_disease'=>$other_text_underlying_disease
+			'other_text_underlying_disease'=>$other_text_underlying_disease,
+			'history_of_covid'=>$history_of_covid,
+			'other_history_of_covid_text'=>$other_history_of_covid_text
 
 		);
 	// echo($data);
@@ -349,316 +354,67 @@ $x=0;
 }
 public function insertform2(Request $req2)
 {
-	//dd($_FILES['other_instruction_1']);
-	 // $other_instruction_1 = $_FILES['other_instruction_1']['name'];
-	// dd($other_instruction_1);
-     // $this->validate($req2, [
-     //  'other_instruction_1'  => 'required|image|mimes:jpg,png,gif|max:2048'
-     // ]);
+	$file1=	$req2->file('other_instruction_1');
+	$id_case=$req2->input('id_case');
+	$user_id=$req2->input('user_id');
+	// dd($file1,$id_case,$user_id);
 
-if (!empty($req2->file('other_instruction_1'))) {
-	$image=$req2->file('other_instruction_1');
-	$other_instruction_1 = date('Ymd').'_'.rand() . '.' . $image->getClientOriginalExtension();
-	 //dd($other_instruction_1);
-	$image->move(public_path('images'), $other_instruction_1);
-}else {
-	$other_instruction_1="null";
-	 //dd($other_instruction_1);
-}
-
-// dd($new_name);
-
-
-// dd($image);
-     // return back()->with('success', 'Image Uploaded Successfully')->with('path', $new_name);
-$id_case = $req2->input ('id_case');
-$prior_to_immunization_1 = $req2->input ('prior_to_immunization_1');
-$other_prior_to_immunization_1 = $req2->input ('other_prior_to_immunization_1');
-$prior_to_immunization_2 = $req2->input ('prior_to_immunization_2');
-$other_prior_to_immunization_2 = $req2->input ('other_prior_to_immunization_2');
-$prior_to_immunization_3 = $req2->input ('prior_to_immunization_3');
-$other_prior_to_immunization_3 = $req2->input ('other_prior_to_immunization_3');
-$prior_to_immunization_4 = $req2->input ('prior_to_immunization_4');
-$other_prior_to_immunization_4 = $req2->input ('other_prior_to_immunization_4');
-$prior_to_immunization_5 = $req2->input ('prior_to_immunization_5');
-$other_prior_to_immunization_5 = $req2->input ('other_prior_to_immunization_5');
-$prior_to_immunization_6 = $req2->input ('prior_to_immunization_6');
-$other_prior_to_immunization_6 = $req2->input ('other_prior_to_immunization_6');
-$prior_to_immunization_7 = $req2->input ('prior_to_immunization_7');
-$other_prior_to_immunization_7 = $req2->input ('other_prior_to_immunization_7');
-$prior_to_immunization_8 = $req2->input ('prior_to_immunization_8');
-$other_prior_to_immunization_8 = $req2->input ('other_prior_to_immunization_8');
-$for_adult_woman_1 = $req2->input ('for_adult_woman_1');
-$other_for_adult_woman_1 = $req2->input ('other_for_adult_woman_1');
-$for_adult_woman_2 = $req2->input ('for_adult_woman_2');
-$for_infants_less_than_1_year_1 = $req2->input ('for_infants_less_than_1_year_1');
-$other_for_infants_less_than_1_year_1 = $req2->input ('other_for_infants_less_than_1_year_1');
-$for_infants_less_than_1_year_2 = $req2->input ('for_infants_less_than_1_year_2');
-$other_for_infants_less_than_1_year_2 = $req2->input ('other_for_infants_less_than_1_year_2');
-$source = $req2->input ('source');
-$other_source = $req2->input ('other_source');
-$source_1_2 = $req2->input ('source_1_2');
-$symptoms_2 = $req2->input ('symptoms_2');
-$symptoms_2_1 = $req2->input ('symptoms_2_1');
-$symptoms_2_2 = $req2->input ('symptoms_2_2');
-$symptoms_2_3 = $req2->input ('symptoms_2_3');
-$symptoms_2_4 = $req2->input ('symptoms_2_4');
-$symptoms_2_5 = $req2->input ('symptoms_2_5');
-$treatment_place = $req2->input ('treatment_place');
-$doctor_name = $req2->input ('doctor_name');
-$status_on_date_inv_1 = $req2->input ('status_on_date_inv_1');
-$other_status_on_date_inv_1 = $req2->input ('other_status_on_date_inv_1');
-$status_on_date_inv_1_2 = $req2->input ('status_on_date_inv_1_2');
-$other_status_on_date_inv_1_21 = $req2->input ('other_status_on_date_inv_1_21');
-$other_status_on_date_inv_1_22 = $req2->input ('other_status_on_date_inv_1_22');
-$other_status_on_date_inv_1_23 = $req2->input ('other_status_on_date_inv_1_23');
-$instruction_1 = $req2->input ('instruction_1');
-$other_instruction_1 = $other_instruction_1;
-$record1 = $req2->input ('record1');
-$record2 = $req2->input ('record2');
-$record3 = $req2->input ('record3');
-$record4 = $req2->input ('record4');
-$record5 = $req2->input ('record5');
-$itching = $req2->input ('itching');
-$patient_immunized_1 = $req2->input ('patient_immunized_1');
-$patient_immunized_2 = $req2->input ('patient_immunized_2');
-$other_patient_immunized_2 = $req2->input ('other_patient_immunized_2');
-$patient_immunized_3 = $req2->input ('patient_immunized_3');
-$other_patient_immunized_3 = $req2->input ('other_patient_immunized_3');
-$patient_immunized_4 = $req2->input ('patient_immunized_4');
-$other_patient_immunized_4 = $req2->input ('other_patient_immunized_4');
-$patient_immunized_5 = $req2->input ('patient_immunized_5');
-$other_patient_immunized_5 = $req2->input ('other_patient_immunized_5');
-$patient_immunized_6 = $req2->input ('patient_immunized_6');
-$other_patient_immunized_6 = $req2->input ('other_patient_immunized_6');
-$patient_immunized_7 = $req2->input ('patient_immunized_7');
-$other_patient_immunized_7 = $req2->input ('other_patient_immunized_7');
-$patient_immunized_8 = $req2->input ('patient_immunized_8');
-$patient_immunized_8_1 = $req2->input ('patient_immunized_8_1');
-$patient_immunized_9 = $req2->input ('patient_immunized_9');
-$patient_immunized_9_1 = $req2->input ('patient_immunized_9_1');
-$patient_immunized_10 = $req2->input ('patient_immunized_10');
-$patient_immunized_10_1 = $req2->input ('patient_immunized_10_1');
-$patient_immunized_10_2 = $req2->input ('patient_immunized_10_2');
-$patient_immunized_11 = $req2->input ('patient_immunized_11');
-$other_patient_immunized_11 = $req2->input ('other_patient_immunized_11');
-$patient_immunized_12 = $req2->input ('patient_immunized_12');
-$other_patient_immunized_12 = $req2->input ('other_patient_immunized_12');
-$patient_immunized_13 = $req2->input ('patient_immunized_13');
-$immunization_practices_1 = $req2->input ('immunization_practices_1');
-$immunization_practices_1_1 = $req2->input ('immunization_practices_1_1');
-$other_immunization_practices_1_1 = $req2->input ('other_immunization_practices_1_1');
-$immunization_practices_1_4 = $req2->input ('immunization_practices_1_4');
-$reconstitution_1 = $req2->input ('reconstitution_1');
-$reconstitution_2 = $req2->input ('reconstitution_2');
-$reconstitution_3 = $req2->input ('reconstitution_3');
-$reconstitution_4 = $req2->input ('reconstitution_4');
-$reconstitution_5 = $req2->input ('reconstitution_5');
-$vaccine_storage_1 = $req2->input ('vaccine_storage_1');
-$vaccine_storage_1_1 = $req2->input ('vaccine_storage_1_1');
-$vaccine_storage_1_2 = $req2->input ('vaccine_storage_1_2');
-$vaccine_storage_1_3 = $req2->input ('vaccine_storage_1_3');
-$vaccine_storage_2= $req2->input ('vaccine_storage_2');
-$vaccine_storage_3 = $req2->input ('vaccine_storage_3');
-$vaccine_storage_4 = $req2->input ('vaccine_storage_4');
-$vaccine_storage_5 = $req2->input ('vaccine_storage_5');
-$vaccine_storage_6 = $req2->input ('vaccine_storage_6');
-$vaccine_storage_7 = $req2->input ('vaccine_storage_7');
-$vaccine_transportation_1 = $req2->input ('vaccine_transportation_1');
-$vaccine_transportation_1_1 = $req2->input ('vaccine_transportation_1_1');
-$vaccine_transportation_2 = $req2->input ('vaccine_transportation_2');
-$vaccine_transportation_3 = $req2->input ('vaccine_transportation_3');
-$vaccine_transportation_4 = $req2->input ('vaccine_transportation_4');
-$community_inv_1 = $req2->input ('community_inv_1');
-$community_inv_1_1 = $req2->input ('community_inv_1_1');
-$community_inv_1_2 = $req2->input ('community_inv_1_2');
-$community_inv_1_3 = $req2->input ('community_inv_1_3');
-$community_inv_1_4 = $req2->input ('community_inv_1_4');
-$community_inv_1_5 = $req2->input ('community_inv_1_5');
-$no_ad_syringes = $req2->input ('no_ad_syringes');
-$other_no_ad_syringes = $req2->input ('other_no_ad_syringes');
-$events = $req2->input ('events');
-$investigater_2 = $req2->input ('investigater_2');
-$investigater_3 = $req2->input ('investigater_3');
-$investigater_4 = $req2->input ('investigater_4');
-$investigater_5 = $req2->input ('investigater_5');
-$investigater_5_2 = $req2->input ('investigater_5_2');
-$investigater_5_3 = $req2->input ('investigater_5_3');
-$investigater_8 = $req2->input ('investigater_8');
-$investigater_9 = $req2->input ('investigater_9');
-$investigater_10 = $req2->input ('investigater_10');
-$status = "1";
-$date_entry = date('Y-m-d') ;
-
-
-// dd($req2);
-$data2 = array(
-	'id_case'=>$id_case,
-	'prior_to_immunization_1'=>$prior_to_immunization_1,
-	'other_prior_to_immunization_1'=>$other_prior_to_immunization_1,
-	'prior_to_immunization_2'=>$prior_to_immunization_2,
-	'other_prior_to_immunization_2'=>$other_prior_to_immunization_2,
-	'prior_to_immunization_3'=>$prior_to_immunization_3,
-	'other_prior_to_immunization_3'=>$other_prior_to_immunization_3,
-	'prior_to_immunization_4'=>$prior_to_immunization_4,
-	'other_prior_to_immunization_4'=>$other_prior_to_immunization_4,
-	'prior_to_immunization_5'=>$prior_to_immunization_5,
-	'other_prior_to_immunization_5'=>$other_prior_to_immunization_5,
-	'prior_to_immunization_6'=>$prior_to_immunization_6,
-	'other_prior_to_immunization_6'=>$other_prior_to_immunization_6,
-	'prior_to_immunization_7'=>$prior_to_immunization_7,
-	'other_prior_to_immunization_7'=>$other_prior_to_immunization_7,
-	'prior_to_immunization_8'=>$prior_to_immunization_8,
-	'other_prior_to_immunization_8'=>$other_prior_to_immunization_8,
-	'for_adult_woman_1'=>$for_adult_woman_1,
-	'other_for_adult_woman_1'=>$other_for_adult_woman_1,
-	'for_adult_woman_2'=>$for_adult_woman_2,
-	'for_infants_less_than_1_year_1'=>$for_infants_less_than_1_year_1,
-	'other_for_infants_less_than_1_year_1'=>$other_for_infants_less_than_1_year_1,
-	'for_infants_less_than_1_year_2'=>$for_infants_less_than_1_year_2,
-	'other_for_infants_less_than_1_year_2'=>$other_for_infants_less_than_1_year_2,
-	'source'=>$source,
-	'other_source'=>$other_source,
-	'source_1_2'=>$source_1_2,
-	'symptoms_2'=>$symptoms_2,
-	'symptoms_2_1'=>$symptoms_2_1,
-	'symptoms_2_2'=>$symptoms_2_2,
-	'symptoms_2_3'=>$symptoms_2_3,
-	'symptoms_2_4'=>$symptoms_2_4,
-	'symptoms_2_5'=>$symptoms_2_5,
-	'treatment_place'=>$treatment_place,
-	'doctor_name'=>$doctor_name,
-	'status_on_date_inv_1'=>$status_on_date_inv_1,
-	'other_status_on_date_inv_1'=>$other_status_on_date_inv_1,
-	'status_on_date_inv_1_2'=>$status_on_date_inv_1_2,
-	'other_status_on_date_inv_1_21'=>$other_status_on_date_inv_1_21,
-	'other_status_on_date_inv_1_22'=>$other_status_on_date_inv_1_22,
-	'other_status_on_date_inv_1_23'=>$other_status_on_date_inv_1_23,
-	'instruction_1'=>$instruction_1,
-	'other_instruction_1'=>$other_instruction_1,
-	'record1'=>$record1,
-	'record2'=>$record2,
-	'record3'=>$record3,
-	'record4'=>$record4,
-	'record5'=>$record5,
-	'patient_immunized_1'=>$patient_immunized_1,
-	'patient_immunized_2'=>$patient_immunized_2,
-	'other_patient_immunized_2'=>$other_patient_immunized_2,
-	'patient_immunized_3'=>$patient_immunized_3,
-	'other_patient_immunized_3'=>$other_patient_immunized_3,
-	'patient_immunized_4'=>$patient_immunized_4,
-	'other_patient_immunized_4'=>$other_patient_immunized_4,
-	'patient_immunized_5'=>$patient_immunized_5,
-	'other_patient_immunized_5'=>$other_patient_immunized_5,
-	'patient_immunized_6'=>$patient_immunized_6,
-	'other_patient_immunized_6'=>$other_patient_immunized_6,
-	'patient_immunized_7'=>$patient_immunized_7,
-	'other_patient_immunized_7'=>$other_patient_immunized_7,
-	'patient_immunized_8'=>$patient_immunized_8,
-	'patient_immunized_8_1'=>$patient_immunized_8_1,
-	'patient_immunized_9'=>$patient_immunized_9,
-	'patient_immunized_9_1'=>$patient_immunized_9_1,
-	'patient_immunized_10'=>$patient_immunized_10,
-	'patient_immunized_10_1'=>$patient_immunized_10_1,
-	'patient_immunized_10_2'=>$patient_immunized_10_2,
-	'patient_immunized_11'=>$patient_immunized_11,
-	'other_patient_immunized_11'=>$other_patient_immunized_11,
-	'patient_immunized_12'=>$patient_immunized_12,
-	'other_patient_immunized_12'=>$other_patient_immunized_12,
-	'patient_immunized_13'=>$patient_immunized_13,
-	'immunization_practices_1'=>$immunization_practices_1,
-	'immunization_practices_1_1'=>$immunization_practices_1_1,
-	'other_immunization_practices_1_1'=>$other_immunization_practices_1_1,
-	'immunization_practices_1_4'=>$immunization_practices_1_4,
-	'reconstitution_1'=>$reconstitution_1,
-	'reconstitution_2'=>$reconstitution_2,
-	'reconstitution_3'=>$reconstitution_3,
-	'reconstitution_4'=>$reconstitution_4,
-	'reconstitution_5'=>$reconstitution_5,
-	'vaccine_storage_1'=>$vaccine_storage_1,
-	'vaccine_storage_1_1'=>$vaccine_storage_1_1,
-	'vaccine_storage_1_2'=>$vaccine_storage_1_2,
-	'vaccine_storage_1_3'=>$vaccine_storage_1_3,
-	'vaccine_storage_2'=>$vaccine_storage_2,
-	'vaccine_storage_3'=>$vaccine_storage_3,
-	'vaccine_storage_4'=>$vaccine_storage_4,
-	'vaccine_storage_5'=>$vaccine_storage_5,
-	'vaccine_storage_6'=>$vaccine_storage_6,
-	'vaccine_storage_7'=>$vaccine_storage_7,
-	'vaccine_transportation_1'=>$vaccine_transportation_1,
-	'vaccine_transportation_1_1'=>$vaccine_transportation_1_1,
-	'vaccine_transportation_2'=>$vaccine_transportation_2,
-	'vaccine_transportation_3'=>$vaccine_transportation_3,
-	'vaccine_transportation_4'=>$vaccine_transportation_4,
-	'community_inv_1'=>$community_inv_1,
-	'community_inv_1_1'=>$community_inv_1_1,
-	'community_inv_1_2'=>$community_inv_1_2,
-	'community_inv_1_3'=>$community_inv_1_3,
-	'community_inv_1_4'=>$community_inv_1_4,
-	'community_inv_1_5'=>$community_inv_1_5,
-	'no_ad_syringes'=>$no_ad_syringes,
-	'other_no_ad_syringes'=>$other_no_ad_syringes,
-	'events'=>$events ,
-	 'investigater_2'=>$investigater_2,
-	 'investigater_3'=>$investigater_3,
-	 'investigater_4'=>$investigater_4,
-	 'investigater_5'=>$investigater_5,
-	 'investigater_5_2'=>$investigater_5_2,
-	 'investigater_5_3'=>$investigater_5_3,
-	 'investigater_8'=>$investigater_8,
-	 'investigater_9'=>$investigater_9,
-	 'investigater_10'=>$investigater_10,
-	 'status'=>$status,
-	 'date_entry'=>$date_entry
-
-
-);
-   //dd($data2);
-   $res2	= DB::table('aefi_form_2')->insert($data2);
-
-//dd($res1);
-if ($res2)
- {
-
-	$name_vac = $req2 ->input ('name_vac');
-	$recive_amount = $req2 ->input ('recive_amount');
-for ($i = 0; $i < count(array_filter($name_vac)); $i++) {
-	$data_vac2= array(
-		'id_case'=>$id_case,
-		'name_vac'=>$name_vac[$i],
-		'recive_amount'=>$recive_amount[$i],
-		'date_entry'=>$date_entry,
-	);
-		DB::table('aefi_form_2_vac')->insert($data_vac2);
-	}
-}
-if ($res2)
- {
-
-	$investigater_1 = $req2 ->input ('investigater_1');
-	$investigater_1_2 = $req2 ->input ('investigater_1_2');
-	$investigater_1_3 = $req2 ->input ('investigater_1_3');
-	$investigater_1_4 = $req2 ->input ('investigater_1_4');
-for ($i = 0; $i < count(array_filter($investigater_1)); $i++) {
-	$data_inv= array(
-		'id_case'=>$id_case,
-		'investigater_1'=>$investigater_1[$i],
-		'investigater_1_2'=>$investigater_1_2[$i],
-		'investigater_1_3'=>$investigater_1_3[$i],
-		'investigater_1_4'=>$investigater_1_4[$i],
-		'date_entry'=>$date_entry,
-	);
-		DB::table('aefi_inv')->insert($data_inv);
-	}
-}
-if ($res2){
-	$msg2 = " ส่งข้อมูลสำเร็จ";
-	$url_rediect = "<script>alert('".$msg2."'); window.location='lstf2';</script> ";
-}else{
-	$msg2 = " ส่งข้อมูลไม่สำเร็จ";
-	$url_rediect = "<script>alert('".$msg2."'); window.location='form2';</script> ";
-	}
-	echo $url_rediect;
-
+	if ($file1 != null) {
+			$path1 = Storage::putFile('file_upload', $file1);
+			$filename=$file1->getClientOriginalName();
+			$filenamegenerate1=str_replace("file_upload/" ,"", $path1);
+			$file_type=strstr($filename, ".");
+			$path = $path1;
+		}else {
+			$filename=null;
+			$filenamegenerate1=null;
+			$file_type=null;
+			$path =null;
+		}
+			$user_id = (isset($_POST['user_id'])) ? $_POST['user_id'] : null;
+			$title_file_name = "เอกสาร AEFI2";
+			$file_name = $filenamegenerate1;
+			$originalfilename = $filename;
+			$status = '1';
+			$status_on_date_inv_1 = $req2->input('status_on_date_inv_1');
+			$other_status_on_date_inv_1 = $req2->input('other_status_on_date_inv_1');
+			$instruction_1 = $req2->input('instruction_1');
+			$record_name = $req2->input('record_name');
+			$record_position = $req2->input('record_position');
+			$record_division = $req2->input('record_division');
+			$record_tel = $req2->input('record_tel');
+			$record_date = $req2->input('record_date');
+			$date_entry = date('Y-m-d');
+			$date_update = date('Y-m-d');
+					$data = array(
+						'user_id' => $user_id,
+						'id_case' => $id_case,
+						'title_file_name' => $title_file_name,
+						'file_name' => $file_name,
+						'file_type' => $file_type,
+						'originalfilename' => $originalfilename,
+						'path' => $path,
+						'status' => $status,
+						'date_entry' => $date_entry,
+						'date_update' => $date_update,
+						'status_on_date_inv_1' => $status_on_date_inv_1,
+						'other_status_on_date_inv_1' => $other_status_on_date_inv_1,
+						'instruction_1' => $instruction_1,
+						'record_name' => $record_name,
+						'record_position' => $record_position,
+						'record_division' => $record_division,
+						'record_tel' => $record_tel,
+						'record_date' => $record_date,
+				);
+				// dd($data);
+			$res1	= DB::table('aefi_form_2')->insert($data);
+			if ($res1) {
+				$msg = " ส่งข้อมูลสำเร็จ";
+				$url_rediect = "<script>alert('".$msg."'); window.location='lstf2?id_case=$id_case';</script> ";
+			}else{
+				$msg = " ส่งข้อมูลไม่สำเร็จ";
+				$url_rediect = "<script>alert('".$msg."'); window.location='form2?id_case=$id_case';</script> ";
+						}
+				echo $url_rediect;
 }
 }
