@@ -16,6 +16,8 @@ Route::get('/', 'Auth\LoginController@ShowloginForm');
 Route::get('/register-form', 'Aefi\RegisterController@RegForm')->name('register-form');
 Route::post('/Saved-New-User', 'Aefi\RegisterController@Save_New_Users')->name('save-new-user');
 Route::get('/List-Division', 'Aefi\RegisterController@Get_Division_All')->name('list-division-json');
+Route::get('/MyProfile','ProfileController@index')->name('myprofile');
+Route::post('/MyProfile','ProfileController@edit')->name('myprofile-edit');
 //Speatie
 Route::group(['prefix' => 'access-control','middleware' => ['auth']], function() {
   Route::get('/ManageRoles', 'RoleController@index')->name('roles.index');

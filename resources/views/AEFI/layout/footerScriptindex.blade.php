@@ -16,9 +16,9 @@
 <!-- AdminLTE App -->
 <script src="/asset/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="/asset/dist/js/demo.js"></script>
+<!-- <script src="/asset/dist/js/demo.js"></script> -->
 <!-- Page script -->
-<script  src="/asset/bower_components/1543-image-hover/js/index.js"></script>
+<!-- <script  src="/asset/bower_components/1543-image-hover/js/index.js"></script> -->
 
 <script  src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script  src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
@@ -31,6 +31,7 @@
 <script  src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
 <!-- SweetAlert2 -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 {{-- content table --}}
 {{-- <script type="text/javascript">
 $(document).ready(function () {

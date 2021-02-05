@@ -27,7 +27,11 @@ class ManageUsersController extends Controller
     {
       $datas = User::all();
       $data_list_division = Cache::remember('ChospitalNewALL', 1440, function() {
-         return ChospitalNew::all();
+         $data_arr = ChospitalNew::select('hosp_name','hospcode')->get();
+         foreach ($data_arr as $data_val){
+           $arr[$data_val->hospcode] = $data_val->hosp_name;
+         }
+         return $arr;
       });
       return view('aefi.managerusers.index',[
         'datas' => $datas,

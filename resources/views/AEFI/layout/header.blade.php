@@ -53,9 +53,9 @@
 			</li>
 			<!-- Menu Footer-->
 			<li class="user-footer">
-				{{-- <div class="pull-right">
-				  <a href="#" class="btn btn-default btn-flat">Sign out</a>
-				</div> --}}
+				<div class="pull-left">
+				  <a href="{{ route('myprofile') }}" class="btn btn-default btn-flat">MyProfile</a>
+				</div>
 			  <div class="pull-right">
 				<a class="btn btn-default btn-flat" href="{{ route('logout') }}"
 				   onclick="event.preventDefault();

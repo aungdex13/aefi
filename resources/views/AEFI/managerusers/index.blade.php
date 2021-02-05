@@ -39,7 +39,7 @@
                           <td>{{ $data->sur_name }}</td>
   								        <td>{{ $data->username }}</td>
                           <td>{{ $data->email }}</td>
-                          <td>{{ $data->hospcode }}</td>
+                          <td>@if($data->hospcode) {{ $datas_div[$data->hospcode] }} @else - @endif</td>
   				            </tr>
   							@endforeach
 				        </tbody>
