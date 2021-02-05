@@ -30,55 +30,44 @@ $arr_manufacturer = load_manufacturer();
       <!-- general form elements -->
       <div class="box box-info">
         <div class="box-header with-border">
-          <h3 class="box-title"></h3>
+          <h3 class="box-title"><a href="{{ route('form2') }}?id_case={{ $idcase }}" type="button" class="btn btn-success btn-flat"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>เพิ่มผู้ป่วย AEFI 2</a></h3>
         </div>
+        {{-- <div class="box-header with-border">
+          <h3 class="box-title"></h3>
+        </div> --}}
         <!-- /.box-header -->
         <!-- form start -->
         <!-- /.box-header -->
         <div class="box-body">
+            {{-- <a href="{{ route('form2') }}?id_case={{ $idcase }}" type="button" class="btn btn-success btn-flat"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>เพิ่มข้อมูล AEFI2</a></br> --}}
           <table class="table table-bordered" id="case_lst" class="display" style="width:100%">
             <thead>
               <tr>
-                <th>เลขที่ผู้ป่วย HN</th>
-                <th>เลขที่ผู้ป่วย AN</th>
-                <th>ชื่อ-นามสกุลผู้ป่วย</th>
-                <th>อายุ</th>
-                <th>เชื้อชาติ</th>
-                <th>ที่อยู่</th>
-                <th>มีความจำเป็นที่จะต้องสอบสวนโรค</th>
+                <th>ชื่อ-สกุล ผู้บันทึกข้อมูล</th>
+                <th>หน่วยงาน</th>
+                <th>ชื่อไฟล์</th>
+                {{-- <th>สภาพผู้ป่วยขณะสอบสวน</th> --}}
                 <th>***</th>
               </tr>
             </thead>
             <?php foreach($data as $value) : ?>
             <tr class="data-contact-person">
               <td>
-                <p style="text-align:center;">{{ $value->id_case }}</p>
+                <p style="text-align:center;">{{ $value->record_name }}</p>
               </td>
               <td>
-                <p style="text-align:center;">{{ $value->hn }}</p>
+                <p style="text-align:center;">{{ $value->record_division }}</p>
               </td>
               <td>
-                <p style="text-align:center;">{{ $value->an }}</p>
+                <p style="text-align:center;">{{ $value->file_name }}</p>
               </td>
-              <td>
-                <p style="text-align:center;">{{ $value->first_name }} {{ $value->sur_name }}</p>
-              </td>
-              <td>
-                <p style="text-align:center;">{{ $value->age_while_sick_year }}</p>
-              </td>
-              <td>
-                <p style="text-align:center;">{{ $value->nationality }} {{ $value->other_nationality }}</p>
-              </td>
-              <td>
-                <p style="text-align:center;">ตำบล : {{ $value->subdistrict }}<br> อำเภอ : {{ $value->district }}<br> จังหวัด : {{ $value->province }}</p>
-              </td>
-              <td>
-                <p style="text-align:center;">{{ $value->necessary_to_investigate }}</p>
-              </td>
+              {{-- <td>
+                <p style="text-align:center;">{{ $value->status_on_date_inv_1 }}</p>
+              </td> --}}
               <td>
                 <div class="btn-group">
-                  <a href="{{ route('form2') }}?id_case={{ $value->id_case }}" type="button" class="btn btn-warning btn-flat"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>กรอก AEFI2</a>
-                  <button type="button" class="btn btn-danger btn-flat"><i class="fa fa-trash" aria-hidden="true"></i>ลบ</button>
+                  <a href="{{ route('downloadaefi2') }}?id_case={{ $value->id_case }}&file_name={{ $value->file_name }}" type="button" class="btn btn-warning btn-flat"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>ดาวน์โหลดไฟล์ AEFI2</a>
+                    <a href="{{ route('deleteAEFI2') }}?id_case={{ $value->id_case }}&file_name={{ $value->file_name }}" id="btnDelete" type="button" class="btn btn-danger" onclick="return confirm('ต้องการลบข้อมูล ใช่หรือไม่?');">ลบข้อมูล</a>
                 </div>
               </td>
             </tr>

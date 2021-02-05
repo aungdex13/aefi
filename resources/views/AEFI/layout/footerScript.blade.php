@@ -177,6 +177,10 @@ $(document).ready(function() {
       dateFormat: "yy-mm-dd"
     })
     //Date picker
+    $('.datepicker_expiry_date_diluent').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+    //Date picker
     $('#datepicker_expiry_date_diluent1').datepicker({
       dateFormat: "yy-mm-dd"
     })
@@ -234,6 +238,10 @@ $(document).ready(function() {
     })
     //Date picker
     $('#date_of_reconstitution5').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+    //Date picker
+    $('.date_of_vaccination').datepicker({
       dateFormat: "yy-mm-dd"
     })
     //Date picker
@@ -335,7 +343,7 @@ $(document).ready(function() {
         $('#other_seriousness_of_the_symptoms_text').val('');
       }
     });
-    $('input[name="other_symptoms_later_immunized_chk"]').on('click', function() {
+    $('input[name="symptoms_later_immunized"]').on('click', function() {
             if ($(this).is(":checked")) {
         $('#other_symptoms_later_immunized').show();
       } else {
@@ -349,6 +357,14 @@ $(document).ready(function() {
       } else {
         $('#other_history_of_drug_use_within_1_month_vaccination').hide();
         $('#other_history_of_drug_use_within_1_month_vaccination_text').val('');
+      }
+    });
+    $('input[name="history_of_covid"]').on('click', function() {
+      if ($(this).val() == '2') {
+        $('#other_history_of_covid').show();
+      } else {
+        $('#other_history_of_covid').hide();
+        $('#other_history_of_covid_text').val('');
       }
     });
     $('input[name="underlying_disease"]').on('click', function() {

@@ -44,6 +44,7 @@ $arr_necessary_to_investigate = load_necessary_to_investigate();
         <table class="table table-bordered" id="case_lst" class="display" style="width:100%">
           <thead>
             <tr>
+              <th hidden>เลขที่ผู้ป่วย HN</th>
               <th>เลขที่ผู้ป่วย HN</th>
               <th>เลขที่ผู้ป่วย AN</th>
               <th>ชื่อ-นามสกุลผู้ป่วย</th>
@@ -56,8 +57,11 @@ $arr_necessary_to_investigate = load_necessary_to_investigate();
           </thead>
           <?php foreach($data as $value) : ?>
           <tr class="data-contact-person">
+            <td hidden>
+              <p style="text-align:center;">{{ isset($value->id) ? $value->id : "-"}}</p>
+            </td>
             <td>
-              <p style="text-align:center;">{{ $value->hn }}</p>
+              <p style="text-align:center;">{{ isset($value->hn) ? $value->hn : "-"}}</p>
             </td>
             <td>
               <p style="text-align:center;">{{ $value->an }}</p>
@@ -66,7 +70,7 @@ $arr_necessary_to_investigate = load_necessary_to_investigate();
               <p style="text-align:center;">{{ $value->first_name }} {{ $value->sur_name }}</p>
             </td>
             <td>
-              <p style="text-align:center;">{{ $value->age_while_sick_year }}</p>
+              <p style="text-align:center;">{{ isset($value->age_while_sick_year) ? $value->age_while_sick_year :"-" }}ปี {{ isset($value->age_while_sick_month) ? $value->age_while_sick_month : "-" }}เดือน {{ isset($value->age_while_sick_day) ? $value->age_while_sick_day:"-"}}วัน</p>
             </td>
             <td>
               <p style="text-align:center;">{{ $arr_load_nationality[$value->nationality] }} {{ $value->other_nationality }}</p>
@@ -79,6 +83,10 @@ $arr_necessary_to_investigate = load_necessary_to_investigate();
             </td>
             <td>
               <div class="btn-group">
+                @if ($value->necessary_to_investigate == "2")
+                  <a href="{{ route('lstf2') }}?id_case={{ $value->id_case }}" type="button" class="btn btn-info btn-flat"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>กรอก AEFI2</a>
+                  {{-- <a href="{{ route('form2') }}?id_case={{ $value->id_case }}" type="button" class="btn btn-info btn-flat"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>กรอก AEFI2</a> --}}
+                @endif
                 <a href="{{ route('EditAEFI1') }}?id_case={{ $value->id_case }}" type="button" class="btn btn-warning btn-flat"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>แก้ไขข้อมูล</a>
                 {{-- <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-warning">ลบข้อมูล</button> --}}
                 <a href="{{ route('deleteAEFI1') }}?id_case={{ $value->id_case }}" id="btnDelete" type="button" class="btn btn-danger" onclick="return confirm('ต้องการลบข้อมูล ใช่หรือไม่?');">ลบข้อมูล</a>

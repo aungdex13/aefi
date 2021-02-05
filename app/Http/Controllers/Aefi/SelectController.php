@@ -20,7 +20,8 @@
 		public function selectdatatablecaseAEFI1()
 		{
 		$caselstF1 = DB::table('aefi_form_1')
-		->select('id_case',
+		->select(	'id',
+							'id_case',
 							'hn',
 							'an',
 							'first_name',
@@ -35,6 +36,7 @@
 							'subdistrict',
 							'necessary_to_investigate')
 		 ->where('status',null)
+		 ->orderBy('id','desc')
 		 ->get();
 		 $listProvince=$this->listProvince();
 		 $listDistrict=$this->listDistrict();
@@ -68,25 +70,39 @@
 		 return view('AEFI.Apps.caselstAEFI1group')->with('data', $caselstF1group);
 
 		}
-		public function selectdatatablecaseAEFI2()
+		public function selectdatatablecaseAEFI2(Request $req)
 		{
-		$caselstF2 = DB::select('select id_case, hn,
-		an,
-		first_name,
-		sur_name,
-		age_while_sick_year,
-		nationality,
-		gender,
-		other_nationality,
-		village_no,
-		province,
-		district,
-		subdistrict,
-		necessary_to_investigate
-		FROM aefi_form_1 WHERE necessary_to_investigate = ?', [2] );
+			$idcase = $req->id_case;
+		// $caselstF2 = DB::table('aefi_form_1')
+		// 								->select(	'id_case',
+		// 													'hn',
+		// 													'an',
+		// 													'first_name',
+		// 													'sur_name',
+		// 													'age_while_sick_year',
+		// 													'nationality',
+		// 													'gender',
+		// 													'other_nationality',
+		// 													'village_no',
+		// 													'province',
+		// 													'district',
+		// 													'subdistrict',
+		// 													'necessary_to_investigate'
+		// 												)
+		// 							->where('necessary_to_investigate', '2' )
+		// 							->where('id_case', [$req->id_case] )
+		// 							->get();
+									$caselstF2 = DB::table('aefi_form_2')
+																	->select(	'*'
+																					)
+																->where('status', '1' )
+																->where('id_case', [$req->id_case] )
+																->get();
+		// $AEFI2lst = DB::table('aefi_form_2')->select('*')->where('id_case', [$req->id_case] )->get();
 		 // dd($caselstF2);
-		 return view('AEFI.Apps.caselstAEFI2')->with('data', $caselstF2);
-
+		 return view('AEFI.Apps.caselstAEFI2')
+		 				->with('data', $caselstF2)
+						->with('idcase', 	$idcase);
 		}
 
 		public function selectdataAEFI2()
@@ -185,9 +201,9 @@
 			return $province_arr;
 		}
 		protected function listDistrict(){
-			$district = DB::table('tbl_amphures')->select('amphur_id','amphur_name')->get();
+			$district = DB::table('tbl_amphures')->select('amphur_code','amphur_name')->get();
 			foreach ($district as  $value) {
-				$district_arr[$value->amphur_id] =trim($value->amphur_name);
+				$district_arr[$value->amphur_code] =trim($value->amphur_name);
 			}
 			// dd($province_arr);
 			return $district_arr;

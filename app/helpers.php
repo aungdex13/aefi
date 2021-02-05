@@ -114,7 +114,7 @@ if (! function_exists('Underlying_disease')) {
 								'15'=>'Diseases of the genitourinary system',
 								'16'=>'Congenital malformations',
  								'17'=>'Deformations',
-  								'18'=>'Chromosomal abnormalities'
+  							'18'=>'Chromosomal abnormalities'
 														);
 		return 	$underlying_disease;
     }
@@ -179,7 +179,8 @@ if (! function_exists('manufacturer')) {
 								'10'=>'บริษัทฟาร์มาติกา จำกัด',
 								'11'=>'บริษัทไบโอวาลิส จำกัด',
 								'12'=>'บริษัทเอ็มเอสดี (ประเทศไทย) จำกัด',
-								'13'=>'บริษัทไบโอเน็ท-เอเชีย จำกัด'
+								'13'=>'บริษัทไบโอเน็ท-เอเชีย จำกัด',
+                '14'=>'อ็อกซ์ฟอร์ด-แอสตราเซเนกา'
 														);
 		return 	$manufacturer;
     }
@@ -277,6 +278,8 @@ if (! function_exists('provinces')) {
   								'1'=>'นาย',
   								'2'=>'นางสาว',
   								'3'=>'นาง',
+                  '4'=>'ด.ช.',
+                  '5'=>'ด.ญ.',
   								'99'=>'อื่นๆ',
   								''=>''
   														);
@@ -306,6 +309,17 @@ if (! function_exists('provinces')) {
                   ''=>''
                               );
       return 	$necessary_to_investigate;
+      }
+  }
+  if (! function_exists('seriousness_of_the_symptoms')) {
+      function load_seriousness_of_the_symptoms() {
+
+      $seriousness_of_the_symptoms = array(
+                  '1'=>'ไม่ร้ายแรง',
+                  '2'=>'ร้ายแรง',
+                  ''=>''
+                              );
+      return 	$seriousness_of_the_symptoms;
       }
   }
  ?>

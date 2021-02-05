@@ -82,8 +82,8 @@
 	})
 	//Date picker
 	$('#datepicker_record5').datepicker({
-	  autoclose: true
-	})
+    dateFormat: "yy-mm-dd"
+  })
 	//Date picker
 	$('#datepicker_investigater_2').datepicker({
 	  autoclose: true
