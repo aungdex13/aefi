@@ -319,7 +319,6 @@ $x=0;
 	 for ($i=0; $i < count($name_of_vaccine); $i++) {
 		 $data_vac[]  = [
 		'id_case'=>$id_case,
-		'hn'=>$hn,
 		'name_of_vaccine'=>$name_of_vaccine[$i],
 		'vaccine_volume'=>$vaccine_volume[$i],
 		'route_of_vaccination'=>$route_of_vaccination[$i],

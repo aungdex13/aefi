@@ -161,33 +161,30 @@
 		chart.render();
 
 		var chart = new CanvasJS.Chart("agegroup", {
-	exportEnabled: true,
 	animationEnabled: true,
+	theme: "light2", // "light1", "light2", "dark1", "dark2"
 	title:{
-		text: "State Operating Funds"
+		text: "Top Oil Reserves"
 	},
-	legend:{
-		cursor: "pointer",
-		itemclick: explodePie
+	axisY: {
+		title: "Reserves(MMbbl)"
 	},
 	data: [{
-		type: "pie",
+		type: "column",
 		showInLegend: true,
-		toolTipContent: "{name}: <strong>{y}%</strong>",
-		indexLabel: "{name} - {y}%",
+		legendMarkerColor: "grey",
+		legendText: "MMbbl = one million barrels",
 		dataPoints: [
-			{ y: 26, name: "School Aid", exploded: true },
-			{ y: 20, name: "Medical Aid" },
-			{ y: 5, name: "Debt/Capital" },
-			{ y: 3, name: "Elected Officials" },
-			{ y: 7, name: "University" },
-			{ y: 17, name: "Executive" },
-			{ y: 22, name: "Other Local Assistance"}
+			@foreach($count_groupage as $row)
+			{ x: {{ $row->group_age }}, y: {{ $row->countgroupage }} },
+			@endforeach
 		]
 	}]
 });
 chart.render();
-	}
+
+}
+	
 	function explodePie (e) {
 	if(typeof (e.dataSeries.dataPoints[e.dataPointIndex].exploded) === "undefined" || !e.dataSeries.dataPoints[e.dataPointIndex].exploded) {
 		e.dataSeries.dataPoints[e.dataPointIndex].exploded = true;

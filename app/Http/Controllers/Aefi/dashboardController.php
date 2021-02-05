@@ -32,6 +32,7 @@
 			$count_seriousness_of_the_symptoms_f = $this->count_seriousness_of_the_symptoms_f();
 			$count_vacname = $this->count_vacname();
 			$listvac_arr =  $this->listvac_arr();
+			$count_groupage = $this->count_groupage();
 			return view('AEFI.Apps.dashboard',compact(
 			 'count_prov',
 			 'listProvince',
@@ -47,7 +48,8 @@
 			 'count_seriousness_of_the_symptoms_m',
 			 'count_seriousness_of_the_symptoms_f',
 			 'count_vacname',
-			 'listvac_arr'
+			 'listvac_arr',
+			 'count_groupage'
 		 ));
 		}
 		public function selectdatadash()
@@ -336,4 +338,18 @@
 			// dd($province_arr);
 			return $arr_vac;
 		}
+		protected function count_groupage(){
+				 // dd($south->province_code);
+			$count_groupage = DB::table('aefi_form_1')
+										 ->select(DB::raw('count(id) as countgroupage,group_age'))
+										 // ->where('gender', '=', '2')
+										 ->where('status','=',null)
+										 ->groupBy('group_age')
+										 ->orderBy('group_age','ASC')
+										 ->get();
+
+				 // dd($count_south);
+			return $count_groupage;
+		}
+
 }
