@@ -161,6 +161,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         Pyaesone17\ActiveState\ActiveStateServiceProvider::class,
+        Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
     ],
 
     /*
@@ -210,6 +212,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Active' => Pyaesone17\ActiveState\ActiveFacade::class,
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
     ],
 
 ];

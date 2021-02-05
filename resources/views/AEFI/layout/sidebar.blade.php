@@ -70,6 +70,11 @@
       <li class="{{ Active::checkRoute(['listusers.index','listusers.create','listusers.edit']) }}"><a href="{{ route('listusers.index') }}"><i class="fa fa-circle-o"></i>จัดการผู้ใช้งาน</a></li>
 		</ul>
 	  </li>
+    <li>
+		<a href="{{ route('error-log-view') }}" target="_blank">
+		  <i class="fa fa-bug"></i> <span>Error Log(Dev)</span>
+		</a>
+	  </li>
     @endhasrole
 	  {{-- <li class="treeview">
 		<a href="#">

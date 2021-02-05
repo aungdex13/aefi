@@ -26,9 +26,13 @@ Route::group(['prefix' => 'access-control','middleware' => ['auth']], function()
   Route::patch('/UpdateRoles/{id}', 'RoleController@update')->name('roles.update');
   Route::delete('/DeleteRoles/{id}', 'RoleController@destroy')->name('roles.destroy');
 
-  Route::get('/ListUsers', 'ManageUsers@index')->name('listusers.index');
-  Route::get('/CreateUsers', 'ManageUsers@create')->name('listusers.create');
-  Route::get('/EditUsers', 'ManageUsers@edit')->name('listusers.edit');
+  Route::get('/ListUsers', 'ManageUsersController@index')->name('listusers.index');
+  Route::get('/CreateUsers', 'ManageUsersController@create')->name('listusers.create');
+  Route::get('/EditUsers', 'ManageUsersController@edit')->name('listusers.edit');
+});
+
+Route::group(['prefix' => 'Developer','middleware' => ['auth']], function() {
+  Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->name('error-log-view');
 });
 //End PK
 
