@@ -24,16 +24,16 @@
 		<li class="dropdown user user-menu">
 		  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 			<img src="/asset/dist/img/avatar04.png" class="user-image" alt="User Image">
-			<span class="hidden-xs">{{ Auth::user()->name }} <span class="caret"></span></span>
+			<span class="hidden-xs">{{ Auth::user()->name }} {{ Auth::user()->sur_name }}<span class="caret"></span></span>
 		  </a>
 		  <ul class="dropdown-menu">
 			<!-- User image -->
 			<li class="user-header">
 			  <img src="/asset/dist/img/avatar04.png" class="img-circle" alt="User Image">
-
 			  <p>
-				{{ Auth::user()->name }} <span class="caret"></span>
+				{{ Auth::user()->name }} {{ Auth::user()->sur_name }}
 				<small>Member since {{ Auth::user()->created_at}}</small>
+				<small>@if(Session::get('user_role')) สิทธิ์ : {{ Session::get('user_role') }} @endif</small>
 			  </p>
 			</li>
 			<!-- Menu Body -->
@@ -71,9 +71,9 @@
 		  </ul>
 		</li>
 		<!-- Control Sidebar Toggle Button -->
-		<li>
+		<!-- <li>
 		  <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-		</li>
+		</li> -->
 	  </ul>
 	</div>
   </nav>

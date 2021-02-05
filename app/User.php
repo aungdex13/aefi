@@ -4,11 +4,11 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-
+use Spatie\Permission\Traits\HasRoles;
 class User extends Authenticatable
 {
     use Notifiable;
-
+    use HasRoles;
     /**
      * The attributes that are mass assignable.
      *
@@ -21,8 +21,16 @@ class User extends Authenticatable
         'username',
         'sur_name',
         'position',
-        'division'
+        'division',
+        'hospcode',
+        'hosp_type_code',
+        'prov_code',
+        'ampur_code',
+        'tambol_code',
+        'region'
     ];
+
+    public $timestamps = true;
 
     /**
      * The attributes that should be hidden for arrays.

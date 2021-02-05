@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
+use Session;
+use Redirect;
 
 class LoginController extends Controller
 {
@@ -36,8 +40,57 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
-	public function username()
-	{
-		return 'username';
-	}
+
+    public function login (Request $request)
+    {
+        $input = $request->all();
+        $username = $request->username;
+
+        $this->validate($request, [
+            'username' => 'required',
+            'password' => 'required',
+        ]);
+
+        $fieldType = filter_var($request->username, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+        // dd(auth()->attempt(array($fieldType => $input['username'], 'password' => $input['password'], 'confirm' => 1)));
+
+        if(auth()->attempt(array($fieldType => $input['username'], 'password' => $input['password'])))
+        {
+           $roleArr = auth()->user()->getRoleNames()->toArray();
+          if (count($roleArr) > 0) {
+            $user_role = $roleArr[0];
+
+            Session::put('user_role', $roleArr[0]);
+            switch ($user_role) {
+              case "admin":
+                return redirect('access-control/ManageRoles');
+                break;
+              case "pho":
+                return redirect('index');
+                break;
+              case "dpc":
+                return redirct('index');
+                break;
+              case "hospital":
+                return redirct('index');
+                break;
+              case "dho":
+                return redirct('index');
+                break;
+              default:
+        				return redirect('logout');
+        				break;
+            }
+          } else {
+            return redirect('/logout');
+          }
+          //return redirect('/index');
+        }else{
+            return redirect()->back()->with('error','กรุณาตรวจสอบชื่อผู้ใช้งานหรือรหัสผ่าน');
+        }
+    }
+    public function ShowloginForm(){
+      return view('auth.new-login.login');
+    }
+
 }

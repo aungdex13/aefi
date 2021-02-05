@@ -10,14 +10,28 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+//Start PK
+Route::get('/', 'Auth\LoginController@ShowloginForm');
 
-Route::get('/', function () {
-    return view('auth/login');
+Route::get('/register-form', 'Aefi\RegisterController@RegForm')->name('register-form');
+Route::post('/Saved-New-User', 'Aefi\RegisterController@Save_New_Users')->name('save-new-user');
+Route::get('/List-Division', 'Aefi\RegisterController@Get_Division_All')->name('list-division-json');
+//Speatie
+Route::group(['prefix' => 'access-control','middleware' => ['auth']], function() {
+  Route::get('/ManageRoles', 'RoleController@index')->name('roles.index');
+  Route::get('/CreateRoles', 'RoleController@create')->name('roles.create'); //สร้างหน้า create.blade หรือ insert
+  Route::post('/StoreRoles', 'RoleController@store')->name('roles.store'); //store คือการ insert
+  Route::get('/ShowRoles/{id}', 'RoleController@show')->name('roles.show');
+  Route::get('/EditRoles/{id}', 'RoleController@edit')->name('roles.edit');
+  Route::patch('/UpdateRoles/{id}', 'RoleController@update')->name('roles.update');
+  Route::delete('/DeleteRoles/{id}', 'RoleController@destroy')->name('roles.destroy');
+
+  Route::get('/ListUsers', 'ManageUsers@index')->name('listusers.index');
+  Route::get('/CreateUsers', 'ManageUsers@create')->name('listusers.create');
+  Route::get('/EditUsers', 'ManageUsers@edit')->name('listusers.edit');
 });
+//End PK
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 Route::get('/welcome', 'Aefi\AEFIController@welcome');
 /* formaeif link */
 Route::get('/form1', 'Aefi\Form1Controller@index')->name('form1');

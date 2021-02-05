@@ -10,17 +10,6 @@
 		<a href="#"><i class="fa fa-circle text-success"></i> Online</a>
 	  </div>
 	</div>
-	<!-- search form -->
-	{{-- <form action="#" method="get" class="sidebar-form">
-	  <div class="input-group">
-		<input type="text" name="q" class="form-control" placeholder="Search...">
-		<span class="input-group-btn">
-			  <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-			  </button>
-			</span>
-	  </div>
-	</form> --}}
-	<!-- /.search form -->
 	<!-- sidebar menu: : style can be found in sidebar.less -->
 	<ul class="sidebar-menu" data-widget="tree">
 	  <li class="header">Menu</li>
@@ -68,6 +57,20 @@
 		  <li><a href="{{ route('AEFI506') }}"><i class="fa fa-circle-o"></i>รายงาน ๕๐๖</a></li>
 		</ul>
 	  </li>
+    @hasrole('admin')
+    <li class="treeview @ifActiveUrl('access-control/*',true) active @endIfActiveUrl">
+		<a href="#">
+		  <i class="fa fa-users"></i> <span>Access-Control</span>
+		  <span class="pull-right-container">
+			<i class="fa fa-angle-left pull-right"></i>
+		  </span>
+		</a>
+		<ul class="treeview-menu">
+		  <li class="{{ Active::checkRoute(['roles.index','roles.create','roles.edit']) }}"><a href="{{ route('roles.index') }}"><i class="fa fa-circle-o"></i>จัดการกลุ่มผู้ใช้งาน</a></li>
+      <li class="{{ Active::checkRoute(['listusers.index','listusers.create','listusers.edit']) }}"><a href="{{ route('listusers.index') }}"><i class="fa fa-circle-o"></i>จัดการผู้ใช้งาน</a></li>
+		</ul>
+	  </li>
+    @endhasrole
 	  {{-- <li class="treeview">
 		<a href="#">
 		  <i class="fa fa-table"></i> <span>รายงาน</span>
