@@ -5,7 +5,9 @@ use Auth;
 use App\User;
 use App\ChospitalNew;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 use Redirect;
+use Session;
 
 class ProfileController extends Controller
 {
@@ -52,7 +54,9 @@ class ProfileController extends Controller
         $user->ampur_code = $get_profile->ampur_code;
         $user->tambol_code = $get_profile->tambol_code;
         $user->region = $get_profile->region;
-        $user->role_id = $get_profile->role_id;
+        //$user->role_id = $get_profile->role_id;
+        $user->removeRole(Session::get('user_role'));
+        $user->assignRole($get_profile->role_id);
       }
       if (trim($request->input('password')) != '') {
         $user->password = Hash::make(trim($request->input('password')));
