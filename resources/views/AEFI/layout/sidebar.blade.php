@@ -35,7 +35,7 @@
 			</a>
 			<ul class="treeview-menu">
 			  <li><a href="{{ route('lstf2') }}"><i class="fa fa-circle-o"></i> กรอก AEFI2</a></li>
-			   <li><a href="{{ route('lstef2') }}"><i class="fa fa-circle-o"></i> แก้ไข AEFI2</a></li>
+			   {{-- <li><a href="{{ route('lstef2') }}"><i class="fa fa-circle-o"></i> แก้ไข AEFI2</a></li> --}}
 			</ul>
 		  </li>
 		</ul>

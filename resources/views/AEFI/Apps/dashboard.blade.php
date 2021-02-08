@@ -11,6 +11,7 @@ $arr_route_of_vaccination = load_route_of_vaccination();
 $arr_vaccination_site = load_vaccination_site();
 $arr_manufacturer = load_manufacturer();
 $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
+
  ?>
   <h1>
     แบบรายงานอาการภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรค

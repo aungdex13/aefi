@@ -322,4 +322,16 @@ if (! function_exists('provinces')) {
       return 	$seriousness_of_the_symptoms;
       }
   }
+  if (! function_exists('age_group')) {
+      function load_age_group() {
+
+      $age_group = array(
+                  '1'=>'น้อยกว่า 1 ปี',
+                  '2'=>'ช่วง 1-5 ปี',
+                  '3'=>'มากกว่า 5 ปี'
+
+                              );
+      return 	$age_group;
+      }
+  }
  ?>
