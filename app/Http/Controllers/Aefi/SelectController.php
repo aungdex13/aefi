@@ -21,7 +21,14 @@
 		}
 		public function selectdatatablecaseAEFI1()
 		{
-		$caselstF1 = DB::table('aefi_form_1')
+			$roleArrusername = auth()->user()->username;
+			$roleArrhospcode = auth()->user()->hospcode;
+			$roleArrprov_code = auth()->user()->prov_code;
+			$roleArrregion = auth()->user()->region;
+			// dd($roleArrusername,$roleArrhospcode,$roleArrprov_code,$roleArrregion);
+		$roleArr = auth()->user()->getRoleNames()->toArray();
+
+		$selectcaselstF1 = DB::table('aefi_form_1')
 		->select(	'id',
 							'id_case',
 							'hn',
@@ -36,10 +43,50 @@
 							'province',
 							'district',
 							'subdistrict',
-							'necessary_to_investigate')
-		 ->where('status',null)
-		 ->orderBy('id','desc')
-		 ->get();
+							'necessary_to_investigate');
+		 if (count($roleArr) > 0) {
+				$user_role = $roleArr[0];
+			switch ($user_role) {
+				case 'hos':
+					$caselstF1  = $selectcaselstF1
+									->where('user_hospcode',$roleArrhospcode)
+									->whereNull('aefi_form_1.status')
+									->get()->toArray();
+				break;
+				case 'pho':
+					$caselstF1 = $selectcaselstF1
+									->where('user_provcode',$roleArrprov_code)
+									->whereNull('aefi_form_1.status')
+									->get()->toArray();
+					break;
+					case 'dpc':
+					if ($roleArrhospcode == "41173") {
+							$caselstF1 = $selectcaselstF1
+									// ->where('user_region',$roleArrregion)
+									->whereNull('aefi_form_1.status')
+									->get()->toArray();
+					}else {
+						$caselstF1 = $selectcaselstF1
+								->where('user_region',$roleArrregion)
+								->whereNull('aefi_form_1.status')
+								->get()->toArray();
+					}
+						break;
+						case 'ddc':
+							$caselstF1 = $selectcaselstF1
+							->whereNull('aefi_form_1.status')
+							->get()->toArray();
+							break;
+							case 'admin':
+								$caselstF1 = $selectcaselstF1
+								->whereNull('aefi_form_1.status')
+								->get()->toArray();
+								break;
+			default:
+				break;
+		}
+	}
+
 		 $listProvince=$this->listProvince();
 		 $listDistrict=$this->listDistrict();
 		 $listsubdistrict=$this->listsubdistrict();

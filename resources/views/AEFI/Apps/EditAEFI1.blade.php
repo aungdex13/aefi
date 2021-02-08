@@ -120,6 +120,10 @@ foreach ($aecode as $value) {
                     <!-- เลขที่ผู้ป่วย -->
                     <input type="hidden" id="id" name="id" value="{{ $data[0]->id }}" class="form-control">
                     <input type="hidden" id="id_case" name="id_case" value="{{ $data[0]->id_case }}" class="form-control">
+                    <input type="hidden" id="user_username" name="user_username" value="{{auth()->user()->username}}" class="form-control" >
+                    <input type="hidden" id="user_hospcode" name="user_hospcode" value="{{auth()->user()->hospcode}}" class="form-control" >
+                    <input type="hidden" id="user_provcode" name="user_provcode" value="{{auth()->user()->prov_code}}" class="form-control" >
+                    <input type="hidden" id="user_region" name="user_region" value="{{auth()->user()->region}}" class="form-control" >
                     <input type="hidden" id="count_data_vac" name="count_data_vac" value="{{ $count_data_vac[0]->vac_count }}" class="form-control">
                     <div class="form-group">
                       <div class="row">
@@ -755,7 +759,7 @@ foreach ($aecode as $value) {
                         <th>
                           <font style="color:red;">*</font> ชนิดวัคซีน
                         </th>
-                        <th>ปริมานที่ให้</th>
+                        <th>ปริมาณที่ให้</th>
                         <th>วิธีที่ให้</th>
                         <th>ตำแหน่ง</th>
                         <th>เข็มที่/ครั้งที่</th>

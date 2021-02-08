@@ -124,6 +124,10 @@ foreach ($aecode as $value) {
                         <div class="col-sm-3 control-label">
                           <label>เลขที่ผู้ป่วย:</label>
                         </div>
+                        <input type="hidden" id="user_username" name="user_username" value="{{auth()->user()->username}}" class="form-control" >
+                        <input type="hidden" id="user_hospcode" name="user_hospcode" value="{{auth()->user()->hospcode}}" class="form-control" >
+                        <input type="hidden" id="user_provcode" name="user_provcode" value="{{auth()->user()->prov_code}}" class="form-control" >
+                        <input type="hidden" id="user_region" name="user_region" value="{{auth()->user()->region}}" class="form-control" >
                         <div class="col-lg-4">
                           <input type="text" id="hn" name="hn" class="form-control" placeholder="HN">
                         </div>
@@ -692,7 +696,7 @@ foreach ($aecode as $value) {
                         <th>
                           <font style="color:red;">*</font> ชนิดวัคซีน
                         </th>
-                        <th>ปริมานที่ให้</th>
+                        <th>ปริมาณที่ให้</th>
                         <th>วิธีที่ให้</th>
                         <th>ตำแหน่ง</th>
                         <th>เข็มที่/ครั้งที่</th>
