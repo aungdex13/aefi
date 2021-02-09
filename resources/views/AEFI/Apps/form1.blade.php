@@ -243,7 +243,7 @@ foreach ($aecode as $value) {
                             <div class="input-group-addon">
                               <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" name="birthdate" class="form-control pull-right" id="datepicker_bdate" data-date-format="yyyy-mm-dd" required>
+                            <input type="text" name="birthdate" class="form-control pull-right" id="datepicker_bdate" data-date-format="yyyy-mm-dd" required readonly>
                           </div>
                         </div>
                       </div>
@@ -424,7 +424,7 @@ foreach ($aecode as $value) {
                               <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
                               <?php } ?>
                             </select>
-                            <label>ยาที่แพ้ :</label>
+                            <label></br>ยาที่แพ้ :</label>
                             <input type="text" name="other_drug_history" id="other_secymptoms_after_vaccination_text" class="form-control" placeholder="ระบุ" hidden="true">
                           </div>
                         </div>
@@ -456,7 +456,7 @@ foreach ($aecode as $value) {
                         </div>
                         <div class="col-lg-12">
                           <div id="other_patient_develop_symptoms_after_previous_vaccination" style="display: none">
-                            <label>วัคซีนที่แพ้ :</label>
+                            <label>อาการ :</label>
                             <select id="other_patient_develop_symptoms_after_previous_vaccination_text" name="other_patient_develop_symptoms_after_previous_vaccination" class="form-control select2" style="width: 100%;">
                               <option class="badge filter badge-info" data-color="info" value="">กรุณาเลือก</option>
                               <?php
@@ -464,7 +464,7 @@ foreach ($aecode as $value) {
                               <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
                               <?php } ?>
                             </select></br>
-                            <label>วัคซีนอื่นๆที่แพ้ :</label>
+                            <label></br>อาการอื่นๆ :</label>
                             <input type="text" name="other_text_patient_develop_symptoms_after_previous_vaccination" id="other_patient_develop_symptoms_after_previous_vaccination" class="form-control" placeholder="ระบุ">
                           </div>
                         </div>
@@ -503,7 +503,7 @@ foreach ($aecode as $value) {
                               <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
                               <?php } ?>
                             </select>
-                            <label>โรคประจำตัวอื่นๆ :</label>
+                            <label></br>โรคประจำตัวอื่นๆ :</label>
                             <input type="text" name="other_text_underlying_disease" id="other_text_underlying_disease" class="form-control" placeholder="ระบุ">
                           </div>
                         </div>
@@ -775,7 +775,7 @@ foreach ($aecode as $value) {
                           <input type="number" id="dose1" name="dose[]" class="form-control" min="1" max="20">
                         </td>
                         <td>
-                          <input type="text" name="date_of_vaccination[]" value="" id="date_of_vaccination1" class="form-control datepicker" data-date-format="yyyy-mm-dd">
+                          <input type="text" name="date_of_vaccination[]" value="" id="date_of_vaccination1" class="form-control datepicker" data-date-format="yyyy-mm-dd" readonly>
                         </td>
                         <td>
                           <input type="text" id="time_of_vaccination1" name="time_of_vaccination[]" class="form-control">
@@ -797,7 +797,7 @@ foreach ($aecode as $value) {
                           <input type="text" id="lot_number1" name="lot_number[]" class="form-control">
                         </td>
                         <td>
-                          <input type="text" id="datepicker_expiry_date1" name="expiry_date[]" class="form-control" data-date-format="yyyy-mm-dd">
+                          <input type="text" id="datepicker_expiry_date1" name="expiry_date[]" class="form-control" data-date-format="yyyy-mm-dd" readonly>
                         </td>
                         {{-- <td>
                           <input type="text" id="name_of_diluent1" name="name_of_diluent[]" class="form-control">
@@ -806,7 +806,7 @@ foreach ($aecode as $value) {
                           <input type="text" id="lot_number_diluent1" name="lot_number_diluent[]" class="form-control">
                         </td>
                         <td>
-                          <input type="text" id="datepicker_expiry_date_diluent1" name="expiry_date_diluent[]" class="form-control" data-date-format="yyyy-mm-dd">
+                          <input type="text" id="datepicker_expiry_date_diluent1" name="expiry_date_diluent[]" class="form-control" data-date-format="yyyy-mm-dd" readonly>
                         </td>
                         {{-- <td><input type="text" id="date_of_reconstitution1" name="date_of_reconstitution[]" class="form-control" data-date-format="yyyy-mm-dd"></td> --}}
                         {{-- <td><input type="text" id="time_of_reconstitution1" name="time_of_reconstitution[]" class="form-control"></td> --}}
@@ -1156,7 +1156,7 @@ foreach ($aecode as $value) {
                           </div>
                           <div class="col-md-12">
                             <label>
-                              <input name="GBS" type="checkbox" value="1">
+                              <input name="gbs" type="checkbox" value="1">
                               Guillain-Barré syndrome (GBS)
                             </label>
                           </div>
@@ -1219,7 +1219,7 @@ foreach ($aecode as $value) {
                               <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                               </div>
-                              <input type="text" class="form-control pull-right" id="datepicker_stdiag" name="date_of_symptoms" data-date-format="yyyy-mm-dd">
+                              <input type="text" class="form-control pull-right" id="datepicker_stdiag" name="date_of_symptoms" data-date-format="yyyy-mm-dd" readonly>
                             </div>
                           </div>
                         </div>
@@ -1244,7 +1244,7 @@ foreach ($aecode as $value) {
                               <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                               </div>
-                              <input type="text" class="form-control pull-right" id="datepicker_hdate" name="date_of_treatment" data-date-format="yyyy-mm-dd">
+                              <input type="text" class="form-control pull-right" id="datepicker_hdate" name="date_of_treatment" data-date-format="yyyy-mm-dd" readonly>
                             </div>
                           </div>
                         </div>
@@ -1255,7 +1255,7 @@ foreach ($aecode as $value) {
                               <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                               </div>
-                              <input type="text" class="form-control pull-right" id="datepicker_sell" name="time_of_treatment" data-date-format="yyyy-mm-dd">
+                              <input type="text" class="form-control pull-right" id="datepicker_sell" name="time_of_treatment" data-date-format="yyyy-mm-dd" readonly>
                             </div>
                           </div>
                         </div>
@@ -1418,7 +1418,7 @@ foreach ($aecode as $value) {
                         <div class="col-lg-4">
                           <div class="input-group date">
                             <div id="other_patian_sta" style="display: none">
-                              <input type="text" class="form-control" placeholder="ระบุ ว/ด/ป เสียชีวิต" id="datepicker_dead" name="date_dead" hidden="true" data-date-format="yyyy-mm-dd">
+                              <input type="text" class="form-control" placeholder="ระบุ ว/ด/ป เสียชีวิต" id="datepicker_dead" name="date_dead" hidden="true" data-date-format="yyyy-mm-dd" readonly>
                             </div>
                           </div>
                         </div>
@@ -1504,7 +1504,7 @@ foreach ($aecode as $value) {
                               <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                               </div>
-                              <input type="text" class="form-control pull-right" id="datepicker_invest" name="necessary_to_investigate_date" data-date-format="yyyy-mm-dd">
+                              <input type="text" class="form-control pull-right" id="datepicker_invest" name="necessary_to_investigate_date" data-date-format="yyyy-mm-dd" readonly>
                             </div>
                           </label>
                         </div>
@@ -1651,7 +1651,7 @@ foreach ($aecode as $value) {
                                 <div class="input-group-addon">
                                   <i class="fa fa-calendar"></i>
                                 </div>
-                                <input type="text" class="form-control pull-right" id="datepicker_found_event" name="date_found_event" data-date-format="yyyy-mm-dd">
+                                <input type="text" class="form-control pull-right" id="datepicker_found_event" name="date_found_event" data-date-format="yyyy-mm-dd" readonly>
                               </div>
                             </div>
                             <div class="col-lg-4">
@@ -1698,7 +1698,7 @@ foreach ($aecode as $value) {
                                 <div class="input-group-addon">
                                   <i class="fa fa-calendar"></i>
                                 </div>
-                                <input type="text" class="form-control pull-right" id="datepicker_send_reported" name="datepicker_send_reported" data-date-format="yyyy-mm-dd">
+                                <input type="text" class="form-control pull-right" id="datepicker_send_reported" name="datepicker_send_reported" data-date-format="yyyy-mm-dd" readonly>
                               </div>
                             </div>
                             <div class="col-lg-4">
@@ -1707,7 +1707,7 @@ foreach ($aecode as $value) {
                                 <div class="input-group-addon">
                                   <i class="fa fa-calendar"></i>
                                 </div>
-                                <input type="text" class="form-control pull-right" id="datepicker_resiver" name="datepicker_resiver" data-date-format="yyyy-mm-dd">
+                                <input type="text" class="form-control pull-right" id="datepicker_resiver" name="datepicker_resiver" data-date-format="yyyy-mm-dd" readonly>
                               </div>
                             </div>
                             <div class="col-lg-12">
@@ -1991,7 +1991,7 @@ foreach ($aecode as $value) {
         '<input type="number" id="dose1" name="dose[]' + rowCount + '" class="form-control" min="1" max="20">' +
         '</td>' +
         '<td>' +
-        '<input type="text" name="date_of_vaccination[]' + rowCount + '" value="" id="date_of_vaccination1' + rowCount + '" class="form-control datepicker" data-date-format="yyyy-mm-dd">' +
+        '<input type="text" name="date_of_vaccination[]' + rowCount + '" value="" id="date_of_vaccination1' + rowCount + '" class="form-control datepicker" data-date-format="yyyy-mm-dd" readonly>' +
         '</td>' +
         '<td>' +
         '<input type="text" id="time_of_vaccination1' + rowCount + '" name="time_of_vaccination[]' + rowCount + '" class="form-control">' +
@@ -2014,7 +2014,7 @@ foreach ($aecode as $value) {
         '<input type="text" id="lot_number1" name="lot_number[]' + rowCount + '" class="form-control">' +
         '</td>' +
         '<td>' +
-        '<input type="text" id="datepicker_expiry_date1' + rowCount + '" name="expiry_date[]' + rowCount + '" class="form-control" data-date-format="yyyy-mm-dd">' +
+        '<input type="text" id="datepicker_expiry_date1' + rowCount + '" name="expiry_date[]' + rowCount + '" class="form-control" data-date-format="yyyy-mm-dd" readonly>' +
         '</td>' +
         // '<td>' +
         // '<input type="text" id="name_of_diluent1" name="name_of_diluent[]' + rowCount + '" class="form-control">' +
@@ -2023,7 +2023,7 @@ foreach ($aecode as $value) {
         '<input type="text" id="lot_number_diluent1" name="lot_number_diluent[]' + rowCount + '" class="form-control">' +
         '</td>' +
         '<td>' +
-        '<input type="text" id="datepicker_expiry_date_diluent1' + rowCount + '" name="expiry_date_diluent[]' + rowCount + '" class="form-control" data-date-format="yyyy-mm-dd">' +
+        '<input type="text" id="datepicker_expiry_date_diluent1' + rowCount + '" name="expiry_date_diluent[]' + rowCount + '" class="form-control" data-date-format="yyyy-mm-dd" readonly>' +
         '</td>' +
         // '<td><input type="text" id="date_of_reconstitution1' + rowCount + '" name="date_of_reconstitution[]' + rowCount + '" class="form-control datepicker" data-date-format="yyyy-mm-dd"></td>' +
         // '<td><input type="text" id="time_of_reconstitution1" name="time_of_reconstitution[]' + rowCount + '" class="form-control"></td>' +

@@ -230,6 +230,7 @@
 												'assessment10'=>$req->input('assessment10'),
 												'transverse_myelitis' => $req ->input ('transverse_myelitis'),
 												'adem' => $req ->input ('adem'),
+												'gbs' => $req ->input ('gbs'),
 												'acute_myocardial' => $req ->input ('acute_myocardial'),
 												'ards' => $req ->input ('ards'),
 												'date_entry' => date('Y-m-d H:i:s'),

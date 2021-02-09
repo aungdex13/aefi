@@ -169,6 +169,7 @@
 		$user_hospcode = $req ->input ('user_hospcode');
 		$user_provcode = $req ->input ('user_provcode');
 		$user_region = $req ->input ('user_region');
+		$gbs = $req ->input ('gbs');
 		$data = array(
 			'id_case'=>$id_case,
 			'hn'=>$hn,
@@ -300,8 +301,8 @@
 			'user_username'=>$user_username,
 			'user_hospcode'=>$user_hospcode,
 			'user_provcode'=>$user_provcode,
-			'user_region'=>$user_region
-
+			'user_region'=>$user_region,
+			'gbs'=>$gbs
 		);
 	// echo($data);
 	  $res1	= DB::table('aefi_form_1')->insert($data);
