@@ -148,7 +148,7 @@ foreach ($aecode as $value) {
                           </div>
                         </div>
                         <div class="col-lg-7">
-                          <input type="text" id="id_number" name="id_number" value="{{ $data[0]->id_number }}" class="form-control" data-inputmask='"mask": "9   9999   99999   99   9"' data-mask>
+                          <input type="text" id="id_number" name="id_number" value="{{ $data[0]->id_number }}" class="form-control" data-inputmask='"mask": "9999999999999"' data-mask>
                         </div>
                       </div>
                     </div>
@@ -2365,7 +2365,7 @@ $(function(){
         '<td>' +
         '<input type="text" id="datepicker_expiry_date_diluent1' + rowCount + '" name="expiry_date_diluent[]' + rowCount + '" class="form-control" data-date-format="yyyy-mm-dd" readonly>' +
         '</td>' +
-        // '<td><input type="text" id="date_of_reconstitution1' + rowCount + '" name="date_of_reconstitution[]' + rowCount + '" class="form-control datepicker" data-date-format="yyyy-mm-dd" readonly></td>' +
+        // '<td><input type="text" id="date_of_reconstitution1' + rowCount + '" name="date_of_reconstitution[]' + rowCount + '" class="form-control datepicker" data-date-format="yyyy-mm-dd"></td>' +
         // '<td><input type="text" id="time_of_reconstitution1" name="time_of_reconstitution[]' + rowCount + '" class="form-control"></td>' +
         '<td><button type="button" id="btnAdd" class="btn btn-m btn-success classAdd">เพิ่มข้อมูลวัคซีน</button>' +
         '<button type="button" id="btnDelete" class="deleteContact btn btn btn-danger btn-m">ลบข้อมูลวัคซีน</button></td>' +

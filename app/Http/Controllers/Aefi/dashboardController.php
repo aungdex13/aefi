@@ -87,8 +87,8 @@
 			$yearnow =  now()->year;
 			 // dd($yearnow);
 			$count_month = DB::table('aefi_form_1')
-										 ->select(DB::raw('count(*) as count_patient , MONTH(date_entry) as month_entry'))
-										 ->whereYear('date_entry', '=', "$yearnow")
+										 ->select(DB::raw('count(*) as count_patient , MONTH(date_of_symptoms) as month_entry'))
+										 ->whereYear('date_of_symptoms', '=', "$yearnow")
 										 ->where('status','=',null)
 										 // ->groupBy('month_entry')
 										 ->groupBy('month_entry')

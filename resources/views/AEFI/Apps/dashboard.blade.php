@@ -316,6 +316,8 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
       <!-- /.box -->
     </div>
     <!-- /.box -->
+
+    <!-- /.box -->
   </div>
 </section>
 

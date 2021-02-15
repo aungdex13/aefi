@@ -73,6 +73,7 @@ Route::get('/index', 'HomeController@index')->name('index');
 // test
 Route::get('/test', 'Aefi\testController@test')->name('test');
 Route::get('/dataf1export', 'Aefi\DataexportController@dataexport')->name('dataf1export');
+Route::post('/dataf1export', 'Aefi\DataexportController@dataexportfrm')->name('dataf1export');
 Route::get('/dataf2export', 'Aefi\Dataexport2Controller@dataexport2')->name('dataf2export');
 // Route::post('/uploadfile', 'Aefi\UploadController@upload');
 // download Data

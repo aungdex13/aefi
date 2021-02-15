@@ -146,7 +146,7 @@ foreach ($aecode as $value) {
                           </div>
                         </div>
                         <div class="col-lg-7">
-                          <input type="text" id="id_number" name="id_number" class="form-control" data-inputmask='"mask": "9 9999 99999 99 9"' data-mask>
+                          <input type="text" id="id_number" name="id_number" class="form-control" data-inputmask='"mask": "9999999999999"' data-mask>
                         </div>
                       </div>
                     </div>
@@ -243,7 +243,7 @@ foreach ($aecode as $value) {
                             <div class="input-group-addon">
                               <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" name="birthdate" class="form-control pull-right" id="datepicker_bdate" data-date-format="yyyy-mm-dd" required readonly>
+                            <input type="text" name="birthdate" class="form-control pull-right" id="datepicker_bdate" data-date-format="dd-mm-yyyy" required readonly>
                           </div>
                         </div>
                       </div>

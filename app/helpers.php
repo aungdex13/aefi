@@ -334,4 +334,44 @@ if (! function_exists('provinces')) {
       return 	$age_group;
       }
   }
+  if (! function_exists('gender')) {
+      function load_gender() {
+
+      $gender = array(
+                  '1'=>'ชาย',
+                  '2'=>'หญิง',
+                  ''=>''
+
+                              );
+      return 	$gender;
+      }
+  }
+  if (! function_exists('type_of_patient')) {
+      function load_type_of_patient() {
+
+      $type_of_patient = array(
+                  '1'=>'ผู้ป่วยใน',
+                  '2'=>'ผู้ป่วยนอก',
+                  ''=>''
+
+                              );
+      return 	$type_of_patient;
+      }
+  }
+  if (! function_exists('patient_status')) {
+      function load_patient_status() {
+
+      $patient_status = array(
+                  '1'=>'หาย',
+                  '2'=>'หายโดยมีร่องรอย',
+                  '3'=>'อาการดีขึ้นแต่ยังไม่หาย',
+                  '4'=>'ไม่หาย',
+                  '5'=>'ไม่ทราบ',
+                  '6'=>'เสียชีวิต',
+                  ''=>''
+
+                              );
+      return 	$patient_status;
+      }
+  }
  ?>
