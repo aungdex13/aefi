@@ -78,7 +78,10 @@
 																				</div>
 																				<input type="text" name="user_id" value="{{ Auth::id() }}" hidden>
 																				<input type="text" name="id_case" value="{{$data}}" hidden>
-
+																				<input type="hidden" id="user_username" name="user_username" value="{{auth()->user()->username}}" class="form-control" >
+																				<input type="hidden" id="user_hospcode" name="user_hospcode" value="{{auth()->user()->hospcode}}" class="form-control" >
+																				<input type="hidden" id="user_provcode" name="user_provcode" value="{{auth()->user()->prov_code}}" class="form-control" >
+																				<input type="hidden" id="user_region" name="user_region" value="{{auth()->user()->region}}" class="form-control" >
 																				<div class="col-lg-1">
 																					<div class="radio">
 																						<label>

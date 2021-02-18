@@ -120,6 +120,10 @@ foreach ($aecode as $value) {
                     <!-- เลขที่ผู้ป่วย -->
                     <input type="hidden" id="id" name="id" value="{{ $data[0]->id }}" class="form-control">
                     <input type="hidden" id="id_case" name="id_case" value="{{ $data[0]->id_case }}" class="form-control">
+                    <input type="hidden" id="user_username" name="user_username" value="{{auth()->user()->username}}" class="form-control" >
+                    <input type="hidden" id="user_hospcode" name="user_hospcode" value="{{auth()->user()->hospcode}}" class="form-control" >
+                    <input type="hidden" id="user_provcode" name="user_provcode" value="{{auth()->user()->prov_code}}" class="form-control" >
+                    <input type="hidden" id="user_region" name="user_region" value="{{auth()->user()->region}}" class="form-control" >
                     <input type="hidden" id="count_data_vac" name="count_data_vac" value="{{ $count_data_vac[0]->vac_count }}" class="form-control">
                     <div class="form-group">
                       <div class="row">
@@ -144,7 +148,7 @@ foreach ($aecode as $value) {
                           </div>
                         </div>
                         <div class="col-lg-7">
-                          <input type="text" id="id_number" name="id_number" value="{{ $data[0]->id_number }}" class="form-control" data-inputmask='"mask": "9   9999   99999   99   9"' data-mask>
+                          <input type="text" id="id_number" name="id_number" value="{{ $data[0]->id_number }}" class="form-control" data-inputmask='"mask": "9999999999999"' data-mask>
                         </div>
                       </div>
                     </div>
@@ -246,7 +250,7 @@ foreach ($aecode as $value) {
                             <div class="input-group-addon">
                               <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" name="birthdate" class="form-control pull-right" id="datepicker_bdate" value="{{$data[0]->birthdate}}"  data-date-format="yyyy-mm-dd">
+                            <input type="text" name="birthdate" class="form-control pull-right" id="datepicker_bdate" value="{{$data[0]->birthdate}}"  data-date-format="yyyy-mm-dd" readonly>
                           </div>
                         </div>
                       </div>
@@ -451,7 +455,7 @@ foreach ($aecode as $value) {
                               <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
                               <?php } ?>
                             </select>
-                            <label>ยาที่แพ้ :</label>
+                            <label></br>ยาที่แพ้ :</label>
                             <input type="text" name="other_drug_history" id="other_secymptoms_after_vaccination_text" class="form-control" placeholder="ระบุ" hidden="true" value="{{ $data[0]->other_drug_history }}">
                           </div>
                         </div>
@@ -489,7 +493,7 @@ foreach ($aecode as $value) {
                           <div id="other_patient_develop_symptoms_after_previous_vaccination" @if ($data[0]->patient_develop_symptoms_after_previous_vaccination != 2)
                             style="display: none"
                             @endif>
-                            <label>วัคซีนที่แพ้ :</label>
+                            <label>อาการ :</label>
                             <select id="other_patient_develop_symptoms_after_previous_vaccination_text" name="other_patient_develop_symptoms_after_previous_vaccination" class="form-control select2" style="width: 100%;">
                               <option class="badge filter badge-info" data-color="info" value="{{ $data[0]->other_patient_develop_symptoms_after_previous_vaccination }}">{{ isset($arr_patient_develop_symptoms_after_previous_vaccination[$data[0]->other_patient_develop_symptoms_after_previous_vaccination]) ? $arr_patient_develop_symptoms_after_previous_vaccination[$data[0]->other_patient_develop_symptoms_after_previous_vaccination]:"" }}
                               </option>
@@ -498,7 +502,7 @@ foreach ($aecode as $value) {
                               <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
                               <?php } ?>
                             </select>
-                            <label>วัคซีนอื่นๆที่แพ้ :</label>
+                            <label></br>อาการอื่นๆ :</label>
                             <input type="text" name="other_text_patient_develop_symptoms_after_previous_vaccination" id="other_patient_develop_symptoms_after_previous_vaccination" class="form-control" value="{{ $data[0]->other_text_patient_develop_symptoms_after_previous_vaccination}}">
                           </div>
                         </div>
@@ -543,7 +547,7 @@ foreach ($aecode as $value) {
                               <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
                               <?php } ?>
                             </select>
-                            <label>โรคประจำตัวอื่นๆ :</label>
+                            <label></br>โรคประจำตัวอื่นๆ :</label>
                             <input type="text" name="other_text_underlying_disease" id="other_text_underlying_disease" class="form-control" value="{{ $data[0]->other_text_underlying_disease }}">
                           </div>
                         </div>
@@ -755,7 +759,7 @@ foreach ($aecode as $value) {
                         <th>
                           <font style="color:red;">*</font> ชนิดวัคซีน
                         </th>
-                        <th>ปริมานที่ให้</th>
+                        <th>ปริมาณที่ให้</th>
                         <th>วิธีที่ให้</th>
                         <th>ตำแหน่ง</th>
                         <th>เข็มที่/ครั้งที่</th>
@@ -835,7 +839,7 @@ foreach ($aecode as $value) {
                             <input type="number" id="dose1" name="dose[]" class="form-control" min="1" max="20">
                           </td>
                           <td>
-                            <input type="text" name="date_of_vaccination[]"  id="date_of_vaccination1" class="form-control datepicker" data-date-format="yyyy-mm-dd">
+                            <input type="text" name="date_of_vaccination[]"  id="date_of_vaccination1" class="form-control datepicker" data-date-format="yyyy-mm-dd" readonly>
                           </td>
                           <td>
                             <input type="text" id="time_of_vaccination1" name="time_of_vaccination[]"   class="form-control">
@@ -857,7 +861,7 @@ foreach ($aecode as $value) {
                             <input type="text" id="lot_number1" name="lot_number[]" class="form-control">
                           </td>
                           <td>
-                            <input type="text" id="datepicker_expiry_date1" name="expiry_date[]" class="form-control" data-date-format="yyyy-mm-dd">
+                            <input type="text" id="datepicker_expiry_date1" name="expiry_date[]" class="form-control" data-date-format="yyyy-mm-dd" readonly>
                           </td>
                           {{-- <td>
                             <input type="text" id="name_of_diluent1" name="name_of_diluent[]" class="form-control">
@@ -866,9 +870,9 @@ foreach ($aecode as $value) {
                             <input type="text" id="lot_number_diluent1" name="lot_number_diluent[]" class="form-control">
                           </td>
                           <td>
-                            <input type="text" id="datepicker_expiry_date_diluent1" name="expiry_date_diluent[]"  class="form-control" data-date-format="yyyy-mm-dd">
+                            <input type="text" id="datepicker_expiry_date_diluent1" name="expiry_date_diluent[]"  class="form-control" data-date-format="yyyy-mm-dd" readonly>
                           </td>
-                          {{-- <td><input type="text" id="date_of_reconstitution1" name="date_of_reconstitution[]" class="form-control" data-date-format="yyyy-mm-dd"></td> --}}
+                          {{-- <td><input type="text" id="date_of_reconstitution1" name="date_of_reconstitution[]" class="form-control" data-date-format="yyyy-mm-dd" readonly></td> --}}
                           {{-- <td><input type="text" id="time_of_reconstitution1" name="time_of_reconstitution[]" class="form-control"></td> --}}
                           {{-- <td><a href='javascript:void(0);' class='remove'><span class='glyphicon glyphicon-remove'></span></a></td> --}}
                           <td>
@@ -925,7 +929,7 @@ foreach ($aecode as $value) {
                           <input type="number" id="dose1" name="dose[]" value="{{isset($value->dose) ? $value->dose:""}}" class="form-control" min="1" max="20">
                         </td>
                         <td>
-                          <input type="text" name="date_of_vaccination[]" value="{{isset($value->date_of_vaccination) ? $value->date_of_vaccination:""}}" id="date_of_vaccination1" class="form-control datepicker date_of_vaccination" data-date-format="yyyy-mm-dd">
+                          <input type="text" name="date_of_vaccination[]" value="{{isset($value->date_of_vaccination) ? $value->date_of_vaccination:""}}" id="date_of_vaccination1" class="form-control datepicker date_of_vaccination" data-date-format="yyyy-mm-dd" readonly>
                         </td>
                         <td>
                           <input type="text" id="time_of_vaccination1" name="time_of_vaccination[]" value="{{isset($value->vaccination_site) ? $value->time_of_vaccination:""}}" class="form-control">
@@ -948,7 +952,7 @@ foreach ($aecode as $value) {
                           <input type="text" id="lot_number1" name="lot_number[]" value="{{isset($value->lot_number) ? $value->lot_number:""}}" class="form-control">
                         </td>
                         <td>
-                          <input type="text" id="datepicker_expiry_date1" name="expiry_date[]" value="{{isset($value->expiry_date) ? $value->expiry_date:""}}" class="form-control" data-date-format="yyyy-mm-dd">
+                          <input type="text" id="datepicker_expiry_date1" name="expiry_date[]" value="{{isset($value->expiry_date) ? $value->expiry_date:""}}" class="form-control" data-date-format="yyyy-mm-dd" readonly>
                         </td>
                         {{-- <td>
                           <input type="text" id="name_of_diluent1" name="name_of_diluent[]" value="{{isset($value->name_of_diluent) ? $value->name_of_diluent:""}}" class="form-control">
@@ -957,9 +961,9 @@ foreach ($aecode as $value) {
                           <input type="text" id="lot_number_diluent1" name="lot_number_diluent[]" value="{{isset($value->lot_number_diluent) ? $value->lot_number_diluent:""}}" class="form-control">
                         </td>
                         <td>
-                          <input type="text" id="datepicker_expiry_date_diluent1" name="expiry_date_diluent[]" value="{{isset($value->expiry_date_diluent) ? $value->expiry_date_diluent:""}}" class="form-control datepicker_expiry_date_diluent" data-date-format="yyyy-mm-dd">
+                          <input type="text" id="datepicker_expiry_date_diluent1" name="expiry_date_diluent[]" value="{{isset($value->expiry_date_diluent) ? $value->expiry_date_diluent:""}}" class="form-control datepicker_expiry_date_diluent" data-date-format="yyyy-mm-dd" readonly>
                         </td>
-                        {{-- <td><input type="text" id="date_of_reconstitution1" name="date_of_reconstitution[]" value="{{isset($value->date_of_reconstitution) ? $value->date_of_reconstitution:""}}" class="form-control" data-date-format="yyyy-mm-dd"></td> --}}
+                        {{-- <td><input type="text" id="date_of_reconstitution1" name="date_of_reconstitution[]" value="{{isset($value->date_of_reconstitution) ? $value->date_of_reconstitution:""}}" class="form-control" data-date-format="yyyy-mm-dd" readonly></td> --}}
                         {{-- <td><input type="text" id="time_of_reconstitution1" name="time_of_reconstitution[]" value="{{isset($value->time_of_reconstitution) ? $value->time_of_reconstitution:""}}" class="form-control"></td> --}}
                         {{-- <td><a href='javascript:void(0);' class='remove'><span class='glyphicon glyphicon-remove'></span></a></td> --}}
                         <td>
@@ -1388,7 +1392,7 @@ foreach ($aecode as $value) {
                           </div>
                           <div class="col-md-12">
                             <label>
-                              <input name="GBS" type="checkbox" value="1"  @if ($data[0]->GBS == '1')
+                              <input name="gbs" type="checkbox" value="1"  @if ($data[0]->gbs == '1')
                               {{ "checked" }}
                               @endif>
                               Guillain-Barré syndrome (GBS)
@@ -1792,7 +1796,7 @@ foreach ($aecode as $value) {
                             <div class="input-group-addon">
                               <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control pull-right" id="datepicker_invest" name="necessary_to_investigate_date" value="{{$data[0]->necessary_to_investigate_date}}"  data-date-format="yyyy-mm-dd">
+                            <input type="text" class="form-control pull-right" id="datepicker_invest" name="necessary_to_investigate_date" value="{{$data[0]->necessary_to_investigate_date}}"  data-date-format="yyyy-mm-dd" readonly>
                           </div>
                         </label>
                       </div>
@@ -1956,7 +1960,7 @@ foreach ($aecode as $value) {
                               <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                               </div>
-                              <input type="text" class="form-control pull-right" id="datepicker_found_event" name="date_found_event" value="{{$data[0]->date_found_event}}"  data-date-format="yyyy-mm-dd">
+                              <input type="text" class="form-control pull-right" id="datepicker_found_event" name="date_found_event" value="{{$data[0]->date_found_event}}"  data-date-format="yyyy-mm-dd" readonly>
                             </div>
                           </div>
                           <div class="col-lg-4">
@@ -2008,7 +2012,7 @@ foreach ($aecode as $value) {
                               <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                               </div>
-                              <input type="text" class="form-control pull-right" id="datepicker_send_reported" name="datepicker_send_reported" value="{{$data[0]->datepicker_send_reported}}"  data-date-format="yyyy-mm-dd">
+                              <input type="text" class="form-control pull-right" id="datepicker_send_reported" name="datepicker_send_reported" value="{{$data[0]->datepicker_send_reported}}"  data-date-format="yyyy-mm-dd" readonly>
                             </div>
                           </div>
                           <div class="col-lg-4">
@@ -2017,7 +2021,7 @@ foreach ($aecode as $value) {
                               <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                               </div>
-                              <input type="text" class="form-control pull-right" id="datepicker_resiver" name="datepicker_resiver" value="{{$data[0]->datepicker_resiver}}"   data-date-format="yyyy-mm-dd"s>
+                              <input type="text" class="form-control pull-right" id="datepicker_resiver" name="datepicker_resiver" value="{{$data[0]->datepicker_resiver}}"   data-date-format="yyyy-mm-dd" readonlys>
                             </div>
                           </div>
                         </div>
@@ -2327,7 +2331,7 @@ $(function(){
         '<input type="number" id="dose1" name="dose[]' + rowCount + '" class="form-control" min="1" max="20">' +
         '</td>' +
         '<td>' +
-        '<input type="text" name="date_of_vaccination[]' + rowCount + '" value="" id="date_of_vaccination1' + rowCount + '" class="form-control datepicker" data-date-format="yyyy-mm-dd">' +
+        '<input type="text" name="date_of_vaccination[]' + rowCount + '" value="" id="date_of_vaccination1' + rowCount + '" class="form-control datepicker" data-date-format="yyyy-mm-dd" readonly>' +
         '</td>' +
         '<td>' +
         '<input type="text" id="time_of_vaccination1' + rowCount + '" name="time_of_vaccination[]' + rowCount + '" class="form-control">' +
@@ -2350,7 +2354,7 @@ $(function(){
         '<input type="text" id="lot_number1" name="lot_number[]' + rowCount + '" class="form-control">' +
         '</td>' +
         '<td>' +
-        '<input type="text" id="datepicker_expiry_date1' + rowCount + '" name="expiry_date[]' + rowCount + '" class="form-control" data-date-format="yyyy-mm-dd">' +
+        '<input type="text" id="datepicker_expiry_date1' + rowCount + '" name="expiry_date[]' + rowCount + '" class="form-control" data-date-format="yyyy-mm-dd" readonly>' +
         '</td>' +
         // '<td>' +
         // '<input type="text" id="name_of_diluent1" name="name_of_diluent[]' + rowCount + '" class="form-control">' +
@@ -2359,7 +2363,7 @@ $(function(){
         '<input type="text" id="lot_number_diluent1" name="lot_number_diluent[]' + rowCount + '" class="form-control">' +
         '</td>' +
         '<td>' +
-        '<input type="text" id="datepicker_expiry_date_diluent1' + rowCount + '" name="expiry_date_diluent[]' + rowCount + '" class="form-control" data-date-format="yyyy-mm-dd">' +
+        '<input type="text" id="datepicker_expiry_date_diluent1' + rowCount + '" name="expiry_date_diluent[]' + rowCount + '" class="form-control" data-date-format="yyyy-mm-dd" readonly>' +
         '</td>' +
         // '<td><input type="text" id="date_of_reconstitution1' + rowCount + '" name="date_of_reconstitution[]' + rowCount + '" class="form-control datepicker" data-date-format="yyyy-mm-dd"></td>' +
         // '<td><input type="text" id="time_of_reconstitution1" name="time_of_reconstitution[]' + rowCount + '" class="form-control"></td>' +

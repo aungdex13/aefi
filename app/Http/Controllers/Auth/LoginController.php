@@ -69,13 +69,13 @@ class LoginController extends Controller
                 return redirect('index');
                 break;
               case "dpc":
-                return redirct('index');
+                return redirect('index');
                 break;
               case "hospital":
-                return redirct('index');
+                return redirect('index');
                 break;
               case "dho":
-                return redirct('index');
+                return redirect('index');
                 break;
               default:
         				return redirect('logout');

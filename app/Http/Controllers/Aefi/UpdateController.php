@@ -230,6 +230,7 @@
 												'assessment10'=>$req->input('assessment10'),
 												'transverse_myelitis' => $req ->input ('transverse_myelitis'),
 												'adem' => $req ->input ('adem'),
+												'gbs' => $req ->input ('gbs'),
 												'acute_myocardial' => $req ->input ('acute_myocardial'),
 												'ards' => $req ->input ('ards'),
 												'date_entry' => date('Y-m-d H:i:s'),
@@ -237,7 +238,11 @@
 												'other_text_patient_develop_symptoms_after_previous_vaccination' => $req ->input ('other_text_patient_develop_symptoms_after_previous_vaccination'),
 												'other_text_underlying_disease' => $req ->input ('other_text_underlying_disease'),
 												'history_of_covid' => $req ->input ('history_of_covid'),
-												'other_history_of_covid_text' => $req ->input ('other_history_of_covid_text')
+												'other_history_of_covid_text' => $req ->input ('other_history_of_covid_text'),
+												'user_username'=>$req ->input ('user_username'),
+												'user_hospcode'=>$req ->input ('user_hospcode'),
+												'user_provcode'=>$req ->input ('user_provcode'),
+												'user_region'=>$req ->input ('user_region')
 											]);
 		if ($update){
 			$msg = " ส่งข้อมูลสำเร็จ";

@@ -11,6 +11,7 @@ $arr_route_of_vaccination = load_route_of_vaccination();
 $arr_vaccination_site = load_vaccination_site();
 $arr_manufacturer = load_manufacturer();
 $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
+
  ?>
   <h1>
     แบบรายงานอาการภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรค
@@ -182,10 +183,10 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
             </li>
             <li><a href="#">เพศชาย อาการรุนแรง
               {{-- <i class="fa fa-angle-left"></i> --}}
-                <span class="pull-right text-red"> {{$count_seriousness_of_the_symptoms_m[1]->count_seriousness_of_the_symptoms}} คน</span></a></li>
+                <span class="pull-right text-red"> {{isset($count_seriousness_of_the_symptoms_m[1]->count_seriousness_of_the_symptoms) ? $count_seriousness_of_the_symptoms_m[1]->count_seriousness_of_the_symptoms:"0"}} คน</span></a></li>
             <li><a href="#">เพศหญิง อาการรุนแรง
               {{-- <i class="fa fa-angle-left"></i> --}}
-                <span class="pull-right text-red"> {{$count_seriousness_of_the_symptoms_f[1]->count_seriousness_of_the_symptoms}} คน</span></a></li>
+                <span class="pull-right text-red"> {{isset($count_seriousness_of_the_symptoms_f[1]->count_seriousness_of_the_symptoms) ? $count_seriousness_of_the_symptoms_f[1]->count_seriousness_of_the_symptoms:"0"}} คน</span></a></li>
           </ul>
         </div>
         <!-- /.footer -->
@@ -235,7 +236,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
     <div class="col-md-6">
       <div class="box box-default">
         <div class="box-header with-border">
-          <h3 class="box-title">อัตราของชนิดวัคซิน ของผู้ป่วยทั้งหมดในปี {{$yearnow+543}}</h3>
+          <h3 class="box-title">อัตราของชนิดวัคซิน ของผู้ป่วยทั้งหมด</h3>
 
           <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -314,6 +315,8 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
       </div>
       <!-- /.box -->
     </div>
+    <!-- /.box -->
+
     <!-- /.box -->
   </div>
 </section>

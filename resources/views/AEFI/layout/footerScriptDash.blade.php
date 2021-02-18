@@ -25,11 +25,15 @@
 <script src="/asset/dist/js/demo.js"></script>
 
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-
+<?php
+	$arr_age_group = load_age_group();
+	// var_dump($arr_age_group);
+?>
 <script>
 	window.onload = function() {
 
 		var chart = new CanvasJS.Chart("chartContainer", {
+			exportEnabled: true,
 			animationEnabled: true,
 			title: {
 				text: "จำนวนผู้ป่วยรายเดือน"
@@ -113,6 +117,7 @@
 		chart.render();
 
 		var chart = new CanvasJS.Chart("piechartContainer", {
+			exportEnabled: true,
 			animationEnabled: true,
 			title: {
 				text: "ข้อมูลความร้ายแรงของอาการ"
@@ -135,6 +140,7 @@
 		chart.render();
 
 		var chart = new CanvasJS.Chart("chartVacname", {
+			exportEnabled: true,
 			animationEnabled: true,
 
 
@@ -161,37 +167,27 @@
 		chart.render();
 
 		var chart = new CanvasJS.Chart("agegroup", {
+	exportEnabled: true,
 	animationEnabled: true,
 	theme: "light2", // "light1", "light2", "dark1", "dark2"
 	title:{
-		text: "Top Oil Reserves"
+		text: "อัตราของกลุ่มอายุ ของผู้ป่วยทั้งหมดในปี 2564"
 	},
 	axisY: {
-		title: "Reserves(MMbbl)"
+		title: "จำนวน:คน"
 	},
 	data: [{
 		type: "column",
 		showInLegend: true,
 		legendMarkerColor: "grey",
-		legendText: "MMbbl = one million barrels",
 		dataPoints: [
 			@foreach($count_groupage as $row)
-			{ x: {{ $row->group_age }}, y: {{ $row->countgroupage }} },
+			{ y: {{ $row->countgroupage }} , label: "{{ $arr_age_group[$row->group_age] }}" },
 			@endforeach
 		]
 	}]
 });
 chart.render();
-
-}
-	
-	function explodePie (e) {
-	if(typeof (e.dataSeries.dataPoints[e.dataPointIndex].exploded) === "undefined" || !e.dataSeries.dataPoints[e.dataPointIndex].exploded) {
-		e.dataSeries.dataPoints[e.dataPointIndex].exploded = true;
-	} else {
-		e.dataSeries.dataPoints[e.dataPointIndex].exploded = false;
-	}
-	e.chart.render();
 
 }
 </script>
@@ -219,7 +215,7 @@ chart.render();
 			resolution: 'provinces',
 			backgroundColor: '#81d4fa',
 			datalessRegionColor: '#e1e1e1',
-			//displayMode: 'markers',
+			//displayMode: 'markers',o
 			colorAxis: {
 				colors: ['#8ec9bb', '#f2cf59', '#fa6e4f']
 			},

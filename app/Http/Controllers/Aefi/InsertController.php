@@ -165,6 +165,11 @@
 		$other_text_underlying_disease = $req ->input ('other_text_underlying_disease');
 		$history_of_covid = $req ->input ('history_of_covid');
 		$other_history_of_covid_text = $req ->input ('other_history_of_covid_text');
+		$user_username = $req ->input ('user_username');
+		$user_hospcode = $req ->input ('user_hospcode');
+		$user_provcode = $req ->input ('user_provcode');
+		$user_region = $req ->input ('user_region');
+		$gbs = $req ->input ('gbs');
 		$data = array(
 			'id_case'=>$id_case,
 			'hn'=>$hn,
@@ -292,8 +297,12 @@
 			'other_text_patient_develop_symptoms_after_previous_vaccination'=>$other_text_patient_develop_symptoms_after_previous_vaccination,
 			'other_text_underlying_disease'=>$other_text_underlying_disease,
 			'history_of_covid'=>$history_of_covid,
-			'other_history_of_covid_text'=>$other_history_of_covid_text
-
+			'other_history_of_covid_text'=>$other_history_of_covid_text,
+			'user_username'=>$user_username,
+			'user_hospcode'=>$user_hospcode,
+			'user_provcode'=>$user_provcode,
+			'user_region'=>$user_region,
+			'gbs'=>$gbs
 		);
 	// echo($data);
 	  $res1	= DB::table('aefi_form_1')->insert($data);
@@ -384,6 +393,10 @@ public function insertform2(Request $req2)
 			$record_tel = $req2->input('record_tel');
 			$record_date = $req2->input('record_date');
 			$date_entry = date('Y-m-d');
+			$user_username = $req2 ->input ('user_username');
+			$user_hospcode = $req2 ->input ('user_hospcode');
+			$user_provcode = $req2 ->input ('user_provcode');
+			$user_region = $req2 ->input ('user_region');
 			$date_update = date('Y-m-d');
 					$data = array(
 						'user_id' => $user_id,
@@ -404,6 +417,10 @@ public function insertform2(Request $req2)
 						'record_division' => $record_division,
 						'record_tel' => $record_tel,
 						'record_date' => $record_date,
+						'user_username'=>$user_username,
+						'user_hospcode'=>$user_hospcode,
+						'user_provcode'=>$user_provcode,
+						'user_region'=>$user_region
 				);
 				// dd($data);
 			$res1	= DB::table('aefi_form_2')->insert($data);
