@@ -22,28 +22,32 @@
 			<!-- /.box-header -->
 			<div class="box-body">
 				<!-- Custom Tabs -->
-				<table id="example" class="display nowrap" style="width:100%">
+				<div class="table-responsive">
+				<table id="example" class="display nowrap">
 				        <thead>
 				            <tr>
-							          <th>ชื่อ</th>
-                        <th>นามสกุล</th>
-                        <th>username</th>
-                        <th>email</th>
-                        <th>หน่วยงาน</th>
+								<th>ชื่อ</th>
+								<th>นามสกุล</th>
+								<th>username</th>
+								<th>email</th>
+								<th>หน่วยงาน</th>
+								<th>การอนุมัติ</th>
 				            </tr>
 				        </thead>
 				        <tbody>
   							@foreach($datas as $data)
   				            <tr>
   				                <td>{{ $data->name }}</td>
-                          <td>{{ $data->sur_name }}</td>
-  								        <td>{{ $data->username }}</td>
-                          <td>{{ $data->email }}</td>
-                          <td>@if($data->hospcode) {{ $datas_div[$data->hospcode] }} @else - @endif</td>
-  				            </tr>
+                          		<td>{{ $data->sur_name }}</td>
+  								<td>{{ $data->username }}</td>
+								<td>{{ $data->email }}</td>
+								<td>@if($data->hospcode) {{ $datas_div[$data->hospcode] }} @else - @endif</td>
+								<td><input data-id="{{ $data->id }}" type="checkbox" @if($data->confirm == "1") checked @else @endif data-toggle="toggle" data-on="ใช้งาน" data-off="ปิดการใช้งาน"></td>
+							</tr>
   							@endforeach
 				        </tbody>
 				    </table>
+				</div>
 			</div>
 			<!-- /.box-body -->
 		  </div>
@@ -54,6 +58,11 @@
 
 @include('AEFI.layout.footerScriptindex')
 <script type="text/javascript">
+$.ajaxSetup({
+          headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+});
 $(document).ready(function() {
   $('#example').DataTable({
     "ordering": false
@@ -73,6 +82,40 @@ $(document).ready(function() {
     });
   @endif
 });
+
+$('input:checkbox').change(function() {
+  $('#console-event').html('Toggle: ' + $(this).prop('checked'));
+
+	$.ajax({
+			url : "{{ route('ajax.updateConfirm') }}",
+			type : "POST",
+			data : {'id' : $(this).data("id"),"_token": "{{ csrf_token() }}",},
+				success: function(data){
+					console.log(data);
+					if(data == 'ok'){
+						Swal.fire({
+						position: 'top-end',
+						icon: 'success',
+						title: 'อัพเดทข้อมูลสำเร็จ',
+						showConfirmButton: false,
+						timer: 1500
+						});
+					}else{
+						Swal.fire({
+						position: 'top-end',
+						icon: 'error',
+						title: 'เกิดข้อผิดพลาดในการอัพเดทข้อมูล',
+						showConfirmButton: false,
+						timer: 1500
+						})
+					}
+					},
+					error : function(data){
+					toastr.error('error msg: '+data);
+							}
+		});
+  
+})
 </script>
 <!-- /.content -->
 @stop

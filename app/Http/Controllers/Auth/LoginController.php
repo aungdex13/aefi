@@ -54,7 +54,7 @@ class LoginController extends Controller
         $fieldType = filter_var($request->username, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
         // dd(auth()->attempt(array($fieldType => $input['username'], 'password' => $input['password'], 'confirm' => 1)));
 
-        if(auth()->attempt(array($fieldType => $input['username'], 'password' => $input['password'])))
+        if(auth()->attempt(array($fieldType => $input['username'], 'password' => $input['password'], 'confirm'=>1)))
         {
            $roleArr = auth()->user()->getRoleNames()->toArray();
           if (count($roleArr) > 0) {

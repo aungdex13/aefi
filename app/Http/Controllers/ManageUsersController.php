@@ -39,4 +39,17 @@ class ManageUsersController extends Controller
       ]);
     }
 
+    public function updateConfirm(Request $request){
+
+      $data_select = User::select('confirm')->where('id',$request->id)->first();
+      if($data_select->confirm=="1"){
+        $status_confirm = "0";
+      }else{
+        $status_confirm = "1";
+      }
+      $user = User::find($request->id);
+      $user->confirm = $status_confirm;
+      if($user->save()) return "ok";
+    }
+
 }

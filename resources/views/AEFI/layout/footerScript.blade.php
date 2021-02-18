@@ -33,7 +33,7 @@
 {{-- <script src="/asset/dist/js/pages/chartdashbard.js"></script> --}}
 <!-- AdminLTE for demo purposes -->
 <script src="/asset/dist/js/demo.js"></script>
-
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <!-- Page script -->
 <script>

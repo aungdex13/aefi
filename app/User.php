@@ -27,7 +27,8 @@ class User extends Authenticatable
         'prov_code',
         'ampur_code',
         'tambol_code',
-        'region'
+        'region',
+        'confirm'
     ];
 
     public $timestamps = true;

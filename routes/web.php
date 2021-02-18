@@ -31,6 +31,8 @@ Route::group(['prefix' => 'access-control','middleware' => ['auth']], function()
   Route::get('/ListUsers', 'ManageUsersController@index')->name('listusers.index');
   Route::get('/CreateUsers', 'ManageUsersController@create')->name('listusers.create');
   Route::get('/EditUsers', 'ManageUsersController@edit')->name('listusers.edit');
+  Route::post('/UpdateConfirm', 'ManageUsersController@updateConfirm')->name('ajax.updateConfirm');
+  
 });
 
 Route::group(['prefix' => 'Developer','middleware' => ['auth']], function() {

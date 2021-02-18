@@ -133,17 +133,19 @@
         }
       });
       @if ($message = Session::get('success'))
-          Swal.fire({
-              title: 'การลงทะเบียนสำเร็จ ',
-              text: 'กรุณารอการยืนยันข้อมูลผ่านทาง Email ที่ทำการลงทะเบียน',
-              confirmButtonText: 'Click เพื่อเข้าสู่ระบบ !!',
-              icon: 'success',
+        Swal.fire({
+                title: 'การลงทะเบียนสำเร็จ ',
+                text: 'กรุณาส่งข้อมูลเพื่อยืนยันตัวตนจาก QR code หรือ Add Line : @675gdzyp',
+                imageUrl: '{{ asset('images/aefi-ddc.png') }}',
+                imageWidth: 400,
+                imageHeight: 200,
+                icon: 'success',
 
-          }).then(function (result) {
-              if (result.value) {
-                  window.location = "{{ env('APP_URL') }}";
-              }
-          })
+            }).then(function (result) {
+                if (result.value) {
+                    window.location = "{{ env('APP_URL') }}";
+                }
+            })
       @endif
       @if ($message = Session::get('error'))
         Swal.fire({

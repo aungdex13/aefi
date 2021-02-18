@@ -66,7 +66,8 @@ class RegisterController extends Controller
         "ampur_code" => $get_profile->ampur_code,
         "tambol_code" => $get_profile->tambol_code,
         "region" => $get_profile->region,
-        "role_id" => $get_profile->role_id
+        "role_id" => $get_profile->role_id,
+        "confirm" => 0,
       ];
       //dd($data);
       $user = User::create($data);
