@@ -24,14 +24,15 @@
 <!---input width--->    <div class="col-xs-6">
                         <label for="InputName">ชื่อ</label>
                         <div class="input-group">
-                        <input type="text" class="form-control" name="name" placeholder="กรอกข้อมูลชื่อ" required>
+                        <input type="text" class="form-control" value="{{ old('name') }}" name="name" placeholder="กรอกข้อมูลชื่อ" required>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                         </div>
                         <br>
-                        <label for="InputName">ชื่อผู้ใช้งาน(Username)</label>
+                        <label for="InputName">ชื่อผู้ใช้งาน(Username)</label><span id="error_username" style="color: red;"></span>
                         <div class="input-group">
-                        <input type="text" class="form-control" name="username" placeholder="กรอกข้อมูลชื่อผู้ใช้งาน" required>
+                        <input type="text" id="username" class="form-control" value="{{ old('username') }}" name="username" placeholder="กรอกข้อมูลชื่อผู้ใช้งาน" required>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                        
                     </div>
                     <hr>
                 </div>
@@ -41,15 +42,15 @@
 
                         <label for="InputName">นามสกุล</label>
                         <div class="input-group">
-                        <input type="text" class="form-control" name="surname" placeholder="กรอกข้อมูลนามสกุล" required>
+                        <input type="text" class="form-control" name="surname" value="{{ old('surname') }}" placeholder="กรอกข้อมูลนามสกุล" required>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                         </div>
 
                         <br>
-                        <label for="InputPassword">รหัสผ่าน(Password)</label>
+                        <label for="InputPassword">รหัสผ่าน(Password)</label><span id="error_password" style="color: red;"></span>
                         <div class="input-group">
-                        <input type="password" class="form-control" name="password" placeholder="กรอกข้อมูลรหัสผ่าน" required>
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                        <input type="password" id="password" class="form-control" name="password" placeholder="กรอกข้อมูลรหัสผ่าน" required>
+                        <span class="input-group-addon" onclick="myFunction()"><span class="glyphicon glyphicon-eye-open"></span></span>
                     </div>
 <!--------------------------------------separator---------------------------------------------------------------> <hr>
                 </div>
@@ -59,7 +60,7 @@
                         <div class="col-xs-12">
                         <label for="InputEmail">อีเมล์(Email)</label>
                         <div class="input-group">
-                        <input type="email" class="form-control" name="email" placeholder="กรอกข้อมูลอีเมล์" required>
+                        <input type="email" class="form-control" value="{{ old('email') }}" name="email" placeholder="กรอกข้อมูลอีเมล์" required>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
 <!----------------------------break-------------------------------------------------------------> <br>
@@ -97,6 +98,31 @@
 <script type="text/javascript">
     // In your Javascript (external .js resource or <script> tag)
     $(document).ready(function() {
+      $("#username").focusout(function(){
+            var SpacialCharacter = /[ก-๙ ]/;
+
+            if ($(this).val().match(SpacialCharacter)) {
+                $(this).css("border-color", "#FF0000");
+                $("#username").val("");
+                $("#error_username").text("* ไม่สามารถกรอกภาษาไทย");
+                $("#error_username").focus();
+            } else {
+                $(this).css("border-color", "#2eb82e");
+                $("#error_username").text("");
+            }
+      });
+      $("#password").focusout(function(){
+        var val_length = $(this).val().length;
+        if(val_length<8){
+          $(this).css("border-color", "#FF0000");
+                $("#password").val("");
+                $("#error_password").text("* กำหนดรหัสผ่านไม่น้อยกว่า 8 ตัวอักษร");
+                $("#error_password").focus();
+        }else{
+                $(this).css("border-color", "#2eb82e");
+                $("#error_password").text("");
+        }
+      });
       //Initialize Select2 Elements
       $(".js-example-basic-single").select2({
         allowClear: true,
@@ -155,6 +181,15 @@
         });
       @endif
     });
+
+    function myFunction() {
+      var x = document.getElementById("password");
+      if (x.type === "password") {
+        x.type = "text";
+      } else {
+        x.type = "password";
+      }
+    } 
 </script>
 </body>
 </html>

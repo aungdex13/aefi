@@ -50,13 +50,26 @@ class RegisterController extends Controller
   }
 
   public function Save_New_Users(Request $request){
-      if(empty($request->hospcode)) return redirect()->back()->with('error','กรุณาเลือกหน่วยงาน');
+      if(empty($request->hospcode)) return redirect()->back()->withInput()->with('error','กรุณาเลือกหน่วยงาน');
+      $check_unique_username = 
+
+      $check_unique_username = User::where('username',trim(strtolower($request->username)))->first();
+      if ($check_unique_username) {
+        return redirect()->back()->withInput()->with('error','มี (ชื่อผู้ใช้งาน)username : '.trim(strtolower($request->username)).' นี้อยู่แล้วในระบบ');
+      }
+
+      $check_unique_email = User::where('email',trim(strtolower($request->email)))->first();
+      if ($check_unique_email) {
+        return redirect()->back()->withInput()->with('error','มี email : '.trim(strtolower($request->email)).' นี้อยู่แล้วในระบบ');
+      }
+
+      dd('exit');
       $get_profile = ChospitalNew::where('hospcode',$request->hospcode)->first();
       $data = [
         "name" => (!empty($request->name)) ? trim($request->name) : "",
         "sur_name" => (!empty($request->surname)) ? trim($request->surname) : "",
-        "email" => (!empty($request->email)) ? trim($request->email) : "",
-        "username" => (!empty($request->username)) ? trim($request->username) : "",
+        "email" => (!empty($request->email)) ? trim(strtolower($request->email)) : "",
+        "username" => (!empty($request->username)) ? trim(strtolower($request->username)) : "",
         "password" => trim(Hash::make($request->password)),
         "position" => "",
         "division" => "",
