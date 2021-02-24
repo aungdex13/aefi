@@ -63,7 +63,6 @@ class RegisterController extends Controller
         return redirect()->back()->withInput()->with('error','มี email : '.trim(strtolower($request->email)).' นี้อยู่แล้วในระบบ');
       }
 
-      dd('exit');
       $get_profile = ChospitalNew::where('hospcode',$request->hospcode)->first();
       $data = [
         "name" => (!empty($request->name)) ? trim($request->name) : "",
