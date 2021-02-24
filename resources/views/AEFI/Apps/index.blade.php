@@ -25,24 +25,28 @@
 				<ol class="carousel-indicators">
 				  <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
 				  <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
-				  {{-- <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li> --}}
 				</ol>
 				<div class="carousel-inner">
 				  <div class="item active">
 					<img src="asset/dist/img/vaccine-the-convo.jpg" alt="First slide">
-
 					<div class="carousel-caption">
 					  First Slide
 					</div>
 				  </div>
+
 				  <div class="item">
 					<img src="asset/dist/img/SARS-CoV-2-vaccine.jpg" alt="Second slide">
-
 					<div class="carousel-caption">
 					  Second Slide
 					</div>
 				  </div>
 
+          {{-- <div class="item">
+					<img src="asset/dist/img/SARS-CoV-2-vaccine.jpg" alt="Third slide">
+					<div class="carousel-caption">
+					  Third Slide
+					</div>
+				  </div> --}}
 				</div>
 				<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
 				  <span class="fa fa-angle-left"></span>
@@ -273,6 +277,26 @@
 					</a>
 				  </div>
 				</div>
+        <div class="col-lg-12 col-xs-12">
+          <!-- small box -->
+          <div class="small-box bg-teal ">
+          <div class="inner">
+            <h4>แจ้งปัญหาการใช้งาน</h4>
+                       <h5>
+                         <p>	หากพบปัญหาระหว่างการใช้งาน กรุณา Scan QR Code เพื่อแจ้งปัญหาดังกล่าว</p>
+                       </h5>
+                       <h5>
+                         <p>	<img src="images/aefi-ddc.png" width="120" height="110"></p>
+                       </h5>          </div>
+                     {{-- <div class="icon">
+                       <i class="fa fa-search"></i>
+                     </div> --}}
+                     {{-- <a href="https://www.who.int/vaccine_safety/initiative/tech_support/ebasic/en/" class="small-box-footer">
+                       More info <i class="fa fa-arrow-circle-right"></i>
+                     </a> --}}
+
+          </div>
+        </div>
 			<!-- /.box-body -->
 		  </div>
 		  <!-- /.box -->
