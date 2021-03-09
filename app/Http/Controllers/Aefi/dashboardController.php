@@ -35,6 +35,7 @@
 			$count_vacname = $this->count_vacname();
 			$listvac_arr =  $this->listvac_arr();
 			$count_groupage = $this->count_groupage();
+			$count_all_seriousness_of_the_symptoms= $this->count_all_seriousness_of_the_symptoms();
 			return view('AEFI.Apps.dashboard',compact(
 			 'count_prov',
 			 'listProvince',
@@ -47,6 +48,7 @@
 			 'count_eastern',
 			 'count_south',
 			 'count_western',
+			 'count_all_seriousness_of_the_symptoms',
 			 'count_seriousness_of_the_symptoms',
 			 'count_seriousness_of_the_symptoms_m',
 			 'count_seriousness_of_the_symptoms_f',
@@ -101,7 +103,7 @@
 												 ->groupBy('year_entry')
 												 ->orderBy('year_entry')
 												 ->get();
-					dd($count_month);
+					// dd($count_month);
 			return $count_month;
 }
 
@@ -304,6 +306,16 @@
 			// dd($province_arr);
 			return $province_arr;
 		}
+		protected function count_all_seriousness_of_the_symptoms(){
+			$yearnow =  now()->year;
+				 // dd($south->province_code);
+			$count_all_seriousness_of_the_symptoms = DB::table('aefi_form_1')
+										 ->select(DB::raw('count(id) as count_seriousness_of_the_symptoms'))
+										 ->where('status',null)
+										 ->get()->toArray();
+										 	// dd($count_all_seriousness_of_the_symptoms);
+			return $count_all_seriousness_of_the_symptoms;
+		}
 		protected function count_seriousness_of_the_symptoms(){
 			$yearnow =  now()->year;
 				 // dd($south->province_code);
@@ -311,11 +323,10 @@
 										 ->select(DB::raw('count(*) as count_seriousness_of_the_symptoms,seriousness_of_the_symptoms'))
 										 ->groupBy('seriousness_of_the_symptoms')
 										 ->where('status',null)
-										 ->whereYear('date_of_symptoms', '=', "$yearnow")
+										 // ->whereYear('date_of_symptoms', '=', "$yearnow")
 										 // ->groupBy('count_south')
 										 ->get();
-
-				 // dd($count_south);
+ // dd($count_seriousness_of_the_symptoms);
 			return $count_seriousness_of_the_symptoms;
 		}
 		protected function count_seriousness_of_the_symptoms_m(){
@@ -356,7 +367,7 @@
 										 ->orderBy('name_of_vaccine','DESC')
 										 ->get();
 
-				 // dd($count_south);
+			// dd($count_vacname);
 			return $count_vacname;
 		}
 		protected function listvac_arr(){

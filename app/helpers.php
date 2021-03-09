@@ -72,7 +72,7 @@ if (! function_exists('patient_develop_symptoms_after_previous_vaccination')) {
 								'20'=>'Fever≥38 C◦',
 								'21'=>'Swelling at the injection site > 3 days',
 								'22'=>'Swelling beyond nearest joint',
-								'23'=>'Lymphadenopathy ',
+								'23'=>'Lymphadenopathy',
 								'24'=>'Lymphadenitis',
 								'25'=>'Sterile abscess',
 								'26'=>'Bacterial abscess',

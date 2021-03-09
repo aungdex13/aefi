@@ -119,9 +119,7 @@
 		var chart = new CanvasJS.Chart("piechartContainer", {
 			exportEnabled: true,
 			animationEnabled: true,
-			title: {
-				text: "ข้อมูลความร้ายแรงของอาการ"
-			},
+
 			data: [{
 				type: "pie",
 				startAngle: 240,
@@ -130,7 +128,7 @@
 				dataPoints: [
 					@foreach($count_seriousness_of_the_symptoms as $row)
 					{
-						y: {{$row->count_seriousness_of_the_symptoms}},
+						y:  ({{$row->count_seriousness_of_the_symptoms}} / {{$count_all_seriousness_of_the_symptoms[0]->count_seriousness_of_the_symptoms}})*100,
 						label: "{{$arr_seriousness_of_the_symptoms[$row->seriousness_of_the_symptoms]}}"
 					},
 					@endforeach
