@@ -236,7 +236,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
     <div class="col-md-6">
       <div class="box box-default">
         <div class="box-header with-border">
-          <h3 class="box-title">อัตราของชนิดวัคซิน ของผู้ป่วยทั้งหมด</h3>
+          <h3 class="box-title">จำนวนของชนิดวัคซีนที่ผู้ป่วยได้รับทั้งหมด</h3>
 
           <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -316,7 +316,55 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
       <!-- /.box -->
     </div>
     <!-- /.box -->
+    <div class="col-md-6">
+      <div class="box box-default">
+        <div class="box-header with-border">
+          <h3 class="box-title">อัตราของกลุ่มอายุ ของผู้ป่วยทั้งหมดในปี {{$yearnow+543}}</h3>
 
+          <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+            </button>
+            {{-- <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button> --}}
+          </div>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <div class="row">
+            <div class="col-md-8">
+              <div class="chart-responsive">
+                <select class="dropdown" id="dd">
+    <option value="">กรุณาเลือกปีที่ต้องการ</option>
+    <option value="2021" selected="selected">2021</option>
+    <option value="2020">2020</option>
+    <option value="2019">2019</option>
+    <option value="2018">2018</option>
+    <option value="">DataPoints</option>
+</select>
+<div id="chartContainertest" style="height: 360px; width: 100%;"></div>
+              </div>
+              <!-- ./chart-responsive -->
+            </div>
+            <!-- /.col -->
+            <div class="col-md-4">
+              <ul class="chart-legend clearfix">
+                {{-- <li><i class="fa fa-circle-o text-red"></i> ร้ายแรง</li> --}}
+                {{-- <li><i class="fa fa-circle-o text-green"></i> ตับอักเสบบี</li>
+                <li><i class="fa fa-circle-o text-yellow"></i> บาดทะยัก</li>
+                <li><i class="fa fa-circle-o text-aqua"></i> โปลิโอ</li> --}}
+                {{-- <li><i class="fa fa-circle-o text-light-blue"></i> ไม่ร้ายแรง</li> --}}
+                {{-- <li><i class="fa fa-circle-o text-gray"></i> โรคไข้กาฬหลังแอ่น</li> --}}
+              </ul>
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+        </div>
+        <!-- /.box-body -->
+
+        <!-- /.footer -->
+      </div>
+      <!-- /.box -->
+    </div>
     <!-- /.box -->
   </div>
 </section>

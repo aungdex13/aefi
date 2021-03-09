@@ -32,7 +32,7 @@ Route::group(['prefix' => 'access-control','middleware' => ['auth']], function()
   Route::get('/CreateUsers', 'ManageUsersController@create')->name('listusers.create');
   Route::get('/EditUsers', 'ManageUsersController@edit')->name('listusers.edit');
   Route::post('/UpdateConfirm', 'ManageUsersController@updateConfirm')->name('ajax.updateConfirm');
-  
+
 });
 
 Route::group(['prefix' => 'Developer','middleware' => ['auth']], function() {
@@ -77,6 +77,7 @@ Route::get('/test', 'Aefi\testController@test')->name('test');
 Route::get('/dataf1export', 'Aefi\DataexportController@dataexport')->name('dataf1export');
 Route::post('/dataf1export', 'Aefi\DataexportController@dataexportfrm')->name('dataf1export');
 Route::get('/dataf2export', 'Aefi\Dataexport2Controller@dataexport2')->name('dataf2export');
+Route::get('/datauserexport', 'Aefi\DataexportuserController@dataexportu')->name('datauserexport');
 // Route::post('/uploadfile', 'Aefi\UploadController@upload');
 // download Data
 Route::get('/downloadaefi2', 'Aefi\DownloadController@dowloaddata2')->name('downloadaefi2');

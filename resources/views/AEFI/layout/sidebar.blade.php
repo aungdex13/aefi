@@ -3,7 +3,7 @@
 	<!-- Sidebar user panel -->
 	<div class="user-panel">
 	  <div class="pull-left image">
-		<img src="../asset/dist/img/avatar04.png" class="img-circle" alt="User Image">
+		<img src="../asset/dist/img/avatar5.png" class="img-circle" alt="User Image">
 	  </div>
 	  <div class="pull-left info">
 		<p>{{ Auth::user()->name }} {{ Auth::user()->sur_name }}</br>ตำแหน่ง:{{ Auth::user()->position }}</br>หน่วยงาน:{{ Auth::user()->division }}</p>
@@ -55,6 +55,9 @@
 		<ul class="treeview-menu">
 		  <li><a href="{{ route('dataf1export') }}"><i class="fa fa-circle-o"></i>รายงาน AEFI 1 </a></li>
 		  <li><a href="{{ route('AEFI506') }}"><i class="fa fa-circle-o"></i>รายงาน ๕๐๖</a></li>
+      @hasrole('admin')
+      <li><a href="{{ route('datauserexport') }}"><i class="fa fa-circle-o"></i>รายงานผู้ใช้งานระบบ</a></li>
+      @endhasrole
 		</ul>
 	  </li>
     @hasrole('admin')

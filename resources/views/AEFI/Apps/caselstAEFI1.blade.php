@@ -83,10 +83,10 @@ $arr_necessary_to_investigate = load_necessary_to_investigate();
             </td>
             <td>
               <div class="btn-group">
-                @if ($value->necessary_to_investigate == "2")
+                {{-- @if ($value->necessary_to_investigate == "2") --}}
                   <a href="{{ route('lstf2') }}?id_case={{ $value->id_case }}" type="button" class="btn btn-info btn-flat"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>กรอก AEFI2</a>
                   {{-- <a href="{{ route('form2') }}?id_case={{ $value->id_case }}" type="button" class="btn btn-info btn-flat"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>กรอก AEFI2</a> --}}
-                @endif
+                {{-- @endif --}}
                 <a href="{{ route('EditAEFI1') }}?id_case={{ $value->id_case }}" type="button" class="btn btn-warning btn-flat"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>แก้ไขข้อมูล</a>
                 {{-- <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-warning">ลบข้อมูล</button> --}}
                 <a href="{{ route('deleteAEFI1') }}?id_case={{ $value->id_case }}" id="btnDelete" type="button" class="btn btn-danger" onclick="return confirm('ต้องการลบข้อมูล ใช่หรือไม่?');">ลบข้อมูล</a>

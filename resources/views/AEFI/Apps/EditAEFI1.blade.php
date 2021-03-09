@@ -402,6 +402,24 @@ foreach ($aecode as $value) {
                           </div>
                         </div>
                       </div>
+                      <!-- อาชีพ -->
+                      <div class="form-group">
+                        <div class="row">
+                          <div class="col-lg-3">
+                            <label>
+                               อาชีพ:
+                            </label>
+                          </div>
+                          <div class="col-lg-6">
+                            <div class="input-group date">
+                              <div class="input-group-addon">
+                                {{-- <i class="fa fa-calendar"></i> --}}
+                              </div>
+                              <input type="text" name="career" class="form-control" id="career" value="{{$data[0]->career}}" placeholder="อาชีพ" >
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                   <!-- /.box-body -->

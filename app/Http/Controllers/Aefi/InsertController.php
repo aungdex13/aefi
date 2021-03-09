@@ -52,6 +52,7 @@
 		$nationality = $req ->input ('nationality');
 		$other_nationality = $req ->input ('other_nationality');
 		$type_of_patient = $req ->input ('type_of_patient');
+		$career = $req ->input ('career');
 		$history_of_vaccine_drug_allergies_of_patient = $req ->input ('history_of_vaccine_drug_allergies_of_patient');
 		$other_vaccination_history = $req ->input ('other_vaccination_history');
 		$other_drug_history = $req ->input ('other_drug_history');
@@ -187,6 +188,7 @@
 			'nationality'=>$nationality,
 			'other_nationality'=>$other_nationality,
 			'type_of_patient'=>$type_of_patient,
+			'career'=>$career,
 			'history_of_vaccine_drug_allergies_of_patient'=>$history_of_vaccine_drug_allergies_of_patient,
 			'other_vaccination_history'=>$other_vaccination_history,
 			'patient_develop_symptoms_after_previous_vaccination'=>$patient_develop_symptoms_after_previous_vaccination,

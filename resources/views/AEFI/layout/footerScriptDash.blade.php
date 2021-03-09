@@ -150,7 +150,7 @@
 			axisY2:{
 				interlacedColor: "rgba(1,77,101,.2)",
 				gridColor: "rgba(1,77,101,.1)",
-				title: "จำนวนของวัคซิน"
+				title: "จำนวนของวัคซีน"
 			},
 			data: [{
 				type: "bar",
@@ -169,27 +169,83 @@
 		var chart = new CanvasJS.Chart("agegroup", {
 	exportEnabled: true,
 	animationEnabled: true,
-	theme: "light2", // "light1", "light2", "dark1", "dark2"
-	title:{
-		text: "อัตราของกลุ่มอายุ ของผู้ป่วยทั้งหมดในปี 2564"
-	},
-	axisY: {
-		title: "จำนวน:คน"
-	},
-	data: [{
-		type: "column",
-		showInLegend: true,
-		legendMarkerColor: "grey",
-		dataPoints: [
-			@foreach($count_groupage as $row)
-			{ y: {{ $row->countgroupage }} , label: "{{ $arr_age_group[$row->group_age] }}" },
-			@endforeach
-		]
-	}]
-});
-chart.render();
+		theme: "light2", // "light1", "light2", "dark1", "dark2"
+		title:{
+			text: "Top Oil Reserves"
+		},
+		axisY: {
 
+		},
+		data: [{
+			type: "column",
+			showInLegend: true,
+			legendMarkerColor: "grey",
+			legendText: "MMbbl = one million barrels",
+			dataPoints: [
+				{ y: 101500, label: "Kuwait" },
+				{ y: 97800,  label: "UAE" },
+				{ y: 80000,  label: "Russia" }
+				// @ foreach($count_groupage as $row)
+				// 	{ y: { { $row->countgroupage }} , label: "{ { $arr_age_group[$row->group_age] }}" },
+				// @ endforeach
+			]
+		}]
+	});
+	chart.render();
 }
+var jsonData = {
+	@foreach($count_year as $row)
+  "{{$row->year_entry}}": [
+			@foreach($count_month as $rowm)
+    			{ "x": "{{$rowm->year_entry}}-{{$rowm->month_entry}}", "y": {{$rowm->count_patient}} },
+			@endforeach
+  ],
+	@endforeach
+}
+var dataPoints = [];
+var chart = new CanvasJS.Chart("chartContainertest",{
+  axisX: {
+    valueFormatString: "D/MM h:mm",
+    intervalType: 'month',
+    interval: 1
+  },
+  data: [{
+    type: 'column',
+    //xValueFormatString:"D MM h:mm",
+    xValueType: "dateTime",
+    showInLegend: true,
+    name: "series1",
+    legendText: "EnergykWh",
+    dataPoints: dataPoints // this should contain only specific serial number data
+
+  }]
+});
+
+chart.options.data[0].dataPoints = [];
+var element = document.getElementById("dd");
+selectDataSeries();
+
+
+$( ".dropdown" ).change(function() {
+  chart.options.data[0].dataPoints = [];
+  selectDataSeries(element.selectedIndex);
+});
+
+
+function selectDataSeries(){
+  var selected = element.options[element.selectedIndex].value;
+  dps = jsonData[selected];
+  for(var i in dps) {
+    var xVal = dps[i].x;
+    chart.options.data[0].dataPoints.push({x: new Date(xVal), y: dps[i].y});
+  }
+  chart.render();
+}
+// dataPoints: [
+// 	@ foreach($count_groupage as $row)
+// 	{ y: { { $row->countgroupage }} , label: "{ { $arr_age_group[$row->group_age] }}" },
+// 	@ endforeach
+// ]
 </script>
 <script type='text/javascript' src='https://www.gstatic.com/charts/loader.js'></script>
 <script type="text/javascript">

@@ -16,6 +16,8 @@
 			$count_prov = $this->count_prov();
 			$listProvince=$this->listProvince();
 			$count_month=$this->count_month();
+			$count_year=$this->count_year();
+		 // dd($count_year);
 			$yearnow =  now()->year ;
 			$count_north = $this->count_north();
 			// dd($count_north)
@@ -37,6 +39,7 @@
 			 'count_prov',
 			 'listProvince',
 			 'count_month',
+			 'count_year',
 			 'yearnow',
 			 'count_north',
 			 'count_northeast',
@@ -84,17 +87,37 @@
 	    return $count_prov;
 	  }
 		protected function count_month(){
-			$yearnow =  now()->year;
+			$count_year =  $this->count_year()->pluck('year_entry');
+			 // dd($count_year);
+					$count_month = DB::table('aefi_form_1')
+												 ->select(DB::raw('
+												 count(*) as count_patient ,
+												  MONTH(date_of_symptoms) as month_entry,
+													YEAR(date_of_symptoms) as year_entry,
+													GROUP_CONCAT(MONTH(date_of_symptoms))'))
+												 // ->whereYear('date_of_symptoms', '=', $count_year)
+												 ->where('status','=',null)
+												 // ->groupBy('month_entry')
+												 ->groupBy('year_entry')
+												 ->orderBy('year_entry')
+												 ->get();
+					dd($count_month);
+			return $count_month;
+}
+
+		protected function count_year(){
+			// $yearnow =  now()->year;
 			 // dd($yearnow);
-			$count_month = DB::table('aefi_form_1')
-										 ->select(DB::raw('count(*) as count_patient , MONTH(date_of_symptoms) as month_entry'))
-										 ->whereYear('date_of_symptoms', '=', "$yearnow")
+			$count_year = DB::table('aefi_form_1')
+										 ->select(DB::raw('count(*) as count_patient , MONTH(date_of_symptoms) as month_entry, YEAR(date_of_symptoms) as year_entry'))
+										 // ->whereYear('date_of_symptoms', '=', "$yearnow")
 										 ->where('status','=',null)
 										 // ->groupBy('month_entry')
-										 ->groupBy('month_entry')
+										 ->groupBy('year_entry')
+										 ->orderBy('year_entry')
 										 ->get();
-			  // dd($count_month);
-			return $count_month;
+				// dd($count_month);
+			return $count_year;
 		}
 		protected function count_north(){
 			$yearnow =  now()->year;
@@ -351,7 +374,7 @@
 										 ->select(DB::raw('count(id) as countgroupage,group_age'))
 										 // ->where('gender', '=', '2')
 										 ->where('status','=',null)
-										 ->whereYear('date_of_symptoms', '=', "$yearnow")
+										 ->whereYear('date_entry', '=', "$yearnow")
 										 ->groupBy('group_age')
 										 ->orderBy('group_age','ASC')
 										 ->get();
