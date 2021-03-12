@@ -180,8 +180,20 @@ if (! function_exists('manufacturer')) {
 								'11'=>'บริษัทไบโอวาลิส จำกัด',
 								'12'=>'บริษัทเอ็มเอสดี (ประเทศไทย) จำกัด',
 								'13'=>'บริษัทไบโอเน็ท-เอเชีย จำกัด',
-                '14'=>'อ็อกซ์ฟอร์ด-แอสตราเซเนกา'
-														);
+                '14'=>'อ็อกซ์ฟอร์ด-แอสตราเซเนกา',
+                '15'=>'ไฟเซอร์-ไบออนเทค (Pfizer-BioNTech)',
+                '16'=>'สปุตนิก (Sputnik) ',
+                '17'=>'โมเดอร์นา (Moderna)',
+                '18'=>'บาราต (Bharat Biotech) บริษัทผู้นำเข้า Biogenetech ',
+                '19'=>'Johnson&Johnson บริษัทผู้นำเข้า Jansen',
+                '20'=>'Sinovac (Sinovac life science Co.,Ltd)',
+                '21'=>'Sinopharm-Beijing',
+                '22'=>'Sinopharm-Wuhan',
+                '23'=>'Gamaleya',
+                '24'=>'Casino',
+                '25'=>'Vector Insitute',
+                '26'=>'Chumakov Center'
+                														);
 		return 	$manufacturer;
     }
 }

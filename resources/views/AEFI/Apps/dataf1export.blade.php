@@ -53,7 +53,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
           <!-- /.form group -->
 				<!-- Custom Tabs -->
         <p>ดาวน์โหลดข้อมูล</p>
-				<table id="example" class="display table-striped table-bordered" style="width:150%">
+				<table id="example" class="display table-striped table-bordered" style="width:500%">
 				        <thead>
 				            <tr>
         							  <th>no</th>
@@ -61,13 +61,62 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
 				                <th>ชื่อ</th>
 				                <th>นามสกุล</th>
 				                <th>ที่อยู่ขณะเริ่มป่วย</th>
-                        <th>อายุขณะป่วย</th>
+                        <th>จังหวัดขณะเริ่มป่วย</th>
+                        <th>อำเภอขณะเริ่มป่วย</th>
+                        <th>ตำบลขณะเริ่มป่วย</th>
+                        <th>อายุปีขณะป่วย</th>
+                        <th>อายุเดือนขณะป่วย</th>
+                        <th>อายุวันขณะป่วย</th>
 				                <th>เพศ</th>
                         <th>ประเภทผู้ป่วย</th>
-                        <th>สภาพผู้ป่วย</th>
+                        <th>สถานะผู้ป่วย</th>
                         <th>วันเริ่มป่วย</th>
 				                <th>วันรับรักษา</th>
-                        <th>อาการ</th>
+                        <th>วัคซีนที่ได้รับ</th>
+                        <th>Rash</th>
+                        <th>Erythema</th>
+                        <th>Urticaria</th>
+                        <th>Itching</th>
+                        <th>Edema</th>
+                        <th>Angioedema</th>
+                        <th>Fainting</th>
+                        <th>Hyperventilation</th>
+                        <th>Syncope</th>
+                        <th>Headche</th>
+                        <th>Dizziness</th>
+                        <th>Fatigue</th>
+                        <th>Malaise</th>
+                        <th>Dyspepsia</th>
+                        <th>Diarrhea</th>
+                        <th>Nausea</th>
+                        <th>Vomiting</th>
+                        <th>Abdominal pain</th>
+                        <th>Arthalgia</th>
+                        <th>Myalgia</th>
+                        <th>Fever38c</th>
+                        <th>บวมบริเวณที่ฉีดนานเกิน3วัน</th>
+                        <th>บวมลามไปถึงข้อที่ใกล้ที่สุด</th>
+                        <th>Lymphadenopathy</th>
+                        <th>Lymphadenitis</th>
+                        <th>Sterile abscess</th>
+                        <th>Bacterial abscess</th>
+                        <th>Febrile convulsion</th>
+                        <th>Afebrile convulsion</th>
+                        <th>Encephalopathy</th>
+                        <th>Flaccid paralysis</th>
+                        <th>Spastic paralysis</th>
+                        <th>HHE</th>
+                        <th>Persistent inconsolable crying</th>
+                        <th>Thrombocytopenia</th>
+                        <th>Osteomyelitis</th>
+                        <th>Toxic shock syndrome</th>
+                        <th>Sepsis</th>
+                        <th>Anaphylaxis</th>
+                        <th>Transverse myelitis</th>
+                        <th>GBS</th>
+                        <th>Adem</th>
+                        <th>Acute myocardial</th>
+                        <th>Ards</th>
                         <th>Seriousness</th>
                         <th>conclusion</th>
                         <th>หมายเหตุ</th>
@@ -76,158 +125,343 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
 				        <tbody>
 							<?php foreach($selectdata as $value) : ?>
 				            <tr>
-				                <td>{{ $value->id_case }}</td>
+				                <td>{{ $value->id }}</td>
 								        <td>{{ $value->hn }}</td>
 				                <td style="text-align: center; vertical-align: middle;" width="4%">{{ $value->first_name }}</td>
 				                <td style="text-align: center; vertical-align: middle;" width="4%">{{ $value->sur_name }}</td>
 				                <td>
                             {{ $value->house_number }}
-                            {{ $value->village_no }}</br>
-                            ตำบล :{{ isset($listsubdistrict[$value->subdistrict]) ?  $listsubdistrict[$value->subdistrict] : "ไม่ระบุข้อมูล"}}<br>
-                            อำเภอ : {{ isset($listDistrict[$value->district]) ? $listDistrict[$value->district]: "ไม่ระบุข้อมูล" }}<br>
-                            จังหวัด :{{ isset($listProvince[ $value->province]) ?$listProvince[ $value->province] : "ไม่ระบุข้อมูล"}}</td>
-				                <td style="text-align: center; vertical-align: middle;" width="10%">{{ isset($value->age_while_sick_year) ? $value->age_while_sick_year: "-" }}ปี
-                            {{ isset($value->age_while_sick_month) ? $value->age_while_sick_month:"-" }}เดือน
-                            {{ isset($value->age_while_sick_day) ? $value->age_while_sick_day:"-"}}วัน</td>
-								        <td>{{ $arr_type_of_patient[$value->type_of_patient] }}</td>
+                            @if ($value->village_no != null)
+                              หมู่ {{ $value->village_no }}
+                            @endif
+                          </br>
+                          </td>
+                        <td>{{ isset($listProvince[ $value->province]) ?$listProvince[ $value->province] : "ไม่ระบุข้อมูล"}}</td>
+                        <td>{{ isset($listDistrict[$value->district]) ? $listDistrict[$value->district]: "ไม่ระบุข้อมูล" }}</td>
+                        <td>{{ isset($listsubdistrict[$value->subdistrict]) ?  $listsubdistrict[$value->subdistrict] : "ไม่ระบุข้อมูล"}}</td>
+                        <td>{{ isset($value->age_while_sick_year) ? $value->age_while_sick_year: "-" }}</td>
+                        <td>{{ isset($value->age_while_sick_month) ? $value->age_while_sick_month:"-" }}</td>
+                        <td>{{ isset($value->age_while_sick_day) ? $value->age_while_sick_day:"-"}}</td>
 								        <td>{{ $arr_gender[$value->gender] }}</td>
+								        <td>{{ $arr_type_of_patient[$value->type_of_patient] }}</td>
                         <td>{{ $arr_patient_status[$value->patient_status] }}</td>
                         <td>{{ $value->date_of_symptoms }}</td>
-                        <td>{{ $value->date_of_treatment}}</td>
+                        <td>{{ $value->date_of_treatment }}</td>
+                        <td>
+                          @if ($value->name_of_vaccine == '39')
+                            {{"COVID-19"}}
+                          @else
+                          {{ $value->name_of_vaccine }}
+                          @endif
+                          {{-- {{ $value->name_of_vaccine }} --}}
+                        </td>
                         <td>
                           @if ($value->rash == '0027')
-                            {{"/ rash "}}
+                            {{"1"}}
+                          @else
+                          {{"0"}}
                           @endif
+                        </td>
+                        <td>
                           @if ($value->erythema == '0028' )
-                            {{"/ erythema "}}
+                            {{"1 "}}
+                          @else
+                          {{"0"}}
                           @endif
+                        </td>
+                        <td>
                           @if ($value->urticaria == '0044')
-                            {{"/ urticaria"}}
+                            {{"1"}}
+                          @else
+                          {{"0"}}
                           @endif
+                        </td>
+                        <td>
                           @if ($value->itching == '0026')
-                            {{"/ itching"}}
+                            {{"1"}}
+                          @else
+                          {{"0"}}
                           @endif
+                        </td>
+                        <td>
                           @if ($value->edema == '0003A')
-                            {{"/ edema"}}
+                            {{"1"}}
+                          @else
+                          {{"0"}}
                           @endif
+                        </td>
+                        <td>
                           @if ($value->angioedema == '0003')
-                            {{"/ angioedema"}}
+                            {{"1"}}
+                          @else
+                          {{"0"}}
                           @endif
+                        </td>
+                        <td>
                           @if ($value->fainting == '1')
-                            {{"/ fainting"}}
+                            {{"1"}}
+                          @else
+                          {{"0"}}
                           @endif
+                        </td>
+                        <td>
                           @if ($value->hyperventilation == '0517')
-                            {{"/ hyperventilation"}}
+                            {{"1"}}
+                          @else
+                          {{"0"}}
                           @endif
+                        </td>
+                        <td>
                           @if ($value->syncope == '0223')
-                            {{"/ syncope"}}
+                             {{"1"}}
+                          @else
+                          {{"0"}}
                           @endif
+                        </td>
+                        <td>
                           @if ($value->headche == '1')
-                            {{"/ headche"}}
+                            {{"1"}}
+                          @else
+                          {{"0"}}
                           @endif
+                        </td>
+                        <td>
                           @if ($value->dizziness == '0101')
-                            {{"/ dizziness"}}
+                            {{"1"}}
+                          @else
+                          {{"0"}}
                           @endif
+                        </td>
+                        <td>
                           @if ($value->fatigue == '0724')
-                            {{"/ fatigue"}}
+                            {{"1"}}
+                          @else
+                          {{"0"}}
                           @endif
+                        </td>
+                        <td>
                           @if ($value->malaise == '0728')
-                            {{"/ malaise"}}
+                            {{"1"}}
+                          @else
+                          {{"0"}}
                           @endif
+                        </td>
+                        <td>
                           @if ($value->dyspepsia == '0279')
-                            {{"/ dyspepsia"}}
+                            {{"1"}}
+                          @else
+                          {{"0"}}
                           @endif
+                        </td>
+                        <td>
                           @if ($value->diarrhea == '1')
-                            {{"/ diarrhea"}}
+                            {{"1"}}
+                          @else
+                          {{"0"}}
                           @endif
+                        </td>
+                        <td>
                           @if ($value->nausea == '0308')
-                            {{"/ nausea"}}
+                            {{"1"}}
+                          @else
+                          {{"0"}}
                           @endif
+                        </td>
+                        <td>
                           @if ($value->vomiting == '0228')
-                            {{"/ vomiting"}}
+                            {{"1"}}
+                          @else
+                          {{"0"}}
                           @endif
+                        </td>
+                        <td>
                           @if ($value->abdominal_pain == '0268')
-                            {{"/ abdominal pain"}}
+                            {{"1"}}
+                            @else
+                            {{"0"}}
                           @endif
+                        </td>
+                        <td>
                           @if ($value->arthalgia == '1')
-                            {{"/ arthalgia"}}
+                            {{"1"}}
+                            @else
+                            {{"0"}}
                           @endif
+                        </td>
+                        <td>
                           @if ($value->myalgia == '0072')
-                            {{"/ myalgia"}}
+                            {{"1"}}
+                            @else
+                            {{"0"}}
                           @endif
+                        </td>
+                        <td>
                           @if ($value->fever38c == '0725')
-                            {{"/ fever38c"}}
+                            {{"1"}}
+                            @else
+                            {{"0"}}
                           @endif
+                        </td>
+                        <td>
                           @if ($value->swelling_at_the_injection == '1')
-                            {{"/ บวมบริเวณที่ฉีดนานเกิน3วัน"}}
+                            {{"1"}}
+                          @else
+                          {{"0"}}
                           @endif
+                        </td>
+                        <td>
                           @if ($value->swelling_beyond_nearest_joint == '1')
-                            {{"/ บวมลามไปถึงข้อที่ใกล้ที่สุด"}}
+                            {{"1"}}
+                          @else
+                          {{"0"}}
                           @endif
+                        </td>
+                        <td>
                           @if ($value->lymphadenopathy == '0577')
-                            {{"/ lymphadenopathy"}}
+                            {{"1"}}
+                          @else
+                          {{"0"}}
                           @endif
+                        </td>
+                        <td>
                           @if ($value->lymphadenitis == '0577D')
-                            {{"/ lymphadenitis"}}
+                            {{"1"}}
+                          @else
+                          {{"0"}}
                           @endif
+                        </td>
+                        <td>
                           @if ($value->sterile_abscess == '0051')
-                            {{"/ sterile abscess"}}
+                            {{"1"}}
+                          @else
+                          {{"0"}}
                           @endif
+                        </td>
+                        <td>
                           @if ($value->bacterial_abscess == '1')
-                            {{"/ bacterial abscess"}}
+                            {{"1"}}
+                          @else
+                          {{"0"}}
                           @endif
+                        </td>
+                        <td>
                           @if ($value->febrile_convulsion == '1')
-                            {{"/ febrile convulsion"}}
+                            {{"1"}}
+                          @else
+                          {{"0"}}
                           @endif
+                        </td>
+                        <td>
                           @if ($value->afebrile_convulsion == '1')
-                            {{"/ afebrile_convulsion"}}
+                            {{"1"}}
+                          @else
+                          {{"0"}}
                           @endif
+                        </td>
+                        <td>
                           @if ($value->encephalopathy == '0105')
-                            {{"/ Encephalopathy/Encephalitis"}}
+                            {{"1"}}
+                          @else
+                          {{"0"}}
                           @endif
+                        </td>
+                        <td>
                           @if ($value->flaccid_paralysis == '0139')
-                            {{"/ flaccid paralysis"}}
+                            {{"1"}}
+                          @else
+                          {{"0"}}
                           @endif
+                        </td>
+                        <td>
                           @if ($value->spastic_paralysis == '0775')
-                            {{"/ spastic paralysis"}}
+                            {{"1"}}
+                          @else
+                          {{"0"}}
                           @endif
+                        </td>
+                        <td>
                           @if ($value->hhe == '1704')
-                            {{"/ hhe"}}
+                            {{"1"}}
+                          @else
+                          {{"0"}}
                           @endif
+                        </td>
+                        <td>
                           @if ($value->persistent_inconsolable_crying == '1')
-                            {{"/ persistent inconsolable crying"}}
+                            {{"1"}}
+                          @else
+                          {{"0"}}
                           @endif
+                        </td>
+                        <td>
                           @if ($value->thrombocytopenia == '0594')
-                            {{"/ thrombocytopenia"}}
+                            {{"1"}}
+                          @else
+                          {{"0"}}
                           @endif
+                        </td>
+                        <td>
                           @if ($value->osteomyelitis == '1184')
-                            {{"/ osteomyelitis"}}
+                            {{"1"}}
+                          @else
+                          {{"0"}}
                           @endif
+                        </td>
+                        <td>
                           @if ($value->toxic_shock_syndrome == '1')
-                            {{"/ toxic shock syndrome"}}
+                            {{"1"}}
+                          @else
+                          {{"0"}}
                           @endif
+                        </td>
+                        <td>
                           @if ($value->sepsis == '0744')
-                            {{"/ sepsis"}}
+                            {{"1"}}
+                          @else
+                          {{"0"}}
                           @endif
+                        </td>
+                        <td>
                           @if ($value->anaphylaxis == '2237')
-                            {{"/ anaphylaxis"}}
+                            {{"1"}}
+                          @else
+                          {{"0"}}
                           @endif
+                        </td>
+                        <td>
                           @if ($value->transverse_myelitis == '1')
-                            {{"/ transverse_myelitis"}}
+                            {{"1"}}
+                          @else
+                          {{"0"}}
                           @endif
+                        </td>
+                        <td>
                           @if ($value->gbs == '1')
-                            {{"/ GBS"}}
+                            {{"1"}}
+                          @else
+                          {{"0"}}
                           @endif
+                        </td>
+                        <td>
                           @if ($value->adem == '1')
-                            {{"/ adem"}}
+                            {{"1"}}
+                          @else
+                          {{"0"}}
                           @endif
+                        </td>
+                        <td>
                           @if ($value->acute_myocardial == '1')
-                            {{"/ acute_myocardial"}}
+                            {{"1"}}
+                          @else
+                          {{"0"}}
                           @endif
+                      </td>
+                      <td>
                           @if ($value->ards == '1')
-                            {{"/ ards"}}
+                            {{"1"}}
+                          @else
+                          {{"0"}}
                           @endif
-
                       </td>
                         <td>{{ $arr_seriousness_of_the_symptoms[$value->seriousness_of_the_symptoms] }}</td>
                         <td>{{ $value->diagnosis }}</td>
