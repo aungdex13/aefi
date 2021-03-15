@@ -148,12 +148,13 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
                         <td>{{ $value->date_of_symptoms }}</td>
                         <td>{{ $value->date_of_treatment }}</td>
                         <td>
-                          @if ($value->name_of_vaccine == '39')
-                            {{"COVID-19"}}
-                          @else
-                          {{ $value->name_of_vaccine }}
-                          @endif
-                          {{-- {{ $value->name_of_vaccine }} --}}
+                          @php
+                          $myString = $value->name_of_vaccine ;
+                          $myArray = explode(',', $myString);
+                          @endphp
+                          @foreach($myArray as $valuev)
+                          {{ isset($listvac_arr[$valuev]) ? $listvac_arr[$valuev]: "ไม่ระบุข้อมูล" }}</br>
+                          @endforeach
                         </td>
                         <td>
                           @if ($value->rash == '0027')
@@ -500,7 +501,7 @@ $(document).ready(function() {
 $('#example').DataTable( {
 	dom: 'Bfrtip',
 	buttons: [
-		'copy', 'excel', 'pdf', 'print'
+		'copy', 'excel', 'print'
 	]
 } );
 } );
