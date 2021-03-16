@@ -46,10 +46,14 @@
     					<div class="col-xs-6 col-sm-6 col-md-6">
                 <input type="submit" class="btn btn-lg btn-success btn-block" value="เข้าสู่ระบบ">
     					</div>
-              <div class="col-xs-6 col-sm-6 col-md-6">
-    						{{-- <a href="{{ route('resetpass') }}" class="btn btn-lg btn-warning btn-block">ลืมรหัสผ่าน</a> --}}
+              {{-- <div class="col-xs-6 col-sm-6 col-md-6">
+    						<a href="{{ route('resetpass') }}" class="btn btn-lg btn-warning btn-block">ลืมรหัสผ่าน</a>
                 <a href="#" class="btn btn-lg btn-warning btn-block">ลืมรหัสผ่าน</a>
-    					</div>
+    					</div> --}}
+              <div class="col-xs-6 col-sm-6 col-md-6">
+                <a href="https://apps.doe.moph.go.th/boe/software/downloadtab.php#tab4" class="btn btn-lg btn-warning btn-block">เอกสารและคู่มือการใช้งาน</a>
+                {{-- <a href="#" class="btn btn-lg btn-warning btn-block">เอกสารและคู่มือการใช้งาน</a> --}}
+              </div>
     				</div>
             <div class="row" style="margin-top:20px;">
               <div class="col-xs-3 col-sm-3 col-md-3">
