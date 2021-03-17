@@ -106,7 +106,7 @@
                     <img src="{{ asset('asset/dist/img/d5.jpg') }}" style="width:100%">
                     {{-- <img src="/w3images/nature.jpg" alt="Nature" style="width:100%"> --}}
                     <div class="caption">
-                      <p>คู่มือการใช้งานระบบรายงานอาการภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรค (AEFI)</p>
+                      <p>แนวทางการให้วัคซีน โควิด 19 ในสถสนการณ์การระบาดปี64 ของประเทศไทย</p>
                     </div>
                   </a>
                 </div>
