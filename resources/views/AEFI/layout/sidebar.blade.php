@@ -40,11 +40,23 @@
 		  </li> --}}
 		</ul>
 	  </li>
-	  <li>
+    <li class="treeview">
+    <a href="#">
+      <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+      <span class="pull-right-container">
+      <i class="fa fa-angle-left pull-right"></i>
+      </span>
+    </a>
+    <ul class="treeview-menu">
+      <li><a href="{{ route('dashboard') }}"><i class="fa fa-circle-o"></i>AEFI 1 </a></li>
+      <li><a href="dashboardcovid"><i class="fa fa-circle-o"></i>COVID 2019</a></li>
+    </ul>
+    </li>
+	  {{-- <li>
 		<a href="{{ route('dashboard') }}">
 		  <i class="fa fa-dashboard"></i> <span>Dashboard</span>
 		</a>
-	  </li>
+	  </li> --}}
 	  <li class="treeview">
 		<a href="#">
 		  <i class="fa fa-table"></i> <span>Download</span>

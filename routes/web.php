@@ -49,6 +49,7 @@ Route::post('/form1/fetch', 'Aefi\AEFIController@fetch')->name('dropdown.fetch')
 Route::post('/form1/fetchD', 'Aefi\AEFIController@fetchD')->name('dropdown.fetchD');
 Route::get('/form2', 'Aefi\AEFIController@form2')->name('form2');
 Route::get('/dashboard', 'Aefi\dashboardcontroller@dashboard')->name('dashboard');
+Route::get('/dashboardcovid', 'Aefi\dashboardcovidcontroller@dashboardcovid')->name('dashboardcovid');
 Route::get('/AEFI506', 'Aefi\AEFIController@AEFI506')->name('AEFI506');
 //select list aefi
 Route::get('/lstf1', 'Aefi\SelectController@selectdatatablecaseAEFI1')->name('lstf1');

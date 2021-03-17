@@ -10,9 +10,9 @@
 	use Illuminate\Http\Request;
 	use DB;
 	use Illuminate\Support\Str;
-	class DashboardController extends Controller
+	class DashboardcovidController extends Controller
 	{
-		public function dashboard(){
+		public function dashboardcovid(){
 			$count_prov = $this->count_prov();
 			$listProvince=$this->listProvince();
 			$count_month=$this->count_month();
@@ -58,28 +58,6 @@
 		 ));
 		}
 
-		public function selectdatadash()
-		{
-		$caselstF1 = DB::table('aefi_form_1')
-										->select('id,
-															id_case,
-															hn,
-															an,
-															first_name,
-															sur_name,
-															age_while_sick_year,
-															nationality,
-															gender,
-															other_nationality,
-															village_no,
-															province,
-															district,
-															subdistrict,
-															necessary_to_investigate');
-		 //dd($caselst);
-		 return view('AEFI.Apps.caselstAEFI1')->with('data', $caselstF1);
-
-	 	}
 		protected function count_prov(){
 	    $count_prov = DB::table('aefi_form_1')
 										 ->select(DB::raw('count(*) as count_prov , province'))
@@ -90,16 +68,20 @@
 	    return $count_prov;
 	  }
 		protected function count_month(){
+			$yearnow =  now()->year;
 			$count_year =  $this->count_year()->pluck('year_entry');
 			 // dd($count_year);
 					$count_month = DB::table('aefi_form_1')
+												 ->join('aefi_form_1_vac', 'aefi_form_1.id_case', '=', 'aefi_form_1_vac.id_case')
 												 ->select(DB::raw('
-												 count(*) as count_patient ,
+												  count(*) as count_patient ,
 												  MONTH(date_of_symptoms) as month_entry,
 													YEAR(date_of_symptoms) as year_entry,
 													GROUP_CONCAT(MONTH(date_of_symptoms))'))
 												 // ->whereYear('date_of_symptoms', '=', $count_year)
-												 ->where('status','=',null)
+												 ->where('aefi_form_1_vac.name_of_vaccine','=', '28')
+												 ->where('aefi_form_1.date_of_symptoms', $yearnow)
+												 ->where('aefi_form_1.status','=',null)
 												 // ->groupBy('month_entry')
 												 ->groupBy('year_entry')
 												 ->orderBy('year_entry')
