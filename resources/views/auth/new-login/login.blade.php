@@ -46,18 +46,70 @@
     					<div class="col-xs-6 col-sm-6 col-md-6">
                 <input type="submit" class="btn btn-lg btn-success btn-block" value="เข้าสู่ระบบ">
     					</div>
+              {{-- <div class="col-xs-6 col-sm-6 col-md-6">
+    						<a href="{{ route('resetpass') }}" class="btn btn-lg btn-warning btn-block">ลืมรหัสผ่าน</a>
+    					</div> --}}
               <div class="col-xs-6 col-sm-6 col-md-6">
-    						{{-- <a href="{{ route('resetpass') }}" class="btn btn-lg btn-warning btn-block">ลืมรหัสผ่าน</a> --}}
-                <a href="#" class="btn btn-lg btn-warning btn-block">ลืมรหัสผ่าน</a>
-    					</div>
-    				</div>
-            <div class="row" style="margin-top:20px;">
-              <div class="col-xs-3 col-sm-3 col-md-3">
+                <a href="{{ route('register-form') }}" class="btn btn-lg btn-primary btn-block">สมัครสมาชิก</a>
               </div>
-              <div class="col-xs-6 col-sm-6 col-md-6">
-    						<a href="{{ route('register-form') }}" class="btn btn-lg btn-primary btn-block">สมัครสมาชิก</a>
-    					</div>
-              <div class="col-xs-3 col-sm-3 col-md-3">
+    				</div>
+          </br>
+            <div class="row" style="margin-top:20px;">
+              <h2>เอกสารดาวน์โหลด</h2>
+              <div class="col-md-6">
+                <div class="thumbnail">
+                  <a href="https://apps.doe.moph.go.th/boe/software/file/AW_AEFI%20WEB_25Oct2020.pdf" target="_blank">
+                    <img src="{{ asset('asset/dist/img/d1.jpg') }}" style="width:100%">
+                    {{-- <img src="/w3images/nature.jpg" alt="Nature" style="width:100%"> --}}
+                    <div class="caption">
+                      <p>แนวทางการเฝ้าระวังและตอบโต้เหตุการณ์ไม่พึงประสงค์ภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรคของประเทศไทย</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="thumbnail">
+                  <a href="https://apps.doe.moph.go.th/boe/software/file/AEFI_1.pdf" target="_blank">
+                    <img src="{{ asset('asset/dist/img/d2.jpg') }}" style="width:100%">
+                    {{-- <img src="/w3images/nature.jpg" alt="Nature" style="width:100%"> --}}
+                    <div class="caption">
+                      <p>แบบสอบสวนอาการภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรค (AEFI1)</br></br></p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="thumbnail">
+                  <a href="https://apps.doe.moph.go.th/boe/software/file/AEFI_2.pdf" target="_blank">
+                    <img src="{{ asset('asset/dist/img/d3.jpg') }}" style="width:100%">
+                    {{-- <img src="/w3images/nature.jpg" alt="Nature" style="width:100%"> --}}
+                    <div class="caption">
+                      <p>แบบสอบสวนอาการภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรค (AEFI2)</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="thumbnail">
+                  <a href="https://apps.doe.moph.go.th/boe/software/file/aefi_system_manual.pdf" target="_blank">
+                    <img src="{{ asset('asset/dist/img/d4.jpg') }}" style="width:100%">
+                    {{-- <img src="/w3images/nature.jpg" alt="Nature" style="width:100%"> --}}
+                    <div class="caption">
+                      <p>คู่มือการใช้งานระบบรายงานอาการภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรค (AEFI)</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="thumbnail">
+                  <a href="https://online.pubhtml5.com/nqwl/vxcg/#p=1" target="_blank">
+                    <img src="{{ asset('asset/dist/img/d5.jpg') }}" style="width:100%">
+                    {{-- <img src="/w3images/nature.jpg" alt="Nature" style="width:100%"> --}}
+                    <div class="caption">
+                      <p>คู่มือการใช้งานระบบรายงานอาการภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรค (AEFI)</p>
+                    </div>
+                  </a>
+                </div>
               </div>
             </div>
     			</fieldset>
