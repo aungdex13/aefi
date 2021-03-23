@@ -48,60 +48,15 @@
 					type: "line",
 					name: "AEFI1",
 					dataPoints: [
-						// @ foreach($count_month as $row)
-						{
-							x: new Date({{$yearnow}}, 0),
-							y: {{isset($count_month[0]->count_patient) ? $count_month[0]->count_patient : 0}}
-						},
-						{
-							x: new Date({{$yearnow}}, 1),
-							y: {{isset($count_month[1]->count_patient) ? $count_month[1]->count_patient : 0}}
-						},
-						{
-							x: new Date({{$yearnow}}, 2),
-							y: {{isset($count_month[2]->count_patient) ? $count_month[2]->count_patient : 0}}
-						},
-						{
-							x: new Date({{$yearnow}}, 3),
-							y: {{isset($count_month[3]->count_patient) ? $count_month[3]->count_patient : 0}}
-						},
-						{
-							x: new Date({{$yearnow}}, 4),
-							y: {{isset($count_month[4]->count_patient) ? $count_month[4]->count_patient : 0}}
-						},
-						{
-							x: new Date({{$yearnow}}, 5),
-							y: {{isset($count_month[5]->count_patient) ? $count_month[5]->count_patient : 0}}
-						},
-						{
-							x: new Date({{$yearnow}}, 6),
-							y: {{isset($count_month[6]->count_patient) ? $count_month[6]->count_patient : 0}}
-						},
-						{
-							x: new Date({{$yearnow}}, 7),
-							y: {{isset($count_month[7]->count_patient) ? $count_month[7]->count_patient : 0}}
-						},
-						{
-							x: new Date({{$yearnow}}, 8),
-							y: {{isset($count_month[8]->count_patient) ? $count_month[8]->count_patient : 0}}
-						},
-						{
-							x: new Date({{$yearnow}}, 9),
-							y: {{isset($count_month[9]->count_patient) ? $count_month[9]->count_patient : 0}}
-						},
-						{
-							x: new Date({{$yearnow}}, 10),
-							y: {{isset($count_month[10]->count_patient) ? $count_month[10]->count_patient : 0}}
-						},
-						{
-							x: new Date({{$yearnow}}, 11),
-							y: {{isset($count_month[11]->count_patient) ? $count_month[11]->count_patient : 0}}
-						},
-						// {
-						// 	x: new Date({{$yearnow}}, 12),
-						// 	y: {{isset($count_month[12]->count_patient) ? $count_month[12]->count_patient : 0}}
-						// },
-
+						  // @ foreach($count_month as $row)
+							@for ($i=0; $i < 12; $i++)
+							{
+								x: new Date({{$yearnow}}, {{$i}}),
+								y: {{isset($i) ? $i:0}}
+							},
+							@endfor
+							// x: new Date({ {$yearnow}}, { {$row->month_entry}}),
+							// y: { {isset($row->count_patient) ? $row->count_patient : 0}}
 						 // @ endforeach
 					]
 				},
@@ -169,7 +124,7 @@
 	animationEnabled: true,
 		theme: "light2", // "light1", "light2", "dark1", "dark2"
 		title:{
-			text: "Top Oil Reserves"
+			text: ""
 		},
 		axisY: {
 
@@ -178,14 +133,11 @@
 			type: "column",
 			showInLegend: true,
 			legendMarkerColor: "grey",
-			legendText: "MMbbl = one million barrels",
+			legendText: "",
 			dataPoints: [
-				{ y: 101500, label: "Kuwait" },
-				{ y: 97800,  label: "UAE" },
-				{ y: 80000,  label: "Russia" }
-				// @ foreach($count_groupage as $row)
-				// 	{ y: { { $row->countgroupage }} , label: "{ { $arr_age_group[$row->group_age] }}" },
-				// @ endforeach
+				@foreach($count_groupage as $row)
+					{ y: {{ $row->countgroupage }} , label: "{{ $arr_age_group[$row->group_age] }}" },
+				@endforeach
 			]
 		}]
 	});

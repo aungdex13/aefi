@@ -214,7 +214,15 @@ foreach ($aecode as $value) {
                         <div class="col-lg-2">
                           <div class="radio">
                             <label>
-                              <input type="radio" name="gender" id="optionsRadios1" value="1" checked>
+                              <input type="radio" name="gender" id="optionsRadios" value="" checked>
+                              ไม่ระบุ
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-lg-2">
+                          <div class="radio">
+                            <label>
+                              <input type="radio" name="gender" id="optionsRadios1" value="1">
                               ชาย
                             </label>
                           </div>
@@ -284,7 +292,15 @@ foreach ($aecode as $value) {
                         <div class="col-lg-2">
                           <div class="radio">
                             <label>
-                              <input type="radio" name="group_age" id="G_age1" value="1" checked>
+                              <input type="radio" name="group_age" value="" checked>
+                              ไม่ระบุ
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-lg-2">
+                          <div class="radio">
+                            <label>
+                              <input type="radio" name="group_age" id="G_age1" value="1">
                               < 1 ปี </label> </div> </div> <div class="col-lg-2">
                                 <div class="radio">
                                   <label>
@@ -315,7 +331,15 @@ foreach ($aecode as $value) {
                           <div class="col-lg-2">
                             <div class="radio">
                               <label>
-                                <input type="radio" name="nationality" value="1" checked>
+                                <input type="radio" name="nationality" id="optionsRadios" value="" checked>
+                                ไม่ระบุ
+                              </label>
+                            </div>
+                          </div>
+                          <div class="col-lg-2">
+                            <div class="radio">
+                              <label>
+                                <input type="radio" name="nationality" value="1">
                                 ไทย
                               </label>
                             </div>
@@ -335,6 +359,9 @@ foreach ($aecode as $value) {
                                 ลาว
                               </label>
                             </div>
+                          </div>
+                          <div class="col-lg-3">
+
                           </div>
                           <div class="col-lg-2">
                             <div class="radio">
@@ -362,7 +389,15 @@ foreach ($aecode as $value) {
                           <div class="col-lg-2">
                             <div class="radio">
                               <label>
-                                <input type="radio" name="type_of_patient" id="type_of_patient1" value="1" checked>
+                                <input type="radio" name="type_of_patient" id="optionsRadios" value="" checked>
+                                ไม่ระบุ
+                              </label>
+                            </div>
+                          </div>
+                          <div class="col-lg-2">
+                            <div class="radio">
+                              <label>
+                                <input type="radio" name="type_of_patient" id="type_of_patient1" value="1">
                                 ผู้ป่วยใน
                               </label>
                             </div>
@@ -416,10 +451,18 @@ foreach ($aecode as $value) {
                             <label>ประวัติการแพ้วัคซีน :</label>
                           </div>
                         </div>
+                        <div class="col-lg-2">
+                          <div class="radio">
+                            <label>
+                              <input type="radio" name="history_of_vaccine_drug_allergies_of_patient" value="" checked>
+                              ไม่ระบุ
+                            </label>
+                          </div>
+                        </div>
                         <div class="col-lg-3">
                           <div class="radio">
                             <label>
-                              <input type="radio" name="history_of_vaccine_drug_allergies_of_patient" value="1" checked>
+                              <input type="radio" name="history_of_vaccine_drug_allergies_of_patient" value="1">
                               ไม่มี
                             </label>
                           </div>
@@ -456,10 +499,18 @@ foreach ($aecode as $value) {
                             <label>อาการหลังได้รับวัคซีน :</label>
                           </div>
                         </div>
+                        <div class="col-lg-2">
+                          <div class="radio">
+                            <label>
+                              <input type="radio" name="patient_develop_symptoms_after_previous_vaccination" value="" checked>
+                              ไม่ระบุ
+                            </label>
+                          </div>
+                        </div>
                         <div class="col-lg-3">
                           <div class="radio">
                             <label>
-                              <input type="radio" name="patient_develop_symptoms_after_previous_vaccination" value="1" checked>
+                              <input type="radio" name="patient_develop_symptoms_after_previous_vaccination" value="1">
                               ไม่มี
                             </label>
                           </div>
@@ -496,10 +547,18 @@ foreach ($aecode as $value) {
                             <label>โรคประจำตัว/การเจ็บป่วยในอดีต :</label>
                           </div>
                         </div>
+                        <div class="col-lg-2">
+                          <div class="radio">
+                            <label>
+                              <input type="radio" name="underlying_disease" value="" checked>
+                              ไม่ระบุ
+                            </label>
+                          </div>
+                        </div>
                         <div class="col-lg-3">
                           <div class="radio">
                             <label>
-                              <input type="radio" name="underlying_disease" value="1" checked>
+                              <input type="radio" name="underlying_disease" value="1">
                               ไม่มี
                             </label>
                           </div>
@@ -535,10 +594,18 @@ foreach ($aecode as $value) {
                             <label>ประวัติการใช้ยาในรอบ1เดือน :</label>
                           </div>
                         </div>
+                        <div class="col-lg-2">
+                          <div class="radio">
+                            <label>
+                              <input type="radio" name="history_of_drug_use_within_1_month_before_getting_vaccination" value="" checked>
+                              ไม่ระบุ
+                            </label>
+                          </div>
+                        </div>
                         <div class="col-lg-3">
                           <div class="radio">
                             <label>
-                              <input type="radio" name="history_of_drug_use_within_1_month_before_getting_vaccination" value="1" checked>
+                              <input type="radio" name="history_of_drug_use_within_1_month_before_getting_vaccination" value="1">
                               ไม่มี
                             </label>
                           </div>
@@ -567,10 +634,18 @@ foreach ($aecode as $value) {
                           <label>เคยป่วยเป็นโควิดหรือไม่ :</label>
                         </div>
                       </div>
+                      <div class="col-lg-2">
+                        <div class="radio">
+                          <label>
+                            <input type="radio" name="history_of_covid" value="" checked>
+                            ไม่ระบุ
+                          </label>
+                        </div>
+                      </div>
                       <div class="col-lg-3">
                         <div class="radio">
                           <label>
-                            <input type="radio" name="history_of_covid" value="1" checked>
+                            <input type="radio" name="history_of_covid" value="1">
                             ไม่เคย
                           </label>
                         </div>
@@ -1246,7 +1321,7 @@ foreach ($aecode as $value) {
                             <div class="col-lg-8">
                               <label>เวลาที่เกิดอาการ :</label>
                               <div class="input-group">
-                                <input type="text" class="form-control timepicker_strdiag" name="time_of_symptoms">
+                                <input type="text" class="form-control" name="time_of_symptoms">
 
                                 <div class="input-group-addon">
                                   <i class="fa fa-clock-o"></i>
@@ -1317,7 +1392,13 @@ foreach ($aecode as $value) {
                       <div class="form-group">
                         <div class="col-md-2">
                           <label>
-                            <input type="radio" name="seriousness_of_the_symptoms" value="1" checked>
+                            <input type="radio" name="seriousness_of_the_symptoms" value="" checked>
+                            ไม่ระบุ
+                          </label>
+                        </div>
+                        <div class="col-md-2">
+                          <label>
+                            <input type="radio" name="seriousness_of_the_symptoms" value="1" >
                             ไม่ร้ายแรง
                           </label>
                         </div>
@@ -1397,9 +1478,15 @@ foreach ($aecode as $value) {
                     <div class="col-lg-12">
                       <!-- checkbox3.5.1  -->
                       <div class="form-group">
-                        <div class="col-md-1">
+                        <div class="col-md-2">
                           <label>
-                            <input type="radio" name="patient_status" value="1" checked>
+                            <input type="radio" name="patient_status" value="" checked>
+                            ไม่ระบุ
+                          </label>
+                        </div>
+                        <div class="col-md-2">
+                          <label>
+                            <input type="radio" name="patient_status" value="1" >
                             หาย
                           </label>
                         </div>
@@ -1415,19 +1502,19 @@ foreach ($aecode as $value) {
                             อาการดีขึ้นแต่ยังไม่หาย
                           </label>
                         </div>
-                        <div class="col-md-1">
+                        <div class="col-md-2">
                           <label>
                             <input type="radio" name="patient_status" value="4">
                             ไม่หาย
                           </label>
                         </div>
-                        <div class="col-md-1">
+                        <div class="col-md-2">
                           <label>
                             <input type="radio" name="patient_status" value="5">
                             ไม่ทราบ
                           </label>
                         </div>
-                        <div class="col-md-1">
+                        <div class="col-md-2">
                           <label>
                             <input type="radio" name="patient_status" value="6">
                             เสียชีวิต
@@ -1451,34 +1538,41 @@ foreach ($aecode as $value) {
                   </div>
                   <!-- checkbox3.1.1 -->
                   <div class="form-group">
-                    <div class="col-md-2">
-                      <label>
-                        <input type="radio" name="funeral" value="1" checked>
-                        ไม่มี
-                      </label>
-                    </div>
-                    <div class="col-md-2">
-                      <label>
-                        <input type="radio" name="funeral" value="2">
-                        ไม่ทราบ
-                      </label>
-                    </div>
-                    <div class="col-md-2">
-                      <label>
-                        <input type="radio" name="funeral" value="3">
-                        มี
-                      </label>
-                    </div>
-                    <div class="col-lg-3">
-                      <div id="other_address_funeral" style="display: none">
-                        <label>สถานที่ทำการ :</label><input type="text" id="other_address_funeral_text" name="other_address_funeral" class="form-control" placeholder="ระบุสถานที่ทำการ">
+                    <div class="col-lg-12">
+                      <div class="col-md-2">
+                        <label>
+                          <input type="radio" name="funeral" value="" checked>
+                          ไม่ระบุ
+                        </label>
+                      </div>
+                      <div class="col-md-2">
+                        <label>
+                          <input type="radio" name="funeral" value="1" >
+                          ไม่มี
+                        </label>
+                      </div>
+                      <div class="col-md-2">
+                        <label>
+                          <input type="radio" name="funeral" value="2">
+                          ไม่ทราบ
+                        </label>
+                      </div>
+                      <div class="col-md-2">
+                        <label>
+                          <input type="radio" name="funeral" value="3">
+                          มี
+                        </label>
+                      </div>
+                      <div class="col-lg-3">
+                        <div id="other_address_funeral" style="display: none">
+                          <label>สถานที่ทำการ :</label><input type="text" id="other_address_funeral_text" name="other_address_funeral" class="form-control" placeholder="ระบุสถานที่ทำการ">
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-
               </div>
-            </div>
+              </div>
             <!-- /.box -->
             <!-- หัวข้อที่4 -->
             <div class="col-md-12">
@@ -1495,7 +1589,7 @@ foreach ($aecode as $value) {
                       <div class="col-lg-1">
                         <div class="radio">
                           <label>
-                            <input type="radio" name="necessary_to_investigate" id="necessary_to_investigate1" value="1" checked>
+                            <input type="radio" name="necessary_to_investigate" id="necessary_to_investigate1" value="1" >
                             ไม่มี
                           </label>
                         </div>
@@ -1511,7 +1605,7 @@ foreach ($aecode as $value) {
                       <div class="col-lg-1">
                         <div class="radio">
                           <label>
-                            วันที่สอบสวน :
+                            วันที่สอบสวน
                           </label>
                         </div>
                       </div>
@@ -1571,7 +1665,7 @@ foreach ($aecode as $value) {
                             <div class="col-lg-2">
                               <div class="radio">
                                 <label>
-                                  <input type="radio" name="symptom_position" value="1" checked>
+                                  <input type="radio" name="symptom_position" value="1" >
                                   แพทย์
                                 </label>
                               </div>
@@ -1625,7 +1719,7 @@ foreach ($aecode as $value) {
                             <div class="col-lg-2">
                               <div class="radio">
                                 <label>
-                                  <input type="radio" name="reporter_position" value="1" checked>
+                                  <input type="radio" name="reporter_position" value="1" >
                                   งานระบาดวิทยา
                                 </label>
                               </div>

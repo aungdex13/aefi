@@ -53,68 +53,68 @@
                 <a href="{{ route('register-form') }}" class="btn btn-lg btn-primary btn-block">สมัครสมาชิก</a>
               </div>
     				</div>
-          </br>
-            <div class="row" style="margin-top:20px;">
-              <h2>เอกสารดาวน์โหลด</h2>
-              <div class="col-md-6">
-                <div class="thumbnail">
-                  <a href="https://apps.doe.moph.go.th/boe/software/file/AW_AEFI%20WEB_25Oct2020.pdf" target="_blank">
-                    <img src="{{ asset('asset/dist/img/d1.jpg') }}" style="width:100%">
-                    {{-- <img src="/w3images/nature.jpg" alt="Nature" style="width:100%"> --}}
-                    <div class="caption">
-                      <p>แนวทางการเฝ้าระวังและตอบโต้เหตุการณ์ไม่พึงประสงค์ภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรคของประเทศไทย</p>
-                    </div>
-                  </a>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="thumbnail">
-                  <a href="https://apps.doe.moph.go.th/boe/software/file/AEFI_1.pdf" target="_blank">
-                    <img src="{{ asset('asset/dist/img/d2.jpg') }}" style="width:100%">
-                    {{-- <img src="/w3images/nature.jpg" alt="Nature" style="width:100%"> --}}
-                    <div class="caption">
-                      <p>แบบสอบสวนอาการภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรค (AEFI1)</br></br></p>
-                    </div>
-                  </a>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="thumbnail">
-                  <a href="https://apps.doe.moph.go.th/boe/software/file/AEFI_2.pdf" target="_blank">
-                    <img src="{{ asset('asset/dist/img/d3.jpg') }}" style="width:100%">
-                    {{-- <img src="/w3images/nature.jpg" alt="Nature" style="width:100%"> --}}
-                    <div class="caption">
-                      <p>แบบสอบสวนอาการภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรค (AEFI2)</p>
-                    </div>
-                  </a>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="thumbnail">
-                  <a href="https://apps.doe.moph.go.th/boe/software/file/aefi_system_manual.pdf" target="_blank">
-                    <img src="{{ asset('asset/dist/img/d4.jpg') }}" style="width:100%">
-                    {{-- <img src="/w3images/nature.jpg" alt="Nature" style="width:100%"> --}}
-                    <div class="caption">
-                      <p>คู่มือการใช้งานระบบรายงานอาการภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรค (AEFI)</p>
-                    </div>
-                  </a>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="thumbnail">
-                  <a href="https://online.pubhtml5.com/nqwl/vxcg/#p=1" target="_blank">
-                    <img src="{{ asset('asset/dist/img/d5.jpg') }}" style="width:100%">
-                    {{-- <img src="/w3images/nature.jpg" alt="Nature" style="width:100%"> --}}
-                    <div class="caption">
-                      <p>แนวทางการให้วัคซีน โควิด 19 ในสถสนการณ์การระบาดปี64 ของประเทศไทย</p>
-                    </div>
-                  </a>
-                </div>
-              </div>
-            </div>
     			</fieldset>
     		</form>
     	</div>
+    </div>
+  </br>
+    <div class="row" style="margin-top:5px;">
+      <h2>เอกสารดาวน์โหลด</h2>
+      <div class="col-md-2">
+        <div class="thumbnail">
+          <a href="https://apps.doe.moph.go.th/boe/software/file/AW_AEFI%20WEB_25Oct2020.pdf" target="_blank">
+            <img src="{{ asset('asset/dist/img/d1.jpg') }}" style="width:100%">
+            {{-- <img src="/w3images/nature.jpg" alt="Nature" style="width:100%"> --}}
+            <div class="caption">
+              <p>แนวทางการเฝ้าระวังและตอบโต้เหตุการณ์ไม่พึงประสงค์ภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรคของประเทศไทย</p>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="thumbnail">
+          <a href="https://apps.doe.moph.go.th/boe/software/file/AEFI_1.pdf" target="_blank">
+            <img src="{{ asset('asset/dist/img/d2.jpg') }}" style="width:100%">
+            {{-- <img src="/w3images/nature.jpg" alt="Nature" style="width:100%"> --}}
+            <div class="caption">
+              <p>แบบสอบสวนอาการภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรค (AEFI1)</br></br></p>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="thumbnail">
+          <a href="https://apps.doe.moph.go.th/boe/software/file/AEFI_2.pdf" target="_blank">
+            <img src="{{ asset('asset/dist/img/d3.jpg') }}" style="width:100%">
+            {{-- <img src="/w3images/nature.jpg" alt="Nature" style="width:100%"> --}}
+            <div class="caption">
+              <p>แบบสอบสวนอาการภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรค (AEFI2)</p>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="thumbnail">
+          <a href="https://apps.doe.moph.go.th/boe/software/file/aefi_system_manual.pdf" target="_blank">
+            <img src="{{ asset('asset/dist/img/d4.jpg') }}" style="width:100%">
+            {{-- <img src="/w3images/nature.jpg" alt="Nature" style="width:100%"> --}}
+            <div class="caption">
+              <p>คู่มือการใช้งานระบบรายงานอาการภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรค (AEFI)</p>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="thumbnail">
+          <a href="https://online.pubhtml5.com/nqwl/vxcg/#p=1" target="_blank">
+            <img src="{{ asset('asset/dist/img/d5.jpg') }}" style="width:100%">
+            {{-- <img src="/w3images/nature.jpg" alt="Nature" style="width:100%"> --}}
+            <div class="caption">
+              <p>แนวทางการให้วัคซีน โควิด 19 ในสถสนการณ์การระบาดปี64 ของประเทศไทย</p>
+            </div>
+          </a>
+        </div>
+      </div>
     </div>
 </div>
 <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>

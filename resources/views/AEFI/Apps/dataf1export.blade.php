@@ -53,7 +53,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
           <!-- /.form group -->
 				<!-- Custom Tabs -->
         <p>ดาวน์โหลดข้อมูล</p>
-				<table id="example" class="display table-striped table-bordered" style="width:500%">
+				<table id="example" class="display table-striped table-bordered" style="width:600%">
 				        <thead>
 				            <tr>
         							  <th>no</th>
@@ -70,9 +70,14 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
 				                <th>เพศ</th>
                         <th>ประเภทผู้ป่วย</th>
                         <th>สถานะผู้ป่วย</th>
-                        <th>วันเริ่มป่วย</th>
+                        <th>ว/ด/ป ที่เกิดอาการ</th>
+                        <th>เวลาที่เกิดอาการ</th>
 				                <th>วันรับรักษา</th>
                         <th>วัคซีนที่ได้รับ</th>
+                        <th>เข็มที่</th>
+                        <th>ชื่อผู้ผลิต</th>
+                        <th>ว/ด/ป ที่ได้รับวัคซีน</th>
+                        <th>เวลาที่ได้รับวัคซีน</th>
                         <th>Rash</th>
                         <th>Erythema</th>
                         <th>Urticaria</th>
@@ -119,6 +124,8 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
                         <th>Ards</th>
                         <th>Seriousness</th>
                         <th>conclusion</th>
+                        <th>หน่วยงานที่รายงาน</th>
+                        <th>จังหวัดที่รายงาน</th>
                         <th>หมายเหตุ</th>
 				            </tr>
 				        </thead>
@@ -146,14 +153,51 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
 								        <td>{{ $arr_type_of_patient[$value->type_of_patient] }}</td>
                         <td>{{ $arr_patient_status[$value->patient_status] }}</td>
                         <td>{{ $value->date_of_symptoms }}</td>
+                        <td>{{ $value->time_of_symptoms }}</td>
                         <td>{{ $value->date_of_treatment }}</td>
                         <td>
                           @php
-                          $myString = $value->name_of_vaccine ;
-                          $myArray = explode(',', $myString);
+                          $myStringvac = $value->name_of_vaccine ;
+                          $myArrayvac = explode(',', $myStringvac);
                           @endphp
-                          @foreach($myArray as $valuev)
+                          @foreach($myArrayvac as $valuev)
                           {{ isset($listvac_arr[$valuev]) ? $listvac_arr[$valuev]: "ไม่ระบุข้อมูล" }}</br>
+                          @endforeach
+                        </td>
+                        <td>
+                          @php
+                          $myStringdose = $value->dose ;
+                          $myArraydose = explode(',', $myStringdose);
+                          @endphp
+                          @foreach($myArraydose as $valuevs)
+                          {{ isset($valuevs) ? $valuevs: "ไม่ระบุข้อมูล" }}</br>
+                          @endforeach
+                        </td>
+                        <td>
+                          @php
+                          $myStringmanufacturer = $value->manufacturer ;
+                          $myArraymanufacturer = explode(',', $myStringmanufacturer);
+                          @endphp
+                          @foreach($myArraymanufacturer as $valuevs)
+                          {{ isset($arr_manufacturer[$valuevs]) ? $arr_manufacturer[$valuevs]: "ไม่ระบุข้อมูล" }}</br>
+                          @endforeach
+                        </td>
+                        <td>
+                          @php
+                          $myStringdate_of_vaccination = $value->date_of_vaccination ;
+                          $myArraydate_of_vaccination = explode(',', $myStringdate_of_vaccination);
+                          @endphp
+                          @foreach($myArraydate_of_vaccination as $valuevs)
+                          {{ isset($valuevs) ? $valuevs: "ไม่ระบุข้อมูล" }}</br>
+                          @endforeach
+                        </td>
+                        <td>
+                          @php
+                          $myStringtime_of_vaccination = $value->time_of_vaccination ;
+                          $myArraytime_of_vaccination = explode(',', $myStringtime_of_vaccination);
+                          @endphp
+                          @foreach($myArraytime_of_vaccination as $valuevs)
+                          {{ isset($valuevs) ? $valuevs: "ไม่ระบุข้อมูล" }}</br>
                           @endforeach
                         </td>
                         <td>
@@ -466,6 +510,8 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
                       </td>
                         <td>{{ $arr_seriousness_of_the_symptoms[$value->seriousness_of_the_symptoms] }}</td>
                         <td>{{ $value->diagnosis }}</td>
+                        <td>{{ $value->unit_reported }}</td>
+                        <td>{{ isset($listProvince[ $value->province_reported]) ?$listProvince[ $value->province_reported] : "ไม่ระบุข้อมูล"}}</td>
                         <td>{{ $value->more_reviews }}</td>
 				            </tr>
 							<?php endforeach;?>

@@ -303,6 +303,14 @@ $(document).ready(function() {
 {{-- อื่นๆ --}}
 <script>
   $(function() {
+    $('input[name="seriousness_of_the_symptoms"]').on('click', function() {
+      if ($(this).val() == '2') {
+        $('#other_seriousness_of_the_symptoms').show();
+      } else {
+        $('#other_seriousness_of_the_symptoms').hide();
+        $('#other_seriousness_of_the_symptoms_text').val('');
+      }
+    });
     $('input[name="other_seriousness_of_the_symptoms"]').on('click', function() {
       if ($(this).val() == '6') {
         $('#text_other_seriousness_of_the_symptoms').show();

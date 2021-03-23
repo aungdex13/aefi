@@ -104,7 +104,7 @@
 												 ->groupBy('year_entry')
 												 ->orderBy('year_entry')
 												 ->get();
-					// dd($count_month);
+					dd($count_month);
 			return $count_month;
 }
 
