@@ -329,7 +329,7 @@ if (! function_exists('provinces')) {
       $seriousness_of_the_symptoms = array(
                   '1'=>'ไม่ร้ายแรง',
                   '2'=>'ร้ายแรง',
-                  ''=>''
+                  ''=>'ไม่ระบุ'
                               );
       return 	$seriousness_of_the_symptoms;
       }
@@ -340,8 +340,8 @@ if (! function_exists('provinces')) {
       $age_group = array(
                   '1'=>'น้อยกว่า 1 ปี',
                   '2'=>'ช่วง 1-5 ปี',
-                  '3'=>'มากกว่า 5 ปี'
-
+                  '3'=>'มากกว่า 5 ปี',
+                  ''=>'ไม่ระบุ'
                               );
       return 	$age_group;
       }

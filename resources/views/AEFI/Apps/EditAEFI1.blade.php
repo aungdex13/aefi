@@ -2438,53 +2438,41 @@ $(function(){
         '<td>' +
         '<select type="text" id="name_of_vaccine1" name="name_of_vaccine[]' + rowCount + '" class="form-control">' +
         '<option value="">กรุณาระบชนิดวัคซีน</option>' +
-        <
-        blade foreach($vac_list / > as $row)
+        @foreach($vac_list as $row)
       '<option value="{{$row->VAC_CODE}}">{{$row->VAC_NAME_EN}}</option>' +
-      <
-      blade endforeach / >
+      @endforeach
         '</select>' +
         '</td>' +
         '<td>' +
         '<select type="text" id="vaccine_volume1" name="vaccine_volume[]' + rowCount + '" class="form-control">' +
         '<option value="">กรุณาระบุปริมาณที่ให้</option>' +
-        <
-        ? php
+        <?php
       foreach($arr_vaccine_volume as $k => $v) {
-          ?
-          >
+        ?>
           '<option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>' +
-          <
-          ? php
-        } ? >
+          <?php } ?>
         '</select>' +
         '</td>' +
         '<td>' +
         '<select type="text" id="route_of_vaccination1" name="route_of_vaccination[]' + rowCount + '" class="form-control">' +
         '<option value="">กรุณาระบุวิธีที่ให้</option>' +
-        <
-        ? php
+        <?php
       foreach($arr_route_of_vaccination as $k => $v) {
-          ?
-          >
+          ?>
           '<option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>' +
-          <
-          ? php
-        } ? >
+          <?php
+        } ?>
         '</select>' +
         '</td>' +
         '<td>' +
         '<select type="text" id="vaccination_site1" name="vaccination_site[]' + rowCount + '" class="form-control">' +
         '  <option value="">กรุณาระบุวิธีตำแหน่ง</option>' +
-        <
-        ? php
+        <?php
       foreach($arr_vaccination_site as $k => $v) {
-          ?
-          >
+          ?>
           '<option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>' +
-          <
-          ? php
-        } ? >
+          <?php
+        } ?>
         '</select>' +
         '</td>' +
         '<td>' +
@@ -2499,15 +2487,12 @@ $(function(){
         '<td>' +
         '<select type="text" id="manufacturer1" name="manufacturer[]' + rowCount + '" class="form-control">' +
         '<option value="">กรุณาระบชื่อผู้ผลิต</option>' +
-        <
-        ? php
+        <?php
       foreach($arr_manufacturer as $k => $v) {
-          ?
-          >
+          ?>
           '<option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>' +
-          <
-          ? php
-        } ? >
+          <?php
+        } ?>
         '</select>' +
         '</td>' +
         '<td>' +

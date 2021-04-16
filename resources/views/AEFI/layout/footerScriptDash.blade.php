@@ -169,7 +169,7 @@
 	animationEnabled: true,
 		theme: "light2", // "light1", "light2", "dark1", "dark2"
 		title:{
-			text: "Top Oil Reserves"
+			text: ""
 		},
 		axisY: {
 
@@ -178,14 +178,11 @@
 			type: "column",
 			showInLegend: true,
 			legendMarkerColor: "grey",
-			legendText: "MMbbl = one million barrels",
+			legendText: "",
 			dataPoints: [
-				{ y: 101500, label: "Kuwait" },
-				{ y: 97800,  label: "UAE" },
-				{ y: 80000,  label: "Russia" }
-				// @ foreach($count_groupage as $row)
-				// 	{ y: { { $row->countgroupage }} , label: "{ { $arr_age_group[$row->group_age] }}" },
-				// @ endforeach
+				@foreach($count_groupage as $row)
+					{ y: {{ $row->countgroupage }} , label: "{{ $arr_age_group[$row->group_age] }}" },
+				@endforeach
 			]
 		}]
 	});

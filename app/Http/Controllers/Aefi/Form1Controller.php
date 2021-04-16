@@ -52,7 +52,7 @@ class Form1Controller extends Controller
 	protected function vaclist(){
 		$arr_vaclist = DB::table('vac_tbl')
 		->select('VAC_CODE','VAC_NAME_EN')
-		->orderBy('VAC_CODE', 'ASC')
+		->orderBy('ID', 'ASC')
 		->get();
 		 // dd($vaclist);
 		return $arr_vaclist;

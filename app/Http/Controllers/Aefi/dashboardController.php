@@ -32,11 +32,12 @@
 			$count_seriousness_of_the_symptoms = $this->count_seriousness_of_the_symptoms();
 			$count_seriousness_of_the_symptoms_m = $this->count_seriousness_of_the_symptoms_m();
 			$count_seriousness_of_the_symptoms_f = $this->count_seriousness_of_the_symptoms_f();
+			$count_seriousness_of_the_symptoms_n = $this->count_seriousness_of_the_symptoms_n();
 			$count_vacname = $this->count_vacname();
 			$listvac_arr =  $this->listvac_arr();
 			$count_groupage = $this->count_groupage();
 			$count_all_seriousness_of_the_symptoms= $this->count_all_seriousness_of_the_symptoms();
-			return view('AEFI.Apps.dashboardcovid',compact(
+			return view('AEFI.Apps.dashboard',compact(
 			 'count_prov',
 			 'listProvince',
 			 'count_month',
@@ -52,6 +53,7 @@
 			 'count_seriousness_of_the_symptoms',
 			 'count_seriousness_of_the_symptoms_m',
 			 'count_seriousness_of_the_symptoms_f',
+			 'count_seriousness_of_the_symptoms_n',
 			 'count_vacname',
 			 'listvac_arr',
 			 'count_groupage'
@@ -104,7 +106,7 @@
 												 ->groupBy('year_entry')
 												 ->orderBy('year_entry')
 												 ->get();
-					dd($count_month);
+					// dd($count_month);
 			return $count_month;
 }
 
@@ -357,6 +359,20 @@
 
 				 // dd($count_south);
 			return $count_seriousness_of_the_symptoms_f;
+		}
+		protected function count_seriousness_of_the_symptoms_n(){
+				 // dd($south->province_code);
+			$yearnow =  now()->year;
+			$count_seriousness_of_the_symptoms_n = DB::table('aefi_form_1')
+										 ->select(DB::raw('count(*) as count_seriousness_of_the_symptoms,seriousness_of_the_symptoms'))
+										 ->where('seriousness_of_the_symptoms', '=', null)
+										 ->where('status',null)
+										 ->whereYear('date_of_symptoms', '=', "$yearnow")
+										 ->groupBy('seriousness_of_the_symptoms')
+										 ->get();
+
+				  // dd($count_seriousness_of_the_symptoms_n);
+			return $count_seriousness_of_the_symptoms_n;
 		}
 		protected function count_vacname(){
 				 // dd($south->province_code);

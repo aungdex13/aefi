@@ -30,6 +30,32 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
         <div class="col-md-12">
           <div class="box">
             <div class="box-header with-border">
+              <div class="col-xs-3">
+                  <input type="text" class="form-control" placeholder="เขต">
+              </div>
+              <div class="col-xs-3">
+                  <input type="text" class="form-control" placeholder="จังหวัด">
+              </div>
+              <div class="col-xs-3">
+                  <input type="text" class="form-control" placeholder="ปี">
+              </div>
+              <div class="col-xs-3">
+                  <input type="text" class="form-control" placeholder="วัคซีน">
+              </div>
+            </div>
+            <!-- /.box-header -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+    </div>
+    <!-- /.row -->
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="box">
+            <div class="box-header with-border">
               {{-- <h3 class="box-title">Number of AEFI cases by month of onset Year {{$yearnow}}</h3> --}}
 
               <div class="box-tools pull-right">
@@ -151,18 +177,18 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
           <div class="row">
             <div class="col-md-8">
               <div class="chart-responsive">
-                <div id="piechartContainer" style="height: 370px; width: 100%;"></div>
+                <div id="piechartContainer" style="height: 325px; width: 100%;"></div>
               </div>
               <!-- ./chart-responsive -->
             </div>
             <!-- /.col -->
             <div class="col-md-4">
               <ul class="chart-legend clearfix">
-                <li><i class="fa fa-circle-o text-red"></i> ร้ายแรง</li>
-                {{-- <li><i class="fa fa-circle-o text-green"></i> ตับอักเสบบี</li>
-                <li><i class="fa fa-circle-o text-yellow"></i> บาดทะยัก</li>
+                <li><i class="fa fa-circle-o text-red"></i> ไม่ร้ายแรง</li>
+                {{-- <li><i class="fa fa-circle-o text-yellow"></i> บาดทะยัก</li>
                 <li><i class="fa fa-circle-o text-aqua"></i> โปลิโอ</li> --}}
-                <li><i class="fa fa-circle-o text-light-blue"></i> ไม่ร้ายแรง</li>
+                <li><i class="fa fa-circle-o text-light-blue"></i> ร้ายแรง</li>
+                <li><i class="fa fa-circle-o text-green"></i> ไม่ระบุ</li>
                 {{-- <li><i class="fa fa-circle-o text-gray"></i> โรคไข้กาฬหลังแอ่น</li> --}}
               </ul>
             </div>
@@ -175,18 +201,21 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
           <ul class="nav nav-pills nav-stacked">
             <li><a href="#">เพศชาย อาการไม่รุนแรง
               {{-- <i class="fa fa-angle-down"></i> --}}
-                <span class="pull-right text-light-blue"> {{$count_seriousness_of_the_symptoms_m[0]->count_seriousness_of_the_symptoms}} คน</span></a>
+                <span class="pull-right text-red"> {{$count_seriousness_of_the_symptoms_m[0]->count_seriousness_of_the_symptoms}} คน</span></a>
             </li>
             <li><a href="#">เพศหญิง อาการไม่รุนแรง
               {{-- <i class="fa fa-angle-up"></i>  --}}
-              <span class="pull-right text-light-blue">{{$count_seriousness_of_the_symptoms_f[0]->count_seriousness_of_the_symptoms}} คน</span></a>
+              <span class="pull-right text-red">{{$count_seriousness_of_the_symptoms_f[0]->count_seriousness_of_the_symptoms}} คน</span></a>
             </li>
             <li><a href="#">เพศชาย อาการรุนแรง
               {{-- <i class="fa fa-angle-left"></i> --}}
-                <span class="pull-right text-red"> {{isset($count_seriousness_of_the_symptoms_m[1]->count_seriousness_of_the_symptoms) ? $count_seriousness_of_the_symptoms_m[1]->count_seriousness_of_the_symptoms:"0"}} คน</span></a></li>
+                <span class="pull-right text-blue"> {{isset($count_seriousness_of_the_symptoms_m[1]->count_seriousness_of_the_symptoms) ? $count_seriousness_of_the_symptoms_m[1]->count_seriousness_of_the_symptoms:"0"}} คน</span></a></li>
             <li><a href="#">เพศหญิง อาการรุนแรง
               {{-- <i class="fa fa-angle-left"></i> --}}
-                <span class="pull-right text-red"> {{isset($count_seriousness_of_the_symptoms_f[1]->count_seriousness_of_the_symptoms) ? $count_seriousness_of_the_symptoms_f[1]->count_seriousness_of_the_symptoms:"0"}} คน</span></a></li>
+                <span class="pull-right text-blue"> {{isset($count_seriousness_of_the_symptoms_f[1]->count_seriousness_of_the_symptoms) ? $count_seriousness_of_the_symptoms_f[1]->count_seriousness_of_the_symptoms:"0"}} คน</span></a></li>
+            <li><a href="#">ไม่ระบุ
+              {{-- <i class="fa fa-angle-left"></i> --}}
+              <span class="pull-right text-green"> {{isset($count_seriousness_of_the_symptoms_n[0]->count_seriousness_of_the_symptoms) ? $count_seriousness_of_the_symptoms_n[0]->count_seriousness_of_the_symptoms:"0"}} คน</span></a></li>
           </ul>
         </div>
         <!-- /.footer -->

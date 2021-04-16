@@ -787,7 +787,7 @@ foreach ($aecode as $value) {
                     <thead>
                       <tr>
                         <th>
-                          <font style="color:red;">*</font> ชนิดวัคซีน
+                          <font style="color:red;">*</font> ชื่อวัคซีน
                         </th>
                         <th>ปริมาณที่ให้</th>
                         <th>วิธีที่ให้</th>
@@ -828,7 +828,7 @@ foreach ($aecode as $value) {
                       <tr class="data-contact-person">
                         <td>
                           <select type="text" id="name_of_vaccine" name="name_of_vaccine[]" class="form-control" required>
-                            <option value="">กรุณาระบุชนิดวัคซีน</option>
+                            <option value="">กรุณาระบุชื่อวัคซีน</option>
                             @foreach ($vac_list as $row)
                             <option value="{{$row->VAC_CODE}}">{{$row->VAC_NAME_EN}}</option>
                             @endforeach
@@ -2061,7 +2061,7 @@ foreach ($aecode as $value) {
       var contactdiv = '<tr class="data-contact-person">' +
         '<td>' +
         '<select type="text" id="name_of_vaccine1" name="name_of_vaccine[]' + rowCount + '" class="form-control">' +
-        '<option value="">กรุณาระบุชนิดวัคซีน</option>' +
+        '<option value="">กรุณาระบุชื่อวัคซีน</option>' +
         @foreach($vac_list as $row)
       '<option value="{{$row->VAC_CODE}}">{{$row->VAC_NAME_EN}}</option>' +
       @endforeach
