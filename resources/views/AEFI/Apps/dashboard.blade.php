@@ -27,20 +27,35 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
   <div class="row">
     <div class="col-md-12">
       <div class="row">
+        <form role="form" action="{{ route('dashboard') }}" method="post">
+          {{ csrf_field() }}
         <div class="col-md-12">
           <div class="box">
             <div class="box-header with-border">
               <div class="col-xs-3">
-                  <input type="text" class="form-control" placeholder="เขต">
+                  <input type="text" name="zone" class="form-control" placeholder="{{ isset($zone) ? $zone : "เขต"}}">
               </div>
               <div class="col-xs-3">
-                  <input type="text" class="form-control" placeholder="จังหวัด">
+                  <input type="text" name="province" class="form-control" placeholder="{{ isset($province) ? $province : "จังหวัด"}}">
               </div>
               <div class="col-xs-3">
-                  <input type="text" class="form-control" placeholder="ปี">
+                  <input type="text" name="year" class="form-control" placeholder="{{ isset($province) ? $province : "ปี"}}">
               </div>
               <div class="col-xs-3">
-                  <input type="text" class="form-control" placeholder="วัคซีน">
+                  <input type="text" name="vaccine" class="form-control" placeholder="{{ isset($province) ? $province : "วัคซีน"}}">
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-header with-border">
+              <div class="col-xs-3">
+              </div>
+              <div class="col-xs-3">
+                  <a type="button" href="{{ route('dashboard') }}" class="btn btn-block btn-danger">ล้างข้อมูล</a>
+              </div>
+              <div class="col-xs-3">
+                  <button type="submit" class="btn btn-block btn-success">ค้นหาข้อมูล</button>
+              </div>
+              <div class="col-xs-3">
               </div>
             </div>
             <!-- /.box-header -->
@@ -48,6 +63,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
           <!-- /.col -->
         </div>
         <!-- /.row -->
+      </form>
       </div>
     </div>
     <!-- /.row -->

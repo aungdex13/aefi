@@ -10,9 +10,11 @@
 	use Illuminate\Http\Request;
 	use DB;
 	use Illuminate\Support\Str;
-	class DashboardController extends Controller
+	class DashboardfilterController extends Controller
 	{
-		public function dashboard(){
+		public function dashboard(Request $req){
+			$zone = $req ->input ('zone');
+			$province = $req ->input ('province');
 			$count_prov = $this->count_prov();
 			$listProvince=$this->listProvince();
 			$count_month=$this->count_month();
@@ -32,7 +34,6 @@
 			$listvac_arr =  $this->listvac_arr();
 			$count_groupage = $this->count_groupage();
 			$count_all_seriousness_of_the_symptoms= $this->count_all_seriousness_of_the_symptoms();
-			$dashboardfilter = $this->dashboardfilter();
 			return view('AEFI.Apps.dashboard',compact(
 			 'count_prov',
 			 'listProvince',
@@ -53,16 +54,21 @@
 			 'count_vacname',
 			 'listvac_arr',
 			 'count_groupage',
-			 'dashboardfilter'
+			 'province',
+			 'zone'
 		 ));
 		}
 
-		public function dashboardfilter(Request $req){
-			$zone = $req ->input ('zone');
-			$province = $req ->input ('province');
-			// dd($zone,$province);
-			return $dashboardfilter;
-		}
+		// public function dashboardfilter(Request $req){
+		// 	$zone = $req ->input ('zone');
+		// 	$province = $req ->input ('province');
+		// 	dd($zone,$province);
+		// 	return view('AEFI.Apps.dashboard',compact(
+		// 	 'province',
+		// 	 'zone'
+		//  ));
+		// }
+
 
 		public function selectdatadash()
 		{

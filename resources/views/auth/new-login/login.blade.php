@@ -43,13 +43,13 @@
     				</span> -->
     				<hr class="colorgraph">
     				<div class="row">
-    					<div class="col-xs-6 col-sm-6 col-md-6">
+    					<div class="col-xs-4 col-sm-4 col-md-4">
                 <input type="submit" class="btn btn-lg btn-success btn-block" value="เข้าสู่ระบบ">
     					</div>
-              {{-- <div class="col-xs-6 col-sm-6 col-md-6">
-    						<a href="{{ route('resetpass') }}" class="btn btn-lg btn-warning btn-block">ลืมรหัสผ่าน</a>
-    					</div> --}}
-              <div class="col-xs-6 col-sm-6 col-md-6">
+              <div class="col-xs-4 col-sm-4 col-md-4">
+    						<a href="{{ route('resetpassword-form') }}" class="btn btn-lg btn-warning btn-block">ลืมรหัสผ่าน</a>
+    					</div>
+              <div class="col-xs-4 col-sm-4 col-md-4">
                 <a href="{{ route('register-form') }}" class="btn btn-lg btn-primary btn-block">สมัครสมาชิก</a>
               </div>
     				</div>

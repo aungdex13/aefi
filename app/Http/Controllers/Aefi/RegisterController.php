@@ -51,7 +51,7 @@ class RegisterController extends Controller
 
   public function Save_New_Users(Request $request){
       if(empty($request->hospcode)) return redirect()->back()->withInput()->with('error','กรุณาเลือกหน่วยงาน');
-      $check_unique_username = 
+      $check_unique_username =
 
       $check_unique_username = User::where('username',trim(strtolower($request->username)))->first();
       if ($check_unique_username) {
