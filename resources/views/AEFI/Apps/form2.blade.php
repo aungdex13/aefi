@@ -201,7 +201,7 @@
 																					<div class="col-lg-6">
 																						<div id="">
 																							<label>Select File for Upload</label>
-																							<input type="file" name="other_instruction_1" accept="image/*, application/pdf">
+																							<input type="file" id="file" name="other_instruction_1" accept="image/*, application/pdf">
 																						</div>
 																					</div>
 																				</div>
@@ -278,8 +278,6 @@
 				</div>
 	</form>
 </section>
-
-
 
 <!-- /.content -->
 @stop

@@ -352,10 +352,22 @@ if (! function_exists('provinces')) {
       $gender = array(
                   '1'=>'ชาย',
                   '2'=>'หญิง',
-                  ''=>''
+                  ''=>'ไม่ระบุ'
 
                               );
       return 	$gender;
+      }
+  }
+  if (! function_exists('color_gender')) {
+      function load_color_gender() {
+
+      $color_gender = array(
+                  '1'=>'#FF75A0',
+                  '2'=>'#FCE38A',
+                  null=>'#95E1D3'
+
+                              );
+      return 	$color_gender;
       }
   }
   if (! function_exists('type_of_patient')) {

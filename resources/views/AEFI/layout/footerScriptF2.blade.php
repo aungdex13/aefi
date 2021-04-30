@@ -405,6 +405,16 @@
 	});
 
 </script>
+<script>
+var uploadField = document.getElementById("file");
+
+uploadField.onchange = function() {
+    if(this.files[0].size > 2000000){
+       alert("ไฟล์ที่เลือกมีขนาดใหญ่เกินไป กรุณาเลือกไฟล์ที่มีขนาดไม่เกิน 2 MB");
+       this.value = "";
+    };
+};
+</script>
 {{-- content table --}}
 {{-- <script type="text/javascript">
 $(document).ready(function () {

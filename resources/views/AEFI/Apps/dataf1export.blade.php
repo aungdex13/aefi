@@ -74,6 +74,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
                         <th>เวลาที่เกิดอาการ</th>
 				                <th>วันรับรักษา</th>
                         <th>วัคซีนที่ได้รับ</th>
+                        <th>เลขที่วัคซีน</th>
                         <th>เข็มที่</th>
                         <th>ชื่อผู้ผลิต</th>
                         <th>ว/ด/ป ที่ได้รับวัคซีน</th>
@@ -162,6 +163,15 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
                           @endphp
                           @foreach($myArrayvac as $valuev)
                           {{ isset($listvac_arr[$valuev]) ? $listvac_arr[$valuev]: "ไม่ระบุข้อมูล" }}</br>
+                          @endforeach
+                        </td>
+                        <td>
+                          @php
+                          $myStringlotnumber = $value->lot_number ;
+                          $myArraylotnumber = explode(',', $myStringlotnumber);
+                          @endphp
+                          @foreach($myArraylotnumber as $valueln)
+                          {{ isset($valueln) ? $valueln: "ไม่ระบุข้อมูล" }}</br>
                           @endforeach
                         </td>
                         <td>

@@ -27,6 +27,8 @@
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <?php
 	$arr_age_group = load_age_group();
+	$arr_gender = load_gender();
+	$arr_color_gender = load_color_gender();
 	// var_dump($arr_age_group);
 ?>
 <script>
@@ -125,11 +127,13 @@
 				startAngle: 240,
 				yValueFormatString: "##0.00\"%\"",
 				indexLabel: "{label} {y}",
+				colorSet:  "customColorSet1",
 				dataPoints: [
-					@foreach($count_seriousness_of_the_symptoms as $row)
+					@foreach($count_all_gender as $row)
 					{
-						y:  ({{$row->count_seriousness_of_the_symptoms}} / {{$count_all_seriousness_of_the_symptoms[0]->count_seriousness_of_the_symptoms}})*100,
-						label: "{{$arr_seriousness_of_the_symptoms[$row->seriousness_of_the_symptoms]}}"
+						y:  ({{$row->gender_n}} / {{$count_all_seriousness_of_the_symptoms[0]->count_seriousness_of_the_symptoms}})*100,
+						label: "{{$arr_gender[$row->gender]}}",
+						color: "{{$arr_color_gender[$row->gender]}}"
 					},
 					@endforeach
 				]

@@ -6,7 +6,7 @@
 		<img src="../asset/dist/img/avatar5.png" class="img-circle" alt="User Image">
 	  </div>
 	  <div class="pull-left info">
-		<p>{{ Auth::user()->name }} {{ Auth::user()->sur_name }}</br>ตำแหน่ง:{{ Auth::user()->position }}</br>หน่วยงาน:{{ Auth::user()->division }}</p>
+		<p>{{ Auth::user()->name }} {{ Auth::user()->sur_name }}</br></p>
 		<a href="#"><i class="fa fa-circle text-success"></i> Online</a>
 	  </div>
 	</div>

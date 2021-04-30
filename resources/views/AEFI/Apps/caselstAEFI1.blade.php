@@ -44,7 +44,6 @@ $arr_necessary_to_investigate = load_necessary_to_investigate();
         <table class="table table-bordered" id="case_lst" class="display" style="width:100%">
           <thead>
             <tr>
-              <th hidden>เลขที่ผู้ป่วย HN</th>
               <th>เลขที่ผู้ป่วย HN</th>
               <th>เลขที่ผู้ป่วย AN</th>
               <th>ชื่อ-นามสกุลผู้ป่วย</th>
@@ -83,13 +82,17 @@ $arr_necessary_to_investigate = load_necessary_to_investigate();
             </td>
             <td>
               <div class="btn-group">
-                {{-- @if ($value->necessary_to_investigate == "2") --}}
-                  <a href="{{ route('lstf2') }}?id_case={{ $value->id_case }}" type="button" class="btn btn-info btn-flat"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>กรอก AEFI2</a>
-                  {{-- <a href="{{ route('form2') }}?id_case={{ $value->id_case }}" type="button" class="btn btn-info btn-flat"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>กรอก AEFI2</a> --}}
-                {{-- @endif --}}
-                <a href="{{ route('EditAEFI1') }}?id_case={{ $value->id_case }}" type="button" class="btn btn-warning btn-flat"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>แก้ไขข้อมูล</a>
-                {{-- <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-warning">ลบข้อมูล</button> --}}
-                <a href="{{ route('deleteAEFI1') }}?id_case={{ $value->id_case }}" id="btnDelete" type="button" class="btn btn-danger" onclick="return confirm('ต้องการลบข้อมูล ใช่หรือไม่?');">ลบข้อมูล</a>
+                <button type="button" class="btn btn-info" data-toggle="dropdown">เมนูการใช้งาน</button>
+                <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+                  <span class="caret"></span>
+                  <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="{{ route('lstf2') }}?id_case={{ $value->id_case }}"><i class="fa fa-file-o" aria-hidden="true"></i>กรอก AEFI2</a></li>
+                  <li><a href="{{ route('viewform1') }}?id_case={{ $value->id_case }}" target="_blank"><i class="fa fa-eye" aria-hidden="true"></i>ดูข้อมูล AEFI1</a></li>
+                  <li><a href="{{ route('EditAEFI1') }}?id_case={{ $value->id_case }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>แก้ไขข้อมูล</a></li>
+                  <li><a href="{{ route('deleteAEFI1') }}?id_case={{ $value->id_case }}" id="btnDelete" type="button" onclick="return confirm('ต้องการลบข้อมูล ใช่หรือไม่?');"><i class="fa  fa-trash-o" aria-hidden="true"></i>ลบข้อมูล</a></li>
+                </ul>
               </div>
             </td>
           </tr>

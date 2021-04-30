@@ -12,7 +12,8 @@
 	use Illuminate\Support\Str;
 	class DashboardController extends Controller
 	{
-		public function dashboard(){
+		public function dashboard(Request $req){
+			$zone = $reg->zone;
 			$count_prov = $this->count_prov();
 			$listProvince=$this->listProvince();
 			$count_month=$this->count_month();
@@ -24,15 +25,14 @@
 			$count_eastern = $this->count_eastern();
 			$count_south = $this->count_south();
 			$count_western = $this->count_western();
-			$count_seriousness_of_the_symptoms = $this->count_seriousness_of_the_symptoms();
-			$count_seriousness_of_the_symptoms_m = $this->count_seriousness_of_the_symptoms_m();
-			$count_seriousness_of_the_symptoms_f = $this->count_seriousness_of_the_symptoms_f();
-			$count_seriousness_of_the_symptoms_n = $this->count_seriousness_of_the_symptoms_n();
+			$count_all_gender = $this->count_all_gender();
+			$count_male = $this->count_male();
+			$count_female = $this->count_female();
+			$count_gender_other = $this->count_gender_other();
 			$count_vacname = $this->count_vacname();
 			$listvac_arr =  $this->listvac_arr();
 			$count_groupage = $this->count_groupage();
 			$count_all_seriousness_of_the_symptoms= $this->count_all_seriousness_of_the_symptoms();
-			$dashboardfilter = $this->dashboardfilter();
 			return view('AEFI.Apps.dashboard',compact(
 			 'count_prov',
 			 'listProvince',
@@ -46,24 +46,16 @@
 			 'count_south',
 			 'count_western',
 			 'count_all_seriousness_of_the_symptoms',
-			 'count_seriousness_of_the_symptoms',
-			 'count_seriousness_of_the_symptoms_m',
-			 'count_seriousness_of_the_symptoms_f',
-			 'count_seriousness_of_the_symptoms_n',
+			 'count_all_gender',
+			 'count_male',
+			 'count_female',
+			 'count_gender_other',
 			 'count_vacname',
 			 'listvac_arr',
 			 'count_groupage',
-			 'dashboardfilter'
+			 'zone'
 		 ));
 		}
-
-		public function dashboardfilter(Request $req){
-			$zone = $req ->input ('zone');
-			$province = $req ->input ('province');
-			// dd($zone,$province);
-			return $dashboardfilter;
-		}
-
 		public function selectdatadash()
 		{
 		$caselstF1 = DB::table('aefi_form_1')
@@ -82,9 +74,7 @@
 															district,
 															subdistrict,
 															necessary_to_investigate');
-		 //dd($caselst);
 		 return view('AEFI.Apps.caselstAEFI1')->with('data', $caselstF1);
-
 	 	}
 		protected function count_prov(){
 	    $count_prov = DB::table('aefi_form_1')
@@ -92,84 +82,61 @@
 										 ->where('status','=',null)
 	                   ->groupBy('province')
 										 ->get();
-	     // dd($count_prov);
 	    return $count_prov;
 	  }
 		protected function count_month(){
 			$count_year =  $this->count_year()->pluck('year_entry');
-			 // dd($count_year);
 					$count_month = DB::table('aefi_form_1')
 												 ->select(DB::raw('
 												 count(*) as count_patient ,
 												  MONTH(date_of_symptoms) as month_entry,
 													YEAR(date_of_symptoms) as year_entry,
 													GROUP_CONCAT(MONTH(date_of_symptoms))'))
-												 // ->whereYear('date_of_symptoms', '=', $count_year)
 												 ->where('status','=',null)
-												 // ->groupBy('month_entry')
 												 ->groupBy('year_entry')
 												 ->orderBy('year_entry')
 												 ->get();
-					// dd($count_month);
 			return $count_month;
 }
 
 		protected function count_year(){
-			// $yearnow =  now()->year;
-			 // dd($yearnow);
 			$count_year = DB::table('aefi_form_1')
 										 ->select(DB::raw('count(*) as count_patient , MONTH(date_of_symptoms) as month_entry, YEAR(date_of_symptoms) as year_entry'))
-										 // ->whereYear('date_of_symptoms', '=', "$yearnow")
 										 ->where('status','=',null)
-										 // ->groupBy('month_entry')
 										 ->groupBy('year_entry')
 										 ->orderBy('year_entry')
 										 ->get();
-				// dd($count_month);
 			return $count_year;
 		}
 		protected function count_north(){
 			$yearnow =  now()->year;
 			$north = [50,51,52,53,54,55,56,57,58];
-			  // dd($yearnow);
 			$count_north = DB::table('aefi_form_1')
 										 ->select(DB::raw('count(*) as count_north'))
 										 ->whereYear('date_of_symptoms', '=', "$yearnow")
-										 // ->where('status','=',null)
 										  ->wherein('province',[50,51,52,53,54,55,56,57,58])
-										 // ->groupBy('month_entry')
-										 // ->groupBy('count_south')
 										 ->get();
-			 // dd($count_north);
 			return $count_north;
 		}
 		protected function count_northeast(){
 			$yearnow =  now()->year;
-			 // dd($yearnow);
 			$count_northeast = DB::table('aefi_form_1')
 										 ->select(DB::raw('count(*) as count_northeast'))
 										 ->whereYear('date_of_symptoms', '=', "$yearnow")
 										 ->where('status','=',null)
 										 ->wherein('province', [42,	97,	30,	49,	48,	47,	33,	34,35,	36,	37,	39,	40,	41,	31,	43,	44,	45,	46,	32])
-										 // ->groupBy('month_entry')
-										 // ->groupBy('count_south')
 										 ->get();
-				// dd($count_month);
 			return $count_northeast;
 		}
 		protected function count_central(){
 			$yearnow =  now()->year;
-			 // dd($yearnow);
 			 $central = [	60,	74, 61,	73,	72,	67,	66,	65,	64,	62,	75,	14,	26,	18,	10,	11,	12,	19,	13,	17,	16,	15];
 			$count_central = DB::table('aefi_form_1')
 										 ->select(DB::raw('count(*) as count_central'))
 										 ->whereYear('date_of_symptoms', '=', "$yearnow")
 										 ->where('status','=',null)
 										 ->whereIn('province',[	60,	74, 61,	73,	72,	67,	66,	65,	64,	62,	75,	14,	26,	18,	10,	11,	12,	19,	13,	17,	16,	15])
-										 // ->groupBy('month_entry')
-										 // ->groupBy('count_south')
 										 ->get();
-				// dd($count_month);
 			return $count_central;
 		}
 		protected function count_eastern(){
@@ -189,7 +156,6 @@
 									80,
 									85,
 							];
-			 // dd($yearnow);
 			$count_eastern = DB::table('aefi_form_1')
 										 ->select(DB::raw('count(*) as count_eastern'))
 										 ->whereYear('date_of_symptoms', '=', "$yearnow")
@@ -209,10 +175,7 @@
 												 									80,
 												 									85
 							 							])
-										 // ->groupBy('month_entry')
-										 // ->groupBy('count_south')
 										 ->get();
-				// dd($count_month);
 			return $count_eastern;
 		}
 		protected function count_western(){
@@ -232,7 +195,6 @@
 									80,
 									85,
 							];
-			 // dd($yearnow);
 			$count_western = DB::table('aefi_form_1')
 										 ->select(DB::raw('count(*) as count_western'))
 										 ->whereYear('date_of_symptoms', '=', "$yearnow")
@@ -252,10 +214,7 @@
 												 									80,
 												 									85,
 												 							])
-										 // ->groupBy('month_entry')
-										 // ->groupBy('count_south')
 										 ->get();
-				// dd($count_month);
 			return $count_western;
 		}
 		protected function count_south(){
@@ -275,7 +234,6 @@
 								80,
 								85,
 							];
-			   // dd($south->province_code);
 			$count_south = DB::table('aefi_form_1')
 										 ->select(DB::raw('count(*) as count_south'))
 										 ->whereYear('date_of_symptoms', '=', "$yearnow")
@@ -295,11 +253,7 @@
 							 								80,
 							 								85,
 							 							])
-										 // ->groupBy('month_entry')
-										 // ->groupBy('count_south')
 										 ->get();
-
-				 // dd($count_south);
 			return $count_south;
 		}
 		protected function listProvince(){
@@ -310,85 +264,60 @@
 			foreach ($province as  $value) {
 				$province_arr[$value->province_code] =trim($value->province_name);
 			}
-			// dd($province_arr);
 			return $province_arr;
 		}
 		protected function count_all_seriousness_of_the_symptoms(){
 			$yearnow =  now()->year;
-				 // dd($south->province_code);
 			$count_all_seriousness_of_the_symptoms = DB::table('aefi_form_1')
 										 ->select(DB::raw('count(id) as count_seriousness_of_the_symptoms'))
 										 ->where('status',null)
 										 ->get()->toArray();
-										 	// dd($count_all_seriousness_of_the_symptoms);
 			return $count_all_seriousness_of_the_symptoms;
 		}
-		protected function count_seriousness_of_the_symptoms(){
+		protected function count_all_gender(){
 			$yearnow =  now()->year;
-				 // dd($south->province_code);
-			$count_seriousness_of_the_symptoms = DB::table('aefi_form_1')
-										 ->select(DB::raw('count(*) as count_seriousness_of_the_symptoms,seriousness_of_the_symptoms'))
-										 ->groupBy('seriousness_of_the_symptoms')
+			$count_all_gender = DB::table('aefi_form_1')
+										 ->select(DB::raw('count(*) as gender_n ,gender'))
 										 ->where('status',null)
-										 // ->whereYear('date_of_symptoms', '=', "$yearnow")
-										 // ->groupBy('count_south')
+										 ->groupBy('gender')
 										 ->get();
- // dd($count_seriousness_of_the_symptoms);
-			return $count_seriousness_of_the_symptoms;
+										 // dd($count_all_gender);
+			return $count_all_gender;
 		}
-		protected function count_seriousness_of_the_symptoms_m(){
-				 // dd($south->province_code);
+		protected function count_male(){
 			$yearnow =  now()->year;
-			$count_seriousness_of_the_symptoms_m = DB::table('aefi_form_1')
-										 ->select(DB::raw('count(*) as count_seriousness_of_the_symptoms,seriousness_of_the_symptoms'))
+			$count_male = DB::table('aefi_form_1')
+										 ->select(DB::raw('count(*) as count_male'))
 										 ->where('gender', '=', '1')
 										 ->where('status',null)
-										 ->whereYear('date_of_symptoms', '=', "$yearnow")
-										 ->groupBy('seriousness_of_the_symptoms')
 										 ->get();
-
-				 // dd($count_seriousness_of_the_symptoms_m[0]);
-			return $count_seriousness_of_the_symptoms_m;
+			return $count_male;
 		}
-		protected function count_seriousness_of_the_symptoms_f(){
-				 // dd($south->province_code);
+		protected function count_female(){
 			$yearnow =  now()->year;
-			$count_seriousness_of_the_symptoms_f = DB::table('aefi_form_1')
-										 ->select(DB::raw('count(*) as count_seriousness_of_the_symptoms,seriousness_of_the_symptoms'))
+			$count_female = DB::table('aefi_form_1')
+										 ->select(DB::raw('count(*) as count_female'))
 										 ->where('gender', '=', '2')
 										 ->where('status',null)
-										 ->whereYear('date_of_symptoms', '=', "$yearnow")
-										 ->groupBy('seriousness_of_the_symptoms')
 										 ->get();
-
-				 // dd($count_south);
-			return $count_seriousness_of_the_symptoms_f;
+			return $count_female;
 		}
-		protected function count_seriousness_of_the_symptoms_n(){
-				 // dd($south->province_code);
+		protected function count_gender_other(){
 			$yearnow =  now()->year;
-			$count_seriousness_of_the_symptoms_n = DB::table('aefi_form_1')
-										 ->select(DB::raw('count(*) as count_seriousness_of_the_symptoms,seriousness_of_the_symptoms'))
-										 ->where('seriousness_of_the_symptoms', '=', null)
+			$count_gender_other = DB::table('aefi_form_1')
+										 ->select(DB::raw('count(*) as count_gender_other'))
+										 ->where('gender', '=', null)
 										 ->where('status',null)
-										 ->whereYear('date_of_symptoms', '=', "$yearnow")
-										 ->groupBy('seriousness_of_the_symptoms')
 										 ->get();
-
-				  // dd($count_seriousness_of_the_symptoms_n);
-			return $count_seriousness_of_the_symptoms_n;
+			return $count_gender_other;
 		}
 		protected function count_vacname(){
-				 // dd($south->province_code);
 			$count_vacname = DB::table('aefi_form_1_vac')
 										 ->select(DB::raw('count(aefi_form_1_vac.name_of_vaccine) as vac_count,name_of_vaccine'))
-										 // ->where('gender', '=', '2')
 										 ->where('status','=',null)
 										 ->groupBy('name_of_vaccine')
 										 ->orderBy('name_of_vaccine','DESC')
 										 ->get();
-
-			// dd($count_vacname);
 			return $count_vacname;
 		}
 		protected function listvac_arr(){
@@ -396,22 +325,17 @@
 			foreach ($arr_vac as  $value) {
 				$arr_vac[$value->VAC_CODE] =trim($value->VAC_NAME_EN);
 			}
-			// dd($province_arr);
 			return $arr_vac;
 		}
 		protected function count_groupage(){
-				 // dd($south->province_code);
 			$yearnow =  now()->year;
 			$count_groupage = DB::table('aefi_form_1')
 										 ->select(DB::raw('count(id) as countgroupage,group_age'))
-										 // ->where('gender', '=', '2')
 										 ->where('status','=',null)
 										 ->whereYear('date_entry', '=', "$yearnow")
 										 ->groupBy('group_age')
 										 ->orderBy('group_age','ASC')
 										 ->get();
-
-				 // dd($count_south);
 			return $count_groupage;
 		}
 

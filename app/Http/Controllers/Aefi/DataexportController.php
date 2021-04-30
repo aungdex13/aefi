@@ -27,12 +27,13 @@ class DataexportController extends Controller
 		->join('aefi_form_1_vac', 'aefi_form_1.id_case', '=', 'aefi_form_1_vac.id_case')
 		->select('aefi_form_1.*',
 		DB::raw('GROUP_CONCAT( aefi_form_1_vac.name_of_vaccine ) as "name_of_vaccine",
+						 GROUP_CONCAT( aefi_form_1_vac.lot_number ) as "lot_number",
 						 GROUP_CONCAT( aefi_form_1_vac.manufacturer  ) as "manufacturer",
 				 		 GROUP_CONCAT( aefi_form_1_vac.dose  ) as "dose",
 				 		 GROUP_CONCAT( aefi_form_1_vac.date_of_vaccination   ) as "date_of_vaccination",
 				 		 GROUP_CONCAT( aefi_form_1_vac.time_of_vaccination   ) as "time_of_vaccination" ')
-						)
-		->whereYear('date_of_symptoms','=',$yearnow);
+					 )
+		 ->whereYear('aefi_form_1.date_of_symptoms','=',$yearnow);
 		if (count($roleArr) > 0) {
 			 $user_role = $roleArr[0];
 		 switch ($user_role) {
@@ -105,12 +106,14 @@ class DataexportController extends Controller
 		->join('aefi_form_1_vac', 'aefi_form_1.id_case', '=', 'aefi_form_1_vac.id_case')
 		->select('aefi_form_1.*',
 		DB::raw('GROUP_CONCAT( aefi_form_1_vac.name_of_vaccine ) as "name_of_vaccine",
+		GROUP_CONCAT( aefi_form_1_vac.lot_number ) as "lot_number",
 						 GROUP_CONCAT( aefi_form_1_vac.manufacturer  ) as "manufacturer",
 				 		 GROUP_CONCAT( aefi_form_1_vac.dose  ) as "dose",
 				 		 GROUP_CONCAT( aefi_form_1_vac.date_of_vaccination   ) as "date_of_vaccination",
 				 		 GROUP_CONCAT( aefi_form_1_vac.time_of_vaccination   ) as "time_of_vaccination" ')
 						)
 		->whereYear('date_of_symptoms','=',$date_of_symptoms);
+		// dd($selectcaselstF1);
 		if (count($roleArr) > 0) {
 			 $user_role = $roleArr[0];
 		 switch ($user_role) {

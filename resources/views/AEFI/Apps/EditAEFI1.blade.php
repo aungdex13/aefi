@@ -1057,7 +1057,7 @@ foreach ($aecode as $value) {
                 <td>
                   <select type="text" id="manufacturer1" name="manufacturer[]" class="form-control">
                     <option value="{{$value->manufacturer}}">{{isset($arr_manufacturer[$value->manufacturer])?$arr_manufacturer[$value->manufacturer]:""}}</option>
-                    <option value="">กรุณาระบชื่อผู้ผลิต</option>
+                    <option value="">กรุณาระบุชื่อผู้ผลิต</option>
                     <?php
                              foreach ($arr_manufacturer as $k=>$v) {
                          ?>
@@ -1591,7 +1591,8 @@ foreach ($aecode as $value) {
                     <div class="input-group-addon">
                       <i class="fa fa-calendar"></i>
                     </div>
-                    <input type="text" class="form-control pull-right" id="datepicker_stdiag" name="date_of_symptoms" value="{{$data[0]->date_of_symptoms}}">
+                    <input type="text" class="form-control pull-right" id="datepicker_stdiag" name="date_of_symptoms" value="{{$data[0]->date_of_symptoms}}"  data-date-format="yyyy-mm-dd" readonly>
+
                   </div>
                 </div>
               </div>
@@ -1600,7 +1601,7 @@ foreach ($aecode as $value) {
                   <div class="col-lg-8">
                     <label>เวลาที่เกิดอาการ :</label>
                     <div class="input-group">
-                      <input type="text" class="form-control" name="time_of_symptoms" value="{{$data[0]->time_of_symptoms}}">
+                      <input type="text" class="form-control" name="time_of_symptoms" value="{{$data[0]->time_of_symptoms}}"  >
 
                       <div class="input-group-addon">
                         <i class="fa fa-clock-o"></i>
@@ -1616,7 +1617,7 @@ foreach ($aecode as $value) {
                     <div class="input-group-addon">
                       <i class="fa fa-calendar"></i>
                     </div>
-                    <input type="text" class="form-control pull-right" id="datepicker_hdate" name="date_of_treatment" value="{{$data[0]->date_of_treatment}}">
+                    <input type="text" class="form-control pull-right" id="datepicker_hdate" name="date_of_treatment" value="{{$data[0]->date_of_treatment}}" data-date-format="yyyy-mm-dd" readonly>
                   </div>
                 </div>
               </div>
@@ -1627,7 +1628,7 @@ foreach ($aecode as $value) {
                     <div class="input-group-addon">
                       <i class="fa fa-calendar"></i>
                     </div>
-                    <input type="text" class="form-control pull-right" id="datepicker_sell" name="time_of_treatment" value="{{$data[0]->time_of_treatment}}">
+                    <input type="text" class="form-control pull-right" id="datepicker_sell" name="time_of_treatment" value="{{$data[0]->time_of_treatment}}"  data-date-format="yyyy-mm-dd" readonlys>
                   </div>
                 </div>
               </div>
@@ -2169,7 +2170,7 @@ foreach ($aecode as $value) {
                         <div class="input-group-addon">
                           <i class="fa fa-calendar"></i>
                         </div>
-                        <input type="text" class="form-control pull-right" id="datepicker_resiver" name="datepicker_resiver" value="{{$data[0]->datepicker_resiver}}" data-date-format="yyyy-mm-dd" readonlys>
+                        <input type="text" class="form-control pull-right" id="datepicker_resiver" name="datepicker_resiver" value="{{$data[0]->datepicker_resiver}}" data-date-format="yyyy-mm-dd" readonly>
                       </div>
                     </div>
                   </div>
