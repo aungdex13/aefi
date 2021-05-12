@@ -14,17 +14,19 @@ class Form1Controller extends Controller
 	}
 
 	public function index(){
+		$yearnow =  now()->year+543;
 		$list=$this->form1();
 		$aecode=$this->aecode();
 		$groupproduct=$this->groupproduct();
 		$vac_list=$this->vaclist();
-		 // dd($vac_list);
+
 		return view('AEFI.Apps.form1',
 			[
 				'vac_list'=>$vac_list,
 				'list'=>$list ,
 				'aecode'=>$aecode,
-				'groupproduct'=>$groupproduct
+				'groupproduct'=>$groupproduct,
+				'yearnow'=>$yearnow
 			]);
 	}
 	public function indexform1group(){

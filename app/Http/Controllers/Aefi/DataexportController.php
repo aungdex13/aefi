@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use DB;
+use Carbon\Carbon;
 class DataexportController extends Controller
 {
 	public $result;
@@ -16,13 +17,13 @@ class DataexportController extends Controller
 	}
 
 	public function dataexport(){
+		$yearnow =  now()->year;
 		$roleArrusername = auth()->user()->username;
 		$roleArrhospcode = auth()->user()->hospcode;
 		$roleArrprov_code = auth()->user()->prov_code;
 		$roleArrregion = auth()->user()->region;
 		// dd($roleArrusername,$roleArrhospcode,$roleArrprov_code,$roleArrregion);
 		$roleArr = auth()->user()->getRoleNames()->toArray();
-		$yearnow =  now()->year;
 		$selectcaselstF1=DB::table('aefi_form_1')
 		->join('aefi_form_1_vac', 'aefi_form_1.id_case', '=', 'aefi_form_1_vac.id_case')
 		->select('aefi_form_1.*',
@@ -32,8 +33,8 @@ class DataexportController extends Controller
 				 		 GROUP_CONCAT( aefi_form_1_vac.dose  ) as "dose",
 				 		 GROUP_CONCAT( aefi_form_1_vac.date_of_vaccination   ) as "date_of_vaccination",
 				 		 GROUP_CONCAT( aefi_form_1_vac.time_of_vaccination   ) as "time_of_vaccination" ')
-					 )
-		 ->whereYear('aefi_form_1.date_of_symptoms','=',$yearnow);
+					 );
+		 // ->whereYear('aefi_form_1.date_of_symptoms','=',$yearnow);
 		if (count($roleArr) > 0) {
 			 $user_role = $roleArr[0];
 		 switch ($user_role) {
@@ -91,7 +92,8 @@ class DataexportController extends Controller
 				'listsubdistrict'=>$listsubdistrict,
 				'listDistrict'=>$listDistrict,
 				'listProvince'=>$listProvince,
-				'listvac_arr'=>$listvac_arr
+				'listvac_arr'=>$listvac_arr,
+				'yearnow'=>$yearnow
 			]);
 	}
 
@@ -122,14 +124,14 @@ class DataexportController extends Controller
 								 ->where('user_hospcode',$roleArrhospcode)
 								 ->whereNull('aefi_form_1.status')
 								 ->groupBy('aefi_form_1.id_case')
-								 ->get()->toArray();
+								 ->get();
 			 break;
 			 case 'pho':
 				 $selectdata = $selectcaselstF1
 								 ->where('user_provcode',$roleArrprov_code)
 								 ->whereNull('aefi_form_1.status')
 								 ->groupBy('aefi_form_1.id_case')
-								 ->get()->toArray();
+								 ->get();
 				 break;
 				 case 'dpc':
 				 if ($roleArrhospcode == "41173") {
@@ -137,26 +139,26 @@ class DataexportController extends Controller
 								 // ->where('user_region',$roleArrregion)
 								 ->whereNull('aefi_form_1.status')
 								 ->groupBy('aefi_form_1.id_case')
-								 ->get()->toArray();
+								 ->get();
 				 }else {
 					 $selectdata = $selectcaselstF1
 							 ->where('user_region',$roleArrregion)
 							 ->whereNull('aefi_form_1.status')
 							 ->groupBy('aefi_form_1.id_case')
-							 ->get()->toArray();
+							 ->get();
 				 }
 					 break;
 					 case 'ddc':
 						 $selectdata = $selectcaselstF1
 						 ->whereNull('aefi_form_1.status')
 						 ->groupBy('aefi_form_1.id_case')
-						 ->get()->toArray();
+						 ->get();
 						 break;
 						 case 'admin':
 							 $selectdata = $selectcaselstF1
 							 ->whereNull('aefi_form_1.status')
 							 ->groupBy('aefi_form_1.id_case')
-							 ->get()->toArray();
+							 ->get();
 							 break;
 		 default:
 			 break;

@@ -73,13 +73,54 @@
 				<!-- Custom Tabs -->
 	            <div class="nav-tabs-custom">
 	              <ul class="nav nav-tabs">
-	                <li class="active"><a href="#tab_1" data-toggle="tab">2559</a></li>
-	                <li><a href="#tab_2" data-toggle="tab">2558</a></li>
-	                <li><a href="#tab_3" data-toggle="tab">2557</a></li>
+	                <li class="active"><a href="#tab_1" data-toggle="tab">เอกสารดาวน์โหลด</a></li>
+                  <li><a href="#tab_2" data-toggle="tab">2559</a></li>
+	                <li><a href="#tab_3" data-toggle="tab">2558</a></li>
+	                <li><a href="#tab_4" data-toggle="tab">2557</a></li>
 	                <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
 	              </ul>
 	              <div class="tab-content">
-	                <div class="tab-pane active" id="tab_1">
+                  <div class="tab-pane active" id="tab_1">
+            <p>
+              แนวทางการเฝ้าระวังและตอบโต้เหตุการณ์ไม่พึงประสงค์ภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรคของประเทศไทย<br>
+              <a href="https://apps.doe.moph.go.th/boe/software/file/AW_AEFI%20WEB_25Oct2020.pdf"   class="btn btn-app" target="_blank">
+                        <i class="fa fa-save"></i> Save
+                      </a>
+            </p>
+            <p>
+            แบบรายงานอาการภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรค (AEFI1)์<br>
+              <a href="https://apps.doe.moph.go.th/boe/software/file/AEFI_1.pdf"   class="btn btn-app" target="_blank">
+                <i class="fa fa-save"></i> Save
+              </a>
+            </p>
+            <p>
+              แบบสอบสวนอาการภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรค (AEFI2)์<br>
+              <a href="https://apps.doe.moph.go.th/boe/software/file/AEFI_2.pdf"   class="btn btn-app" target="_blank">
+                <i class="fa fa-save"></i> Save
+              </a>
+            </p>
+            <p>
+              คู่มือการใช้งานระบบรายงานอาการภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรค (AEFI)<br>
+              <a href="https://apps.doe.moph.go.th/boe/software/file/aefi_system_manual.pdf"   class="btn btn-app" target="_blank">
+                <i class="fa fa-save"></i> Save
+              </a>
+            </p>
+            <p>
+            แนวทางการให้วัคซีน โควิด 19 ในสถสนการณ์การระบาดปี64 ของประเทศไทย<br>
+              <a href="https://online.pubhtml5.com/nqwl/vxcg/#p=1"   class="btn btn-app" target="_blank">
+                <i class="fa fa-save"></i> Save
+              </a>
+            </p>
+            <p>
+              แนวทางปฏิบัติสำหรับอาการไม่พึงประสงค์หลังการได้รับวัคซีนป้องกันโรค
+  กรณีปฏิกิริยาที่สัมพันธ์กับ ความเครียดจากการฉีดวัคซีน กลุ่มอาการคล้ายภาวะหลอดเลือดสมอง<br>
+              <a href="https://apps.doe.moph.go.th/boe/software/file/ISRR_25Apr2021.pdf"   class="btn btn-app" target="_blank">
+                <i class="fa fa-save"></i> Save
+              </a>
+            </p>
+                  </div>
+
+	                <div class="tab-pane" id="tab_2">
 						<p>
 							สถานการณ์การเฝ้าระวังอาการภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรค ประจำเดือนตุลาคม-ธันวาคม 2559</br>
 							ดาวน์โหลดไฟล์<br>
@@ -110,7 +151,7 @@
 						</p>
 	                </div>
 	                <!-- /.tab-pane -->
-	                <div class="tab-pane" id="tab_2">
+	                <div class="tab-pane" id="tab_3">
 						<p>
 							สถานการณ์การเฝ้าระวังอาการภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรค ประจำเดือนตุลาคม-ธันวาคม 2558</br>
 							ดาวน์โหลดไฟล์<br>
@@ -141,7 +182,7 @@
 						</p>
 	                </div>
 	                <!-- /.tab-pane -->
-	                <div class="tab-pane" id="tab_3">
+	                <div class="tab-pane" id="tab_4">
 						<p>
 							สถานการณ์การเฝ้าระวังอาการภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรค ประจำเดือนตุลาคม-ธันวาคม 2557</br>
 							ดาวน์โหลดไฟล์<br>

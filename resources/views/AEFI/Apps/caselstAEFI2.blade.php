@@ -59,7 +59,7 @@ $arr_manufacturer = load_manufacturer();
                 <p style="text-align:center;">{{ $value->record_division }}</p>
               </td>
               <td>
-                <p style="text-align:center;">{{ $value->file_name }}</p>
+                <p style="text-align:center;">{{ $value->originalfilename }}</p>
               </td>
               {{-- <td>
                 <p style="text-align:center;">{{ $value->status_on_date_inv_1 }}</p>

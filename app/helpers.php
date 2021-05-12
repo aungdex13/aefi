@@ -398,4 +398,118 @@ if (! function_exists('provinces')) {
       return 	$patient_status;
       }
   }
+  if (! function_exists('vac_init')) {
+      function load_vac_init() {
+
+      $vac_init = array(
+                  '1'=>'BCG',
+                  '2'=>'HB',
+                  '3'=>'DTPHB',
+                  '4'=>'DTP',
+                  '5'=>'dT',
+                  '6'=>'TT',
+                  '7'=>'OPV',
+                  '8'=>'IPV',
+                  '9'=>'JE',
+                  '10'=>'LAJE',
+                  '11'=>'MMR',
+                  '12'=>'MR',
+                  '13'=>'Influ',
+                  '14'=>'HPV',
+                  '15'=>'RV',
+                  '16'=>'Rabies',
+                  '17'=>'Cholera',
+                  '18'=>'DTP-Hib',
+                  '19'=>'DTP-HB+Hib',
+                  '20'=>'DTP-IPV',
+                  '21'=>'DTP-IPV-Hib',
+                  '22'=>'DTP-IPV-HB-Hib',
+                  '23'=>'Hib',
+                  '24'=>'HA',
+                  '25'=>'HB-HA',
+                  '26'=>'MMRV',
+                  '27'=>'ACYW135',
+                  '28'=>'AC',
+                  '29'=>'PCV',
+                  '30'=>'PCV',
+                  '31'=>'PS23',
+                  '32'=>'Tdap',
+                  '33'=>'Ty',
+                  '34'=>'Ty',
+                  '35'=>'Tdap-IPV',
+                  '36'=>'Var',
+                  '37'=>'YellowFever',
+                  '38'=>'Dengue',
+                  '39'=>'COVID19Sinovac',
+                  '40'=>'COVID19Astrazaneca',
+                  ''=>'NULL'
+
+                              );
+      return 	$vac_init;
+      }
+  }
+  if (! function_exists('r_o')) {
+      function load_r_o() {
+
+      $r_o = array(
+                  '1'=>'Anaphylactic shock',
+                  '2'=>'Anaphylaxis',
+                  '3'=>'BP Drop',
+                  '4'=>'Dead',
+                  '5'=>'DVT',
+                  '6'=>'Livedo',
+                  '8'=>'Neuropathy',
+                  '9'=>'Polyneuropathy',
+                  '10'=>'Seizure',
+                  '11'=>'Stroke',
+                  '12'=>'Syncope',
+                  '13'=>'Thrombocytopenia',
+                  ''=>'NULL'
+
+                              );
+      return 	$r_o;
+      }
+  }
+  if (! function_exists('final_diag')) {
+      function load_final_diag() {
+
+      $final_diag = array(
+                  '1'=>'Acute Coronary Syndrome',
+                  '2'=>'Acute myeloid leukemia',
+                  '3'=>'Anaphylaxis',
+                  '4'=>'Anaphylactic shock',
+                  '5'=>'Atrial fibrillation',
+                  '6'=>'Convulsive syncope',
+                  '7'=>'DVT',
+                  '8'=>'Following',
+                  '9'=>'Hypersensitivity',
+                  '10'=>'Immune TTP',
+                  '11'=>'Intra Abdomen bleeding with Hypovolemic shock',
+                  '12'=>'ISRR',
+                  '13'=>'Meeting',
+                  '14'=>'Polyneuropathy',
+                  '15'=>'Reflex syncope',
+                  '16'=>'Side effect',
+                  '17'=>'ภาวะหัวใจขาดเลือด',
+                  '18'=>'อื่นๆ',
+                  ''=>'NULL'
+
+                              );
+      return 	$final_diag;
+      }
+  }
+  if (! function_exists('load_causality')) {
+      function load_causality() {
+
+      $causality = array(
+                  '1'=>'Consistent causal association',
+                  '2'=>'Inconsistent causal association',
+                  '3'=>'Unclassifiable',
+                  ''=>'NULL'
+
+                              );
+      return 	$causality;
+      }
+  }
+
  ?>

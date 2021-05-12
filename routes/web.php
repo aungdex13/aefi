@@ -92,7 +92,13 @@ Route::get('/dataf1export', 'Aefi\DataexportController@dataexport')->name('dataf
 Route::post('/dataf1export', 'Aefi\DataexportController@dataexportfrm')->name('dataf1export');
 Route::get('/dataf2export', 'Aefi\Dataexport2Controller@dataexport2')->name('dataf2export');
 Route::get('/datauserexport', 'Aefi\DataexportuserController@dataexportu')->name('datauserexport');
-// Route::post('/uploadfile', 'Aefi\UploadController@upload');
 // download Data
 Route::get('/downloadaefi2', 'Aefi\DownloadController@dowloaddata2')->name('downloadaefi2');
-// Route::get('/deleteAEFI2', 'Aefi\DeleteController@deletedata2')->name('deleteAEFI2');
+
+// expert diag
+Route::get('/ExpertDiagLst', 'Aefi\ExpertDiagController@ExpertDiagLst')->name('ExpertDiagLst');
+Route::get('/ExpertDiagFrm', 'Aefi\ExpertDiagController@ExpertDiagFrm')->name('ExpertDiagFrm');
+Route::get('/ExpertDiagEditFrm', 'Aefi\ExpertDiagController@ExpertDiagEditFrm')->name('ExpertDiagEditFrm');
+Route::post('/InsertExpert', 'Aefi\ExpertDiagController@InsertExpert')->name('InsertExpert');
+Route::post('/UpdateExpert', 'Aefi\ExpertDiagController@UpdateExpert')->name('UpdateExpert');
+Route::get('/DeleteExpert', 'Aefi\ExpertDiagController@DeleteExpert')->name('DeleteExpert');

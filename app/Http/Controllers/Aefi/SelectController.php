@@ -21,72 +21,97 @@
 		}
 		public function selectdatatablecaseAEFI1()
 		{
+			$yearnow =  now()->year;
 			$roleArrusername = auth()->user()->username;
 			$roleArrhospcode = auth()->user()->hospcode;
 			$roleArrprov_code = auth()->user()->prov_code;
 			$roleArrregion = auth()->user()->region;
+			$roleArrdist_code = auth()->user()->ampur_code;
+			$district_user=$roleArrprov_code.$roleArrdist_code;
+			// dd($roleArrhospcode);
 			// dd($roleArrusername,$roleArrhospcode,$roleArrprov_code,$roleArrregion);
-		$roleArr = auth()->user()->getRoleNames()->toArray();
+			$roleArr = auth()->user()->getRoleNames()->toArray();
+			$selectgroupprov = DB::table('chospital_new')
+														 ->select('chospital_new.prov_code')
+														 ->where('region',$roleArrregion)
+														 ->groupBy('prov_code')
+														 ->get()
+														 ->pluck('prov_code');
 
 		$selectcaselstF1 = DB::table('aefi_form_1')
-		->select(	'id',
-							'id_case',
-							'hn',
-							'an',
-							'first_name',
-							'sur_name',
-							'age_while_sick_year',
-							'nationality',
-							'gender',
-							'other_nationality',
-							'village_no',
-							'province',
-							'district',
-							'subdistrict',
-							'necessary_to_investigate');
+		->join('aefi_form_1_vac', 'aefi_form_1.id_case', '=', 'aefi_form_1_vac.id_case')
+		->select(	'aefi_form_1.id',
+							'aefi_form_1.id_case',
+							'aefi_form_1.hn',
+							'aefi_form_1.an',
+							'aefi_form_1.first_name',
+							'aefi_form_1.sur_name',
+							'aefi_form_1.age_while_sick_year',
+							'aefi_form_1.nationality',
+							'aefi_form_1.gender',
+							'aefi_form_1.other_nationality',
+							'aefi_form_1.village_no',
+							'aefi_form_1.province',
+							'aefi_form_1.district',
+							'aefi_form_1.subdistrict',
+							'aefi_form_1.necessary_to_investigate',
+							'aefi_form_1.case_vac_id',
+							'aefi_form_1_vac.name_of_vaccine',
+							'aefi_form_1.date_of_symptoms'
+						);
 		 if (count($roleArr) > 0) {
 				$user_role = $roleArr[0];
 			switch ($user_role) {
-				case 'hos':
+				case 'hospital':
+					// dd("p;p");
 					$caselstF1  = $selectcaselstF1
-									->where('user_hospcode',$roleArrhospcode)
+									->Where('user_hospcode',"=",$roleArrhospcode)
+									->orWhere('hospcode_treat',"=",$roleArrhospcode)
 									->whereNull('aefi_form_1.status')
-									->get()->toArray();
+									->groupBy('aefi_form_1.id_case')
+									->get();
+
 				break;
 				case 'pho':
 					$caselstF1 = $selectcaselstF1
 									->where('user_provcode',$roleArrprov_code)
 									->whereNull('aefi_form_1.status')
-									->get()->toArray();
+									->groupBy('aefi_form_1.id_case')
+									->get();
 					break;
 					case 'dpc':
 					if ($roleArrhospcode == "41173") {
 							$caselstF1 = $selectcaselstF1
 									// ->where('user_region',$roleArrregion)
 									->whereNull('aefi_form_1.status')
-									->get()->toArray();
+									->groupBy('aefi_form_1.id_case')
+									->get();
 					}else {
 						$caselstF1 = $selectcaselstF1
-								->where('user_region',$roleArrregion)
+								// ->where('user_region',$roleArrregion)
+								->whereIn('aefi_form_1.province',$selectgroupprov)
 								->whereNull('aefi_form_1.status')
-								->get()->toArray();
+								->groupBy('aefi_form_1.id_case')
+								->get();
 					}
 						break;
 						case 'ddc':
 							$caselstF1 = $selectcaselstF1
 							->whereNull('aefi_form_1.status')
-							->get()->toArray();
+							->groupBy('aefi_form_1.id_case')
+							->get();
 							break;
 							case 'admin':
 								$caselstF1 = $selectcaselstF1
 								->whereNull('aefi_form_1.status')
-								->get()->toArray();
+								->groupBy('aefi_form_1.id_case')
+								->get();
 								break;
 			default:
 				break;
 		}
 	}
-
+	 // dd($caselstF1);
 		 $listProvince=$this->listProvince();
 		 $listDistrict=$this->listDistrict();
 		 $listsubdistrict=$this->listsubdistrict();
@@ -95,8 +120,8 @@
 			->with('listProvince', $listProvince)
 			->with('listDistrict', $listDistrict)
 			->with('listsubdistrict', $listsubdistrict)
+			->with('yearnow', $yearnow)
 			->with('data', $caselstF1);
-
 
 	 	}
 		public function selectdatatablecaseAEFI1group()
@@ -158,7 +183,8 @@
 			$listsubdistrict=$this->listsubdistrict();
 			$vac_list=$this->vaclist();
 			$listvac_arr=$this->listvac_arr();
-			//dd($EditAEFI1vac);
+			$list_hos=$this->list_hos();
+						//dd($EditAEFI1vac);
 		 return view('AEFI.Apps.EditAEFI1')
 		 				->with('data', $EditAEFI1)
 						->with('datavac', $EditAEFI1vac)
@@ -168,7 +194,8 @@
 						->with('listsubdistrict', $listsubdistrict)
 						->with('vac_list',$vac_list)
 						->with('count_data_vac',$count_data_vac)
-						->with('listvac_arr',$listvac_arr);
+						->with('listvac_arr',$listvac_arr)
+						->with('list_hos',$list_hos);
 
 		}
 		public function selectalldataAEFI2(Request $req)
@@ -251,6 +278,14 @@
 			}
 			// dd($province_arr);
 			return $arr_vac;
+		}
+		protected function list_hos(){
+			$arr_hos = DB::table('chospital_new')->select('hospcode','hosp_name')->get();
+			foreach ($arr_hos as  $value) {
+				$arr_hos[$value->hospcode] =trim($value->hosp_name);
+			}
+			// dd($province_arr);
+			return $arr_hos;
 		}
 		protected function vaclist(){
 			$arr_vaclist = DB::table('vac_tbl')

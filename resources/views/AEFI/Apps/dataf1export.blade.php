@@ -1,6 +1,5 @@
 @extends('AEFI.layout.tabletemplate')
 <?php
-
 $arr_history_of_vaccine = load_history_of_vaccine();
 $arr_patient_develop_symptoms_after_previous_vaccination = load_patient_develop_symptoms_after_previous_vaccination();
 $arr_underlying_disease = load_underlying_disease();
@@ -57,6 +56,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
 				        <thead>
 				            <tr>
         							  <th>no</th>
+                        <th>ID</th>
         								<th>รหัสผู้ป่วย</th>
 				                <th>ชื่อ</th>
 				                <th>นามสกุล</th>
@@ -134,6 +134,13 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
 							<?php foreach($selectdata as $value) : ?>
 				            <tr>
 				                <td>{{ $value->id }}</td>
+                        <td>
+                          @php
+                            $vac_name = isset($value->name_of_vaccine) ? $value->name_of_vaccine : "NULL" ;
+                             $cutVacName = explode(',', $vac_name);
+                          @endphp
+                          <p style="text-align:center;">{{date('Y',strtotime(isset($value->date_of_symptoms) ? $value->date_of_symptoms : "-"))}}-{{str_pad(isset($cutVacName[0]) ? $cutVacName[0] : "NULL", 2, '0', STR_PAD_LEFT)}}-{{$value->id}}</p>
+                        </td>
 								        <td>{{ $value->hn }}</td>
 				                <td style="text-align: center; vertical-align: middle;" width="4%">{{ $value->first_name }}</td>
 				                <td style="text-align: center; vertical-align: middle;" width="4%">{{ $value->sur_name }}</td>
@@ -557,7 +564,7 @@ $(document).ready(function() {
 $('#example').DataTable( {
 	dom: 'Bfrtip',
 	buttons: [
-		'copy', 'excel', 'print'
+		 'excel'
 	]
 } );
 } );

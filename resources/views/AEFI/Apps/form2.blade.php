@@ -198,16 +198,81 @@
 																					</div>
 																				</div>
 																				<div class="col-lg-12">
+																					<br>
 																					<div class="col-lg-6">
 																						<div id="">
-																							<label>Select File for Upload</label>
-																							<input type="file" id="file" name="other_instruction_1" accept="image/*, application/pdf">
+																							<label>เลือกไฟล์ที่ต้องการอัพโหลด</label>
+																							<input type="file" class="form-control" id="file1" name="other_instruction_1" accept="image/*, application/pdf">
+																						</div>
+																					</div>
+																				</div>
+																				<div class="col-lg-12">
+																					<br>
+
+																					<div class="col-lg-6">
+																						<div id="">
+																							<label></label>
+																							<a class="btn btn-mat waves-effect waves-light btn-info " onclick="myFunctionhd()">กรณีที่มีมากกว่า 1 ไฟล์ กรุณากดปุ่มนี้</a>
+																						</div>
+																					</div>
+																				</div>
+																				<div class="col-lg-12"  id="myDIV"  style="display: none">
+																					<br>
+																					<div class="col-lg-6">
+																						<div id="">
+																							<label>เลือกไฟล์ที่ต้องการอัพโหลด</label>
+																							<input type="file" class="form-control" id="file2" name="other_instruction_2" accept="image/*, application/pdf">
+																						</div>
+																					</div>
+																					<div class="col-lg-6">
+																						<div id="">
+																							<label>เลือกไฟล์ที่ต้องการอัพโหลด</label>
+																							<input type="file" class="form-control" id="file3" name="other_instruction_3" accept="image/*, application/pdf">
+																						</div>
+																					</div>
+																					<div class="col-lg-6">
+																						<div id="">
+																							<label>เลือกไฟล์ที่ต้องการอัพโหลด</label>
+																							<input type="file" class="form-control" id="file4" name="other_instruction_4" accept="image/*, application/pdf">
+																						</div>
+																					</div>
+																					<div class="col-lg-6">
+																						<div id="">
+																							<label>เลือกไฟล์ที่ต้องการอัพโหลด</label>
+																							<input type="file" class="form-control" id="file5" name="other_instruction_5" accept="image/*, application/pdf">
 																						</div>
 																					</div>
 																				</div>
 																			</div>
 																		</div>
 																	</div>
+																</div>
+																{{-- <div class="col-md-12">
+																		<div>
+																			<table class="maintable">
+																					<thead>
+																					<tr>
+																						<th>
+																							<font style="color:red;">*</font> เลือกไฟล์ที่ต้องการอัพโหลด
+																						</th>
+																						<th>
+																						</th>
+																						</tr>
+																				</thead>
+																				<tbody>
+																					<tr class="data-contact-person">
+																						<td>
+																							<input type="file" class="form-control" id="file1" name="other_instruction_1" accept="image/*, application/pdf">
+																						</td>
+																						<td>
+																						<button type="button" id="btnAdd" class="btn btn-primary classAdd">เพิ่มไฟล์ที่ต้องการอัพโหลด</button>
+																						</td>
+																					</tr>
+																				</tbody>
+																			</table>
+																		</div>
+																		<!-- /.box -->
+																	</div> --}}
 																</div>
 																<div class="box-footer">
 																	{{-- คอรั่มภายใน3.2 --}}
@@ -278,6 +343,6 @@
 				</div>
 	</form>
 </section>
-
 <!-- /.content -->
+
 @stop

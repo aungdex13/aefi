@@ -406,7 +406,7 @@
 
 </script>
 <script>
-var uploadField = document.getElementById("file");
+var uploadField = document.getElementById("file1");
 
 uploadField.onchange = function() {
     if(this.files[0].size > 2000000){
@@ -414,23 +414,63 @@ uploadField.onchange = function() {
        this.value = "";
     };
 };
+var uploadField = document.getElementById("file2");
+
+uploadField.onchange = function() {
+    if(this.files[0].size > 2000000){
+       alert("ไฟล์ที่เลือกมีขนาดใหญ่เกินไป กรุณาเลือกไฟล์ที่มีขนาดไม่เกิน 2 MB");
+       this.value = "";
+    };
+};
+var uploadField = document.getElementById("file3");
+
+uploadField.onchange = function() {
+    if(this.files[0].size > 2000000){
+       alert("ไฟล์ที่เลือกมีขนาดใหญ่เกินไป กรุณาเลือกไฟล์ที่มีขนาดไม่เกิน 2 MB");
+       this.value = "";
+    };
+};
+var uploadField = document.getElementById("file4");
+
+uploadField.onchange = function() {
+    if(this.files[0].size > 2000000){
+       alert("ไฟล์ที่เลือกมีขนาดใหญ่เกินไป กรุณาเลือกไฟล์ที่มีขนาดไม่เกิน 2 MB");
+       this.value = "";
+    };
+};
+var uploadField = document.getElementById("file5");
+
+uploadField.onchange = function() {
+    if(this.files[0].size > 2000000){
+       alert("ไฟล์ที่เลือกมีขนาดใหญ่เกินไป กรุณาเลือกไฟล์ที่มีขนาดไม่เกิน 2 MB");
+       this.value = "";
+    };
+};
+function myFunctionhd() {
+  var x = document.getElementById("myDIV");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
 </script>
 {{-- content table --}}
 {{-- <script type="text/javascript">
-$(document).ready(function () {
-$(document).on("click", ".classAdd", function () { //
-	var rowCount = $('.data-contact-person').length + 1;
-	var contactdiv = '<tr class="data-contact-person">' +
-						'<td><input type="text" id="name_vac' + rowCount + '" name="name_vac[]' + rowCount + '"  class="form-control  name_vac01" onkeyup="autocomplet()" />' +
-						'<td><input type="text" id="recive_amount' + rowCount + '" name="recive_amount[]' + rowCount + '"  class="form-control  recive_amount01" onkeyup="autocomplet()" />' +
-						'<td><button type="button" id="btnAdd" class="btn btn-xs btn-primary classAdd">Add More</button>' +
-						'<button type="button" id="btnDelete" class="deleteContact btn btn btn-danger btn-xs">Remove</button></td>' +
-					'</tr>';
-	$('#maintable').append(contactdiv); // Adding these controls to Main table class
-});
-$(document).on("click", ".deleteContact", function () {
-	$(this).closest("tr").remove(); // closest used to remove the respective 'tr' in which I have my controls
-});
-});
-
+  $(document).ready(function() {
+    $(document).on("click", ".classAdd", function() { //
+      var rowCount = $('.data-contact-person').length + 1;
+      var contactdiv = '<tr class="data-contact-person">' +
+        '<td>' +
+        '<input  type="file" class="form-control" id="file' + rowCount + '" name="other_instruction_' + rowCount + '" accept="image/*, application/pdf">' +
+        '</td>' +
+        '<td><button type="button" id="btnAdd" class="btn btn-primary classAdd">เพิ่มไฟล์ที่ต้องการอัพโหลด</button>' +
+        '<button type="button" id="btnDelete" class="deleteContact btn btn-danger">ลบไฟล์ที่เลือก</button></td>' +
+        '</tr>';
+      $('.maintable').append(contactdiv);
+    });
+    $(document).on("click", ".deleteContact", function() {
+      $(this).closest("tr").remove();
+    });
+  });
 </script> --}}

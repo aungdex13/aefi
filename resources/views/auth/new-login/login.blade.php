@@ -77,7 +77,7 @@
             <img src="{{ asset('asset/dist/img/d2.jpg') }}" style="width:100%">
             {{-- <img src="/w3images/nature.jpg" alt="Nature" style="width:100%"> --}}
             <div class="caption">
-              <p>แบบสอบสวนอาการภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรค (AEFI1)</br></br></p>
+              <p>แบบรายงานอาการภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรค (AEFI1)</br></br></p>
             </div>
           </a>
         </div>
@@ -111,6 +111,18 @@
             {{-- <img src="/w3images/nature.jpg" alt="Nature" style="width:100%"> --}}
             <div class="caption">
               <p>แนวทางการให้วัคซีน โควิด 19 ในสถสนการณ์การระบาดปี64 ของประเทศไทย</p>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="thumbnail">
+          <a href="https://apps.doe.moph.go.th/boe/software/file/ISRR_25Apr2021.pdf" target="_blank">
+            <img src="{{ asset('asset/dist/img/d6.jpg') }}" style="width:100%">
+            {{-- <img src="/w3images/nature.jpg" alt="Nature" style="width:100%"> --}}
+            <div class="caption">
+              <p>แนวทางปฏิบัติสำหรับอาการไม่พึงประสงค์หลังการได้รับวัคซีนป้องกันโรค
+  กรณีปฏิกิริยาที่สัมพันธ์กับ ความเครียดจากการฉีดวัคซีน กลุ่มอาการคล้ายภาวะหลอดเลือดสมอง</p>
             </div>
           </a>
         </div>

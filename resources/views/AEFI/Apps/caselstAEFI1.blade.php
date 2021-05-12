@@ -2,18 +2,18 @@
 @section('content')
 <section class="content-header">
   <!-- Content Header (Page header) -->
-  <?php
-$arr_history_of_vaccine = load_history_of_vaccine();
-$arr_patient_develop_symptoms_after_previous_vaccination = load_patient_develop_symptoms_after_previous_vaccination();
-$arr_underlying_disease = load_underlying_disease();
-$arr_vaccine_volume = load_vaccine_volume();
-$arr_route_of_vaccination = load_route_of_vaccination();
-$arr_vaccination_site = load_vaccination_site();
-$arr_manufacturer = load_manufacturer();
-$arr_load_nationality = load_nationality();
-$arr_necessary_to_investigate = load_necessary_to_investigate();
-
-//dd($data);
+<?php
+    $arr_history_of_vaccine = load_history_of_vaccine();
+    $arr_patient_develop_symptoms_after_previous_vaccination = load_patient_develop_symptoms_after_previous_vaccination();
+    $arr_underlying_disease = load_underlying_disease();
+    $arr_vaccine_volume = load_vaccine_volume();
+    $arr_route_of_vaccination = load_route_of_vaccination();
+    $arr_vaccination_site = load_vaccination_site();
+    $arr_manufacturer = load_manufacturer();
+    $arr_load_nationality = load_nationality();
+    $arr_necessary_to_investigate = load_necessary_to_investigate();
+    $arr_vac_init = load_vac_init();
+    //dd($data);
  ?>
   <h1>
     รายชื่อผู้มีอาการภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรค
@@ -44,6 +44,8 @@ $arr_necessary_to_investigate = load_necessary_to_investigate();
         <table class="table table-bordered" id="case_lst" class="display" style="width:100%">
           <thead>
             <tr>
+              <th hidden>ID</th>
+              <th>ID</th>
               <th>เลขที่ผู้ป่วย HN</th>
               <th>เลขที่ผู้ป่วย AN</th>
               <th>ชื่อ-นามสกุลผู้ป่วย</th>
@@ -58,6 +60,9 @@ $arr_necessary_to_investigate = load_necessary_to_investigate();
           <tr class="data-contact-person">
             <td hidden>
               <p style="text-align:center;">{{ isset($value->id) ? $value->id : "-"}}</p>
+            </td>
+            <td>
+              <p style="text-align:center;">{{date('Y',strtotime(isset($value->date_of_symptoms) ? $value->date_of_symptoms : "-"))}}-{{str_pad( isset($value->name_of_vaccine) ? $value->name_of_vaccine : "NULL", 2, '0', STR_PAD_LEFT)}}-{{$value->id}}</p>
             </td>
             <td>
               <p style="text-align:center;">{{ isset($value->hn) ? $value->hn : "-"}}</p>
@@ -83,15 +88,19 @@ $arr_necessary_to_investigate = load_necessary_to_investigate();
             <td>
               <div class="btn-group">
                 <button type="button" class="btn btn-info" data-toggle="dropdown">เมนูการใช้งาน</button>
-                <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
-                  <span class="caret"></span>
+                {{-- <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"> --}}
+                  {{-- <span class="caret"></span>
                   <span class="sr-only">Toggle Dropdown</span>
-                </button>
+                </button> --}}
                 <ul class="dropdown-menu" role="menu">
-                  <li><a href="{{ route('lstf2') }}?id_case={{ $value->id_case }}"><i class="fa fa-file-o" aria-hidden="true"></i>กรอก AEFI2</a></li>
-                  <li><a href="{{ route('viewform1') }}?id_case={{ $value->id_case }}" target="_blank"><i class="fa fa-eye" aria-hidden="true"></i>ดูข้อมูล AEFI1</a></li>
-                  <li><a href="{{ route('EditAEFI1') }}?id_case={{ $value->id_case }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>แก้ไขข้อมูล</a></li>
-                  <li><a href="{{ route('deleteAEFI1') }}?id_case={{ $value->id_case }}" id="btnDelete" type="button" onclick="return confirm('ต้องการลบข้อมูล ใช่หรือไม่?');"><i class="fa  fa-trash-o" aria-hidden="true"></i>ลบข้อมูล</a></li>
+                  <li><a href="{{ route('lstf2') }}?id_case={{ $value->id_case }}"><i class="fa fa-file-o" aria-hidden="true" style="color:#428bca;"></i>กรอก AEFI2</a></li>
+                  <li><a href="{{ route('viewform1') }}?id_case={{ $value->id_case }}" target="_blank"><i class="fa fa-eye" aria-hidden="true" style="color:#5cb85c;"></i>ดูข้อมูล AEFI1</a></li>
+                  <li><a href="{{ route('EditAEFI1') }}?id_case={{ $value->id_case }}"><i class="fa fa-pencil-square-o" aria-hidden="true" style="color:#5bc0de;"></i>แก้ไขข้อมูล</a></li>
+                  <li><a href="#"><i class="fa fa-ambulance" aria-hidden="true" style="color:#e6c34a;"></i>Refer ผู้ป่วย</a></li>
+                  @hasrole('admin')
+                  <li><a href="{{ route('ExpertDiagLst') }}?id_case={{ $value->id_case }}"><i class="fa fa-user-circle-o" aria-hidden="true" style="color:#f46732;"></i>การประชุม<br>ผู้เชี่ยวชาญ</a></li>
+                  @endhasrole
+                  <li><a href="{{ route('deleteAEFI1') }}?id_case={{ $value->id_case }}" id="btnDelete" type="button" onclick="return confirm('ต้องการลบข้อมูล ใช่หรือไม่?');"><i class="fa  fa-trash-o" aria-hidden="true" style="color:#d9534f;"></i>ลบข้อมูล</a></li>
                 </ul>
               </div>
             </td>

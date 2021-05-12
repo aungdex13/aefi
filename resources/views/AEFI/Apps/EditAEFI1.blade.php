@@ -2113,7 +2113,13 @@ foreach ($aecode as $value) {
                       </div>
                     </div>
                     <div class="col-lg-4">
-                      <label>สถานที่เกิดเหตุการณ์ :</label><input type="text" id="event_location" name="event_location" class="form-control" value="{{$data[0]->event_location}}">
+                      <label>โรงพยาบาลที่รับรักษา :</label>
+                      <select id="js-example-basic-single" name="hospcode_treat" class="js-example-basic-single form-control" data-dropdown-css-class="select2-danger" required>
+                        <option class="badge filter badge-info" data-color="info" value="{{$data[0]->hospcode_treat}}">
+                          {{ isset($list_hos[$data[0]->hospcode_treat]) ? $list_hos[$data[0]->hospcode_treat]:"ไม่ระบุข้อมูล"}}
+                        </option>
+                      </select>
+                      {{-- <input type="text" id="event_location" name="event_location" class="form-control" placeholder="สถานที่เกิดเหตุการณ์"> --}}
                     </div>
                     <div class="col-lg-4">
                       <label>จังหวัด :</label>
@@ -2122,7 +2128,6 @@ foreach ($aecode as $value) {
                           {{ isset($listProvince[$data[0]->province_found_event]) ? $listProvince[$data[0]->province_found_event]:"ไม่ระบุข้อมูล"}}</option>
                         <?php
 												  foreach ($arr_provinces as $k=>$v) { ?>
-
                         <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
                         <?php } ?>
                       </select>
@@ -2537,7 +2542,40 @@ $(function(){
     $(document).on("click", ".deleteContact", function() {
       $(this).closest("tr").remove(); // closest used to remove the respective 'tr' in which I have my controls
     });
-
+    $(".js-example-basic-single").select2({
+      allowClear: true,
+      language: {
+      inputTooShort: function (args) {
+          return "กรุณาพิมพ์คำค้นหาอย่างน้อย 3 ตัวอักษร";
+      },
+      noResults: function () {
+          return "ไม่พบข้อมูล";
+      },
+      searching: function () {
+          return "กำลังค้นหาข้อมูล...";
+      }
+      },
+      placeholder: "กรุณาพิมพ์ชื่อหน่วยงานที่ต้องการ เช่น. สคร.1,โรงพยาบาลเลิดสิน,สำนักงานสาธารณสุขจังหวัดสมุทรปราการ",
+      minimumInputLength: 3,
+      minimumResultsForSearch: 5,
+      ajax: {
+       url: "{{ route('list-division-json') }}",
+       type: "GET",
+       dataType: 'json',
+       delay: 250,
+       data: function (params) {
+        return {
+          searchTerm: params.term // search term
+        };
+       },
+       processResults: function (response) {
+         return {
+            results: response
+         };
+       },
+       cache: true
+      }
+    });
   });
 </script>
 @stop

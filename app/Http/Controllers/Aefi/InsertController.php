@@ -17,24 +17,26 @@
 
 		public function insertform1(Request $req)
 	 	{
-	// 		$name_of_vaccine=$req ->input('name_of_vaccine');
- 	// 	 $route_of_vaccination =$req ->input('route_of_vaccination');
- 	// 	 $vaccine_volume =$req ->input('vaccine_volume');
- 	// 	 // var_dump($memberteam);
- 	// 	 // exit;
- 	// 	 // $date_entry =date('Y-m-d') ;
-  // $x=0;
- 	// 	 for ($i=0; $i < count($name_of_vaccine); $i++) {
- 	// 		 $data_member[]  = [
- 	// 								// 'no'=>$team_id[$i],
- 	// 							 'name_of_vaccine' => $name_of_vaccine[$i],
- 	// 							 'route_of_vaccination' => $route_of_vaccination[$i],
- 	// 							 'vaccine_volume' => $vaccine_volume[$i],
- 	// 						 ];
- 	// 						 $x++;
- 	// 					 }
- 	//  // $res3 = print_r($data_member);
- 	// 	 dd($data_member);
+		$arr_vac_init = load_vac_init();
+		$listvac_arr = $this->listvac_arr();
+		$yearnow_c =  now()->year;
+		$yearnow =  now()->year+543;
+		$name_of_vaccine = $req->input('name_of_vaccine');
+		$vac_name_init = (isset($arr_vac_init[$name_of_vaccine[0]]) ? $arr_vac_init[$name_of_vaccine[0]]  : 'NULL' );
+		$id_vac_patient =DB::table('aefi_form_1')
+            ->join('aefi_form_1_vac', 'aefi_form_1.id_case', '=', 'aefi_form_1_vac.id_case')
+            ->select(DB::raw('ROW_NUMBER() OVER (Order by aefi_form_1.id) AS RowNumber'),'aefi_form_1.id_case', 'aefi_form_1.id' , 'aefi_form_1_vac.name_of_vaccine')
+						->whereYear('aefi_form_1_vac.date_of_vaccination', '=', "$yearnow_c")
+						->where('aefi_form_1_vac.name_of_vaccine', '=', $name_of_vaccine[0])
+						// ->where('aefi_form_1.status', '=', null)
+						->groupBy('aefi_form_1_vac.id_case')
+						->orderBy('aefi_form_1.id', 'DESC')
+						->limit(1)
+            ->get();
+		 // dd($id_vac_patient);
+		$max_vac_pid = 	$id_vac_patient[0]->RowNumber+1;
+		$case_vac_id = $yearnow.'-'.$vac_name_init.'-'.str_pad($max_vac_pid, 6, '0', STR_PAD_LEFT);
+		// dd($case_vac_id);
 		$id_case = (isset($_POST['id_case'])) ? $_POST['id_case'] : '0';
 		$hn = $req ->input ('hn');
 		$an = $req ->input ('an');
@@ -171,6 +173,7 @@
 		$user_provcode = $req ->input ('user_provcode');
 		$user_region = $req ->input ('user_region');
 		$gbs = $req ->input ('gbs');
+		$hospcode_treat = $req ->input ('hospcode_treat');
 		$data = array(
 			'id_case'=>$id_case,
 			'hn'=>$hn,
@@ -304,7 +307,9 @@
 			'user_hospcode'=>$user_hospcode,
 			'user_provcode'=>$user_provcode,
 			'user_region'=>$user_region,
-			'gbs'=>$gbs
+			'gbs'=>$gbs,
+			'case_vac_id'=>$case_vac_id,
+			'hospcode_treat'=>$hospcode_treat
 		);
 	// echo($data);
 	  $res1	= DB::table('aefi_form_1')->insert($data);
@@ -365,22 +370,70 @@ $x=0;
 public function insertform2(Request $req2)
 {
 	$file1=	$req2->file('other_instruction_1');
+	$file2=	$req2->file('other_instruction_2');
+	$file3=	$req2->file('other_instruction_3');
+	$file4=	$req2->file('other_instruction_4');
+	$file5=	$req2->file('other_instruction_5');
 	$id_case=$req2->input('id_case');
 	$user_id=$req2->input('user_id');
-	// dd($file1,$id_case,$user_id);
-
+	dd($file1,$file2,$file3,$file4,$file5);
 	if ($file1 != null) {
 			$path1 = Storage::putFile('file_upload', $file1);
 			$filename=$file1->getClientOriginalName();
 			$filenamegenerate1=str_replace("file_upload/" ,"", $path1);
 			$file_type=strstr($filename, ".");
 			$path = $path1;
-		}else {
-			$filename=null;
-			$filenamegenerate1=null;
-			$file_type=null;
-			$path =null;
+			$user_id = (isset($_POST['user_id'])) ? $_POST['user_id'] : null;
+			$title_file_name = "เอกสาร AEFI2";
+			$file_name = $filenamegenerate1;
+			$originalfilename = $filename;
+			$status = '1';
+			$status_on_date_inv_1 = $req2->input('status_on_date_inv_1');
+			$other_status_on_date_inv_1 = $req2->input('other_status_on_date_inv_1');
+			$instruction_1 = $req2->input('instruction_1');
+			$record_name = $req2->input('record_name');
+			$record_position = $req2->input('record_position');
+			$record_division = $req2->input('record_division');
+			$record_tel = $req2->input('record_tel');
+			$record_date = $req2->input('record_date');
+			$date_entry = date('Y-m-d');
+			$user_username = $req2 ->input ('user_username');
+			$user_hospcode = $req2 ->input ('user_hospcode');
+			$user_provcode = $req2 ->input ('user_provcode');
+			$user_region = $req2 ->input ('user_region');
+			$date_update = date('Y-m-d');
+					$data = array(
+						'user_id' => $user_id,
+						'id_case' => $id_case,
+						'title_file_name' => $title_file_name,
+						'file_name' => $file_name,
+						'file_type' => $file_type,
+						'originalfilename' => $originalfilename,
+						'path' => $path,
+						'status' => $status,
+						'date_entry' => $date_entry,
+						'date_update' => $date_update,
+						'status_on_date_inv_1' => $status_on_date_inv_1,
+						'other_status_on_date_inv_1' => $other_status_on_date_inv_1,
+						'instruction_1' => $instruction_1,
+						'record_name' => $record_name,
+						'record_position' => $record_position,
+						'record_division' => $record_division,
+						'record_tel' => $record_tel,
+						'record_date' => $record_date,
+						'user_username'=>$user_username,
+						'user_hospcode'=>$user_hospcode,
+						'user_provcode'=>$user_provcode,
+						'user_region'=>$user_region
+				);
+			$res1	= DB::table('aefi_form_2')->insert($data);
 		}
+	if ($file2 != null) {
+			$path1 = Storage::putFile('file_upload', $file2);
+			$filename=$file2->getClientOriginalName();
+			$filenamegenerate1=str_replace("file_upload/" ,"", $path1);
+			$file_type=strstr($filename, ".");
+			$path = $path1;
 			$user_id = (isset($_POST['user_id'])) ? $_POST['user_id'] : null;
 			$title_file_name = "เอกสาร AEFI2";
 			$file_name = $filenamegenerate1;
@@ -426,7 +479,161 @@ public function insertform2(Request $req2)
 				);
 				// dd($data);
 			$res1	= DB::table('aefi_form_2')->insert($data);
-			if ($res1) {
+		}
+	if ($file3 != null) {
+			$path1 = Storage::putFile('file_upload', $file3);
+			$filename=$file3->getClientOriginalName();
+			$filenamegenerate1=str_replace("file_upload/" ,"", $path1);
+			$file_type=strstr($filename, ".");
+			$path = $path1;
+			$user_id = (isset($_POST['user_id'])) ? $_POST['user_id'] : null;
+			$title_file_name = "เอกสาร AEFI2";
+			$file_name = $filenamegenerate1;
+			$originalfilename = $filename;
+			$status = '1';
+			$status_on_date_inv_1 = $req2->input('status_on_date_inv_1');
+			$other_status_on_date_inv_1 = $req2->input('other_status_on_date_inv_1');
+			$instruction_1 = $req2->input('instruction_1');
+			$record_name = $req2->input('record_name');
+			$record_position = $req2->input('record_position');
+			$record_division = $req2->input('record_division');
+			$record_tel = $req2->input('record_tel');
+			$record_date = $req2->input('record_date');
+			$date_entry = date('Y-m-d');
+			$user_username = $req2 ->input ('user_username');
+			$user_hospcode = $req2 ->input ('user_hospcode');
+			$user_provcode = $req2 ->input ('user_provcode');
+			$user_region = $req2 ->input ('user_region');
+			$date_update = date('Y-m-d');
+					$data = array(
+						'user_id' => $user_id,
+						'id_case' => $id_case,
+						'title_file_name' => $title_file_name,
+						'file_name' => $file_name,
+						'file_type' => $file_type,
+						'originalfilename' => $originalfilename,
+						'path' => $path,
+						'status' => $status,
+						'date_entry' => $date_entry,
+						'date_update' => $date_update,
+						'status_on_date_inv_1' => $status_on_date_inv_1,
+						'other_status_on_date_inv_1' => $other_status_on_date_inv_1,
+						'instruction_1' => $instruction_1,
+						'record_name' => $record_name,
+						'record_position' => $record_position,
+						'record_division' => $record_division,
+						'record_tel' => $record_tel,
+						'record_date' => $record_date,
+						'user_username'=>$user_username,
+						'user_hospcode'=>$user_hospcode,
+						'user_provcode'=>$user_provcode,
+						'user_region'=>$user_region
+				);
+				// dd($data);
+			$res1	= DB::table('aefi_form_2')->insert($data);
+		}
+	if ($file4 != null) {
+			$path1 = Storage::putFile('file_upload', $file4);
+			$filename=$file4->getClientOriginalName();
+			$filenamegenerate1=str_replace("file_upload/" ,"", $path1);
+			$file_type=strstr($filename, ".");
+			$path = $path1;
+			$user_id = (isset($_POST['user_id'])) ? $_POST['user_id'] : null;
+			$title_file_name = "เอกสาร AEFI2";
+			$file_name = $filenamegenerate1;
+			$originalfilename = $filename;
+			$status = '1';
+			$status_on_date_inv_1 = $req2->input('status_on_date_inv_1');
+			$other_status_on_date_inv_1 = $req2->input('other_status_on_date_inv_1');
+			$instruction_1 = $req2->input('instruction_1');
+			$record_name = $req2->input('record_name');
+			$record_position = $req2->input('record_position');
+			$record_division = $req2->input('record_division');
+			$record_tel = $req2->input('record_tel');
+			$record_date = $req2->input('record_date');
+			$date_entry = date('Y-m-d');
+			$user_username = $req2 ->input ('user_username');
+			$user_hospcode = $req2 ->input ('user_hospcode');
+			$user_provcode = $req2 ->input ('user_provcode');
+			$user_region = $req2 ->input ('user_region');
+			$date_update = date('Y-m-d');
+					$data = array(
+						'user_id' => $user_id,
+						'id_case' => $id_case,
+						'title_file_name' => $title_file_name,
+						'file_name' => $file_name,
+						'file_type' => $file_type,
+						'originalfilename' => $originalfilename,
+						'path' => $path,
+						'status' => $status,
+						'date_entry' => $date_entry,
+						'date_update' => $date_update,
+						'status_on_date_inv_1' => $status_on_date_inv_1,
+						'other_status_on_date_inv_1' => $other_status_on_date_inv_1,
+						'instruction_1' => $instruction_1,
+						'record_name' => $record_name,
+						'record_position' => $record_position,
+						'record_division' => $record_division,
+						'record_tel' => $record_tel,
+						'record_date' => $record_date,
+						'user_username'=>$user_username,
+						'user_hospcode'=>$user_hospcode,
+						'user_provcode'=>$user_provcode,
+						'user_region'=>$user_region
+				);
+				// dd($data);
+			$res1	= DB::table('aefi_form_2')->insert($data);
+		}else{
+		$filename=null;
+		$filenamegenerate1=null;
+		$file_type=null;
+		$path =null;
+		$user_id = (isset($_POST['user_id'])) ? $_POST['user_id'] : null;
+		$title_file_name = "เอกสาร AEFI2";
+		$file_name = $filenamegenerate1;
+		$originalfilename = $filename;
+		$status = '1';
+		$status_on_date_inv_1 = $req2->input('status_on_date_inv_1');
+		$other_status_on_date_inv_1 = $req2->input('other_status_on_date_inv_1');
+		$instruction_1 = $req2->input('instruction_1');
+		$record_name = $req2->input('record_name');
+		$record_position = $req2->input('record_position');
+		$record_division = $req2->input('record_division');
+		$record_tel = $req2->input('record_tel');
+		$record_date = $req2->input('record_date');
+		$date_entry = date('Y-m-d');
+		$user_username = $req2 ->input ('user_username');
+		$user_hospcode = $req2 ->input ('user_hospcode');
+		$user_provcode = $req2 ->input ('user_provcode');
+		$user_region = $req2 ->input ('user_region');
+		$date_update = date('Y-m-d');
+				$data = array(
+					'user_id' => $user_id,
+					'id_case' => $id_case,
+					'title_file_name' => $title_file_name,
+					'file_name' => $file_name,
+					'file_type' => $file_type,
+					'originalfilename' => $originalfilename,
+					'path' => $path,
+					'status' => $status,
+					'date_entry' => $date_entry,
+					'date_update' => $date_update,
+					'status_on_date_inv_1' => $status_on_date_inv_1,
+					'other_status_on_date_inv_1' => $other_status_on_date_inv_1,
+					'instruction_1' => $instruction_1,
+					'record_name' => $record_name,
+					'record_position' => $record_position,
+					'record_division' => $record_division,
+					'record_tel' => $record_tel,
+					'record_date' => $record_date,
+					'user_username'=>$user_username,
+					'user_hospcode'=>$user_hospcode,
+					'user_provcode'=>$user_provcode,
+					'user_region'=>$user_region
+			);
+			// dd($data);
+		$res1	= DB::table('aefi_form_2')->insert($data);
+	}	if ($res1) {
 				$msg = " ส่งข้อมูลสำเร็จ";
 				$url_rediect = "<script>alert('".$msg."'); window.location='lstf2?id_case=$id_case';</script> ";
 			}else{
@@ -434,5 +641,13 @@ public function insertform2(Request $req2)
 				$url_rediect = "<script>alert('".$msg."'); window.location='form2?id_case=$id_case';</script> ";
 						}
 				echo $url_rediect;
+}
+protected function listvac_arr(){
+	$arr_vac = DB::table('vac_tbl')->select('VAC_CODE','VAC_NAME_EN')->get();
+	foreach ($arr_vac as  $value) {
+		$arr_vac[$value->VAC_CODE] =trim($value->VAC_NAME_EN);
+	}
+	// dd($province_arr);
+	return $arr_vac;
 }
 }
