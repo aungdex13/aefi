@@ -40,7 +40,9 @@
 
 		$selectcaselstF1 = DB::table('aefi_form_1')
 		->join('aefi_form_1_vac', 'aefi_form_1.id_case', '=', 'aefi_form_1_vac.id_case')
+		->leftjoin('aefi_form_2', 'aefi_form_1.id_case', '=', 'aefi_form_2.id_case')
 		->select(	'aefi_form_1.id',
+							'aefi_form_2.id_case as aefi2',
 							'aefi_form_1.id_case',
 							'aefi_form_1.hn',
 							'aefi_form_1.an',
@@ -65,8 +67,8 @@
 				case 'hospital':
 					// dd("p;p");
 					$caselstF1  = $selectcaselstF1
-									->Where('user_hospcode',"=",$roleArrhospcode)
-									->orWhere('hospcode_treat',"=",$roleArrhospcode)
+									->Where('aefi_form_1.user_hospcode',"=",$roleArrhospcode)
+									->orWhere('aefi_form_1.hospcode_treat',"=",$roleArrhospcode)
 									->whereNull('aefi_form_1.status')
 									->groupBy('aefi_form_1.id_case')
 									->get();

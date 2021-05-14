@@ -417,7 +417,7 @@ foreach ($aecode as $value) {
                         <div class="row">
                           <div class="col-lg-3">
                             <label>
-                               อาชีพ:
+                               <font style="color:red;">*</font>อาชีพ:
                             </label>
                           </div>
                           <div class="col-lg-6">
@@ -425,7 +425,7 @@ foreach ($aecode as $value) {
                               <div class="input-group-addon">
                                 {{-- <i class="fa fa-calendar"></i> --}}
                               </div>
-                              <input type="text" name="career" class="form-control" id="career" placeholder="อาชีพ" >
+                              <input type="text" name="career" class="form-control" id="career" placeholder="อาชีพ" required>
                             </div>
                           </div>
                         </div>
@@ -1786,7 +1786,9 @@ foreach ($aecode as $value) {
                         <div class="form-group">
                           <div class="row">
                             <div class="col-lg-4">
-                              <label>หน่วยที่รายงาน :</label><input type="text" id="unit_reported" name="unit_reported" class="form-control" placeholder="หน่วยที่รายงาน">
+                              <label>หน่วยที่รายงาน :</label>
+                              <select id="js-example-basic-single" name="hospcode_report" class="js-example-basic-single form-control" data-dropdown-css-class="select2-danger" required>
+                              </select>
                             </div>
                             <div class="col-lg-4">
                               <label>จังหวัด :</label>

@@ -17,6 +17,9 @@ class DataexportController extends Controller
 	}
 
 	public function dataexport(){
+		$cabonnow =  Carbon::now();
+		$datenow = $cabonnow->toDateString();
+		// dd($datenow);
 		$yearnow =  now()->year;
 		$roleArrusername = auth()->user()->username;
 		$roleArrhospcode = auth()->user()->hospcode;
@@ -33,8 +36,8 @@ class DataexportController extends Controller
 				 		 GROUP_CONCAT( aefi_form_1_vac.dose  ) as "dose",
 				 		 GROUP_CONCAT( aefi_form_1_vac.date_of_vaccination   ) as "date_of_vaccination",
 				 		 GROUP_CONCAT( aefi_form_1_vac.time_of_vaccination   ) as "time_of_vaccination" ')
-					 );
-		 // ->whereYear('aefi_form_1.date_of_symptoms','=',$yearnow);
+					 )
+					 ->whereDate('aefi_form_1.date_entry',$datenow);
 		if (count($roleArr) > 0) {
 			 $user_role = $roleArr[0];
 		 switch ($user_role) {
@@ -74,6 +77,7 @@ class DataexportController extends Controller
 						 break;
 						 case 'admin':
 							 $selectdata = $selectcaselstF1
+
 							 ->whereNull('aefi_form_1.status')
 							 ->groupBy('aefi_form_1.id_case')
 							 ->get()->toArray();
@@ -93,7 +97,8 @@ class DataexportController extends Controller
 				'listDistrict'=>$listDistrict,
 				'listProvince'=>$listProvince,
 				'listvac_arr'=>$listvac_arr,
-				'yearnow'=>$yearnow
+				'yearnow'=>$yearnow,
+				'datenow'=>$datenow
 			]);
 	}
 
@@ -103,7 +108,13 @@ class DataexportController extends Controller
 		$roleArrprov_code = auth()->user()->prov_code;
 		$roleArrregion = auth()->user()->region;
 		$roleArr = auth()->user()->getRoleNames()->toArray();
-		$date_of_symptoms = $req->input('date_of_symptoms');
+		$date_of_symptoms_in = $req->input('date_of_symptoms');
+		$date_of_symptoms = explode('-', $date_of_symptoms_in);
+		$date_of_symptoms_from = $date_of_symptoms[0]."-".$date_of_symptoms[1]."-".$date_of_symptoms[2];
+		$date_of_symptoms_to = $date_of_symptoms[3]."-".$date_of_symptoms[4]."-".$date_of_symptoms[5];
+		$cabonnow =  Carbon::now();
+		$datenow = $cabonnow->toDateString();
+		 // dd($date_of_symptoms_from,$date_of_symptoms_to);
 		$selectcaselstF1=DB::table('aefi_form_1')
 		->join('aefi_form_1_vac', 'aefi_form_1.id_case', '=', 'aefi_form_1_vac.id_case')
 		->select('aefi_form_1.*',
@@ -113,8 +124,11 @@ class DataexportController extends Controller
 				 		 GROUP_CONCAT( aefi_form_1_vac.dose  ) as "dose",
 				 		 GROUP_CONCAT( aefi_form_1_vac.date_of_vaccination   ) as "date_of_vaccination",
 				 		 GROUP_CONCAT( aefi_form_1_vac.time_of_vaccination   ) as "time_of_vaccination" ')
-						)
-		->whereYear('date_of_symptoms','=',$date_of_symptoms);
+					 )
+					  // ->where('aefi_form_1.date_of_symptoms','=',2021-04-30);
+						->whereDate('aefi_form_1.date_entry', '>=', $date_of_symptoms_from)
+						->whereDate('aefi_form_1.date_entry', '<=', $date_of_symptoms_to);
+						// ->whereBetween('date_of_symptoms', [$date_of_symptoms_from, $date_of_symptoms_to]);
 		// dd($selectcaselstF1);
 		if (count($roleArr) > 0) {
 			 $user_role = $roleArr[0];
@@ -164,6 +178,7 @@ class DataexportController extends Controller
 			 break;
 	 }
 	}
+	// dd($selectdata);
 		 $listProvince=$this->listProvince();
 		 $listDistrict=$this->listDistrict();
 		 $listsubdistrict=$this->listsubdistrict();
@@ -174,7 +189,10 @@ class DataexportController extends Controller
 				'listsubdistrict'=>$listsubdistrict,
 				'listDistrict'=>$listDistrict,
 				'listProvince'=>$listProvince,
-				'listvac_arr'=>$listvac_arr
+				'listvac_arr'=>$listvac_arr,
+				'date_of_symptoms_from'=>$date_of_symptoms_from,
+				'date_of_symptoms_to'=>$date_of_symptoms_to,
+				'datenow'=>$datenow
 			]);
 	}
 

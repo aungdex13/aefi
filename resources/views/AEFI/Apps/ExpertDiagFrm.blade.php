@@ -115,7 +115,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
 																				</div>
 																			</div>
 																		</div>
-																		<div class="form-group">
+																		{{-- <div class="form-group">
 																			<div class="row">
 																				<div class="col-lg-3">
 																					<label>ST No. : </label>
@@ -130,7 +130,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
 																					<input type="text" name="record_position" class="form-control" placeholder="ระบุ GI">
 																				</div>
 																			</div>
-																		</div>
+																		</div> --}}
 																		<div class="form-group">
 																			<div class="row">
 																				<div class="col-lg-6">
@@ -158,7 +158,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
 																				</div>
 																			</div>
 																		</div>
-																		<div class="form-group">
+																		{{-- <div class="form-group">
 																			<div class="row">
 																				<div class="col-lg-3">
 																					<label>Respiratory : </label>
@@ -173,12 +173,12 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
 																						<input type="text" name="cardiovascular" class="form-control" placeholder="ระบุ Cardiovascular">
 																				</div>
 																			</div>
-																		</div>
+																		</div> --}}
 																		<div class="form-group">
 																			<div class="row">
 																				<div class="col-lg-6">
 																					<label>Final Diagnosis : </label>
-																					<select type="text" name="final_diag" class="form-control" name="r_o">
+																					<select type="text" name="final_diag" class="form-control">
 																						<option value="">กรุณาระบุ Final Diagnosis</option>
 																						<option value="1">Acute Coronary Syndrome</option>
 																						<option value="2">Acute myeloid leukemia</option>
@@ -210,7 +210,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
 																			<div class="row">
 																				<div class="col-lg-6">
 																					<label>Causality Assessment : </label>
-																					<select type="text" name="causality" class="form-control" name="r_o">
+																					<select type="text" name="causality" class="form-control" >
 																						<option value="">กรุณาระบุ Causality Assessment</option>
 																						<option value="1">Consistent causal association</option>
 																						<option value="2">Inconsistent causal association</option>
@@ -225,7 +225,19 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
 																		</div>
 																		<div class="form-group">
 																			<div class="row">
-																				<div class="col-lg-3">
+																				<div class="col-lg-6">
+																					<label>AEFI Classification : </label>
+																					<select type="text" name="aefi_classification" class="form-control" >
+																						<option value="">กรุณาระบุ AEFI Classificatio</option>
+																						<option value="1">ปฏิกิริยาของวัคซีน</option>
+																						<option value="2">ความบกพร่องของวัคซีน</option>
+																						<option value="3">ความคลาดเคลื่อนด้านการให้บริการ</option>
+																						<option value="4">ปฏิกริยาของร่างการตอบสนองต่อการฉีดวัคซีน</option>
+																						<option value="5">เหตุการณ์ร่วมโดยบังเอิญ</option>
+																					</select>
+																						{{-- <textarea rows="3"  type="text" name="past_history" class="form-control" placeholder="ระบุ Past History"></textarea> --}}
+																				</div>
+																				<div class="col-lg-6">
 																					<label>Expert Meeting : </label>
 																					<div class="input-group date">
 																						<div class="input-group-addon">
@@ -235,23 +247,23 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
 																						{{-- <input type="text" id="datepicker_record5" name="record_date" class="form-control" placeholder="ระบุวันที่บันทึกข้อมูล" data-date-format="yyyy-mm-dd"> --}}
 																					</div>
 																				</div>
-																				<div class="col-lg-3">
+																				{{-- <div class="col-lg-3">
 																					<label>Date_report : </label>
 																					<div class="input-group date">
 																						<div class="input-group-addon">
 																							<i class="fa fa-calendar"></i>
 																						</div>
 																						<input type="text" name="date_report" class="form-control pull-right" id="datepicker_investigater_3" data-date-format="yyyy-mm-dd" required readonly>
-																						{{-- <input type="text" id="datepicker_record5" name="record_date" class="form-control" placeholder="ระบุวันที่บันทึกข้อมูล" data-date-format="yyyy-mm-dd"> --}}
+																						<input type="text" id="datepicker_record5" name="record_date" class="form-control" placeholder="ระบุวันที่บันทึกข้อมูล" data-date-format="yyyy-mm-dd">
 																					</div>
-																				</div>
-																				<div class="col-lg-6">
+																				</div> --}}
+																				{{-- <div class="col-lg-6">
 																					<label>Past History : </label>
 																						<textarea rows="3"  type="text" name="past_history" class="form-control" placeholder="ระบุ Past History"></textarea>
-																				</div>
+																				</div> --}}
 																			</div>
 																		</div>
-																		<div class="form-group">
+																		{{-- <div class="form-group">
 																			<div class="row">
 																				<div class="col-lg-3">
 																					<label>keyin_AEFIDDC : </label>
@@ -266,7 +278,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
 																					<input type="text" name="reviewer" class="form-control" placeholder="ระบุ Reviewer">
 																				</div>
 																			</div>
-																		</div>
+																		</div> --}}
 																	</div>
 													{{-- </div> --}}
 												</div>

@@ -51,22 +51,21 @@ Route::get('/form1group', 'Aefi\Form1Controller@indexform1group')->name('form1gr
 Route::post('/form1/fetch', 'Aefi\AEFIController@fetch')->name('dropdown.fetch');
 Route::post('/form1/fetchD', 'Aefi\AEFIController@fetchD')->name('dropdown.fetchD');
 Route::get('/form2', 'Aefi\AEFIController@form2')->name('form2');
+
+// dashboard
 Route::get('/dashboard', 'Aefi\dashboardcontroller@dashboard')->name('dashboard');
-Route::post('/dashboard', 'Aefi\dashboardcontroller@dashboard')->name('dashboard');
+Route::post('/dashboard', 'Aefi\dashboardcontroller@selectdatadash')->name('dashboard');
 Route::get('/dashboardcovid', 'Aefi\dashboardcovidcontroller@dashboardcovid')->name('dashboardcovid');
+
 // view form1
 Route::get('/viewform1', 'Aefi\ViewAEFI1Controller@index')->name('viewform1');
-
 Route::get('/AEFI506', 'Aefi\AEFIController@AEFI506')->name('AEFI506');
+
 //select list aefi
 Route::get('/lstf1', 'Aefi\SelectController@selectdatatablecaseAEFI1')->name('lstf1');
 Route::get('/lstf2', 'Aefi\SelectController@selectdatatablecaseAEFI2')->name('lstf2');
 Route::get('/lstf1group', 'Aefi\SelectController@selectdatatablecaseAEFI1group')->name('lstf1group');
-
-// Route::get('/listaefi1', 'Aefi\ListAEFI1Controller@index');
-// Route::get('listaefi1', 'Aefi\ListAEFI1Controller@index');
 Route::get('listaefi1', ['uses'=>'Aefi\ListAEFI1Controller@index', 'as'=>'listaefi1.list']);
-// Route::get('listaefi1/list',  'Aefi\ListAEFI1Controller@getAefi1')->name('listaefi1.list');
 
 // insert Data
 Route::post('/insertform1', 'Aefi\InsertController@insertform1')->name('insertform1');
@@ -85,13 +84,14 @@ Route::get('/lstef2', 'Aefi\SelectController@selectdatatableEditcaseAEFI2')->nam
 /* loginsys */
 Auth::routes();
 Route::get('/index', 'HomeController@index')->name('index');
-// Route::post('/insertform1','Aefi\InsertController@welcome')
+
 // test
 Route::get('/test', 'Aefi\testController@test')->name('test');
 Route::get('/dataf1export', 'Aefi\DataexportController@dataexport')->name('dataf1export');
 Route::post('/dataf1export', 'Aefi\DataexportController@dataexportfrm')->name('dataf1export');
 Route::get('/dataf2export', 'Aefi\Dataexport2Controller@dataexport2')->name('dataf2export');
 Route::get('/datauserexport', 'Aefi\DataexportuserController@dataexportu')->name('datauserexport');
+
 // download Data
 Route::get('/downloadaefi2', 'Aefi\DownloadController@dowloaddata2')->name('downloadaefi2');
 

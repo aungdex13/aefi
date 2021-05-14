@@ -23,6 +23,8 @@
 {{-- <script src="/asset/dist/js/pages/chartdashbard.js"></script> --}}
 <!-- AdminLTE for demo purposes s-->
 <script src="/asset/dist/js/demo.js"></script>
+<!-- bootstrap datepicker -->
+<script src="/asset/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <?php
@@ -32,6 +34,9 @@
 	// var_dump($arr_age_group);
 ?>
 <script>
+$('#date_of_symptoms').datepicker({
+	dateFormat: "yy-mm-dd"
+})
 	window.onload = function() {
 
 		var chart = new CanvasJS.Chart("chartContainer", {
@@ -219,32 +224,6 @@ var chart = new CanvasJS.Chart("chartContainertest",{
 
   }]
 });
-
-chart.options.data[0].dataPoints = [];
-var element = document.getElementById("dd");
-selectDataSeries();
-
-
-$( ".dropdown" ).change(function() {
-  chart.options.data[0].dataPoints = [];
-  selectDataSeries(element.selectedIndex);
-});
-
-
-function selectDataSeries(){
-  var selected = element.options[element.selectedIndex].value;
-  dps = jsonData[selected];
-  for(var i in dps) {
-    var xVal = dps[i].x;
-    chart.options.data[0].dataPoints.push({x: new Date(xVal), y: dps[i].y});
-  }
-  chart.render();
-}
-// dataPoints: [
-// 	@ foreach($count_groupage as $row)
-// 	{ y: { { $row->countgroupage }} , label: "{ { $arr_age_group[$row->group_age] }}" },
-// 	@ endforeach
-// ]
 </script>
 <script type='text/javascript' src='https://www.gstatic.com/charts/loader.js'></script>
 <script type="text/javascript">

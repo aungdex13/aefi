@@ -511,5 +511,17 @@ if (! function_exists('provinces')) {
       return 	$causality;
       }
   }
+  if (! function_exists('aefi_classification')) {
+      function load_aefi_classification() {
 
+      $aefi_classification = array(
+                    '1'=>'ปฏิกิริยาของวัคซีน',
+                    '2'=>'ความบกพร่องของวัคซีน',
+                    '3'=>'ความคลาดเคลื่อนด้านการให้บริการ',
+                    '4'=>'ปฏิกริยาของร่างการตอบสนองต่อการฉีดวัคซีน',
+                    '5'=>'เหตุการณ์ร่วมโดยบังเอิญ',
+                  );
+                  return 	$aefi_classification;
+                  }
+                  }
  ?>

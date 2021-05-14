@@ -16,7 +16,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
 ?>
 @section('content')
 <section class="content-header">
-<!-- Content Header (Page header) -->
+<!-- Content Header (Psage header) -->
 <h1>
   ส่งออกข้อมูลผู้มีอาการภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรค
   <small>AEFI</small>
@@ -39,7 +39,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
         {{ csrf_field() }}
       <div class="box-header with-border">
         <div class="col-lg-3">
-          <input type="text" id="datepicker" name="date_of_symptoms" class="form-control" placeholder="ระบุปีที่ต้องการค้นหา" readonly>
+          <input type="text" id="reservation" name="date_of_symptoms" class="form-control" placeholder="ระบุวันเดือนปีปีที่ต้องการค้นหา" readonly>
           <!-- /input-group -->
         </div>
         <h3 class="box-title">
@@ -51,7 +51,14 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
 			<div class="box-body table-responsive">
           <!-- /.form group -->
 				<!-- Custom Tabs -->
-        <p>ดาวน์โหลดข้อมูล</p>
+        <p>ดาวน์โหลดข้อมูล
+          @if ((isset($date_of_symptoms_from) ?  $date_of_symptoms_from : null)  == null && (isset($date_of_symptoms_to) ?  $date_of_symptoms_to : null) == null)
+            วันที่  {{$datenow}}
+          @elseif ((isset($date_of_symptoms_from) ?  $date_of_symptoms_from : null) == null && (isset($date_of_symptoms_to) ?  $date_of_symptoms_to : null) == null)
+            วันที่  {{$date_of_symptoms_from}} ถึง วันที่ {{$date_of_symptoms_to}}
+          @else
+            วันที่  {{$date_of_symptoms_from}} ถึง วันที่ {{$date_of_symptoms_to}}
+          @endif</p>
 				<table id="example" class="display table-striped table-bordered" style="width:600%">
 				        <thead>
 				            <tr>
@@ -127,7 +134,21 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
                         <th>conclusion</th>
                         <th>หน่วยงานที่รายงาน</th>
                         <th>จังหวัดที่รายงาน</th>
+                        <th>ว/ด/ป ที่ส่งรายงาน</th>
+                        <th>ว/ด/ป ที่รับรายงาน</th>
+                        <th>ประวัติทางการแพทย์</th>
+                        <th>รายละเอียดอาการและการตรวจสอบ</th>
+                        <th>การตรวจทางห้องปฏิบัติการ</th>
                         <th>หมายเหตุ</th>
+                        @hasrole('admin')
+                        <th>R/O</th>
+                        <th>หน่วยงานที่รายงาน</th>
+                        <th>Final Diagnosis</th>
+                        <th>Causality Assessment </th>
+                        <th>Summary</th>
+                        <th>AEFI Classification</th>
+                        <th>Expert Meeting</th>
+                        @endhasrole
 				            </tr>
 				        </thead>
 				        <tbody>
@@ -529,7 +550,21 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
                         <td>{{ $value->diagnosis }}</td>
                         <td>{{ $value->unit_reported }}</td>
                         <td>{{ isset($listProvince[ $value->province_reported]) ?$listProvince[ $value->province_reported] : "ไม่ระบุข้อมูล"}}</td>
+                        <td>{{ isset($value->datepicker_send_reported) ? $value->datepicker_send_reported: "-" }}</td>
+                        <td>{{ isset($value->datepicker_resiver) ? $value->datepicker_resiver: "-" }}</td>
+                        <td>{{ $value->other_medical_history }}</td>
+                        <td>{{ $value->Symptoms_details }}</td>
+                        <td>{{ $value->lab_result }}</td>
                         <td>{{ $value->more_reviews }}</td>
+                        @hasrole('admin')
+                        <td>{{ $value->id }}</td>
+                        <td>{{ $value->id }}</td>
+                        <td>{{ $value->id }}</td>
+                        <td>{{ $value->id }}</td>
+                        <td>{{ $value->id }}</td>
+                        <td>{{ $value->id }}</td>
+                        <td>{{ $value->id }}</td>
+                        @endhasrole
 				            </tr>
 							<?php endforeach;?>
 				        </tbody>
@@ -567,6 +602,7 @@ $('#example').DataTable( {
 		 'excel'
 	]
 } );
+
 } );
 </script>
 <script>

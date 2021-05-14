@@ -2137,7 +2137,13 @@ foreach ($aecode as $value) {
                 <div class="form-group">
                   <div class="row">
                     <div class="col-lg-4">
-                      <label>หน่วยที่รายงาน :</label><input type="text" id="unit_reported" name="unit_reported" class="form-control" value="{{$data[0]->unit_reported}}">
+                      <label>หน่วยที่รายงาน :</label>
+                      <select id="js-example-basic-single" name="hospcode_report" class="js-example-basic-single form-control" data-dropdown-css-class="select2-danger" required>
+                        <option class="badge filter badge-info" data-color="info" value="{{$data[0]->hospcode_report}}">
+                          {{ isset($list_hos[$data[0]->hospcode_report]) ? $list_hos[$data[0]->hospcode_report]:"ไม่ระบุข้อมูล"}}
+                        </option>
+                      </select>
+                      {{-- <input type="text" id="unit_reported" name="unit_reported" class="form-control" value="{{$data[0]->unit_reported}}"> --}}
                     </div>
                     <div class="col-lg-4">
                       <label>จังหวัด :</label>

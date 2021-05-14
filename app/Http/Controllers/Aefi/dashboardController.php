@@ -12,10 +12,13 @@
 	use Illuminate\Support\Str;
 	class DashboardController extends Controller
 	{
-		public function dashboard(Request $req){
-			$zone = $reg->zone;
+		public function dashboard(){
+			$province = null;
+			$date_of_symptoms = null;
+			$name_of_vaccine = null;
 			$count_prov = $this->count_prov();
 			$listProvince=$this->listProvince();
+			$listvac_arr=$this->listvac_arr();
 			$count_month=$this->count_month();
 			$count_year=$this->count_year();
 			$yearnow =  now()->year ;
@@ -33,6 +36,8 @@
 			$listvac_arr =  $this->listvac_arr();
 			$count_groupage = $this->count_groupage();
 			$count_all_seriousness_of_the_symptoms= $this->count_all_seriousness_of_the_symptoms();
+			$vac_list=$this->vaclist();
+			// dd($vac_list);
 			return view('AEFI.Apps.dashboard',compact(
 			 'count_prov',
 			 'listProvince',
@@ -51,34 +56,133 @@
 			 'count_female',
 			 'count_gender_other',
 			 'count_vacname',
-			 'listvac_arr',
 			 'count_groupage',
-			 'zone'
+			 'listvac_arr',
+			 'vac_list',
+			 'province',
+			 'date_of_symptoms',
+			 'name_of_vaccine'
 		 ));
 		}
-		public function selectdatadash()
+		public function selectdatadash(Request $req)
 		{
-		$caselstF1 = DB::table('aefi_form_1')
-										->select('id,
-															id_case,
-															hn,
-															an,
-															first_name,
-															sur_name,
-															age_while_sick_year,
-															nationality,
-															gender,
-															other_nationality,
-															village_no,
-															province,
-															district,
-															subdistrict,
-															necessary_to_investigate');
-		 return view('AEFI.Apps.caselstAEFI1')->with('data', $caselstF1);
+			// $zone = $req->input('zone');
+			$province = $req->input('province');
+			$date_of_symptoms = $req->input('date_of_symptoms');
+			$name_of_vaccine = $req->input('name_of_vaccine');
+			//dd($province,$date_of_symptoms,$name_of_vaccine);
+			$count_prov = $this->count_prov();
+			$listProvince=$this->listProvince();
+			$listvac_arr=$this->listvac_arr();
+			$count_month = DB::table('aefi_form_1')
+										 ->select(DB::raw('
+										 count(*) as count_patient ,
+											MONTH(date_of_symptoms) as month_entry,
+											YEAR(date_of_symptoms) as year_entry,
+											GROUP_CONCAT(MONTH(date_of_symptoms))'))
+											->where('province',"=",$province)
+										 ->where('status','=',null)
+										 ->groupBy('year_entry')
+										 ->orderBy('year_entry')
+										 ->get();
+			// dd($count_month);
+
+			$count_year=$this->count_year();
+			$yearnow =  now()->year ;
+			$count_north = $this->count_north();
+			$count_northeast = $this->count_northeast();
+			$count_central = $this->count_central();
+			$count_eastern = $this->count_eastern();
+			$count_south = $this->count_south();
+			$count_western = $this->count_western();
+			$count_all_gender_se = DB::table('aefi_form_1')
+											->leftJoin('aefi_form_1_vac', 'aefi_form_1.id_case', '=', 'aefi_form_1_vac.id_case')
+											->select(DB::raw('count(aefi_form_1.id) as gender_n ,	aefi_form_1.gender '));
+			if ($name_of_vaccine != null) {
+				$vac_select = $count_all_gender_se
+											->Where('aefi_form_1_vac.name_of_vaccine',"=",$name_of_vaccine);
+			}else{
+			}
+			if ($province != null) {
+				$vac_select = $count_all_gender_se
+											->Where('aefi_form_1.province',"=",$province);
+			}else {
+			}
+			if ($province != null && $name_of_vaccine != null) {
+				$vac_select = $count_all_gender_se
+											->Where('aefi_form_1_vac.name_of_vaccine',"=",$name_of_vaccine)
+											->Where('aefi_form_1.province',"=",$province);
+			}else {
+			}
+					$count_all_gender = $vac_select
+											->where('aefi_form_1.status',null)
+											->groupBy('aefi_form_1.gender')
+											->get();
+			// dd($province,$name_of_vaccine,$count_all_gender);
+			$count_male = DB::table('aefi_form_1')
+										 ->select(DB::raw('count(*) as count_male'))
+										 ->where('province',"=",$province)
+										 ->where('gender', '=', '1')
+										 ->where('status',null)
+										 ->get();
+			$count_female = DB::table('aefi_form_1')
+										 ->select(DB::raw('count(*) as count_female'))
+										 ->where('province',"=",$province)
+										 ->where('gender', '=', '2')
+										 ->where('status',null)
+										 ->get();
+			$count_gender_other = DB::table('aefi_form_1')
+										 ->select(DB::raw('count(*) as count_gender_other'))
+										 ->where('province',"=",$province)
+										 ->where('gender', '=', null)
+										 ->where('status',null)
+										 ->get();
+			$count_vacname = DB::table('aefi_form_1_vac')
+				 					 ->select(DB::raw('count(aefi_form_1_vac.name_of_vaccine) as vac_count,name_of_vaccine'))
+									 // ->where('province',"=",$province)
+				 					 ->where('status','=',null)
+				 					 ->groupBy('name_of_vaccine')
+				 					 ->orderBy('name_of_vaccine','DESC')
+				 					 ->get();
+			$listvac_arr =  $this->listvac_arr();
+			$count_groupage = $this->count_groupage();
+			$count_all_seriousness_of_the_symptoms = DB::table('aefi_form_1')
+										 ->select(DB::raw('count(id) as count_seriousness_of_the_symptoms'))
+										 ->where('province',"=",$province)
+										 ->where('status',null)
+										 ->get();
+			$vac_list=$this->vaclist();
+						// dd($vac_list);
+			return view('AEFI.Apps.dashboard',compact(
+			 'count_prov',
+			 'listProvince',
+			 'count_month',
+			 'count_year',
+			 'yearnow',
+			 'count_north',
+			 'count_northeast',
+			 'count_central',
+			 'count_eastern',
+			 'count_south',
+			 'count_western',
+			 'count_all_seriousness_of_the_symptoms',
+			 'count_all_gender',
+			 'count_male',
+			 'count_female',
+			 'count_gender_other',
+			 'count_vacname',
+			 'count_groupage',
+			 'listvac_arr',
+			 'vac_list',
+			 'province',
+			 'date_of_symptoms',
+			 'name_of_vaccine'
+		 ));
 	 	}
 		protected function count_prov(){
 	    $count_prov = DB::table('aefi_form_1')
 										 ->select(DB::raw('count(*) as count_prov , province'))
+
 										 ->where('status','=',null)
 	                   ->groupBy('province')
 										 ->get();
@@ -266,6 +370,14 @@
 			}
 			return $province_arr;
 		}
+		protected function listvac_arr(){
+			$arr_vac = DB::table('vac_tbl')->select('VAC_CODE','VAC_NAME_EN')->get();
+			foreach ($arr_vac as  $value) {
+				$arr_vac[$value->VAC_CODE] =trim($value->VAC_NAME_EN);
+			}
+			// dd($province_arr);
+			return $arr_vac;
+		}
 		protected function count_all_seriousness_of_the_symptoms(){
 			$yearnow =  now()->year;
 			$count_all_seriousness_of_the_symptoms = DB::table('aefi_form_1')
@@ -320,13 +432,6 @@
 										 ->get();
 			return $count_vacname;
 		}
-		protected function listvac_arr(){
-			$arr_vac = DB::table('vac_tbl')->select('VAC_CODE','VAC_NAME_EN')->get();
-			foreach ($arr_vac as  $value) {
-				$arr_vac[$value->VAC_CODE] =trim($value->VAC_NAME_EN);
-			}
-			return $arr_vac;
-		}
 		protected function count_groupage(){
 			$yearnow =  now()->year;
 			$count_groupage = DB::table('aefi_form_1')
@@ -338,5 +443,12 @@
 										 ->get();
 			return $count_groupage;
 		}
-
+		protected function vaclist(){
+			$arr_vaclist = DB::table('vac_tbl')
+			->select('ID','VAC_NAME_EN')
+			->orderBy('ID', 'ASC')
+			->get();
+			 // dd($vaclist);
+			return $arr_vaclist;
+		}
 }

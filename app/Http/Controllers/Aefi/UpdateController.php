@@ -244,7 +244,8 @@
 												'user_hospcode'=>$req ->input ('user_hospcode'),
 												'user_provcode'=>$req ->input ('user_provcode'),
 												'user_region'=>$req ->input ('user_region'),
-												'hospcode_treat'=>$req ->input ('hospcode_treat')
+												'hospcode_treat'=>$req ->input ('hospcode_treat'),
+												'hospcode_report'=>$req ->input ('hospcode_report')
 											]);
 		if ($update){
 			$msg = " ส่งข้อมูลสำเร็จ";

@@ -18,6 +18,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
 $arr_r_o = load_r_o();
 $arr_load_final_diag = load_final_diag();
 $arr_causality = load_causality();
+$arr_load_aefi_classification = load_aefi_classification();
 	// dd($data);
 	 ?>
 <section class="content-header">
@@ -119,7 +120,7 @@ $arr_causality = load_causality();
 																				</div>
 																			</div>
 																		</div>
-																		<div class="form-group">
+																		{{-- <div class="form-group">
 																			<div class="row">
 																				<div class="col-lg-3">
 																					<label>ST No. : </label>
@@ -134,7 +135,7 @@ $arr_causality = load_causality();
 																					<input type="text" name="gi" class="form-control" value="{{isset($selectexpertcase[0]->gi) ? $selectexpertcase[0]->gi : null}}" placeholder="ระบุ GI">
 																				</div>
 																			</div>
-																		</div>
+																		</div> --}}
 																		<div class="form-group">
 																			<div class="row">
 																				<div class="col-lg-6">
@@ -163,7 +164,7 @@ $arr_causality = load_causality();
 																				</div>
 																			</div>
 																		</div>
-																		<div class="form-group">
+																		{{-- <div class="form-group">
 																			<div class="row">
 																				<div class="col-lg-3">
 																					<label>Respiratory : </label>
@@ -178,7 +179,7 @@ $arr_causality = load_causality();
 																						<input type="text" name="cardiovascular" class="form-control" value="{{isset($selectexpertcase[0]->cardiovascular) ? $selectexpertcase[0]->cardiovascular : null}}" placeholder="ระบุ Cardiovascular">
 																				</div>
 																			</div>
-																		</div>
+																		</div> --}}
 																		<div class="form-group">
 																			<div class="row">
 																				<div class="col-lg-6">
@@ -232,7 +233,20 @@ $arr_causality = load_causality();
 																		</div>
 																		<div class="form-group">
 																			<div class="row">
-																				<div class="col-lg-3">
+																				<div class="col-lg-6">
+																					<label>AEFI Classification : </label>
+																					<select type="text" name="aefi_classification" class="form-control" >
+																						<option value="{{isset($selectexpertcase[0]->aefi_classification) ? $selectexpertcase[0]->aefi_classification : null}}">{{isset($arr_load_aefi_classification[$selectexpertcase[0]->aefi_classification]) ? $arr_load_aefi_classification[$selectexpertcase[0]->aefi_classification] : null}}</option>
+																						<option value="">กรุณาระบุ AEFI Classificatio</option>
+																						<option value="1">ปฏิกิริยาของวัคซีน</option>
+																						<option value="2">ความบกพร่องของวัคซีน</option>
+																						<option value="3">ความคลาดเคลื่อนด้านการให้บริการ</option>
+																						<option value="4">ปฏิกริยาของร่างการตอบสนองต่อการฉีดวัคซีน</option>
+																						<option value="5">เหตุการณ์ร่วมโดยบังเอิญ</option>
+																					</select>
+																						{{-- <textarea rows="3"  type="text" name="past_history" class="form-control" placeholder="ระบุ Past History"></textarea> --}}
+																				</div>
+																				<div class="col-lg-6">
 																					<label>Expert Meeting : </label>
 																					<div class="input-group date">
 																						<div class="input-group-addon">
@@ -242,23 +256,23 @@ $arr_causality = load_causality();
 																						{{-- <input type="text" id="datepicker_record5" name="record_date" class="form-control" placeholder="ระบุวันที่บันทึกข้อมูล" data-date-format="yyyy-mm-dd"> --}}
 																					</div>
 																				</div>
-																				<div class="col-lg-3">
+																				{{-- <div class="col-lg-3">
 																					<label>Date_report : </label>
 																					<div class="input-group date">
 																						<div class="input-group-addon">
 																							<i class="fa fa-calendar"></i>
 																						</div>
 																						<input type="text" name="date_report" class="form-control pull-right" id="datepicker_investigater_3"  value="{{isset($selectexpertcase[0]->date_report) ? $selectexpertcase[0]->date_report : null}}" data-date-format="yyyy-mm-dd" required readonly>
-																						{{-- <input type="text" id="datepicker_record5" name="record_date" class="form-control" placeholder="ระบุวันที่บันทึกข้อมูล" data-date-format="yyyy-mm-dd"> --}}
+																						<input type="text" id="datepicker_record5" name="record_date" class="form-control" placeholder="ระบุวันที่บันทึกข้อมูล" data-date-format="yyyy-mm-dd">
 																					</div>
 																				</div>
 																				<div class="col-lg-6">
 																					<label>Past History : </label>
 																						<textarea rows="3"  type="text" name="past_history" class="form-control" placeholder="ระบุ Past History">{{isset($selectexpertcase[0]->past_history) ? $selectexpertcase[0]->past_history : null}}</textarea>
-																				</div>
+																				</div> --}}
 																			</div>
 																		</div>
-																		<div class="form-group">
+																		{{-- <div class="form-group">
 																			<div class="row">
 																				<div class="col-lg-3">
 																					<label>keyin_AEFIDDC : </label>
@@ -273,7 +287,7 @@ $arr_causality = load_causality();
 																					<input type="text" name="reviewer" class="form-control" value="{{isset($selectexpertcase[0]->reviewer) ? $selectexpertcase[0]->reviewer : null}}" placeholder="ระบุ Reviewer">
 																				</div>
 																			</div>
-																		</div>
+																		</div> --}}
 																	</div>
 													{{-- </div> --}}
 												</div>

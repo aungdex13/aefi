@@ -7,6 +7,7 @@
 <script src="/asset/bower_components/moment/min/moment.min.js"></script>
 <!-- bootstrap time picker -->
 <script src="/asset/plugins/timepicker/bootstrap-timepicker.min.js"></script>
+<script src="/asset/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
 <!-- SlimScroll -->
 <script src="/asset/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- iCheck 1.0.1 -->
@@ -20,7 +21,6 @@
 <!-- Page script -->
 <!-- <script  src="/asset/bower_components/1543-image-hover/js/index.js"></script> -->
 
-<script  src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script  src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script  src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
 <script  src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.flash.min.js"></script>
@@ -34,7 +34,17 @@
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 {{-- content table --}}
+<script>
+  $(function () {
+    $('#reservation').daterangepicker({
+      locale: {
+              format: 'YYYY-MM-DD'
+              }
+    })
+      })
+</script>
 {{-- <script type="text/javascript">
+<script
 $(document).ready(function () {
 $(document).on("click", ".classAdd", function () { //
 	var rowCount = $('.data-contact-person').length + 1;

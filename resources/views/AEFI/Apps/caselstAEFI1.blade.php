@@ -45,15 +45,16 @@
           <thead>
             <tr>
               <th hidden>ID</th>
-              <th>ID</th>
-              <th>เลขที่ผู้ป่วย HN</th>
-              <th>เลขที่ผู้ป่วย AN</th>
-              <th>ชื่อ-นามสกุลผู้ป่วย</th>
-              <th>อายุ</th>
-              <th>เชื้อชาติ</th>
-              <th>ที่อยู่</th>
-              <th>มีความจำเป็นที่จะต้องสอบสวนโรค</th>
-              <th>***</th>
+              <th style="text-align:center;">ID</th>
+              <th style="text-align:center;">เลขที่ผู้ป่วย HN</th>
+              <th style="text-align:center;">เลขที่ผู้ป่วย AN</th>
+              <th style="text-align:center;">ชื่อ-นามสกุลผู้ป่วย</th>
+              <th style="text-align:center;">อายุ</th>
+              <th style="text-align:center;">เชื้อชาติ</th>
+              <th style="text-align:center;">ที่อยู่</th>
+              <th style="text-align:center;">มีความจำเป็นที่จะต้องสอบสวนโรค</th>
+              <th style="text-align:center;">ข้อมูล AEFI2</th>
+              <th style="text-align:center;">***</th>
             </tr>
           </thead>
           <?php foreach($data as $value) : ?>
@@ -85,20 +86,29 @@
             <td>
               <p style="text-align:center;">{{ $arr_necessary_to_investigate[$value->necessary_to_investigate] }}</p>
             </td>
+              @if ($value->aefi2 == null)
+            <td style="background-color:#fa3c4c">
+                <p style="text-align:center;">ไม่มีข้อมูล AEFI2</p>
+            </td>
+              @else
+            <td style="background-color:#44bec7">
+                <p style="text-align:center;">มีการแนบข้อมูล AEFI2</p>
+            </td>
+              @endif
             <td>
               <div class="btn-group">
                 <button type="button" class="btn btn-info" data-toggle="dropdown">เมนูการใช้งาน</button>
                 {{-- <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"> --}}
                   {{-- <span class="caret"></span>
-                  <span class="sr-only">Toggle Dropdown</span>
+                  <span class="sr-only">Toggle Dropdown</spfan>
                 </button> --}}
                 <ul class="dropdown-menu" role="menu">
-                  <li><a href="{{ route('lstf2') }}?id_case={{ $value->id_case }}"><i class="fa fa-file-o" aria-hidden="true" style="color:#428bca;"></i>กรอก AEFI2</a></li>
+                  <li><a href="{{ route('lstf2') }}?id_case={{ $value->id_case }}" target="_blank"><i class="fa fa-file-o" aria-hidden="true" style="color:#428bca;"></i>กรอก AEFI2</a></li>
                   <li><a href="{{ route('viewform1') }}?id_case={{ $value->id_case }}" target="_blank"><i class="fa fa-eye" aria-hidden="true" style="color:#5cb85c;"></i>ดูข้อมูล AEFI1</a></li>
-                  <li><a href="{{ route('EditAEFI1') }}?id_case={{ $value->id_case }}"><i class="fa fa-pencil-square-o" aria-hidden="true" style="color:#5bc0de;"></i>แก้ไขข้อมูล</a></li>
-                  <li><a href="#"><i class="fa fa-ambulance" aria-hidden="true" style="color:#e6c34a;"></i>Refer ผู้ป่วย</a></li>
+                  <li><a href="{{ route('EditAEFI1') }}?id_case={{ $value->id_case }}" target="_blank"><i class="fa fa-pencil-square-o" aria-hidden="true" style="color:#5bc0de;"></i>แก้ไขข้อมูล</a></li>
+                  <li><a href="#" target="_blank"><i class="fa fa-ambulance" aria-hidden="true" style="color:#e6c34a;"></i>Refer ผู้ป่วย</a></li>
                   @hasrole('admin')
-                  <li><a href="{{ route('ExpertDiagLst') }}?id_case={{ $value->id_case }}"><i class="fa fa-user-circle-o" aria-hidden="true" style="color:#f46732;"></i>การประชุม<br>ผู้เชี่ยวชาญ</a></li>
+                  <li><a href="{{ route('ExpertDiagLst') }}?id_case={{ $value->id_case }}" target="_blank"><i class="fa fa-user-circle-o" aria-hidden="true" style="color:#f46732;"></i>การประชุม<br>ผู้เชี่ยวชาญ</a></li>
                   @endhasrole
                   <li><a href="{{ route('deleteAEFI1') }}?id_case={{ $value->id_case }}" id="btnDelete" type="button" onclick="return confirm('ต้องการลบข้อมูล ใช่หรือไม่?');"><i class="fa  fa-trash-o" aria-hidden="true" style="color:#d9534f;"></i>ลบข้อมูล</a></li>
                 </ul>
