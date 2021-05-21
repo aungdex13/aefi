@@ -30,7 +30,8 @@
 								<th>นามสกุล</th>
 								<th>username</th>
 								<th>email</th>
-								<th>หน่วยงาน</th>
+								<th>จังหวัด</th>
+                <th>หน่วยงาน</th>
 								<th>การอนุมัติ</th>
 				            </tr>
 				        </thead>
@@ -41,6 +42,7 @@
                           		<td>{{ $data->sur_name }}</td>
   								<td>{{ $data->username }}</td>
 								<td>{{ $data->email }}</td>
+                <td>{{ $listProvince[$data->prov_code] }}</td>
 								<td>@if($data->hospcode) {{ $datas_div[$data->hospcode] }} @else - @endif</td>
 								<td><input data-id="{{ $data->id }}" type="checkbox" @if($data->confirm == "1") checked @else @endif data-toggle="toggle" data-on="ใช้งาน" data-off="ปิดการใช้งาน"></td>
 							</tr>
@@ -65,7 +67,11 @@ $.ajaxSetup({
 });
 $(document).ready(function() {
   $('#example').DataTable({
-    "ordering": false
+    "ordering": false,
+    dom: 'Bfrtip',
+    buttons: [
+              'excel'
+              ]
   });
   @if ($message = Session::get('success'))
       Swal.fire({
@@ -114,7 +120,7 @@ $('input:checkbox').change(function() {
 					toastr.error('error msg: '+data);
 							}
 		});
-  
+
 })
 </script>
 <!-- /.content -->

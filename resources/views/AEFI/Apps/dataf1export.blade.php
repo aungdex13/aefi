@@ -130,6 +130,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
                         <th>Adem</th>
                         <th>Acute myocardial</th>
                         <th>Ards</th>
+                        <th>อาการอื่นๆ</th>
                         <th>Seriousness</th>
                         <th>conclusion</th>
                         <th>หน่วยงานที่รายงาน</th>
@@ -185,13 +186,14 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
                         <td>{{ $value->time_of_symptoms }}</td>
                         <td>{{ $value->date_of_treatment }}</td>
                         <td>
-                          @php
+                          {{   isset($listvac_arr[$value->name_of_vaccine]) ? $listvac_arr[$value->name_of_vaccine]: "ไม่ระบุข้อมูล"}}
+                          {{-- @php
                           $myStringvac = $value->name_of_vaccine ;
                           $myArrayvac = explode(',', $myStringvac);
                           @endphp
                           @foreach($myArrayvac as $valuev)
                           {{ isset($listvac_arr[$valuev]) ? $listvac_arr[$valuev]: "ไม่ระบุข้อมูล" }}</br>
-                          @endforeach
+                          @endforeach --}}
                         </td>
                         <td>
                           @php
@@ -546,14 +548,21 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
                           {{"0"}}
                           @endif
                       </td>
+                      <td>
+                        @if ($value->symptoms_later_immunized == '9999')
+                         {{ isset($value->other_symptoms_later_immunized) ? $value->other_symptoms_later_immunized: "" }}
+                          @else
+                          {{""}}
+                          @endif
+                      </td>
                         <td>{{ $arr_seriousness_of_the_symptoms[$value->seriousness_of_the_symptoms] }}</td>
                         <td>{{ $value->diagnosis }}</td>
-                        <td>{{ $value->unit_reported }}</td>
-                        <td>{{ isset($listProvince[ $value->province_reported]) ?$listProvince[ $value->province_reported] : "ไม่ระบุข้อมูล"}}</td>
+                        <td>{{ isset($list_hos[ $value->hospcode_report]) ? $list_hos[ $value->hospcode_report] : ""}}{{ $value->unit_reported }}</td>
+                        <td>{{ isset($listProvince[ $value->province_reported]) ? $listProvince[ $value->province_reported] : "ไม่ระบุข้อมูล"}}</td>
                         <td>{{ isset($value->datepicker_send_reported) ? $value->datepicker_send_reported: "-" }}</td>
                         <td>{{ isset($value->datepicker_resiver) ? $value->datepicker_resiver: "-" }}</td>
                         <td>{{ $value->other_medical_history }}</td>
-                        <td>{{ $value->Symptoms_details }}</td>
+                        <td>{{ isset($value->other_symptoms_later_immunized) ? $value->other_symptoms_later_immunized: "-"}}{{ $value->Symptoms_details }}</td>
                         <td>{{ $value->lab_result }}</td>
                         <td>{{ $value->more_reviews }}</td>
                         @hasrole('admin')

@@ -28,8 +28,7 @@
 <script src="asset/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="asset/dist/js/demo.js"></script>
-<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.19/js/dataTables.jqueryui.min.js"></script>
+<script src="asset/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <!-- Page script -->
 <script>
   $(function () {

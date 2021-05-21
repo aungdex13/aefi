@@ -102,3 +102,13 @@ Route::get('/ExpertDiagEditFrm', 'Aefi\ExpertDiagController@ExpertDiagEditFrm')-
 Route::post('/InsertExpert', 'Aefi\ExpertDiagController@InsertExpert')->name('InsertExpert');
 Route::post('/UpdateExpert', 'Aefi\ExpertDiagController@UpdateExpert')->name('UpdateExpert');
 Route::get('/DeleteExpert', 'Aefi\ExpertDiagController@DeleteExpert')->name('DeleteExpert');
+
+// refer
+Route::get('/ReferFrm', 'Aefi\ReferController@ReferFrm')->name('ReferFrm');
+Route::post('/InsertRefer', 'Aefi\ReferController@InsertRefer')->name('InsertRefer');
+Route::post('/UpdateRefer', 'Aefi\ReferController@UpdateRefer')->name('UpdateRefer');
+Route::get('/DeleteRefer', 'Aefi\ReferController@DeleteRefer')->name('DeleteRefer');
+
+// Symtoms By dose
+Route::get('/SymtomsbyDoseLst', 'Aefi\SymtomsbyDoseController@SymtomsbyDoseLst')->name('SymtomsbyDoseLst');
+Route::get('/SymtomsbyDoseFrm', 'Aefi\SymtomsbyDoseController@SymtomsbyDoseFrm')->name('SymtomsbyDoseFrm');

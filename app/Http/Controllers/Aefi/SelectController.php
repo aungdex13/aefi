@@ -59,7 +59,9 @@
 							'aefi_form_1.necessary_to_investigate',
 							'aefi_form_1.case_vac_id',
 							'aefi_form_1_vac.name_of_vaccine',
-							'aefi_form_1.date_of_symptoms'
+							'aefi_form_1.date_of_symptoms',
+							'aefi_form_1.refer_status',
+							'aefi_form_1.hospcode_refer'
 						);
 		 if (count($roleArr) > 0) {
 				$user_role = $roleArr[0];
@@ -67,8 +69,11 @@
 				case 'hospital':
 					// dd("p;p");
 					$caselstF1  = $selectcaselstF1
-									->Where('aefi_form_1.user_hospcode',"=",$roleArrhospcode)
-									->orWhere('aefi_form_1.hospcode_treat',"=",$roleArrhospcode)
+								->where(function($query) {
+											$query->orWhere('aefi_form_1.user_hospcode',auth()->user()->hospcode)
+														->orWhere('aefi_form_1.hospcode_treat',auth()->user()->hospcode)
+														->orWhere('aefi_form_1.hospcode_report',auth()->user()->hospcode);
+									})
 									->whereNull('aefi_form_1.status')
 									->groupBy('aefi_form_1.id_case')
 									->get();
@@ -76,7 +81,11 @@
 				break;
 				case 'pho':
 					$caselstF1 = $selectcaselstF1
-									->where('user_provcode',$roleArrprov_code)
+								->where(function($query) {
+											$query->orWhere('aefi_form_1.user_provcode',auth()->user()->prov_code)
+														->orWhere('aefi_form_1.province_found_event',auth()->user()->prov_code)
+														->orWhere('aefi_form_1.province_reported',auth()->user()->prov_code);
+									})
 									->whereNull('aefi_form_1.status')
 									->groupBy('aefi_form_1.id_case')
 									->get();
@@ -117,13 +126,15 @@
 		 $listProvince=$this->listProvince();
 		 $listDistrict=$this->listDistrict();
 		 $listsubdistrict=$this->listsubdistrict();
+		 $list_hos=$this->list_hos();
 		 //dd($caselst);
 		 return view('AEFI.Apps.caselstAEFI1')
 			->with('listProvince', $listProvince)
 			->with('listDistrict', $listDistrict)
 			->with('listsubdistrict', $listsubdistrict)
 			->with('yearnow', $yearnow)
-			->with('data', $caselstF1);
+			->with('data', $caselstF1)
+			->with('list_hos', $list_hos);
 
 	 	}
 		public function selectdatatablecaseAEFI1group()

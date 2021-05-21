@@ -524,4 +524,17 @@ if (! function_exists('provinces')) {
                   return 	$aefi_classification;
                   }
                   }
+  if (! function_exists('aefi_refer_status')) {
+      function load_aefi_refer_status() {
+
+      $aefi_refer_status = array(
+                    '1'=>'มีการส่งต่อผู้ป่วย',
+                    '2'=>'ยกเลิกการส่งต่อผู้ป่วย',
+                    ''=>''
+
+
+                  );
+                  return 	$aefi_refer_status;
+                  }
+                  }
  ?>

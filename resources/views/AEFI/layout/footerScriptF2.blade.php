@@ -288,6 +288,14 @@
 				$('#other_status_on_date_inv_1_text').val('');
 			}
 		});
+    $('input[name="symptoms_later_immunized"]').on('click', function() {
+            if ($(this).is(":checked")) {
+        $('#other_symptoms_later_immunized').show();
+      } else {
+        $('#other_symptoms_later_immunized').hide();
+        $('#other_symptoms_later_immunized_text').val('');
+      }
+    });
 		$('input[name="status_on_date_inv_1_2"]').on('click', function() {
 			if ($(this).val() == '3') {
 				$('#other_status_on_date_inv_1_2').show();

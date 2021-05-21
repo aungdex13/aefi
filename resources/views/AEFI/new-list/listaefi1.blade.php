@@ -1,27 +1,61 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Laravel 7 Datatables Tutorial - ItSolutionStuff.com</title>
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
-    <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
-    <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
-    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
-</head>
-<body>
+@extends('AEFI.layout.tabletemplate')
+@section('content')
+<section class="content-header">
+  <!-- Content Header (Page header) -->
+<?php
+    $arr_history_of_vaccine = load_history_of_vaccine();
+    $arr_patient_develop_symptoms_after_previous_vaccination = load_patient_develop_symptoms_after_previous_vaccination();
+    $arr_underlying_disease = load_underlying_disease();
+    $arr_vaccine_volume = load_vaccine_volume();
+    $arr_route_of_vaccination = load_route_of_vaccination();
+    $arr_vaccination_site = load_vaccination_site();
+    $arr_manufacturer = load_manufacturer();
+    $arr_load_nationality = load_nationality();
+    $arr_necessary_to_investigate = load_necessary_to_investigate();
+    $arr_vac_init = load_vac_init();
+    //dd($data);
+ ?>
+  <h1>
+    รายชื่อผู้มีอาการภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรค
+    <small>AEFI</small>
+  </h1>
+  <ol class="breadcrumb">
 
-<div class="container">
-    <h1></h1>
-    <table class="table table-bordered data-table">
+  </ol>
+
+</section>
+<!-- Main content -->
+<section class="content">
+  <div class="row">
+    <!--หัวข้อที่2 -->
+    <div class="col-md-12">
+      <!-- general form elements -->
+      <div class="box box-info">
+        <div class="box-header with-border">
+          <h3 class="box-title"><a href="{{ route('form1') }}" type="button" class="btn btn-success btn-flat"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>เพิ่มผู้ป่วย AEFI ราย Case</a></h3>
+        </div>
+        {{-- <div class="box-header with-border">
+          <h3 class="box-title"><a href="{{ route('lstf1group') }}" type="button" class="btn btn-warning btn-flat"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>เพิ่มผู้ป่วย AEFI รายกลุ่ม</a></h3>
+      </div> --}}
+      <!-- /.box-header -->
+      <!-- form start -->
+      <!-- /.box-header -->
+      <div class="box-body">
+    <table class="table table-bordered data-table"  style="width:100%">
         <thead>
             <tr>
-                <th>id_case</th>
-                <th>เลขที่ผู้ป่วย HN</th>
-                <th>เลขที่ผู้ป่วย AN</th>
+              <th hidden>ID</th>
+              <th style="text-align:center;">ID</th>
+              <th style="text-align:center;">เลขที่ผู้ป่วย HN</th>
+              <th style="text-align:center;">เลขที่ผู้ป่วย AN</th>
+              <th style="text-align:center;">ชื่อ-นามสกุลผู้ป่วย</th>
+              <th style="text-align:center;">อายุ</th>
+              <th style="text-align:center;">เชื้อชาติ</th>
+              <th style="text-align:center;">ที่อยู่</th>
+              <th style="text-align:center;">มีความจำเป็นที่จะต้องสอบสวนโรค</th>
+              <th style="text-align:center;">ข้อมูล AEFI2</th>
+              <th style="text-align:center;">***</th>
+            </tr>
             </tr>
         </thead>
         <tbody>
@@ -29,8 +63,23 @@
     </table>
 </div>
 
-</body>
+</div>
+</div>
+</div>
+<!-- /.box -->
+</div>
+<!-- /.row -->
+</section>
 
+@include('AEFI.layout.footercaselstScript')
+<!-- /.content -->
+{{-- <script>
+$(document).ready(function() {
+$("#btnDelete").click(function(){
+  alert("button");
+});
+});
+</script> --}}
 <script type="text/javascript">
   $(function () {
 
@@ -39,12 +88,26 @@
         serverSide: true,
         ajax: "{{ route('listaefi1.list') }}",
         columns: [
-            {data: 'id_case', name: 'id_case'},
-            {data: 'hn', name: 'hn'},
-            {data: 'an', name: 'an'},
+            {"data": 'id'},
+            {"data": 'hn'},
+            {"data": 'an'},
+            {"data": null, render: function(data, type, row, meta) {return row.first_name + " " + " " + row.sur_name}},
+            {"data": null, render: function(data, type, row, meta)
+            {return row.age_while_sick_year + " "+ "ปี" +
+              " " + row.age_while_sick_month +
+              " "+ "เดือน" + " " + row.age_while_sick_day + " "+ "วัน"}},
+            {"data": 'nationality'},
+            {"data": 'subdistrict'},
+            {"data": 'necessary_to_investigate'},
+            {"data": 'id_case'},
+            {"data": 'action', name: 'action', orderable: false, searchable: false},
         ]
     });
 
   });
 </script>
+@stop
+
+
+
 </html>

@@ -54,6 +54,7 @@
               <th style="text-align:center;">ที่อยู่</th>
               <th style="text-align:center;">มีความจำเป็นที่จะต้องสอบสวนโรค</th>
               <th style="text-align:center;">ข้อมูล AEFI2</th>
+              <th style="text-align:center;">การส่งต่อผู้ป่วย</th>
               <th style="text-align:center;">***</th>
             </tr>
           </thead>
@@ -95,6 +96,19 @@
                 <p style="text-align:center;">มีการแนบข้อมูล AEFI2</p>
             </td>
               @endif
+              @if ($value->refer_status == null)
+            <td style="background-color:#ffc300">
+                <p style="text-align:center;">ไม่มีการส่งต่อผู้ป่วย</p>
+            </td>
+              @elseif ($value->refer_status == 2)
+                <td style="background-color:#fa3c4c">
+                    <p style="text-align:center;">ยกเลิกการส่งต่อผู้ป่วย</p>
+                </td>
+              @else
+            <td style="background-color:#44bec7">
+                <p style="text-align:center;">มีการส่งต่อผู้ป่วย ไปยัง {{$list_hos[$value->hospcode_refer]}}</p>
+            </td>
+              @endif
             <td>
               <div class="btn-group">
                 <button type="button" class="btn btn-info" data-toggle="dropdown">เมนูการใช้งาน</button>
@@ -106,9 +120,10 @@
                   <li><a href="{{ route('lstf2') }}?id_case={{ $value->id_case }}" target="_blank"><i class="fa fa-file-o" aria-hidden="true" style="color:#428bca;"></i>กรอก AEFI2</a></li>
                   <li><a href="{{ route('viewform1') }}?id_case={{ $value->id_case }}" target="_blank"><i class="fa fa-eye" aria-hidden="true" style="color:#5cb85c;"></i>ดูข้อมูล AEFI1</a></li>
                   <li><a href="{{ route('EditAEFI1') }}?id_case={{ $value->id_case }}" target="_blank"><i class="fa fa-pencil-square-o" aria-hidden="true" style="color:#5bc0de;"></i>แก้ไขข้อมูล</a></li>
-                  <li><a href="#" target="_blank"><i class="fa fa-ambulance" aria-hidden="true" style="color:#e6c34a;"></i>Refer ผู้ป่วย</a></li>
+                  <li><a href="{{ route('ReferFrm') }}?id={{ $value->id }}&id_case={{ $value->id_case }}" target="_blank"><i class="fa fa-ambulance" aria-hidden="true" style="color:#e6c34a;"></i>Refer ผู้ป่วย</a></li>
+                  <li><a href="{{ route('SymtomsbyDoseLst') }}?id={{ $value->id }}&id_case={{ $value->id_case }}" target="_blank"><i class="fa fa-braille" aria-hidden="true" style="color:#b00b69;"></i>อาการภายหลัง<br>ได้รับการสร้างภูมิคุ้ม<br>กันโรคตามครั้งที่ฉีด</a></li>
                   @hasrole('admin')
-                  <li><a href="{{ route('ExpertDiagLst') }}?id_case={{ $value->id_case }}" target="_blank"><i class="fa fa-user-circle-o" aria-hidden="true" style="color:#f46732;"></i>การประชุม<br>ผู้เชี่ยวชาญ</a></li>
+                  <li><a href="{{ route('ExpertDiagFrm') }}?id_case={{ $value->id_case }}" target="_blank"><i class="fa fa-user-circle-o" aria-hidden="true" style="color:#f46732;"></i>การประชุม<br>ผู้เชี่ยวชาญ</a></li>
                   @endhasrole
                   <li><a href="{{ route('deleteAEFI1') }}?id_case={{ $value->id_case }}" id="btnDelete" type="button" onclick="return confirm('ต้องการลบข้อมูล ใช่หรือไม่?');"><i class="fa  fa-trash-o" aria-hidden="true" style="color:#d9534f;"></i>ลบข้อมูล</a></li>
                 </ul>

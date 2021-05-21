@@ -157,11 +157,35 @@ $(document).ready(function() {
       dateFormat: "yy-mm-dd"
     })
     //Date picker
+    $('#datepicker_stdiag_2').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+    //Date picker
+    $('#datepicker_stdiag_3').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+    //Date picker
     $('#datepicker_hdate').datepicker({
       dateFormat: "yy-mm-dd"
     })
     //Date picker
+    $('#datepicker_hdate_2').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+    //Date picker
+    $('#datepicker_hdate_3').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+    //Date picker
     $('#datepicker_sell').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+    //Date picker
+    $('#datepicker_sell_2').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+    //Date picker
+    $('#datepicker_sell_3').datepicker({
       dateFormat: "yy-mm-dd"
     })
     //Date picker
@@ -170,6 +194,14 @@ $(document).ready(function() {
     })
     //Date picker
     $('#datepicker_dead').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+    //Date picker
+    $('#datepicker_dead_2').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+    //Date picker
+    $('#datepicker_dead_3').datepicker({
       dateFormat: "yy-mm-dd"
     })
     //Date picker
@@ -351,12 +383,124 @@ $(document).ready(function() {
         $('#other_seriousness_of_the_symptoms_text').val('');
       }
     });
+    $('input[name="seriousness_of_the_symptoms_2"]').on('click', function() {
+      if ($(this).val() == '2') {
+        $('#other_seriousness_of_the_symptoms_2').show();
+      } else {
+        $('#other_seriousness_of_the_symptoms_2').hide();
+        $('#other_seriousness_of_the_symptoms_text_2').val('');
+      }
+    });
+    $('input[name="other_seriousness_of_the_symptoms_2"]').on('click', function() {
+      if ($(this).val() == '6') {
+        $('#text_other_seriousness_of_the_symptoms_2').show();
+      } else {
+        $('#text_other_seriousness_of_the_symptoms_2').hide();
+        $('#text_other_seriousness_of_the_symptoms_text_2').val('');
+      }
+    });
+    $('input[name="sepsis_2"]').on('click', function() {
+      if ($(this).is(":checked")) {
+        $('#other_seriousness_of_the_symptoms_2').show();
+      } else {
+        $('#other_seriousness_of_the_symptoms_2').hide();
+        $('#other_seriousness_of_the_symptoms_text_2').val('');
+      }
+    });
+    $('input[name="encephalopathy_2"]').on('click', function() {
+      if ($(this).is(":checked")) {
+        $('#other_seriousness_of_the_symptoms_2').show();
+      } else {
+        $('#other_seriousness_of_the_symptoms_2').hide();
+        $('#other_seriousness_of_the_symptoms_text_2').val('');
+      }
+    });
+    $('input[name="flaccid_paralysis_2"]').on('click', function() {
+      if ($(this).is(":checked")) {
+        $('#other_seriousness_of_the_symptoms_2').show();
+      } else {
+        $('#other_seriousness_of_the_symptoms_2').hide();
+        $('#other_seriousness_of_the_symptoms_text_2').val('');
+      }
+    });
+    $('input[name="osteomyelitis_2"]').on('click', function() {
+      if ($(this).is(":checked")) {
+        $('#other_seriousness_of_the_symptoms_2').show();
+      } else {
+        $('#other_seriousness_of_the_symptoms_2').hide();
+        $('#other_seriousness_of_the_symptoms_text_2').val('');
+      }
+    });
+    $('input[name="seriousness_of_the_symptoms_3"]').on('click', function() {
+      if ($(this).val() == '2') {
+        $('#other_seriousness_of_the_symptoms_3').show();
+      } else {
+        $('#other_seriousness_of_the_symptoms_3').hide();
+        $('#other_seriousness_of_the_symptoms_text_3').val('');
+      }
+    });
+    $('input[name="other_seriousness_of_the_symptoms_3"]').on('click', function() {
+      if ($(this).val() == '6') {
+        $('#text_other_seriousness_of_the_symptoms_3').show();
+      } else {
+        $('#text_other_seriousness_of_the_symptoms_3').hide();
+        $('#text_other_seriousness_of_the_symptoms_text_3').val('');
+      }
+    });
+    $('input[name="sepsis_3"]').on('click', function() {
+      if ($(this).is(":checked")) {
+        $('#other_seriousness_of_the_symptoms_3').show();
+      } else {
+        $('#other_seriousness_of_the_symptoms_3').hide();
+        $('#other_seriousness_of_the_symptoms_text_3').val('');
+      }
+    });
+    $('input[name="encephalopathy_3"]').on('click', function() {
+      if ($(this).is(":checked")) {
+        $('#other_seriousness_of_the_symptoms_3').show();
+      } else {
+        $('#other_seriousness_of_the_symptoms_3').hide();
+        $('#other_seriousness_of_the_symptoms_text_3').val('');
+      }
+    });
+    $('input[name="flaccid_paralysis_3"]').on('click', function() {
+      if ($(this).is(":checked")) {
+        $('#other_seriousness_of_the_symptoms_3').show();
+      } else {
+        $('#other_seriousness_of_the_symptoms_3').hide();
+        $('#other_seriousness_of_the_symptoms_text_3').val('');
+      }
+    });
+    $('input[name="osteomyelitis_3"]').on('click', function() {
+      if ($(this).is(":checked")) {
+        $('#other_seriousness_of_the_symptoms_3').show();
+      } else {
+        $('#other_seriousness_of_the_symptoms_3').hide();
+        $('#other_seriousness_of_the_symptoms_text_3').val('');
+      }
+    });
     $('input[name="symptoms_later_immunized"]').on('click', function() {
             if ($(this).is(":checked")) {
         $('#other_symptoms_later_immunized').show();
       } else {
         $('#other_symptoms_later_immunized').hide();
         $('#other_symptoms_later_immunized_text').val('');
+      }
+    });
+    $('input[name="symptoms_later_immunized_2"]').on('click', function() {
+            if ($(this).is(":checked")) {
+        $('#other_symptoms_later_immunized_2').show();
+      } else {
+        $('#other_symptoms_later_immunized_2').hide();
+        $('#other_symptoms_later_immunized_text_2').val('');
+      }
+    });
+    $('input[name="symptoms_later_immunized_3"]').on('click', function() {
+            if ($(this).is(":checked")) {
+        $('#other_symptoms_later_immunized_3').show();
+      } else {
+        $('#other_symptoms_later_immunized_3').hide();
+        $('#other_symptoms_later_immunized_text_3').val('');
       }
     });
     $('input[name="history_of_drug_use_within_1_month_before_getting_vaccination"]').on('click', function() {
@@ -409,12 +553,28 @@ $(document).ready(function() {
         $('#other_region_text').val('');
       }
     });
-    $('input[name="patian_sta"]').on('click', function() {
+    $('input[name="patient_status"]').on('click', function() {
       if ($(this).val() == '6') {
         $('#other_patian_sta').show();
       } else {
         $('#other_patian_sta').hide();
         $('#other_patian_sta_text').val('');
+      }
+    });
+    $('input[name="patient_status_2"]').on('click', function() {
+      if ($(this).val() == '6') {
+        $('#other_patian_sta_2').show();
+      } else {
+        $('#other_patian_sta_2').hide();
+        $('#other_patian_sta_text_2').val('');
+      }
+    });
+    $('input[name="patient_status_3"]').on('click', function() {
+      if ($(this).val() == '6') {
+        $('#other_patian_sta_3').show();
+      } else {
+        $('#other_patian_sta_3').hide();
+        $('#other_patian_sta_text_3').val('');
       }
     });
     $('input[name="reporter_position"]').on('click', function() {
@@ -447,6 +607,22 @@ $(document).ready(function() {
       } else {
         $('#other_address_funeral').hide();
         $('#other_address_funeral_text').val('');
+      }
+    });
+    $('input[name="funeral_2"]').on('click', function() {
+      if ($(this).val() == '3') {
+        $('#other_address_funeral_2').show();
+      } else {
+        $('#other_address_funeral_2').hide();
+        $('#other_address_funeral_text_2').val('');
+      }
+    });
+    $('input[name="funeral_3"]').on('click', function() {
+      if ($(this).val() == '3') {
+        $('#other_address_funeral_3').show();
+      } else {
+        $('#other_address_funeral_3').hide();
+        $('#other_address_funeral_text_3').val('');
       }
     });
     $('input[name="nationality"]').on('click', function() {

@@ -534,8 +534,9 @@ $arr_title_name = load_title_name();
           @endif
           <strong>ว/ด/ป ที่พบเหตุการณ์ : </strong>
           {{ isset($ViewAEFI1Data[0]->date_found_event) ? $ViewAEFI1Data[0]->date_found_event : "ไม่ระบุข้อมูล" }}<br>
-          <strong>สถานที่เกิดเหตุการณ์ : </strong>
-          {{ isset($ViewAEFI1Data[0]->event_location) ? $ViewAEFI1Data[0]->event_location : "ไม่ระบุข้อมูล" }}<br>
+          <strong>โรงพยาบาลที่รับรักษา : </strong>
+          {{ isset($list_hos[$ViewAEFI1Data[0]->hospcode_treat]) ? $ViewAEFI1Data[$data[0]->hospcode_treat]:""}}
+          {{ isset($ViewAEFI1Data[0]->event_location) ? $ViewAEFI1Data[0]->event_location : "" }}<br>
           <strong>จังหวัด : </strong>
           {{ isset($listProvince[$ViewAEFI1Data[0]->province_found_event]) ? $listProvince[$ViewAEFI1Data[0]->province_found_event] : "ไม่ระบุข้อมูล" }}<br>
         </address>
@@ -543,8 +544,9 @@ $arr_title_name = load_title_name();
       <div class="col-xs-4">
         <address>
           <strong>หน่วยที่รายงาน : </strong>
-          {{ isset($ViewAEFI1Data[0]->unit_reported) ? $ViewAEFI1Data[0]->unit_reported : "ไม่ระบุข้อมูล" }}
-          {{ isset($listProvince[$ViewAEFI1Data[0]->province_reported]) ? $listProvince[$ViewAEFI1Data[0]->province_reported] : "ไม่ระบุข้อมูล" }}<br>
+          {{ isset($ViewAEFI1Data[0]->hospcode_report ? $ViewAEFI1Data[0]->hospcode_report:"ไม่ระบุข้อมูล"}}
+          {{ isset($ViewAEFI1Data[0]->unit_reported) ? $ViewAEFI1Data[0]->unit_reported : "" }}
+          {{ isset($listProvince[$ViewAEFI1Data[0]->province_reported]) ? $listProvince[$ViewAEFI1Data[0]->province_reported] : "" }}<br>
           <strong>ว/ด/ป ที่ส่งรายงาน : </strong>
           {{ isset($ViewAEFI1Data[0]->datepicker_send_reported) ? $ViewAEFI1Data[0]->datepicker_send_reported : "ไม่ระบุข้อมูล" }}<br>
           <strong>ว/ด/ป ที่รับรายงาน : </strong>

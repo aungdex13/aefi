@@ -5,7 +5,7 @@ use App\User;
 use App\ChospitalNew;
 use Illuminate\Http\Request;
 use Cache;
-
+use DB;
 class ManageUsersController extends Controller
 {
     /**
@@ -33,9 +33,11 @@ class ManageUsersController extends Controller
          }
          return $arr;
       });
+      $listProvince=$this->listProvince();
       return view('aefi.managerusers.index',[
         'datas' => $datas,
-        'datas_div' => $data_list_division
+        'datas_div' => $data_list_division,
+        'listProvince' => $listProvince,
       ]);
     }
 
@@ -51,5 +53,15 @@ class ManageUsersController extends Controller
       $user->confirm = $status_confirm;
       if($user->save()) return "ok";
     }
-
+    protected function listProvince(){
+			$province = DB::table('ref_province')
+			->select('province_id','province_name')
+			->orderBy('province_id', 'ASC')
+			->get();
+			foreach ($province as  $value) {
+				$province_arr[$value->province_id] =trim($value->province_name);
+			}
+			// dd($province_arr);
+			return $province_arr;
+		}
 }

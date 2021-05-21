@@ -19,68 +19,97 @@ class DataexportController extends Controller
 	public function dataexport(){
 		$cabonnow =  Carbon::now();
 		$datenow = $cabonnow->toDateString();
-		// dd($datenow);
 		$yearnow =  now()->year;
 		$roleArrusername = auth()->user()->username;
 		$roleArrhospcode = auth()->user()->hospcode;
 		$roleArrprov_code = auth()->user()->prov_code;
 		$roleArrregion = auth()->user()->region;
-		// dd($roleArrusername,$roleArrhospcode,$roleArrprov_code,$roleArrregion);
+	//dd($roleArrusername,$roleArrhospcode,$roleArrprov_code,$roleArrregion);
 		$roleArr = auth()->user()->getRoleNames()->toArray();
+$selectgroupprov = DB::table('chospital_new')
+											 ->select('chospital_new.prov_code')
+											 ->where('region',$roleArrregion)
+											 ->groupBy('prov_code')
+											 ->get()
+											 ->pluck('prov_code');
+
+		$yearnow =  now()->year;
 		$selectcaselstF1=DB::table('aefi_form_1')
-		->join('aefi_form_1_vac', 'aefi_form_1.id_case', '=', 'aefi_form_1_vac.id_case')
+		->leftjoin('aefi_form_1_vac', 'aefi_form_1.id_case', '=', 'aefi_form_1_vac.id_case')
 		->select('aefi_form_1.*',
-		DB::raw('GROUP_CONCAT( aefi_form_1_vac.name_of_vaccine ) as "name_of_vaccine",
-						 GROUP_CONCAT( aefi_form_1_vac.lot_number ) as "lot_number",
-						 GROUP_CONCAT( aefi_form_1_vac.manufacturer  ) as "manufacturer",
-				 		 GROUP_CONCAT( aefi_form_1_vac.dose  ) as "dose",
-				 		 GROUP_CONCAT( aefi_form_1_vac.date_of_vaccination   ) as "date_of_vaccination",
-				 		 GROUP_CONCAT( aefi_form_1_vac.time_of_vaccination   ) as "time_of_vaccination" ')
-					 )
-					 ->whereDate('aefi_form_1.date_entry',$datenow);
+		DB::raw('aefi_form_1_vac.name_of_vaccine as "name_of_vaccine",
+						aefi_form_1_vac.lot_number as "lot_number",
+						aefi_form_1_vac.manufacturer  as "manufacturer",
+						aefi_form_1_vac.dose as "dose",
+						aefi_form_1_vac.date_of_vaccination  as "date_of_vaccination",
+						aefi_form_1_vac.time_of_vaccination  as "time_of_vaccination" '
+					));
+		// DB::raw('GROUP_CONCAT( aefi_form_1_vac.name_of_vaccine ) as "name_of_vaccine",
+		// 				 GROUP_CONCAT( aefi_form_1_vac.lot_number ) as "lot_number",
+		// 				 GROUP_CONCAT( aefi_form_1_vac.manufacturer  ) as "manufacturer",
+		// 		 		 GROUP_CONCAT( aefi_form_1_vac.dose  ) as "dose",
+		// 		 		 GROUP_CONCAT( aefi_form_1_vac.date_of_vaccination   ) as "date_of_vaccination",
+		// 		 		 GROUP_CONCAT( aefi_form_1_vac.time_of_vaccination   ) as "time_of_vaccination" ')
+		// 			 );
+
+	//->orwhere('aefi_form_1.date_entry',$datenow);
 		if (count($roleArr) > 0) {
 			 $user_role = $roleArr[0];
 		 switch ($user_role) {
-			 case 'hos':
-				 $selectdata  = $selectcaselstF1
-								 ->where('user_hospcode',$roleArrhospcode)
-								 ->whereNull('aefi_form_1.status')
-								 ->groupBy('aefi_form_1.id_case')
-								 ->get()->toArray();
+			 case 'hospital':
+				$selectdata  = $selectcaselstF1
+								//
+								->whereDate('aefi_form_1.date_entry',$datenow)
+								->whereNull('aefi_form_1.status')
+								->where(function($query) {
+											$query->orWhere('aefi_form_1.user_hospcode',auth()->user()->hospcode)
+														->orWhere('aefi_form_1.hospcode_treat',auth()->user()->hospcode)
+														->orWhere('aefi_form_1.hospcode_report',auth()->user()->hospcode);
+									})
+								->groupBy('aefi_form_1.id_case')
+								->get();
 			 break;
-			 case 'pho':
+			 			 case 'pho':
 				 $selectdata = $selectcaselstF1
-								 ->where('user_provcode',$roleArrprov_code)
-								 ->whereNull('aefi_form_1.status')
-								 ->groupBy('aefi_form_1.id_case')
-								 ->get()->toArray();
+				 				->whereDate('aefi_form_1.date_entry',$datenow)
+				 				->whereNull('aefi_form_1.status')
+								->where(function($query) {
+											$query->orWhere('aefi_form_1.user_provcode',auth()->user()->prov_code)
+														->orWhere('aefi_form_1.province_found_event',auth()->user()->prov_code)
+														->orWhere('aefi_form_1.province_reported',auth()->user()->prov_code);
+									})
+								->groupBy('aefi_form_1.id_case')
+								->get();
 				 break;
 				 case 'dpc':
 				 if ($roleArrhospcode == "41173") {
 						 $selectdata = $selectcaselstF1
-								 ->whereNull('aefi_form_1.status')
-								 ->groupBy('aefi_form_1.id_case')
-								 ->get()->toArray();
+									 ->whereNull('aefi_form_1.status')
+									 ->groupBy('aefi_form_1.id_case')
+									 ->get();
 				 }else {
 					 $selectdata = $selectcaselstF1
-							 ->where('user_region',$roleArrregion)
+							->whereIn('aefi_form_1.province',$selectgroupprov)
+							 //->orWhere('user_region',$roleArrregion)
 							 ->whereNull('aefi_form_1.status')
 							 ->groupBy('aefi_form_1.id_case')
-							 ->get()->toArray();
+							 ->get();
 				 }
 					 break;
 					 case 'ddc':
+
 						 $selectdata = $selectcaselstF1
 						 ->whereNull('aefi_form_1.status')
+						 ->whereDate('aefi_form_1.date_entry',$datenow)
 						 ->groupBy('aefi_form_1.id_case')
-						 ->get()->toArray();
+						 ->get();
 						 break;
 						 case 'admin':
 							 $selectdata = $selectcaselstF1
-
 							 ->whereNull('aefi_form_1.status')
-							 ->groupBy('aefi_form_1.id_case')
-							 ->get()->toArray();
+							 ->whereDate('aefi_form_1.date_entry',$datenow)
+							 // ->groupBy('aefi_form_1.id_case')
+							 ->get();
 							 break;
 		 default:
 			 break;
@@ -90,19 +119,21 @@ class DataexportController extends Controller
 		 $listDistrict=$this->listDistrict();
 		 $listsubdistrict=$this->listsubdistrict();
 		 $listvac_arr=$this->listvac_arr();
+		 $list_hos=$this->list_hos();
 		return view('AEFI.Apps.dataf1export',
 			[
 				'selectdata'=>$selectdata,
 				'listsubdistrict'=>$listsubdistrict,
 				'listDistrict'=>$listDistrict,
 				'listProvince'=>$listProvince,
-				'listvac_arr'=>$listvac_arr,
 				'yearnow'=>$yearnow,
-				'datenow'=>$datenow
+				'listvac_arr'=>$listvac_arr,
+				'datenow'=>$datenow,
+				'list_hos'=>$list_hos
 			]);
 	}
 
-	public function dataexportfrm(Request $req){
+		public function dataexportfrm(Request $req){
 		$roleArrusername = auth()->user()->username;
 		$roleArrhospcode = auth()->user()->hospcode;
 		$roleArrprov_code = auth()->user()->prov_code;
@@ -114,43 +145,54 @@ class DataexportController extends Controller
 		$date_of_symptoms_to = $date_of_symptoms[3]."-".$date_of_symptoms[4]."-".$date_of_symptoms[5];
 		$cabonnow =  Carbon::now();
 		$datenow = $cabonnow->toDateString();
-		 // dd($date_of_symptoms_from,$date_of_symptoms_to);
 		$selectcaselstF1=DB::table('aefi_form_1')
 		->join('aefi_form_1_vac', 'aefi_form_1.id_case', '=', 'aefi_form_1_vac.id_case')
 		->select('aefi_form_1.*',
-		DB::raw('GROUP_CONCAT( aefi_form_1_vac.name_of_vaccine ) as "name_of_vaccine",
-		GROUP_CONCAT( aefi_form_1_vac.lot_number ) as "lot_number",
-						 GROUP_CONCAT( aefi_form_1_vac.manufacturer  ) as "manufacturer",
-				 		 GROUP_CONCAT( aefi_form_1_vac.dose  ) as "dose",
-				 		 GROUP_CONCAT( aefi_form_1_vac.date_of_vaccination   ) as "date_of_vaccination",
-				 		 GROUP_CONCAT( aefi_form_1_vac.time_of_vaccination   ) as "time_of_vaccination" ')
-					 )
-					  // ->where('aefi_form_1.date_of_symptoms','=',2021-04-30);
+		DB::raw('aefi_form_1_vac.name_of_vaccine as "name_of_vaccine",
+						aefi_form_1_vac.lot_number as "lot_number",
+						aefi_form_1_vac.manufacturer  as "manufacturer",
+						aefi_form_1_vac.dose as "dose",
+						aefi_form_1_vac.date_of_vaccination  as "date_of_vaccination",
+						aefi_form_1_vac.time_of_vaccination  as "time_of_vaccination" '
+					))
+					
+		// DB::raw('GROUP_CONCAT( aefi_form_1_vac.name_of_vaccine ) as "name_of_vaccine",
+		// 				 GROUP_CONCAT( aefi_form_1_vac.lot_number ) as "lot_number",
+		// 				 GROUP_CONCAT( aefi_form_1_vac.manufacturer  ) as "manufacturer",
+		// 		 		 GROUP_CONCAT( aefi_form_1_vac.dose  ) as "dose",
+		// 		 		 GROUP_CONCAT( aefi_form_1_vac.date_of_vaccination   ) as "date_of_vaccination",
+		// 		 		 GROUP_CONCAT( aefi_form_1_vac.time_of_vaccination   ) as "time_of_vaccination" ')
+		// 			 );
 						->whereDate('aefi_form_1.date_entry', '>=', $date_of_symptoms_from)
 						->whereDate('aefi_form_1.date_entry', '<=', $date_of_symptoms_to);
-						// ->whereBetween('date_of_symptoms', [$date_of_symptoms_from, $date_of_symptoms_to]);
-		// dd($selectcaselstF1);
-		if (count($roleArr) > 0) {
+	if (count($roleArr) > 0) {
 			 $user_role = $roleArr[0];
 		 switch ($user_role) {
-			 case 'hos':
+			 case 'hospital':
 				 $selectdata  = $selectcaselstF1
-								 ->where('user_hospcode',$roleArrhospcode)
+								 ->where(function($query) {
+											 $query->orWhere('aefi_form_1.user_hospcode',auth()->user()->hospcode)
+														 ->orWhere('aefi_form_1.hospcode_treat',auth()->user()->hospcode)
+														 ->orWhere('aefi_form_1.hospcode_report',auth()->user()->hospcode);
+									 })
 								 ->whereNull('aefi_form_1.status')
 								 ->groupBy('aefi_form_1.id_case')
 								 ->get();
 			 break;
 			 case 'pho':
 				 $selectdata = $selectcaselstF1
-								 ->where('user_provcode',$roleArrprov_code)
-								 ->whereNull('aefi_form_1.status')
-								 ->groupBy('aefi_form_1.id_case')
+				 ->whereNull('aefi_form_1.status')
+				 ->where(function($query) {
+							 $query->orWhere('aefi_form_1.user_provcode',auth()->user()->prov_code)
+										 ->orWhere('aefi_form_1.province_found_event',auth()->user()->prov_code)
+										 ->orWhere('aefi_form_1.province_reported',auth()->user()->prov_code);
+					 })
+				 ->groupBy('aefi_form_1.id_case')
 								 ->get();
 				 break;
 				 case 'dpc':
 				 if ($roleArrhospcode == "41173") {
 						 $selectdata = $selectcaselstF1
-								 // ->where('user_region',$roleArrregion)
 								 ->whereNull('aefi_form_1.status')
 								 ->groupBy('aefi_form_1.id_case')
 								 ->get();
@@ -171,18 +213,18 @@ class DataexportController extends Controller
 						 case 'admin':
 							 $selectdata = $selectcaselstF1
 							 ->whereNull('aefi_form_1.status')
-							 ->groupBy('aefi_form_1.id_case')
+							 // ->groupBy('aefi_form_1.id_case')
 							 ->get();
 							 break;
 		 default:
 			 break;
 	 }
 	}
-	// dd($selectdata);
 		 $listProvince=$this->listProvince();
 		 $listDistrict=$this->listDistrict();
 		 $listsubdistrict=$this->listsubdistrict();
 		 $listvac_arr=$this->listvac_arr();
+		 $list_hos=$this->list_hos();
 		return view('AEFI.Apps.dataf1export',
 			[
 				'selectdata'=>$selectdata,
@@ -192,7 +234,8 @@ class DataexportController extends Controller
 				'listvac_arr'=>$listvac_arr,
 				'date_of_symptoms_from'=>$date_of_symptoms_from,
 				'date_of_symptoms_to'=>$date_of_symptoms_to,
-				'datenow'=>$datenow
+				'datenow'=>$datenow,
+				'list_hos'=>$list_hos
 			]);
 	}
 
@@ -231,5 +274,13 @@ class DataexportController extends Controller
 		}
 		// dd($province_arr);
 		return $arr_vac;
+	}
+	protected function list_hos(){
+		$arr_hos = DB::table('chospital_new')->select('hospcode','hosp_name')->get();
+		foreach ($arr_hos as  $value) {
+			$arr_hos[$value->hospcode] =trim($value->hosp_name);
+		}
+		// dd($province_arr);
+		return $arr_hos;
 	}
 }

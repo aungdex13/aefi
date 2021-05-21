@@ -234,7 +234,7 @@
 												'gbs' => $req ->input ('gbs'),
 												'acute_myocardial' => $req ->input ('acute_myocardial'),
 												'ards' => $req ->input ('ards'),
-												'date_entry' => date('Y-m-d H:i:s'),
+												'date_update_aefi1' => date('Y-m-d'),
 												'lab_result'=> $req ->input ('lab_result'),
 												'other_text_patient_develop_symptoms_after_previous_vaccination' => $req ->input ('other_text_patient_develop_symptoms_after_previous_vaccination'),
 												'other_text_underlying_disease' => $req ->input ('other_text_underlying_disease'),

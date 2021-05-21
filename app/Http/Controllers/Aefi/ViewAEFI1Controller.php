@@ -25,6 +25,7 @@ class ViewAEFI1Controller extends Controller
         $listsubdistrict=$this->listsubdistrict();
         $listvac_arr=$this->listvac_arr();
         $vaclist=$this->vaclist();
+        $list_hos=$this->list_hos();
         return view('AEFI.Apps.viewform1',[
           "ViewAEFI1Data" => $ViewAEFI1Data,
           "ViewAEFI1vacData" => $ViewAEFI1vacData,
@@ -32,7 +33,8 @@ class ViewAEFI1Controller extends Controller
           "listDistrict" =>$listDistrict,
           "listsubdistrict" =>$listsubdistrict,
           "listvac_arr"=>$listvac_arr,
-          "vaclist"=>$vaclist
+          "vaclist"=>$vaclist,
+          "list_hos"=>$list_hos
         ]);
     }
 
@@ -143,5 +145,13 @@ class ViewAEFI1Controller extends Controller
       ->get();
        // dd($vaclist);
       return $arr_vaclist;
+    }
+    protected function list_hos(){
+      $arr_hos = DB::table('chospital_new')->select('hospcode','hosp_name')->get();
+      foreach ($arr_hos as  $value) {
+        $arr_hos[$value->hospcode] =trim($value->hosp_name);
+      }
+      // dd($province_arr);
+      return $arr_hos;
     }
 }
