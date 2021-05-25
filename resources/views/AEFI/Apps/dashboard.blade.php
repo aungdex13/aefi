@@ -44,9 +44,9 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
                 </select>
                   {{-- <input type="text" name="province" class="form-control" placeholder="{{ isset($province) ? $province : "จังหวัด"}}"> --}}
               </div>
-              <div class="col-xs-3">
+              {{-- <div class="col-xs-3">
                   <input type="text" name="date_of_symptoms" id="date_of_symptoms" class="form-control" placeholder="ระบุวันที่กรอกข้อมูล" autocomplete="off" data-date-format="yyyy-mm-dd" readonly>
-              </div>
+              </div> --}}
               <div class="col-xs-3">
                 <select id="name_of_vaccine" name="name_of_vaccine" class="form-control" style="width: 100%;">
                   <option class="badge filter badge-info" data-color="info" value="">ระบุวัคซีนที่ต้องการค้นหา</option>
@@ -234,13 +234,40 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
         <div class="box-footer no-padding">
           <ul class="nav nav-pills nav-stacked">
             <li><a href="#">เพศชาย
-                <span class="pull-right text-red"> {{$count_male[0]->count_male}} คน</span></a>
+                        @if ($province == null)
+                          จังหวัดทั้งหมด
+                        @else
+                          จังหวัด{{ isset($listProvince[$province]) ?$listProvince[$province]:"ทั้งหมด"}}
+                        @endif
+                        @if ($vac_list == null)
+                        @else
+                          วัคซีน{{ isset($listvac_arr[$name_of_vaccine]) ?$listvac_arr[$name_of_vaccine]:"ไม่ระบุ"}}
+                        @endif
+                <span class="pull-right text-red"> {{$count_all_gender_m[0]->count_male}} คน</span></a>
             </li>
             <li><a href="#">เพศหญิง
-              <span class="pull-right text-yellow">{{$count_female[0]->count_female}} คน</span></a>
+              @if ($province == null)
+                จังหวัดทั้งหมด
+              @else
+                จังหวัด{{ isset($listProvince[$province]) ?$listProvince[$province]:"ทั้งหมด"}}
+              @endif
+              @if ($vac_list == null)
+              @else
+                วัคซีน{{ isset($listvac_arr[$name_of_vaccine]) ?$listvac_arr[$name_of_vaccine]:"ไม่ระบุ"}}
+              @endif
+              <span class="pull-right text-yellow">{{$count_all_gender_f[0]->count_female}} คน</span></a>
             </li>
-            <li><a href="#">ไม่ระบุ
-              <span class="pull-right text-green"> {{isset($count_gender_other[0]->count_gender_other) ? $count_gender_other[0]->count_gender_other:"0"}} คน</span></a></li>
+            <li><a href="#">ไม่ระบเพศ
+              @if ($province == null)
+                จังหวัดทั้งหมด
+              @else
+                จังหวัด{{ isset($listProvince[$province]) ?$listProvince[$province]:"ทั้งหมด"}}
+              @endif
+              @if ($vac_list == null)
+              @else
+                วัคซีน{{ isset($listvac_arr[$name_of_vaccine]) ?$listvac_arr[$name_of_vaccine]:"ไม่ระบุ"}}
+              @endif
+              <span class="pull-right text-green"> {{isset($count_all_gender_other[0]->count_other) ? $count_all_gender_other[0]->count_other:"0"}} คน</span></a></li>
           </ul>
         </div>
         <!-- /.footer -->

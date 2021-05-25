@@ -3,7 +3,11 @@
 	<!-- Sidebar user panel -->
 	<div class="user-panel">
 	  <div class="pull-left image">
-		<img src="../asset/dist/img/avatar5.png" class="img-circle" alt="User Image">
+      @php
+      $user_role =  Session::get('user_role') ;
+      @endphp
+      <img src="{{ URL::asset('/asset/dist/img/st'.$user_role.'.png') }}" class="img-circle" alt="User Image">
+		{{-- <img src="/asset/dist/img/st{{ Session::get('user_role') }}.jpg" class="img-circle" alt="User Image"> --}}
 	  </div>
 	  <div class="pull-left info">
 		<p>{{ Auth::user()->name }} {{ Auth::user()->sur_name }}</br></p>

@@ -29,9 +29,9 @@
 			$count_south = $this->count_south();
 			$count_western = $this->count_western();
 			$count_all_gender = $this->count_all_gender();
-			$count_male = $this->count_male();
-			$count_female = $this->count_female();
-			$count_gender_other = $this->count_gender_other();
+			$count_all_gender_m = $this->count_male();
+			$count_all_gender_f = $this->count_female();
+			$count_all_gender_other = $this->count_gender_other();
 			$count_vacname = $this->count_vacname();
 			$listvac_arr =  $this->listvac_arr();
 			$count_groupage = $this->count_groupage();
@@ -52,9 +52,9 @@
 			 'count_western',
 			 'count_all_seriousness_of_the_symptoms',
 			 'count_all_gender',
-			 'count_male',
-			 'count_female',
-			 'count_gender_other',
+			 'count_all_gender_m',
+			 'count_all_gender_f',
+			 'count_all_gender_other',
 			 'count_vacname',
 			 'count_groupage',
 			 'listvac_arr',
@@ -86,7 +86,6 @@
 										 ->orderBy('year_entry')
 										 ->get();
 			// dd($count_month);
-
 			$count_year=$this->count_year();
 			$yearnow =  now()->year ;
 			$count_north = $this->count_north();
@@ -95,6 +94,7 @@
 			$count_eastern = $this->count_eastern();
 			$count_south = $this->count_south();
 			$count_western = $this->count_western();
+
 			$count_all_gender_se = DB::table('aefi_form_1')
 											->leftJoin('aefi_form_1_vac', 'aefi_form_1.id_case', '=', 'aefi_form_1_vac.id_case')
 											->select(DB::raw('count(aefi_form_1.id) as gender_n ,	aefi_form_1.gender '));
@@ -119,24 +119,78 @@
 											->groupBy('aefi_form_1.gender')
 											->get();
 			// dd($province,$name_of_vaccine,$count_all_gender);
+
 			$count_male = DB::table('aefi_form_1')
-										 ->select(DB::raw('count(*) as count_male'))
-										 ->where('province',"=",$province)
-										 ->where('gender', '=', '1')
-										 ->where('status',null)
-										 ->get();
+										->leftJoin('aefi_form_1_vac', 'aefi_form_1.id_case', '=', 'aefi_form_1_vac.id_case')
+										->select(DB::raw('COUNT(distinct aefi_form_1.id_case) as count_male'));
+										 if ($name_of_vaccine != null) {
+							 				$vac_select = $count_male
+							 											->Where('aefi_form_1_vac.name_of_vaccine',"=",$name_of_vaccine);
+							 			}else{
+							 			}
+							 			if ($province != null) {
+							 				$vac_select = $count_male
+							 											->Where('aefi_form_1.province',"=",$province);
+							 			}else {
+							 			}
+							 			if ($province != null && $name_of_vaccine != null) {
+							 				$vac_select = $count_male
+							 											->Where('aefi_form_1_vac.name_of_vaccine',"=",$name_of_vaccine)
+							 											->Where('aefi_form_1.province',"=",$province);
+							 			}else {
+							 			}
+							 					$count_all_gender_m = $vac_select
+																		->where('gender', '=', '1')
+							 											->where('aefi_form_1.status',null)
+							 											->get();
+									// dd($count_all_gender_m);
 			$count_female = DB::table('aefi_form_1')
-										 ->select(DB::raw('count(*) as count_female'))
-										 ->where('province',"=",$province)
-										 ->where('gender', '=', '2')
-										 ->where('status',null)
-										 ->get();
+										 ->leftJoin('aefi_form_1_vac', 'aefi_form_1.id_case', '=', 'aefi_form_1_vac.id_case')
+										 ->select(DB::raw('COUNT(distinct aefi_form_1.id_case) as count_female'));
+											if ($name_of_vaccine != null) {
+											 $vac_select = $count_female
+												->Where('aefi_form_1_vac.name_of_vaccine',"=",$name_of_vaccine);
+										 }else{
+										 }
+										 if ($province != null) {
+											 $vac_select = $count_female
+												->Where('aefi_form_1.province',"=",$province);
+										 }else {
+										 }
+										 if ($province != null && $name_of_vaccine != null) {
+											 $vac_select = $count_female
+																		 ->Where('aefi_form_1_vac.name_of_vaccine',"=",$name_of_vaccine)
+																		 ->Where('aefi_form_1.province',"=",$province);
+										 }else {
+										 }
+												 $count_all_gender_f = $vac_select
+																		 ->where('gender', '=', '2')
+																		 ->where('aefi_form_1.status',null)
+																		 ->get();
 			$count_gender_other = DB::table('aefi_form_1')
-										 ->select(DB::raw('count(*) as count_gender_other'))
-										 ->where('province',"=",$province)
-										 ->where('gender', '=', null)
-										 ->where('status',null)
-										 ->get();
+															// ->select(DB::raw('count(*) as count_female'))
+															->leftJoin('aefi_form_1_vac', 'aefi_form_1.id_case', '=', 'aefi_form_1_vac.id_case')
+															->select(DB::raw('COUNT(distinct aefi_form_1.id_case) as count_other'));
+															 if ($name_of_vaccine != null) {
+																$vac_select = $count_gender_other
+																			->Where('aefi_form_1_vac.name_of_vaccine',"=",$name_of_vaccine);
+															}else{
+															}
+															if ($province != null) {
+																$vac_select = $count_gender_other
+																			->Where('aefi_form_1.province',"=",$province);
+															}else {
+															}
+															if ($province != null && $name_of_vaccine != null) {
+																$vac_select = $count_gender_other
+																			->Where('aefi_form_1_vac.name_of_vaccine',"=",$name_of_vaccine)
+																			->Where('aefi_form_1.province',"=",$province);
+															}else {
+															}
+													$count_all_gender_other = $vac_select
+																			->where('gender', '=', null)
+																			->where('aefi_form_1.status',null)
+																			->get();
 			$count_vacname = DB::table('aefi_form_1_vac')
 				 					 ->select(DB::raw('count(aefi_form_1_vac.name_of_vaccine) as vac_count,name_of_vaccine'))
 									 // ->where('province',"=",$province)
@@ -176,7 +230,10 @@
 			 'vac_list',
 			 'province',
 			 'date_of_symptoms',
-			 'name_of_vaccine'
+			 'name_of_vaccine',
+			 'count_all_gender_m',
+			 'count_all_gender_f',
+			 'count_all_gender_other'
 		 ));
 	 	}
 		protected function count_prov(){

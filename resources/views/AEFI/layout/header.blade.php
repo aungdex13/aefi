@@ -23,13 +23,13 @@
 		<!-- User Account: style can be found in dropdown.less -->
 		<li class="dropdown user user-menu">
 		  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-			<img src="/asset/dist/img/avatar5.png" class="user-image" alt="User Image">
+			<img src="/asset/dist/img/st{{ Session::get('user_role') }}.jpg" class="user-image" alt="User Image">
 			<span class="hidden-xs">{{ Auth::user()->name }} {{ Auth::user()->sur_name }}<span class="caret"></span></span>
 		  </a>
 		  <ul class="dropdown-menu">
 			<!-- User image -->
 			<li class="user-header">
-			  <img src="/asset/dist/img/avatar5.png" class="img-circle" alt="User Image">
+			  <img src="/asset/dist/img/st{{ Session::get('user_role') }}.jpg" class="img-circle" alt="User Image">
 			  <p>
 				{{ Auth::user()->name }} {{ Auth::user()->sur_name }}
 				<small>Member since {{ Auth::user()->created_at}}</small>
