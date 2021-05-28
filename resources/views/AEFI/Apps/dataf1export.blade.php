@@ -133,7 +133,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
                         <th>อาการอื่นๆ</th>
                         <th>Seriousness</th>
                         <th>conclusion</th>
-                        <th>หน่วยงานที่รายงาน</th>
+                        <th>โรงพยาบาลที่รับรักษา</th>
                         <th>จังหวัดที่รายงาน</th>
                         <th>ว/ด/ป ที่ส่งรายงาน</th>
                         <th>ว/ด/ป ที่รับรายงาน</th>
@@ -557,7 +557,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
                       </td>
                         <td>{{ $arr_seriousness_of_the_symptoms[$value->seriousness_of_the_symptoms] }}</td>
                         <td>{{ $value->diagnosis }}</td>
-                        <td>{{ isset($list_hos[ $value->hospcode_report]) ? $list_hos[ $value->hospcode_report] : ""}}{{ $value->unit_reported }}</td>
+                        <td>{{ isset($list_hos[ $value->hospcode_treat]) ? $list_hos[ $value->hospcode_treat] : ""}}</td>
                         <td>{{ isset($listProvince[ $value->province_reported]) ? $listProvince[ $value->province_reported] : "ไม่ระบุข้อมูล"}}</td>
                         <td>{{ isset($value->datepicker_send_reported) ? $value->datepicker_send_reported: "-" }}</td>
                         <td>{{ isset($value->datepicker_resiver) ? $value->datepicker_resiver: "-" }}</td>

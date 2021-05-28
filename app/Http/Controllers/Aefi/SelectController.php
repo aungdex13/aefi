@@ -72,7 +72,9 @@
 								->where(function($query) {
 											$query->orWhere('aefi_form_1.user_hospcode',auth()->user()->hospcode)
 														->orWhere('aefi_form_1.hospcode_treat',auth()->user()->hospcode)
-														->orWhere('aefi_form_1.hospcode_report',auth()->user()->hospcode);
+														->orWhere('aefi_form_1.hospcode_report',auth()->user()->hospcode)
+														->orWhere('aefi_form_1.hospcode_refer',auth()->user()->hospcode)
+														->orWhere('aefi_form_1.hosp_update_refer',auth()->user()->hospcode);
 									})
 									->whereNull('aefi_form_1.status')
 									->groupBy('aefi_form_1.id_case')
@@ -84,7 +86,10 @@
 								->where(function($query) {
 											$query->orWhere('aefi_form_1.user_provcode',auth()->user()->prov_code)
 														->orWhere('aefi_form_1.province_found_event',auth()->user()->prov_code)
-														->orWhere('aefi_form_1.province_reported',auth()->user()->prov_code);
+														->orWhere('aefi_form_1.province_reported',auth()->user()->prov_code)
+														->orWhere('aefi_form_1.prov_update_refer',auth()->user()->prov_code)
+														->orWhere('aefi_form_1.province_refer',auth()->user()->prov_code)
+														->orWhere('aefi_form_1.province_record_refer',auth()->user()->prov_code);
 									})
 									->whereNull('aefi_form_1.status')
 									->groupBy('aefi_form_1.id_case')
@@ -112,12 +117,19 @@
 							->groupBy('aefi_form_1.id_case')
 							->get();
 							break;
-							case 'admin':
-								$caselstF1 = $selectcaselstF1
-								->whereNull('aefi_form_1.status')
-								->groupBy('aefi_form_1.id_case')
-								->get();
-								break;
+						case 'admin':
+							$caselstF1 = $selectcaselstF1
+							->whereNull('aefi_form_1.status')
+							->groupBy('aefi_form_1.id_case')
+							->get();
+							break;
+						case 'admin-dpc':
+						$caselstF1 = $selectcaselstF1
+						->whereIn('aefi_form_1.province',$selectgroupprov)
+						->whereNull('aefi_form_1.status')
+						->groupBy('aefi_form_1.id_case')
+						->get();
+						break;
 			default:
 				break;
 		}

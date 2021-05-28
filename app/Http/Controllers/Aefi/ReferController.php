@@ -45,8 +45,9 @@ class ReferController extends Controller
 																	'hospcode_save',
 																	'other',
 																	'record_name',
-																	'date_entry'
-																	)
+																	'date_entry',
+																	'province_refer',
+																	'province_record_refer')
 												->where('id_aefi1',$id_aefi1)
 												->where('id_case',$id_case)
 												->orderBy('id', 'desc')
@@ -54,12 +55,14 @@ class ReferController extends Controller
 	// dd($select_refer_data);
 	 $listvac_arr=$this->listvac_arr();
 	 $list_hos=$this->list_hos();
+	 $list=$this->form1();
 	 return view('AEFI.Apps.ReferFrm',compact(
 	 	'id_case',
 		'selectcase',
 		'listvac_arr',
 		'list_hos',
-		'select_refer_data'
+		'select_refer_data',
+		'list'
 	 	));
 
 	}
@@ -77,7 +80,8 @@ class ReferController extends Controller
 		$record_name = $req ->input('record_name');
 		$hospcode_save = $req ->input ('hospcode_save');
 		$other = $req ->input ('other');
-
+		$province_refer = $req ->input ('province_refer');
+		$province_record_refer = $req ->input ('province_record_refer');
 		$data = array(
 			'id_aefi1'=>$id_aefi1,
 			'user_username'=>$user_username,
@@ -92,6 +96,8 @@ class ReferController extends Controller
 			'hospcode_save'=>$hospcode_save,
 			'other'=>$other,
 			'date_entry' => date('Y-m-d'),
+			'province_refer'=>$province_refer,
+			'province_record_refer' => $province_record_refer
 		);
 	// dd($data);
 		 $res1	= DB::table('aefi_refer')->insert($data);
@@ -106,7 +112,9 @@ class ReferController extends Controller
 													'region_update_refer' => $req ->input ('user_region'),
 													'refer_status' => $req ->input ('refer_status'),
 													'hospcode_refer' => $req ->input ('hospcode_refer'),
-													'date_update_refer' => date('Y-m-d')
+													'date_update_refer' => date('Y-m-d'),
+													'province_refer'=>$req ->input('province_refer'),
+													'province_record_refer' => $req ->input ('province_record_refer')
 												]);
 	 			$msg = " ส่งข้อมูลสำเร็จ";
 	 			$url_rediect = "<script>alert('".$msg."'); window.location='ReferFrm?id=$id_aefi1&id_case=$id_case';</script> ";
@@ -131,5 +139,12 @@ class ReferController extends Controller
 		}
 		// dd($province_arr);
 		return $arr_hos;
+	}
+	public function form1(){
+		$list=DB::table('tbl_provinces')
+					->orderBy('province_name', 'ASC')
+					->get();
+		 // return view('AEFI.Apps.form1')->with('list',$list);
+		 return $list;
 	}
 }

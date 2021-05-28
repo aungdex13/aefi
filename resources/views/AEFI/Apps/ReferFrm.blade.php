@@ -151,6 +151,23 @@ $arr_load_aefi_refer_status = load_aefi_refer_status();
 																						@endif
 																					</select>
 																				</div>
+																				<div class="col-lg-4">
+																					<label>จังหวัดของโรงพยาบาลที่ต้องการส่งต่อ : </label>
+																					<select class="form-control provinces" name="province_refer" id="provinces" required>
+																						@if ($select_refer_data == null)
+																							<option value="">=== จังหวัด ===</option>
+																							@foreach ($list as $row)
+																							<option value="{{$row->province_code}}">{{$row->province_name}}</option>
+																							@endforeach
+																						@else
+																							<option value="{{	isset($select_refer_data->province_refer) ? $select_refer_data->province_refer  :"" }}">{{	isset($arr_provinces[$select_refer_data->province_refer]) ? $arr_provinces[$select_refer_data->province_refer]  :"ไม่มีการส่งต่อผู้ป่วย" }}</option>
+																							@foreach ($list as $row)
+																							<option value="{{$row->province_code}}">{{$row->province_name}}</option>
+																							@endforeach
+																						@endif
+																					</select>
+																					<!-- /.p_id tname  -->
+																				</div>
 																			</div>
 																		</div>
 																		<div class="form-group">
@@ -169,6 +186,23 @@ $arr_load_aefi_refer_status = load_aefi_refer_status();
 																						@endif
 																							{{-- <option value="{{	isset($select_refer_data->hospcode_save) ? $select_refer_data->hospcode_save  :"" }}">{{	isset($list_hos[$select_refer_data->hospcode_save]) ? $list_hos[$select_refer_data->hospcode_save]  :"ไม่มีการส่งต่อผู้ป่วย" }}</option> --}}
 																					</select>
+																					</div>
+																					<div class="col-lg-4">
+																						<label>จังหวัดของหน่วยงานที่บันทึกข้อมูล : </label>
+																						<select class="form-control provinces" name="province_record_refer" id="provinces" required>
+																							@if ($select_refer_data == null)
+																								<option value="">=== จังหวัด ===</option>
+																								@foreach ($list as $row)
+																								<option value="{{$row->province_code}}">{{$row->province_name}}</option>
+																								@endforeach
+																							@else
+																								<option value="{{	isset($select_refer_data->province_record_refer) ? $select_refer_data->province_record_refer  :"" }}">{{	isset($arr_provinces[$select_refer_data->province_record_refer]) ? $arr_provinces[$select_refer_data->province_record_refer]  :"ไม่มีการส่งต่อผู้ป่วย" }}</option>
+																								@foreach ($list as $row)
+																								<option value="{{$row->province_code}}">{{$row->province_name}}</option>
+																								@endforeach
+																							@endif
+																						</select>
+																						<!-- /.p_id tname  -->
 																					</div>
 																			</div>
 																		</div>

@@ -106,7 +106,7 @@
                 </td>
               @else
             <td style="background-color:#44bec7">
-                <p style="text-align:center;">มีการส่งต่อผู้ป่วย ไปยัง {{$list_hos[$value->hospcode_refer]}}</p>
+                <p style="text-align:center;">มีการส่งต่อผู้ป่วยไปยัง {{$list_hos[$value->hospcode_refer]}}</p>
             </td>
               @endif
             <td>
@@ -123,6 +123,9 @@
                   <li><a href="{{ route('ReferFrm') }}?id={{ $value->id }}&id_case={{ $value->id_case }}" target="_blank"><i class="fa fa-ambulance" aria-hidden="true" style="color:#e6c34a;"></i>Refer ผู้ป่วย</a></li>
                   <li><a href="{{ route('SymtomsbyDoseLst') }}?id={{ $value->id }}&id_case={{ $value->id_case }}" target="_blank"><i class="fa fa-braille" aria-hidden="true" style="color:#b00b69;"></i>อาการภายหลัง<br>ได้รับการสร้างภูมิคุ้ม<br>กันโรคตามครั้งที่ฉีด</a></li>
                   @hasrole('admin')
+                  <li><a href="{{ route('ExpertDiagFrm') }}?id_case={{ $value->id_case }}" target="_blank"><i class="fa fa-user-circle-o" aria-hidden="true" style="color:#f46732;"></i>การประชุม<br>ผู้เชี่ยวชาญ</a></li>
+                  @endhasrole
+                  @hasrole('admin-dpc')
                   <li><a href="{{ route('ExpertDiagFrm') }}?id_case={{ $value->id_case }}" target="_blank"><i class="fa fa-user-circle-o" aria-hidden="true" style="color:#f46732;"></i>การประชุม<br>ผู้เชี่ยวชาญ</a></li>
                   @endhasrole
                   <li><a href="{{ route('deleteAEFI1') }}?id_case={{ $value->id_case }}" id="btnDelete" type="button" onclick="return confirm('ต้องการลบข้อมูล ใช่หรือไม่?');"><i class="fa  fa-trash-o" aria-hidden="true" style="color:#d9534f;"></i>ลบข้อมูล</a></li>

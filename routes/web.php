@@ -11,18 +11,20 @@
 |
 */
 //Start PK
-Route::get('/', 'Auth\LoginController@ShowloginForm');
+  Route::get('/', 'Auth\LoginController@ShowloginForm');
 
-Route::get('/register-form', 'Aefi\RegisterController@RegForm')->name('register-form');
-Route::post('/Saved-New-User', 'Aefi\RegisterController@Save_New_Users')->name('save-new-user');
-Route::get('/List-Division', 'Aefi\RegisterController@Get_Division_All')->name('list-division-json');
-Route::get('/MyProfile','ProfileController@index')->name('myprofile');
-Route::post('/MyProfile','ProfileController@edit')->name('myprofile-edit');
+  Route::get('/register-form', 'Aefi\RegisterController@RegForm')->name('register-form');
+  Route::post('/Saved-New-User', 'Aefi\RegisterController@Save_New_Users')->name('save-new-user');
+  Route::get('/List-Division', 'Aefi\RegisterController@Get_Division_All')->name('list-division-json');
+  Route::get('/MyProfile','ProfileController@index')->name('myprofile');
+  Route::post('/MyProfile','ProfileController@edit')->name('myprofile-edit');
+
 // ResetpasswordForm
-Route::get('/resetpassword-form', 'Aefi\ResetpasswordController@ResetpasswordForm')->name('resetpassword-form');
-Route::post('/Reset_Password_Users', 'Aefi\ResetpasswordController@Reset_Password_Users')->name('Reset_Password_Users');
+  Route::get('/resetpassword-form', 'Aefi\ResetpasswordController@ResetpasswordForm')->name('resetpassword-form');
+  Route::post('/Reset_Password_Users', 'Aefi\ResetpasswordController@Reset_Password_Users')->name('Reset_Password_Users');
+
 //Speatie
-Route::group(['prefix' => 'access-control','middleware' => ['auth']], function() {
+  Route::group(['prefix' => 'access-control','middleware' => ['auth']], function() {
   Route::get('/ManageRoles', 'RoleController@index')->name('roles.index');
   Route::get('/CreateRoles', 'RoleController@create')->name('roles.create'); //สร้างหน้า create.blade หรือ insert
   Route::post('/StoreRoles', 'RoleController@store')->name('roles.store'); //store คือการ insert

@@ -111,6 +111,13 @@ $selectgroupprov = DB::table('chospital_new')
 							 // ->groupBy('aefi_form_1.id_case')
 							 ->get();
 							 break;
+							 case 'admin-dpc':
+							 $selectdata = $selectcaselstF1
+							 ->whereIn('aefi_form_1.province',$selectgroupprov)
+							 ->whereNull('aefi_form_1.status')
+							 ->groupBy('aefi_form_1.id_case')
+							 ->get();
+							 break;
 		 default:
 			 break;
 	 }
@@ -155,7 +162,7 @@ $selectgroupprov = DB::table('chospital_new')
 						aefi_form_1_vac.date_of_vaccination  as "date_of_vaccination",
 						aefi_form_1_vac.time_of_vaccination  as "time_of_vaccination" '
 					))
-					
+
 		// DB::raw('GROUP_CONCAT( aefi_form_1_vac.name_of_vaccine ) as "name_of_vaccine",
 		// 				 GROUP_CONCAT( aefi_form_1_vac.lot_number ) as "lot_number",
 		// 				 GROUP_CONCAT( aefi_form_1_vac.manufacturer  ) as "manufacturer",
@@ -214,6 +221,13 @@ $selectgroupprov = DB::table('chospital_new')
 							 $selectdata = $selectcaselstF1
 							 ->whereNull('aefi_form_1.status')
 							 // ->groupBy('aefi_form_1.id_case')
+							 ->get();
+							 break;
+							 case 'admin-dpc':
+							 $selectdata = $selectcaselstF1
+							 ->whereIn('aefi_form_1.province',$selectgroupprov)
+							 ->whereNull('aefi_form_1.status')
+							 ->groupBy('aefi_form_1.id_case')
 							 ->get();
 							 break;
 		 default:
