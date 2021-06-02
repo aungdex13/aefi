@@ -1157,7 +1157,10 @@ foreach ($aecode as $value) {
                                 <div class="input-group-addon">
                                   <i class="fa fa-calendar"></i>
                                 </div>
-                                <input type="text" class="form-control pull-right" id="datepicker_send_reported" name="datepicker_send_reported" data-date-format="yyyy-mm-dd" readonly>
+
+                                <input type="text" class="form-control readonly pull-right" id="datepicker_send_reported" name="datepicker_send_reported" data-date-format="yyyy-mm-dd" value="<?php echo date("Y-m-d") ; ?>">
+
+                                {{-- <input type="text" class="form-control pull-right" id="datepicker_send_reported" name="datepicker_send_reported" data-date-format="yyyy-mm-dd" readonly> --}}
                               </div>
                             </div>
                             <div class="col-lg-4">

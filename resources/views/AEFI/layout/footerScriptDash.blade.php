@@ -43,7 +43,7 @@ $('#date_of_symptoms').datepicker({
 			exportEnabled: true,
 			animationEnabled: true,
 			title: {
-				text: "จำนวนผู้ป่วยรายเดือน"
+				// text: "จำนวนผู้ป่วยรายเดือน"
 			},
 			axisX: {
 				valueFormatString: "MMMM"
@@ -57,56 +57,44 @@ $('#date_of_symptoms').datepicker({
 					dataPoints: [
 						// @ foreach($count_month as $row)
 						{
-							x: new Date({{$yearnow}}, 0),
-							y: {{isset($count_month[0]->count_patient) ? $count_month[0]->count_patient : 0}}
+							y: {{isset($count_month[0]->jan) ? $count_month[0]->jan : 0}}
 						},
 						{
-							x: new Date({{$yearnow}}, 1),
-							y: {{isset($count_month[1]->count_patient) ? $count_month[1]->count_patient : 0}}
+							y:  {{isset($count_month[0]->feb) ? $count_month[0]->feb : 0}}
 						},
 						{
-							x: new Date({{$yearnow}}, 2),
-							y: {{isset($count_month[2]->count_patient) ? $count_month[2]->count_patient : 0}}
+							y:  {{isset($count_month[0]->mar) ? $count_month[0]->mar : 0}}
 						},
 						{
-							x: new Date({{$yearnow}}, 3),
-							y: {{isset($count_month[3]->count_patient) ? $count_month[3]->count_patient : 0}}
+							y: {{isset($count_month[0]->apr) ? $count_month[0]->apr : 0}}
 						},
 						{
-							x: new Date({{$yearnow}}, 4),
-							y: {{isset($count_month[4]->count_patient) ? $count_month[4]->count_patient : 0}}
+							y:  {{isset($count_month[0]->may) ? $count_month[0]->may : 0}}
 						},
 						{
-							x: new Date({{$yearnow}}, 5),
-							y: {{isset($count_month[5]->count_patient) ? $count_month[5]->count_patient : 0}}
+							y:  {{isset($count_month[0]->jun) ? $count_month[0]->jun : 0}}
 						},
 						{
-							x: new Date({{$yearnow}}, 6),
-							y: {{isset($count_month[6]->count_patient) ? $count_month[6]->count_patient : 0}}
+							y:  {{isset($count_month[0]->jul) ? $count_month[0]->jul : 0}}
 						},
 						{
-							x: new Date({{$yearnow}}, 7),
-							y: {{isset($count_month[7]->count_patient) ? $count_month[7]->count_patient : 0}}
+							y:  {{isset($count_month[0]->aug) ? $count_month[0]->aug : 0}}
 						},
 						{
-							x: new Date({{$yearnow}}, 8),
-							y: {{isset($count_month[8]->count_patient) ? $count_month[8]->count_patient : 0}}
+							y:  {{isset($count_month[0]->sep) ? $count_month[0]->sep : 0}}
 						},
 						{
-							x: new Date({{$yearnow}}, 9),
-							y: {{isset($count_month[9]->count_patient) ? $count_month[9]->count_patient : 0}}
+							y:  {{isset($count_month[0]->oct) ? $count_month[0]->oct : 0}}
 						},
 						{
-							x: new Date({{$yearnow}}, 10),
-							y: {{isset($count_month[10]->count_patient) ? $count_month[10]->count_patient : 0}}
+							y:  {{isset($count_month[0]->nov) ? $count_month[0]->nov : 0}}
 						},
 						{
-							x: new Date({{$yearnow}}, 11),
-							y: {{isset($count_month[11]->count_patient) ? $count_month[11]->count_patient : 0}}
+							y:  {{isset($count_month[0]->dec) ? $count_month[0]->dec : 0}}
 						},
 						// {
-						// 	x: new Date({{$yearnow}}, 12),
-						// 	y: {{isset($count_month[12]->count_patient) ? $count_month[12]->count_patient : 0}}
+						// 	x: new Date({ {$yearnow}}, 12),
+						// 	y: { {isset($count_month[12]->count_patient) ? $count_month[12]->count_patient : 0}}
 						// },
 
 						 // @ endforeach
@@ -136,7 +124,7 @@ $('#date_of_symptoms').datepicker({
 				dataPoints: [
 					@foreach($count_all_gender as $row)
 					{
-						y:  ({{$row->gender_n}} / {{$count_all_seriousness_of_the_symptoms[0]->count_seriousness_of_the_symptoms}})*100,
+						y:  ({{$row->gender_n}} / {{$countGender[0]->count_all}})*100,
 						label: "{{$arr_gender[$row->gender]}}",
 						color: "{{$arr_color_gender[$row->gender]}}"
 					},
@@ -197,15 +185,15 @@ $('#date_of_symptoms').datepicker({
 	});
 	chart.render();
 }
-var jsonData = {
-	@foreach($count_year as $row)
-  "{{$row->year_entry}}": [
-			@foreach($count_month as $rowm)
-    			{ "x": "{{$rowm->year_entry}}-{{$rowm->month_entry}}", "y": {{$rowm->count_patient}} },
-			@endforeach
-  ],
-	@endforeach
-}
+// var jsonData = {
+// 	@ foreach($count_year as $row)
+//   "{ {$row->year_entry}}": [
+// 			@ foreach($count_month as $rowm)
+//     			{ "x": "{ {$rowm->year_entry}}-{ {$rowm->month_entry}}", "y": { {$rowm->count_patient}} },
+// 			@ endforeach
+//   ],
+// 	@ endforeach
+// }
 var dataPoints = [];
 var chart = new CanvasJS.Chart("chartContainertest",{
   axisX: {

@@ -33,6 +33,7 @@ class ManageUsersController extends Controller
          }
          return $arr;
       });
+      // dd($data_list_division);
       $listProvince=$this->listProvince();
       return view('aefi.managerusers.index',[
         'datas' => $datas,

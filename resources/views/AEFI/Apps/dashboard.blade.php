@@ -108,7 +108,17 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
               <div class="row">
                 <div class="col-md-8">
                   <p class="text-center">
-                    {{-- <strong>จำนวนผู้ป่วยรายเดือน: 1 มกราคม {{$yearnow+543}} - 31 ธันวาคม {{$yearnow+543}}</strong> --}}
+                    <strong>จำนวนผู้ป่วยรายเดือน
+                            @if ($province == null)
+                                  จังหวัดทั้งหมด
+                                @else
+                                  จังหวัด{{ isset($listProvince[$province]) ?$listProvince[$province]:"ทั้งหมด"}}
+                                @endif
+                                @if ($vac_list == null)
+
+                                @else
+                                  วัคซีน{{ isset($listvac_arr[$name_of_vaccine]) ?$listvac_arr[$name_of_vaccine]:"ไม่ระบุ"}}
+                                @endif</strong>
                   </p>
 
                   <div class="chart">
@@ -125,7 +135,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
 
                   <div class="progress-group">
                     <span class="progress-text">ภาคเหนือ</span>
-                    <span class="progress-number"><b>{{$count_north[0]->count_north}}</b>/คน</span>
+                    <span class="progress-number"><b>{{$count_north[0]->count_north}}</b> คน</span>
 
                     <div class="progress sm">
                       <div class="progress-bar progress-bar-aqua" style="width: {{$count_north[0]->count_north}}px"></div>
@@ -134,7 +144,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
                   <!-- /.progress-group -->
                   <div class="progress-group">
                     <span class="progress-text">ภาคตะวันออกเฉียงเหนือ</span>
-                    <span class="progress-number"><b>{{$count_northeast[0]->count_northeast}}</b>/คน</span>
+                    <span class="progress-number"><b>{{$count_northeast[0]->count_northeast}}</b> คน</span>
 
                     <div class="progress sm">
                       <div class="progress-bar progress-bar-red" style="width: {{$count_northeast[0]->count_northeast}}px"></div>
@@ -143,7 +153,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
                   <!-- /.progress-group -->
                   <div class="progress-group">
                     <span class="progress-text">ภาคตะวันตก</span>
-                    <span class="progress-number"><b>{{$count_western[0]->count_western}}</b>/คน</span>
+                    <span class="progress-number"><b>{{$count_western[0]->count_western}}</b> คน</span>
 
                     <div class="progress sm">
                       <div class="progress-bar progress-bar-green" style="width: {{$count_western[0]->count_western}}px"></div>
@@ -152,7 +162,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
                   <!-- /.progress-group -->
                   <div class="progress-group">
                     <span class="progress-text">ภาคกลาง</span>
-                    <span class="progress-number"><b>{{$count_central[0]->count_central}}</b>/คน</span>
+                    <span class="progress-number"><b>{{$count_central[0]->count_central}}</b> คน</span>
 
                     <div class="progress sm">
                       <div class="progress-bar progress-bar-yellow" style="width: {{$count_central[0]->count_central}}px"></div>
@@ -161,7 +171,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
                   <!-- /.progress-group -->
                   <div class="progress-group">
                     <span class="progress-text">ภาคตะวันออก</span>
-                    <span class="progress-number"><b>{{$count_eastern[0]->count_eastern}}</b>/คน</span>
+                    <span class="progress-number"><b>{{$count_eastern[0]->count_eastern}}</b> คน</span>
 
                     <div class="progress sm">
                       <div class="progress-bar progress-bar-Tomato" style="width: {{$count_eastern[0]->count_eastern}}px"></div>
@@ -170,7 +180,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
                   <!-- /.progress-group -->
                   <div class="progress-group">
                     <span class="progress-text">ภาคใต้</span>
-                    <span class="progress-number"><b>{{$count_south[0]->count_south}}</b>/คน</span>
+                    <span class="progress-number"><b>{{$count_south[0]->count_south}}</b> คน</span>
 
                     <div class="progress sm">
                       <div class="progress-bar progress-bar-orange" style="width: {{$count_south[0]->count_south}}px"></div>
@@ -358,8 +368,17 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
     <div class="col-md-6">
       <div class="box box-default">
         <div class="box-header with-border">
-          <h3 class="box-title">อัตราของกลุ่มอายุ ของผู้ป่วยทั้งหมดในปี {{$yearnow+543}}</h3>
+          <h3 class="box-title">อัตรากลุ่มอายุ ของผู้ป่วยทั้งหมดในปี {{$yearnow+543}}</h3>
+          @if ($province == null)
+            จังหวัดทั้งหมด
+          @else
+            จังหวัด{{ isset($listProvince[$province]) ?$listProvince[$province]:"ทั้งหมด"}}
+          @endif
+          @if ($vac_list == null)
 
+          @else
+            วัคซีน{{ isset($listvac_arr[$name_of_vaccine]) ?$listvac_arr[$name_of_vaccine]:"ไม่ระบุ"}}
+          @endif
           <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
             </button>
