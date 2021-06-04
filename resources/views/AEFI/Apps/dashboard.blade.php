@@ -1,5 +1,6 @@
 @extends('AEFI.layout.template')
 @section('content')
+  	  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.jqueryui.min.css">
 <section class="content-header">
   <!-- Content Header (Page header) -->
   <?php
@@ -117,7 +118,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
                                 @if ($vac_list == null)
 
                                 @else
-                                  วัคซีน{{ isset($listvac_arr[$name_of_vaccine]) ?$listvac_arr[$name_of_vaccine]:"ไม่ระบุ"}}
+                                  วัคซีน{{ isset($listvac_arr[$name_of_vaccine]) ?$listvac_arr[$name_of_vaccine]:"ทั้งหมด"}}
                                 @endif</strong>
                   </p>
 
@@ -129,6 +130,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
                 </div>
                 <!-- /.col -->
                 <div class="col-md-4">
+                  @if ($count_all_district_by_province == "0000")
                   <p class="text-center">
                     <strong>จำนวนผู้ป่วยรายภาคปี {{$yearnow+543}}</strong>
                   </p>
@@ -186,6 +188,42 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
                       <div class="progress-bar progress-bar-orange" style="width: {{$count_south[0]->count_south}}px"></div>
                     </div>
                   </div>
+                @else
+                  <p class="text-center">
+                    <strong>จำนวนผู้ป่วย วัคซีน{{ isset($listvac_arr[$name_of_vaccine]) ?$listvac_arr[$name_of_vaccine]:"ทั้งหมด"}} รายอำเภอ/เขตของจังหวัด {{ isset($listProvince[$province]) ?$listProvince[$province]:"ทั้งหมด"}}</strong>
+                  </p>
+                  <div class="box-body">
+                    <div class="table-responsive">
+                      <table class="table no-margin" id="case_lst">
+                        <thead>
+                        <tr>
+                          <th>อำเภอ/เขต</th>
+                          <th>อัตราของผู้ป่วย</th>
+                          <th>จำนวนผู้ป่วย</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                          @foreach ($count_all_district_by_province as $row)
+                              @php
+                              $DistrictRate = ($row->CountByDistrice / $count_all_patient_prov[0]->count_patient_prov)*100 ;
+                                // dd($DistrictRate);
+                              @endphp
+                              <td>{{ isset($listDistrict[$row->district]) ? $listDistrict[$row->district] : "ไม่ระบุอำเภอ/เขต" }}</td>
+                              <td>
+                                <div class="progress progress-xs progress-striped active">
+                                  <div class="progress-bar progress-bar-success" style="width:{{$DistrictRate}}%"></div>
+                                </div>
+                              </td>
+                              <td><span class="label label-success">{{ $row->CountByDistrice }} คน</span></td>
+                            </tr>
+                          @endforeach
+                        </tbody>
+                      </table>
+                    </div>
+                    <!-- /.table-responsive -->
+                  </div>
+                  <!-- /.box-body -->
+                @endif
                   <!-- /.progress-group -->
                 </div>
                 <!-- /.col -->
@@ -211,7 +249,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
             @if ($vac_list == null)
 
             @else
-              วัคซีน{{ isset($listvac_arr[$name_of_vaccine]) ?$listvac_arr[$name_of_vaccine]:"ไม่ระบุ"}}
+              วัคซีน{{ isset($listvac_arr[$name_of_vaccine]) ?$listvac_arr[$name_of_vaccine]:"ทั้งหมด"}}
             @endif
           </h3>
           <div class="box-tools pull-right">
@@ -251,7 +289,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
                         @endif
                         @if ($vac_list == null)
                         @else
-                          วัคซีน{{ isset($listvac_arr[$name_of_vaccine]) ?$listvac_arr[$name_of_vaccine]:"ไม่ระบุ"}}
+                          วัคซีน{{ isset($listvac_arr[$name_of_vaccine]) ?$listvac_arr[$name_of_vaccine]:"ทั้งหมด"}}
                         @endif
                 <span class="pull-right text-red"> {{$count_all_gender_m[0]->count_male}} คน</span></a>
             </li>
@@ -263,11 +301,11 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
               @endif
               @if ($vac_list == null)
               @else
-                วัคซีน{{ isset($listvac_arr[$name_of_vaccine]) ?$listvac_arr[$name_of_vaccine]:"ไม่ระบุ"}}
+                วัคซีน{{ isset($listvac_arr[$name_of_vaccine]) ?$listvac_arr[$name_of_vaccine]:"ทั้งหมด"}}
               @endif
               <span class="pull-right text-yellow">{{$count_all_gender_f[0]->count_female}} คน</span></a>
             </li>
-            <li><a href="#">ไม่ระบเพศ
+            <li><a href="#">ไม่ระบุเพศ
               @if ($province == null)
                 จังหวัดทั้งหมด
               @else
@@ -275,7 +313,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
               @endif
               @if ($vac_list == null)
               @else
-                วัคซีน{{ isset($listvac_arr[$name_of_vaccine]) ?$listvac_arr[$name_of_vaccine]:"ไม่ระบุ"}}
+                วัคซีน{{ isset($listvac_arr[$name_of_vaccine]) ?$listvac_arr[$name_of_vaccine]:"ทั้งหมด"}}
               @endif
               <span class="pull-right text-green"> {{isset($count_all_gender_other[0]->count_other) ? $count_all_gender_other[0]->count_other:"0"}} คน</span></a></li>
           </ul>
@@ -377,7 +415,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
           @if ($vac_list == null)
 
           @else
-            วัคซีน{{ isset($listvac_arr[$name_of_vaccine]) ?$listvac_arr[$name_of_vaccine]:"ไม่ระบุ"}}
+            วัคซีน{{ isset($listvac_arr[$name_of_vaccine]) ?$listvac_arr[$name_of_vaccine]:"ทั้งหมด"}}
           @endif
           <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -421,4 +459,13 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
 
 @include('AEFI.layout.footerScriptDash')
 <!-- /.content -->
+<script src="asset/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('#case_lst').DataTable({
+      "pageLength": 5,
+       "order": [[ 0, 'desc' ]]
+});
+} );
+ </script>
 @stop

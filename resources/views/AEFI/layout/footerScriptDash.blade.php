@@ -57,41 +57,41 @@ $('#date_of_symptoms').datepicker({
 					dataPoints: [
 						// @ foreach($count_month as $row)
 						{
-							y: {{isset($count_month[0]->jan) ? $count_month[0]->jan : 0}}
+							y: {{isset($count_month_jan[0]->month_jan) ? $count_month_jan[0]->month_jan : 0}}
 						},
 						{
-							y:  {{isset($count_month[0]->feb) ? $count_month[0]->feb : 0}}
+							y:  {{isset($count_month_feb[0]->month_feb) ? $count_month_feb[0]->month_feb : 0}}
 						},
 						{
-							y:  {{isset($count_month[0]->mar) ? $count_month[0]->mar : 0}}
+							y:  {{isset($count_month_mar[0]->month_mar) ? $count_month_mar[0]->month_mar : 0}}
 						},
 						{
-							y: {{isset($count_month[0]->apr) ? $count_month[0]->apr : 0}}
+							y: {{isset($count_month_apr[0]->month_apr) ? $count_month_apr[0]->month_apr : 0}}
 						},
 						{
-							y:  {{isset($count_month[0]->may) ? $count_month[0]->may : 0}}
+							y:  {{isset($count_month_may[0]->month_may) ? $count_month_may[0]->month_may : 0}}
 						},
 						{
-							y:  {{isset($count_month[0]->jun) ? $count_month[0]->jun : 0}}
+							y:  {{isset($count_month_jun[0]->month_jun) ? $count_month_jun[0]->month_jun : 0}}
 						},
 						{
-							y:  {{isset($count_month[0]->jul) ? $count_month[0]->jul : 0}}
+							y:  {{isset($count_month_jul[0]->month_jul) ? $count_month_jul[0]->month_jul : 0}}
 						},
 						{
-							y:  {{isset($count_month[0]->aug) ? $count_month[0]->aug : 0}}
+							y:  {{isset($count_month_aug[0]->month_aug) ? $count_month_aug[0]->month_aug : 0}}
 						},
 						{
-							y:  {{isset($count_month[0]->sep) ? $count_month[0]->sep : 0}}
+							y:  {{isset($count_month_sep[0]->month_sep) ? $count_month_sep[0]->month_sep : 0}}
 						},
 						{
-							y:  {{isset($count_month[0]->oct) ? $count_month[0]->oct : 0}}
+							y:  {{isset($count_month_oct[0]->month_oct) ? $count_month_oct[0]->month_oct : 0}}
 						},
 						{
-							y:  {{isset($count_month[0]->nov) ? $count_month[0]->nov : 0}}
+							y:  {{isset($count_month_nov[0]->month_nov) ? $count_month_nov[0]->month_nov : 0}}
 						},
 						{
-							y:  {{isset($count_month[0]->dec) ? $count_month[0]->dec : 0}}
-						},
+							y:  {{isset($count_month_dec[0]->month_dec) ? $count_month_dec[0]->month_dec : 0}}
+						}
 						// {
 						// 	x: new Date({ {$yearnow}}, 12),
 						// 	y: { {isset($count_month[12]->count_patient) ? $count_month[12]->count_patient : 0}}
