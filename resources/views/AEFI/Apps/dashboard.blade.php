@@ -464,6 +464,8 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
 $(document).ready(function() {
     $('#case_lst').DataTable({
       "pageLength": 5,
+      "searching": false,
+      "ordering": false,
        "order": [[ 0, 'desc' ]]
 });
 } );
