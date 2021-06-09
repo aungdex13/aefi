@@ -50,9 +50,9 @@
               <th style="text-align:center;">เลขที่ผู้ป่วย AN</th>
               <th style="text-align:center;">ชื่อ-นามสกุลผู้ป่วย</th>
               <th style="text-align:center;">อายุ</th>
-              <th style="text-align:center;">เชื้อชาติ</th>
-              <th style="text-align:center;">ที่อยู่</th>
-              <th style="text-align:center;">มีความจำเป็นที่จะต้องสอบสวนโรค</th>
+              <th style="text-align:center;">การวินิจฉัยของแพทย์</th>
+              <th style="text-align:center;">โรงพยาบาล</th>
+              <th style="text-align:center;">จังหวัด</th>
               <th style="text-align:center;">ข้อมูล AEFI2</th>
               <th style="text-align:center;">การส่งต่อผู้ป่วย</th>
               <th style="text-align:center;">***</th>
@@ -79,13 +79,13 @@
               <p style="text-align:center;">{{ isset($value->age_while_sick_year) ? $value->age_while_sick_year :"-" }}ปี {{ isset($value->age_while_sick_month) ? $value->age_while_sick_month : "-" }}เดือน {{ isset($value->age_while_sick_day) ? $value->age_while_sick_day:"-"}}วัน</p>
             </td>
             <td>
-              <p style="text-align:center;">{{ $arr_load_nationality[$value->nationality] }} {{ $value->other_nationality }}</p>
+              <p style="text-align:center;">{{ $value->diagnosis }}</p>
             </td>
             <td>
-              <p style="text-align:center;">ตำบล : {{ isset($listsubdistrict[$value->subdistrict]) ?  $listsubdistrict[$value->subdistrict] : "ไม่ระบุข้อมูล"}}<br> อำเภอ : {{ isset($listDistrict[$value->district]) ? $listDistrict[$value->district]: "ไม่ระบุข้อมูล" }}<br> จังหวัด :{{ isset($listProvince[ $value->province]) ?$listProvince[ $value->province] : "ไม่ระบุข้อมูล"}}</p>
+              <p style="text-align:center;">{{ isset($list_hos[ $value->hospcode_treat]) ? $list_hos[ $value->hospcode_treat] : "ไม่ระบุข้อมูล"}}</p>
             </td>
             <td>
-              <p style="text-align:center;">{{ $arr_necessary_to_investigate[$value->necessary_to_investigate] }}</p>
+              <p style="text-align:center;">{{ isset($listProvince[ $value->province_found_event]) ? $listProvince[ $value->province_found_event] : "ไม่ระบุข้อมูล"}}</p>
             </td>
               @if ($value->aefi2 == null)
             <td style="background-color:#fa3c4c">
@@ -128,7 +128,30 @@
                   @hasrole('admin-dpc')
                   <li><a href="{{ route('ExpertDiagFrm') }}?id_case={{ $value->id_case }}" target="_blank"><i class="fa fa-user-circle-o" aria-hidden="true" style="color:#f46732;"></i>การประชุม<br>ผู้เชี่ยวชาญ</a></li>
                   @endhasrole
+                  @hasrole('dpc')
+                  @if (auth()->user()->hospcode == "41173")
+                  <li><a href="{{ route('ExpertDiagFrm') }}?id_case={{ $value->id_case }}" target="_blank"><i class="fa fa-user-circle-o" aria-hidden="true" style="color:#f46732;"></i>การประชุม<br>ผู้เชี่ยวชาญ</a></li>
+                  @endif
+                  @endhasrole
+                  @hasrole('admin-dpc')
+                  <li><a href="{{ route('viewExpert') }}?id_case={{ $value->id_case }}" target="_blank"><i class="fa fa-list-alt" aria-hidden="true" style="color:#809C7C;"></i>รายงานการ<br>ผู้ประชุมเชี่ยวชาญ</a></li>
+                  @endhasrole
+                  @hasrole('admin')
+                  <li><a href="{{ route('viewExpert') }}?id_case={{ $value->id_case }}" target="_blank"><i class="fa fa-list-alt" aria-hidden="true" style="color:#809C7C;"></i>รายงานการ<br>ผู้ประชุมเชี่ยวชาญ</a></li>
+                  @endhasrole
+                  @hasrole('dpc')
+                  @if (auth()->user()->hospcode == "41173")
+                  <li><a href="{{ route('viewExpert') }}?id_case={{ $value->id_case }}" target="_blank"><i class="fa fa-list-alt" aria-hidden="true" style="color:#809C7C;"></i>รายงานการ<br>ผู้ประชุมเชี่ยวชาญ</a></li>
+                  @endif
+                  @endhasrole
+                  @hasrole('dpc')
+                  @if (auth()->user()->hospcode == "41173")
+                    <li><a href="{{ route('deleteAEFI1') }}?id_case={{ $value->id_case }}" id="btnDelete" type="button" onclick="return confirm('ต้องการลบข้อมูล ใช่หรือไม่?');"><i class="fa  fa-trash-o" aria-hidden="true" style="color:#d9534f;"></i>ลบข้อมูล</a></li>
+                  @endif
+                  @endhasrole
+                  @hasrole('admin')
                   <li><a href="{{ route('deleteAEFI1') }}?id_case={{ $value->id_case }}" id="btnDelete" type="button" onclick="return confirm('ต้องการลบข้อมูล ใช่หรือไม่?');"><i class="fa  fa-trash-o" aria-hidden="true" style="color:#d9534f;"></i>ลบข้อมูล</a></li>
+                  @endhasrole
                 </ul>
               </div>
             </td>

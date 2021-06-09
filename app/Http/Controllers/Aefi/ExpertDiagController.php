@@ -70,13 +70,21 @@ class ExpertDiagController extends Controller
 				 ->groupBy('aefi_form_1.id_case')
 				 ->get();
 	 // dd($selectcase);
+	 $selectexpertcase=DB::table('expertmeeting')
+	 ->select('*')
+	 // ->where('id',"=", $id)
+	 ->where('id_case',"=",$id_case)
+	 ->latest('id')
+		 ->get();
+		 // dd($selectexpertcase);
 	 $listvac_arr=$this->listvac_arr();
 	 $list_hos=$this->list_hos();
-	 return view('AEFI.Apps.ExpertDiagFrm',compact(
+	 return view('AEFI.Apps.ExpertFrm',compact(
 	 	'id_case',
 		'selectcase',
 		'listvac_arr',
-		'list_hos'
+		'list_hos',
+		'selectexpertcase'
 	 	));
 
 	}
@@ -185,10 +193,10 @@ class ExpertDiagController extends Controller
 		 $res1	= DB::table('expertmeeting')->insert($data);
 	 	if ($res1) {
 	 			$msg = " ส่งข้อมูลสำเร็จ";
-	 			$url_rediect = "<script>alert('".$msg."'); window.location='ExpertDiagLst?id_case=$id_case';</script> ";
+	 			$url_rediect = "<script>alert('".$msg."'); window.location='lstf1';</script> ";
 	 		}else{
 	 			$msg = " ส่งข้อมูลไม่สำเร็จ";
-	 			$url_rediect = "<script>alert('".$msg."'); window.location='ExpertDiagLst?id_case=$id_case';</script> ";
+	 			$url_rediect = "<script>alert('".$msg."'); window.location='lstf1';</script> ";
 	 					}
 	 			echo $url_rediect;
 	}
@@ -230,10 +238,10 @@ class ExpertDiagController extends Controller
 											]);
 											if ($updatedata) {
 													$msg = " ส่งข้อมูลสำเร็จ";
-													$url_rediect = "<script>alert('".$msg."'); window.location='ExpertDiagLst?id_case=$id_case';</script> ";
+													$url_rediect = "<script>alert('".$msg."'); window.location='lstf1';</script> ";
 												}else{
 													$msg = " ส่งข้อมูลไม่สำเร็จ";
-													$url_rediect = "<script>alert('".$msg."'); window.location='ExpertDiagLst?id_case=$id_case';</script> ";
+													$url_rediect = "<script>alert('".$msg."'); window.location='lstf1';</script> ";
 															}
 													echo $url_rediect;
 	}

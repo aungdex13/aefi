@@ -90,6 +90,17 @@
                     {{-- <li><a href="#"><i class="fa fa-ambulance" aria-hidden="true" style="color:#e6c34a;"></i>Refer ผู้ป่วย</a></li> --}}
                     {{-- <li><a href="{{ route('ExpertDiagLst') }}?id_case={{ $value->id_case }}"><i class="fa fa-user-circle-o" aria-hidden="true" style="color:#f46732;"></i>ประชุมผู้เชี่ยวชาญ</a></li> --}}
                     <li><a href="{{ route('DeleteExpert') }}?id={{ $value->id }}&id_case={{$value->id_case}}" id="btnDelete" type="button" onclick="return confirm('ต้องการลบข้อมูล ใช่หรือไม่?');"><i class="fa  fa-trash-o" aria-hidden="true" style="color:#d9534f;"></i>ลบข้อมูล</a></li>
+                    @hasrole('admin-dpc')
+                    <li><a href="{{ route('viewExpert') }}?id_case={{ $value->id_case }}" target="_blank"><i class="fa fa-list-alt" aria-hidden="true" style="color:#809C7C;"></i>รายงานการ<br>ผู้ประชุมเชี่ยวชาญ</a></li>
+                    @endhasrole
+                    @hasrole('admin')
+                    <li><a href="{{ route('viewExpert') }}?id_case={{ $value->id_case }}" target="_blank"><i class="fa fa-list-alt" aria-hidden="true" style="color:#809C7C;"></i>รายงานการ<br>ผู้ประชุมเชี่ยวชาญ</a></li>
+                    @endhasrole
+                    @hasrole('dpc')
+                    @if (auth()->user()->hospcode == "41173")
+                    <li><a href="{{ route('viewExpert') }}?id_case={{ $value->id_case }}&id=$selectexpertcase" target="_blank"><i class="fa fa-list-alt" aria-hidden="true" style="color:#809C7C;"></i>รายงานการ<br>ผู้ประชุมเชี่ยวชาญ</a></li>
+                    @endif
+                    @endhasrole
                   </ul>
                 </div>
               </td>

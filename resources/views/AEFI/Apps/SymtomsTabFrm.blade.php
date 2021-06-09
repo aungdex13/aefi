@@ -491,7 +491,7 @@
                   <div class="form-group">
                     <div class="col-md-2">
                       <label>
-                        <input type="radio" name="seriousness_of_the_symptoms" value="" >
+                        <input type="radio" name="seriousness_of_the_symptoms_bk" value="" >
                         ไม่ระบุ
                       </label>
                     </div>
@@ -510,7 +510,7 @@
                   </div>
                 </div>
               </div>
-              <div id="other_seriousness_of_the_symptoms" style="display: none">
+              <div id="other_seriousness_of_the_symptoms_bk">
                 <div class="form-group">
                   <div class="col-lg-12">
                     <label>ระบุ :</label>
@@ -1810,7 +1810,7 @@
                   </div>
                 </div>
               </div>
-              <div id="other_seriousness_of_the_symptoms_3" style="display: none">
+              <div id="other_seriousness_of_the_symptoms_3_bk">
                 <div class="form-group">
                   <div class="col-lg-12">
                     <label>ระบุ :</label>

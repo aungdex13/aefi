@@ -15,6 +15,10 @@ $arr_gender = load_gender();
 $arr_type_of_patient = load_type_of_patient();
 $arr_patient_status = load_patient_status();
 $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
+$arr_r_o = load_r_o();
+$arr_load_final_diag = load_final_diag();
+$arr_causality = load_causality();
+$arr_load_aefi_classification = load_aefi_classification();
 	// dd($data);
 	 ?>
 <section class="content-header">
@@ -32,7 +36,11 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
 <!-- Main content -->
 
 <section class="content">
-	<form role="form" action="{{ route('InsertRefer') }}" method="post" enctype="multipart/form-data">
+	@if (count($selectexpertcase) > 0 )
+	<form role="form" action="{{ route('UpdateExpert') }}" method="post" enctype="multipart/form-data">
+	@else
+		<form role="form" action="{{ route('InsertExpert') }}" method="post" enctype="multipart/form-data">
+	@endif
 		{{ csrf_field() }}
 		<div class="row">
 			<div class="col-md-12">
@@ -64,7 +72,6 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
 											<div class="box-header with-border">
 												<h3 class="box-title">รายงานการประชุมจากผู้เชี่ยวชาญ</h3>
 											</div>
-											<form role="form">
 												<div class="box-body">
 													{{-- คอรั่มภายใน3.2 --}}
 													<div class="col-md-12">
@@ -85,6 +92,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
 																			<div class="row">
 																				<input type="text" name="user_id" value="{{ Auth::id() }}" hidden>
 																				<input type="text" name="id_case" value="{{	$id_case}}" hidden>
+																				<input type="text" name="id" value="{{	$selectexpertcase[0]->id}}" hidden>
 																				<div class="col-lg-3">
 																					<label>ชื่อ- นามสกุลผู้ป่วย : {{	isset($selectcase[0]->first_name) ? $selectcase[0]->first_name :"ไม่ระบุ"}} {{	$selectcase[0]->sur_name}} </label>
 																				</div>
@@ -134,27 +142,29 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
 																		<div class="form-group">
 																			<div class="row">
 																				<div class="col-lg-6">
-																						<label>R/O : </label>
+																						<label>การวินิจฉัยแรกรับของแพทย์ : </label>
 																						{{-- <input type="text" name="r_o" class="form-control" placeholder="ระบุR/O"> --}}
 																						<select type="text" class="form-control" name="r_o">
-																							<option value="">กรุณาระบุ R/O</option>
-																							<option value="1">Anaphylactic shock</option>
+																							@if (count($selectexpertcase) > 0 )
+																								<option value="{{$selectexpertcase[0]->r_o}}">{{isset($arr_load_final_diag[$selectexpertcase[0]->r_o]) ? $arr_load_final_diag[$selectexpertcase[0]->r_o] : ''}}</option>
+																							@else
+																							@endif
+																							<option value="">กรุณาระบุ การวินิจฉัยแรกรับของแพทย์</option>
+																							<option value="1">Dead</option>
 																							<option value="2">Anaphylaxis</option>
-																							<option value="3">BP Drop</option>
-																							<option value="4">Dead</option>
-																							<option value="5">DVT</option>
-																							<option value="6">Livedo</option>
-																							<option value="8">Neuropathy</option>
-																							<option value="9">Polyneuropathy</option>
-																							<option value="10">Seizure</option>
-																							<option value="11">Stroke</option>
-																							<option value="12">Syncope</option>
-																							<option value="13">Thrombocytopenia</option>
+																							<option value="3">Anaphylactic shock</option>
+																							<option value="4">DVT</option>
+																							<option value="5">Thrombocytopenia</option>
+																							<option value="6">Neuropathy</option>
+																							<option value="7">Seizure</option>
+																							<option value="8">ISRR</option>
+																							<option value="9">Syncope</option>
+																							<option value="10">อื่นๆ</option>
 																						</select>
 																				</div>
 																				<div class="col-lg-6">
-																					<label>R/O อื่นๆ : </label>
-																					<textarea type="text" name="other_r_o" class="form-control" rows="3" placeholder="กรอกข้อมูล R/O อื่นๆ"></textarea>
+																					<label>การวินิจฉัยแรกรับของแพทย์ อื่นๆ : </label>
+																					<textarea type="text" name="other_r_o" class="form-control" rows="3">{{ isset($selectexpertcase[0]->other_final_diag) ? $selectexpertcase[0]->other_final_diag : "" }}</textarea>
 																				</div>
 																			</div>
 																		</div>
@@ -179,6 +189,10 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
 																				<div class="col-lg-6">
 																					<label>Final Diagnosis : </label>
 																					<select type="text" name="final_diag" class="form-control">
+																						@if (count($selectexpertcase) > 0 )
+																							<option value="{{$selectexpertcase[0]->final_diag}}">{{isset($arr_load_final_diag[$selectexpertcase[0]->final_diag]) ? $arr_load_final_diag[$selectexpertcase[0]->final_diag] : ''}}</option>
+																						@else
+																						@endif
 																						<option value="">กรุณาระบุ Final Diagnosis</option>
 																						<option value="1">Acute Coronary Syndrome</option>
 																						<option value="2">Acute myeloid leukemia</option>
@@ -187,12 +201,10 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
 																						<option value="5">Atrial fibrillation</option>
 																						<option value="6">Convulsive syncope</option>
 																						<option value="7">DVT</option>
-																						<option value="8">Following</option>
 																						<option value="9">Hypersensitivity</option>
 																						<option value="10">Immune TTP</option>
 																						<option value="11">Intra Abdomen bleeding with Hypovolemic shock</option>
 																						<option value="12">ISRR</option>
-																						<option value="13">Meeting</option>
 																						<option value="14">Polyneuropathy</option>
 																						<option value="15">Reflex syncope</option>
 																						<option value="16">Side effect</option>
@@ -202,7 +214,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
 																				</div>
 																				<div class="col-lg-6">
 																					<label>Final Diagnosis อื่นๆ : </label>
-																					<textarea type="text" name="other_final_diag" class="form-control" rows="3" placeholder="กรอกข้อมูล Final Diagnosis อื่นๆ"></textarea>
+																					<textarea type="text" name="other_final_diag" class="form-control" rows="3" placeholder="กรอกข้อมูล Final Diagnosis อื่นๆ">{{ isset($selectexpertcase[0]->other_final_diag) ? $selectexpertcase[0]->other_final_diag : "" }}</textarea>
 																				</div>
 																			</div>
 																		</div>
@@ -211,15 +223,22 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
 																				<div class="col-lg-6">
 																					<label>Causality Assessment : </label>
 																					<select type="text" name="causality" class="form-control" >
+																						@if (count($selectexpertcase) > 0 )
+																							<option value="{{$selectexpertcase[0]->causality}}">{{isset($arr_causality[$selectexpertcase[0]->causality]) ? $arr_causality[$selectexpertcase[0]->causality] : ''}}</option>
+																						@else
+																						@endif
 																						<option value="">กรุณาระบุ Causality Assessment</option>
-																						<option value="1">Consistent causal association</option>
-																						<option value="2">Inconsistent causal association</option>
-																						<option value="3">Unclassifiable</option>
+																						<option value="1">Vaccine product-related reaction</option>
+																						<option value="2">Vaccine quality defect-related reaction</option>
+																						<option value="3">Immunization error-related reaction</option>
+																						<option value="4">Immunization anxiety-related reaction</option>
+																						<option value="5">Coincidental event</option>
+																						<option value="6">Temporal relationship</option>
 																					</select>
 																				</div>
 																				<div class="col-lg-6">
 																					<label>Summary : </label>
-																					<textarea type="text" name="summary" class="form-control" rows="3" placeholder="กรอกข้อมูล Summary"></textarea>
+																					<textarea type="text" name="summary" class="form-control" rows="3" placeholder="กรอกข้อมูล Summary">{{ isset($selectexpertcase[0]->summary) ? $selectexpertcase[0]->summary : "" }}</textarea>
 																				</div>
 																			</div>
 																		</div>
@@ -228,6 +247,10 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
 																				<div class="col-lg-6">
 																					<label>AEFI Classification : </label>
 																					<select type="text" name="aefi_classification" class="form-control" >
+																						@if (count($selectexpertcase) > 0 )
+																							<option value="{{$selectexpertcase[0]->aefi_classification}}">{{isset($arr_load_aefi_classification[$selectexpertcase[0]->aefi_classification]) ? $arr_load_aefi_classification[$selectexpertcase[0]->aefi_classification] : ''}}</option>
+																						@else
+																						@endif
 																						<option value="">กรุณาระบุ AEFI Classificatio</option>
 																						<option value="1">ปฏิกิริยาของวัคซีน</option>
 																						<option value="2">ความบกพร่องของวัคซีน</option>
@@ -243,7 +266,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
 																						<div class="input-group-addon">
 																							<i class="fa fa-calendar"></i>
 																						</div>
-																						<input type="text" name="expert_meet_date" class="form-control pull-right" id="datepicker_investigater_2" data-date-format="yyyy-mm-dd" required readonly>
+																						<input type="text" name="expert_meet_date" class="form-control pull-right" id="datepicker_investigater_2" value="{{ isset($selectexpertcase[0]->expert_meet_date) ? $selectexpertcase[0]->expert_meet_date : "" }}" data-date-format="yyyy-mm-dd" required readonly>
 																						{{-- <input type="text" id="datepicker_record5" name="record_date" class="form-control" placeholder="ระบุวันที่บันทึกข้อมูล" data-date-format="yyyy-mm-dd"> --}}
 																					</div>
 																				</div>

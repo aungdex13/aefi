@@ -39,6 +39,115 @@
 			$count_all_seriousness_of_the_symptoms= $this->count_all_seriousness_of_the_symptoms();
 			$vac_list=$this->vaclist();
 			$countGender=$this->countGender();
+			$count_all_district_by_province= "0000";
+			$count_month_jan = DB::table('aefi_form_1')
+											->leftJoin('aefi_form_1_vac', 'aefi_form_1.id_case', '=', 'aefi_form_1_vac.id_case')
+											->select(DB::raw('YEAR(aefi_form_1.date_of_symptoms) as all_year_of_symptoms,
+																				count(aefi_form_1.id) as month_jan ,
+																				 date_of_symptoms '))
+											->whereMonth('aefi_form_1.date_entry', '=', '01')
+											->where('aefi_form_1.status',null)
+											->get();
+
+			$count_month_feb = DB::table('aefi_form_1')
+											->leftJoin('aefi_form_1_vac', 'aefi_form_1.id_case', '=', 'aefi_form_1_vac.id_case')
+											->select(DB::raw('YEAR(aefi_form_1.date_of_symptoms) as all_year_of_symptoms,
+																				count(aefi_form_1.id) as month_feb ,
+																				 date_of_symptoms '))
+											->whereMonth('aefi_form_1.date_entry', '=', '02')
+										->where('aefi_form_1.status',null)
+										->get();
+
+			$count_month_mar = DB::table('aefi_form_1')
+											->leftJoin('aefi_form_1_vac', 'aefi_form_1.id_case', '=', 'aefi_form_1_vac.id_case')
+											->select(DB::raw('YEAR(aefi_form_1.date_of_symptoms) as all_year_of_symptoms,
+																				count(aefi_form_1.id) as month_mar ,
+																				 date_of_symptoms '))
+											->whereMonth('aefi_form_1.date_entry', '=', '03')
+											->where('aefi_form_1.status',null)
+											->get();
+
+		$count_month_apr = DB::table('aefi_form_1')
+										->leftJoin('aefi_form_1_vac', 'aefi_form_1.id_case', '=', 'aefi_form_1_vac.id_case')
+										->select(DB::raw('YEAR(aefi_form_1.date_of_symptoms) as all_year_of_symptoms,
+																			count(aefi_form_1.id) as month_apr ,
+																			 date_of_symptoms '))
+										->whereMonth('aefi_form_1.date_entry', '=', '04')
+										->where('aefi_form_1.status',null)
+										->get();
+
+		$count_month_may = DB::table('aefi_form_1')
+										->leftJoin('aefi_form_1_vac', 'aefi_form_1.id_case', '=', 'aefi_form_1_vac.id_case')
+										->select(DB::raw('YEAR(aefi_form_1.date_of_symptoms) as all_year_of_symptoms,
+																			count(aefi_form_1.id) as month_may ,
+																			 date_of_symptoms '))
+										->whereMonth('aefi_form_1.date_entry', '=', '05')
+										->where('aefi_form_1.status',null)
+										->get();
+
+		$count_month_jun = DB::table('aefi_form_1')
+										->leftJoin('aefi_form_1_vac', 'aefi_form_1.id_case', '=', 'aefi_form_1_vac.id_case')
+										->select(DB::raw('YEAR(aefi_form_1.date_of_symptoms) as all_year_of_symptoms,
+																			count(aefi_form_1.id) as month_jun ,
+																			 date_of_symptoms '))
+										->whereMonth('aefi_form_1.date_entry', '=', '06')
+										->where('aefi_form_1.status',null)
+										->get();
+
+		$count_month_jul = DB::table('aefi_form_1')
+										->leftJoin('aefi_form_1_vac', 'aefi_form_1.id_case', '=', 'aefi_form_1_vac.id_case')
+										->select(DB::raw('YEAR(aefi_form_1.date_of_symptoms) as all_year_of_symptoms,
+																			count(aefi_form_1.id) as month_jul ,
+																			 date_of_symptoms '))
+										->whereMonth('aefi_form_1.date_entry', '=', '07')
+										->Where('aefi_form_1_vac.name_of_vaccine',"=",$name_of_vaccine)
+										->where('aefi_form_1.status',null)
+										->get();
+
+	  $count_month_aug = DB::table('aefi_form_1')
+	  								->leftJoin('aefi_form_1_vac', 'aefi_form_1.id_case', '=', 'aefi_form_1_vac.id_case')
+	  								->select(DB::raw('YEAR(aefi_form_1.date_of_symptoms) as all_year_of_symptoms,
+	  																	count(aefi_form_1.id) as month_aug ,
+	  																	 date_of_symptoms '))
+	  								->whereMonth('aefi_form_1.date_entry', '=', '08')
+	  								->where('aefi_form_1.status',null)
+	  								->get();
+
+		$count_month_sep = DB::table('aefi_form_1')
+											->leftJoin('aefi_form_1_vac', 'aefi_form_1.id_case', '=', 'aefi_form_1_vac.id_case')
+											->select(DB::raw('YEAR(aefi_form_1.date_of_symptoms) as all_year_of_symptoms,
+																				count(aefi_form_1.id) as month_sep ,
+																				 date_of_symptoms '))
+											->whereMonth('aefi_form_1.date_entry', '=', '09')
+											->where('aefi_form_1.status',null)
+											->get();
+
+		$count_month_oct = DB::table('aefi_form_1')
+											->leftJoin('aefi_form_1_vac', 'aefi_form_1.id_case', '=', 'aefi_form_1_vac.id_case')
+											->select(DB::raw('YEAR(aefi_form_1.date_of_symptoms) as all_year_of_symptoms,
+																				count(aefi_form_1.id) as month_oct ,
+																				 date_of_symptoms '))
+											->whereMonth('aefi_form_1.date_entry', '=', '10')
+											->where('aefi_form_1.status',null)
+											->get();
+
+			$count_month_nov = DB::table('aefi_form_1')
+												->leftJoin('aefi_form_1_vac', 'aefi_form_1.id_case', '=', 'aefi_form_1_vac.id_case')
+												->select(DB::raw('YEAR(aefi_form_1.date_of_symptoms) as all_year_of_symptoms,
+																					count(aefi_form_1.id) as month_nov ,
+																					 date_of_symptoms '))
+												->whereMonth('aefi_form_1.date_entry', '=', '11')
+												->where('aefi_form_1.status',null)
+												->get();
+
+				$count_month_dec = DB::table('aefi_form_1')
+													->leftJoin('aefi_form_1_vac', 'aefi_form_1.id_case', '=', 'aefi_form_1_vac.id_case')
+													->select(DB::raw('YEAR(aefi_form_1.date_of_symptoms) as all_year_of_symptoms,
+																						count(aefi_form_1.id) as month_dec ,
+																						aefi_form_1.date_of_symptoms '))
+													->whereMonth('aefi_form_1.date_entry', '=', '12')
+													->where('aefi_form_1.status',null)
+													->get();
 			// dd($vac_list);
 			return view('AEFI.Apps.dashboard',compact(
 			 'count_prov',
@@ -64,16 +173,27 @@
 			 'province',
 			 'date_of_symptoms',
 			 'name_of_vaccine',
-			 'countGender'
+			 'countGender',
+			 'count_month_jan',
+			 'count_month_feb',
+			 'count_month_mar',
+			 'count_month_apr',
+			 'count_month_may',
+			 'count_month_jun',
+			 'count_month_jul',
+			 'count_month_aug',
+			 'count_month_sep',
+			 'count_month_oct',
+			 'count_month_nov',
+			 'count_month_dec',
+			 'count_all_district_by_province'
 		 ));
 		}
 		public function selectdatadash(Request $req)
 		{
-			// $zone = $req->input('zone');
 			$province = $req->input('province');
 			$date_of_symptoms = $req->input('date_of_symptoms');
 			$name_of_vaccine = $req->input('name_of_vaccine');
-			//dd($province,$date_of_symptoms,$name_of_vaccine);
 			$count_prov = $this->count_prov();
 			$listProvince=$this->listProvince();
 			$listvac_arr=$this->listvac_arr();
@@ -603,32 +723,33 @@
 			$vac_list=$this->vaclist();
 
 			$count_all_district_by_province_se = DB::table('aefi_form_1')
-											->leftJoin('aefi_form_1_vac', 'aefi_form_1.id_case', '=', 'aefi_form_1_vac.id_case')
-										 ->select(DB::raw('	count(aefi_form_1.id) as CountByDistrice,
-										 										aefi_form_1.district,
-																				aefi_form_1.province
-																			'));
+																						->leftJoin('aefi_form_1_vac', 'aefi_form_1.id_case', '=', 'aefi_form_1_vac.id_case')
+										 												->select(DB::raw('
+																															count(aefi_form_1.id) as CountByDistrice,
+										 																					aefi_form_1.district,
+																															aefi_form_1.province
+																														'));
 				if ($name_of_vaccine != null) {
 				 $vac_select = $count_all_district_by_province_se
-							 ->Where('aefi_form_1_vac.name_of_vaccine',"=",$name_of_vaccine);
+												->Where('aefi_form_1_vac.name_of_vaccine',"=",$name_of_vaccine);
 			 }else{
 			 }
 			 if ($province != null) {
 				 $vac_select = $count_all_district_by_province_se
-							 ->Where('aefi_form_1.province',"=",$province);
+												->Where('aefi_form_1.province',"=",$province);
 			 }else {
 			 }
-			 if ($province == null || $name_of_vaccine == null) {
+			 if ($province == null && $name_of_vaccine == null) {
 				 $count_all_district_by_province = "0000";
 				}else{
 				}
-				// dd($vac_select);
 				$count_all_district_by_province=$vac_select
 																			->where('aefi_form_1.status',null)
 										 									->groupBy('aefi_form_1.district')
 										 									->orderBy('aefi_form_1.district','ASC')
 										 									->get();
-				// dd($count_all_district_by_province);
+																			// dd($count_all_district_by_province);
+
 			$count_all_patient_prov_se = DB::table('aefi_form_1')
 											->leftJoin('aefi_form_1_vac', 'aefi_form_1.id_case', '=', 'aefi_form_1_vac.id_case')
 										 ->select(DB::raw('count(aefi_form_1.id) as count_patient_prov'));
@@ -642,14 +763,36 @@
 														->Where('aefi_form_1.province',"=",$province);
 										}else {
 										}
-										if ($province == null || $name_of_vaccine == null) {
+										if ($province == null && $name_of_vaccine == null) {
 											$count_all_district_by_province = "0000";
 										 }else{
 										 }
 										 $count_all_patient_prov=$count_all_patient_prov_se
 										 ->where('aefi_form_1.status',null)
 										 ->get();
-										 // dd($count_all_patient_prov);
+			$count_all_patient_by_prov_se = DB::table('aefi_form_1')
+											->leftJoin('aefi_form_1_vac', 'aefi_form_1.id_case', '=', 'aefi_form_1_vac.id_case')
+										 ->select(DB::raw('count(aefi_form_1.id_case) as count_patient_prov , aefi_form_1.province'));
+										 if ($name_of_vaccine != null) {
+											$vac_select = $count_all_patient_by_prov_se
+														->Where('aefi_form_1_vac.name_of_vaccine',"=",$name_of_vaccine);
+										}else{
+										}
+										if ($province != null) {
+											$vac_select = $count_all_patient_by_prov_se
+														->Where('aefi_form_1.province',"=",$province);
+										}else {
+										}
+										if ($province == null && $name_of_vaccine == null) {
+											$count_all_district_by_province = "0000";
+										 }else{
+										 }
+										 $count_patient_by_prov=$count_all_patient_by_prov_se
+										 ->where('aefi_form_1.status',null)
+										 ->groupBy('aefi_form_1.province')
+										 ->orderBy('count_patient_prov','desc')
+										 ->get();
+		     // dd($count_patient_by_prov);
 			$vac_list=$this->vaclist();
 			$vac_list=$this->vaclist();
 			$listDistrict=$this->listDistrict();
@@ -696,7 +839,8 @@
 			 'count_month_dec',
 			 'count_all_district_by_province',
 			 'listDistrict',
-			 'count_all_patient_prov'
+			 'count_all_patient_prov',
+			 'count_patient_by_prov'
 		 ));
 	 	}
 		protected function count_prov(){

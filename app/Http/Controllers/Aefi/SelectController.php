@@ -61,7 +61,10 @@
 							'aefi_form_1_vac.name_of_vaccine',
 							'aefi_form_1.date_of_symptoms',
 							'aefi_form_1.refer_status',
-							'aefi_form_1.hospcode_refer'
+							'aefi_form_1.hospcode_refer',
+							'aefi_form_1.diagnosis',
+							'aefi_form_1.hospcode_treat',
+							'aefi_form_1.province_found_event' 
 						);
 		 if (count($roleArr) > 0) {
 				$user_role = $roleArr[0];

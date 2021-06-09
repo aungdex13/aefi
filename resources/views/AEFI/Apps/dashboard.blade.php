@@ -130,7 +130,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
                 </div>
                 <!-- /.col -->
                 <div class="col-md-4">
-                  @if ($count_all_district_by_province == "0000")
+                  @if ($province == null && $name_of_vaccine == null)
                   <p class="text-center">
                     <strong>จำนวนผู้ป่วยรายภาคปี {{$yearnow+543}}</strong>
                   </p>
@@ -188,6 +188,41 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
                       <div class="progress-bar progress-bar-orange" style="width: {{$count_south[0]->count_south}}px"></div>
                     </div>
                   </div>
+                @elseif ($province == null && $name_of_vaccine != null)
+                  <p class="text-center">
+                    <strong>จำนวนผู้ป่วย วัคซีน{{ isset($listvac_arr[$name_of_vaccine]) ?$listvac_arr[$name_of_vaccine]:"ทั้งหมด"}} รายจังหวัด</strong>
+                  </p>
+                  <div class="box-body">
+                    <div class="table-responsive">
+                      <table class="table no-margin" id="case_lst">
+                        <thead>
+                        <tr>
+                          <th>อำเภอ/เขต</th>
+                          <th>อัตราของผู้ป่วย</th>
+                          <th>จำนวนผู้ป่วย</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                          @foreach ($count_patient_by_prov as $row)
+                              @php
+                              $ProvinceRate = ($row->count_patient_prov / $count_all_patient_prov[0]->count_patient_prov)*100 ;
+                                // dd($DistrictRate);
+                              @endphp
+                              <td>{{ isset($listProvince[$row->province]) ? $listProvince[$row->province] : "ไม่ระบุอำเภอ/เขต" }}</td>
+                              <td>
+                                <div class="progress progress-xs progress-striped active">
+                                  <div class="progress-bar progress-bar-success" style="width:{{$ProvinceRate}}%"></div>
+                                </div>
+                              </td>
+                              <td><span class="label label-success">{{ $row->count_patient_prov }} คน</span></td>
+                            </tr>
+                          @endforeach
+                        </tbody>
+                      </table>
+                    </div>
+                    <!-- /.table-responsive -->
+                  </div>
+                  <!-- /.box-body -->
                 @else
                   <p class="text-center">
                     <strong>จำนวนผู้ป่วย วัคซีน{{ isset($listvac_arr[$name_of_vaccine]) ?$listvac_arr[$name_of_vaccine]:"ทั้งหมด"}} รายอำเภอ/เขตของจังหวัด {{ isset($listProvince[$province]) ?$listProvince[$province]:"ทั้งหมด"}}</strong>
@@ -463,10 +498,10 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
 <script>
 $(document).ready(function() {
     $('#case_lst').DataTable({
-      "pageLength": 5,
-      "searching": false,
-      "ordering": false,
-       "order": [[ 0, 'desc' ]]
+      "pageLength": 5
+      // "searching": false,
+      // "ordering": false,
+       // "order": [[ 2, 'desc' ]]
 });
 } );
  </script>

@@ -192,7 +192,9 @@ if (! function_exists('manufacturer')) {
                 '23'=>'Gamaleya',
                 '24'=>'Casino',
                 '25'=>'Vector Insitute',
-                '26'=>'Chumakov Center'
+                '26'=>'Chumakov Center',
+                '27'=>'COVID-19 Vaccine Astrazeneca(สยามไบโอไซเอนซ์)',
+                '28'=>'COVID-19 Vaccine Astrazeneca(SK Bioscience Korea)',
                 														);
 		return 	$manufacturer;
     }
@@ -440,8 +442,9 @@ if (! function_exists('provinces')) {
                   '36'=>'Var',
                   '37'=>'YellowFever',
                   '38'=>'Dengue',
-                  '39'=>'COVID19Sinovac',
-                  '40'=>'COVID19Astrazaneca',
+                  // '39'=>'COVID19Sinovac',
+                  // '40'=>'COVID19Astrazaneca',
+
                   ''=>'NULL'
 
                               );
@@ -492,7 +495,7 @@ if (! function_exists('provinces')) {
                   '16'=>'Side effect',
                   '17'=>'ภาวะหัวใจขาดเลือด',
                   '18'=>'อื่นๆ',
-                  ''=>'NULL'
+                  ''=>'',
 
                               );
       return 	$final_diag;
@@ -502,11 +505,13 @@ if (! function_exists('provinces')) {
       function load_causality() {
 
       $causality = array(
-                  '1'=>'Consistent causal association',
-                  '2'=>'Inconsistent causal association',
-                  '3'=>'Unclassifiable',
+        '1'=>'Vaccine product-related reaction',
+        '2'=>'Vaccine quality defect-related reaction',
+        '3'=>'Immunization error-related reaction',
+        '4'=>'Immunization anxiety-related reaction',
+        '5'=>'Coincidental event',
+        '6'=>'Temporal relationship',
                   ''=>'NULL'
-
                               );
       return 	$causality;
       }

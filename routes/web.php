@@ -104,6 +104,7 @@ Route::get('/ExpertDiagEditFrm', 'Aefi\ExpertDiagController@ExpertDiagEditFrm')-
 Route::post('/InsertExpert', 'Aefi\ExpertDiagController@InsertExpert')->name('InsertExpert');
 Route::post('/UpdateExpert', 'Aefi\ExpertDiagController@UpdateExpert')->name('UpdateExpert');
 Route::get('/DeleteExpert', 'Aefi\ExpertDiagController@DeleteExpert')->name('DeleteExpert');
+Route::get('/viewExpert', 'Aefi\ViewExpertController@index')->name('viewExpert');
 
 // refer
 Route::get('/ReferFrm', 'Aefi\ReferController@ReferFrm')->name('ReferFrm');

@@ -118,11 +118,55 @@
       <div class="col-md-2">
         <div class="thumbnail">
           <a href="https://apps.doe.moph.go.th/boe/software/file/ISRR_25Apr2021.pdf" target="_blank">
-            <img src="{{ asset('asset/dist/img/d6.jpg') }}" style="width:100%">
+            <img src="{{ asset('asset/dist/img/d7.jpg') }}" style="width:100%">
             {{-- <img src="/w3images/nature.jpg" alt="Nature" style="width:100%"> --}}
             <div class="caption">
               <p>แนวทางปฏิบัติสำหรับอาการไม่พึงประสงค์หลังการได้รับวัคซีนป้องกันโรค
   กรณีปฏิกิริยาที่สัมพันธ์กับ ความเครียดจากการฉีดวัคซีน กลุ่มอาการคล้ายภาวะหลอดเลือดสมอง</p>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="thumbnail">
+          <a href="https://apps.doe.moph.go.th/boe/software/file/aefi_covid19_06.pdf" target="_blank">
+            <img src="{{ asset('asset/dist/img/d8.jpg') }}" style="width:100%">
+            {{-- <img src="/w3images/nature.jpg" alt="Nature" style="width:100%"> --}}
+            <div class="caption">
+              <p>เหตุการณ์ไม่พึงประสงค์ภายหลังได้รับวัคซีนโควิด 19 </p>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="thumbnail">
+          <a href="https://apps.doe.moph.go.th/boe/software/file/aefi_hz.pdf" target="_blank">
+            <img src="{{ asset('asset/dist/img/d9.jpg') }}" style="width:100%">
+            {{-- <img src="/w3images/nature.jpg" alt="Nature" style="width:100%"> --}}
+            <div class="caption">
+              <p>รายงานผู้ป่วยงูสวัดตามหลังการฉีดวัคซีนป้องกันโควิด-19 ชนิดต่างๆ</p>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="thumbnail">
+          <a href="https://apps.doe.moph.go.th/boe/software/file/aefi_thrombosis.pdf" target="_blank">
+            <img src="{{ asset('asset/dist/img/d10.jpg') }}" style="width:100%">
+            {{-- <img src="/w3images/nature.jpg" alt="Nature" style="width:100%"> --}}
+            <div class="caption">
+              <p>ภาวะการเกิดลิ่มเลือดอุดตันในปอดกับวัคซีนโควิด 19</p>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="thumbnail">
+          <a href="https://apps.doe.moph.go.th/boe/software/file/aefi_arteriovenous.pdf" target="_blank">
+            <img src="{{ asset('asset/dist/img/d11.jpg') }}" style="width:100%">
+            {{-- <img src="/w3images/nature.jpg" alt="Nature" style="width:100%"> --}}
+            <div class="caption">
+              <p>ภาวะผิดปกติที่หลอดเลือดแดงต่อกับหลอดเลือดดำ</p>
             </div>
           </a>
         </div>
