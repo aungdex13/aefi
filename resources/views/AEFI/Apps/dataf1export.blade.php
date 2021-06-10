@@ -1,5 +1,6 @@
 @extends('AEFI.layout.tabletemplate')
 <?php
+
 $arr_history_of_vaccine = load_history_of_vaccine();
 $arr_patient_develop_symptoms_after_previous_vaccination = load_patient_develop_symptoms_after_previous_vaccination();
 $arr_underlying_disease = load_underlying_disease();
@@ -16,7 +17,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
 ?>
 @section('content')
 <section class="content-header">
-<!-- Content Header (Psage header) -->
+<!-- Content Header (Page header) -->
 <h1>
   ส่งออกข้อมูลผู้มีอาการภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรค
   <small>AEFI</small>
@@ -39,7 +40,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
         {{ csrf_field() }}
       <div class="box-header with-border">
         <div class="col-lg-3">
-          <input type="text" id="reservation" name="date_of_symptoms" class="form-control" placeholder="ระบุวันเดือนปีปีที่ต้องการค้นหา" readonly>
+          <input type="text" id="reservation" name="date_of_symptoms" class="form-control" placeholder="ระบุวันที่ที่ต้องการค้นหาข้อมูล" readonly>
           <!-- /input-group -->
         </div>
         <h3 class="box-title">
@@ -51,19 +52,18 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
 			<div class="box-body table-responsive">
           <!-- /.form group -->
 				<!-- Custom Tabs -->
-        <p>ดาวน์โหลดข้อมูล
+                <p>ดาวน์โหลดข้อมูล
           @if ((isset($date_of_symptoms_from) ?  $date_of_symptoms_from : null)  == null && (isset($date_of_symptoms_to) ?  $date_of_symptoms_to : null) == null)
             วันที่  {{$datenow}}
           @elseif ((isset($date_of_symptoms_from) ?  $date_of_symptoms_from : null) == null && (isset($date_of_symptoms_to) ?  $date_of_symptoms_to : null) == null)
             วันที่  {{$date_of_symptoms_from}} ถึง วันที่ {{$date_of_symptoms_to}}
           @else
             วันที่  {{$date_of_symptoms_from}} ถึง วันที่ {{$date_of_symptoms_to}}
-          @endif</p>
-				<table id="example" class="display table-striped table-bordered" style="width:600%">
+          @endif</p>				<table id="example" class="display table-striped table-bordered" style="width:600%">
 				        <thead>
 				            <tr>
         							  <th>no</th>
-                        <th>ID</th>
+<th>ID</th>
         								<th>รหัสผู้ป่วย</th>
 				                <th>ชื่อ</th>
 				                <th>นามสกุล</th>
@@ -74,14 +74,15 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
                         <th>อายุปีขณะป่วย</th>
                         <th>อายุเดือนขณะป่วย</th>
                         <th>อายุวันขณะป่วย</th>
-				                <th>เพศ</th>
+			<th>เพศ</th>
                         <th>ประเภทผู้ป่วย</th>
                         <th>สถานะผู้ป่วย</th>
+<th>อาชีพ</th>
                         <th>ว/ด/ป ที่เกิดอาการ</th>
                         <th>เวลาที่เกิดอาการ</th>
-				                <th>วันรับรักษา</th>
+			<th>วันรับรักษา</th>
                         <th>วัคซีนที่ได้รับ</th>
-                        <th>เลขที่วัคซีน</th>
+<th>เลขที่วัคซีน</th>
                         <th>เข็มที่</th>
                         <th>ชื่อผู้ผลิต</th>
                         <th>ว/ด/ป ที่ได้รับวัคซีน</th>
@@ -130,26 +131,18 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
                         <th>Adem</th>
                         <th>Acute myocardial</th>
                         <th>Ards</th>
-                        <th>อาการอื่นๆ</th>
+			<th>อาการอื่นๆ</th>
+			<th>รายละเอียดอาการและการตรวจสอบ</th>
                         <th>Seriousness</th>
                         <th>conclusion</th>
                         <th>โรงพยาบาลที่รับรักษา</th>
                         <th>จังหวัดที่รายงาน</th>
-                        <th>ว/ด/ป ที่ส่งรายงาน</th>
+			<th>ว/ด/ป ที่ส่งรายงาน</th>
                         <th>ว/ด/ป ที่รับรายงาน</th>
                         <th>ประวัติทางการแพทย์</th>
-                        <th>รายละเอียดอาการและการตรวจสอบ</th>
+
                         <th>การตรวจทางห้องปฏิบัติการ</th>
                         <th>หมายเหตุ</th>
-                        @hasrole('admin')
-                        <th>R/O</th>
-                        <th>หน่วยงานที่รายงาน</th>
-                        <th>Final Diagnosis</th>
-                        <th>Causality Assessment </th>
-                        <th>Summary</th>
-                        <th>AEFI Classification</th>
-                        <th>Expert Meeting</th>
-                        @endhasrole
 				            </tr>
 				        </thead>
 				        <tbody>
@@ -161,9 +154,8 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
                             $vac_name = isset($value->name_of_vaccine) ? $value->name_of_vaccine : "NULL" ;
                              $cutVacName = explode(',', $vac_name);
                           @endphp
-                          <p style="text-align:center;">{{date('Y',strtotime(isset($value->date_of_symptoms) ? $value->date_of_symptoms : "-"))}}-{{str_pad(isset($cutVacName[0]) ? $cutVacName[0] : "NULL", 2, '0', STR_PAD_LEFT)}}-{{$value->id}}</p>
-                        </td>
-								        <td>{{ $value->hn }}</td>
+                          <p style="text-align:center;">{{date('Y',strtotime(isset($value->date_entry) ? $value->date_entry : "-"))  }}-{{str_pad(isset($cutVacName[0]) ? $cutVacName[0] : "NULL", 2, '0', STR_PAD_LEFT)}}-{{$value->id}}</p>
+                        </td>								        <td>{{ $value->hn }}</td>
 				                <td style="text-align: center; vertical-align: middle;" width="4%">{{ $value->first_name }}</td>
 				                <td style="text-align: center; vertical-align: middle;" width="4%">{{ $value->sur_name }}</td>
 				                <td>
@@ -182,18 +174,18 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
 								        <td>{{ $arr_gender[$value->gender] }}</td>
 								        <td>{{ $arr_type_of_patient[$value->type_of_patient] }}</td>
                         <td>{{ $arr_patient_status[$value->patient_status] }}</td>
+<td>{{ isset($value->career) ? $value->career: "-" }}</td>
                         <td>{{ $value->date_of_symptoms }}</td>
                         <td>{{ $value->time_of_symptoms }}</td>
                         <td>{{ $value->date_of_treatment }}</td>
                         <td>
-                          {{   isset($listvac_arr[$value->name_of_vaccine]) ? $listvac_arr[$value->name_of_vaccine]: "ไม่ระบุข้อมูล"}}
-                          {{-- @php
+                          @php
                           $myStringvac = $value->name_of_vaccine ;
                           $myArrayvac = explode(',', $myStringvac);
                           @endphp
                           @foreach($myArrayvac as $valuev)
                           {{ isset($listvac_arr[$valuev]) ? $listvac_arr[$valuev]: "ไม่ระบุข้อมูล" }}</br>
-                          @endforeach --}}
+                          @endforeach
                         </td>
                         <td>
                           @php
@@ -549,31 +541,23 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
                           @endif
                       </td>
                       <td>
-                        @if ($value->symptoms_later_immunized == '9999')
-                         {{ isset($value->other_symptoms_later_immunized) ? $value->other_symptoms_later_immunized: "" }}
+                          @if ($value->symptoms_later_immunized == '9999')
+                            {{ isset($value->other_symptoms_later_immunized) ? $value->other_symptoms_later_immunized: "" }}
                           @else
                           {{""}}
                           @endif
                       </td>
+			<td>{{ $value->Symptoms_details }}</td>
                         <td>{{ $arr_seriousness_of_the_symptoms[$value->seriousness_of_the_symptoms] }}</td>
                         <td>{{ $value->diagnosis }}</td>
                         <td>{{ isset($list_hos[ $value->hospcode_treat]) ? $list_hos[ $value->hospcode_treat] : ""}}</td>
-                        <td>{{ isset($listProvince[ $value->province_reported]) ? $listProvince[ $value->province_reported] : "ไม่ระบุข้อมูล"}}</td>
-                        <td>{{ isset($value->datepicker_send_reported) ? $value->datepicker_send_reported: "-" }}</td>
-                        <td>{{ isset($value->datepicker_resiver) ? $value->datepicker_resiver: "-" }}</td>
+                       <td>{{ isset($listProvince[ $value->province_reported]) ?$listProvince[ $value->province_reported] : "ไม่ระบุข้อมูล"}}</td>
+			<td>{{ isset($value->datepicker_send_reported) ? $value->datepicker_send_reported: "-" }}</td>
+			<td>{{ isset($value->datepicker_resiver) ? $value->datepicker_resiver: "-" }}</td>
                         <td>{{ $value->other_medical_history }}</td>
-                        <td>{{ isset($value->other_symptoms_later_immunized) ? $value->other_symptoms_later_immunized: "-"}}{{ $value->Symptoms_details }}</td>
+
                         <td>{{ $value->lab_result }}</td>
                         <td>{{ $value->more_reviews }}</td>
-                        @hasrole('admin')
-                        <td>{{ $value->id }}</td>
-                        <td>{{ $value->id }}</td>
-                        <td>{{ $value->id }}</td>
-                        <td>{{ $value->id }}</td>
-                        <td>{{ $value->id }}</td>
-                        <td>{{ $value->id }}</td>
-                        <td>{{ $value->id }}</td>
-                        @endhasrole
 				            </tr>
 							<?php endforeach;?>
 				        </tbody>
@@ -608,10 +592,9 @@ $(document).ready(function() {
 $('#example').DataTable( {
 	dom: 'Bfrtip',
 	buttons: [
-		 'excel'
+		'excel'
 	]
 } );
-
 } );
 </script>
 <script>

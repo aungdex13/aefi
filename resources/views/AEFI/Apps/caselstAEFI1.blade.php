@@ -32,7 +32,7 @@
       <!-- general form elements -->
       <div class="box box-info">
         <div class="box-header with-border">
-          <h3 class="box-title"><a href="{{ route('form1') }}" type="button" class="btn btn-success btn-flat"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>เพิ่มผู้ป่วย AEFI ราย Case</a></h3>
+          <h3 class="box-title"><a href="{{ route('form1') }}" type="button" class="btn btn-success btn-flat" target="_blank"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>เพิ่มผู้ป่วย AEFI ราย Case</a></h3>
         </div>
         {{-- <div class="box-header with-border">
           <h3 class="box-title"><a href="{{ route('lstf1group') }}" type="button" class="btn btn-warning btn-flat"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>เพิ่มผู้ป่วย AEFI รายกลุ่ม</a></h3>
