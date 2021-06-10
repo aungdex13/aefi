@@ -24,7 +24,7 @@ class DataexportController extends Controller
 		$roleArrhospcode = auth()->user()->hospcode;
 		$roleArrprov_code = auth()->user()->prov_code;
 		$roleArrregion = auth()->user()->region;
-	//dd($roleArrusername,$roleArrhospcode,$roleArrprov_code,$roleArrregion);
+		//dd($roleArrusername,$roleArrhospcode,$roleArrprov_code,$roleArrregion);
 		$roleArr = auth()->user()->getRoleNames()->toArray();
 $selectgroupprov = DB::table('chospital_new')
 											 ->select('chospital_new.prov_code')
@@ -35,30 +35,21 @@ $selectgroupprov = DB::table('chospital_new')
 
 		$yearnow =  now()->year;
 		$selectcaselstF1=DB::table('aefi_form_1')
-		->leftjoin('aefi_form_1_vac', 'aefi_form_1.id_case', '=', 'aefi_form_1_vac.id_case')
+		->join('aefi_form_1_vac', 'aefi_form_1.id_case', '=', 'aefi_form_1_vac.id_case')
 		->select('aefi_form_1.*',
-		DB::raw('aefi_form_1_vac.name_of_vaccine as "name_of_vaccine",
-						aefi_form_1_vac.lot_number as "lot_number",
-						aefi_form_1_vac.manufacturer  as "manufacturer",
-						aefi_form_1_vac.dose as "dose",
-						aefi_form_1_vac.date_of_vaccination  as "date_of_vaccination",
-						aefi_form_1_vac.time_of_vaccination  as "time_of_vaccination" '
-					));
-		// DB::raw('GROUP_CONCAT( aefi_form_1_vac.name_of_vaccine ) as "name_of_vaccine",
-		// 				 GROUP_CONCAT( aefi_form_1_vac.lot_number ) as "lot_number",
-		// 				 GROUP_CONCAT( aefi_form_1_vac.manufacturer  ) as "manufacturer",
-		// 		 		 GROUP_CONCAT( aefi_form_1_vac.dose  ) as "dose",
-		// 		 		 GROUP_CONCAT( aefi_form_1_vac.date_of_vaccination   ) as "date_of_vaccination",
-		// 		 		 GROUP_CONCAT( aefi_form_1_vac.time_of_vaccination   ) as "time_of_vaccination" ')
-		// 			 );
-
+		DB::raw('GROUP_CONCAT( aefi_form_1_vac.name_of_vaccine ) as "name_of_vaccine",
+						 GROUP_CONCAT( aefi_form_1_vac.lot_number ) as "lot_number",
+						 GROUP_CONCAT( aefi_form_1_vac.manufacturer  ) as "manufacturer",
+				 		 GROUP_CONCAT( aefi_form_1_vac.dose  ) as "dose",
+				 		 GROUP_CONCAT( aefi_form_1_vac.date_of_vaccination   ) as "date_of_vaccination",
+				 		 GROUP_CONCAT( aefi_form_1_vac.time_of_vaccination   ) as "time_of_vaccination" ')
+						);
 	//->orwhere('aefi_form_1.date_entry',$datenow);
 		if (count($roleArr) > 0) {
 			 $user_role = $roleArr[0];
 		 switch ($user_role) {
 			 case 'hospital':
 				$selectdata  = $selectcaselstF1
-								//
 								->whereDate('aefi_form_1.date_entry',$datenow)
 								->whereNull('aefi_form_1.status')
 								->where(function($query) {
@@ -74,19 +65,18 @@ $selectgroupprov = DB::table('chospital_new')
 				 				->whereDate('aefi_form_1.date_entry',$datenow)
 				 				->whereNull('aefi_form_1.status')
 								->where(function($query) {
-											$query->orWhere('aefi_form_1.user_provcode',auth()->user()->prov_code)
-														->orWhere('aefi_form_1.province_found_event',auth()->user()->prov_code)
+											$query->orWhere('aefi_form_1.province_found_event',auth()->user()->prov_code)
 														->orWhere('aefi_form_1.province_reported',auth()->user()->prov_code);
 									})
 								->groupBy('aefi_form_1.id_case')
-								->get();
-				 break;
+								->get();				 break;
 				 case 'dpc':
 				 if ($roleArrhospcode == "41173") {
 						 $selectdata = $selectcaselstF1
-									 ->whereNull('aefi_form_1.status')
-									 ->groupBy('aefi_form_1.id_case')
-									 ->get();
+								 ->whereNull('aefi_form_1.status')
+->whereDate('aefi_form_1.date_entry',$datenow)
+								 ->groupBy('aefi_form_1.id_case')
+								 ->get();
 				 }else {
 					 $selectdata = $selectcaselstF1
 							->whereIn('aefi_form_1.province',$selectgroupprov)
@@ -108,7 +98,7 @@ $selectgroupprov = DB::table('chospital_new')
 							 $selectdata = $selectcaselstF1
 							 ->whereNull('aefi_form_1.status')
 							 ->whereDate('aefi_form_1.date_entry',$datenow)
-							 // ->groupBy('aefi_form_1.id_case')
+							 ->groupBy('aefi_form_1.id_case')
 							 ->get();
 							 break;
 							 case 'admin-dpc':
@@ -155,21 +145,13 @@ $selectgroupprov = DB::table('chospital_new')
 		$selectcaselstF1=DB::table('aefi_form_1')
 		->join('aefi_form_1_vac', 'aefi_form_1.id_case', '=', 'aefi_form_1_vac.id_case')
 		->select('aefi_form_1.*',
-		DB::raw('aefi_form_1_vac.name_of_vaccine as "name_of_vaccine",
-						aefi_form_1_vac.lot_number as "lot_number",
-						aefi_form_1_vac.manufacturer  as "manufacturer",
-						aefi_form_1_vac.dose as "dose",
-						aefi_form_1_vac.date_of_vaccination  as "date_of_vaccination",
-						aefi_form_1_vac.time_of_vaccination  as "time_of_vaccination" '
-					))
-
-		// DB::raw('GROUP_CONCAT( aefi_form_1_vac.name_of_vaccine ) as "name_of_vaccine",
-		// 				 GROUP_CONCAT( aefi_form_1_vac.lot_number ) as "lot_number",
-		// 				 GROUP_CONCAT( aefi_form_1_vac.manufacturer  ) as "manufacturer",
-		// 		 		 GROUP_CONCAT( aefi_form_1_vac.dose  ) as "dose",
-		// 		 		 GROUP_CONCAT( aefi_form_1_vac.date_of_vaccination   ) as "date_of_vaccination",
-		// 		 		 GROUP_CONCAT( aefi_form_1_vac.time_of_vaccination   ) as "time_of_vaccination" ')
-		// 			 );
+		DB::raw('GROUP_CONCAT( aefi_form_1_vac.name_of_vaccine ) as "name_of_vaccine",
+GROUP_CONCAT( aefi_form_1_vac.lot_number ) as "lot_number",
+						 GROUP_CONCAT( aefi_form_1_vac.manufacturer  ) as "manufacturer",
+				 		 GROUP_CONCAT( aefi_form_1_vac.dose  ) as "dose",
+				 		 GROUP_CONCAT( aefi_form_1_vac.date_of_vaccination   ) as "date_of_vaccination",
+				 		 GROUP_CONCAT( aefi_form_1_vac.time_of_vaccination   ) as "time_of_vaccination" ')
+						)
 						->whereDate('aefi_form_1.date_entry', '>=', $date_of_symptoms_from)
 						->whereDate('aefi_form_1.date_entry', '<=', $date_of_symptoms_to);
 	if (count($roleArr) > 0) {
@@ -184,22 +166,20 @@ $selectgroupprov = DB::table('chospital_new')
 									 })
 								 ->whereNull('aefi_form_1.status')
 								 ->groupBy('aefi_form_1.id_case')
-								 ->get();
-			 break;
+								 ->get();			 break;
 			 case 'pho':
 				 $selectdata = $selectcaselstF1
 				 ->whereNull('aefi_form_1.status')
 				 ->where(function($query) {
-							 $query->orWhere('aefi_form_1.user_provcode',auth()->user()->prov_code)
-										 ->orWhere('aefi_form_1.province_found_event',auth()->user()->prov_code)
+							 $query->orWhere('aefi_form_1.province_found_event',auth()->user()->prov_code)
 										 ->orWhere('aefi_form_1.province_reported',auth()->user()->prov_code);
 					 })
 				 ->groupBy('aefi_form_1.id_case')
-								 ->get();
-				 break;
+								 ->get();				 break;
 				 case 'dpc':
 				 if ($roleArrhospcode == "41173") {
 						 $selectdata = $selectcaselstF1
+								 // ->where('user_region',$roleArrregion)
 								 ->whereNull('aefi_form_1.status')
 								 ->groupBy('aefi_form_1.id_case')
 								 ->get();
@@ -220,7 +200,7 @@ $selectgroupprov = DB::table('chospital_new')
 						 case 'admin':
 							 $selectdata = $selectcaselstF1
 							 ->whereNull('aefi_form_1.status')
-							 // ->groupBy('aefi_form_1.id_case')
+							 ->groupBy('aefi_form_1.id_case')
 							 ->get();
 							 break;
 							 case 'admin-dpc':
