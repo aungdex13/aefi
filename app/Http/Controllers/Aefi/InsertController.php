@@ -175,6 +175,7 @@
 		$gbs = $req ->input ('gbs');
 		$hospcode_treat = $req ->input ('hospcode_treat');
 		$hospcode_report = $req ->input ('hospcode_report');
+		$hospcode_get_vac = $req ->input ('hospcode_get_vac');
 		$data = array(
 			'id_case'=>$id_case,
 			'hn'=>$hn,
@@ -311,7 +312,8 @@
 			'gbs'=>$gbs,
 			'case_vac_id'=>$case_vac_id,
 			'hospcode_treat'=>$hospcode_treat,
-			'hospcode_report'=>$hospcode_report
+			'hospcode_report'=>$hospcode_report,
+			'hospcode_get_vac'=>$hospcode_get_vac
 		);
 	// echo($data);
 	  $res1	= DB::table('aefi_form_1')->insert($data);

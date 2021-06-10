@@ -781,6 +781,16 @@ foreach ($aecode as $value) {
                 <div class="box-header with-border">
                   <h3 class="box-title">(2) ข้อมูลวัคซีน / สถานที่รับวัคซีน (รพ./รพ.สต./คลินิก/ศูนย์บริการสาธารณสุข)</h3>
                 </div>
+                <div class="form-group">
+                <div class="row">
+                  <div class="col-lg-4">
+                    <label>สถานที่รับวัคซีน (รพ./รพ.สต./คลินิก/ศูนย์บริการสาธารณสุข) :</label>
+                    <select id="js-example-basic-single" name="hospcode_get_vac" class="js-example-basic-single form-control" data-dropdown-css-class="select2-danger" >
+                    </select>
+                  </div>
+                </div>
+              </div>
+              </br>
                 <div style="overflow: scroll;">
                   <table class="maintable" id="customers">
                     <button type="button" id="btnAdd" class="btn btn-m btn-success classAdd">+ เพิ่มข้อมูลวัคซีน</button></br>

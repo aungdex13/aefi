@@ -870,6 +870,18 @@ foreach ($aecode as $value) {
         <div class="box-header with-border">
           <h3 class="box-title">(2) ข้อมูลวัคซีน / สถานที่รับวัคซีน (รพ./รพ.สต./คลินิก/ศูนย์บริการสาธารณสุข)</h3>
         </div>
+        <div class="form-group">
+        <div class="row">
+          <div class="col-lg-4">
+            <label>สถานที่รับวัคซีน (รพ./รพ.สต./คลินิก/ศูนย์บริการสาธารณสุข) :</label>
+            <select id="js-example-basic-single" name="hospcode_get_vac" class="js-example-basic-single form-control" data-dropdown-css-class="select2-danger">
+              <option class="badge filter badge-info" data-color="info" value="{{$data[0]->hospcode_get_vac}}">
+                {{ isset($list_hos[$data[0]->hospcode_get_vac]) ? $list_hos[$data[0]->hospcode_get_vac]:"ไม่ระบุข้อมูล"}}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
         <div style="overflow: scroll;">
           <table class="maintable" id="customers">
             <button type="button" id="btnAdd" class="btn btn-m btn-success classAdd">+ เพิ่มข้อมูลวัคซีน</button></br>
