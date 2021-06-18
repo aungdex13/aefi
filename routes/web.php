@@ -65,6 +65,7 @@ Route::get('/AEFI506', 'Aefi\AEFIController@AEFI506')->name('AEFI506');
 
 //select list aefi
 Route::get('/lstf1', 'Aefi\SelectController@selectdatatablecaseAEFI1')->name('lstf1');
+Route::post('/lstf1', 'Aefi\SelectController@selectdatatablecaseAEFI1src')->name('lstf1');
 Route::get('/lstf2', 'Aefi\SelectController@selectdatatablecaseAEFI2')->name('lstf2');
 Route::get('/lstf1group', 'Aefi\SelectController@selectdatatablecaseAEFI1group')->name('lstf1group');
 Route::get('listaefi1', ['uses'=>'Aefi\ListAEFI1Controller@index', 'as'=>'listaefi1.list']);

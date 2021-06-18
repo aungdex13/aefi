@@ -43,7 +43,7 @@
     $('[data-mask]').inputmask()
 
     //Date range picker
-    $('#reservation').daterangepicker()
+    // $('#reservation').daterangepicker()
     //Date range picker with time picker
     $('#reservationtime').daterangepicker({ timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A' })
     //Date range as a button
@@ -275,4 +275,13 @@ $(document).ready(function() {
        "order": [[ 0, 'desc' ]]
 });
 } );
+ </script>
+ <script>
+   $(function () {
+     $('#reservation').daterangepicker({
+       locale: {
+               format: 'YYYY-MM-DD'
+               }
+     })
+       })
  </script>

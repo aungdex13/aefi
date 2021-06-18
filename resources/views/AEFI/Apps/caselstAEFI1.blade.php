@@ -34,6 +34,52 @@
         <div class="box-header with-border">
           <h3 class="box-title"><a href="{{ route('form1') }}" type="button" class="btn btn-success btn-flat" target="_blank"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>เพิ่มผู้ป่วย AEFI ราย Case</a></h3>
         </div>
+      <div class="box-header with-border">
+        <form action="{{route('lstf1') }}" method="post">
+          {{ csrf_field() }}
+        <p>ค้นหาข้อมูล รายชื่อผู้มีอาการภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรค</p>
+      <div class="col-lg-12">
+        <div class="col-lg-3">
+              <input type="text" id="reservation" name="date_of_symptoms" class="form-control" placeholder="ระบุวันที่ที่ต้องการค้นหาข้อมูล" readonly>
+          </div>
+        <div class="col-lg-3">
+          <select type="text" id="name_of_vaccine" name="name_of_vaccine" class="form-control" >
+            <option value="">กรุณาระบุชื่อวัคซีน</option>
+            @foreach ($vac_list as $row)
+            <option value="{{$row->VAC_CODE}}">{{$row->VAC_NAME_EN}}</option>
+            @endforeach
+          </select>
+          </div>
+        <div class="col-lg-3">
+          <select id="js-example-basic-single" name="hospcode_treat" class="js-example-basic-single form-control" data-dropdown-css-class="select2-danger" >
+          </select>
+          </div>
+        <div class="col-lg-3">
+            {{-- <input type="text" id="title_name_other" name="title_name_other" class="form-control" placeholder="จังหวัดที่รับรักษา"> --}}
+            <select class="form-control provinces" name="province" id="provinces" >
+              <option value="">จังหวัดที่รับรักษา</option>
+              @foreach ($list as $row)
+              <option value="{{$row->province_code}}">{{$row->province_name}}</option>
+              @endforeach
+            </select>
+          </div>
+      </div>
+    </from>
+      </div>
+      <div class="box-header with-border">
+      <div class="col-lg-12">
+        <div class="col-lg-3">
+        </div>
+        <div class="col-lg-3">
+          <a href="{{ route('lstf1') }}" class="btn btn-block btn-danger">ดูข้อมูลวันที่ {{$datenow}}</a>
+          </div>
+        <div class="col-lg-3">
+          <input type="submit" name="submit" value="ค้นหาข้อมูล" class="btn btn-block btn-info"></input>
+        </div>
+        <div class="col-lg-3">
+        </div>
+      </div>
+      </div>
         {{-- <div class="box-header with-border">
           <h3 class="box-title"><a href="{{ route('lstf1group') }}" type="button" class="btn btn-warning btn-flat"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>เพิ่มผู้ป่วย AEFI รายกลุ่ม</a></h3>
       </div> --}}
@@ -41,6 +87,15 @@
       <!-- form start -->
       <!-- /.box-header -->
       <div class="box-body">
+         {{-- {{$date_of_symptoms_from}} --}}
+        <p style="color:red"> ข้อมูล รายชื่อผู้มีอาการภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรค ประจำวันที่
+         @if ((isset($date_of_symptoms_from) ?  $date_of_symptoms_from : null)  == null && (isset($date_of_symptoms_to) ?  $date_of_symptoms_to : null) == null)
+          วันที่  {{$datenow}}
+        @elseif ((isset($date_of_symptoms_from) ?  $date_of_symptoms_from : null) == null && (isset($date_of_symptoms_to) ?  $date_of_symptoms_to : null) == null)
+          วันที่  {{$date_of_symptoms_from}} ถึง วันที่ {{$date_of_symptoms_to}}
+        @else
+          วันที่  {{$date_of_symptoms_from}} ถึง วันที่ {{$date_of_symptoms_to}}
+        @endif</p>
         <table class="table table-bordered" id="case_lst" class="display" style="width:100%">
           <thead>
             <tr>
@@ -196,11 +251,42 @@
 
 @include('AEFI.layout.footercaselstScript')
 <!-- /.content -->
-{{-- <script>
+<script>
 $(document).ready(function() {
-    $("#btnDelete").click(function(){
-        alert("button");
-    });
+$(".js-example-basic-single").select2({
+  allowClear: true,
+  language: {
+  inputTooShort: function (args) {
+      return "กรุณาพิมพ์คำค้นหาอย่างน้อย 3 ตัวอักษร";
+  },
+  noResults: function () {
+      return "ไม่พบข้อมูล";
+  },
+  searching: function () {
+      return "กำลังค้นหาข้อมูล...";
+  }
+  },
+  placeholder: "กรุณาพิมพ์ชื่อหน่วยงานที่ต้องการ เช่น. สคร.1,โรงพยาบาลเลิดสิน,สำนักงานสาธารณสุขจังหวัดสมุทรปราการ",
+  minimumInputLength: 3,
+  minimumResultsForSearch: 5,
+  ajax: {
+   url: "{{ route('list-division-json') }}",
+   type: "GET",
+   dataType: 'json',
+   delay: 250,
+   data: function (params) {
+    return {
+      searchTerm: params.term // search term
+    };
+   },
+   processResults: function (response) {
+     return {
+        results: response
+     };
+   },
+   cache: true
+  }
 });
-</script> --}}
+});
+</script>
 @stop

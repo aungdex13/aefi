@@ -162,7 +162,6 @@ foreach ($aecode as $value) {
                         </div>
                         <div class="col-lg-4">
                           <select type="text" class="form-control" id="title_name" name="title_name" required onchange="showDiv1('hidden_div1', this)">
-
                             <option value="">กรุณาเลือก</option>
                             {{-- < ?php foreach ($mas_title_th as $key_title => $value_title) : ?> --}}
                             {{-- } --}}

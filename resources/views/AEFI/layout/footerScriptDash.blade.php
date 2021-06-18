@@ -40,16 +40,9 @@ $('#date_of_symptoms').datepicker({
 	window.onload = function() {
 
 		var chart = new CanvasJS.Chart("chartContainer", {
-			exportEnabled: true,
 			animationEnabled: true,
 			title: {
 				// text: "จำนวนผู้ป่วยรายเดือน"
-			},
-			axisX: {
-				valueFormatString: "MMMM"
-			},
-			axisY: {
-				title: "จำนวนผู้ป่วย",
 			},
 			data: [{
 					type: "line",
@@ -57,40 +50,40 @@ $('#date_of_symptoms').datepicker({
 					dataPoints: [
 						// @ foreach($count_month as $row)
 						{
-							y: {{isset($count_month_jan[0]->month_jan) ? $count_month_jan[0]->month_jan : 0}}
+							y: {{isset($count_month_jan[0]->month_jan) ? $count_month_jan[0]->month_jan : 0}}, label: "มกราคม"
 						},
 						{
-							y:  {{isset($count_month_feb[0]->month_feb) ? $count_month_feb[0]->month_feb : 0}}
+							y:  {{isset($count_month_feb[0]->month_feb) ? $count_month_feb[0]->month_feb : 0}}, label: "กุมภาพันธ์"
 						},
 						{
-							y:  {{isset($count_month_mar[0]->month_mar) ? $count_month_mar[0]->month_mar : 0}}
+							y:  {{isset($count_month_mar[0]->month_mar) ? $count_month_mar[0]->month_mar : 0}}, label: "มีนาคม"
 						},
 						{
-							y: {{isset($count_month_apr[0]->month_apr) ? $count_month_apr[0]->month_apr : 0}}
+							y: {{isset($count_month_apr[0]->month_apr) ? $count_month_apr[0]->month_apr : 0}}, label: "เมษายน"
 						},
 						{
-							y:  {{isset($count_month_may[0]->month_may) ? $count_month_may[0]->month_may : 0}}
+							y:  {{isset($count_month_may[0]->month_may) ? $count_month_may[0]->month_may : 0}}, label: "พฤษภาคม"
 						},
 						{
-							y:  {{isset($count_month_jun[0]->month_jun) ? $count_month_jun[0]->month_jun : 0}}
+							y:  {{isset($count_month_jun[0]->month_jun) ? $count_month_jun[0]->month_jun : 0}}, label: "มิถุนายน"
 						},
 						{
-							y:  {{isset($count_month_jul[0]->month_jul) ? $count_month_jul[0]->month_jul : 0}}
+							y:  {{isset($count_month_jul[0]->month_jul) ? $count_month_jul[0]->month_jul : 0}}, label: "กรกฎาคม"
 						},
 						{
-							y:  {{isset($count_month_aug[0]->month_aug) ? $count_month_aug[0]->month_aug : 0}}
+							y:  {{isset($count_month_aug[0]->month_aug) ? $count_month_aug[0]->month_aug : 0}}, label: "สิงหาคม"
 						},
 						{
-							y:  {{isset($count_month_sep[0]->month_sep) ? $count_month_sep[0]->month_sep : 0}}
+							y:  {{isset($count_month_sep[0]->month_sep) ? $count_month_sep[0]->month_sep : 0}}, label: "กันยายน"
 						},
 						{
-							y:  {{isset($count_month_oct[0]->month_oct) ? $count_month_oct[0]->month_oct : 0}}
+							y:  {{isset($count_month_oct[0]->month_oct) ? $count_month_oct[0]->month_oct : 0}}, label: "ตุลาคม"
 						},
 						{
-							y:  {{isset($count_month_nov[0]->month_nov) ? $count_month_nov[0]->month_nov : 0}}
+							y:  {{isset($count_month_nov[0]->month_nov) ? $count_month_nov[0]->month_nov : 0}}, label: "พฤศจิกายน"
 						},
 						{
-							y:  {{isset($count_month_dec[0]->month_dec) ? $count_month_dec[0]->month_dec : 0}}
+							y:  {{isset($count_month_dec[0]->month_dec) ? $count_month_dec[0]->month_dec : 0}}, label: "ธันวาคม"
 						}
 						// {
 						// 	x: new Date({ {$yearnow}}, 12),
@@ -135,23 +128,28 @@ $('#date_of_symptoms').datepicker({
 		chart.render();
 
 		var chart = new CanvasJS.Chart("chartVacname", {
-			exportEnabled: true,
-			animationEnabled: true,
+			// /theme: "dark2",  "light1", "light2", "dark1"title: "จำนวนของวัคซีน"
+			theme: "light1", // "light1", "light2", "dark1"
+  animationEnabled: true,
+  exportEnabled: true,
+  title: {
+    // text: "Top 10 จำนวนของวัคซีน"
+  },
+  axisX: {
+    margin: 10,
+     labelPlacement: "inside",
+    // tickPlacement: "inside"
+  },
 
-
-			axisX:{
-				interval: 1
-			},
-			axisY2:{
-				interlacedColor: "rgba(1,77,101,.2)",
-				gridColor: "rgba(1,77,101,.1)",
-				title: "จำนวนของวัคซีน"
-			},
-			data: [{
-				type: "bar",
-				name: "companies",
-				axisYType: "secondary",
-				color: "#014D65",
+  axisY2: {
+    title: "จำนวนของวัคซีน",
+    titleFontSize: 14,
+    includeZero: true,
+  },
+  data: [{
+    type: "bar",
+    axisYType: "secondary",
+    indexLabel: "{y}",
 				dataPoints: [
 					@foreach($count_vacname as $row)
 					{ y: {{ $row->vac_count }}, label: "{{isset($listvac_arr[$row->name_of_vaccine]) ? $listvac_arr[$row->name_of_vaccine]:""}}" },
@@ -184,34 +182,7 @@ $('#date_of_symptoms').datepicker({
 		}]
 	});
 	chart.render();
-}
-// var jsonData = {
-// 	@ foreach($count_year as $row)
-//   "{ {$row->year_entry}}": [
-// 			@ foreach($count_month as $rowm)
-//     			{ "x": "{ {$rowm->year_entry}}-{ {$rowm->month_entry}}", "y": { {$rowm->count_patient}} },
-// 			@ endforeach
-//   ],
-// 	@ endforeach
-// }
-var dataPoints = [];
-var chart = new CanvasJS.Chart("chartContainertest",{
-  axisX: {
-    valueFormatString: "D/MM h:mm",
-    intervalType: 'month',
-    interval: 1
-  },
-  data: [{
-    type: 'column',
-    //xValueFormatString:"D MM h:mm",
-    xValueType: "dateTime",
-    showInLegend: true,
-    name: "series1",
-    legendText: "EnergykWh",
-    dataPoints: dataPoints // this should contain only specific serial number data
-
-  }]
-});
+};
 </script>
 <script type='text/javascript' src='https://www.gstatic.com/charts/loader.js'></script>
 <script type="text/javascript">

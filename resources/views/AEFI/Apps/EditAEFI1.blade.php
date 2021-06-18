@@ -2241,7 +2241,7 @@ foreach ($aecode as $value) {
                   <div class="form-group">
                     <div class="col-md-12">
                       <label>
-                        <input type="checkbox" name="assessment1" @if ($data[0]->assessment1 == '1')
+                        <input type="checkbox" name="assessment1" @if ($data[0]->assessment1 == '1' || $data[0]->assessment1 == 'on')
                         {{ "checked" }}
                         @endif>
                           ปฏิกิริยาของวัคซีน ระดับความสัมพันธ์
@@ -2249,7 +2249,7 @@ foreach ($aecode as $value) {
                     </div>
                     <div class="col-md-6">
                       <label>
-                        <input type="checkbox" name="assessment2" @if ($data[0]->assessment2 == '1')
+                        <input type="checkbox" name="assessment2" @if ($data[0]->assessment2 == '1' || $data[0]->assessment2 == 'on')
                         {{ "checked" }}
                         @endif>
                           ใช่
@@ -2257,7 +2257,7 @@ foreach ($aecode as $value) {
                     </div>
                     <div class="col-md-6">
                       <label>
-                        <input type="checkbox" name="assessment3" @if ($data[0]->assessment3 == '1')
+                        <input type="checkbox" name="assessment3" @if ($data[0]->assessment3 == '1' || $data[0]->assessment3 == 'on')
                         {{ "checked" }}
                         @endif>
                           น่าจะใช่
@@ -2265,7 +2265,7 @@ foreach ($aecode as $value) {
                     </div>
                     <div class="col-md-6">
                       <label>
-                        <input type="checkbox" name="assessment4" @if ($data[0]->assessment4 == '1')
+                        <input type="checkbox" name="assessment4" @if ($data[0]->assessment4 == '1' || $data[0]->assessment4 == 'on')
                         {{ "checked" }}
                         @endif>
                           อาจจะใช่
@@ -2273,7 +2273,7 @@ foreach ($aecode as $value) {
                     </div>
                     <div class="col-md-6">
                       <label>
-                        <input type="checkbox" name="assessment5" @if ($data[0]->assessment5 == '1')
+                        <input type="checkbox" name="assessment5" @if ($data[0]->assessment5 == '1' || $data[0]->assessment5 == 'on')
                         {{ "checked" }}
                         @endif>
                           ไม่ใช่
@@ -2283,7 +2283,7 @@ foreach ($aecode as $value) {
                   <div class="form-group">
                     <div class="col-md-12">
                       <label>
-                        <input type="checkbox" name="assessment6" @if ($data[0]->assessment6 == '1')
+                        <input type="checkbox" name="assessment6" @if ($data[0]->assessment6 == '1' || $data[0]->assessment6 == 'on')
                         {{ "checked" }}
                         @endif>
                           ความบกพร่องของวัคซีน
@@ -2291,7 +2291,7 @@ foreach ($aecode as $value) {
                     </div>
                     <div class="col-md-12">
                       <label>
-                        <input type="checkbox" name="assessment7" @if ($data[0]->assessment7 == '1')
+                        <input type="checkbox" name="assessment7" @if ($data[0]->assessment7 == '1' || $data[0]->assessment7 == 'on')
                         {{ "checked" }}
                         @endif>
                           ความคลาดเคลื่อนด้านการให้บริการ
@@ -2299,7 +2299,7 @@ foreach ($aecode as $value) {
                     </div>
                     <div class="col-md-12">
                       <label>
-                        <input type="checkbox" name="assessment8" @if ($data[0]->assessment8 == '1')
+                        <input type="checkbox" name="assessment8" @if ($data[0]->assessment8 == '1' || $data[0]->assessment8 == 'on')
                         {{ "checked" }}
                         @endif>
                           เหตุบังเอิญ/เห็นพ้อง
@@ -2307,7 +2307,7 @@ foreach ($aecode as $value) {
                     </div>
                     <div class="col-md-12">
                       <label>
-                        <input type="checkbox" name="assessment9" @if ($data[0]->assessment9 == '1')
+                        <input type="checkbox" name="assessment9" @if ($data[0]->assessment9 == '1' || $data[0]->assessment9 == 'on')
                         {{ "checked" }}
                         @endif>
                           ความกลัว/ความกังวล
@@ -2315,7 +2315,7 @@ foreach ($aecode as $value) {
                     </div>
                     <div class="col-md-12">
                       <label>
-                        <input type="checkbox" name="assessment10" @if ($data[0]->assessment10 == '1')
+                        <input type="checkbox" name="assessment10" @if ($data[0]->assessment10 == '1' || $data[0]->assessment10 == 'on')
                         {{ "checked" }}
                         @endif>
                           ไม่สามารถระบุได้

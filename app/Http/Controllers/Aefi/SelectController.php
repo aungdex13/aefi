@@ -10,6 +10,7 @@
 	use Illuminate\Http\Request;
 	use DB;
 	use Illuminate\Support\Str;
+	use Carbon\Carbon;
 	class SelectController extends Controller
 	{
 		public $result;
@@ -21,6 +22,8 @@
 		}
 		public function selectdatatablecaseAEFI1()
 		{
+			$cabonnow =  Carbon::now();
+			$datenow = $cabonnow->toDateString();
 			$yearnow =  now()->year;
 			$roleArrusername = auth()->user()->username;
 			$roleArrhospcode = auth()->user()->hospcode;
@@ -64,7 +67,7 @@
 							'aefi_form_1.hospcode_refer',
 							'aefi_form_1.diagnosis',
 							'aefi_form_1.hospcode_treat',
-							'aefi_form_1.province_found_event' 
+							'aefi_form_1.province_found_event'
 						);
 		 if (count($roleArr) > 0) {
 				$user_role = $roleArr[0];
@@ -79,6 +82,7 @@
 														->orWhere('aefi_form_1.hospcode_refer',auth()->user()->hospcode)
 														->orWhere('aefi_form_1.hosp_update_refer',auth()->user()->hospcode);
 									})
+									->whereDate('aefi_form_1.date_entry',$datenow)
 									->whereNull('aefi_form_1.status')
 									->groupBy('aefi_form_1.id_case')
 									->get();
@@ -94,6 +98,7 @@
 														->orWhere('aefi_form_1.province_refer',auth()->user()->prov_code)
 														->orWhere('aefi_form_1.province_record_refer',auth()->user()->prov_code);
 									})
+									->whereDate('aefi_form_1.date_entry',$datenow)
 									->whereNull('aefi_form_1.status')
 									->groupBy('aefi_form_1.id_case')
 									->get();
@@ -101,6 +106,7 @@
 					case 'dpc':
 					if ($roleArrhospcode == "41173") {
 							$caselstF1 = $selectcaselstF1
+								->whereDate('aefi_form_1.date_entry',$datenow)
 									// ->where('user_region',$roleArrregion)
 									->whereNull('aefi_form_1.status')
 									->groupBy('aefi_form_1.id_case')
@@ -108,6 +114,7 @@
 					}else {
 						$caselstF1 = $selectcaselstF1
 								// ->where('user_region',$roleArrregion)
+								->whereDate('aefi_form_1.date_entry',$datenow)
 								->whereIn('aefi_form_1.province',$selectgroupprov)
 								->whereNull('aefi_form_1.status')
 								->groupBy('aefi_form_1.id_case')
@@ -116,18 +123,21 @@
 						break;
 						case 'ddc':
 							$caselstF1 = $selectcaselstF1
+							->whereDate('aefi_form_1.date_entry',$datenow)
 							->whereNull('aefi_form_1.status')
 							->groupBy('aefi_form_1.id_case')
 							->get();
 							break;
 						case 'admin':
 							$caselstF1 = $selectcaselstF1
+							->whereDate('aefi_form_1.date_entry',$datenow)
 							->whereNull('aefi_form_1.status')
 							->groupBy('aefi_form_1.id_case')
 							->get();
 							break;
 						case 'admin-dpc':
 						$caselstF1 = $selectcaselstF1
+						->whereDate('aefi_form_1.date_entry',$datenow)
 						->whereIn('aefi_form_1.province',$selectgroupprov)
 						->whereNull('aefi_form_1.status')
 						->groupBy('aefi_form_1.id_case')
@@ -138,10 +148,13 @@
 		}
 	}
 	 // dd($caselstF1);
-		 $listProvince=$this->listProvince();
-		 $listDistrict=$this->listDistrict();
-		 $listsubdistrict=$this->listsubdistrict();
-		 $list_hos=$this->list_hos();
+	 $list=$this->form1();
+	 $listProvince=$this->listProvince();
+	 $listDistrict=$this->listDistrict();
+	 $listsubdistrict=$this->listsubdistrict();
+	 $vac_list=$this->vaclist();
+	 $listvac_arr=$this->listvac_arr();
+	 $list_hos=$this->list_hos();
 		 //dd($caselst);
 		 return view('AEFI.Apps.caselstAEFI1')
 			->with('listProvince', $listProvince)
@@ -149,9 +162,187 @@
 			->with('listsubdistrict', $listsubdistrict)
 			->with('yearnow', $yearnow)
 			->with('data', $caselstF1)
-			->with('list_hos', $list_hos);
+			->with('list', $list)
+			->with('listProvince', $listProvince)
+			->with('listDistrict', $listDistrict)
+			->with('listsubdistrict', $listsubdistrict)
+			->with('vac_list',$vac_list)
+			->with('listvac_arr',$listvac_arr)
+			->with('list_hos',$list_hos)
+			->with('datenow',$datenow);
 
 	 	}
+
+		public function selectdatatablecaseAEFI1src(Request $req)
+		{
+			$cabonnow =  Carbon::now();
+			$datenow = $cabonnow->toDateString();
+			$yearnow =  now()->year;
+			$roleArrusername = auth()->user()->username;
+			$roleArrhospcode = auth()->user()->hospcode;
+			$roleArrprov_code = auth()->user()->prov_code;
+			$roleArrregion = auth()->user()->region;
+			$roleArrdist_code = auth()->user()->ampur_code;
+			$district_user=$roleArrprov_code.$roleArrdist_code;
+			$date_of_symptoms_in = $req->input('date_of_symptoms');
+			$date_of_symptoms = explode('-', $date_of_symptoms_in);
+			// dd($date_of_symptoms);
+			$date_of_symptoms_from = $date_of_symptoms[0]."-".$date_of_symptoms[1]."-".$date_of_symptoms[2];
+			$date_of_symptoms_to = $date_of_symptoms[3]."-".$date_of_symptoms[4]."-".$date_of_symptoms[5];
+			$name_of_vaccine = $req->input('name_of_vaccine');
+			$hospcode_treat = $req->input('hospcode_treat');
+			$province = $req->input('province');
+			 // dd($date_of_symptoms_from,$date_of_symptoms_to,$name_of_vaccine,$hospcode_treat,$province);
+			// dd($roleArrusername,$roleArrhospcode,$roleArrprov_code,$roleArrregion);
+			$roleArr = auth()->user()->getRoleNames()->toArray();
+			$selectgroupprov = DB::table('chospital_new')
+														 ->select('chospital_new.prov_code')
+														 ->where('region',$roleArrregion)
+														 ->groupBy('prov_code')
+														 ->get()
+														 ->pluck('prov_code');
+
+		$selectcaselstF1 = DB::table('aefi_form_1')
+		->join('aefi_form_1_vac', 'aefi_form_1.id_case', '=', 'aefi_form_1_vac.id_case')
+		->leftjoin('aefi_form_2', 'aefi_form_1.id_case', '=', 'aefi_form_2.id_case')
+		->select(	'aefi_form_1.id',
+							'aefi_form_2.id_case as aefi2',
+							'aefi_form_1.id_case',
+							'aefi_form_1.hn',
+							'aefi_form_1.an',
+							'aefi_form_1.first_name',
+							'aefi_form_1.sur_name',
+							'aefi_form_1.age_while_sick_year',
+							'aefi_form_1.nationality',
+							'aefi_form_1.gender',
+							'aefi_form_1.other_nationality',
+							'aefi_form_1.village_no',
+							'aefi_form_1.province',
+							'aefi_form_1.district',
+							'aefi_form_1.subdistrict',
+							'aefi_form_1.necessary_to_investigate',
+							'aefi_form_1.case_vac_id',
+							'aefi_form_1_vac.name_of_vaccine',
+							'aefi_form_1.date_of_symptoms',
+							'aefi_form_1.refer_status',
+							'aefi_form_1.hospcode_refer',
+							'aefi_form_1.diagnosis',
+							'aefi_form_1.hospcode_treat',
+							'aefi_form_1.province_found_event'
+						);
+		 if (count($roleArr) > 0) {
+				$user_role = $roleArr[0];
+			switch ($user_role) {
+				case 'hospital':
+					// dd("p;p");
+					$caselstF1  = $selectcaselstF1
+								->where(function($query) {
+											$query->orWhere('aefi_form_1.user_hospcode',auth()->user()->hospcode)
+														->orWhere('aefi_form_1.hospcode_treat',$hospcode_treat)
+														->orWhere('aefi_form_1.hospcode_report',auth()->user()->hospcode)
+														->orWhere('aefi_form_1.hospcode_refer',auth()->user()->hospcode)
+														->orWhere('aefi_form_1.hosp_update_refer',auth()->user()->hospcode);
+									})
+									->whereDate('aefi_form_1.date_entry', '>=', $date_of_symptoms_from)
+									->whereDate('aefi_form_1.date_entry', '<=', $date_of_symptoms_to)
+									->whereNull('aefi_form_1.status')
+									->groupBy('aefi_form_1.id_case')
+									->get();
+
+				break;
+				case 'pho':
+					$caselstF1 = $selectcaselstF1
+								->where(function($query) {
+											$query->orWhere('aefi_form_1.user_provcode',auth()->user()->prov_code)
+														->orWhere('aefi_form_1.province_found_event',auth()->user()->prov_code)
+														->orWhere('aefi_form_1.province_reported',auth()->user()->prov_code)
+														->orWhere('aefi_form_1.prov_update_refer',auth()->user()->prov_code)
+														->orWhere('aefi_form_1.province_refer',auth()->user()->prov_code)
+														->orWhere('aefi_form_1.province_record_refer',auth()->user()->prov_code);
+									})
+									->whereDate('aefi_form_1.date_entry', '>=', $date_of_symptoms_from)
+									->whereDate('aefi_form_1.date_entry', '<=', $date_of_symptoms_to)
+									->whereNull('aefi_form_1.status')
+									->groupBy('aefi_form_1.id_case')
+									->get();
+					break;
+					case 'dpc':
+					if ($roleArrhospcode == "41173") {
+							$caselstF1 = $selectcaselstF1
+							->whereDate('aefi_form_1.date_entry', '>=', $date_of_symptoms_from)
+							->whereDate('aefi_form_1.date_entry', '<=', $date_of_symptoms_to)
+									// ->where('user_region',$roleArrregion)
+									->whereNull('aefi_form_1.status')
+									->groupBy('aefi_form_1.id_case')
+									->get();
+					}else {
+						$caselstF1 = $selectcaselstF1
+								// ->where('user_region',$roleArrregion)
+								->whereDate('aefi_form_1.date_entry', '>=', $date_of_symptoms_from)
+								->whereDate('aefi_form_1.date_entry', '<=', $date_of_symptoms_to)
+								->whereIn('aefi_form_1.province',$selectgroupprov)
+								->whereNull('aefi_form_1.status')
+								->groupBy('aefi_form_1.id_case')
+								->get();
+					}
+						break;
+						case 'ddc':
+							$caselstF1 = $selectcaselstF1
+							->whereDate('aefi_form_1.date_entry', '>=', $date_of_symptoms_from)
+							->whereDate('aefi_form_1.date_entry', '<=', $date_of_symptoms_to)
+							->whereNull('aefi_form_1.status')
+							->groupBy('aefi_form_1.id_case')
+							->get();
+							break;
+						case 'admin':
+							$caselstF1 = $selectcaselstF1
+							->whereDate('aefi_form_1.date_entry', '>=', $date_of_symptoms_from)
+							->whereDate('aefi_form_1.date_entry', '<=', $date_of_symptoms_to)
+							->whereNull('aefi_form_1.status')
+							->groupBy('aefi_form_1.id_case')
+							->get();
+							break;
+						case 'admin-dpc':
+						$caselstF1 = $selectcaselstF1
+						->whereDate('aefi_form_1.date_entry', '>=', $date_of_symptoms_from)
+						->whereDate('aefi_form_1.date_entry', '<=', $date_of_symptoms_to)
+						->whereIn('aefi_form_1.province',$selectgroupprov)
+						->whereNull('aefi_form_1.status')
+						->groupBy('aefi_form_1.id_case')
+						->get();
+						break;
+			default:
+				break;
+		}
+	}
+	 // dd($caselstF1);
+	 $list=$this->form1();
+	 $listProvince=$this->listProvince();
+	 $listDistrict=$this->listDistrict();
+	 $listsubdistrict=$this->listsubdistrict();
+	 $vac_list=$this->vaclist();
+	 $listvac_arr=$this->listvac_arr();
+	 $list_hos=$this->list_hos();
+	// dd("test");
+		 return view('AEFI.Apps.caselstAEFI1')
+			->with('listProvince', $listProvince)
+			->with('listDistrict', $listDistrict)
+			->with('listsubdistrict', $listsubdistrict)
+			->with('yearnow', $yearnow)
+			->with('data', $caselstF1)
+			->with('list', $list)
+			->with('listProvince', $listProvince)
+			->with('listDistrict', $listDistrict)
+			->with('listsubdistrict', $listsubdistrict)
+			->with('vac_list',$vac_list)
+			->with('listvac_arr',$listvac_arr)
+			->with('list_hos',$list_hos)
+			->with('datenow',$datenow)
+			->with('date_of_symptoms_from',$date_of_symptoms_from)
+			->with('date_of_symptoms_to',$date_of_symptoms_to);
+		}
+
+
 		public function selectdatatablecaseAEFI1group()
 		{
 		$caselstF1group = DB::select('select id_case,hn,

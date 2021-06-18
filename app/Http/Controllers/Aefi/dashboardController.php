@@ -34,7 +34,6 @@
 			$count_all_gender_f = $this->count_female();
 			$count_all_gender_other = $this->count_gender_other();
 			$count_vacname = $this->count_vacname();
-			$listvac_arr =  $this->listvac_arr();
 			$count_groupage = $this->count_groupage();
 			$count_all_seriousness_of_the_symptoms= $this->count_all_seriousness_of_the_symptoms();
 			$vac_list=$this->vaclist();
@@ -682,7 +681,8 @@
 									 // ->where('province',"=",$province)
 				 					 ->where('status','=',null)
 				 					 ->groupBy('name_of_vaccine')
-				 					 ->orderBy('name_of_vaccine','DESC')
+				 					 ->orderBy('vac_count','ASC')
+									 // ->paginate(13);
 				 					 ->get();
 			$listvac_arr =  $this->listvac_arr();
 			$count_groupage_se = DB::table('aefi_form_1')
@@ -1104,7 +1104,8 @@
 										 ->select(DB::raw('count(aefi_form_1_vac.name_of_vaccine) as vac_count,name_of_vaccine'))
 										 ->where('status','=',null)
 										 ->groupBy('name_of_vaccine')
-										 ->orderBy('name_of_vaccine','DESC')
+										 ->orderBy('vac_count','DESC')
+										 ->take(10)
 										 ->get();
 			return $count_vacname;
 		}

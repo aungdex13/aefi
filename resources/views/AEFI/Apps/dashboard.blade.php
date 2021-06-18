@@ -400,7 +400,17 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
     <div class="col-md-6">
       <div class="box box-default">
         <div class="box-header with-border">
-          <h3 class="box-title">จำนวนของชนิดวัคซีนที่ผู้ป่วยได้รับทั้งหมด</h3>
+          <h3 class="box-title">จำนวนของชนิดวัคซีนที่ผู้ป่วยได้รับ
+                 @if ($province == null)
+                                            จังหวัดทั้งหมด
+                                          @else
+                                            จังหวัด{{ isset($listProvince[$province]) ?$listProvince[$province]:"ทั้งหมด"}}
+                                          @endif
+                                          @if ($vac_list == null)
+
+                                          @else
+                                            วัคซีน{{ isset($listvac_arr[$name_of_vaccine]) ?$listvac_arr[$name_of_vaccine]:"ทั้งหมด"}}
+                                          @endif</h3>
 
           <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>

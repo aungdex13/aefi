@@ -505,13 +505,15 @@ if (! function_exists('provinces')) {
       function load_causality() {
 
       $causality = array(
-        '1'=>'Vaccine product-related reaction',
-        '2'=>'Vaccine quality defect-related reaction',
-        '3'=>'Immunization error-related reaction',
-        '4'=>'Immunization anxiety-related reaction',
-        '5'=>'Coincidental event',
+        '1'=>'เกี่ยวข้องกับวัคซีน (Vaccine product related reaction)',
+        '2'=>'เกี่ยวข้องกับคุณภาพของวัคซีน (Vaccine quality defect related reaction)',
+        '3'=>'เกี่ยวข้องกับการให้บริการการฉีดวัคซีน (Immunization error related reaction)',
+        '4'=>'เกี่ยวข้องกับการฉีดวัคซีน (Immunization anxiety related reaction)',
+        '5'=>'เป็นเหตุการณ์ร่วมที่ไม่เกี่ยวข้องกับวัคซีนแต่บังเอิญเกิดร่วมกัน (Coincidental event)',
         '6'=>'Temporal relationship',
-                  ''=>'NULL'
+        '7'=>'ยังไม่สามารถสรุปได้ว่าเกี่ยวข้องกับวัคซีน (Indeterminate)',
+        '8'=>'ข้อมูลยังไม่เพียงพอที่จะสรุป (Unclassifiable)',
+        ''=>'NULL'
                               );
       return 	$causality;
       }

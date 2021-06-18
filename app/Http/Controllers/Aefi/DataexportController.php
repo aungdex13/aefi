@@ -74,13 +74,12 @@ $selectgroupprov = DB::table('chospital_new')
 				 if ($roleArrhospcode == "41173") {
 						 $selectdata = $selectcaselstF1
 								 ->whereNull('aefi_form_1.status')
-->whereDate('aefi_form_1.date_entry',$datenow)
+								 ->whereDate('aefi_form_1.date_entry',$datenow)
 								 ->groupBy('aefi_form_1.id_case')
 								 ->get();
 				 }else {
 					 $selectdata = $selectcaselstF1
 							->whereIn('aefi_form_1.province',$selectgroupprov)
-							 //->orWhere('user_region',$roleArrregion)
 							 ->whereNull('aefi_form_1.status')
 							 ->groupBy('aefi_form_1.id_case')
 							 ->get();
@@ -140,13 +139,14 @@ $selectgroupprov = DB::table('chospital_new')
 		$date_of_symptoms = explode('-', $date_of_symptoms_in);
 		$date_of_symptoms_from = $date_of_symptoms[0]."-".$date_of_symptoms[1]."-".$date_of_symptoms[2];
 		$date_of_symptoms_to = $date_of_symptoms[3]."-".$date_of_symptoms[4]."-".$date_of_symptoms[5];
+		// dd($date_of_symptoms_in,$date_of_symptoms);
 		$cabonnow =  Carbon::now();
 		$datenow = $cabonnow->toDateString();
 		$selectcaselstF1=DB::table('aefi_form_1')
 		->join('aefi_form_1_vac', 'aefi_form_1.id_case', '=', 'aefi_form_1_vac.id_case')
 		->select('aefi_form_1.*',
 		DB::raw('GROUP_CONCAT( aefi_form_1_vac.name_of_vaccine ) as "name_of_vaccine",
-GROUP_CONCAT( aefi_form_1_vac.lot_number ) as "lot_number",
+						 GROUP_CONCAT( aefi_form_1_vac.lot_number ) as "lot_number",
 						 GROUP_CONCAT( aefi_form_1_vac.manufacturer  ) as "manufacturer",
 				 		 GROUP_CONCAT( aefi_form_1_vac.dose  ) as "dose",
 				 		 GROUP_CONCAT( aefi_form_1_vac.date_of_vaccination   ) as "date_of_vaccination",

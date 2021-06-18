@@ -91,9 +91,12 @@ $arr_load_aefi_classification = load_aefi_classification();
 																		<div class="form-group">
 																			<div class="row">
 																				<input type="text" name="user_id" value="{{ Auth::id() }}" hidden>
-																				<input type="text" name="id_case" value="{{	$id_case}}" hidden>
-																				<input type="text" name="id" value="{{	$selectexpertcase[0]->id}}" hidden>
-																				<div class="col-lg-3">
+																					<input type="text" name="id_case" value="{{	$id_case}}" hidden>
+																					@if (count($selectexpertcase) > 0 )
+																					<input type="text" name="id" value="{{	$selectexpertcase[0]->id}}" hidden>
+																					@else
+																					@endif
+																					<div class="col-lg-3">
 																					<label>ชื่อ- นามสกุลผู้ป่วย : {{	isset($selectcase[0]->first_name) ? $selectcase[0]->first_name :"ไม่ระบุ"}} {{	$selectcase[0]->sur_name}} </label>
 																				</div>
 																				<div class="col-lg-3">
@@ -228,12 +231,14 @@ $arr_load_aefi_classification = load_aefi_classification();
 																						@else
 																						@endif
 																						<option value="">กรุณาระบุ Causality Assessment</option>
-																						<option value="1">Vaccine product-related reaction</option>
-																						<option value="2">Vaccine quality defect-related reaction</option>
-																						<option value="3">Immunization error-related reaction</option>
-																						<option value="4">Immunization anxiety-related reaction</option>
-																						<option value="5">Coincidental event</option>
-																						<option value="6">Temporal relationship</option>
+																						<option value="1">เกี่ยวข้องกับวัคซีน (Vaccine product related reaction)</option>
+																						<option value="2">เกี่ยวข้องกับคุณภาพของวัคซีน (Vaccine quality defect related reaction)</option>
+																						<option value="3">เกี่ยวข้องกับการให้บริการการฉีดวัคซีน (Immunization error related reaction)</option>
+																						<option value="4">เกี่ยวข้องกับการฉีดวัคซีน (Immunization anxiety related reaction)</option>
+																						<option value="5">เป็นเหตุการณ์ร่วมที่ไม่เกี่ยวข้องกับวัคซีนแต่บังเอิญเกิดร่วมกัน (Coincidental event)</option>
+																						{{-- <option value="6">Temporal relationship</option> --}}
+																						<option value="7">ยังไม่สามารถสรุปได้ว่าเกี่ยวข้องกับวัคซีน (Indeterminate)</option>
+																						<option value="8">ข้อมูลยังไม่เพียงพอที่จะสรุป (Unclassifiable)</option>
 																					</select>
 																				</div>
 																				<div class="col-lg-6">
@@ -244,7 +249,7 @@ $arr_load_aefi_classification = load_aefi_classification();
 																		</div>
 																		<div class="form-group">
 																			<div class="row">
-																				<div class="col-lg-6">
+																				{{-- <div class="col-lg-6">
 																					<label>AEFI Classification : </label>
 																					<select type="text" name="aefi_classification" class="form-control" >
 																						@if (count($selectexpertcase) > 0 )
@@ -258,8 +263,8 @@ $arr_load_aefi_classification = load_aefi_classification();
 																						<option value="4">ปฏิกริยาของร่างการตอบสนองต่อการฉีดวัคซีน</option>
 																						<option value="5">เหตุการณ์ร่วมโดยบังเอิญ</option>
 																					</select>
-																						{{-- <textarea rows="3"  type="text" name="past_history" class="form-control" placeholder="ระบุ Past History"></textarea> --}}
-																				</div>
+																						<textarea rows="3"  type="text" name="past_history" class="form-control" placeholder="ระบุ Past History"></textarea>
+																				</div> --}}
 																				<div class="col-lg-6">
 																					<label>Expert Meeting : </label>
 																					<div class="input-group date">
