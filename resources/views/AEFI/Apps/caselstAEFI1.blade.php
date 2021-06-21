@@ -13,7 +13,10 @@
     $arr_load_nationality = load_nationality();
     $arr_necessary_to_investigate = load_necessary_to_investigate();
     $arr_vac_init = load_vac_init();
-    //dd($data);
+    $user_prov = auth()->user()->prov_code;
+    $roleArr = auth()->user()->getRoleNames()->toArray();
+    $roleArrhospcode = auth()->user()->hospcode;
+    // dd($roleArr[0]);
  ?>
   <h1>
     รายชื่อผู้มีอาการภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรค
@@ -40,24 +43,35 @@
         <p>ค้นหาข้อมูล รายชื่อผู้มีอาการภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรค</p>
       <div class="col-lg-12">
         <div class="col-lg-3">
-              <input type="text" id="reservation" name="date_of_symptoms" class="form-control" placeholder="ระบุวันที่ที่ต้องการค้นหาข้อมูล" readonly>
+              <input type="text" id="reservation" name="date_of_symptoms" class="form-control" readonly>
           </div>
-        <div class="col-lg-3">
+        {{-- <div class="col-lg-3">
           <select type="text" id="name_of_vaccine" name="name_of_vaccine" class="form-control" >
             <option value="">กรุณาระบุชื่อวัคซีน</option>
             @foreach ($vac_list as $row)
             <option value="{{$row->VAC_CODE}}">{{$row->VAC_NAME_EN}}</option>
             @endforeach
           </select>
-          </div>
+          </div> --}}
         <div class="col-lg-3">
-          <select id="js-example-basic-single" name="hospcode_treat" class="js-example-basic-single form-control" data-dropdown-css-class="select2-danger" >
-          </select>
+          @if ($roleArr[0] == "hospital")
+            <input type="text" id="reservation" name="hospcode_treat" class="form-control" value="{{ isset($list_hos[$roleArrhospcode]) ? $list_hos[$roleArrhospcode] : "ไม่ระบุ"}}" readonly>
+            {{-- <select id="js-example-basic-single" name="hospcode_treat" class="js-example-basic-single form-control" data-dropdown-css-class="select2-danger" >
+            </select> --}}
+          @else
+            <select id="js-example-basic-single" name="hospcode_treat" class="js-example-basic-single form-control" data-dropdown-css-class="select2-danger" >
+            </select>
+          @endif
           </div>
         <div class="col-lg-3">
             {{-- <input type="text" id="title_name_other" name="title_name_other" class="form-control" placeholder="จังหวัดที่รับรักษา"> --}}
-            <select class="form-control provinces" name="province" id="provinces" >
-              <option value="">จังหวัดที่รับรักษา</option>
+            @if ($roleArr[0] == "pho" || $roleArr[0] == "hospital" || $roleArr[0] == "dho")
+              <select class="form-control provinces" name="province" id="provinces" disabled>
+                <option value="{{ isset($user_prov) ? $user_prov : ""}}">{{ isset($listProvince[$user_prov]) ? $listProvince[$user_prov] : "ไม่ระบุข้อมูล"}}</option>
+            @else
+              <select class="form-control provinces" name="province" id="provinces" >
+            @endif
+            <option value="">จังหวัดที่รับรักษา</option>
               @foreach ($list as $row)
               <option value="{{$row->province_code}}">{{$row->province_name}}</option>
               @endforeach
@@ -102,7 +116,7 @@
               <th hidden>ID</th>
               <th style="text-align:center;">ID</th>
               <th style="text-align:center;">เลขที่ผู้ป่วย HN</th>
-              <th style="text-align:center;">เลขที่ผู้ป่วย AN</th>
+              {{-- <th style="text-align:center;">เลขที่ผู้ป่วย AN</th> --}}
               <th style="text-align:center;">ชื่อ-นามสกุลผู้ป่วย</th>
               <th style="text-align:center;">อายุ</th>
               <th style="text-align:center;">การวินิจฉัยของแพทย์</th>
@@ -114,6 +128,7 @@
             </tr>
           </thead>
           <?php foreach($data as $value) : ?>
+
           <tr class="data-contact-person">
             <td hidden>
               <p style="text-align:center;">{{ isset($value->id) ? $value->id : "-"}}</p>
@@ -124,9 +139,9 @@
             <td>
               <p style="text-align:center;">{{ isset($value->hn) ? $value->hn : "-"}}</p>
             </td>
-            <td>
+            {{-- <td>
               <p style="text-align:center;">{{ $value->an }}</p>
-            </td>
+            </td> --}}
             <td>
               <p style="text-align:center;">{{ $value->first_name }} {{ $value->sur_name }}</p>
             </td>
@@ -141,19 +156,21 @@
             </td>
             <td>
               <p style="text-align:center;">{{ isset($listProvince[ $value->province_found_event]) ? $listProvince[ $value->province_found_event] : "ไม่ระบุข้อมูล"}}</p>
+              {{-- {{$value->aefi2status}}</br>
+              {{$value->maxaefi2}} --}}
             </td>
-              @if ($value->aefi2 == null)
+               @if ($value->maxaefi2 == null || $value->maxaefi2 == 2)
             <td style="background-color:#fa3c4c">
-                <p style="text-align:center;">ไม่มีข้อมูล AEFI2</p>
+                <p style="text-align:center;">ไม่มี</p>
             </td>
               @else
             <td style="background-color:#44bec7">
-                <p style="text-align:center;">มีการแนบข้อมูล AEFI2</p>
+                <p style="text-align:center;">มี</p>
             </td>
               @endif
               @if ($value->refer_status == null)
             <td style="background-color:#ffc300">
-                <p style="text-align:center;">ไม่มีการส่งต่อผู้ป่วย</p>
+                <p style="text-align:center;">ไม่มี</p>
             </td>
               @elseif ($value->refer_status == 2)
                 <td style="background-color:#fa3c4c">
@@ -161,7 +178,7 @@
                 </td>
               @else
             <td style="background-color:#44bec7">
-                <p style="text-align:center;">มีการส่งต่อผู้ป่วยไปยัง {{$list_hos[$value->hospcode_refer]}}</p>
+                <p style="text-align:center;">ส่งต่อผู้ป่วยไปยัง {{$list_hos[$value->hospcode_refer]}}</p>
             </td>
               @endif
             <td>

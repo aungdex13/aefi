@@ -380,7 +380,7 @@ public function insertform2(Request $req2)
 	$file5=	$req2->file('other_instruction_5');
 	$id_case=$req2->input('id_case');
 	$user_id=$req2->input('user_id');
-	dd($file1,$file2,$file3,$file4,$file5);
+	// dd($file1,$file2,$file3,$file4,$file5);
 	if ($file1 != null) {
 			$path1 = Storage::putFile('file_upload', $file1);
 			$filename=$file1->getClientOriginalName();

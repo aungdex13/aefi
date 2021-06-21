@@ -46,6 +46,7 @@
 		->leftjoin('aefi_form_2', 'aefi_form_1.id_case', '=', 'aefi_form_2.id_case')
 		->select(	'aefi_form_1.id',
 							'aefi_form_2.id_case as aefi2',
+							'aefi_form_2.status as aefi2status',
 							'aefi_form_1.id_case',
 							'aefi_form_1.hn',
 							'aefi_form_1.an',
@@ -67,7 +68,8 @@
 							'aefi_form_1.hospcode_refer',
 							'aefi_form_1.diagnosis',
 							'aefi_form_1.hospcode_treat',
-							'aefi_form_1.province_found_event'
+							'aefi_form_1.province_found_event',
+							DB::raw('GROUP_CONCAT( aefi_form_2.status) as "aefi2status"')
 						);
 		 if (count($roleArr) > 0) {
 				$user_role = $roleArr[0];
@@ -207,6 +209,7 @@
 		->leftjoin('aefi_form_2', 'aefi_form_1.id_case', '=', 'aefi_form_2.id_case')
 		->select(	'aefi_form_1.id',
 							'aefi_form_2.id_case as aefi2',
+							// 'aefi_form_2.status as aefi2status',
 							'aefi_form_1.id_case',
 							'aefi_form_1.hn',
 							'aefi_form_1.an',
@@ -228,8 +231,28 @@
 							'aefi_form_1.hospcode_refer',
 							'aefi_form_1.diagnosis',
 							'aefi_form_1.hospcode_treat',
-							'aefi_form_1.province_found_event'
+							'aefi_form_1.province_found_event',
+							DB::raw('MIN(aefi_form_2.status) as "maxaefi2"')
 						);
+						if ($province != null) {
+							$caselstWhere = $selectcaselstF1
+															->where('aefi_form_1.province_found_event', '=', $province);
+						}
+						else{
+						}
+						if ($date_of_symptoms_in != null) {
+							$caselstWhere = $selectcaselstF1
+															->whereDate('aefi_form_1.date_entry', '>=', $date_of_symptoms_from)
+															->whereDate('aefi_form_1.date_entry', '<=', $date_of_symptoms_to);
+						}
+						else{
+						}
+						if ($hospcode_treat != null) {
+							$caselstWhere = $selectcaselstF1
+															->where('aefi_form_1.hospcode_treat', '=', $hospcode_treat);
+						}
+						else{
+						}
 		 if (count($roleArr) > 0) {
 				$user_role = $roleArr[0];
 			switch ($user_role) {
@@ -238,13 +261,11 @@
 					$caselstF1  = $selectcaselstF1
 								->where(function($query) {
 											$query->orWhere('aefi_form_1.user_hospcode',auth()->user()->hospcode)
-														->orWhere('aefi_form_1.hospcode_treat',$hospcode_treat)
+														->orWhere('aefi_form_1.hospcode_treat',auth()->user()->hospcode)
 														->orWhere('aefi_form_1.hospcode_report',auth()->user()->hospcode)
 														->orWhere('aefi_form_1.hospcode_refer',auth()->user()->hospcode)
 														->orWhere('aefi_form_1.hosp_update_refer',auth()->user()->hospcode);
 									})
-									->whereDate('aefi_form_1.date_entry', '>=', $date_of_symptoms_from)
-									->whereDate('aefi_form_1.date_entry', '<=', $date_of_symptoms_to)
 									->whereNull('aefi_form_1.status')
 									->groupBy('aefi_form_1.id_case')
 									->get();
@@ -253,15 +274,12 @@
 				case 'pho':
 					$caselstF1 = $selectcaselstF1
 								->where(function($query) {
-											$query->orWhere('aefi_form_1.user_provcode',auth()->user()->prov_code)
-														->orWhere('aefi_form_1.province_found_event',auth()->user()->prov_code)
+											$query->orWhere('aefi_form_1.province_found_event',auth()->user()->prov_code)
 														->orWhere('aefi_form_1.province_reported',auth()->user()->prov_code)
 														->orWhere('aefi_form_1.prov_update_refer',auth()->user()->prov_code)
 														->orWhere('aefi_form_1.province_refer',auth()->user()->prov_code)
 														->orWhere('aefi_form_1.province_record_refer',auth()->user()->prov_code);
 									})
-									->whereDate('aefi_form_1.date_entry', '>=', $date_of_symptoms_from)
-									->whereDate('aefi_form_1.date_entry', '<=', $date_of_symptoms_to)
 									->whereNull('aefi_form_1.status')
 									->groupBy('aefi_form_1.id_case')
 									->get();
@@ -269,17 +287,12 @@
 					case 'dpc':
 					if ($roleArrhospcode == "41173") {
 							$caselstF1 = $selectcaselstF1
-							->whereDate('aefi_form_1.date_entry', '>=', $date_of_symptoms_from)
-							->whereDate('aefi_form_1.date_entry', '<=', $date_of_symptoms_to)
-									// ->where('user_region',$roleArrregion)
 									->whereNull('aefi_form_1.status')
 									->groupBy('aefi_form_1.id_case')
 									->get();
 					}else {
 						$caselstF1 = $selectcaselstF1
 								// ->where('user_region',$roleArrregion)
-								->whereDate('aefi_form_1.date_entry', '>=', $date_of_symptoms_from)
-								->whereDate('aefi_form_1.date_entry', '<=', $date_of_symptoms_to)
 								->whereIn('aefi_form_1.province',$selectgroupprov)
 								->whereNull('aefi_form_1.status')
 								->groupBy('aefi_form_1.id_case')
@@ -288,24 +301,18 @@
 						break;
 						case 'ddc':
 							$caselstF1 = $selectcaselstF1
-							->whereDate('aefi_form_1.date_entry', '>=', $date_of_symptoms_from)
-							->whereDate('aefi_form_1.date_entry', '<=', $date_of_symptoms_to)
 							->whereNull('aefi_form_1.status')
 							->groupBy('aefi_form_1.id_case')
 							->get();
 							break;
 						case 'admin':
-							$caselstF1 = $selectcaselstF1
-							->whereDate('aefi_form_1.date_entry', '>=', $date_of_symptoms_from)
-							->whereDate('aefi_form_1.date_entry', '<=', $date_of_symptoms_to)
+							$caselstF1 = $caselstWhere
 							->whereNull('aefi_form_1.status')
 							->groupBy('aefi_form_1.id_case')
 							->get();
 							break;
 						case 'admin-dpc':
 						$caselstF1 = $selectcaselstF1
-						->whereDate('aefi_form_1.date_entry', '>=', $date_of_symptoms_from)
-						->whereDate('aefi_form_1.date_entry', '<=', $date_of_symptoms_to)
 						->whereIn('aefi_form_1.province',$selectgroupprov)
 						->whereNull('aefi_form_1.status')
 						->groupBy('aefi_form_1.id_case')
