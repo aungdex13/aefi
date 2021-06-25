@@ -42,45 +42,53 @@
           {{ csrf_field() }}
         <p>ค้นหาข้อมูล รายชื่อผู้มีอาการภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรค</p>
       <div class="col-lg-12">
-        <div class="col-lg-3">
-              <input type="text" id="reservation" name="date_of_symptoms" class="form-control" readonly>
-          </div>
         {{-- <div class="col-lg-3">
-          <select type="text" id="name_of_vaccine" name="name_of_vaccine" class="form-control" >
-            <option value="">กรุณาระบุชื่อวัคซีน</option>
-            @foreach ($vac_list as $row)
-            <option value="{{$row->VAC_CODE}}">{{$row->VAC_NAME_EN}}</option>
-            @endforeach
-          </select>
+              <input type="text" id="reservation" name="date_of_symptoms" class="form-control" readonly>
           </div> --}}
+
+        @if ($roleArrhospcode == 41173)
         <div class="col-lg-3">
-          @if ($roleArr[0] == "hospital")
+            <input type="text" id="first_name" name="first_name" class="form-control" placeholder="ชื่อ">
+        </div>
+      @else
+      {{-- <input type="text" id="first_name" name="first_name" class="form-control" placeholder="ชื่อ"> --}}
+      @endif
+
+    @if ($roleArrhospcode == 41173)
+      <div class="col-lg-3">
+        <input type="text" id="sur_name" name="sur_name" class="form-control"  placeholder="นามสกุล">
+      </div>
+    @else
+      @endif
+        {{-- <div class="col-lg-3">
+          @if ($roleArr[0] == "pho" || $roleArr[0] == "hospital" || $roleArr[0] == "dho" || $roleArr[0] == "dpc")
             <input type="text" id="reservation" name="hospcode_treat" class="form-control" value="{{ isset($list_hos[$roleArrhospcode]) ? $list_hos[$roleArrhospcode] : "ไม่ระบุ"}}" readonly>
-            {{-- <select id="js-example-basic-single" name="hospcode_treat" class="js-example-basic-single form-control" data-dropdown-css-class="select2-danger" >
-            </select> --}}
           @else
             <select id="js-example-basic-single" name="hospcode_treat" class="js-example-basic-single form-control" data-dropdown-css-class="select2-danger" >
             </select>
           @endif
-          </div>
-        <div class="col-lg-3">
-            {{-- <input type="text" id="title_name_other" name="title_name_other" class="form-control" placeholder="จังหวัดที่รับรักษา"> --}}
-            @if ($roleArr[0] == "pho" || $roleArr[0] == "hospital" || $roleArr[0] == "dho")
-              <select class="form-control provinces" name="province" id="provinces" disabled>
-                <option value="{{ isset($user_prov) ? $user_prov : ""}}">{{ isset($listProvince[$user_prov]) ? $listProvince[$user_prov] : "ไม่ระบุข้อมูล"}}</option>
-            @else
-              <select class="form-control provinces" name="province" id="provinces" >
-            @endif
-            <option value="">จังหวัดที่รับรักษา</option>
-              @foreach ($list as $row)
-              <option value="{{$row->province_code}}">{{$row->province_name}}</option>
-              @endforeach
-            </select>
-          </div>
+          </div> --}}
+          @if ($roleArrhospcode == 41173)
+            <div class="col-lg-3">
+                  <select class="form-control provinces" name="province" id="provinces" >
+                    <option value="">จังหวัดที่รับรักษา</option>
+                      @foreach ($list as $row)
+                      <option value="{{$row->province_code}}">{{$row->province_name}}</option>
+                      @endforeach
+                    </select>
+              </div>
+          @else
+          @endif
       </div>
     </from>
       </div>
       <div class="box-header with-border">
+        @if ($roleArr[0] == "pho" || $roleArr[0] == "hospital" || $roleArr[0] == "dho" || $roleArr[0] == "dpc"  || $roleArr[0] == "ddc" || $roleArr[0] == "admin-dpc" )
+        @else
+
+    @endif
+
+    @if ($roleArrhospcode == 41173)
       <div class="col-lg-12">
         <div class="col-lg-3">
         </div>
@@ -93,6 +101,8 @@
         <div class="col-lg-3">
         </div>
       </div>
+    @else
+    @endif
       </div>
         {{-- <div class="box-header with-border">
           <h3 class="box-title"><a href="{{ route('lstf1group') }}" type="button" class="btn btn-warning btn-flat"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>เพิ่มผู้ป่วย AEFI รายกลุ่ม</a></h3>
@@ -101,15 +111,15 @@
       <!-- form start -->
       <!-- /.box-header -->
       <div class="box-body">
-         {{-- {{$date_of_symptoms_from}} --}}
-        <p style="color:red"> ข้อมูล รายชื่อผู้มีอาการภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรค ประจำวันที่
+      {{-- @if ($roleArrhospcode == 41173)
+        <p style="color:red"> ข้อมูล รายชื่อผู้มีอาการภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรค
          @if ((isset($date_of_symptoms_from) ?  $date_of_symptoms_from : null)  == null && (isset($date_of_symptoms_to) ?  $date_of_symptoms_to : null) == null)
-          วันที่  {{$datenow}}
-        @elseif ((isset($date_of_symptoms_from) ?  $date_of_symptoms_from : null) == null && (isset($date_of_symptoms_to) ?  $date_of_symptoms_to : null) == null)
-          วันที่  {{$date_of_symptoms_from}} ถึง วันที่ {{$date_of_symptoms_to}}
+          ประจำวันที่ วันที่  {{$datenow}}
         @else
-          วันที่  {{$date_of_symptoms_from}} ถึง วันที่ {{$date_of_symptoms_to}}
-        @endif</p>
+          ทั้งหมด
+        @endif
+      </p>
+    @endif --}}
         <table class="table table-bordered" id="case_lst" class="display" style="width:100%">
           <thead>
             <tr>
@@ -124,6 +134,17 @@
               <th style="text-align:center;">จังหวัด</th>
               <th style="text-align:center;">ข้อมูล AEFI2</th>
               <th style="text-align:center;">การส่งต่อผู้ป่วย</th>
+              @hasrole('admin-dpc')
+              <th style="text-align:center;">รายงานการประชุม<br>ผู้เชี่ยวชาญ</th>
+              @endhasrole
+              @hasrole('admin')
+              <th style="text-align:center;">รายงานการประชุม<br>ผู้เชี่ยวชาญ</th>
+              @endhasrole
+              @hasrole('dpc')
+              @if (auth()->user()->hospcode == "41173")
+              <th style="text-align:center;">รายงานการประชุม<br>ผู้เชี่ยวชาญ</th>
+            @endif
+            @endhasrole
               <th style="text-align:center;">***</th>
             </tr>
           </thead>
@@ -181,6 +202,53 @@
                 <p style="text-align:center;">ส่งต่อผู้ป่วยไปยัง {{$list_hos[$value->hospcode_refer]}}</p>
             </td>
               @endif
+              @hasrole('admin-dpc')
+              @if ($value->expertst == 2 )
+            <td style="background-color:#44bec7">
+                <p style="text-align:center;">มี</p>
+            </td>
+          @elseif ($value->expertst == null || $value->expertst == 1)
+                <td style="background-color:#fa3c4c">
+                    <p style="text-align:center;">ไม่มี</p>
+                </td>
+              @else
+            <td style="background-color:#fa3c4c">
+                <p style="text-align:center;">ไม่มี</p>
+            </td>
+              @endif
+              @endhasrole
+              @hasrole('admin')
+              @if ($value->expertst == 2 )
+            <td style="background-color:#44bec7">
+                <p style="text-align:center;">มี</p>
+            </td>
+          @elseif ($value->expertst == null || $value->expertst == 1)
+                <td style="background-color:#fa3c4c">
+                    <p style="text-align:center;">ไม่มี</p>
+                </td>
+              @else
+            <td style="background-color:#fa3c4c">
+                <p style="text-align:center;">ไม่มี</p>
+            </td>
+              @endif
+              @endhasrole
+              @hasrole('dpc')
+              @if (auth()->user()->hospcode == "41173")
+              @if ($value->expertst == 2 )
+            <td style="background-color:#44bec7">
+                <p style="text-align:center;">มี</p>
+            </td>
+          @elseif ($value->expertst == null || $value->expertst == 1)
+                <td style="background-color:#fa3c4c">
+                    <p style="text-align:center;">ไม่มี</p>
+                </td>
+              @else
+            <td style="background-color:#fa3c4c">
+                <p style="text-align:center;">ไม่มี</p>
+            </td>
+            @endif
+              @endif
+              @endhasrole
             <td>
               <div class="btn-group">
                 <button type="button" class="btn btn-info" data-toggle="dropdown">เมนูการใช้งาน</button>
@@ -206,16 +274,17 @@
                   @endif
                   @endhasrole
                   @hasrole('admin-dpc')
-                  <li><a href="{{ route('viewExpert') }}?id_case={{ $value->id_case }}" target="_blank"><i class="fa fa-list-alt" aria-hidden="true" style="color:#809C7C;"></i>รายงานการ<br>ผู้ประชุมเชี่ยวชาญ</a></li>
+                  <li><a href="{{ route('viewExpert') }}?id_case={{ $value->id_case }}" target="_blank"><i class="fa fa-list-alt" aria-hidden="true" style="color:#809C7C;"></i>รายงานการประชุม<br>ผู้เชี่ยวชาญ</a></li>
                   @endhasrole
                   @hasrole('admin')
-                  <li><a href="{{ route('viewExpert') }}?id_case={{ $value->id_case }}" target="_blank"><i class="fa fa-list-alt" aria-hidden="true" style="color:#809C7C;"></i>รายงานการ<br>ผู้ประชุมเชี่ยวชาญ</a></li>
+                  <li><a href="{{ route('viewExpert') }}?id_case={{ $value->id_case }}" target="_blank"><i class="fa fa-list-alt" aria-hidden="true" style="color:#809C7C;"></i>รายงานการประชุม<br>ผู้เชี่ยวชาญ</a></li>
                   @endhasrole
                   @hasrole('dpc')
                   @if (auth()->user()->hospcode == "41173")
-                  <li><a href="{{ route('viewExpert') }}?id_case={{ $value->id_case }}" target="_blank"><i class="fa fa-list-alt" aria-hidden="true" style="color:#809C7C;"></i>รายงานการ<br>ผู้ประชุมเชี่ยวชาญ</a></li>
+                  <li><a href="{{ route('viewExpert') }}?id_case={{ $value->id_case }}" target="_blank"><i class="fa fa-list-alt" aria-hidden="true" style="color:#809C7C;"></i>รายงานการประชุม<br>ผู้เชี่ยวชาญ</a></li>
                   @endif
                   @endhasrole
+
                   @hasrole('dpc')
                   @if (auth()->user()->hospcode == "41173")
                     <li><a href="{{ route('deleteAEFI1') }}?id_case={{ $value->id_case }}" id="btnDelete" type="button" onclick="return confirm('ต้องการลบข้อมูล ใช่หรือไม่?');"><i class="fa  fa-trash-o" aria-hidden="true" style="color:#d9534f;"></i>ลบข้อมูล</a></li>

@@ -141,15 +141,14 @@ $('#date_of_symptoms').datepicker({
     // tickPlacement: "inside"
   },
 
-  axisY2: {
+  axisY: {
     title: "จำนวนของวัคซีน",
-    titleFontSize: 14,
-    includeZero: true,
   },
   data: [{
-    type: "bar",
-    axisYType: "secondary",
-    indexLabel: "{y}",
+    type: "column",
+		showInLegend: true,
+		legendMarkerColor: "grey",
+		legendText: "จำนวนวัคซีน 10 อันดับ",
 				dataPoints: [
 					@foreach($count_vacname as $row)
 					{ y: {{ $row->vac_count }}, label: "{{isset($listvac_arr[$row->name_of_vaccine]) ? $listvac_arr[$row->name_of_vaccine]:""}}" },

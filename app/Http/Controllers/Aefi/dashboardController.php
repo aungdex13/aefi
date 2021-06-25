@@ -34,6 +34,7 @@
 			$count_all_gender_f = $this->count_female();
 			$count_all_gender_other = $this->count_gender_other();
 			$count_vacname = $this->count_vacname();
+			// dd($count_vacname);
 			$count_groupage = $this->count_groupage();
 			$count_all_seriousness_of_the_symptoms= $this->count_all_seriousness_of_the_symptoms();
 			$vac_list=$this->vaclist();
@@ -793,6 +794,30 @@
 										 ->orderBy('count_patient_prov','desc')
 										 ->get();
 		     // dd($count_patient_by_prov);
+					 $count_vacname_se = DB::table('aefi_form_1')
+					 								->leftJoin('aefi_form_1_vac', 'aefi_form_1.id_case', '=', 'aefi_form_1_vac.id_case')
+													->select(DB::raw('count(aefi_form_1_vac.name_of_vaccine) as vac_count, aefi_form_1_vac.name_of_vaccine'));
+													// if ($name_of_vaccine != null) {
+													//  $vac_select = $count_all_patient_by_prov_se
+													// 			 ->Where('aefi_form_1_vac.name_of_vaccine',"=",$name_of_vaccine);
+												 // }else{
+												 // }
+												 if ($province != null) {
+													 $vac_select = $count_vacname_se
+																 ->Where('aefi_form_1.province',"=",$province);
+												 }else {
+												 }
+												 if ($province == null && $name_of_vaccine == null) {
+													 $count_all_district_by_province = "0000";
+													}else{
+													}
+													$count_vacname=$count_vacname_se
+													->where('aefi_form_1_vac.status','=',null)
+													->groupBy('aefi_form_1_vac.name_of_vaccine')
+													->orderBy('vac_count','DESC')
+													->take(10)
+													->get();
+													// dd($count_vacname);
 			$vac_list=$this->vaclist();
 			$vac_list=$this->vaclist();
 			$listDistrict=$this->listDistrict();

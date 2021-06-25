@@ -1120,6 +1120,8 @@ foreach ($aecode as $value) {
                             <div class="col-lg-4">
                               <label>โรงพยาบาลที่รับรักษา :</label>
                               <select id="js-example-basic-single" name="hospcode_treat" class="js-example-basic-single form-control" data-dropdown-css-class="select2-danger" required>
+                                {{-- <option class="badge filter badge-info" data-color="info" value=""></option> --}}
+                                {{-- <option class="badge filter badge-info" data-color="info" value="9999999">เสียชีวิตนอกสถานพยาบาล</option> --}}
                               </select>
                               {{-- <input type="text" id="event_location" name="event_location" class="form-control" placeholder="สถานที่เกิดเหตุการณ์"> --}}
                             </div>
@@ -1167,7 +1169,7 @@ foreach ($aecode as $value) {
                                   <i class="fa fa-calendar"></i>
                                 </div>
 
-                                <input type="text" class="form-control readonly pull-right" id="datepicker_send_reported" name="datepicker_send_reported" data-date-format="yyyy-mm-dd" value="<?php echo date("Y-m-d") ; ?>">
+                                <input type="text" class="form-control readonly pull-right" id="" name="datepicker_send_reported" data-date-format="yyyy-mm-dd" value="<?php echo date("Y-m-d") ; ?>" readonly>
 
                                 {{-- <input type="text" class="form-control pull-right" id="datepicker_send_reported" name="datepicker_send_reported" data-date-format="yyyy-mm-dd" readonly> --}}
                               </div>

@@ -44,6 +44,7 @@
 		$selectcaselstF1 = DB::table('aefi_form_1')
 		->join('aefi_form_1_vac', 'aefi_form_1.id_case', '=', 'aefi_form_1_vac.id_case')
 		->leftjoin('aefi_form_2', 'aefi_form_1.id_case', '=', 'aefi_form_2.id_case')
+		->leftjoin('expertmeeting', 'aefi_form_1.id_case', '=', 'expertmeeting.id_case')
 		->select(	'aefi_form_1.id',
 							'aefi_form_2.id_case as aefi2',
 							'aefi_form_2.status as aefi2status',
@@ -69,7 +70,8 @@
 							'aefi_form_1.diagnosis',
 							'aefi_form_1.hospcode_treat',
 							'aefi_form_1.province_found_event',
-							DB::raw('GROUP_CONCAT( aefi_form_2.status) as "aefi2status"')
+							'expertmeeting.id_case AS expertst',
+							DB::raw('MIN(aefi_form_2.status) as "maxaefi2"')
 						);
 		 if (count($roleArr) > 0) {
 				$user_role = $roleArr[0];
@@ -84,7 +86,7 @@
 														->orWhere('aefi_form_1.hospcode_refer',auth()->user()->hospcode)
 														->orWhere('aefi_form_1.hosp_update_refer',auth()->user()->hospcode);
 									})
-									->whereDate('aefi_form_1.date_entry',$datenow)
+									// ->whereDate('aefi_form_1.date_entry',$datenow)
 									->whereNull('aefi_form_1.status')
 									->groupBy('aefi_form_1.id_case')
 									->get();
@@ -100,7 +102,7 @@
 														->orWhere('aefi_form_1.province_refer',auth()->user()->prov_code)
 														->orWhere('aefi_form_1.province_record_refer',auth()->user()->prov_code);
 									})
-									->whereDate('aefi_form_1.date_entry',$datenow)
+									// ->whereDate('aefi_form_1.date_entry',$datenow)
 									->whereNull('aefi_form_1.status')
 									->groupBy('aefi_form_1.id_case')
 									->get();
@@ -116,7 +118,7 @@
 					}else {
 						$caselstF1 = $selectcaselstF1
 								// ->where('user_region',$roleArrregion)
-								->whereDate('aefi_form_1.date_entry',$datenow)
+								// ->whereDate('aefi_form_1.date_entry',$datenow)
 								->whereIn('aefi_form_1.province',$selectgroupprov)
 								->whereNull('aefi_form_1.status')
 								->groupBy('aefi_form_1.id_case')
@@ -149,7 +151,7 @@
 				break;
 		}
 	}
-	 // dd($caselstF1);
+	 //dd($caselstF1);
 	 $list=$this->form1();
 	 $listProvince=$this->listProvince();
 	 $listDistrict=$this->listDistrict();
@@ -186,11 +188,13 @@
 			$roleArrregion = auth()->user()->region;
 			$roleArrdist_code = auth()->user()->ampur_code;
 			$district_user=$roleArrprov_code.$roleArrdist_code;
-			$date_of_symptoms_in = $req->input('date_of_symptoms');
-			$date_of_symptoms = explode('-', $date_of_symptoms_in);
+			// $date_of_symptoms_in = $req->input('date_of_symptoms');
+			// $date_of_symptoms = explode('-', $date_of_symptoms_in);
 			// dd($date_of_symptoms);
-			$date_of_symptoms_from = $date_of_symptoms[0]."-".$date_of_symptoms[1]."-".$date_of_symptoms[2];
-			$date_of_symptoms_to = $date_of_symptoms[3]."-".$date_of_symptoms[4]."-".$date_of_symptoms[5];
+			// $date_of_symptoms_from = $date_of_symptoms[0]."-".$date_of_symptoms[1]."-".$date_of_symptoms[2];
+			// $date_of_symptoms_to = $date_of_symptoms[3]."-".$date_of_symptoms[4]."-".$date_of_symptoms[5];
+			$first_name = $req->input('first_name');
+			$sur_name = $req->input('sur_name');
 			$name_of_vaccine = $req->input('name_of_vaccine');
 			$hospcode_treat = $req->input('hospcode_treat');
 			$province = $req->input('province');
@@ -207,6 +211,7 @@
 		$selectcaselstF1 = DB::table('aefi_form_1')
 		->join('aefi_form_1_vac', 'aefi_form_1.id_case', '=', 'aefi_form_1_vac.id_case')
 		->leftjoin('aefi_form_2', 'aefi_form_1.id_case', '=', 'aefi_form_2.id_case')
+		->leftjoin('expertmeeting', 'aefi_form_1.id_case', '=', 'expertmeeting.id_case')
 		->select(	'aefi_form_1.id',
 							'aefi_form_2.id_case as aefi2',
 							// 'aefi_form_2.status as aefi2status',
@@ -232,6 +237,7 @@
 							'aefi_form_1.diagnosis',
 							'aefi_form_1.hospcode_treat',
 							'aefi_form_1.province_found_event',
+							'expertmeeting.status_expert_frm AS expertst',
 							DB::raw('MIN(aefi_form_2.status) as "maxaefi2"')
 						);
 						if ($province != null) {
@@ -240,16 +246,28 @@
 						}
 						else{
 						}
-						if ($date_of_symptoms_in != null) {
+						// if ($date_of_symptoms_in != null) {
+						// 	$caselstWhere = $selectcaselstF1
+						// 									->whereDate('aefi_form_1.date_entry', '>=', $date_of_symptoms_from)
+						// 									->whereDate('aefi_form_1.date_entry', '<=', $date_of_symptoms_to);
+						// }
+						// else{
+						// }
+						// if ($hospcode_treat != null) {
+						// 	$caselstWhere = $selectcaselstF1
+						// 									->where('aefi_form_1.hospcode_treat', '=', $hospcode_treat);
+						// }
+						// else{
+						// }
+						if ($first_name != null) {
 							$caselstWhere = $selectcaselstF1
-															->whereDate('aefi_form_1.date_entry', '>=', $date_of_symptoms_from)
-															->whereDate('aefi_form_1.date_entry', '<=', $date_of_symptoms_to);
-						}
-						else{
-						}
-						if ($hospcode_treat != null) {
+															->orwhere('aefi_form_1.first_name', 'LIKE', "%{$first_name}%");
+															}
+															else{
+															}
+						if ($sur_name != null) {
 							$caselstWhere = $selectcaselstF1
-															->where('aefi_form_1.hospcode_treat', '=', $hospcode_treat);
+															->orwhere('aefi_form_1.sur_name', 'LIKE', "%{$sur_name}%");
 						}
 						else{
 						}
@@ -344,9 +362,9 @@
 			->with('vac_list',$vac_list)
 			->with('listvac_arr',$listvac_arr)
 			->with('list_hos',$list_hos)
-			->with('datenow',$datenow)
-			->with('date_of_symptoms_from',$date_of_symptoms_from)
-			->with('date_of_symptoms_to',$date_of_symptoms_to);
+			->with('datenow',$datenow);
+			// ->with('date_of_symptoms_from',$date_of_symptoms_from)
+			// ->with('date_of_symptoms_to',$date_of_symptoms_to);
 		}
 
 

@@ -159,7 +159,6 @@ class ExpertDiagController extends Controller
 		$gi = $req ->input ('gi');
 		$skin = $req ->input ('skin');
 		$aefi_classification = $req ->input ('aefi_classification');
-
 		$data = array(
 			'id_aefi1'=>$id_aefi1,
 			'user_username'=>$user_username,
@@ -187,7 +186,8 @@ class ExpertDiagController extends Controller
 			'skin'=>$skin,
 			'gi'=>$gi,
 			'stno'=>$stno,
-			'aefi_classification'=>$aefi_classification
+			'aefi_classification'=>$aefi_classification,
+			'status_expert_frm'=>"2"
 		);
 	// dd($data);
 		 $res1	= DB::table('expertmeeting')->insert($data);
@@ -234,7 +234,8 @@ class ExpertDiagController extends Controller
 												'gi' => $req ->input ('gi'),
 												'skin' => $req ->input ('skin'),
 												'date_update' => date('Y-m-d'),
-												'aefi_classification' => $req ->input ('aefi_classification')
+												'aefi_classification' => $req ->input ('aefi_classification'),
+												'status_expert_frm'=>"2"
 											]);
 											if ($updatedata) {
 													$msg = " ส่งข้อมูลสำเร็จ";
