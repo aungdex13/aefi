@@ -1,6 +1,6 @@
 @extends('AEFI.layout.template')
 @section('content')
-  	  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.jqueryui.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.jqueryui.min.css">
 <section class="content-header">
   <!-- Content Header (Page header) -->
   <?php
@@ -19,9 +19,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
     <small>AEFI</small>
   </h1>
   <ol class="breadcrumb">
-
   </ol>
-
 </section>
 <!-- Main content -->
 <section class="content">
@@ -451,11 +449,11 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
     <div class="col-md-6">
       <div class="box box-default">
         <div class="box-header with-border">
-          <h3 class="box-title">อัตรากลุ่มอายุ ของผู้ป่วยทั้งหมดในปี {{$yearnow+543}}</h3>
+          <h3 class="box-title">กลุ่มอายุ ของผู้ป่วยทั้งหมดในปี {{$yearnow+543}}</h3>
           @if ($province == null)
-            จังหวัดทั้งหมด
+            ในจังหวัดทั้งหมด
           @else
-            จังหวัด{{ isset($listProvince[$province]) ?$listProvince[$province]:"ทั้งหมด"}}
+            ในจังหวัด{{ isset($listProvince[$province]) ?$listProvince[$province]:"ทั้งหมด"}}
           @endif
           @if ($vac_list == null)
 

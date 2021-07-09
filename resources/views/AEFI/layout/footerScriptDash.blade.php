@@ -24,9 +24,8 @@
 <!-- AdminLTE for demo purposes s-->
 <script src="/asset/dist/js/demo.js"></script>
 <!-- bootstrap datepicker -->
-<script src="/asset/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<script src="/asset/bower_components/canvasjs/canvasjs.min.js"></script>
 
-<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <?php
 	$arr_age_group = load_age_group();
 	$arr_gender = load_gender();
@@ -34,9 +33,6 @@
 	// var_dump($arr_age_group);
 ?>
 <script>
-$('#date_of_symptoms').datepicker({
-	dateFormat: "yy-mm-dd"
-})
 	window.onload = function() {
 
 		var chart = new CanvasJS.Chart("chartContainer", {
@@ -117,7 +113,20 @@ $('#date_of_symptoms').datepicker({
 				dataPoints: [
 					@foreach($count_all_gender as $row)
 					{
-						y:  ({{$row->gender_n}} / {{$countGender[0]->count_all}})*100,
+						y:  ({{$row->gender_n}} / (
+							{{isset($count_month_jan[0]->month_jan) ? $count_month_jan[0]->month_jan : 0}} +
+							{{isset($count_month_feb[0]->month_feb) ? $count_month_feb[0]->month_feb : 0}} +
+							{{isset($count_month_mar[0]->month_mar) ? $count_month_mar[0]->month_mar : 0}} +
+							{{isset($count_month_apr[0]->month_apr) ? $count_month_apr[0]->month_apr : 0}} +
+							{{isset($count_month_may[0]->month_may) ? $count_month_may[0]->month_may : 0}} +
+							{{isset($count_month_jun[0]->month_jun) ? $count_month_jun[0]->month_jun : 0}} +
+							{{isset($count_month_jul[0]->month_jul) ? $count_month_jul[0]->month_jul : 0}} +
+							{{isset($count_month_aug[0]->month_aug) ? $count_month_aug[0]->month_aug : 0}} +
+							{{isset($count_month_sep[0]->month_sep) ? $count_month_sep[0]->month_sep : 0}} +
+							{{isset($count_month_oct[0]->month_oct) ? $count_month_oct[0]->month_oct : 0}} +
+							{{isset($count_month_nov[0]->month_nov) ? $count_month_nov[0]->month_nov : 0}} +
+							{{isset($count_month_dec[0]->month_dec) ? $count_month_dec[0]->month_dec : 0}}
+						))*100,
 						label: "{{$arr_gender[$row->gender]}}",
 						color: "{{$arr_color_gender[$row->gender]}}"
 					},
@@ -172,7 +181,7 @@ $('#date_of_symptoms').datepicker({
 			type: "column",
 			showInLegend: true,
 			legendMarkerColor: "grey",
-			legendText: "",
+			legendText: "จำนวนกลุ่มอายุ",
 			dataPoints: [
 				@foreach($count_groupage as $row)
 					{ y: {{ $row->countgroupage }} , label: "{{ $arr_age_group[$row->group_age] }}" },
@@ -183,7 +192,7 @@ $('#date_of_symptoms').datepicker({
 	chart.render();
 };
 </script>
-<script type='text/javascript' src='https://www.gstatic.com/charts/loader.js'></script>
+<script type='text/javascript' src='/asset/bower_components/canvasjs/loader.js'></script>
 <script type="text/javascript">
 	google.charts.load('current', {
 		'packages': ['geochart'],

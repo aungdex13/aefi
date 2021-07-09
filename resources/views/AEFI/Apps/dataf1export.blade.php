@@ -80,6 +80,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
 <th>อาชีพ</th>
                         <th>ว/ด/ป ที่เกิดอาการ</th>
                         <th>เวลาที่เกิดอาการ</th>
+                        <th>วันที่จำหน่าย</th>
 			<th>วันรับรักษา</th>
                         <th>วัคซีนที่ได้รับ</th>
 <th>เลขที่วัคซีน</th>
@@ -155,7 +156,8 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
                              $cutVacName = explode(',', $vac_name);
                           @endphp
                           <p style="text-align:center;">{{date('Y',strtotime(isset($value->date_entry) ? $value->date_entry : "-"))  }}-{{str_pad(isset($cutVacName[0]) ? $cutVacName[0] : "NULL", 2, '0', STR_PAD_LEFT)}}-{{$value->id}}</p>
-                        </td>								        <td>{{ $value->hn }}</td>
+                        </td>
+                        								        <td>{{ $value->hn }}</td>
 				                <td style="text-align: center; vertical-align: middle;" width="4%">{{ $value->first_name }}</td>
 				                <td style="text-align: center; vertical-align: middle;" width="4%">{{ $value->sur_name }}</td>
 				                <td>
@@ -177,6 +179,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
 <td>{{ isset($value->career) ? $value->career: "-" }}</td>
                         <td>{{ $value->date_of_symptoms }}</td>
                         <td>{{ $value->time_of_symptoms }}</td>
+                        <td>{{ $value->time_of_treatment }}</td>
                         <td>{{ $value->date_of_treatment }}</td>
                         <td>
                           @php

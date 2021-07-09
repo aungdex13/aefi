@@ -1504,6 +1504,7 @@ foreach ($aecode as $value) {
         '<button type="button" id="btnDelete" class="deleteContact btn btn btn-danger btn-m">ลบข้อมูลวัคซีน</button></td>' +
         '</tr>';
       $('.maintable').append(contactdiv); // Adding these controls to Main table class
+
       $('#date_of_vaccination1' + rowCount + '').datepicker({
         dateFormat: "yy-mm-dd"
       })

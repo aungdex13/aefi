@@ -45,7 +45,13 @@
         {{-- <div class="col-lg-3">
               <input type="text" id="reservation" name="date_of_symptoms" class="form-control" readonly>
           </div> --}}
-
+          @if ($roleArrhospcode == 41173)
+          <div class="col-lg-3">
+              <input type="text" id="id" name="id" class="form-control" placeholder="ID (เช่น 2021-40-xxxx ระบุเฉพาะชุดตัวเลข xxxx)">
+          </div>
+        @else
+        {{-- <input type="text" id="first_name" name="first_name" class="form-control" placeholder="ชื่อ"> --}}
+        @endif
         @if ($roleArrhospcode == 41173)
         <div class="col-lg-3">
             <input type="text" id="first_name" name="first_name" class="form-control" placeholder="ชื่อ">
@@ -124,7 +130,7 @@
           <thead>
             <tr>
               <th hidden>ID</th>
-              <th style="text-align:center;">ID</th>
+              <th style="text-align:center;" >ID</th>
               <th style="text-align:center;">เลขที่ผู้ป่วย HN</th>
               {{-- <th style="text-align:center;">เลขที่ผู้ป่วย AN</th> --}}
               <th style="text-align:center;">ชื่อ-นามสกุลผู้ป่วย</th>

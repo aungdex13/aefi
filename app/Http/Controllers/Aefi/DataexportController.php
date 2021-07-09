@@ -8,6 +8,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use DB;
 use Carbon\Carbon;
+use Cache;
 class DataexportController extends Controller
 {
 	public $result;
@@ -34,10 +35,84 @@ $selectgroupprov = DB::table('chospital_new')
 											 ->pluck('prov_code');
 
 		$yearnow =  now()->year;
-		$selectcaselstF1=DB::table('aefi_form_1')
+		$selectcaselstF1= DB::table('aefi_form_1')
 		->join('aefi_form_1_vac', 'aefi_form_1.id_case', '=', 'aefi_form_1_vac.id_case')
-		->select('aefi_form_1.*',
-		DB::raw('GROUP_CONCAT( aefi_form_1_vac.name_of_vaccine ) as "name_of_vaccine",
+		->select('aefi_form_1.date_entry',
+													'aefi_form_1.id',
+													'aefi_form_1.hn',
+													'aefi_form_1.first_name',
+													'aefi_form_1.sur_name',
+													'aefi_form_1.house_number',
+													'aefi_form_1.village_no',
+													'aefi_form_1.province',
+													'aefi_form_1.district',
+													'aefi_form_1.subdistrict',
+													'aefi_form_1.age_while_sick_year',
+													'aefi_form_1.age_while_sick_month',
+													'aefi_form_1.age_while_sick_day',
+													'aefi_form_1.gender',
+													'aefi_form_1.type_of_patient',
+													'aefi_form_1.patient_status',
+													'aefi_form_1.career',
+													'aefi_form_1.date_of_symptoms',
+													'aefi_form_1.time_of_symptoms',
+													'aefi_form_1.time_of_treatment',
+													'aefi_form_1.date_of_treatment',
+													'aefi_form_1.rash',
+													'aefi_form_1.erythema',
+													'aefi_form_1.urticaria',
+													'aefi_form_1.itching',
+													'aefi_form_1.edema',
+													'aefi_form_1.angioedema',
+													'aefi_form_1.fainting',
+													'aefi_form_1.hyperventilation',
+													'aefi_form_1.syncope',
+													'aefi_form_1.headche',
+													'aefi_form_1.dizziness',
+													'aefi_form_1.fatigue',
+													'aefi_form_1.malaise',
+													'aefi_form_1.dyspepsia',
+													'aefi_form_1.diarrhea',
+													'aefi_form_1.nausea',
+													'aefi_form_1.vomiting',
+													'aefi_form_1.abdominal_pain',
+													'aefi_form_1.arthalgia',
+													'aefi_form_1.myalgia',
+													'aefi_form_1.fever38c',
+													'aefi_form_1.swelling_at_the_injection',
+													'aefi_form_1.swelling_beyond_nearest_joint',
+													'aefi_form_1.lymphadenopathy',
+													'aefi_form_1.lymphadenitis',
+													'aefi_form_1.sterile_abscess',
+													'aefi_form_1.bacterial_abscess',
+													'aefi_form_1.febrile_convulsion',
+													'aefi_form_1.afebrile_convulsion',
+													'aefi_form_1.encephalopathy',
+													'aefi_form_1.flaccid_paralysis',
+													'aefi_form_1.spastic_paralysis',
+													'aefi_form_1.hhe',
+													'aefi_form_1.persistent_inconsolable_crying',
+													'aefi_form_1.thrombocytopenia',
+													'aefi_form_1.osteomyelitis',
+													'aefi_form_1.toxic_shock_syndrome',
+													'aefi_form_1.sepsis',
+													'aefi_form_1.anaphylaxis',
+													'aefi_form_1.transverse_myelitis',
+													'aefi_form_1.gbs',
+													'aefi_form_1.adem',
+													'aefi_form_1.acute_myocardial',
+													'aefi_form_1.ards',
+													'aefi_form_1.symptoms_later_immunized',
+													'aefi_form_1.other_symptoms_later_immunized',
+													'aefi_form_1.Symptoms_details',
+													'aefi_form_1.seriousness_of_the_symptoms',
+													'aefi_form_1.diagnosis',
+													'aefi_form_1.hospcode_treat',
+													'aefi_form_1.province_reported',
+													'aefi_form_1.datepicker_resiver',
+													'aefi_form_1.other_medical_history',
+													'aefi_form_1.lab_result',
+													'aefi_form_1.more_reviews',		DB::raw('GROUP_CONCAT( aefi_form_1_vac.name_of_vaccine ) as "name_of_vaccine",
 						 GROUP_CONCAT( aefi_form_1_vac.lot_number ) as "lot_number",
 						 GROUP_CONCAT( aefi_form_1_vac.manufacturer  ) as "manufacturer",
 				 		 GROUP_CONCAT( aefi_form_1_vac.dose  ) as "dose",
@@ -71,7 +146,7 @@ $selectgroupprov = DB::table('chospital_new')
 								->groupBy('aefi_form_1.id_case')
 								->get();				 break;
 				 case 'dpc':
-				 if ($roleArrhospcode == "41173") {
+				 if ($roleArrhospcode == "41173" || $roleArrhospcode == "41169") {
 						 $selectdata = $selectcaselstF1
 								 ->whereNull('aefi_form_1.status')
 								 ->whereDate('aefi_form_1.date_entry',$datenow)
@@ -79,7 +154,10 @@ $selectgroupprov = DB::table('chospital_new')
 								 ->get();
 				 }else {
 					 $selectdata = $selectcaselstF1
-							->whereIn('aefi_form_1.province',$selectgroupprov)
+							->whereDate('aefi_form_1.date_entry',$datenow)
+							->whereIn('aefi_form_1.province_found_event',$selectgroupprov)
+							//->whereIn('aefi_form_1.province_reported',$selectgroupprov)
+							 //->orWhere('user_region',$roleArrregion)
 							 ->whereNull('aefi_form_1.status')
 							 ->groupBy('aefi_form_1.id_case')
 							 ->get();
@@ -139,12 +217,92 @@ $selectgroupprov = DB::table('chospital_new')
 		$date_of_symptoms = explode('-', $date_of_symptoms_in);
 		$date_of_symptoms_from = $date_of_symptoms[0]."-".$date_of_symptoms[1]."-".$date_of_symptoms[2];
 		$date_of_symptoms_to = $date_of_symptoms[3]."-".$date_of_symptoms[4]."-".$date_of_symptoms[5];
-		// dd($date_of_symptoms_in,$date_of_symptoms);
 		$cabonnow =  Carbon::now();
 		$datenow = $cabonnow->toDateString();
+$selectgroupprov = DB::table('chospital_new')
+											 ->select('chospital_new.prov_code')
+											 ->where('region',$roleArrregion)
+											 ->groupBy('prov_code')
+											 ->get()
+											 ->pluck('prov_code');
 		$selectcaselstF1=DB::table('aefi_form_1')
 		->join('aefi_form_1_vac', 'aefi_form_1.id_case', '=', 'aefi_form_1_vac.id_case')
-		->select('aefi_form_1.*',
+		->select('aefi_form_1.date_entry',
+													'aefi_form_1.id',
+													'aefi_form_1.hn',
+													'aefi_form_1.first_name',
+													'aefi_form_1.sur_name',
+													'aefi_form_1.house_number',
+													'aefi_form_1.village_no',
+													'aefi_form_1.province',
+													'aefi_form_1.district',
+													'aefi_form_1.subdistrict',
+													'aefi_form_1.age_while_sick_year',
+													'aefi_form_1.age_while_sick_month',
+													'aefi_form_1.age_while_sick_day',
+													'aefi_form_1.gender',
+													'aefi_form_1.type_of_patient',
+													'aefi_form_1.patient_status',
+													'aefi_form_1.career',
+													'aefi_form_1.date_of_symptoms',
+													'aefi_form_1.time_of_symptoms',
+													'aefi_form_1.time_of_treatment',
+													'aefi_form_1.date_of_treatment',
+													'aefi_form_1.rash',
+													'aefi_form_1.erythema',
+													'aefi_form_1.urticaria',
+													'aefi_form_1.itching',
+													'aefi_form_1.edema',
+													'aefi_form_1.angioedema',
+													'aefi_form_1.fainting',
+													'aefi_form_1.hyperventilation',
+													'aefi_form_1.syncope',
+													'aefi_form_1.headche',
+													'aefi_form_1.dizziness',
+													'aefi_form_1.fatigue',
+													'aefi_form_1.malaise',
+													'aefi_form_1.dyspepsia',
+													'aefi_form_1.diarrhea',
+													'aefi_form_1.nausea',
+													'aefi_form_1.vomiting',
+													'aefi_form_1.abdominal_pain',
+													'aefi_form_1.arthalgia',
+													'aefi_form_1.myalgia',
+													'aefi_form_1.fever38c',
+													'aefi_form_1.swelling_at_the_injection',
+													'aefi_form_1.swelling_beyond_nearest_joint',
+													'aefi_form_1.lymphadenopathy',
+													'aefi_form_1.lymphadenitis',
+													'aefi_form_1.sterile_abscess',
+													'aefi_form_1.bacterial_abscess',
+													'aefi_form_1.febrile_convulsion',
+													'aefi_form_1.afebrile_convulsion',
+													'aefi_form_1.encephalopathy',
+													'aefi_form_1.flaccid_paralysis',
+													'aefi_form_1.spastic_paralysis',
+													'aefi_form_1.hhe',
+													'aefi_form_1.persistent_inconsolable_crying',
+													'aefi_form_1.thrombocytopenia',
+													'aefi_form_1.osteomyelitis',
+													'aefi_form_1.toxic_shock_syndrome',
+													'aefi_form_1.sepsis',
+													'aefi_form_1.anaphylaxis',
+													'aefi_form_1.transverse_myelitis',
+													'aefi_form_1.gbs',
+													'aefi_form_1.adem',
+													'aefi_form_1.acute_myocardial',
+													'aefi_form_1.ards',
+													'aefi_form_1.symptoms_later_immunized',
+													'aefi_form_1.other_symptoms_later_immunized',
+													'aefi_form_1.Symptoms_details',
+													'aefi_form_1.seriousness_of_the_symptoms',
+													'aefi_form_1.diagnosis',
+													'aefi_form_1.hospcode_treat',
+													'aefi_form_1.province_reported',
+													'aefi_form_1.datepicker_resiver',
+													'aefi_form_1.other_medical_history',
+													'aefi_form_1.lab_result',
+													'aefi_form_1.more_reviews',
 		DB::raw('GROUP_CONCAT( aefi_form_1_vac.name_of_vaccine ) as "name_of_vaccine",
 						 GROUP_CONCAT( aefi_form_1_vac.lot_number ) as "lot_number",
 						 GROUP_CONCAT( aefi_form_1_vac.manufacturer  ) as "manufacturer",
@@ -177,7 +335,7 @@ $selectgroupprov = DB::table('chospital_new')
 				 ->groupBy('aefi_form_1.id_case')
 								 ->get();				 break;
 				 case 'dpc':
-				 if ($roleArrhospcode == "41173") {
+				 if ($roleArrhospcode == "41173" || $roleArrhospcode == "41169") {
 						 $selectdata = $selectcaselstF1
 								 // ->where('user_region',$roleArrregion)
 								 ->whereNull('aefi_form_1.status')
@@ -185,7 +343,8 @@ $selectgroupprov = DB::table('chospital_new')
 								 ->get();
 				 }else {
 					 $selectdata = $selectcaselstF1
-							 ->where('user_region',$roleArrregion)
+							 ->whereIn('aefi_form_1.province_found_event',$selectgroupprov)
+								//->whereIn('aefi_form_1.province_reported',$selectgroupprov)
 							 ->whereNull('aefi_form_1.status')
 							 ->groupBy('aefi_form_1.id_case')
 							 ->get();

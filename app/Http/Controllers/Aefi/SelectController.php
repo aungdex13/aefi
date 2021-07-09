@@ -108,7 +108,7 @@
 									->get();
 					break;
 					case 'dpc':
-					if ($roleArrhospcode == "41173") {
+					if ($roleArrhospcode == "41173" || $roleArrhospcode == "41169") {
 							$caselstF1 = $selectcaselstF1
 								->whereDate('aefi_form_1.date_entry',$datenow)
 									// ->where('user_region',$roleArrregion)
@@ -198,6 +198,7 @@
 			$name_of_vaccine = $req->input('name_of_vaccine');
 			$hospcode_treat = $req->input('hospcode_treat');
 			$province = $req->input('province');
+			$id = $req->input('id');
 			 // dd($date_of_symptoms_from,$date_of_symptoms_to,$name_of_vaccine,$hospcode_treat,$province);
 			// dd($roleArrusername,$roleArrhospcode,$roleArrprov_code,$roleArrregion);
 			$roleArr = auth()->user()->getRoleNames()->toArray();
@@ -271,6 +272,12 @@
 						}
 						else{
 						}
+						if ($id != null) {
+							$caselstWhere = $selectcaselstF1
+															->orwhere('aefi_form_1.id', 'LIKE', "%{$id}%");
+						}
+						else{
+						}
 		 if (count($roleArr) > 0) {
 				$user_role = $roleArr[0];
 			switch ($user_role) {
@@ -303,7 +310,7 @@
 									->get();
 					break;
 					case 'dpc':
-					if ($roleArrhospcode == "41173") {
+					if ($roleArrhospcode == "41173" || $roleArrhospcode == "41169") {
 							$caselstF1 = $selectcaselstF1
 									->whereNull('aefi_form_1.status')
 									->groupBy('aefi_form_1.id_case')

@@ -106,7 +106,8 @@ Route::post('/InsertExpert', 'Aefi\ExpertDiagController@InsertExpert')->name('In
 Route::post('/UpdateExpert', 'Aefi\ExpertDiagController@UpdateExpert')->name('UpdateExpert');
 Route::get('/DeleteExpert', 'Aefi\ExpertDiagController@DeleteExpert')->name('DeleteExpert');
 Route::get('/viewExpert', 'Aefi\ViewExpertController@index')->name('viewExpert');
-
+Route::get('/ExpertExport', 'Aefi\ExpertExportController@index')->name('ExpertExport');
+Route::post('/ExpertExport', 'Aefi\ExpertExportController@indexsrc')->name('ExpertExport');
 // refer
 Route::get('/ReferFrm', 'Aefi\ReferController@ReferFrm')->name('ReferFrm');
 Route::post('/InsertRefer', 'Aefi\ReferController@InsertRefer')->name('InsertRefer');

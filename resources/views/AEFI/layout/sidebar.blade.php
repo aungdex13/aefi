@@ -70,6 +70,12 @@
 		</a>
 		<ul class="treeview-menu">
 		  <li><a href="{{ route('dataf1export') }}"><i class="fa fa-circle-o"></i>รายงาน AEFI 1 </a></li>
+      @hasrole('admin')
+      <li><a href="{{ route('ExpertExport') }}"><i class="fa fa-circle-o"></i>รายงานการพิจารณาผู้ป่วย</br>โดยคณะผู้เชี่ยวชาญ</a></li>
+      @endhasrole
+      @hasrole('admin-dpc')
+      <li><a href="{{ route('ExpertExport') }}"><i class="fa fa-circle-o"></i>รายงานการพิจารณาผู้ป่วย</br>โดยคณะผู้เชี่ยวชาญ</a></li>
+      @endhasrole
 		  <li><a href="{{ route('AEFI506') }}"><i class="fa fa-circle-o"></i>รายงาน ๕๐๖</a></li>
       @hasrole('admin')
       <li><a href="{{ route('datauserexport') }}"><i class="fa fa-circle-o"></i>รายงานผู้ใช้งานระบบ</a></li>

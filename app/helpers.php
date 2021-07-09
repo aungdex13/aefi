@@ -513,6 +513,7 @@ if (! function_exists('provinces')) {
         '6'=>'Temporal relationship',
         '7'=>'ยังไม่สามารถสรุปได้ว่าเกี่ยวข้องกับวัคซีน (Indeterminate)',
         '8'=>'ข้อมูลยังไม่เพียงพอที่จะสรุป (Unclassifiable)',
+        '9'=>'ให้ผู้เกี่ยวข้องติดตามข้อมูลเพิ่มเติมเพื่อนำเข้าพิจารณาใหม่',
         ''=>'NULL'
                               );
       return 	$causality;

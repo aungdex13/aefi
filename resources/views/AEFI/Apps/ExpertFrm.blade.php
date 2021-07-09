@@ -149,7 +149,7 @@ $arr_load_aefi_classification = load_aefi_classification();
 																						{{-- <input type="text" name="r_o" class="form-control" placeholder="ระบุR/O"> --}}
 																						<select type="text" class="form-control" name="r_o">
 																							@if (count($selectexpertcase) > 0 )
-																								<option value="{{$selectexpertcase[0]->r_o}}">{{isset($arr_load_final_diag[$selectexpertcase[0]->r_o]) ? $arr_load_final_diag[$selectexpertcase[0]->r_o] : ''}}</option>
+																								<option value="{{$selectexpertcase[0]->r_o}}">{{isset($arr_r_o[$selectexpertcase[0]->r_o]) ? $arr_r_o[$selectexpertcase[0]->r_o] : ''}}</option>
 																							@else
 																							@endif
 																							<option value="">กรุณาระบุ การวินิจฉัยแรกรับของแพทย์</option>
@@ -237,8 +237,8 @@ $arr_load_aefi_classification = load_aefi_classification();
 																						<option value="4">เกี่ยวข้องกับการฉีดวัคซีน (Immunization anxiety related reaction)</option>
 																						<option value="5">เป็นเหตุการณ์ร่วมที่ไม่เกี่ยวข้องกับวัคซีนแต่บังเอิญเกิดร่วมกัน (Coincidental event)</option>
 																						{{-- <option value="6">Temporal relationship</option> --}}
-																						<option value="7">ยังไม่สามารถสรุปได้ว่าเกี่ยวข้องกับวัคซีน (Indeterminate)</option>
-																						<option value="8">ข้อมูลยังไม่เพียงพอที่จะสรุป (Unclassifiable)</option>
+																						<option value="7">ยังไม่สามารถสรุปได้ว่าเกี่ยวข้องกับวัคซีน (Indeterminate  event)</option>
+																						<option value="8">ข้อมูลยังไม่เพียงพอที่จะสรุป (Unclassifiable  event)</option>
 																					</select>
 																				</div>
 																				<div class="col-lg-6">
