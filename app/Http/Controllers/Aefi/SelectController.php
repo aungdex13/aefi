@@ -111,7 +111,6 @@
 					if ($roleArrhospcode == "41173" || $roleArrhospcode == "41169") {
 							$caselstF1 = $selectcaselstF1
 								->whereDate('aefi_form_1.date_entry',$datenow)
-									// ->where('user_region',$roleArrregion)
 									->whereNull('aefi_form_1.status')
 									->groupBy('aefi_form_1.id_case')
 									->get();

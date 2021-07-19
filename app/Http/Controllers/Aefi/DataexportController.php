@@ -33,7 +33,6 @@ $selectgroupprov = DB::table('chospital_new')
 											 ->groupBy('prov_code')
 											 ->get()
 											 ->pluck('prov_code');
-
 		$yearnow =  now()->year;
 		$selectcaselstF1= DB::table('aefi_form_1')
 		->join('aefi_form_1_vac', 'aefi_form_1.id_case', '=', 'aefi_form_1_vac.id_case')
@@ -124,8 +123,7 @@ $selectgroupprov = DB::table('chospital_new')
 			 $user_role = $roleArr[0];
 		 switch ($user_role) {
 			 case 'hospital':
-				$selectdata  = $selectcaselstF1
-								->whereDate('aefi_form_1.date_entry',$datenow)
+				$selectdata  = $selectcaselstF1->whereDate('aefi_form_1.date_entry',$datenow)
 								->whereNull('aefi_form_1.status')
 								->where(function($query) {
 											$query->orWhere('aefi_form_1.user_hospcode',auth()->user()->hospcode)
@@ -136,8 +134,7 @@ $selectgroupprov = DB::table('chospital_new')
 								->get();
 			 break;
 			 			 case 'pho':
-				 $selectdata = $selectcaselstF1
-				 				->whereDate('aefi_form_1.date_entry',$datenow)
+				 $selectdata = $selectcaselstF1->whereDate('aefi_form_1.date_entry',$datenow)
 				 				->whereNull('aefi_form_1.status')
 								->where(function($query) {
 											$query->orWhere('aefi_form_1.province_found_event',auth()->user()->prov_code)
@@ -147,14 +144,12 @@ $selectgroupprov = DB::table('chospital_new')
 								->get();				 break;
 				 case 'dpc':
 				 if ($roleArrhospcode == "41173" || $roleArrhospcode == "41169") {
-						 $selectdata = $selectcaselstF1
-								 ->whereNull('aefi_form_1.status')
+						 $selectdata = $selectcaselstF1->whereNull('aefi_form_1.status')
 								 ->whereDate('aefi_form_1.date_entry',$datenow)
 								 ->groupBy('aefi_form_1.id_case')
 								 ->get();
 				 }else {
-					 $selectdata = $selectcaselstF1
-							->whereDate('aefi_form_1.date_entry',$datenow)
+					 $selectdata = $selectcaselstF1->whereDate('aefi_form_1.date_entry',$datenow)
 							->whereIn('aefi_form_1.province_found_event',$selectgroupprov)
 							//->whereIn('aefi_form_1.province_reported',$selectgroupprov)
 							 //->orWhere('user_region',$roleArrregion)
@@ -165,22 +160,19 @@ $selectgroupprov = DB::table('chospital_new')
 					 break;
 					 case 'ddc':
 
-						 $selectdata = $selectcaselstF1
-						 ->whereNull('aefi_form_1.status')
+						 $selectdata = $selectcaselstF1->whereNull('aefi_form_1.status')
 						 ->whereDate('aefi_form_1.date_entry',$datenow)
 						 ->groupBy('aefi_form_1.id_case')
 						 ->get();
 						 break;
 						 case 'admin':
-							 $selectdata = $selectcaselstF1
-							 ->whereNull('aefi_form_1.status')
+							 $selectdata = $selectcaselstF1->whereNull('aefi_form_1.status')
 							 ->whereDate('aefi_form_1.date_entry',$datenow)
 							 ->groupBy('aefi_form_1.id_case')
 							 ->get();
 							 break;
 							 case 'admin-dpc':
-							 $selectdata = $selectcaselstF1
-							 ->whereIn('aefi_form_1.province',$selectgroupprov)
+							 $selectdata = $selectcaselstF1->whereIn('aefi_form_1.province',$selectgroupprov)
 							 ->whereNull('aefi_form_1.status')
 							 ->groupBy('aefi_form_1.id_case')
 							 ->get();
@@ -189,6 +181,7 @@ $selectgroupprov = DB::table('chospital_new')
 			 break;
 	 }
  }
+ 		// dd($selectdata);
 		 $listProvince=$this->listProvince();
 		 $listDistrict=$this->listDistrict();
 		 $listsubdistrict=$this->listsubdistrict();

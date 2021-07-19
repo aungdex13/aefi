@@ -63,7 +63,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
 				        <thead>
 				            <tr>
         							  <th>no</th>
-<th>ID</th>
+                        <th>ID</th>
         								<th>รหัสผู้ป่วย</th>
 				                <th>ชื่อ</th>
 				                <th>นามสกุล</th>
@@ -74,74 +74,75 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
                         <th>อายุปีขณะป่วย</th>
                         <th>อายุเดือนขณะป่วย</th>
                         <th>อายุวันขณะป่วย</th>
-			<th>เพศ</th>
+			                  <th>เพศ</th>
                         <th>ประเภทผู้ป่วย</th>
                         <th>สถานะผู้ป่วย</th>
-<th>อาชีพ</th>
+                        <th>อาชีพ</th>
                         <th>ว/ด/ป ที่เกิดอาการ</th>
                         <th>เวลาที่เกิดอาการ</th>
                         <th>วันที่จำหน่าย</th>
-			<th>วันรับรักษา</th>
+			                  <th>วันรับรักษา</th>
                         <th>วัคซีนที่ได้รับ</th>
-<th>เลขที่วัคซีน</th>
+                        <th>เลขที่วัคซีน</th>
                         <th>เข็มที่</th>
                         <th>ชื่อผู้ผลิต</th>
                         <th>ว/ด/ป ที่ได้รับวัคซีน</th>
                         <th>เวลาที่ได้รับวัคซีน</th>
-                        <th>Rash</th>
-                        <th>Erythema</th>
-                        <th>Urticaria</th>
-                        <th>Itching</th>
-                        <th>Edema</th>
-                        <th>Angioedema</th>
-                        <th>Fainting</th>
-                        <th>Hyperventilation</th>
-                        <th>Syncope</th>
-                        <th>Headche</th>
-                        <th>Dizziness</th>
-                        <th>Fatigue</th>
-                        <th>Malaise</th>
-                        <th>Dyspepsia</th>
-                        <th>Diarrhea</th>
-                        <th>Nausea</th>
-                        <th>Vomiting</th>
-                        <th>Abdominal pain</th>
-                        <th>Arthalgia</th>
-                        <th>Myalgia</th>
-                        <th>Fever38c</th>
-                        <th>บวมบริเวณที่ฉีดนานเกิน3วัน</th>
-                        <th>บวมลามไปถึงข้อที่ใกล้ที่สุด</th>
-                        <th>Lymphadenopathy</th>
-                        <th>Lymphadenitis</th>
-                        <th>Sterile abscess</th>
-                        <th>Bacterial abscess</th>
-                        <th>Febrile convulsion</th>
-                        <th>Afebrile convulsion</th>
-                        <th>Encephalopathy</th>
-                        <th>Flaccid paralysis</th>
-                        <th>Spastic paralysis</th>
-                        <th>HHE</th>
-                        <th>Persistent inconsolable crying</th>
-                        <th>Thrombocytopenia</th>
-                        <th>Osteomyelitis</th>
-                        <th>Toxic shock syndrome</th>
-                        <th>Sepsis</th>
-                        <th>Anaphylaxis</th>
-                        <th>Transverse myelitis</th>
-                        <th>GBS</th>
-                        <th>Adem</th>
-                        <th>Acute myocardial</th>
-                        <th>Ards</th>
-			<th>อาการอื่นๆ</th>
-			<th>รายละเอียดอาการและการตรวจสอบ</th>
+
+                        <th @hasrole('ddc') hidden @endhasrole>Rash</th>
+                        <th @hasrole('ddc') hidden @endhasrole>Erythema</th>
+                        <th @hasrole('ddc') hidden @endhasrole>Urticaria</th>
+                        <th @hasrole('ddc') hidden @endhasrole @hasrole('ddc') hidden @endhasrole>Itching</th>
+                        <th @hasrole('ddc') hidden @endhasrole @hasrole('ddc') hidden @endhasrole>Edema</th>
+                        <th @hasrole('ddc') hidden @endhasrole @hasrole('ddc') hidden @endhasrole>Angioedema</th>
+                        <th @hasrole('ddc') hidden @endhasrole @hasrole('ddc') hidden @endhasrole>Fainting</th>
+                        <th @hasrole('ddc') hidden @endhasrole @hasrole('ddc') hidden @endhasrole>Hyperventilation</th>
+                        <th @hasrole('ddc') hidden @endhasrole @hasrole('ddc') hidden @endhasrole>Syncope</th>
+                        <th @hasrole('ddc') hidden @endhasrole @hasrole('ddc') hidden @endhasrole>Headche</th>
+                        <th @hasrole('ddc') hidden @endhasrole @hasrole('ddc') hidden @endhasrole>Dizziness</th>
+                        <th @hasrole('ddc') hidden @endhasrole @hasrole('ddc') hidden @endhasrole>Fatigue</th>
+                        <th @hasrole('ddc') hidden @endhasrole @hasrole('ddc') hidden @endhasrole>Malaise</th>
+                        <th @hasrole('ddc') hidden @endhasrole @hasrole('ddc') hidden @endhasrole>Dyspepsia</th>
+                        <th @hasrole('ddc') hidden @endhasrole @hasrole('ddc') hidden @endhasrole>Diarrhea</th>
+                        <th @hasrole('ddc') hidden @endhasrole @hasrole('ddc') hidden @endhasrole>Nausea</th>
+                        <th @hasrole('ddc') hidden @endhasrole @hasrole('ddc') hidden @endhasrole>Vomiting</th>
+                        <th @hasrole('ddc') hidden @endhasrole @hasrole('ddc') hidden @endhasrole>Abdominal pain</th>
+                        <th @hasrole('ddc') hidden @endhasrole @hasrole('ddc') hidden @endhasrole>Arthalgia</th>
+                        <th @hasrole('ddc') hidden @endhasrole @hasrole('ddc') hidden @endhasrole>Myalgia</th>
+                        <th @hasrole('ddc') hidden @endhasrole @hasrole('ddc') hidden @endhasrole>Fever38c</th>
+                        <th @hasrole('ddc') hidden @endhasrole @hasrole('ddc') hidden @endhasrole>บวมบริเวณที่ฉีดนานเกิน3วัน</th>
+                        <th @hasrole('ddc') hidden @endhasrole @hasrole('ddc') hidden @endhasrole>บวมลามไปถึงข้อที่ใกล้ที่สุด</th>
+                        <th @hasrole('ddc') hidden @endhasrole @hasrole('ddc') hidden @endhasrole>Lymphadenopathy</th>
+                        <th @hasrole('ddc') hidden @endhasrole @hasrole('ddc') hidden @endhasrole>Lymphadenitis</th>
+                        <th @hasrole('ddc') hidden @endhasrole @hasrole('ddc') hidden @endhasrole>Sterile abscess</th>
+                        <th @hasrole('ddc') hidden @endhasrole @hasrole('ddc') hidden @endhasrole>Bacterial abscess</th>
+                        <th @hasrole('ddc') hidden @endhasrole @hasrole('ddc') hidden @endhasrole>Febrile convulsion</th>
+                        <th @hasrole('ddc') hidden @endhasrole @hasrole('ddc') hidden @endhasrole>Afebrile convulsion</th>
+                        <th @hasrole('ddc') hidden @endhasrole @hasrole('ddc') hidden @endhasrole>Encephalopathy</th>
+                        <th @hasrole('ddc') hidden @endhasrole @hasrole('ddc') hidden @endhasrole>Flaccid paralysis</th>
+                        <th @hasrole('ddc') hidden @endhasrole @hasrole('ddc') hidden @endhasrole>Spastic paralysis</th>
+                        <th @hasrole('ddc') hidden @endhasrole @hasrole('ddc') hidden @endhasrole>HHE</th>
+                        <th @hasrole('ddc') hidden @endhasrole @hasrole('ddc') hidden @endhasrole>Persistent inconsolable crying</th>
+                        <th @hasrole('ddc') hidden @endhasrole @hasrole('ddc') hidden @endhasrole>Thrombocytopenia</th>
+                        <th @hasrole('ddc') hidden @endhasrole @hasrole('ddc') hidden @endhasrole>Osteomyelitis</th>
+                        <th @hasrole('ddc') hidden @endhasrole @hasrole('ddc') hidden @endhasrole>Toxic shock syndrome</th>
+                        <th @hasrole('ddc') hidden @endhasrole @hasrole('ddc') hidden @endhasrole>Sepsis</th>
+                        <th @hasrole('ddc') hidden @endhasrole @hasrole('ddc') hidden @endhasrole>Anaphylaxis</th>
+                        <th @hasrole('ddc') hidden @endhasrole @hasrole('ddc') hidden @endhasrole>Transverse myelitis</th>
+                        <th @hasrole('ddc') hidden @endhasrole @hasrole('ddc') hidden @endhasrole>GBS</th>
+                        <th @hasrole('ddc') hidden @endhasrole @hasrole('ddc') hidden @endhasrole>Adem</th>
+                        <th @hasrole('ddc') hidden @endhasrole @hasrole('ddc') hidden @endhasrole>Acute myocardial</th>
+                        <th @hasrole('ddc') hidden @endhasrole @hasrole('ddc') hidden @endhasrole>Ards</th>
+			                  <th @hasrole('ddc') hidden @endhasrole @hasrole('ddc') hidden @endhasrole>อาการอื่นๆ</th>
+			                  <th @hasrole('ddc') hidden @endhasrole @hasrole('ddc') hidden @endhasrole>รายละเอียดอาการและการตรวจสอบ</th>
+
                         <th>Seriousness</th>
                         <th>conclusion</th>
                         <th>โรงพยาบาลที่รับรักษา</th>
                         <th>จังหวัดที่รายงาน</th>
-			<th>ว/ด/ป ที่ส่งรายงาน</th>
+			                  <th>ว/ด/ป ที่ส่งรายงาน</th>
                         <th>ว/ด/ป ที่รับรายงาน</th>
                         <th>ประวัติทางการแพทย์</th>
-
                         <th>การตรวจทางห้องปฏิบัติการ</th>
                         <th>หมายเหตุ</th>
 				            </tr>
@@ -235,322 +236,322 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
                           {{ isset($valuevs) ? $valuevs: "ไม่ระบุข้อมูล" }}</br>
                           @endforeach
                         </td>
-                        <td>
+                        <td @hasrole('ddc') hidden @endhasrole>
                           @if ($value->rash == '0027')
                             {{"1"}}
                           @else
                           {{"0"}}
                           @endif
                         </td>
-                        <td>
+                        <td @hasrole('ddc') hidden @endhasrole>
                           @if ($value->erythema == '0028' )
                             {{"1 "}}
                           @else
                           {{"0"}}
                           @endif
                         </td>
-                        <td>
+                        <td @hasrole('ddc') hidden @endhasrole>
                           @if ($value->urticaria == '0044')
                             {{"1"}}
                           @else
                           {{"0"}}
                           @endif
                         </td>
-                        <td>
+                        <td @hasrole('ddc') hidden @endhasrole>
                           @if ($value->itching == '0026')
                             {{"1"}}
                           @else
                           {{"0"}}
                           @endif
                         </td>
-                        <td>
+                        <td @hasrole('ddc') hidden @endhasrole>
                           @if ($value->edema == '0003A')
                             {{"1"}}
                           @else
                           {{"0"}}
                           @endif
                         </td>
-                        <td>
+                        <td @hasrole('ddc') hidden @endhasrole>
                           @if ($value->angioedema == '0003')
                             {{"1"}}
                           @else
                           {{"0"}}
                           @endif
                         </td>
-                        <td>
+                        <td @hasrole('ddc') hidden @endhasrole>
                           @if ($value->fainting == '1')
                             {{"1"}}
                           @else
                           {{"0"}}
                           @endif
                         </td>
-                        <td>
+                        <td @hasrole('ddc') hidden @endhasrole>
                           @if ($value->hyperventilation == '0517')
                             {{"1"}}
                           @else
                           {{"0"}}
                           @endif
                         </td>
-                        <td>
+                        <td @hasrole('ddc') hidden @endhasrole>
                           @if ($value->syncope == '0223')
                              {{"1"}}
                           @else
                           {{"0"}}
                           @endif
                         </td>
-                        <td>
+                        <td @hasrole('ddc') hidden @endhasrole>
                           @if ($value->headche == '1')
                             {{"1"}}
                           @else
                           {{"0"}}
                           @endif
                         </td>
-                        <td>
+                        <td @hasrole('ddc') hidden @endhasrole>
                           @if ($value->dizziness == '0101')
                             {{"1"}}
                           @else
                           {{"0"}}
                           @endif
                         </td>
-                        <td>
+                        <td @hasrole('ddc') hidden @endhasrole>
                           @if ($value->fatigue == '0724')
                             {{"1"}}
                           @else
                           {{"0"}}
                           @endif
                         </td>
-                        <td>
+                        <td @hasrole('ddc') hidden @endhasrole>
                           @if ($value->malaise == '0728')
                             {{"1"}}
                           @else
                           {{"0"}}
                           @endif
                         </td>
-                        <td>
+                        <td @hasrole('ddc') hidden @endhasrole>
                           @if ($value->dyspepsia == '0279')
                             {{"1"}}
                           @else
                           {{"0"}}
                           @endif
                         </td>
-                        <td>
+                        <td @hasrole('ddc') hidden @endhasrole>
                           @if ($value->diarrhea == '1')
                             {{"1"}}
                           @else
                           {{"0"}}
                           @endif
                         </td>
-                        <td>
+                        <td @hasrole('ddc') hidden @endhasrole>
                           @if ($value->nausea == '0308')
                             {{"1"}}
                           @else
                           {{"0"}}
                           @endif
                         </td>
-                        <td>
+                        <td @hasrole('ddc') hidden @endhasrole>
                           @if ($value->vomiting == '0228')
                             {{"1"}}
                           @else
                           {{"0"}}
                           @endif
                         </td>
-                        <td>
+                        <td @hasrole('ddc') hidden @endhasrole>
                           @if ($value->abdominal_pain == '0268')
                             {{"1"}}
                             @else
                             {{"0"}}
                           @endif
                         </td>
-                        <td>
+                        <td @hasrole('ddc') hidden @endhasrole>
                           @if ($value->arthalgia == '1')
                             {{"1"}}
                             @else
                             {{"0"}}
                           @endif
                         </td>
-                        <td>
+                        <td @hasrole('ddc') hidden @endhasrole>
                           @if ($value->myalgia == '0072')
                             {{"1"}}
                             @else
                             {{"0"}}
                           @endif
                         </td>
-                        <td>
+                        <td @hasrole('ddc') hidden @endhasrole>
                           @if ($value->fever38c == '0725')
                             {{"1"}}
                             @else
                             {{"0"}}
                           @endif
                         </td>
-                        <td>
+                        <td @hasrole('ddc') hidden @endhasrole>
                           @if ($value->swelling_at_the_injection == '1')
                             {{"1"}}
                           @else
                           {{"0"}}
                           @endif
                         </td>
-                        <td>
+                        <td @hasrole('ddc') hidden @endhasrole>
                           @if ($value->swelling_beyond_nearest_joint == '1')
                             {{"1"}}
                           @else
                           {{"0"}}
                           @endif
                         </td>
-                        <td>
+                        <td @hasrole('ddc') hidden @endhasrole>
                           @if ($value->lymphadenopathy == '0577')
                             {{"1"}}
                           @else
                           {{"0"}}
                           @endif
                         </td>
-                        <td>
+                        <td @hasrole('ddc') hidden @endhasrole>
                           @if ($value->lymphadenitis == '0577D')
                             {{"1"}}
                           @else
                           {{"0"}}
                           @endif
                         </td>
-                        <td>
+                        <td @hasrole('ddc') hidden @endhasrole>
                           @if ($value->sterile_abscess == '0051')
                             {{"1"}}
                           @else
                           {{"0"}}
                           @endif
                         </td>
-                        <td>
+                        <td @hasrole('ddc') hidden @endhasrole>
                           @if ($value->bacterial_abscess == '1')
                             {{"1"}}
                           @else
                           {{"0"}}
                           @endif
                         </td>
-                        <td>
+                        <td @hasrole('ddc') hidden @endhasrole>
                           @if ($value->febrile_convulsion == '1')
                             {{"1"}}
                           @else
                           {{"0"}}
                           @endif
                         </td>
-                        <td>
+                        <td @hasrole('ddc') hidden @endhasrole>
                           @if ($value->afebrile_convulsion == '1')
                             {{"1"}}
                           @else
                           {{"0"}}
                           @endif
                         </td>
-                        <td>
+                        <td @hasrole('ddc') hidden @endhasrole>
                           @if ($value->encephalopathy == '0105')
                             {{"1"}}
                           @else
                           {{"0"}}
                           @endif
                         </td>
-                        <td>
+                        <td @hasrole('ddc') hidden @endhasrole>
                           @if ($value->flaccid_paralysis == '0139')
                             {{"1"}}
                           @else
                           {{"0"}}
                           @endif
                         </td>
-                        <td>
+                        <td @hasrole('ddc') hidden @endhasrole>
                           @if ($value->spastic_paralysis == '0775')
                             {{"1"}}
                           @else
                           {{"0"}}
                           @endif
                         </td>
-                        <td>
+                        <td @hasrole('ddc') hidden @endhasrole>
                           @if ($value->hhe == '1704')
                             {{"1"}}
                           @else
                           {{"0"}}
                           @endif
                         </td>
-                        <td>
+                        <td @hasrole('ddc') hidden @endhasrole>
                           @if ($value->persistent_inconsolable_crying == '1')
                             {{"1"}}
                           @else
                           {{"0"}}
                           @endif
                         </td>
-                        <td>
+                        <td @hasrole('ddc') hidden @endhasrole>
                           @if ($value->thrombocytopenia == '0594')
                             {{"1"}}
                           @else
                           {{"0"}}
                           @endif
                         </td>
-                        <td>
+                        <td @hasrole('ddc') hidden @endhasrole>
                           @if ($value->osteomyelitis == '1184')
                             {{"1"}}
                           @else
                           {{"0"}}
                           @endif
                         </td>
-                        <td>
+                        <td @hasrole('ddc') hidden @endhasrole>
                           @if ($value->toxic_shock_syndrome == '1')
                             {{"1"}}
                           @else
                           {{"0"}}
                           @endif
                         </td>
-                        <td>
+                        <td @hasrole('ddc') hidden @endhasrole>
                           @if ($value->sepsis == '0744')
                             {{"1"}}
                           @else
                           {{"0"}}
                           @endif
                         </td>
-                        <td>
+                        <td @hasrole('ddc') hidden @endhasrole>
                           @if ($value->anaphylaxis == '2237')
                             {{"1"}}
                           @else
                           {{"0"}}
                           @endif
                         </td>
-                        <td>
+                        <td @hasrole('ddc') hidden @endhasrole>
                           @if ($value->transverse_myelitis == '1')
                             {{"1"}}
                           @else
                           {{"0"}}
                           @endif
                         </td>
-                        <td>
+                        <td @hasrole('ddc') hidden @endhasrole>
                           @if ($value->gbs == '1')
                             {{"1"}}
                           @else
                           {{"0"}}
                           @endif
                         </td>
-                        <td>
+                        <td @hasrole('ddc') hidden @endhasrole>
                           @if ($value->adem == '1')
                             {{"1"}}
                           @else
                           {{"0"}}
                           @endif
                         </td>
-                        <td>
+                        <td @hasrole('ddc') hidden @endhasrole>
                           @if ($value->acute_myocardial == '1')
                             {{"1"}}
                           @else
                           {{"0"}}
                           @endif
                       </td>
-                      <td>
+                      <td @hasrole('ddc') hidden @endhasrole>
                           @if ($value->ards == '1')
                             {{"1"}}
                           @else
                           {{"0"}}
                           @endif
                       </td>
-                      <td>
+                      <td @hasrole('ddc') hidden @endhasrole>
                           @if ($value->symptoms_later_immunized == '9999')
                             {{ isset($value->other_symptoms_later_immunized) ? $value->other_symptoms_later_immunized: "" }}
                           @else
                           {{""}}
                           @endif
                       </td>
-			<td>{{ $value->Symptoms_details }}</td>
+			                   <td @hasrole('ddc') hidden @endhasrole>{{ $value->Symptoms_details }}</td>
                         <td>{{ $arr_seriousness_of_the_symptoms[$value->seriousness_of_the_symptoms] }}</td>
                         <td>{{ $value->diagnosis }}</td>
                         <td>{{ isset($list_hos[ $value->hospcode_treat]) ? $list_hos[ $value->hospcode_treat] : ""}}</td>

@@ -146,18 +146,18 @@
   },
   axisX: {
     margin: 10,
-     labelPlacement: "inside",
+     // labelPlacement: "inside",
     // tickPlacement: "inside"
   },
 
   axisY: {
     title: "จำนวนของวัคซีน",
   },
+	dataPointWidth: 50,
   data: [{
     type: "column",
 		showInLegend: true,
 		legendMarkerColor: "grey",
-		legendText: "จำนวนวัคซีน 10 อันดับ",
 				dataPoints: [
 					@foreach($count_vacname as $row)
 					{ y: {{ $row->vac_count }}, label: "{{isset($listvac_arr[$row->name_of_vaccine]) ? $listvac_arr[$row->name_of_vaccine]:""}}" },
@@ -177,14 +177,19 @@
 		axisY: {
 
 		},
+		dataPointWidth: 50,
 		data: [{
 			type: "column",
 			showInLegend: true,
 			legendMarkerColor: "grey",
-			legendText: "จำนวนกลุ่มอายุ",
 			dataPoints: [
 				@foreach($count_groupage as $row)
-					{ y: {{ $row->countgroupage }} , label: "{{ $arr_age_group[$row->group_age] }}" },
+					{ y: {{ $row->countage }} ,
+						label: @if ($row->age_range == null)
+										"ไม่ระบุ"
+									 @else
+									 "{{ $row->age_range }}"
+									 @endif },
 				@endforeach
 			]
 		}]

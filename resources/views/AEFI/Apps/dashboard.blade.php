@@ -31,9 +31,8 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
         <div class="col-md-12">
           <div class="box">
             <div class="box-header with-border">
-              {{-- <div class="col-xs-3">
-                  <input type="text" name="zone" class="form-control" placeholder="{{ isset($zone) ? $zone : "เขต"}}">
-              </div> --}}
+              <div class="col-xs-3">
+              </div>
               <div class="col-xs-3">
                 <select id="province" name="province" class="form-control" style="width: 100%;">
                   <option class="badge filter badge-info" data-color="info" value="">ระบุจังหวัดที่ต้องการค้นหา</option>
@@ -41,11 +40,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
                   <option value="{{$k}}">{{$v}}</option>
                   @endforeach
                 </select>
-                  {{-- <input type="text" name="province" class="form-control" placeholder="{{ isset($province) ? $province : "จังหวัด"}}"> --}}
-              </div>
-              {{-- <div class="col-xs-3">
-                  <input type="text" name="date_of_symptoms" id="date_of_symptoms" class="form-control" placeholder="ระบุวันที่กรอกข้อมูล" autocomplete="off" data-date-format="yyyy-mm-dd" readonly>
-              </div> --}}
+                </div>
               <div class="col-xs-3">
                 <select id="name_of_vaccine" name="name_of_vaccine" class="form-control" style="width: 100%;">
                   <option class="badge filter badge-info" data-color="info" value="">ระบุวัคซีนที่ต้องการค้นหา</option>
@@ -53,7 +48,8 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
                   <option value="{{$row->ID}}">{{$row->VAC_NAME_EN}}</option>
                   @endforeach
                 </select>
-                  {{-- <input type="text" name="name_of_vaccine" class="form-control" placeholder=""> --}}
+                    </div>
+              <div class="col-xs-3">
               </div>
             </div>
             <!-- /.box-header -->
@@ -135,55 +131,55 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
 
                   <div class="progress-group">
                     <span class="progress-text">ภาคเหนือ</span>
-                    <span class="progress-number"><b>{{$count_north[0]->count_north}}</b> คน</span>
+                    <span class="progress-number"><b>{{$count_north}}</b> คน</span>
 
                     <div class="progress sm">
-                      <div class="progress-bar progress-bar-aqua" style="width: {{$count_north[0]->count_north}}px"></div>
+                      <div class="progress-bar progress-bar-aqua" style="width: {{$count_north}}px"></div>
                     </div>
                   </div>
                   <!-- /.progress-group -->
                   <div class="progress-group">
                     <span class="progress-text">ภาคตะวันออกเฉียงเหนือ</span>
-                    <span class="progress-number"><b>{{$count_northeast[0]->count_northeast}}</b> คน</span>
+                    <span class="progress-number"><b>{{$count_northeast}}</b> คน</span>
 
                     <div class="progress sm">
-                      <div class="progress-bar progress-bar-red" style="width: {{$count_northeast[0]->count_northeast}}px"></div>
+                      <div class="progress-bar progress-bar-red" style="width: {{$count_northeast}}px"></div>
                     </div>
                   </div>
                   <!-- /.progress-group -->
                   <div class="progress-group">
                     <span class="progress-text">ภาคตะวันตก</span>
-                    <span class="progress-number"><b>{{$count_western[0]->count_western}}</b> คน</span>
+                    <span class="progress-number"><b>{{$count_western}}</b> คน</span>
 
                     <div class="progress sm">
-                      <div class="progress-bar progress-bar-green" style="width: {{$count_western[0]->count_western}}px"></div>
+                      <div class="progress-bar progress-bar-green" style="width: {{$count_western}}px"></div>
                     </div>
                   </div>
                   <!-- /.progress-group -->
                   <div class="progress-group">
                     <span class="progress-text">ภาคกลาง</span>
-                    <span class="progress-number"><b>{{$count_central[0]->count_central}}</b> คน</span>
+                    <span class="progress-number"><b>{{$count_central}}</b> คน</span>
 
                     <div class="progress sm">
-                      <div class="progress-bar progress-bar-yellow" style="width: {{$count_central[0]->count_central}}px"></div>
+                      <div class="progress-bar progress-bar-yellow" style="width: {{$count_central}}px"></div>
                     </div>
                   </div>
                   <!-- /.progress-group -->
                   <div class="progress-group">
                     <span class="progress-text">ภาคตะวันออก</span>
-                    <span class="progress-number"><b>{{$count_eastern[0]->count_eastern}}</b> คน</span>
+                    <span class="progress-number"><b>{{$count_eastern}}</b> คน</span>
 
                     <div class="progress sm">
-                      <div class="progress-bar progress-bar-Tomato" style="width: {{$count_eastern[0]->count_eastern}}px"></div>
+                      <div class="progress-bar progress-bar-Tomato" style="width: {{$count_eastern}}px"></div>
                     </div>
                   </div>
                   <!-- /.progress-group -->
                   <div class="progress-group">
                     <span class="progress-text">ภาคใต้</span>
-                    <span class="progress-number"><b>{{$count_south[0]->count_south}}</b> คน</span>
+                    <span class="progress-number"><b>{{$count_south}}</b> คน</span>
 
                     <div class="progress sm">
-                      <div class="progress-bar progress-bar-orange" style="width: {{$count_south[0]->count_south}}px"></div>
+                      <div class="progress-bar progress-bar-orange" style="width: {{$count_south}}px"></div>
                     </div>
                   </div>
                 @elseif ($province == null && $name_of_vaccine != null)
@@ -196,7 +192,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
                         <thead>
                         <tr>
                           <th>อำเภอ/เขต</th>
-                          <th>อัตราของผู้ป่วย</th>
+                          <th>#</th>
                           <th>จำนวนผู้ป่วย</th>
                         </tr>
                         </thead>
@@ -358,7 +354,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
     <div class="col-md-6">
       <div class="box box-default">
         <div class="box-header with-border">
-          <h3 class="box-title">กราฟอัตราป่วยรายจังหวัด</h3>
+          <h3 class="box-title">จำนวนการรายงานผู้ป่วย AEFI จำแนกรายจังหวัด ของวัคซีน{{ isset($listvac_arr[$name_of_vaccine]) ?$listvac_arr[$name_of_vaccine]:"ทั้งหมด"}}</h3>
           <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
             </button>
@@ -398,17 +394,13 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
     <div class="col-md-6">
       <div class="box box-default">
         <div class="box-header with-border">
-          <h3 class="box-title">จำนวนของชนิดวัคซีนที่ผู้ป่วยได้รับ
+          <h3 class="box-title">จำนวนการรายงานผู้ป่วย AEFI จำแนกตามชนิดของวัคซีน
                  @if ($province == null)
                                             จังหวัดทั้งหมด
                                           @else
                                             จังหวัด{{ isset($listProvince[$province]) ?$listProvince[$province]:"ทั้งหมด"}}
                                           @endif
-                                          @if ($vac_list == null)
-
-                                          @else
-                                            วัคซีน{{ isset($listvac_arr[$name_of_vaccine]) ?$listvac_arr[$name_of_vaccine]:"ทั้งหมด"}}
-                                          @endif</h3>
+                                        </h3>
 
           <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -449,7 +441,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
     <div class="col-md-6">
       <div class="box box-default">
         <div class="box-header with-border">
-          <h3 class="box-title">กลุ่มอายุ ของผู้ป่วยทั้งหมดในปี {{$yearnow+543}}</h3>
+          <h3 class="box-title">จำนวนผู้ป่วยจำแนกตามกลุ่มอายุ ทั้งหมดในปี {{$yearnow+543}}</h3>
           @if ($province == null)
             ในจังหวัดทั้งหมด
           @else

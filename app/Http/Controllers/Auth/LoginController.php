@@ -80,6 +80,9 @@ class LoginController extends Controller
               case "admin-dpc":
               return redirect('index');
               break;
+              case "ddc":
+              return redirect('index');
+              break;
               default:
         				return redirect('logout');
         				break;

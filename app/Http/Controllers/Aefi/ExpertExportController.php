@@ -35,7 +35,7 @@ $selectgroupprov = DB::table('chospital_new')
 
 		$yearnow =  now()->year;
 		$selectcaselstF1=DB::table('aefi_form_1')
-		// ->join('aefi_form_1_vac', 'aefi_form_1.id_case', '=', 'aefi_form_1_vac.id_case')
+		->join('aefi_form_1_vac', 'aefi_form_1.id_case', '=', 'aefi_form_1_vac.id_case')
 		->join('expertmeeting', 'aefi_form_1.id_case', '=', 'expertmeeting.id_case')
 		->select('aefi_form_1.id',
 							'aefi_form_1.date_of_symptoms',
@@ -51,10 +51,10 @@ $selectgroupprov = DB::table('chospital_new')
 							'expertmeeting.causality',
 							'expertmeeting.summary',
 							'expertmeeting.expert_meet_date',
-							// 'aefi_form_1_vac.name_of_vaccine',
-							// 'aefi_form_1_vac.date_of_vaccination'
-		// DB::raw('GROUP_CONCAT( aefi_form_1_vac.name_of_vaccine)  as "name_of_vaccine",
-		// 		 		 GROUP_CONCAT( aefi_form_1_vac.date_of_vaccination   ) as "date_of_vaccination" ')
+							'aefi_form_1_vac.name_of_vaccine',
+							'aefi_form_1_vac.date_of_vaccination'
+		DB::raw('GROUP_CONCAT( aefi_form_1_vac.name_of_vaccine)  as "name_of_vaccine",
+				 		 GROUP_CONCAT( aefi_form_1_vac.date_of_vaccination   ) as "date_of_vaccination" ')
 						);
 	//->orwhere('aefi_form_1.date_entry',$datenow);
 		if (count($roleArr) > 0) {

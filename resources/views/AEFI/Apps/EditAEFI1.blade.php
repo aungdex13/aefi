@@ -874,6 +874,16 @@ foreach ($aecode as $value) {
         <div class="row">
           <div class="col-lg-4">
             <label>สถานที่รับวัคซีน (รพ./รพ.สต./คลินิก/ศูนย์บริการสาธารณสุข) :</label>
+            <select id="js-example-basic-single" name="hospcode_get_vac" class="js-example-basic-single form-control" data-dropdown-css-class="select2-danger" >
+            </select>
+          </div>
+        </div>
+      </div>
+      </br>
+        <div class="form-group">
+        <div class="row">
+          <div class="col-lg-4">
+            <label>สถานที่รับวัคซีน (รพ./รพ.สต./คลินิก/ศูนย์บริการสาธารณสุข) :</label>
             <select id="js-example-basic-single" name="hospcode_get_vac" class="js-example-basic-single form-control" data-dropdown-css-class="select2-danger">
               <option class="badge filter badge-info" data-color="info" value="{{$data[0]->hospcode_get_vac}}">
                 {{ isset($list_hos[$data[0]->hospcode_get_vac]) ? $list_hos[$data[0]->hospcode_get_vac]:"ไม่ระบุข้อมูล"}}

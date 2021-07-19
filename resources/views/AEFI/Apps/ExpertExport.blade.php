@@ -72,8 +72,8 @@ $arr_load_aefi_classification = load_aefi_classification();
                         <th>นามสกุล</th>
                         <th>เพศ</th>
         							  <th>จังหวัดที่รายงาน</th>
-                        {{-- <th>วัคซีนที่ได้รับ</th>
-                        <th>วันที่ได้รับวัคซีน</th> --}}
+                        <th>วัคซีนที่ได้รับ</th>
+                        <th>วันที่ได้รับวัคซีน</th>
         								<th>โรงพยาบาลที่เข้ารับรักษา</th>
 				                <th>การวินิจฉัยแรกรับของแพทย์</th>
                         <th>Final Diagnosis</th>
@@ -91,14 +91,14 @@ $arr_load_aefi_classification = load_aefi_classification();
                       <td>
                         <p style="text-align:center;">
                           {{date('Y',strtotime(isset($value->date_of_symptoms) ? $value->date_of_symptoms : "-"))}}-xxx
-                          {{-- {{str_pad( isset($value->name_of_vaccine) ? $value->name_of_vaccine : "NULL", 2, '0', STR_PAD_LEFT)}} --}}
+                          {{str_pad( isset($value->name_of_vaccine) ? $value->name_of_vaccine : "NULL", 2, '0', STR_PAD_LEFT)}}
                           -{{$value->id}}</p>
                       </td>
                         <td style="text-align: center; vertical-align: middle;" width="4%">{{ $value->first_name }}</td>
                         <td style="text-align: center; vertical-align: middle;" width="4%">{{ $value->sur_name }}</td>
                         <td>{{ $arr_gender[$value->gender] }}</td>
                         <td>{{ isset($listProvince[ $value->province_reported]) ?$listProvince[ $value->province_reported] : "ไม่ระบุข้อมูล"}}</td>
-                        {{-- <td>
+                        <td>
                           @php
                           $myStringvac = $value->name_of_vaccine ;
                           $myArrayvac = explode(',', $myStringvac);
@@ -115,7 +115,7 @@ $arr_load_aefi_classification = load_aefi_classification();
                           @foreach($myArraydate_of_vaccination as $valuevs)
                           {{ isset($valuevs) ? $valuevs: "ไม่ระบุข้อมูล" }}</br>
                           @endforeach
-                        </td> --}}
+                        </td>
                         <td>{{ isset($list_hos[ $value->hospcode_treat]) ? $list_hos[ $value->hospcode_treat] : ""}}</td>
                         <td>{{  isset($arr_r_o[$value->r_o]) ? $arr_r_o[$value->r_o] : ''}} {{ isset($value->other_r_o) ? $value->other_r_o : "" }}</td>
                         <td>{{  isset($arr_load_final_diag[$value->final_diag]) ? $arr_load_final_diag[$value->final_diag] : ''}} {{ isset($value->other_final_diag) ? $value->other_final_diag : "" }}</td>
