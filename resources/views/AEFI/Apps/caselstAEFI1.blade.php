@@ -126,7 +126,7 @@
         @endif
       </p>
     @endif --}}
-        <table class="table table-bordered" id="case_lst" class="display" style="width:100%">
+        <table class="table table-bordered" id="case_lst" class="display" style="overflow: scroll;">
           <thead>
             <tr>
               <th hidden>ID</th>

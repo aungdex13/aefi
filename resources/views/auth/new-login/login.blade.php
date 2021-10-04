@@ -7,6 +7,8 @@
 <!-- SweetAlert2 -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.1/css/bulma.min.css" rel="stylesheet">
+<link href="https://cdn.datatables.net/1.11.1/css/dataTables.bulma.min.css" rel="stylesheet">
 </head>
 <style>
 /* Credit to bootsnipp.com for the css for the color graph */
@@ -58,6 +60,175 @@
     	</div>
     </div>
   </br>
+  <!-- Main content -->
+    <section class="content">
+  <div class="row">
+          <div class="col-xs-12">
+            <div class="box">
+              <div class="box-header">
+                <h3 class="box-title">เอกสารดาวน์โหลด</h3>
+              </div>
+              <!-- /.box-header -->
+              <div class="box-body">
+                <table id="example" class="table is-striped" style="width:100%">
+                  <thead>
+                      <tr>
+                          <th>รายชื่อเอกสาร</th>
+
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                          <td>
+                            <a href="https://apps.doe.moph.go.th/boe/software/file/AW_AEFI%20WEB_25Oct2020.pdf" target="_blank">
+                                <div class="caption">
+                                    <p>แนวทางการเฝ้าระวังและตอบโต้เหตุการณ์ไม่พึงประสงค์ภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรคของประเทศไทย</p>
+                                </div>
+                            </a>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td>          <a href="https://apps.doe.moph.go.th/boe/software/file/AEFI_1.pdf" target="_blank">
+                                      <div class="caption">
+                                        <p>แบบรายงานอาการภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรค (AEFI1)</p>
+                                      </div>
+                                    </a>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td>          <a href="https://apps.doe.moph.go.th/boe/software/file/AEFI_2.pdf" target="_blank">
+                                      <div class="caption">
+                                        <p>แบบสอบสวนอาการภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรค (AEFI2)</p>
+                                      </div>
+                                    </a>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td>
+                            <a href="https://apps.doe.moph.go.th/boe/software/file/aefi_system_manual.pdf" target="_blank">
+                                      <div class="caption">
+                                        <p>คู่มือการใช้งานระบบรายงานอาการภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรค (AEFI)</p>
+                                      </div>
+                                    </a>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td>
+                            <a href="https://online.pubhtml5.com/nqwl/vxcg/#p=1" target="_blank">
+                                      <div class="caption">
+                                        <p>แนวทางการให้วัคซีน โควิด 19 ในสถสนการณ์การระบาดปี64 ของประเทศไทย</p>
+                                      </div>
+                                    </a>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td>
+                            <a href="https://apps.doe.moph.go.th/boe/software/file/ISRR_25Apr2021.pdf" target="_blank">
+                                      <div class="caption">
+                                        <p>แนวทางปฏิบัติสำหรับอาการไม่พึงประสงค์หลังการได้รับวัคซีนป้องกันโรค
+                            กรณีปฏิกิริยาที่สัมพันธ์กับ ความเครียดจากการฉีดวัคซีน กลุ่มอาการคล้ายภาวะหลอดเลือดสมอง</p>
+                                      </div>
+                                    </a>
+                            </td>
+                      </tr>
+                      <tr>
+                          <td>
+                            <a href="https://apps.doe.moph.go.th/boe/software/file/aefi_covid19_06.pdf" target="_blank">
+                                      <div class="caption">
+                                        <p>เหตุการณ์ไม่พึงประสงค์ภายหลังได้รับวัคซีนโควิด 19 </p>
+                                      </div>
+                                    </a>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td>
+                            <a href="https://apps.doe.moph.go.th/boe/software/file/aefi_hz.pdf" target="_blank">
+                                      <div class="caption">
+                                        <p>รายงานผู้ป่วยงูสวัดตามหลังการฉีดวัคซีนป้องกันโควิด-19 ชนิดต่างๆ</p>
+                                      </div>
+                                    </a>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td>
+                              <a href="https://apps.doe.moph.go.th/boe/software/file/aefi_thrombosis.pdf" target="_blank">
+                                      <div class="caption">
+                                        <p>ภาวะการเกิดลิ่มเลือดอุดตันในปอดกับวัคซีนโควิด 19</p>
+                                      </div>
+                              </a>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td>
+                             <a href="https://apps.doe.moph.go.th/boe/software/file/aefi_arteriovenous.pdf" target="_blank">
+                                      <div class="caption">
+                                        <p>ภาวะผิดปกติที่หลอดเลือดแดงต่อกับหลอดเลือดดำ</p>
+                                      </div>
+                              </a>
+                            </td>
+                      </tr>
+                      <tr>
+                          <td>
+                            <a href="https://apps.doe.moph.go.th/boe/software/file/Guideline_AEFI_COVID19vaccine_DOE_17062021.pdf" target="_blank">
+                            <div class="caption">
+                              <p>แนวทางการเฝ้าระวังและสอบสวนเหตุการณ์ไม่พึงประสงค์ภายหลังได้รับวัคซีนป้องกันโรคโควิด-19</p>
+                            </div>
+                          </a>
+                        </td>
+                      </tr>
+                      <tr>
+                          <td>
+                            <a href="https://apps.doe.moph.go.th/boe/software/file/ISRR_25Apr2021.pdf" target="_blank">
+                            <div class="caption">
+                              <p>แนวทางปฏิบัติสำหรับอาการไม่พึงประสงค์หลังการได้รับวัคซีนป้องกันโรค
+                  กรณีปฏิกิริยาที่สัมพันธ์กับ ความเครียดจากการฉีดวัคซีน กลุ่มอาการคล้ายภาวะหลอดเลือดสมอง</p>
+                            </div>
+                          </a>
+                        </td>
+                      </tr>
+                      <tr>
+                          <td>
+                            <a href="https://apps.doe.moph.go.th/boe/software/file/Vaccine induced myocarditis_Jul29_2021_Final_v2.pdf" target="_blank">
+                            <div class="caption">
+                              <p>ภาวะกล้ามเนื้อหัวใจและเยื่อหุ้มหัวใจอักเสบที่เกิดจากวัคซีนโควิด 19 ชนิดเอ็มอาร์เอ็นเอ</p>
+                            </div>
+                          </a>
+                        </td>
+                      </tr>
+                      <tr>
+                          <td><a href="https://apps.doe.moph.go.th/boe/software/file/Vaccine induced_Immune_Thrombotic Thrombocytopenia_Thrombosis_with_Thrombocytopenia_Syndrome.pdf" target="_blank">
+                              <div class="caption">
+                                <p>ภาวะลิ่มเลือดอุดตันที่ร่วมกับเกล็ดเลือดต่ำภายหลังได้รับวัคซีน
+                  Vaccine-induced Immune Thrombotic Thrombocytopenia (VITT)
+                  Thrombosis with Thrombocytopenia Syndrome (TTS)</p>
+                              </div>
+                            </a>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td> <a href="https://apps.doe.moph.go.th/boe/software/file/aefi_d_a_v_Final_06082021.pdf" target="_blank">
+                            <div class="caption">
+                              <p>กรณีการเสียชีวิตหลังได้รับวัคซีนโควิด 19 สลับชนิดที่ จ.ประจวบคีรีขันธ์</p>
+                            </div>
+                          </a>
+                        </td>
+                      </tr>
+                      <tr>
+                          <td>
+                            <a href="https://apps.doe.moph.go.th/boe/software/file/Final_poster%20myocarditis_v9_03092021.pdf" target="_blank">
+                            <div class="caption">
+                              <p>โปสเตอร์ภาวะกล้ามเนื้อหัวใจและเยื่อหุ้มหัวใจอักเสบที่เกิดจากวัคซีนโควิด 19 ชนิดเอ็มอาร์เอ็นเอ</p>
+                            </div>
+                          </a>
+                        </td>
+                      </tr>
+                  </tbody>
+              </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        </section>
     <div class="row" style="margin-top:5px;">
       <h2>เอกสารดาวน์โหลด</h2>
       <div class="col-md-2">
@@ -175,7 +346,8 @@
 </div>
 <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-
+<script src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.1/js/dataTables.bulma.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function () {
   @if ($message = Session::get('error'))
@@ -186,6 +358,10 @@ $(document).ready(function () {
     });
   @endif
 });
+
+$(document).ready(function() {
+    $('#example').DataTable();
+} );
 </script>
 </body>
 </html>

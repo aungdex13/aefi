@@ -1,2649 +1,1561 @@
 @extends('AEFI.layout.template')
+{{-- <style>
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 200%;
+    border: 1px solid #ddd;
+  }
+
+  th,
+  td {
+    width: 500px;
+    font-size: 12px;
+    text-align: left;
+    padding: 8px;
+  }
+
+</style> --}}
+
 @section('content')
 <section class="content-header">
 
-<!-- Content Header (Page header) -->
-<?php
+  <!-- Content Header (Page header) -->
+  <?php
 
-$arr_history_of_vaccine = load_history_of_vaccine();
-$arr_patient_develop_symptoms_after_previous_vaccination = load_patient_develop_symptoms_after_previous_vaccination();
-$arr_underlying_disease = load_underlying_disease();
-$arr_vaccine_volume = load_vaccine_volume();
-$arr_route_of_vaccination = load_route_of_vaccination();
-$arr_vaccination_site = load_vaccination_site();
-$arr_manufacturer = load_manufacturer();
-$arr_provinces = load_provinces();
+    $arr_history_of_vaccine = load_history_of_vaccine();
+    $arr_patient_develop_symptoms_after_previous_vaccination = load_patient_develop_symptoms_after_previous_vaccination();
+    $arr_underlying_disease = load_underlying_disease();
+    $arr_vaccine_volume = load_vaccine_volume();
+    $arr_route_of_vaccination = load_route_of_vaccination();
+    $arr_vaccination_site = load_vaccination_site();
+    $arr_manufacturer = load_manufacturer();
+    $arr_provinces = load_provinces();
  ?>
-<h1>
-  แบบรายงานอาการภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรค
-  <small>AEFI</small>
-</h1>
-{{-- @php
+  <h1>
+    แบบรายงานอาการภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรค
+    <small>AEFI</small>
+  </h1>
+  {{-- @php
 	dd($groupproduct);
 @endphp --}}
-{{-- @php
+  {{-- @php
 // dd($aecode);
 foreach ($aecode as $value) {
     echo $value->AENAMETHA;
 }
 @endphp --}}
-<ol class="breadcrumb">
+  <style>
+    #customers {
+      font-family: Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      width: 200%;
+    }
 
-</ol>
+    #customers td,
+    #customers th {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
 
+    #customers tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    #customers tr:hover {
+      background-color: #ddd;
+    }
+
+    #customers th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #4CAF50;
+      color: white;
+    }
+  </style>
 </section>
 <!-- Main content -->
 <section class="content">
-	<!-- Custom Tabs -->
-	<div class="row">
-	  <div class="col-md-12">
-		<!-- Custom Tabs -->
-		<div class="nav-tabs-custom">
-		  <ul class="nav nav-tabs">
-		<li class="active"><a href="#tab_1" data-toggle="tab">(1)ข้อมูลผู้ป่วย</a></li>
-		<li><a href="#tab_2" data-toggle="tab">(2)ข้อมูลวัคซีน / สถานที่รับวัคซีน</a></li>
-		<li><a href="#tab_3" data-toggle="tab">(3)อาการภายหลังได้รับการสร้างภูมิคุ้มกันโรค<br>และวินิจฉัยข้อมูลการให้บริการวัคซีนใน</a></li>
-		<li><a href="#tab_4" data-toggle="tab">(4)การตัดสินใจว่ามีความจำเป็นที่จะสอบสวน</a></li>
-		<li><a href="#tab_5" data-toggle="tab">(5) ข้อมูลผู้รายงาน<br>สถานที่เกิดเหตุการณ์<br>และหน่วยงานที่รายงาน</a></li>
-	  </ul>
-	  <div class="tab-content">
-		<div class="tab-pane active" id="tab_1">
-			<div class="box box-danger">
-				<div class="box-header with-border">
-				<h3 class="box-title">(1)ข้อมูลผู้ป่วย</h3>
-				</div>
-				<div class="box-body">
-				  {{-- คอรั่มภายใน3.1 --}}
-				  <div class="col-md-12">
-				  <!-- general form elements -->
-				  <div class="box box-danger">
-					  <div class="box-header with-border">
-					  <!-- checkbox3.1.1 -->
-					  <!-- ประวัติประวัติการแพ้วัคซีน -->
-					  <div class="form-group">
-									<div class="row">
-											<div class="col-sm-3 control-label">
-											<label>เลขที่ผู้ป่วย:</label>
-											</div>
-										<div class="col-lg-4">
-											<input type="text" id="hn" name="hn" class="form-control" placeholder="HN">
-										</div>
-										<div class="col-lg-4">
-										<input type="text" id="an" name="an" class="form-control" placeholder="AN">
-										</div>
-									</div>
-								</div>
+  <form role="form" action="{{ route('insertform1') }}" method="post">
+    {{ csrf_field() }}
+    <div class="row">
+      <!--หัวข้อที่5 -->
+      <div class="col-md-12">
+        <!-- general form elements -->
+        <div class="box box-danger">
+          <div class="box-header with-border">
+            <h3 class="box-title">(1)ข้อมูลผู้ป่วย</h3>
+          </div>
+          <!-- /.box-header -->
+          <!-- form start -->
 
-								<!-- เลขบัตรประชาชน -->
-								<div class="form-group">
-									<div class="row">
-										<div class="col-lg-3">
-											<div class="control-label">
-												<label>เลขประจำตัวบัตรประชาชน:</label>
-											</div>
-										</div>
-										<div class="col-lg-7">
-												<input type="text" id="id_number" name="id_number" class="form-control"  data-inputmask='"mask": "9   9999   99999   99   9"' data-mask>
-										</div>
-									</div>
-								</div>
-								<!-- /.form group -->
+          @php
+          $rannumlet = substr(sha1(mt_rand()),17,6);
+          $randate = date('ymd');
+          $id_case = $randate.$rannumlet;
+          // echo $id_case;
+          @endphp
+          <div class="box-body">
+            {{-- คอรั่มภายใน3.2 --}}
+            <div class="col-md-6">
+              <!-- general form elements -->
+              <div class="box box-danger">
+                <div class="box-header with-border">
+                  <!-- checkbox3.2.1 -->
+                  <div class="form-group">
+                    <div class="col-md-12">
+                      <label>
+                        ประเมินสาเหตุเบื้องต้น
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+                <div class="box-body">
+                  {{-- input content --}}
+                  <div class="box-body">
 
-							<!-- คำนำหน้าชื่อ -->
-							<div class="form-group">
-								<div class="row">
-									<div class="col-lg-3">
-										<label>คำนำหน้า:</label>
-									</div>
-									<div class="col-lg-3">
-										<input type="text" id="title_name" name="title_name" class="form-control" placeholder="คำนำหน้าชื่อ">
-									<!-- /.p_id tname  -->
-									</div>
-								</div>
-							</div>
-								<!-- /.form group -->
-								<!-- ชื่อ -->
-							<div class="form-group">
-								<div class="row">
-									<div class="col-lg-3">
-										<label>ชื่อ-สกุล:</label>
-									</div>
-									<div class="col-lg-4">
-										<input type="text" id="first_name" class="form-control" placeholder="ชื่อ">
-									<!-- /input-group -->
-									</div>
-									<!-- /.col-lg-6 -->
-									<div class="col-lg-4">
-										<input type="text" id="sur_name" class="form-control" placeholder="นามสกุล">
-									<!-- /input-group -->
-									</div>
-									<!-- /.col-lg-6 -->
-								</div>
-							</div>
+                    <!-- เลขที่ผู้ป่วย -->
+                    <input type="hidden" id="id_case" name="id_case" value="<?php echo $id_case; ?>" class="form-control">
+                    <div class="form-group">
+                      <div class="row">
+                        <div class="col-sm-3 control-label">
+                          <label>เลขที่ผู้ป่วย:</label>
+                        </div>
+                        <input type="hidden" id="user_username" name="user_username" value="{{auth()->user()->username}}" class="form-control" >
+                        <input type="hidden" id="user_hospcode" name="user_hospcode" value="{{auth()->user()->hospcode}}" class="form-control" >
+                        <input type="hidden" id="user_provcode" name="user_provcode" value="{{auth()->user()->prov_code}}" class="form-control" >
+                        <input type="hidden" id="user_region" name="user_region" value="{{auth()->user()->region}}" class="form-control" >
+                        <div class="col-lg-4">
+                          <input type="text" id="hn" name="hn" class="form-control" placeholder="HN">
+                        </div>
+                        <div class="col-lg-4">
+                          <input type="text" id="an" name="an" class="form-control" placeholder="AN">
+                        </div>
+                      </div>
+                    </div>
 
-							<!-- เพศ -->
-							<div class="form-group">
-									<div class="row">
-										<div class="col-lg-3">
-											<div class="control-label">
-											<label>เพศ:</label>
-											</div>
-										</div>
-										<div class="col-lg-2">
-											<div class="radio">
-												<label>
-												<input type="radio" name="gender" id="optionsRadios1" value="1" checked>
-												ชาย
-												</label>
-											</div>
-										</div>
-										<div class="col-lg-2">
-											<div class="radio">
-												<label>
-												<input type="radio" name="gender" id="optionsRadios2" value="2">
-												หญิง
-												</label>
-											</div>
-										</div>
-									</div>
-								</div>
+                    <!-- เลขบัตรประชาชน -->
+                    <div class="form-group">
+                      <div class="row">
+                        <div class="col-lg-3">
+                          <div class="control-label">
+                            <label>เลขประจำตัวบัตรประชาชน:</label>
+                          </div>
+                        </div>
+                        <div class="col-lg-7">
+                          <input type="text" id="id_number" name="id_number" class="form-control" data-inputmask='"mask": "9999999999999"' data-mask>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- /.form group -->
 
-									<!-- วันเดือนปีเกิด -->
-									<div class="form-group">
-										<div class="row">
-											<div class="col-lg-3">
-												<label>วันเดือนปีเกิด:</label>
-											</div>
-											<div class="col-lg-9">
-												<div class="input-group date">
-													<div class="input-group-addon">
-														<i class="fa fa-calendar"></i>
-													</div>
-													<input type="text" name="birthdate" class="form-control pull-right" id="datepicker_bdate">
-												</div>
-											</div>
-										</div>
-									</div>
+                    <!-- คำนำหน้าชื่อ -->
+                    <div class="form-group">
+                      <div class="row">
+                        <div class="col-lg-3">
+                          <label>
+                            <font style="color:red;">*</font> คำนำหน้า:
+                          </label>
+                        </div>
+                        <div class="col-lg-4">
+                          <select type="text" class="form-control" id="title_name" name="title_name" required onchange="showDiv1('hidden_div1', this)">
+                            <option value="">กรุณาเลือก</option>
+                            {{-- < ?php foreach ($mas_title_th as $key_title => $value_title) : ?> --}}
+                            {{-- } --}}
+                            <option value="1">นาย</option>
+                            <option value="2">นางสาว</option>
+                            <option value="3">นาง</option>
+                            <option value="4">ด.ช.</option>
+                            <option value="5">ด.ญ.</option>
+                            <option value="99">อื่นๆ</option>
+                            {{-- < ?php endforeach; ?> --}}
+                          </select>
+                          {{-- <input type="text" id="title_name" name="title_name" class="form-control" placeholder="คำนำหน้าชื่อ"> --}}
+                          <!-- /.p_id tname  -->
+                        </div>
+                        <div class="col-lg-4" id="hidden_div1" style="display: none;">
+                          <input type="text" id="title_name_other" name="title_name_other" class="form-control" placeholder="คำนำหน้าชื่ออื่นๆ">
+                          {{-- <input type="text" id="title_name" name="title_name" class="form-control" placeholder="คำนำหน้าชื่อ"> --}}
+                          <!-- /.p_id tname  -->
+                        </div>
+                      </div>
+                    </div>
+                    <!-- /.form group -->
+                    <!-- ชื่อ -->
+                    <div class="form-group">
+                      <div class="row">
+                        <div class="col-lg-3">
+                          <label>ชื่อ-สกุล:</label>
+                        </div>
+                        <div class="col-lg-4">
+                          <input type="text" id="first_name" name="first_name" class="form-control" placeholder="ชื่อ">
+                          <!-- /input-group -->
+                        </div>
+                        <!-- /.col-lg-6 -->
+                        <div class="col-lg-4">
+                          <input type="text" id="sur_name" name="sur_name" class="form-control" placeholder="นามสกุล">
+                          <!-- /input-group -->
+                        </div>
+                        <!-- /.col-lg-6 -->
+                      </div>
+                    </div>
+                    <!-- เพศ -->
+                    <div class="form-group">
+                      <div class="row">
+                        <div class="col-lg-3">
+                          <div class="control-label">
+                            <label>เพศ:</label>
+                          </div>
+                        </div>
+                        <div class="col-lg-2">
+                          <div class="radio">
+                            <label>
+                              <input type="radio" name="gender" id="optionsRadios" value="" >
+                              ไม่ระบุ
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-lg-2">
+                          <div class="radio">
+                            <label>
+                              <input type="radio" name="gender" id="optionsRadios1" value="1">
+                              ชาย
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-lg-2">
+                          <div class="radio">
+                            <label>
+                              <input type="radio" name="gender" id="optionsRadios2" value="2">
+                              หญิง
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
 
-										<!-- /.form group -->
-								<div class="form-group">
-										<!-- ชื่อ -->
-									<div class="row">
-										<div class="col-lg-3">
-											<label>อายุขณะป่วย:</label>
-										</div>
-										<div class="col-lg-3">
-											<input type="text" id="age_while_sick_year" class="form-control" placeholder="ปี">
-											<!-- /input-group -->
-										</div>
-											<!-- /.col-lg-4 -->
-										<div class="col-lg-3">
-											<input type="text" id="age_while_sick_month" class="form-control" placeholder="เดือน">
-											<!-- /input-group -->
-										</div>
-											<!-- /.col-lg-4 -->
-											<div class="col-lg-3">
-											<input type="text" id="age_while_sick_day" class="form-control" placeholder="วัน">
-											<!-- /input-group -->
-										</div>
-								</div>
-								</div>
+                    <!-- วันเดือนปีเกิด -->
+                    <div class="form-group">
+                      <div class="row">
+                        <div class="col-lg-3">
+                          <label>
+                            <font style="color:red;">*</font> วันเดือนปีเกิด:
+                          </label>
+                        </div>
+                        <div class="col-lg-9">
+                          <div class="input-group date">
+                            <div class="input-group-addon">
+                              <i class="fa fa-calendar"></i>
+                            </div>
+                            <input type="text" name="birthdate" class="form-control pull-right" id="datepicker_bdate" data-date-format="yyyy-mm-dd" required readonly>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
 
-							<!-- กลุ่มอายุ -->
-								<div class="form-group">
-									<div class="row">
-										<div class="col-lg-3">
-											<div class="control-label">
-											<label>กลุ่มอายุ:</label>
-											</div>
-										</div>
-										<div class="col-lg-2">
-											<div class="radio">
-												<label>
-												<input type="radio" name="group_age" id="G_age" value="1" checked>
-												< 1 ปี
-												</label>
-											</div>
-										</div>
-										<div class="col-lg-2">
-											<div class="radio">
-												<label>
-												<input type="radio" name="group_age" id="G_age" value="2">
-												1-5 ปี
-												</label>
-											</div>
-										</div>
-										<div class="col-lg-2">
-											<div class="radio">
-												<label>
-												<input type="radio" name="group_age" id="G_age" value="3">
-												> 5 ปี
-												</label>
-											</div>
-										</div>
-									</div>
-								</div>
+                    <!-- /.form group -->
+                    <div class="form-group">
+                      <!-- ชื่อ -->
+                      <div class="row">
+                        <div class="col-lg-3">
+                          <label>อายุขณะป่วย:</label>
+                        </div>
+                        <div class="col-lg-3">
+                          <input type="text" id="age_while_sick_year" name="age_while_sick_year" class="form-control" placeholder="ปี">
+                          <!-- /input-group -->
+                        </div>
+                        <!-- /.col-lg-4 -->
+                        <div class="col-lg-3">
+                          <input type="text" id="age_while_sick_month" name="age_while_sick_month" class="form-control" placeholder="เดือน">
+                          <!-- /input-group -->
+                        </div>
+                        <!-- /.col-lg-4 -->
+                        <div class="col-lg-3">
+                          <input type="text" id="age_while_sick_day" name="age_while_sick_day" class="form-control" placeholder="วัน">
+                          <!-- /input-group -->
+                        </div>
+                      </div>
+                    </div>
 
-							<!-- เชื้อชาติ -->
-								<div class="form-group">
-									<div class="row">
-									<div class="col-lg-3">
-											<div class="control-label">
-											<label>เชื้อชาติ:</label>
-											</div>
-										</div>
-										<div class="col-lg-2">
-											<div class="radio">
-												<label>
-												<input type="radio" name="nationality" value="1" checked>
-												ไทย
-												</label>
-											</div>
-										</div>
-										<div class="col-lg-2">
-											<div class="radio">
-												<label>
-												<input type="radio" name="nationality" value="2" >
-												พม่า
-												</label>
-											</div>
-										</div>
-										<div class="col-lg-2">
-											<div class="radio">
-												<label>
-												<input type="radio" name="nationality" value="3" >
-												ลาว
-												</label>
-											</div>
-										</div>
-										<div class="col-lg-2">
-											<div class="radio">
-												<label>
-												<input type="radio" name="nationality" value="4">
-												อื่นๆ
-												</label>
-											</div>
-										</div>
-										<div class="col-lg-4">
-											<div id="other_nationality" style="display: none">
-											<input type="text" id="other_nationality_text" name="other_nationality" class="form-control" placeholder="ระบุสัญชาติ" hidden="true">
-											</div>
-										</div>
-									</div>
-								</div>
-							<!-- ประเภทผู้ป่วย -->
-							<div class="form-group">
-								<div class="row">
-									<div class="col-lg-3">
-										<div class="control-label">
-										<label>ประเภทผู้ป่วย:</label>
-										</div>
-									</div>
-									<div class="col-lg-2">
-										<div class="radio">
-											<label>
-											<input type="radio" name="type_of_patient" id="type_of_patient" value="1" checked>
-											ผู้ป่วยใน
-											</label>
-										</div>
-									</div>
-									<div class="col-lg-2">
-										<div class="radio">
-											<label>
-											<input type="radio" name="type_of_patient" id="type_of_patient" value="2">
-											ผู้ป่วยนอก
-											</label>
-										</div>
-									</div>
-								</div>
-							</div>
-					</div>
-			</div>
-			<!-- /.box-body -->
-			</div>
+                    <!-- กลุ่มอายุ -->
+                    <div class="form-group">
+                      <div class="row">
+                        <div class="col-lg-3">
+                          <div class="control-label">
+                            <label>กลุ่มอายุ:</label>
+                          </div>
+                        </div>
+                        <div class="col-lg-2">
+                          <div class="radio">
+                            <label>
+                              <input type="radio" name="group_age" value="" >
+                              ไม่ระบุ
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-lg-2">
+                          <div class="radio">
+                            <label>
+                              <input type="radio" name="group_age" id="G_age1" value="1">
+                              < 1 ปี </label> </div> </div> <div class="col-lg-2">
+                                <div class="radio">
+                                  <label>
+                                    <input type="radio" name="group_age" id="G_age2" value="2">
+                                    1-5 ปี
+                                  </label>
+                                </div>
+                          </div>
+                          <div class="col-lg-2">
+                            <div class="radio">
+                              <label>
+                                <input type="radio" name="group_age" id="G_age3" value="3">
+                                > 5 ปี
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
 
-		</div>
-		<!-- /.box -->
-		{{-- คอรั่มภายใน3.1 --}}
-		<div class="col-md-6">
-		<!-- general form elements -->
-		<div class="box box-danger">
-			<div class="box-header with-border">
-			<!-- checkbox1.2.1 -->
-				<!-- ประวัติประวัติการแพ้วัคซีน -->
-				<div class="form-group">
-					<div class="row">
-						<div class="col-lg-12">
-							<div class="control-label">
-							<label>ประวัติการแพ้วัคซีน :</label>
-							</div>
-						</div>
-						<div class="col-lg-3">
-							<div class="radio">
-								<label>
-								<input type="radio" name="history_of_vaccine_drug_allergies_of_patient" value="1" checked>
-								ไม่มี
-								</label>
-							</div>
-						</div>
-						<div class="col-lg-3">
-							<div class="radio">
-								<label>
-								<input type="radio" name="history_of_vaccine_drug_allergies_of_patient" value="2">
-								มี
-								</label>
-							</div>
-						</div>
-						<div class="col-lg-12">
-							<div id="other_vaccination_history" style="display: none">
-								<label>วัคซีนที่แพ้ :</label>
-							<select id="other_vaccination_history_text" name="other_vaccination_history" class="form-control select2" style="width: 100%;">
-							  <?php
-								  foreach ($arr_history_of_vaccine as $k=>$v) { ?>
-									  <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
-							  <?php } ?>
-							</select>
-							<label>ยาที่แพ้ :</label>
-								<input type="text" name="other_drug_history" id="other_secymptoms_after_vaccination_text" class="form-control" placeholder="ระบุ" hidden="true">
-							</div>
-						</div>
-					</div>
-				</div>
-					<!-- อาการหลังได้รับวัคซีน -->
-					<div class="form-group">
-						<div class="row">
-							<div class="col-lg-12">
-								<div class="control-label">
-								<label>อาการหลังได้รับวัคซีน :</label>
-								</div>
-							</div>
-							<div class="col-lg-3">
-								<div class="radio">
-									<label>
-									<input type="radio" name="patient_develop_symptoms_after_previous_vaccination" value="1" checked>
-									ไม่มี
-									</label>
-								</div>
-							</div>
-							<div class="col-lg-3">
-								<div class="radio">
-									<label>
-									<input type="radio" name="patient_develop_symptoms_after_previous_vaccination" value="2">
-									มี
-									</label>
-								</div>
-							</div>
-							<div class="col-lg-12">
-								<div id="other_patient_develop_symptoms_after_previous_vaccination" style="display: none">
-									<label>วัคซีนที่แพ้ :</label>
-								<select id="other_patient_develop_symptoms_after_previous_vaccination_text" name="other_patient_develop_symptoms_after_previous_vaccination" class="form-control select2" style="width: 100%;">
-									<?php
-									  foreach ($arr_patient_develop_symptoms_after_previous_vaccination as $k=>$v) { ?>
-										  <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
-								  <?php } ?>
-								</select>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- โรคประจำตัว/การเจ็บป่วยในอดีต -->
-					<div class="form-group">
-						<div class="row">
-							<div class="col-lg-12">
-								<div class="control-label">
-								<label>โรคประจำตัว/การเจ็บป่วยในอดีต :</label>
-								</div>
-							</div>
-							<div class="col-lg-3">
-								<div class="radio">
-									<label>
-									<input type="radio" name="underlying_disease" value="1" checked>
-									ไม่มี
-									</label>
-								</div>
-							</div>
-							<div class="col-lg-3">
-								<div class="radio">
-									<label>
-									<input type="radio" name="underlying_disease" value="2">
-									มี
-									</label>
-								</div>
-							</div>
-							<div class="col-lg-12">
-								<div id="other_underlying_disease" style="display: none">
-									<select id="other_underlying_disease_text" name="other_underlying_disease" class="form-control select2" style="width: 100%;">
-										<?php
-										  foreach ($arr_underlying_disease as $k=>$v) { ?>
-											  <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
-									  <?php } ?>
-									</select>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- ประวัติการแพ้วัคซีน/ยา -->
-					<div class="form-group">
-						<div class="row">
-							<div class="col-lg-12">
-								<div class="control-label">
-								<label>ประวัติการใช้ยาในรอบ1เดือน :</label>
-								</div>
-							</div>
-							<div class="col-lg-3">
-								<div class="radio">
-									<label>
-									<input type="radio" name="history_of_drug_use_within_1_month_before_getting_vaccination" value="1" checked>
-									ไม่มี
-									</label>
-								</div>
-							</div>
-							<div class="col-lg-3">
-								<div class="radio">
-									<label>
-									<input type="radio" name="history_of_drug_use_within_1_month_before_getting_vaccination" value="2">
-									มี
-									</label>
-								</div>
-							</div>
-							<div class="col-lg-12">
-								<div id="other_history_of_drug_use_within_1_month_vaccination" style="display: none">
-								<input type="text" id="other_history_of_drug_use_within_1_month_vaccination_text" class="form-control" placeholder="ระบุ" hidden="true">
-								</div>
-							</div>
-						</div>
-					</div>
-			</div>
-			<!-- /.box-header -->
-			<!-- form start -->
+                      <!-- เชื้อชาติ -->
+                      <div class="form-group">
+                        <div class="row">
+                          <div class="col-lg-3">
+                            <div class="control-label">
+                              <label>เชื้อชาติ:</label>
+                            </div>
+                          </div>
+                          <div class="col-lg-2">
+                            <div class="radio">
+                              <label>
+                                <input type="radio" name="nationality" id="optionsRadios" value="" >
+                                ไม่ระบุ
+                              </label>
+                            </div>
+                          </div>
+                          <div class="col-lg-2">
+                            <div class="radio">
+                              <label>
+                                <input type="radio" name="nationality" value="1">
+                                ไทย
+                              </label>
+                            </div>
+                          </div>
+                          <div class="col-lg-2">
+                            <div class="radio">
+                              <label>
+                                <input type="radio" name="nationality" value="2">
+                                พม่า
+                              </label>
+                            </div>
+                          </div>
+                          <div class="col-lg-2">
+                            <div class="radio">
+                              <label>
+                                <input type="radio" name="nationality" value="3">
+                                ลาว
+                              </label>
+                            </div>
+                          </div>
+                          <div class="col-lg-3">
 
-			<div class="box-body">
-					{{-- input content --}}
-					<div class="form-group">
-						<div class="col-lg-12">
-							  <label>ประวัติทางการแพทย์</label>
-							  <textarea class="form-control" name="other_medical_history" rows="3" placeholder="..."></textarea>
-						</div>
-					</div>
-			</div>
-			<!-- /.box-body -->
+                          </div>
+                          <div class="col-lg-2">
+                            <div class="radio">
+                              <label>
+                                <input type="radio" name="nationality" value="4">
+                                อื่นๆ
+                              </label>
+                            </div>
+                          </div>
+                          <div class="col-lg-4">
+                            <div id="other_nationality_d" style="display: none">
+                              <input type="text" id="other_nationality_text" name="other_nationality" class="form-control" placeholder="ระบเชื้อชาติ" hidden="true">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- ประเภทผู้ป่วย -->
+                      <div class="form-group">
+                        <div class="row">
+                          <div class="col-lg-3">
+                            <div class="control-label">
+                              <label>ประเภทผู้ป่วย:</label>
+                            </div>
+                          </div>
+                          <div class="col-lg-2">
+                            <div class="radio">
+                              <label>
+                                <input type="radio" name="type_of_patient" id="optionsRadios" value="" >
+                                ไม่ระบุ
+                              </label>
+                            </div>
+                          </div>
+                          <div class="col-lg-2">
+                            <div class="radio">
+                              <label>
+                                <input type="radio" name="type_of_patient" id="type_of_patient1" value="1">
+                                ผู้ป่วยใน
+                              </label>
+                            </div>
+                          </div>
+                          <div class="col-lg-2">
+                            <div class="radio">
+                              <label>
+                                <input type="radio" name="type_of_patient" id="type_of_patient2" value="2">
+                                ผู้ป่วยนอก
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- อาชีพ -->
+                      <div class="form-group">
+                        <div class="row">
+                          <div class="col-lg-3">
+                            <label>
+                               <font style="color:red;">*</font>อาชีพ:
+                            </label>
+                          </div>
+                          <div class="col-lg-6">
+                            <div class="input-group date">
+                              <div class="input-group-addon">
+                                {{-- <i class="fa fa-calendar"></i> --}}
+                              </div>
+                              <input type="text" name="career" class="form-control" id="career" placeholder="อาชีพ" required>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- /.box-body -->
+                </div>
 
-		</div>
-		<!-- /.box -->
-		</div>
+              </div>
+              <!-- /.box -->
+              {{-- คอรั่มภายใน3.1 --}}
+              <div class="col-md-6">
+                <!-- general form elements -->
+                <div class="box box-danger">
+                  <div class="box-header with-border">
+                    <!-- checkbox1.2.1 -->
+                    <!-- ประวัติประวัติการแพ้วัคซีน -->
+                    <div class="form-group">
+                      <div class="row">
+                        <div class="col-lg-12">
+                          <div class="control-label">
+                            <label>ประวัติการแพ้วัคซีน :</label>
+                          </div>
+                        </div>
+                        <div class="col-lg-2">
+                          <div class="radio">
+                            <label>
+                              <input type="radio" name="history_of_vaccine_drug_allergies_of_patient" value="" >
+                              ไม่ระบุ
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-lg-3">
+                          <div class="radio">
+                            <label>
+                              <input type="radio" name="history_of_vaccine_drug_allergies_of_patient" value="1">
+                              ไม่มี
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-lg-3">
+                          <div class="radio">
+                            <label>
+                              <input type="radio" name="history_of_vaccine_drug_allergies_of_patient" value="2">
+                              มี
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-lg-12">
+                          <div id="other_vaccination_history" style="display: none">
+                            <label>วัคซีนที่แพ้ :</label>
+                            <select id="other_vaccination_history_text" name="other_vaccination_history" class="form-control select2" style="width: 100%;">
+                              <option class="badge filter badge-info" data-color="info" value="">กรุณาเลือก</option>
+                              <?php
+										  foreach ($arr_history_of_vaccine as $k=>$v) { ?>
+                              <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+                              <?php } ?>
+                            </select>
+                            <label></br>ยาที่แพ้ :</label>
+                            <input type="text" name="other_drug_history" id="other_secymptoms_after_vaccination_text" class="form-control" placeholder="ระบุ" hidden="true">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- อาการหลังได้รับวัคซีน -->
+                    <div class="form-group">
+                      <div class="row">
+                        <div class="col-lg-12">
+                          <div class="control-label">
+                            <label>อาการหลังได้รับวัคซีน :</label>
+                          </div>
+                        </div>
+                        <div class="col-lg-2">
+                          <div class="radio">
+                            <label>
+                              <input type="radio" name="patient_develop_symptoms_after_previous_vaccination" value="" >
+                              ไม่ระบุ
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-lg-3">
+                          <div class="radio">
+                            <label>
+                              <input type="radio" name="patient_develop_symptoms_after_previous_vaccination" value="1">
+                              ไม่มี
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-lg-3">
+                          <div class="radio">
+                            <label>
+                              <input type="radio" name="patient_develop_symptoms_after_previous_vaccination" value="2">
+                              มี
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-lg-12">
+                          <div id="other_patient_develop_symptoms_after_previous_vaccination" style="display: none">
+                            <label>อาการ :</label>
+                            <select id="other_patient_develop_symptoms_after_previous_vaccination_text" name="other_patient_develop_symptoms_after_previous_vaccination" class="form-control select2" style="width: 100%;">
+                              <option class="badge filter badge-info" data-color="info" value="">กรุณาเลือก</option>
+                              <?php
+	  										  foreach ($arr_patient_develop_symptoms_after_previous_vaccination as $k=>$v) { ?>
+                              <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+                              <?php } ?>
+                            </select></br>
+                            <label></br>อาการอื่นๆ :</label>
+                            <input type="text" name="other_text_patient_develop_symptoms_after_previous_vaccination" id="other_patient_develop_symptoms_after_previous_vaccination" class="form-control" placeholder="ระบุ">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- โรคประจำตัว/การเจ็บป่วยในอดีต -->
+                    <div class="form-group">
+                      <div class="row">
+                        <div class="col-lg-12">
+                          <div class="control-label">
+                            <label>โรคประจำตัว/การเจ็บป่วยในอดีต :</label>
+                          </div>
+                        </div>
+                        <div class="col-lg-2">
+                          <div class="radio">
+                            <label>
+                              <input type="radio" name="underlying_disease" value="" >
+                              ไม่ระบุ
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-lg-3">
+                          <div class="radio">
+                            <label>
+                              <input type="radio" name="underlying_disease" value="1">
+                              ไม่มี
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-lg-3">
+                          <div class="radio">
+                            <label>
+                              <input type="radio" name="underlying_disease" value="2">
+                              มี
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-lg-12">
+                          <div id="other_underlying_disease" style="display: none">
+                            <select id="other_underlying_disease_text" name="other_underlying_disease" class="form-control select2" style="width: 100%;">
+                              <option class="badge filter badge-info" data-color="info" value="">กรุณาเลือก</option>
+                              <?php
+												  foreach ($arr_underlying_disease as $k=>$v) { ?>
+                              <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+                              <?php } ?>
+                            </select>
+                            <label></br>โรคประจำตัวอื่นๆ :</label>
+                            <input type="text" name="other_text_underlying_disease" id="other_text_underlying_disease" class="form-control" placeholder="ระบุ">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- ประวัติการแพ้วัคซีน/ยา -->
+                    <div class="form-group">
+                      <div class="row">
+                        <div class="col-lg-12">
+                          <div class="control-label">
+                            <label>ประวัติการใช้ยาในรอบ1เดือน :</label>
+                          </div>
+                        </div>
+                        <div class="col-lg-2">
+                          <div class="radio">
+                            <label>
+                              <input type="radio" name="history_of_drug_use_within_1_month_before_getting_vaccination" value="" >
+                              ไม่ระบุ
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-lg-3">
+                          <div class="radio">
+                            <label>
+                              <input type="radio" name="history_of_drug_use_within_1_month_before_getting_vaccination" value="1">
+                              ไม่มี
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-lg-3">
+                          <div class="radio">
+                            <label>
+                              <input type="radio" name="history_of_drug_use_within_1_month_before_getting_vaccination" value="2">
+                              มี
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-lg-12">
+                          <div id="other_history_of_drug_use_within_1_month_vaccination" style="display: none">
+                            <input type="text" name="other_history_of_drug_use_within_1_month_vaccination_text" id="other_history_of_drug_use_within_1_month_vaccination_text" class="form-control" placeholder="ระบุ" hidden="true">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- ประวัติการป่วยcovid-->
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <div class="control-label">
+                          <label>เคยป่วยเป็นโควิดหรือไม่ :</label>
+                        </div>
+                      </div>
+                      <div class="col-lg-2">
+                        <div class="radio">
+                          <label>
+                            <input type="radio" name="history_of_covid" value="" >
+                            ไม่ระบุ
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col-lg-3">
+                        <div class="radio">
+                          <label>
+                            <input type="radio" name="history_of_covid" value="1">
+                            ไม่เคย
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col-lg-3">
+                        <div class="radio">
+                          <label>
+                            <input type="radio" name="history_of_covid" value="2">
+                            เคย
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col-lg-12">
+                        <div id="other_history_of_covid" style="display: none">
+                          <input type="text" name="other_history_of_covid_text" id="other_history_of_covid_text" class="form-control" placeholder="ระบุเวลาที่เป็น" hidden="true">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- /.box-header -->
+                  <!-- form start -->
 
-		</div>
-			<!-- /.box-body -->
-			<div class="box-footer">
-				<!-- ที่อยู่ขณะเรื่มป่วย -->
-				<div class="form-group">
-					<div class="row">
-						<div class="col-lg-2">
-							<label>ที่อยู่ขณะเริ่มป่วย :</label>
-						</div>
-						<div class="col-lg-4">
-							<input type="text" id="house_number" name="house_number" class="form-control" placeholder="บ้านเลขที่">
-						<!-- /.p_id tname  -->
-						</div>
-						<div class="col-lg-4">
-							<input type="text" id="village_no" name="village_no" class="form-control" placeholder="หมู่ที่">
-						<!-- /.p_id tname  -->
-						</div>
-					</div>
-				</div>
-				<div class="form-group">
-					<div class="row">
-						<div class="col-lg-2">
-							<label></label>
-						</div>
-						<div class="col-lg-3">
-							<select class="form-control provinces" name="provinces" id="provinces">
-							  <option value="0">=== จังหวัด ===</option>
-							  @foreach ($list as $row)
-								 <option value="{{$row->province_id}}">{{$row->province_name}}</option>
-							  @endforeach
-							</select>
-						<!-- /.p_id tname  -->
-						</div>
-						<div class="col-lg-3">
-							<select class="form-control amphures" name="amphures">
-								<option value="0">=== อำเภอ ===</option>
-							</select>
-						<!-- /.p_id tname  -->
-						</div>
-						<div class="col-lg-3">
-							<select class="form-control district" name="district" >
-								<option value="0">=== ตำบล ===</option>
-							</select>
-						<!-- /.p_id tname  -->
-						</div>
-					</div>
-				</div>
-				<div class="form-group">
-					<div class="row">
-						<div class="col-lg-2">
-							<label>โทรศัพท์ :</label>
-						</div>
-						<div class="col-lg-3">
-							<input type="text" id="phone_number" name="phone_number" class="form-control" placeholder="โทรศัพท์">
-						<!-- /.p_id tname  -->
-						</div>
-					</div>
-				</div>
-				<div class="form-group">
-					<div class="row">
-						<div class="col-lg-2">
-							<label>ชื่อผู้ปกครอง :</label>
-						</div>
-						<div class="col-lg-3">
-							<input type="text" id="parent_name" name="parent_name" class="form-control" placeholder="ชื่อ">
-						<!-- /.p_id tname  -->
-						</div>
-						<div class="col-lg-3">
-							<input type="text" id="parent_sur_name" name="parent_sur_name" class="form-control" placeholder="นามสกุล">
-						<!-- /.p_id tname  -->
-						</div>
-						<div class="col-lg-3">
-							<label>(กรณีผู้ป่วยอายุ<15ปี)</label>
-						</div>
-					</div>
-				</div>
-				<div class="form-group">
-					<div class="row">
-						<div class="col-lg-2">
-							<label>โทรศัพท์ผู้ปกครอง :</label>
-						</div>
-						<div class="col-lg-3">
-							<input type="text" id="parent_phone_number" name="parent_phone_number" class="form-control" placeholder="โทรศัพท์ผู้ปกครอง">
-						<!-- /.p_id tname  -->
-						</div>
-					</div>
-				</div>
-			</div>
+                  <div class="box-body">
+                    {{-- input content --}}
+                    <div class="form-group">
+                      <div class="col-lg-12">
+                        <label>ประวัติทางการแพทย์</label>
+                        <textarea class="form-control" name="other_medical_history" rows="3" placeholder="..."></textarea>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- /.box-body -->
 
-		</div>
-						<!-- /.box-header -->
-						</div>
-				  </div>
-				  <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+              </div>
 
-					  </div>
-		  </div>
-		  <!-- /.box -->
-		  </div>
-			</div>
-		</div>
-		<!-- /.tab-pane -->
-		<div class="tab-pane" id="tab_2">
-			<div class="row">
-				<!--หัวข้อที่5 -->
-				<div class="col-md-12">
-				<!-- general form elements -->
-				<div class="box box-danger">
-					<div class="box-header with-border">
-						<h3 class="box-title">(4)อาการ/การรักษา/การวินิจฉัย</h3>
-					</div>
-					<form role="form">
-					<div class="box-body">
-						{{-- คอรั่มภายใน3.2 --}}
-						<div class="col-md-12">
-						<!-- general form elements -->
-						<div class="box box-danger">
-							<div class="box-header with-border">
-								<div class="box-body">
-									{{-- คอรั่มภายใน3.2 --}}
-									<div class="col-md-12">
-									<!-- general form elements -->
-									<!-- ประวัติประวัติการแพ้วัคซีน -->
-									<div class="form-group">
-										<div class="row">
-											<div class="col-lg-12">
-												<div class="control-label">
-												<label>แหล่งที่มาของข้อมูล :</label>
-												</div>
-											</div>
-											<div class="col-lg-3">
-												<div class="radio">
-													<label>
-													<input type="radio" name="source" value="1" checked>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+              <!-- ที่อยู่ขณะเรื่มป่วย -->
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-lg-2">
+                    <label>
+                      <font style="color:red;">*</font> ที่อยู่ขณะเริ่มป่วย :
+                    </label>
+                  </div>
+                  <div class="col-lg-4">
+                    <input type="text" id="house_number" name="house_number" class="form-control" placeholder="บ้านเลขที่" required>
+                    <!-- /.p_id tname  -->
+                  </div>
+                  <div class="col-lg-4">
+                    <input type="text" id="village_no" name="village_no" class="form-control" placeholder="หมู่ที่">
+                    <!-- /.p_id tname  -->
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-lg-2">
+                    <label></label>
+                  </div>
+                  <div class="col-lg-3">
+                    <select class="form-control provinces" name="province" id="provinces" required>
+                      <option value="">=== จังหวัด ===</option>
+                      @foreach ($list as $row)
+                      <option value="{{$row->province_code}}">{{$row->province_name}}</option>
+                      @endforeach
+                    </select>
+                    <!-- /.p_id tname  -->
+                  </div>
+                  <div class="col-lg-3">
+                    <select class="form-control amphures" name="district">
+                      <option value="">=== อำเภอ ===</option>
+                    </select>
+                    <!-- /.p_id tname  -->
+                  </div>
+                  <div class="col-lg-3">
+                    <select class="form-control district" name="subdistrict">
+                      <option value="">=== ตำบล ===</option>
+                    </select>
+                    <!-- /.p_id tname  -->
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-lg-2">
+                    <label>โทรศัพท์ :</label>
+                  </div>
+                  <div class="col-lg-3">
+                    <input type="text" id="phone_number" name="phone_number" class="form-control" placeholder="โทรศัพท์" data-inputmask='"mask": "99-9999-9999"' data-mask>
+                    <!-- /.p_id tname  -->
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-lg-2">
+                    <label>ชื่อผู้ปกครอง :</label>
+                  </div>
+                  <div class="col-lg-3">
+                    <input type="text" id="parent_name" name="parent_name" class="form-control" placeholder="ชื่อ">
+                    <!-- /.p_id tname  -->
+                  </div>
+                  <div class="col-lg-3">
+                    <input type="text" id="parent_sur_name" name="parent_sur_name" class="form-control" placeholder="นามสกุล">
+                    <!-- /.p_id tname  -->
+                  </div>
+                  <div class="col-lg-3">
+                    <label>( กรณีผู้ป่วยอายุ < 15 ปี )</label> </div> </div> </div> <div class="form-group">
+                        <div class="row">
+                          <div class="col-lg-2">
+                            <label>โทรศัพท์ผู้ปกครอง :</label>
+                          </div>
+                          <div class="col-lg-3">
+                            <input type="text" id="parent_phone_number" name="parent_phone_number" class="form-control" placeholder="โทรศัพท์ผู้ปกครอง" data-inputmask='"mask": "99-9999-9999"' data-mask>
+                            <!-- /.p_id tname  -->
+                          </div>
+                        </div>
+                  </div>
+                </div>
 
-													ใช่
-													</label>
-												</div>
-											</div>
-											<div class="col-lg-3">
-												<div class="radio">
-													<label>
-													<input type="radio" name="source" value="2">
-													ไม่ใช่
-													</label>
-												</div>
-											</div>
-											<div class="col-lg-3">
-												<div class="radio">
-													<label>
-													<input type="radio" name="source" value="3">
-													ไม่ทราบ
-													</label>
-												</div>
-											</div>
-											<div class="col-lg-3">
-												<div id="other_source" style="display: none">
-												<input type="text" name="other_source" id="other_source_text" class="form-control" placeholder="ระบุ" hidden="true">
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="form-group">
-										<div class="row">
-											<div class="col-lg-12">
-												<div class="control-label">
-												<label>การชันสูตรศพทางวาจา (ระบุแหล่งที่มาของข้อมูล) :</label>
-												</div>
-											</div>
-											<div class="col-lg-3">
-												<input type="text" name="source_1_2" class="form-control" placeholder="ระบุ">
-											</div>
-										</div>
-									</div>
-									</div>
-								</div>
-								<div class="box-footer">
-									{{-- คอรั่มภายใน3.2 --}}
-									<div class="col-md-12">
-									<!-- general form elements -->
-									<div class="form-group">
-										<div class="row">
-											<div class="col-lg-12">
-												<div class="control-label">
-												<label>อาการและอาการแสดง ตามลำดับเหตุการณ์หลังจากรับวัคซีน :</label>
-												</div>
-											</div>
-											<div class="col-lg-12">
-												<textarea class="form-control" name="symptoms_2" rows="3" placeholder="Enter ..."></textarea>
-											</div>
-										</div>
-									</div>
-									<div class="form-group">
-										<div class="row">
-											<div class="col-lg-12">
-												<div class="control-label">
-												<label>การวินิจฉัยของแพทย์ :</label>
-												</div>
-											</div>
-											<div class="col-lg-3">
-												<input type="text" name="symptoms_2_1" class="form-control" placeholder="ระบุ">
-											</div>
-										</div>
-									</div>
-									</div>
-								</div>
-								<div class="box-footer">
-									{{-- คอรั่มภายใน3.2 --}}
-									<div class="col-md-12">
-									<!-- general form elements -->
-									<div class="form-group">
-										<div class="row">
-											<div class="col-lg-4">
-												<div class="control-label">
-												<label>วันเดือนปีที่เกิดอาการ:</label>
-												<div class="input-group date">
-													<div class="input-group-addon">
-														<i class="fa fa-calendar"></i>
-													</div>
-													<input type="text" name="symptoms_2_2" id="datepicker_symptoms" class="form-control" placeholder="ระบุ" >
-												</div>
-												</div>
-											</div>
-											<div class="col-lg-4">
-												<!-- time Picker -->
-												<div class="bootstrap-timepicker">
-												  <div class="form-group">
-													<label>เวลาที่เริ่มเกิดอาการ :</label>
+              </div>
+              <!-- /.box -->
+            </div>
+            <!--หัวข้อที่2 -->
+            {{-- {{$vac_list}} --}}
+            <div class="col-md-12">
+              <!-- general form elements -->
+              <div class="box box-info">
+                <div class="box-header with-border">
+                  <h3 class="box-title">(2) ข้อมูลวัคซีน / สถานที่รับวัคซีน (รพ./รพ.สต./คลินิก/ศูนย์บริการสาธารณสุข)</h3>
+                </div>
+                <div class="form-group">
+                <div class="row">
+                  <div class="col-lg-4">
+                    <label>สถานที่รับวัคซีน (รพ./รพ.สต./คลินิก/ศูนย์บริการสาธารณสุข) :</label>
+                    <select id="js-example-basic-single" name="hospcode_get_vac" class="js-example-basic-single form-control" data-dropdown-css-class="select2-danger" >
+                    </select>
+                  </div>
+                </div>
+              </div>
+              </br>
+                <div style="overflow: scroll;">
+                  <table class="maintable" id="customers">
+                    <button type="button" id="btnAdd" class="btn btn-m btn-success classAdd">+ เพิ่มข้อมูลวัคซีน</button></br>
+                    <thead>
+                      <tr>
+                        <th>
+                          <font style="color:red;">*</font> ชื่อวัคซีน
+                        </th>
+                        <th>ปริมาณที่ให้</th>
+                        <th>วิธีที่ให้</th>
+                        <th>ตำแหน่ง</th>
+                        <th>เข็มที่/ครั้งที่</th>
+                        <th>
+                          <font style="color:red;">*</font> ว/ด/ปที่ได้รับ
+                        </th>
+                        <th>
+                          <font style="color:red;">*</font> เวลาที่ได้รับ
+                        </th>
+                        <th>ชื่อผู้ผลิต</th>
+                        <th>ชื่อผู้ผลิตอื่นๆ</th>
+                        <th>
+                          <font style="color:red;">*</font> เลขที่ผลิต
+                        </th>
+                        <th>
+                          <font style="color:red;">*</font> วันหมดอายุ
+                        </th>
+                        {{-- <th>ชื่อตัวทำละลาย</th> --}}
+                        <th>
+                          <font style="color:red;">*</font> เลขที่ผลิต
+                        </th>
+                        <th>
+                          <font style="color:red;">*</font> วันหมดอายุ
+                        </th>
+                        {{-- <th>
+                          <font style="color:red;">*</font> ว/ด/ปที่ผสม
+                        </th>
+                        <th>
+                          <font style="color:red;">*</font> เวลาที่ผสม
+                        </th> --}}
+                        <th>#</th>
+                        {{-- <th><a href="javascript:void(0);" style="font-size:18px;" id="addMore" title="Add More Person"><span class="glyphicon glyphicon-plus"></span></a></th> --}}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="data-contact-person">
+                        <td>
+                          <select type="text" id="name_of_vaccine" name="name_of_vaccine[]" class="form-control" required>
+                            <option value="">กรุณาระบุชื่อวัคซีน</option>
+                            @foreach ($vac_list as $row)
+                            <option value="{{$row->VAC_CODE}}">{{$row->VAC_NAME_EN}}</option>
+                            @endforeach
+                          </select>
+                        </td>
+                        <td>
+                          <select type="text" id="vaccine_volume" name="vaccine_volume[]" class="form-control">
+                            <option value="">กรุณาระบุปริมาณที่ให้</option>
+                            <?php
+                                 foreach ($arr_vaccine_volume as $k=>$v) {
+                                 ?>
+                            <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+                            <?php } ?>
+                          </select>
+                        </td>
+                        <td>
+                          <select type="text" id="route_of_vaccination1" name="route_of_vaccination[]" class="form-control">
+                            <option value="">กรุณาระบุวิธีที่ให้</option>
+                            <?php
+                                   foreach ($arr_route_of_vaccination as $k=>$v) {
+                               ?>
+                            <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+                            <?php } ?>
+                          </select>
+                        </td>
+                        <td>
+                          <select type="text" id="vaccination_site1" name="vaccination_site[]" class="form-control">
+                            <option value="">กรุณาระบุวิธีตำแหน่ง</option>
+                            <?php
+                                   foreach ($arr_vaccination_site as $k=>$v) {
+                               ?>
+                            <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+                            <?php } ?>
+                          </select>
+                        </td>
+                        <td>
+                          <input type="number" id="dose1" name="dose[]" class="form-control" min="1" max="20">
+                        </td>
+                        <td>
+                          <input type="text" name="date_of_vaccination[]" value="" id="date_of_vaccination1" class="form-control datepicker" data-date-format="yyyy-mm-dd" readonly>
+                        </td>
+                        <td>
+                          <input type="text" id="time_of_vaccination1" name="time_of_vaccination[]" class="form-control">
+                        </td>
+                        <td>
+                          <select type="text" id="manufacturer1" name="manufacturer[]" class="form-control">
+                            <option value="">กรุณาระบุชื่อผู้ผลิต</option>
+                            <?php
+                                   foreach ($arr_manufacturer as $k=>$v) {
+                               ?>
+                            <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+                            <?php } ?>
+                          </select>
+                        </td>
+                        <td>
+                          <input type="text" id="other_manufacturer" name="other_manufacturer[]" class="form-control">
+                        </td>
+                        <td>
+                          <input type="text" id="lot_number1" name="lot_number[]" class="form-control">
+                        </td>
+                        <td>
+                          <input type="text" id="datepicker_expiry_date1" name="expiry_date[]" class="form-control" data-date-format="yyyy-mm-dd" readonly>
+                        </td>
+                        {{-- <td>
+                          <input type="text" id="name_of_diluent1" name="name_of_diluent[]" class="form-control">
+                        </td> --}}
+                        <td>
+                          <input type="text" id="lot_number_diluent1" name="lot_number_diluent[]" class="form-control">
+                        </td>
+                        <td>
+                          <input type="text" id="datepicker_expiry_date_diluent1" name="expiry_date_diluent[]" class="form-control" data-date-format="yyyy-mm-dd" readonly>
+                        </td>
+                        {{-- <td><input type="text" id="date_of_reconstitution1" name="date_of_reconstitution[]" class="form-control" data-date-format="yyyy-mm-dd"></td> --}}
+                        {{-- <td><input type="text" id="time_of_reconstitution1" name="time_of_reconstitution[]" class="form-control"></td> --}}
+                        {{-- <td><a href='javascript:void(0);' class='remove'><span class='glyphicon glyphicon-remove'></span></a></td> --}}
+                        <td>
+                          <button type="button" id="btnAdd" class="btn btn-m btn-success classAdd">เพิ่มข้อมูลวัคซีน</button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <!-- /.box -->
+              </div>
+            </div>
+          {{-- หัวข้อที่ 3 --}}
+            @include('AEFI.Apps.SymtomsTabFrm')
+            <!-- หัวข้อที่4 -->
+            <div class="col-md-12">
+              <!-- general form elements -->
+              <div class="box box-warning">
+                <div class="box-header with-border">
+                  <!-- form start -->
 
-													<div class="input-group">
-													  <input type="text" name="symptoms_2_3" class="form-control timepicker_Symptoms">
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-lg-3">
+                        <h3 class="box-title">(4) การตัดสินใจว่ามีความจำเป็นที่จะสอบสวน</h3>
+                      </div>
+                      <div class="col-lg-1">
+                        <div class="radio">
+                          <label>
+                            <input type="radio" name="necessary_to_investigate" id="necessary_to_investigate1" value="1" >
+                            ไม่มี
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col-lg-1">
+                        <div class="radio">
+                          <label>
+                            <input type="radio" name="necessary_to_investigate" id="necessary_to_investigate2" value="2">
+                            มี
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col-lg-1">
+                        <div class="radio">
+                          <label>
+                            วันที่สอบสวน
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col-lg-2">
+                        <div class="">
+                          <label>
+                            <div class="input-group date">
+                              <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                              </div>
+                              <input type="text" class="form-control pull-right" id="datepicker_invest" name="necessary_to_investigate_date" data-date-format="yyyy-mm-dd" readonly>
+                            </div>
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
 
-													  <div class="input-group-addon">
-														<i class="fa fa-clock-o"></i>
-													  </div>
-													</div>
-													<!-- /.input group -->
-												  </div>
-												  <!-- /.form group -->
-												</div>
-											</div>
-											<div class="col-lg-4">
-												<div class="control-label">
-												<label>วันเดือนปีที่รับการรักษา:</label>
-												<div class="input-group date">
-													<div class="input-group-addon">
-														<i class="fa fa-calendar"></i>
-													</div>
-													<input type="text" id="datepicker_date_treat" id="symptoms_2_4" class="form-control" placeholder="ระบุ">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="form-group">
-										<div class="row">
-											<div class="col-lg-4">
-												<div class="control-label">
-												<label>วันเดือนปีที่จำหน่าย :</label>
-												<div class="input-group date">
-													<div class="input-group-addon">
-														<i class="fa fa-calendar"></i>
-													</div>
-												<input type="text" id="datepicker_Symptoms_2_5" name="symptoms_2_5" class="form-control" placeholder="ระบุ">
-												</div>
-											</div>
-											</div>
-											<div class="col-lg-4">
-												<div class="control-label">
-												<label>สถานที่รักษา :</label>
-												<input type="text" name="treatment_place" class="form-control" placeholder="ระบุ">
-												</div>
-											</div>
-											<div class="col-lg-4">
-												<div class="control-label">
-												<label>แพทย์ผู้รักษา :</label>
-												<input type="text" name="doctor_name" class="form-control" placeholder="ระบุ">
-												</div>
-											</div>
-										</div>
-									</div>
-									</div>
-								</div>
-								<div class="box-footer">
-									{{-- คอรั่มภายใน3.2 --}}
-									<div class="col-md-12">
-									<!-- general form elements -->
-									<div class="form-group">
-										<div class="row">
-											<div class="col-lg-12">
-												<div class="control-label">
-												<label>สภาพผู้ป่วยขณะสอบสวน :</label>
-												</div>
-											</div>
-											<div class="col-lg-1">
-												<div class="radio">
-													<label>
-													<input type="radio" name="status_on_date_inv_1" value="1" checked>
-													หาย
-													</label>
-												</div>
-											</div>
-											<div class="col-lg-1">
-												<div class="radio">
-													<label>
-													<input type="radio" name="status_on_date_inv_1" value="2">
-													อาการดีขึ้นแต่ยังไม่หาย
-													</label>
-												</div>
-											</div>
-											<div class="col-lg-1">
-												<div class="radio">
-													<label>
-													<input type="radio" name="status_on_date_inv_1" value="3">
-													พิการ
-													</label>
-												</div>
-											</div>
-											<div class="col-lg-1">
-												<div class="radio">
-													<label>
-													<input type="radio" name="status_on_date_inv_1" value="4">
-													ไม่ทราบ
-													</label>
-												</div>
-											</div>
-											<div class="col-lg-1">
-												<div class="radio">
-													<label>
-													<input type="radio" name="status_on_date_inv_1" value="5">
-													เสียชีวิต
-													</label>
-												</div>
-											</div>
-											<div class="col-lg-3">
-												<div id="other_status_on_date_inv_1" style="display: none">
-												<input type="text" name="other_status_on_date_inv_1" id="other_status_on_date_inv_1_text" class="form-control" placeholder="ระบุ" hidden="true">
-												</div>
-											</div>
-										</div>
-									</div>
-									<!-- general form elements -->
-									<div class="form-group">
-										<div class="row">
-											<div class="col-lg-12">
-												<div class="control-label">
-												<label>ผ่าพิสูจน์ศพ :</label>
-												</div>
-											</div>
-											<div class="col-lg-2">
-												<div class="radio">
-													<label>
-													<input type="radio" name="status_on_date_inv_1_2" value="1" checked>
-													มีการผ่าพิสูจน์ศพ
-													</label>
-												</div>
-											</div>
-											<div class="col-lg-2">
-												<div class="radio">
-													<label>
-													<input type="radio" name="status_on_date_inv_1_2" value="2">
-													ไม่มีการพิสูจน์
-													</label>
-												</div>
-											</div>
-											<div class="col-lg-2">
-												<div class="radio">
-													<label>
-													<input type="radio" name="status_on_date_inv_1_2" value="3">
-													มีแผนที่จะดำเนินการ (ระบุ วัน/เดือน/ปี)
-													</label>
-												</div>
-											</div>
-											<div class="col-lg-6">
-												<div id="other_status_on_date_inv_1_2" style="display: none">
-												<input type="text" name="other_status_on_date_inv_1_21" id="other_status_on_date_inv_1_3_text" class="form-control" placeholder="ระบุ" hidden="true">
-												<input type="text" name="other_status_on_date_inv_1_22" id="other_status_on_date_inv_1_4_text" class="form-control" placeholder="ระบุ" hidden="true">
-												<input type="text" name="other_status_on_date_inv_1_23" id="other_status_on_date_inv_1_5_text" class="form-control" placeholder="ระบุ" hidden="true">
-												</div>
-												</div>
-										</div>
-									</div>
-									</div>
-								</div>
-								<div class="box-footer">
-									{{-- คอรั่มภายใน3.2 --}}
-									<div class="col-md-12">
-										<!-- general form elements -->
-										<div class="form-group">
-											<div class="row">
-												<div class="col-lg-6">
-													<div class="radio">
-														<label>
-														<input type="radio" name="instruction_1" value="1" >
-														**กรณีผู้ป่วยเข้ารับการรักษาในโรงพยาบาล ให้แนบสำเนาเอกสารเวชระเบียนทั้งหมดของผู้ป่วย เกี่ยวกับอาการป่วย การรักษา การส่งสิ่งส่การส่งสิ่งส่งตรวจ
-															ของผู้ป่วยเพื่อตรวจทางห้องปฎิบัติการและผลตรวจ การผ่าพิสูจน์ศพ และบันทึกข้อมูลเพิ่มเติมที่ไม่มีในเวชระเบียนตามที่สอบสวนได้ลงในที่ว่าง
-															ข้างล่าง เช่น สอบสวนเหตุการณ์ ประวัติครอบครัว ประวัติการเลี้ยงดู สิ่งแวดล้อมในและนอกบ้าน เป็นต้น :
-														</label>
-													</div>
-												</div>
-												<div class="col-lg-6">
-													<div class="radio">
-														<label>
-														<input type="radio" name="instruction_1" value="2">
-														**กรณีผู้ป่วยไม่ได้รับการรักษาในโรงพยาบาล ให้บันทึกการสอบสวนผู้ป่วย เช่น สอบสวนเหตุการณ์ ประวัติครอบครัว ประวัติการเลี้ยงดู สิ่งแวดล้อมในและนอกบ้าน เป็นต้น
-														และบันทึกข้อมูลที่สอบสวนได้ลงในที่ว่างข้างล่าง
-														</label>
-													</div>
-												</div>
-											<div class="col-lg-12">
-												<div class="col-lg-6">
-													<div id="">
-															<label>Select File for Upload</label>
-																<input type="file" name="other_instruction_1">
-													</div>
-													</div>
-											</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="box-footer">
-									{{-- คอรั่มภายใน3.2 --}}
-									<div class="col-md-12">
-									<!-- general form elements -->
-									<div class="form-group">
-										<div class="row">
-											<div class="col-lg-6">
-												<label>ชื่อ-สกุล ผู้บันทึกข้อมูลรายละเอียดอาการของผู้ป่วยตามข้างบน : </label>
-												<input type="text" name="record1"  class="form-control" placeholder="ระบุ">
-											</div>
-										</div>
-									</div>
-									<!-- general form elements -->
-									<div class="form-group">
-										<div class="row">
-											<div class="col-lg-3">
-												<label>ตำแหน่ง : </label>
-												<input type="text" name="record2" class="form-control" placeholder="ระบุตำแหน่ง">
-											</div>
-											<div class="col-lg-3">
-												<label>หน่วยงาน : </label>
-												<input type="text" name="record3" class="form-control" placeholder="ระบุหน่วยงาน">
-											</div>
-											<div class="col-lg-3">
-												<label>โทร : </label>
-												<input type="text" name"record4" class="form-control" placeholder="ระบหมายเลขติดต่อ">
-											</div>
-											<div class="col-lg-3">
-												<label>วันที่บันทึกข้อมูล : </label>
-												<div class="input-group date">
-													<div class="input-group-addon">
-														<i class="fa fa-calendar"></i>
-													</div>
-												<input type="text" id="datepicker_record5" name="record5" class="form-control" placeholder="ระบวันที่บันทึกข้อมูล">
-											</div>
-										</div>
-										</div>
-									</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						</div>
-					</div>
-				</div>
-				</div>
-			</div>
-		</div>
-		<!-- /.tab-pane -->
-		<div class="tab-pane" id="tab_3">
-			<div class="row">
-				<!--หัวข้อที่5 -->
-				<div class="col-md-12">
-				<!-- general form elements -->
-				<div class="box box-danger">
-					<div class="box-header with-border">
-						<h3 class="box-title">(5)ข้อมูลวีคซีนในวันที่ผู้ป่วยได้รับวัคซีน</h3>
-					</div>
-					<form role="form">
-					<div class="box-body">
-						{{-- คอรั่มภายใน3.2 --}}
-						<div class="col-md-12">
-						<!-- general form elements -->
-						<div class="box box-danger">
-							<div class="box-header with-border">
-								<div class="box-body">
-									{{-- คอรั่มภายใน3.2 --}}
-									<div class="col-md-12">
-										<div class="box-header">
-										  <h3 class="box-title">จำนวนผู้ได้รับวัคซีนแต่ละชนิดในสถานที่ให้วัคซีนในวันนั้น</h3>
-										</div>
-									<!-- general form elements -->
-									<table class="table table-striped" id="maintable">
-								   <tr>
-									 <th>ชื่อวัคซิน</th>
-									 <th>จำนวนผู้ได้รับวัคซีน</th>
-								 </tr>
-								   <tr class="data-contact-person">
-									 <td><input type="text" id="name_vac" name="name_vac[]"  class="form-control" onkeyup="autocomplet()"></td>
-									 <td><input type="text" id="recive_amount" name="recive_amount[]"  class="form-control recive_amount01" onkeyup="autocomplet()"></td>
-								   </tr>
-								   <tr class="data-contact-person">
-									 <td><input type="text" id="name_vac" name="name_vac[]"  class="form-control" onkeyup="autocomplet()"></td>
-									 <td><input type="text" id="recive_amount" name="recive_amount[]"  class="form-control recive_amount01" onkeyup="autocomplet()"></td>
-								   </tr>
-								   <tr class="data-contact-person">
-									 <td><input type="text" id="name_vac" name="name_vac[]"  class="form-control" onkeyup="autocomplet()"></td>
-									 <td><input type="text" id="recive_amount" name="recive_amount[]"  class="form-control recive_amount01" onkeyup="autocomplet()"></td>
-								   </tr>
-								   <tr class="data-contact-person">
-									 <td><input type="text" id="name_vac" name="name_vac[]"  class="form-control" onkeyup="autocomplet()"></td>
-									 <td><input type="text" id="recive_amount" name="recive_amount[]"  class="form-control recive_amount01" onkeyup="autocomplet()"></td>
-								   </tr>
-								   <tr class="data-contact-person">
-									 <td><input type="text" id="name_vac" name="name_vac[]"  class="form-control" onkeyup="autocomplet()"></td>
-									 <td><input type="text" id="recive_amount" name="recive_amount[]"  class="form-control recive_amount01" onkeyup="autocomplet()"></td>
-								   </tr>
-								 </table>
-									</div>
-								</div>
-								<div class="box-footer">
-									{{-- คอรั่มภายใน3.2 --}}
-									<div class="col-md-12">
-									<!-- general form elements -->
-									<!-- general form elements -->
-									<div class="form-group">
-										<div class="row">
-											<div class="col-lg-12">
-												<div class="control-label">
-												<label>1.ผู้ป่วยได้รับวัคซีนในช่วงเวลาใด :</label>
-												</div>
-											</div>
-											<div class="col-lg-2">
-												<div class="radio">
-													<label>
-													<input type="radio" name="patient_immunized_1" value="1" checked>
-													เป็นคนแรกๆของการให้วัคซีนในวันนั้น
-													</label>
-												</div>
-											</div>
-											<div class="col-lg-2">
-												<div class="radio">
-													<label>
-													<input type="radio" name="patient_immunized_1" value="2">
-													เป็นคนท้ายๆของการให้วัคซีนในวันนั้น
-													</label>
-												</div>
-											</div>
-											<div class="col-lg-2">
-												<div class="radio">
-													<label>
-													<input type="radio" name="patient_immunized_1" value="3">
-													ไม่ทราบ
-													</label>
-												</div>
-											</div>
-										</div>
-									</div>
-									<!-- general form elements -->
-									<div class="form-group">
-										<div class="row">
-											<div class="col-lg-12">
-												<div class="control-label">
-												<label>ในกรณีที่วัคซีนบรรจุมากกว่า 1 โด๊ส ผู้ป่วยได้รับวัคซีน :</label>
-												</div>
-											</div>
-											<div class="col-lg-2">
-												<div class="radio">
-													<label>
-													<input type="radio" name="patient_immunized_2" value="1" checked>
-													ภายใน2-3โด๊สแรก
-													</label>
-												</div>
-											</div>
-											<div class="col-lg-2">
-												<div class="radio">
-													<label>
-													<input type="radio" name="patient_immunized_2" value="2">
-													เป็นโด๊สสุดท้าย
-													</label>
-												</div>
-											</div>
-											<div class="col-lg-2">
-												<div class="radio">
-													<label>
-													<input type="radio" name="patient_immunized_2" value="3">
-													ไม่ทราบ
-													</label>
-												</div>
-											</div>
-											<div class="col-lg-3">
-												<div id="other_patient_immunized_2">
-												<input type="text" id="other_patient_immunized_2_text" name="other_patient_immunized_2" class="form-control" placeholder="ระบุ" hidden="true">
-												</div>
-											</div>
-										</div>
-									</div>
-									<!-- general form elements -->
-									<div class="form-group">
-										<div class="row">
-											<div class="col-lg-12">
-												<div class="control-label">
-												<label>2.มีข้อผิดพลาดของการสั่งใช้วัคซีนโดยไม่ได้เป็นไปตามคำแนะนำในการใช้วัคซีนหรือไม่ :</label>
-												</div>
-											</div>
-											<div class="col-lg-2">
-												<div class="radio">
-													<label>
-													<input type="radio" name="patient_immunized_3" value="1" checked>
-													ไม่ใช่
-													</label>
-												</div>
-											</div>
-											<div class="col-lg-2">
-												<div class="radio">
-													<label>
-													<input type="radio" name="patient_immunized_3" value="2">
-													ไม่สามารถประเมินได้
-													</label>
-												</div>
-											</div>
-											<div class="col-lg-2">
-												<div class="radio">
-													<label>
-													<input type="radio" name="patient_immunized_3" value="3">
-													ใช่
-													</label>
-												</div>
-											</div>
-											<div class="col-lg-3">
-												<div id="other_patient_immunized_3">
-												<input type="text" id="other_patient_immunized_3_text" name="other_patient_immunized_3" class="form-control" placeholder="ระบุ" hidden="true">
-												</div>
-											</div>
-										</div>
-									</div>
-									<!-- general form elements -->
-									<div class="form-group">
-										<div class="row">
-											<div class="col-lg-12">
-												<div class="control-label">
-												<label>3.จากการสอบสวน : ท่านคิดว่ากระบวนการการเตรียมหรือให้วัคซีนกับผู้ป่วยอาจไม่ปราศจากเชื้อ :</label>
-												</div>
-											</div>
-											<div class="col-lg-2">
-												<div class="radio">
-													<label>
-													<input type="radio" name="patient_immunized_4" value="1" checked>
-													ไม่ใช่
-													</label>
-												</div>
-											</div>
-											<div class="col-lg-2">
-												<div class="radio">
-													<label>
-													<input type="radio" name="patient_immunized_4" value="2">
-													ไม่สามารถประเมินได้
-													</label>
-												</div>
-											</div>
-											<div class="col-lg-2">
-												<div class="radio">
-													<label>
-													<input type="radio" name="patient_immunized_4" value="3">
-													ใช่
-													</label>
-												</div>
-											</div>
-											<div class="col-lg-3">
-												<div id="other_patient_immunized_4">
-								<input type="text" id="other_patient_immunized_4_text" name="other_patient_immunized_4" class="form-control" placeholder="ระบุ" hidden="true">
-												</div>
-											</div>
-										</div>
-									</div>
-									<!-- general form elements -->
-									<div class="form-group">
-										<div class="row">
-											<div class="col-lg-12">
-												<div class="control-label">
-												<label>4.จากการสอบสวน : ท่านคิดว่าลักษณะทางกายภาพของวัคซีนที่ให้กับผู้ป่วยผิดปกติ (เช่น สี ความขุ่น มีวัตถุปนเปื้อน เป็นต้น) :</label>
-												</div>
-											</div>
-											<div class="col-lg-2">
-												<div class="radio">
-													<label>
-													<input type="radio" name="patient_immunized_5" value="1" checked>
-													ไม่ใช่
-													</label>
-												</div>
-											</div>
-											<div class="col-lg-2">
-												<div class="radio">
-													<label>
-													<input type="radio" name="patient_immunized_5" value="2">
-													ไม่สามารถประเมินได้
-													</label>
-												</div>
-											</div>
-											<div class="col-lg-2">
-												<div class="radio">
-													<label>
-													<input type="radio" name="patient_immunized_5" value="3">
-													ใช่
-													</label>
-												</div>
-											</div>
-											<div class="col-lg-3">
-												<div id="other_patient_immunized_5">
-								<input type="text" id="other_patient_immunized_5_text" name="other_patient_immunized_4" class="form-control" placeholder="ระบุ" hidden="true">
-												</div>
-											</div>
-										</div>
-									</div>
-									<!-- general form elements -->
-									<div class="form-group">
-										<div class="row">
-											<div class="col-lg-12">
-												<div class="control-label">
-												<label>5.จากการสอบสวน : ท่านคิดว่ามีความผิดพลาดของผู้ให้วัคซีนในการผสมวัคซีนหรือเตรียมวัคซีน(เช่น หยิบวัคซีนหรือหยิบตัวทำละลายผิด
-													 ผสมวัคซีนกับตัวทำละลายไม่ดีพอ ปริมาณของวัคซีนี่ดูดเข้ากระบอกฉีดยาไม่เหมาะสม เป็นต้น)</label>
-												</div>
-											</div>
-											<div class="col-lg-2">
-												<div class="radio">
-													<label>
-													<input type="radio" name="patient_immunized_6" value="1" checked>
-													ไม่ใช่
-													</label>
-												</div>
-											</div>
-											<div class="col-lg-2">
-												<div class="radio">
-													<label>
-													<input type="radio" name="patient_immunized_6" value="2" >
-													ไม่สามารถประเมินได้
-													</label>
-												</div>
-											</div>
-											<div class="col-lg-2">
-												<div class="radio">
-													<label>
-													<input type="radio" name="patient_immunized_6" value="3">
-													ใช่
-													</label>
-												</div>
-											</div>
-											<div class="col-lg-3">
-												<div id="other_patient_immunized_6">
-												<input type="text" id="other_patient_immunized_6_text" name="other_patient_immunized_6" class="form-control" placeholder="ระบุ" hidden="true">
-												</div>
-											</div>
-										</div>
-									</div>
-									<!-- general form elements -->
-									<div class="form-group">
-										<div class="row">
-											<div class="col-lg-12">
-												<div class="control-label">
-												<label>7.จากการสอบสวน : ท่านคิดว่ามีความผิดพลดในการเก็บหรือขนส่งวัคซีน(เช่น ระบบลูกโซ่ความเย็นขณะส่งการเก็บรักษาวัคซีน
-													 หรือในระหว่างให้บริการไม่ดี เป็นต้น) :</label>
-												</div>
-											</div>
-											<div class="col-lg-2">
-												<div class="radio">
-													<label>
-													<input type="radio" name="patient_immunized_7" value="1" checked>
-													ไม่ใช่
-													</label>
-												</div>
-											</div>
-											<div class="col-lg-2">
-												<div class="radio">
-													<label>
-													<input type="radio" name="patient_immunized_7" value="2" >
-													ไม่สามารถประเมินได้
-													</label>
-												</div>
-											</div>
-											<div class="col-lg-2">
-												<div class="radio">
-													<label>
-													<input type="radio" name="patient_immunized_7" value="3">
-													ใช่
-													</label>
-												</div>
-											</div>
-											<div class="col-lg-3">
-												<div id="other_patient_immunized_7">
-													<input type="text" id="other_other_patient_immunized_7_text" name="other_patient_immunized_7" class="form-control" placeholder="ระบุ" hidden="true">
-												</div>
-											</div>
-										</div>
-									</div>
-									<!-- general form elements -->
-									<div class="form-group">
-										<div class="row">
-											<div class="col-lg-12">
-												<div class="control-label">
-												<label>8.จำนวนผู้ได้รับวัคซีนขวดเดียวกันกับผู้ป่วย :</label>
-												</div>
-											</div>
-											<div class="col-lg-3">
-													<input type="text" name="patient_immunized_8" class="form-control" placeholder="ระบุจำนวนผู้ได้รับวัคซีนขวดเดียวกันกับผู้ป่วย">
-											</div>
-											<div class="col-lg-3">
-													<input type="text" name="patient_immunized_8_1" class="form-control" placeholder="ระบุจำนวนผู้มีอาการป่วย">
-											</div>
-										</div>
-									</div>
-									<!-- general form elements -->
-									<div class="form-group">
-										<div class="row">
-											<div class="col-lg-12">
-												<div class="control-label">
-												<label>9.จำนวนผู้ได้รับวัคซีนวันเดียวกันกับผู้ป่วย :</label>
-												</div>
-											</div>
-											<div class="col-lg-3">
-													<input type="text" name="patient_immunized_9" class="form-control" placeholder="จำนวนผู้ได้รับวัคซีนวันเดียวกันกับผู้ป่วย">
-											</div>
-											<div class="col-lg-3">
-													<input type="text" name="patient_immunized_9_1" class="form-control" placeholder="ระบุจำนวนผู้มีอาการป่วย">
-											</div>
-										</div>
-									</div>
-									<!-- general form elements -->
-									<div class="form-group">
-										<div class="row">
-											<div class="col-lg-12">
-												<div class="control-label">
-												<label>10.จำนวนผู้ได้รับวัคซีน lot no.เดียวกันในสถานบริการแห่งอื่นๆในเขตอำเภอเดียวกันจำนวนรวม :</label>
-												</div>
-											</div>
-											<div class="col-lg-5">
-													<input type="text" name="patient_immunized_10"  class="form-control" placeholder="จำนวนผู้ได้รับวัคซีน lot no.เดียวกันในสถานบริการแห่งอื่นๆในเขตอำเภอเดียวกัน">
-											</div>
-											<div class="col-lg-3">
-													<input type="text" name="patient_immunized_10_1" class="form-control" placeholder="ระบุจำนวนสถานบริการ">
-											</div>
-											<div class="col-lg-3">
-													<input type="text" name="patient_immunized_10_2" class="form-control" placeholder="ระบุจำนวนผู้มีอาการป่วย">
-											</div>
-										</div>
-									</div>
-									<!-- general form elements -->
-									<div class="form-group">
-										<div class="row">
-											<div class="col-lg-12">
-												<div class="control-label">
-												<label>11.ผู้ป่วยรายนี้เป็นส่วนหนึ่งของการป่วยเป็นกลุ่มก้อน :</label>
-												</div>
-											</div>
-											<div class="col-lg-2">
-												<div class="radio">
-													<label>
-													<input type="radio" name="patient_immunized_11" value="1" checked>
-													ไม่ใช่
-													</label>
-												</div>
-											</div>
-											<div class="col-lg-2">
-												<div class="radio">
-													<label>
-													<input type="radio" name="patient_immunized_11" value="2" >
-													ไม่ทราบ
-													</label>
-												</div>
-											</div>
-											<div class="col-lg-2">
-												<div class="radio">
-													<label>
-													<input type="radio" name="patient_immunized_11" value="3">
-													ใช่
-													</label>
-												</div>
-											</div>
-											<div class="col-lg-3">
-												<div id="other_patient_immunized_11">
-												<input type="text"  id="other_patient_immunized_11_text" name="other_patient_immunized_11" class="form-control" placeholder="มีจำนวนผู้ป่วยทั้งหมด...คน" hidden="true">
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-lg-12">
-												<div class="control-label">
-												<label>ผู้ป่วยทั้งหมดได้รับวัคซีนขวดเดียวกัน :</label>
-												</div>
-											</div>
-											<div class="col-lg-2">
-												<div class="radio">
-													<label>
-													<input type="radio" name="patient_immunized_12" value="1" checked>
-													ใช่
-													</label>
-												</div>
-											</div>
-											<div class="col-lg-2">
-												<div class="radio">
-													<label>
-													<input type="radio" name="patient_immunized_12" value="2" >
-													ไม่ทราบ
-													</label>
-												</div>
-											</div>
-											<div class="col-lg-2">
-												<div class="radio">
-													<label>
-													<input type="radio" name="patient_immunized_12" value="3">
-													ไม่ใช่
-													</label>
-												</div>
-											</div>
-											<div class="col-lg-3">
-												<div id="other_patient_immunized_12">
-												<input type="text"  id="other_patient_immunized_12_text" name="other_patient_immunized_12" class="form-control" placeholder="มีจำนวนขวดวัคซีน่ผู้ป่วยได้รับ...ขวด" hidden="true">
-												</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<!-- general form elements -->
-									<div class="form-group">
-										<div class="row">
-											<div class="col-lg-12">
-												<div class="control-label">
-												<label>12.มีการประเมินของเด็กก่อนได้รับวัคซีน :</label>
-												</div>
-											</div>
-											<div class="col-lg-2">
-												<div class="radio">
-													<label>
-													<input type="radio" name="patient_immunized_13" value="1" checked>
-													มี
-													</label>
-												</div>
-											</div>
-											<div class="col-lg-2">
-												<div class="radio">
-													<label>
-													<input type="radio" name="patient_immunized_13" value="2" >
-													ไม่มี
-													</label>
-												</div>
-											</div>
-											<div class="col-lg-2">
-												<div class="radio">
-													<label>
-													<input type="radio" name="patient_immunized_13" value="3">
-													ไม่ทราบ
-													</label>
-												</div>
-											</div>
-										</div>
-									</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						</div>
-					</div>
-				</div>
-				</div>
-			</div>
-		<!-- /.tab-pane -->
-		<div class="tab-pane" id="tab_4">
-			<div class="row">
-				<!--หัวข้อที่5 -->
-				<div class="col-md-12">
-				<!-- general form elements -->
-				<div class="box box-danger">
-					<div class="box-header with-border">
-						<h3 class="box-title">(6)ข้อมูลการให้บริการวัคซีนในสถานที่ที่ผู้ป่วยได้รับวัคซีน</h3>
-					</div>
-					<form role="form">
-					<div class="box-body">
-						{{-- คอรั่มภายใน3.2 --}}
-						<div class="col-md-12">
-						<!-- general form elements -->
-						<div class="box box-danger">
-							<div class="box-header with-border">
-								<div class="box-body">
-									{{-- คอรั่มภายใน3.2 --}}
-									<div class="col-md-12">
-										<!-- general form elements -->
-										<div class="form-group">
-											<div class="row">
-												<div class="col-lg-12">
-													<div class="control-label">
-													<label>กระบอกฉีดยาและเข็มฉีดยาที่ใช้ : ใช้ AD syringes หรือไม่</label>
-													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="radio">
-														<label>
-														<input type="radio" name="immunization_practices_1" value="1" checked>
-														ใช่
-														</label>
-													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="radio">
-														<label>
-														<input type="radio" name="immunization_practices_1" value="2" >
-														ไม่ใช่
-														</label>
-													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="radio">
-														<label>
-														<input type="radio" name="immunization_practices_1" value="3">
-														ไม่ทราบ
-														</label>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="box-footer">
-									{{-- คอรั่มภายใน3.2 --}}
-									<div class="col-md-12">
-										<!-- general form elements -->
-										<div class="form-group">
-											<div class="row">
-												<div class="col-lg-12">
-													<div class="control-label">
-													<label>ถ้าไม่ใช้ AD syringes ใช้กระบอกฉีดยาชนิดใด :</label>
-													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="radio">
-														<label>
-														<input type="radio" name="immunization_practices_1_1" value="1" checked>
-														ใช้ครั้งเดียวทิ้ง
-														</label>
-													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="radio">
-														<label>
-														<input type="radio" name="immunization_practices_1_1" value="2" >
-														นำกลับมาใช้ใหม่
-														</label>
-													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="radio">
-														<label>
-														<input type="radio" name="immunization_practices_1_1" value="3">
-														แก้ว
-														</label>
-													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="radio">
-														<label>
-														<input type="radio" name="immunization_practices_1_1" value="4">
-														อื่นๆ
-														</label>
-													</div>
-												</div>
-												<div class="col-lg-3">
-													<div id="other_immunization_practices_1_1" style="display: none">
-													<input type="text" id="immunization_practices_1_1_text" name="other_immunization_practices_1_1" class="form-control" placeholder="ระบุ" hidden="true">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="box-footer">
-									{{-- คอรั่มภายใน3.2 --}}
-									<div class="col-md-12">
-									<!-- general form elements -->
-									<!-- general form elements -->
-									<div class="form-group">
-										<div class="row">
-											<div class="col-lg-12">
-												<div class="control-label">
-												<label>รายละเอียดเพิ่มเติมและข้อคิดเห็น :</label>
-												</div>
-											</div>
-											<div class="col-lg-12">
-												<textarea name="immunization_practices_1_4" class="form-control" rows="3" placeholder="Enter ..."></textarea>
-											</div>
-										</div>
-									</div>
-									</div>
-								</div>
-								<div class="box-footer">
-									{{-- คอรั่มภายใน3.2 --}}
-									<div class="col-md-12">
-										<!-- general form elements -->
-										<div class="form-group">
-											<div class="row">
-												<div class="col-lg-12">
-													<div class="control-label">
-													<label>สำหรับวัคซีนที่ต้องผสมทำละลายผงวัคซีน :</label>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="form-group">
-											<div class="row">
-												<div class="col-lg-12">
-													<div class="control-label">
-													<label>ใช้กระบอกฉีดยาเดียวกันในการดูดตัวทำละลายวัคซีนชนิดเดียวกันแต่ใช้กับหลายขวดวัคซีน</label>
-													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="radio">
-														<label>
-														<input type="radio" name="reconstitution_1" value="1" checked>
-														ใช่
-														</label>
-													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="radio">
-														<label>
-														<input type="radio" name="reconstitution_1" value="2" >
-														ไม่ใช่
-														</label>
-													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="radio">
-														<label>
-														<input type="radio" name="reconstitution_1" value="3">
-														ไม่ทราบ
-														</label>
-													</div>
-												</div>
-											</div>
-											<div class="row">
-												<div class="col-lg-12">
-													<div class="control-label">
-													<label>ใช้กระบอกฉีดยาเดียวกันในการดูดตัวทำละลายวัคซีนโดยใช้วัคซีนหลายชนิด</label>
-													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="radio">
-														<label>
-														<input type="radio" name="reconstitution_2" value="1" checked>
-														ใช่
-														</label>
-													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="radio">
-														<label>
-														<input type="radio" name="reconstitution_2" value="2" >
-														ไม่ใช่
-														</label>
-													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="radio">
-														<label>
-														<input type="radio" name="reconstitution_2" value="3">
-														ไม่ทราบ
-														</label>
-													</div>
-												</div>
-											</div>
-											<div class="row">
-												<div class="col-lg-12">
-													<div class="control-label">
-													<label>แยกกระบอกฉีดยาในการดูดตัวทำละลายวัคซีนในแต่ละขวดวัคซีน</label>
-													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="radio">
-														<label>
-														<input type="radio" name="reconstitution_3" value="1" checked>
-														ใช่
-														</label>
-													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="radio">
-														<label>
-														<input type="radio" name="reconstitution_3" value="2" >
-														ไม่ใช่
-														</label>
-													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="radio">
-														<label>
-														<input type="radio" name="reconstitution_3" value="3">
-														ไม่ทราบ
-														</label>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="box-footer">
-									{{-- คอรั่มภายใน3.2 --}}
-									<div class="col-md-12">
-									<!-- general form elements -->
-								<div class="form-group">
-									<div class="row">
-										<div class="col-lg-12">
-											<div class="control-label">
-											<label>วัคซีนและตัวทำละลายที่ใช้ เป็นของบริษัทผู้ผลิตเดียวกันหรือไม่ : </label>
-											</div>
-										</div>
-										<div class="col-lg-2">
-											<div class="radio">
-												<label>
-												<input type="radio" name="reconstitution_4" value="1" checked>
-												ใช่
-												</label>
-											</div>
-										</div>
-										<div class="col-lg-2">
-											<div class="radio">
-												<label>
-												<input type="radio" name="reconstitution_4" value="2" >
-												ไม่ใช่
-												</label>
-											</div>
-										</div>
-										<div class="col-lg-2">
-											<div class="radio">
-												<label>
-												<input type="radio" name="reconstitution_4" value="3">
-												ไม่ทราบ
-												</label>
-											</div>
-										</div>
-									</div>
-								</div>
-									</div>
-								</div>
-								<div class="box-footer">
-									{{-- คอรั่มภายใน3.2 --}}
-									<div class="col-md-12">
-									<!-- general form elements -->
-									<div class="form-group">
-										<div class="row">
-											<div class="col-lg-12">
-												<div class="control-label">
-												<label>รายละเอียดเพิ่มเติมและข้อคิดเห็น :</label>
-												</div>
-											</div>
-											<div class="col-lg-12">
-												<textarea name="reconstitution_5" class="form-control" rows="3" placeholder="Enter ..."></textarea>
-											</div>
-										</div>
-									</div>
-									</div>
-								</div>
-								<div>
-								</div>
-							</div>
-						</div>
-						</div>
-					</div>
-				</div>
-				</div>
-			</div>
-		</div>
-		<!-- /.tab-pane -->
-		<div class="tab-pane" id="tab_5">
-			<div class="row">
-				<!--หัวข้อที่5 -->
-				<div class="col-md-12">
-				<!-- general form elements -->
-				<div class="box box-danger">
-					<div class="box-header with-border">
-						<h3 class="box-title">(7)ระบบลูกโซ่ความเย็นและการขนส่ง (บันทึกข้อมูลส่วนนี้โดยการถาใ หรือโดยการสังเกตุ)</h3>
-					</div>
-					<form role="form">
-					<div class="box-body">
-						{{-- คอรั่มภายใน3.2 --}}
-						<div class="col-md-12">
-						<!-- general form elements -->
-						<div class="box box-danger">
-							<div class="box-header with-border">
-								<div class="box-body">
-									{{-- คอรั่มภายใน3.2 --}}
-									<div class="col-md-12">
-										<!-- general form elements -->
-										<div class="form-group">
-											<div class="row">
-												<div class="col-lg-12">
-													<div class="control-label">
-													<label>มีการบันทึกอุณหภูมิตู้เย็นหรือไม่ :</label>
-													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="radio">
-														<label>
-														<input type="radio" name="vaccine_storage_1" value="1" checked>
-														ไม่มี
-														</label>
-													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="radio">
-														<label>
-														<input type="radio" name="vaccine_storage_1" value="2">
-														มี
-														</label>
-													</div>
-												</div>
-												<div class="col-lg-3">
-													<div id="vaccine_storage_1_1" style="display: none">
-													<input type="text" id="other_vaccine_storage_1_1_text" name="vaccine_storage_1_1" class="form-control" placeholder="ระบุ" hidden="true">
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- general form elements -->
-										<div class="form-group">
-											<div class="row">
-												<div class="col-lg-12">
-													<div class="control-label">
-													<label>ถ้ามี พบว่าอุณหภูมิตู้เย็นต่ำกว่า +2 หรือสูงกว่า +8 องศาเซลเซียส หลังจากนำวัคซีนเข้าไปเก็บแล้วหรือไม่ :</label>
-													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="radio">
-														<label>
-														<input type="radio" name="vaccine_storage_1_2" value="1" checked>
-														ไม่ใช่
-														</label>
-													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="radio">
-														<label>
-														<input type="radio" name="vaccine_storage_1_2" value="2" >
-														ใช่
-														</label>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- general form elements -->
-										<div class="form-group">
-											<div class="row">
-												<div class="col-lg-12">
-													<div class="control-label">
-													<label>ถ้าใช่ ให้เพิ่มเติมรายละเอียดในการแก้ไขปัญหาเมื่อเกิดเหตุการณ์ฉุกเฉินในระบบลูกโซ่ความเย็น(cold chain breakdown) :</label>
-													</div>
-												</div>
-												<div class="col-lg-6">
-													<div class="radio">
-														<textarea name="vaccine_storage_1_3" class="form-control" rows="3" placeholder="Enter ..."></textarea>
-													  </div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								<div class="box-footer">
-									{{-- คอรั่มภายใน3.2 --}}
-									<div class="col-md-12">
-										<!-- general form elements -->
-										<div class="form-group">
-											<div class="row">
-												<div class="col-lg-12">
-													<div class="control-label">
-													<label>ได้ปฏิบัติตามมาตรฐานการเก็บรักษา ตัวทำละลาย และการใช้กระบอกฉีดยาหรือไม่ :</label>
-													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="radio">
-														<label>
-														<input type="radio" name="vaccine_storage_2" value="1" checked>
-														ใช่
-														</label>
-													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="radio">
-														<label>
-														<input type="radio" name="vaccine_storage_2" value="2" >
-														ไม่ใช
-														</label>
-													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="radio">
-														<label>
-														<input type="radio" name="vaccine_storage_2" value="3">
-														ไม่ทราบ
-														</label>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="box-footer">
-									{{-- คอรั่มภายใน3.2 --}}
-									<div class="col-md-12">
-										<!-- general form elements -->
-										<div class="form-group">
-											<div class="row">
-												<div class="col-lg-12">
-													<div class="control-label">
-													<label>มีสิ่งของอื่น (เข่น ยา อาหาร) นอกจากวัคซีน และตัวทำละลาย เก็บรักษาไว้ในตู้เย็นหรือไม่ :</label>
-													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="radio">
-														<label>
-														<input type="radio" name="vaccine_storage_3" value="1" checked>
-														ใช่
-														</label>
-													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="radio">
-														<label>
-														<input type="radio" name="vaccine_storage_3" value="2" >
-														ไม่ใช่
-														</label>
-													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="radio">
-														<label>
-														<input type="radio" name="vaccine_storage_3" value="3">
-														ไม่ทราบ
-														</label>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="box-footer">
-									{{-- คอรั่มภายใน3.2 --}}
-									<div class="col-md-12">
-										<!-- general form elements -->
-										<div class="form-group">
-											<div class="row">
-												<div class="col-lg-12">
-													<div class="control-label">
-													<label>มีวัคซีนที่ผสมแล้วยังเหลืออยู่เก็บรักษาไว้ในตู้เย็นหรือไม่ :</label>
-													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="radio">
-														<label>
-														<input type="radio" name="vaccine_storage_4" value="1" checked>
-														ใช่
-														</label>
-													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="radio">
-														<label>
-														<input type="radio" name="vaccine_storage_4" value="2" >
-														ไม่ใช่
-														</label>
-													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="radio">
-														<label>
-														<input type="radio" name="vaccine_storage_4" value="3">
-														ไม่ทราบ
-														</label>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="box-footer">
-									{{-- คอรั่มภายใน3.2 --}}
-									<div class="col-md-12">
-										<!-- general form elements -->
-										<div class="form-group">
-											<div class="row">
-												<div class="col-lg-12">
-													<div class="control-label">
-													<label>มีวัคซีนที่เสื่อมคุณภาพเก็บรักษาไว้ในตู้เย็นหรือไม่ (เช่น วัคซีนหมดอายุ ไม่มีฉลากที่ขวด VVM อยู่ในระยะ 3-4 หรือวัคซีนที่แข็งตัว)  :</label>
-													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="radio">
-														<label>
-														<input type="radio" name="vaccine_storage_5" value="1" checked>
-														ใช่
-														</label>
-													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="radio">
-														<label>
-														<input type="radio" name="vaccine_storage_5" value="2" >
-														ไม่ใช่
-														</label>
-													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="radio">
-														<label>
-														<input type="radio" name="vaccine_storage_5" value="3">
-														ไม่ทราบ
-														</label>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="box-footer">
-									{{-- คอรั่มภายใน3.2 --}}
-									<div class="col-md-12">
-										<!-- general form elements -->
-										<div class="form-group">
-											<div class="row">
-												<div class="col-lg-12">
-													<div class="control-label">
-													<label>มีตัวทำละลายที่เสื่อมคุณภาพเก็บรักษาไว้ในตู้เย็นหรือไม่ (เช่น ตัวทำละลายหมดอายุ ขวดมีรอยร้าว คนละบริษัทกับวัคซีน ขวดบรรจุสกปรก)  :</label>
-													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="radio">
-														<label>
-														<input type="radio" name="vaccine_storage_6" value="1" checked>
-														ใช่
-														</label>
-													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="radio">
-														<label>
-														<input type="radio" name="vaccine_storage_6" value="2" >
-														ไม่ใช่
-														</label>
-													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="radio">
-														<label>
-														<input type="radio" name="vaccine_storage_6" value="3">
-														ไม่ทราบ
-														</label>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="box-footer">
-									{{-- คอรั่มภายใน3.2 --}}
-									<div class="col-md-12">
-									<!-- general form elements -->
-									<div class="col-lg-12">
-										<div class="control-label">
-										<label>รายละเอียดเพิ่มเติม  :</label>
-										<textarea name="vaccine_storage_7" class="form-control" rows="3" placeholder="Enter ..."></textarea>
-										</div>
-									</div>
-									</div>
-								</div>
-								<div class="box-footer">
-									{{-- คอรั่มภายใน3.2 --}}
-									<div class="col-md-12">
-										<!-- general form elements -->
-										<div class="form-group">
-											<div class="row">
-												<div class="col-lg-12">
-													<div class="control-label">
-													<label>อุปกรณ์ที่ให้ในการขนส่ง  :</label>
-													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="radio">
-														<label>
-														<input type="radio" name="vaccine_transportation_1" value="1" checked>
-														กระติกวัคซีน
-														</label>
-													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="radio">
-														<label>
-														<input type="radio" name="vaccine_transportation_1" value="2" >
-														กล่องโฟม
-														</label>
-													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="radio">
-														<label>
-														<input type="radio" name="vaccine_transportation_1" value="3">
-														อุปกรณอื่นๆ
-														</label>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- general form elements -->
-										<div class="form-group">
-											<div class="row">
-												<div class="col-lg-12">
-													<div class="control-label">
-													<label>ระบุ :</label>
-													</div>
-												</div>
-												<div class="col-lg-6">
-													<div class="radio">
-														<textarea name="vaccine_transportation_1_1" class="form-control" rows="3" placeholder="Enter ..."></textarea>
-													  </div>
-													</div>
-												</div>
-											</div>
-									</div>
-								</div>
-								<div class="box-footer">
-									{{-- คอรั่มภายใน3.2 --}}
-									<div class="col-md-12">
-										<!-- general form elements -->
-										<div class="form-group">
-											<div class="row">
-												<div class="col-lg-12">
-													<div class="control-label">
-													<label>ขนส่งวัคซีนมาที่สถานที่ให้วัคซีน  :</label>
-													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="radio">
-														<label>
-														<input type="radio" name="vaccine_transportation_2" value="1" checked>
-														ก่อนวันให้บริการ
-														</label>
-													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="radio">
-														<label>
-														<input type="radio" name="vaccine_transportation_2" value="2" >
-														ในวันที่ให้บริการ
-														</label>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="box-footer">
-									{{-- คอรั่มภายใน3.2 --}}
-									<div class="col-md-12">
-										<!-- general form elements -->
-										<div class="form-group">
-											<div class="row">
-												<div class="col-lg-12">
-													<div class="control-label">
-													<label>มีการ conditioning ice-pack หรือไม่   :</label>
-													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="radio">
-														<label>
-														<input type="radio" name="vaccine_transportation_3" value="1" checked>
-														ใช่
-														</label>
-													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="radio">
-														<label>
-														<input type="radio" name="vaccine_transportation_3" value="2" >
-														ไม่ใช่
-														</label>
-													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="radio">
-														<label>
-														<input type="radio" name="vaccine_transportation_3" value="3">
-														ไม่ทราบ
-														</label>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="box-footer">
-									{{-- คอรั่มภายใน3.2 --}}
-									<div class="col-md-12">
-										<!-- general form elements -->
-										<div class="col-lg-12">
-											<div class="control-label">
-											<label>รายละเอียดเพิ่มเติม  :</label>
-											<textarea name="vaccine_transportation_4" class="form-control" rows="3" placeholder="Enter ..."></textarea>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						</div>
-					</div>
-				</div>
-				</div>
-			</div>
-		</div>
-		<!-- /.tab-pane -->
-		<div class="tab-pane" id="tab_6">
-			<div class="row">
-				<!--หัวข้อที่5 -->
-				<div class="col-md-12">
-				<!-- general form elements -->
-				<div class="box box-danger">
-					<div class="box-header with-border">
-						<h3 class="box-title">(8)การสอบสวนในชุมชน(เยี่ยมพื้นที่ สัมภาษณ์บิดามารดา ผู้ปกครอง และบุคคลอื่นๆที่เกี่ยวข้อง)</h3>
-					</div>
-					<form role="form">
-					<div class="box-body">
-						{{-- คอรั่มภายใน3.2 --}}
-						<div class="col-md-12">
-						<!-- general form elements -->
-						<div class="box box-danger">
-							<div class="box-header with-border">
-								<div class="box-body">
-									{{-- คอรั่มภายใน3.2 --}}
-									<div class="col-md-12">
-										<!-- general form elements -->
-										<div class="form-group">
-											<div class="row">
-												<div class="col-lg-12">
-													<div class="control-label">
-													<label>มีเหตุการณ์ที่มีผู้ป่วยคล้ายกับผู้ป่วยรายนี้เกิดขึ้นในช่วงเวลาใกล้เคียงกับผู้ป่วยรายนี้และเกิดในตำบลเดียวกันกับผู้ป่วยรายนี้หรือไม่ :</label>
-													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="radio">
-														<label>
-														<input type="radio" name="community_inv_1" value="1" checked>
-														มี
-														</label>
-													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="radio">
-														<label>
-														<input type="radio" name="community_inv_1" value="2" >
-														ไม่มี
-														</label>
-													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="radio">
-														<label>
-														<input type="radio" name="community_inv_1" value="3">
-														ไม่ทราบ
-														</label>
-													</div>
-												</div>
-											<div class="col-lg-12">
-												<div class="col-lg-4">
-													<div id="other_community_inv_1">
-													<input id="other_community_inv_1_text" name="community_inv_1_1" type="text" class="form-control" placeholder="ถ้ามี มีกี่ราย" hidden="true">
-													<input id="other_community_inv_1_text" name="community_inv_1_2" type="text" class="form-control" placeholder="เป็นผู้ได้รับวัคซีนกี่ราย" hidden="true">
-													<input id="other_community_inv_1_text" name="community_inv_1_3" type="text" class="form-control" placeholder="ไม่ได้รับวัคซีนกี่ราย" hidden="true">
-													<input id="other_community_inv_1_text" name="community_inv_1_4" type="text" class="form-control" placeholder="ไม่ทราบ" hidden="true">
-													<input id="other_community_inv_1_text" name="community_inv_1_5" type="text" class="form-control" placeholder="อธิบายรายละเอียด" hidden="true">
-													</div>
-												</div>
-											</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="box-footer">
-									{{-- คอรั่มภายใน3.2 --}}
-									<div class="col-md-12">
-										<!-- general form elements -->
-										<div class="form-group">
-											<div class="row">
-												<div class="col-lg-12">
-													<div class="control-label">
-													<label>ถ้าไม่ใช้ AD syringes ใช้กระบอกฉีดยาชนิดใด :</label>
-													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="radio">
-														<label>
-														<input type="radio" name="no_ad_syringes" value="1" checked>
-														ใช้ครั้งเดียวทิ้ง
-														</label>
-													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="radio">
-														<label>
-														<input type="radio" name="no_ad_syringes" value="2" >
-														นำกลับมาใช้ใหม่
-														</label>
-													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="radio">
-														<label>
-														<input type="radio" name="no_ad_syringes" value="3">
-														แก้ว
-														</label>
-													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="radio">
-														<label>
-														<input type="radio" name="no_ad_syringes" value="4">
-														อื่นๆ
-														</label>
-													</div>
-												</div>
-												<div class="col-lg-6">
-													<div id="other_no_ad_syringes" style="display: none">
-													<input name="other_no_ad_syringes" id="other_no_ad_syringes_text" type="text" class="form-control" placeholder="ระบุ" hidden="true">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						</div>
-					</div>
-				</div>
-				</div>
-			</div>
-		</div>
-		<!-- /.tab-pane -->
-		<div class="tab-pane" id="tab_7">
-			<div class="row">
-				<!--หัวข้อที่5 -->
-				<div class="col-md-12">
-				<!-- general form elements -->
-				<div class="box box-danger">
-					<div class="box-header with-border">
-						<h3 class="box-title">(9)ข้อมูลอื่นๆที่ตรวจพบหรือสังเกตุได้และข้อคิดเห็น</h3>
-					</div>
-					<form role="form">
-					<div class="box-body">
-						{{-- คอรั่มภายใน3.2 --}}
-						<div class="col-md-12">
-						<!-- general form elements -->
-						<div class="box box-danger">
-							<div class="box-header with-border">
-								<div class="box-body">
-									{{-- คอรั่มภายใน3.2 --}}
-									<div class="col-md-12">
-										<!-- general form elements -->
-										<div class="form-group">
-											<div class="row">
-												<div class="col-lg-3">
-													<label>ข้อมูลอื่นๆที่ตรวจพบหรือสังเกตุได้และข้อคิดเห็น : </label>
-													<textarea name="events" class="form-control" rows="3" placeholder="Enter ..."></textarea>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="box-footer">
-									{{-- คอรั่มภายใน3.2 --}}
-									<div class="col-md-12">
-									<!-- general form elements -->
-									<div class="form-group">
-										<div class="row">
-											<div class="col-lg-3">
-												<label>ชื่อ-สกุลผู้สอบสวน : </label>
-												<input name="investigater_1[]" type="text" class="form-control" placeholder="ระบุตำแหน่ง">
-											</div>
-											<div class="col-lg-3">
-												<label>ตำแหน่ง : </label>
-												<input name="investigater_1_2[]" type="text" class="form-control" placeholder="ระบุตำแหน่ง">
-											</div>
-											<div class="col-lg-3">
-												<label>หน่วยงาน : </label>
-												<input name="investigater_1_3[]" type="text" class="form-control" placeholder="ระบุตำแหน่ง">
-											</div>
-											<div class="col-lg-3">
-												<label>โทร : </label>
-												<input name="investigater_1_4[]" type="text" class="form-control" placeholder="ระบุตำแหน่ง">
-											</div>
-										</div>
-									</div>
-									</div>
-								</div>
-								<div class="box-footer">
-									{{-- คอรั่มภายใน3.2 --}}
-									<div class="col-md-12">
-										<!-- general form elements -->
-										<div class="form-group">
-											<div class="row">
-												<div class="col-lg-3">
-													<label>ชื่อ-สกุลผู้สอบสวน : </label>
-													<input name="investigater_1[]" type="text" class="form-control" placeholder="ระบุตำแหน่ง">
-												</div>
-												<div class="col-lg-3">
-													<label>ตำแหน่ง : </label>
-													<input name="investigater_1_2[]" type="text" class="form-control" placeholder="ระบุตำแหน่ง">
-												</div>
-												<div class="col-lg-3">
-													<label>หน่วยงาน : </label>
-													<input name="investigater_1_3[]" type="text" class="form-control" placeholder="ระบุตำแหน่ง">
-												</div>
-												<div class="col-lg-3">
-													<label>โทร : </label>
-													<input name="investigater_1_4[]" type="text" class="form-control" placeholder="ระบุตำแหน่ง">
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="box-footer">
-									{{-- คอรั่มภายใน3.2 --}}
-									<div class="col-md-12">
-										<!-- general form elements -->
-										<div class="form-group">
-											<div class="row">
-												<div class="col-lg-3">
-													<label>ชื่อ-สกุลผู้สอบสวน : </label>
-													<input name="investigater_1[]" type="text" class="form-control" placeholder="ระบุตำแหน่ง">
-												</div>
-												<div class="col-lg-3">
-													<label>ตำแหน่ง : </label>
-													<input name="investigater_1_2[]" type="text" class="form-control" placeholder="ระบุตำแหน่ง">
-												</div>
-												<div class="col-lg-3">
-													<label>หน่วยงาน : </label>
-													<input name="investigater_1_3[]" type="text" class="form-control" placeholder="ระบุตำแหน่ง">
-												</div>
-												<div class="col-lg-3">
-													<label>โทร : </label>
-													<input name="investigater_1_4[]" type="text" class="form-control" placeholder="ระบุตำแหน่ง">
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="box-footer">
-									{{-- คอรั่มภายใน3.2 --}}
-									<div class="col-md-12">
-										<!-- general form elements -->
-										<div class="form-group">
-											<div class="row">
-												<div class="col-lg-3">
-													<label>ชื่อ-สกุลผู้สอบสวน : </label>
-													<input name="investigater_1[]" type="text" class="form-control" placeholder="ระบุตำแหน่ง">
-												</div>
-												<div class="col-lg-3">
-													<label>ตำแหน่ง : </label>
-													<input name="investigater_1_2[]" type="text" class="form-control" placeholder="ระบุตำแหน่ง">
-												</div>
-												<div class="col-lg-3">
-													<label>หน่วยงาน : </label>
-													<input name="investigater_1_3[]" type="text" class="form-control" placeholder="ระบุตำแหน่ง">
-												</div>
-												<div class="col-lg-3">
-													<label>โทร : </label>
-													<input name="investigater_1_4[]" type="text" class="form-control" placeholder="ระบุตำแหน่ง">
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="box-footer">
-									{{-- คอรั่มภายใน3.2 --}}
-									<div class="col-md-12">
-										<!-- general form elements -->
-										<div class="form-group">
-											<div class="row">
-												<div class="col-lg-3">
-													<label>วันที่สอบสวน : </label>
-													<div class="input-group date">
-														<div class="input-group-addon">
-															<i class="fa fa-calendar"></i>
-														</div>
-													<input id="datepicker_investigater_2" name="investigater_2" type="text" class="form-control" placeholder="ระบุตำแหน่ง">
-												</div>
-											</div>
-												<div class="col-lg-3">
-													<label>วันที่บันทึกแบบสอบสวน(AEFI2) : </label>
-													<div class="input-group date">
-														<div class="input-group-addon">
-															<i class="fa fa-calendar"></i>
-														</div>
-													<input id="datepicker_investigater_3" name="investigater_3" type="text" class="form-control" placeholder="ระบุตำแหน่ง">
-												</div>
-											</div>
-												<div class="col-lg-3">
-													<label>วันที่ส่งแบบสอบสวน(AEFI2) : </label>
-													<div class="input-group date">
-														<div class="input-group-addon">
-															<i class="fa fa-calendar"></i>
-														</div>
-													<input id="datepicker_investigater_4" name="investigater_4" type="text" class="form-control" placeholder="ระบุตำแหน่ง">
-												</div>
-											</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="box-footer">
-									{{-- คอรั่มภายใน3.2 --}}
-									<div class="col-md-12">
-									<!-- general form elements -->
-									<div class="form-group">
-										<div class="row">
-											<div class="col-lg-3">
-												<label>ชื่อ-สกุลผู้ส่งแบบสอบสวน(AEFI2) : </label>
-												<input name="investigater_5" type="text" class="form-control" placeholder="ระบุตำแหน่ง">
-											</div>
-											<div class="col-lg-3">
-												<label>ตำแหน่ง: </label>
-												<input name="investigater_5_2" type="text" class="form-control" placeholder="ระบุตำแหน่ง">
-											</div>
-											<div class="col-lg-3">
-												<label>หน่วยงาน : </label>
-												<input name="investigater_5_3" type="text" class="form-control" placeholder="ระบุตำแหน่ง">
-											</div>
-										</div>
-									</div>
-									</div>
-								</div>
-								<div class="box-footer">
-									{{-- คอรั่มภายใน3.2 --}}
-									<div class="col-md-12">
-										<!-- general form elements -->
-										<div class="form-group">
-											<div class="row">
-												<div class="col-lg-3">
-													<label>โทรหน่วยงาน : </label>
-													<input name="investigater_8" type="text" class="form-control" placeholder="ระบุตำแหน่ง">
-												</div>
-												<div class="col-lg-3">
-													<label>มือถือ : </label>
-													<input name="investigater_9" type="text" class="form-control" placeholder="ระบุตำแหน่ง">
-												</div>
-												<div class="col-lg-3">
-													<label>E mail : </label>
-													<input name="investigater_10" type="text" class="form-control" placeholder="ระบุตำแหน่ง">
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						</div>
-					</div>
-				</div>
-				</div>
-			</div>
-		</div>
+                </div>
+                <!-- /.box-header -->
 
-		<!-- /.tab-pane -->
-	  </div>
+              </div>
+              <!-- /.box -->
+            </div>
+            <!--หัวข้อที่5 -->
+            <div class="col-md-12">
+              <!-- general form elements -->
+              <div class="box box-danger">
+                <div class="box-header with-border">
+                  <h3 class="box-title">(5) ข้อมูลผู้รายงาน สถานที่เกิดเหตุการณ์ และหน่วยงานที่รายงาน</h3>
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+
+                <div class="box-body">
+                  {{-- คอรั่มภายใน3.1 --}}
+                  <div class="col-md-8">
+                    <!-- general form elements -->
+                    <div class="box box-danger">
+                      <div class="box-header with-border">
+                        <!-- checkbox3.1.1 -->
+                        <div class="form-group">
+                          <div class="row">
+                            <div class="col-lg-6">
+                              <label>ชื่อผู้วินิจฉัยอาการ :</label><input type="text" id="symptom_name" name="symptom_name" class="form-control" placeholder="ชื่อ นามสกุล">
+                            </div>
+                          </div>
+                        </div>
+                        <!-- ประวัติการแพ้วัคซีน/ยา -->
+                        <div class="form-group">
+                          <div class="row">
+                            <div class="col-lg-12">
+                              <div class="control-label">
+                                <label>ตำแหน่ง :</label>
+                              </div>
+                            </div>
+                            <div class="col-lg-2">
+                              <div class="radio">
+                                <label>
+                                  <input type="radio" name="symptom_position" value="1" >
+                                  แพทย์
+                                </label>
+                              </div>
+                            </div>
+                            <div class="col-lg-2">
+                              <div class="radio">
+                                <label>
+                                  <input type="radio" name="symptom_position" value="2">
+                                  เภสัชกร
+                                </label>
+                              </div>
+                            </div>
+                            <div class="col-lg-2">
+                              <div class="radio">
+                                <label>
+                                  <input type="radio" name="symptom_position" value="3">
+                                  พยาบาล
+                                </label>
+                              </div>
+                            </div>
+                            <div class="col-lg-2">
+                              <div class="radio">
+                                <label>
+                                  <input type="radio" name="symptom_position" value="4">
+                                  อื่นๆระบุ
+                                </label>
+                              </div>
+                            </div>
+                            <div class="col-lg-4">
+                              <div id="other_symptom_position" style="display: none">
+                                <input type="text" id="other_symptom_position_text" name="other_symptom_position" class="form-control" placeholder="ระบุตำแหน่ง" hidden="true">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="row">
+                            <div class="col-lg-6">
+                              <label>ชื่อผู้รายงาน :</label><input type="text" id="reporter_name" name="reporter_name" class="form-control" placeholder="ชื่อ นามสกุล">
+                            </div>
+                          </div>
+                        </div>
+                        <!-- ประวัติการแพ้วัคซีน/ยา -->
+                        <div class="form-group">
+                          <div class="row">
+                            <div class="col-lg-12">
+                              <div class="control-label">
+                                <label>ตำแหน่ง :</label>
+                              </div>
+                            </div>
+                            <div class="col-lg-2">
+                              <div class="radio">
+                                <label>
+                                  <input type="radio" name="reporter_position" value="1" >
+                                  งานระบาดวิทยา
+                                </label>
+                              </div>
+                            </div>
+                            <div class="col-lg-2">
+                              <div class="radio">
+                                <label>
+                                  <input type="radio" name="reporter_position" value="2">
+                                  เภสัชกร
+                                </label>
+                              </div>
+                            </div>
+                            <div class="col-lg-2">
+                              <div class="radio">
+                                <label>
+                                  <input type="radio" name="reporter_position" value="3" />
+                                  งานEIP
+                                </label>
+                              </div>
+                            </div>
+                            <div class="col-lg-2">
+                              <div class="radio">
+                                <label>
+                                  <input type="radio" name="reporter_position" value="4" />
+                                  อื่นๆระบุ
+                                </label>
+                              </div>
+                            </div>
+                            <div class="col-lg-4">
+                              <div id="other_reporter_position" style="display: none">
+                                <input type="text" id="other_reporter_position_text" name="other_reporter_position" class="form-control" placeholder="ระบุตำแหน่ง" hidden="true">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="row">
+                            <div class="col-lg-4">
+                              <label>ว/ด/ป ที่พบเหตุการณ์ :</label>
+                              <div class="input-group date">
+                                <div class="input-group-addon">
+                                  <i class="fa fa-calendar"></i>
+                                </div>
+                                <input type="text" class="form-control pull-right" id="datepicker_found_event" name="date_found_event" data-date-format="yyyy-mm-dd" readonly>
+                              </div>
+                            </div>
+                            <div class="col-lg-4">
+                              <label>โรงพยาบาลที่รับรักษา :</label>
+                              <select id="js-example-basic-single" name="hospcode_treat" class="js-example-basic-single form-control" data-dropdown-css-class="select2-danger" required>
+                                {{-- <option class="badge filter badge-info" data-color="info" value=""></option> --}}
+                                {{-- <option class="badge filter badge-info" data-color="info" value="9999999">เสียชีวิตนอกสถานพยาบาล</option> --}}
+                              </select>
+                              {{-- <input type="text" id="event_location" name="event_location" class="form-control" placeholder="สถานที่เกิดเหตุการณ์"> --}}
+                            </div>
+                            <div class="col-lg-4">
+                              <label>จังหวัด :</label>
+                              <select id="province_found_event" name="province_found_event" class="form-control" style="width: 100%;">
+                                <?php
+												  foreach ($arr_provinces as $k=>$v) { ?>
+                                <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+                                <?php } ?>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="row">
+                            <div class="col-lg-4">
+                              <label>หน่วยที่รายงาน :</label>
+                              <select id="js-example-basic-single" name="hospcode_report" class="js-example-basic-single form-control" data-dropdown-css-class="select2-danger" required>
+                              </select>
+                            </div>
+                            <div class="col-lg-4">
+                              <label>จังหวัด :</label>
+                              <select id="province_reported" name="province_reported" class="form-control" style="width: 100%;">
+                                <?php
+												  foreach ($arr_provinces as $k=>$v) { ?>
+                                <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+                                <?php } ?>
+                              </select>
+                            </div>
+                            <div class="col-lg-4">
+                              <label>โทร :</label><input type="text" id="tel_reported" name="tel_reported" class="form-control" placeholder="โทร" data-inputmask='"mask": "99-9999-9999"' data-mask>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="row">
+                            <div class="col-lg-4">
+                              <label>Email :</label><input type="text" id="email_reported" name="email_reported" class="form-control" placeholder="Email">
+                            </div>
+                            <div class="col-lg-4">
+                              <label>ว/ด/ป ที่ส่งรายงาน :</label>
+                              <div class="input-group date">
+                                <div class="input-group-addon">
+                                  <i class="fa fa-calendar"></i>
+                                </div>
+
+                                <input type="text" class="form-control readonly pull-right" id="" name="datepicker_send_reported" data-date-format="yyyy-mm-dd" value="<?php echo date("Y-m-d") ; ?>" readonly>
+
+                                {{-- <input type="text" class="form-control pull-right" id="datepicker_send_reported" name="datepicker_send_reported" data-date-format="yyyy-mm-dd" readonly> --}}
+                              </div>
+                            </div>
+                            <div class="col-lg-4">
+                              <label>ว/ด/ป ที่รับรายงาน :</label>
+                              <div class="input-group date">
+                                <div class="input-group-addon">
+                                  <i class="fa fa-calendar"></i>
+                                </div>
+                                <input type="text" class="form-control pull-right" id="datepicker_resiver" name="datepicker_resiver" data-date-format="yyyy-mm-dd" readonly>
+                              </div>
+                            </div>
+                            <div class="col-lg-12">
+                              <label>ความคิดเห็นเพิ่มเติม</label>
+                              <textarea class="form-control" rows="3" id="more_reviews" name="more_reviews"></textarea>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- /.box-header -->
+                      <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                  </div>
+                  {{-- คอรั่มภายใน3.2 --}}
+                  <div class="col-md-4">
+                    <!-- general form elements -->
+                    <div class="box box-danger">
+                      <div class="box-header with-border">
+                        <!-- checkbox3.2.1 -->
+                        <div class="form-group">
+                          <div class="col-md-12">
+                            <label>
+                              ประเมินสาเหตุเบื้องต้น
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- /.box-header -->
+                      <!-- form start -->
+
+                      <div class="box-body">
+                        {{-- input content --}}
+                        <div class="box-body">
+                          {{-- input content --}}
+                          <!-- checkbox3.2.2  -->
+                          <div class="form-group">
+                            <div class="col-md-12">
+                              <label>
+                                <input type="checkbox" name="assessment1" value="1">
+                                ปฏิกิริยาของวัคซีน ระดับความสัมพันธ์
+                              </label>
+                            </div>
+                            <div class="col-md-2">
+                              {{-- <label>
+                                <input type="checkbox" name="assessment2" value="1">
+                                ใช่
+                              </label> --}}
+                            </div>
+                            <div class="col-md-5">
+                              <label>
+                                <input type="checkbox" name="assessment2" value="1">
+                                ใช่
+                              </label>
+                            </div>
+                            <div class="col-md-5">
+                              <label>
+                                <input type="checkbox" name="assessment3" value="1">
+                                น่าจะใช่
+                              </label>
+                            </div>
+                            <div class="col-md-2">
+                              {{-- <label>
+                                <input type="checkbox" name="assessment3" value="1">
+                                น่าจะใช่
+                              </label> --}}
+                            </div>
+                            <div class="col-md-5">
+                              <label>
+                                <input type="checkbox" name="assessment4" value="1">
+                                อาจจะใช่
+                              </label>
+                            </div>
+                            <div class="col-md-5">
+                              <label>
+                                <input type="checkbox" name="assessment5" value="1">
+                                ไม่ใช่
+                              </label>
+                            </div>
+                          </div>
+                          <div class="col-md-12">
+                            </br>
+                            {{-- <label>
+                              <input type="checkbox" name="assessment7" value="1">
+                              ความคลาดเคลื่อนด้านการให้บริการ
+                            </label> --}}
+                          </div>
+                          <div class="form-group">
+                            </br>
+                            <div class="col-md-12">
+                              <label>
+                                <input type="checkbox" name="assessment6" value="1">
+                                ความบกพร่องของวัคซีน
+                              </label>
+                            </div>
+                            <div class="col-md-12">
+                              <label>
+                                <input type="checkbox" name="assessment7" value="1">
+                                ความคลาดเคลื่อนด้านการให้บริการ
+                              </label>
+                            </div>
+                            <div class="col-md-12">
+                              <label>
+                                <input type="checkbox" name="assessment8" value="1">
+                                เหตุบังเอิญ/เห็นพ้อง
+                              </label>
+                            </div>
+                            <div class="col-md-12">
+                              <label>
+                                <input type="checkbox" name="assessment9" value="1">
+                                ความกลัว/ความกังวล
+                              </label>
+                            </div>
+                            <div class="col-md-12">
+                              <label>
+                                <input type="checkbox" name="assessment10" value="1">
+                                ไม่สามารถระบุได้
+                              </label>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <div class="col-md-12">
+                              <hr>
+                              <label>
+                                การตรวจทางห้องปฏิบัติการ
+                              </label>
+                              <textarea class="form-control" rows="3" id="lab_result" name="lab_result"></textarea>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- /.box-body -->
+                    </div>
+                  </div>
+                  <!-- /.box -->
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer">
+                  <div class="col-md-3">
+                  </div>
+                  <div class="col-md-3">
+                    <a href="{{ route('lstf1') }}" class="btn btn-block btn-danger">ย้อนกลับ</a>
+                  </div>
+                  <div class="col-md-3">
+                    <input type="submit" name="submit" value="บันทึกข้อมูล" class="btn btn-block btn-success"></input>
+                  </div>
+                  <div class="col-md-3">
+                  </div>
+                </div>
+
+              </div>
+              <!-- /.box -->
+            </div>
+  </form>
+  </div>
   <!-- /.row -->
 </section>
-
 @include('AEFI.layout.footerScript')
 
 <script type="text/javascript">
-	$('.provinces').change(function(){
-		if ($(this).val()!='') {
-			var select=$(this).val();
-			var _token=$('input[name="_token"]').val();
-			$.ajax({
-				url:"{{route('dropdown.fetch')}}",
-				method:"POST",
-				data:{select:select, _token:_token},
-				success:function(result){
-					$('.amphures').html(result);
-				}
-			})
-		}
-	});
+  $('.provinces').change(function() {
+    if ($(this).val() != '') {
+      var select = $(this).val();
+      var _token = $('input[name="_token"]').val();
+      $.ajax({
+        url: "{{route('dropdown.fetch')}}",
+        method: "POST",
+        data: {
+          select: select,
+          _token: _token
+        },
+        success: function(result) {
+          $('.amphures').html(result);
+        }
+      })
+    }
+  });
 </script>
 <script type="text/javascript">
-	$('.amphures').change(function(){
-		var selectD=$(this).val();
-		//alert(selectD);
-		if ($(this).val()!='') {
-			//var selectD=$(this).val();
-			console.log(selectD);
-			var _token=$('input[name="_token"]').val();
-			$.ajax({
-				url:"{{route('dropdown.fetchD')}}",
-				method:"POST",
-				data:{select:selectD, _token:_token},
-				success:function(result){
-					$('.district').html(result);
-				}
-			})
-		}
-	});
-</script>
-
-<!-- /.content -->
-<script>
-    $(document).ready(function(){
-        $(".add-rowvac").click(function(){
-            var name_of_vaccine = $("#name_of_vaccine").val();
-            var vaccine_volume = $("#vaccine_volume").val();
-			var vaccination_site = $("#vaccination_site").val();
-			var dose = $("#route_of_vaccination").val();
-			var date_of_vaccination = $("#vaccine_volume").val();
-			var time_of_vaccination = $("#vaccination_site").val();
-			var route_of_vaccination = $("#route_of_vaccination").val();
-            var markup = "<tr><td><input type='checkbox' name='record'></td><td>"
-			 + name_of_vaccine + "</td><td>"
-			 + vaccine_volume + "</td><td>"
-			  + vaccination_site + "</td><td>"
-			  + dose + "</td><td>"
-			  + date_of_vaccination + "</td><td>"
-			  + time_of_vaccination + "</td><td>"
-			   + route_of_vaccination + "</td></tr>";
-            $("table tbody").append(markup);
-        });
-
-        // Find and remove selected table rows
-        $(".delete-row").click(function(){
-            $("table tbody").find('input[name="record"]').each(function(){
-            	if($(this).is(":checked")){
-                    $(this).parents("tr").remove();
-                }
-            });
-        });
-    });
+  $('.amphures').change(function() {
+    var selectD = $(this).val();
+    if ($(this).val() != '') {
+      console.log(selectD);
+      var _token = $('input[name="_token"]').val();
+      $.ajax({
+        url: "{{route('dropdown.fetchD')}}",
+        method: "POST",
+        data: {
+          select: selectD,
+          _token: _token
+        },
+        success: function(result) {
+          $('.district').html(result);
+        }
+      })
+    }
+  });
+  $(".divID1").attr("disabled", !this.checked);
+  $("#checkBoxID1").click(function() {
+    $(".divID1").attr("disabled", !this.checked);
+  });
+  $(".divID2").attr("disabled", !this.checked);
+  $("#checkBoxID2").click(function() {
+    $(".divID2").attr("disabled", !this.checked);
+  });
+  $(".divID3").attr("disabled", !this.checked);
+  $("#checkBoxID3").click(function() {
+    $(".divID3").attr("disabled", !this.checked);
+  });
+  $(".divID4").attr("disabled", !this.checked);
+  $("#checkBoxID4").click(function() {
+    $(".divID4").attr("disabled", !this.checked);
+  });
+  $(".divID5").attr("disabled", !this.checked);
+  $("#checkBoxID5").click(function() {
+    $(".divID5").attr("disabled", !this.checked);
+  });
 </script>
 <script>
-    $(document).ready(function(){
-        $(".add-rowSolvent").click(function(){
-            var  manufacturer= $("#manufacturer").val();
-            var lot_number = $("#lot_number").val();
-			var datepicker_expiry_date = $("#datepicker_expiry_date").val();
-			var name_of_diluent = $("#name_of_diluent").val();
-			var lot_number_diluent = $("#lot_number_diluent").val();
-			var datepicker_expiry_date_diluent = $("#datepicker_expiry_date_diluent").val();
-			var datepicker_date_of_reconstitution = $("#datepicker_date_of_reconstitution").val();
-			var time_of_reconstitution = $("#time_of_reconstitution").val();
-            var markup = "<tr><td><input type='checkbox' name='record'></td><td>"
-			 + manufacturer + "</td><td>"
-			 + lot_number + "</td><td>"
-			  + datepicker_expiry_date + "</td><td>"
-			  + name_of_diluent + "</td><td>"
-			  + lot_number_diluent + "</td><td>"
-			  + datepicker_expiry_date_diluent + "</td><td>"
-			  + datepicker_date_of_reconstitution + "</td><td>"
-			   + time_of_reconstitution + "</td></tr>";
-            $("table tbody").append(markup);
-        });
+  function showDiv1(divId, element) {
+    document.getElementById(divId).style.display = element.value == 99 ? 'block' : 'none';
+  }
 
-        // Find and remove selected table rows
-        $(".delete-row").click(function(){
-            $("table tbody").find('input[name="record"]').each(function(){
-            	if($(this).is(":checked")){
-                    $(this).parents("tr").remove();
-                }
-            });
-        });
+  // function showDiv2(divId, element) {
+  // 	document.getElementById(divId).style.display = element.value == 8 ? 'block' : 'none';
+  // }
+  //
+  // function showDiv3(divId, element) {
+  // 	document.getElementById(divId).style.display = element.value == 999 ? 'block' : 'none';
+  // }
+  // function showDiv4(divId, element) {
+  // 	document.getElementById(divId).style.display = element.value == 5 ? 'block' : 'none';
+  // }
+</script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $(document).on("click", ".classAdd", function() { //
+      var rowCount = $('.data-contact-person').length + 1;
+      var contactdiv = '<tr class="data-contact-person">' +
+        '<td>' +
+        '<select type="text" id="name_of_vaccine1" name="name_of_vaccine[]' + rowCount + '" class="form-control">' +
+        '<option value="">กรุณาระบุชื่อวัคซีน</option>' +
+        @foreach($vac_list as $row)
+      '<option value="{{$row->VAC_CODE}}">{{$row->VAC_NAME_EN}}</option>' +
+      @endforeach
+        '</select>' +
+        '</td>' +
+        '<td>' +
+        '<select type="text" id="vaccine_volume1" name="vaccine_volume[]' + rowCount + '" class="form-control">' +
+        '<option value="">กรุณาระบุปริมาณที่ให้</option>' +
+        <?php
+      foreach($arr_vaccine_volume as $k => $v) {
+        ?>
+          '<option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>' +
+          <?php } ?>
+        '</select>' +
+        '</td>' +
+        '<td>' +
+        '<select type="text" id="route_of_vaccination1" name="route_of_vaccination[]' + rowCount + '" class="form-control">' +
+        '<option value="">กรุณาระบุวิธีที่ให้</option>' +
+        <?php
+      foreach($arr_route_of_vaccination as $k => $v) {
+          ?>
+          '<option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>' +
+          <?php
+        } ?>
+        '</select>' +
+        '</td>' +
+        '<td>' +
+        '<select type="text" id="vaccination_site1" name="vaccination_site[]' + rowCount + '" class="form-control">' +
+        '  <option value="">กรุณาระบุวิธีตำแหน่ง</option>' +
+        <?php
+      foreach($arr_vaccination_site as $k => $v) {
+          ?>
+          '<option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>' +
+          <?php
+        } ?>
+        '</select>' +
+        '</td>' +
+        '<td>' +
+        '<input type="number" id="dose1" name="dose[]' + rowCount + '" class="form-control" min="1" max="20">' +
+        '</td>' +
+        '<td>' +
+        '<input type="text" name="date_of_vaccination[]' + rowCount + '" value="" id="date_of_vaccination1' + rowCount + '" class="form-control datepicker" data-date-format="yyyy-mm-dd" readonly>' +
+        '</td>' +
+        '<td>' +
+        '<input type="text" id="time_of_vaccination1' + rowCount + '" name="time_of_vaccination[]' + rowCount + '" class="form-control">' +
+        '</td>' +
+        '<td>' +
+        '<select type="text" id="manufacturer1" name="manufacturer[]' + rowCount + '" class="form-control">' +
+        '<option value="">กรุณาระบชื่อผู้ผลิต</option>' +
+        <?php
+      foreach($arr_manufacturer as $k => $v) {
+          ?>
+          '<option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>' +
+          <?php
+        } ?>
+        '</select>' +
+        '</td>' +
+        '<td>' +
+        '<input type="text" id="other_manufacturer1" name="other_manufacturer[]' + rowCount + '" class="form-control">' +
+        '</td>' +
+        '<td>' +
+        '<input type="text" id="lot_number1" name="lot_number[]' + rowCount + '" class="form-control">' +
+        '</td>' +
+        '<td>' +
+        '<input type="text" id="datepicker_expiry_date1' + rowCount + '" name="expiry_date[]' + rowCount + '" class="form-control" data-date-format="yyyy-mm-dd" readonly>' +
+        '</td>' +
+        // '<td>' +
+        // '<input type="text" id="name_of_diluent1" name="name_of_diluent[]' + rowCount + '" class="form-control">' +
+        // '</td>' +
+        '<td>' +
+        '<input type="text" id="lot_number_diluent1" name="lot_number_diluent[]' + rowCount + '" class="form-control">' +
+        '</td>' +
+        '<td>' +
+        '<input type="text" id="datepicker_expiry_date_diluent1' + rowCount + '" name="expiry_date_diluent[]' + rowCount + '" class="form-control" data-date-format="yyyy-mm-dd" readonly>' +
+        '</td>' +
+        // '<td><input type="text" id="date_of_reconstitution1' + rowCount + '" name="date_of_reconstitution[]' + rowCount + '" class="form-control datepicker" data-date-format="yyyy-mm-dd"></td>' +
+        // '<td><input type="text" id="time_of_reconstitution1" name="time_of_reconstitution[]' + rowCount + '" class="form-control"></td>' +
+        '<td><button type="button" id="btnAdd" class="btn btn-m btn-success classAdd">เพิ่มข้อมูลวัคซีน</button>' +
+        '<button type="button" id="btnDelete" class="deleteContact btn btn btn-danger btn-m">ลบข้อมูลวัคซีน</button></td>' +
+        '</tr>';
+      $('.maintable').append(contactdiv); // Adding these controls to Main table class
+
+      $('#date_of_vaccination1' + rowCount + '').datepicker({
+        dateFormat: "yy-mm-dd"
+      })
+      $('#date_of_reconstitution1' + rowCount + '').datepicker({
+        dateFormat: "yy-mm-dd"
+      })
+      $('#datepicker_expiry_date1' + rowCount + '').datepicker({
+        dateFormat: "yy-mm-dd"
+      })
+      $('#datepicker_expiry_date_diluent1' + rowCount + '').datepicker({
+        dateFormat: "yy-mm-dd"
+      })
+
     });
+    $(document).on("click", ".deleteContact", function() {
+      $(this).closest("tr").remove(); // closest used to remove the respective 'tr' in which I have my controls
+    });
+    $(".js-example-basic-single").select2({
+      allowClear: true,
+      language: {
+      inputTooShort: function (args) {
+          return "กรุณาพิมพ์คำค้นหาอย่างน้อย 3 ตัวอักษร";
+      },
+      noResults: function () {
+          return "ไม่พบข้อมูล";
+      },
+      searching: function () {
+          return "กำลังค้นหาข้อมูล...";
+      }
+      },
+      placeholder: "กรุณาพิมพ์ชื่อหน่วยงานที่ต้องการ เช่น. สคร.1,โรงพยาบาลเลิดสิน,สำนักงานสาธารณสุขจังหวัดสมุทรปราการ",
+      minimumInputLength: 3,
+      minimumResultsForSearch: 5,
+      ajax: {
+       url: "{{ route('list-division-json') }}",
+       type: "GET",
+       dataType: 'json',
+       delay: 250,
+       data: function (params) {
+        return {
+          searchTerm: params.term // search term
+        };
+       },
+       processResults: function (response) {
+         return {
+            results: response
+         };
+       },
+       cache: true
+      }
+    });
+  });
 </script>
 @stop

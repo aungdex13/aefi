@@ -19,7 +19,7 @@ class ViewExpertController extends Controller
         $ViewAEFI1Data = DB::table('aefi_form_1')->select('*')->where('id_case', [$req->id_case] )->get();
         if ($ViewAEFI1Data-> count() > 0) {
           $ViewAEFI1ExpertData = DB::table('expertmeeting')
-          ->select('id_case','final_diag','aefi_classification','summary','expert_meet_date','other_final_diag')
+          ->select('id_case','final_diag','aefi_classification','summary','expert_meet_date','other_final_diag','user_hospcode')
           ->where('id_case', [$req->id_case] )
           ->latest('id')
           ->get();

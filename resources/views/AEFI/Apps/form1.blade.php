@@ -242,7 +242,7 @@ foreach ($aecode as $value) {
                       <div class="row">
                         <div class="col-lg-3">
                           <label>
-                            <font style="color:red;">*</font> วันเดือนปีเกิด:
+                             วันเดือนปีเกิด:
                           </label>
                         </div>
                         <div class="col-lg-9">
@@ -291,8 +291,8 @@ foreach ($aecode as $value) {
                         <div class="col-lg-2">
                           <div class="radio">
                             <label>
-                              <input type="radio" name="group_age" value="" >
-                              ไม่ระบุ
+                              <input type="radio" name="group_age" value="0" >
+                              5-18
                             </label>
                           </div>
                         </div>
@@ -300,19 +300,41 @@ foreach ($aecode as $value) {
                           <div class="radio">
                             <label>
                               <input type="radio" name="group_age" id="G_age1" value="1">
-                              < 1 ปี </label> </div> </div> <div class="col-lg-2">
-                                <div class="radio">
-                                  <label>
-                                    <input type="radio" name="group_age" id="G_age2" value="2">
-                                    1-5 ปี
-                                  </label>
-                                </div>
+                              18-20 ปี
+                             </label> 
+                            </div> 
+                          </div>
+                          <div class="col-lg-2">
+                            <div class="radio">
+                                <label>
+                                  <input type="radio" name="group_age" id="G_age2" value="2">
+                                  21-40 ปี
+                                </label>
+                            </div>
                           </div>
                           <div class="col-lg-2">
                             <div class="radio">
                               <label>
                                 <input type="radio" name="group_age" id="G_age3" value="3">
-                                > 5 ปี
+                                41-60 ปี
+                              </label>
+                            </div>
+                          </div>                     
+                          <div class="col-lg-3">
+                          </div>
+                          <div class="col-lg-2">
+                            <div class="radio">
+                              <label>
+                                <input type="radio" name="group_age" id="G_age4" value="4">
+                                61-80 ปี
+                              </label>
+                            </div>
+                          </div>
+                          <div class="col-lg-2">
+                            <div class="radio">
+                              <label>
+                                <input type="radio" name="group_age" id="G_age5" value="5">
+                                >80 ปี
                               </label>
                             </div>
                           </div>
@@ -327,7 +349,7 @@ foreach ($aecode as $value) {
                               <label>เชื้อชาติ:</label>
                             </div>
                           </div>
-                          <div class="col-lg-2">
+                          <div class="col-lg-2" hidden>
                             <div class="radio">
                               <label>
                                 <input type="radio" name="nationality" id="optionsRadios" value="" >
@@ -388,14 +410,6 @@ foreach ($aecode as $value) {
                           <div class="col-lg-2">
                             <div class="radio">
                               <label>
-                                <input type="radio" name="type_of_patient" id="optionsRadios" value="" >
-                                ไม่ระบุ
-                              </label>
-                            </div>
-                          </div>
-                          <div class="col-lg-2">
-                            <div class="radio">
-                              <label>
                                 <input type="radio" name="type_of_patient" id="type_of_patient1" value="1">
                                 ผู้ป่วยใน
                               </label>
@@ -406,6 +420,14 @@ foreach ($aecode as $value) {
                               <label>
                                 <input type="radio" name="type_of_patient" id="type_of_patient2" value="2">
                                 ผู้ป่วยนอก
+                              </label>
+                            </div>
+                          </div>
+                          <div class="col-lg-4">
+                            <div class="radio">
+                              <label>
+                                <input type="radio" name="type_of_patient" id="type_of_patient2" value="3">
+                                สังเกตุอาการที่ห้องฉุกเฉิน
                               </label>
                             </div>
                           </div>
@@ -447,7 +469,7 @@ foreach ($aecode as $value) {
                       <div class="row">
                         <div class="col-lg-12">
                           <div class="control-label">
-                            <label>ประวัติการแพ้วัคซีน :</label>
+                            <label>ประวัติการแพ้วัคซีนก่อนหน้า :</label>
                           </div>
                         </div>
                         <div class="col-lg-2">
@@ -808,6 +830,7 @@ foreach ($aecode as $value) {
                         <th>
                           <font style="color:red;">*</font> เวลาที่ได้รับ
                         </th>
+                        <th style="width:150px;">อาการ</th>
                         <th>ชื่อผู้ผลิต</th>
                         <th>ชื่อผู้ผลิตอื่นๆ</th>
                         <th>
@@ -816,7 +839,7 @@ foreach ($aecode as $value) {
                         <th>
                           <font style="color:red;">*</font> วันหมดอายุ
                         </th>
-                        {{-- <th>ชื่อตัวทำละลาย</th> --}}
+                        
                         <th>
                           <font style="color:red;">*</font> เลขที่ผลิต
                         </th>
@@ -883,6 +906,12 @@ foreach ($aecode as $value) {
                           <input type="text" id="time_of_vaccination1" name="time_of_vaccination[]" class="form-control">
                         </td>
                         <td>
+                          <input type="radio" id="symptom1_1" name="symptom1[]" value="1" data-toggle="modal" data-target="#Symptom1">
+                          <label for="age1">มีอาการ</label><br>
+                          <input type="radio" id="symptom1_2" name="symptom1[]" value="0">
+                          <label for="age2">ไม่มีอาการ</label><br>
+                        </td>
+                        <td>
                           <select type="text" id="manufacturer1" name="manufacturer[]" class="form-control">
                             <option value="">กรุณาระบุชื่อผู้ผลิต</option>
                             <?php
@@ -924,7 +953,7 @@ foreach ($aecode as $value) {
               </div>
             </div>
           {{-- หัวข้อที่ 3 --}}
-            @include('AEFI.Apps.SymtomsTabFrm')
+            @include('AEFI.Apps.SymptomModal')
             <!-- หัวข้อที่4 -->
             <div class="col-md-12">
               <!-- general form elements -->
@@ -1469,6 +1498,12 @@ foreach ($aecode as $value) {
         '<td>' +
         '<input type="text" id="time_of_vaccination1' + rowCount + '" name="time_of_vaccination[]' + rowCount + '" class="form-control">' +
         '</td>' +
+        '<td>' +
+          '<input type="radio" id="symptom' + rowCount + '_1" name="symptom' + rowCount + '[]" value="1" data-toggle="modal" data-target="#Symptom' + rowCount + '">' +
+          '<label for="age1">มีอาการ</label><br>' +
+          '<input type="radio" id="symptom' + rowCount + '_2" name="symptom' + rowCount + '[]" value="0">' +
+          '<label for="age2">ไม่มีอาการ</label><br>' +
+          '</td>' +
         '<td>' +
         '<select type="text" id="manufacturer1" name="manufacturer[]' + rowCount + '" class="form-control">' +
         '<option value="">กรุณาระบชื่อผู้ผลิต</option>' +

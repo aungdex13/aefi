@@ -46,6 +46,7 @@ $arr_r_o = load_r_o();
 $arr_load_final_diag = load_final_diag();
 $arr_causality = load_causality();
 $arr_load_aefi_classification = load_aefi_classification();
+$arr_load_aefi_classification = load_seriousness_of_the_symptoms();
 ?>
 <body onload="window.print();">
 <div class="wrapper">
@@ -139,6 +140,14 @@ $arr_load_aefi_classification = load_aefi_classification();
      {{"ไม่ระบุข้อมูล"}}
     @endif
       </div>
+      <div class="col-sm-12">
+        <p class="lead">หน่วยงานที่รายงานผลการพิจารณาผู้ป่วยเหตุการณ์ไม่พึงประสงค์ภายหลังการได้รับวัคซีน :
+      @if (count($ViewAEFI1ExpertData) > 0 )
+        {{ isset($list_hos[$ViewAEFI1ExpertData[0]->user_hospcode]) ? $list_hos[$ViewAEFI1ExpertData[0]->user_hospcode] : "ไม่ระบุข้อมูล" }}</p>
+      @else
+       {{"ไม่ระบุข้อมูล"}}
+      @endif
+        </div>
       <!-- /.col -->
       <!-- /.col -->
       {{-- <div class="col-sm-4 invoice-col">
