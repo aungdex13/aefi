@@ -907,9 +907,9 @@ foreach ($aecode as $value) {
                         </td>
                         <td>
                           <input type="radio" id="symptom1_1" name="symptom1[]" value="1" data-toggle="modal" data-target="#Symptom1">
-                          <label for="age1">มีอาการ</label><br>
+                          <label for="age1"> : มีอาการ</label><br>
                           <input type="radio" id="symptom1_2" name="symptom1[]" value="0">
-                          <label for="age2">ไม่มีอาการ</label><br>
+                          <label for="age2"> : ไม่มีอาการ</label><br>
                         </td>
                         <td>
                           <select type="text" id="manufacturer1" name="manufacturer[]" class="form-control">
@@ -953,7 +953,12 @@ foreach ($aecode as $value) {
               </div>
             </div>
           {{-- หัวข้อที่ 3 --}}
-            @include('AEFI.Apps.SymptomModal')
+            @include('AEFI.Apps.SymptomModal.SymptomModal_1')
+            @include('AEFI.Apps.SymptomModal.SymptomModal_2')
+            @include('AEFI.Apps.SymptomModal.SymptomModal_3')
+            @include('AEFI.Apps.SymptomModal.SymptomModal_4')
+            @include('AEFI.Apps.SymptomModal.SymptomModal_5')
+            @include('AEFI.Apps.SymptomModal.SymptomModal_6')
             <!-- หัวข้อที่4 -->
             <div class="col-md-12">
               <!-- general form elements -->
@@ -1500,9 +1505,9 @@ foreach ($aecode as $value) {
         '</td>' +
         '<td>' +
           '<input type="radio" id="symptom' + rowCount + '_1" name="symptom' + rowCount + '[]" value="1" data-toggle="modal" data-target="#Symptom' + rowCount + '">' +
-          '<label for="age1">มีอาการ</label><br>' +
+          '<label for="symptom1"> : มีอาการ</label><br>' +
           '<input type="radio" id="symptom' + rowCount + '_2" name="symptom' + rowCount + '[]" value="0">' +
-          '<label for="age2">ไม่มีอาการ</label><br>' +
+          '<label for="symptom2"> : ไม่มีอาการ</label><br>' +
           '</td>' +
         '<td>' +
         '<select type="text" id="manufacturer1" name="manufacturer[]' + rowCount + '" class="form-control">' +
@@ -1539,7 +1544,7 @@ foreach ($aecode as $value) {
         '<button type="button" id="btnDelete" class="deleteContact btn btn btn-danger btn-m">ลบข้อมูลวัคซีน</button></td>' +
         '</tr>';
       $('.maintable').append(contactdiv); // Adding these controls to Main table class
-
+      
       $('#date_of_vaccination1' + rowCount + '').datepicker({
         dateFormat: "yy-mm-dd"
       })

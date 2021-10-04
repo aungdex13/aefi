@@ -116,7 +116,7 @@
       <!-- /.box-header -->
       <!-- form start -->
       <!-- /.box-header -->
-      <div class="box-body">
+      <div class="box-body" style="overflow-x:auto;">
       {{-- @if ($roleArrhospcode == 41173)
         <p style="color:red"> ข้อมูล รายชื่อผู้มีอาการภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรค
          @if ((isset($date_of_symptoms_from) ?  $date_of_symptoms_from : null)  == null && (isset($date_of_symptoms_to) ?  $date_of_symptoms_to : null) == null)
@@ -126,7 +126,7 @@
         @endif
       </p>
     @endif --}}
-        <table class="table table-bordered" id="case_lst" class="display" style="overflow: scroll;">
+        <table class="table table-bordered" id="case_lst" class="display" style="width:100%">
           <thead>
             <tr>
               <th hidden>ID</th>
