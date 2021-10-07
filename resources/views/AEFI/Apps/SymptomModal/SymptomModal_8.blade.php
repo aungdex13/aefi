@@ -1,5 +1,5 @@
 <!-- Modal_1 -->
-<div class="modal fade" id="Symptom3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="Symptom6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -18,8 +18,7 @@
                         <div class="form-group">
                           <div class="col-md-4">
                             <label>
-                              <input type="checkbox" name="c_rash[]" value="0027">
-                              <input type="text" name="rash[]">
+                              <input type="checkbox" name="rash[]" value="0027">
                               Rash
                             </label>
                           </div>
@@ -445,7 +444,7 @@
                         <div class="form-group">
                           <div class="col-lg-12">
                             <label>รายละเอียดอาการและการตรวจสอบ</label>
-                            <textarea class="form-control" rows="5" name="Symptoms_details[]"></textarea>
+                            <textarea class="form-control" rows="5" name="Symptoms_details"></textarea>
                           </div>
                         </div>
                         <div class="form-group">

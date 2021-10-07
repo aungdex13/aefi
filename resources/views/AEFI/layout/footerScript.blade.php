@@ -343,7 +343,7 @@ $(document).ready(function() {
         $('#other_seriousness_of_the_symptoms_text').val('');
       }
     });
-    $('input[name="other_seriousness_of_the_symptoms"]').on('click', function() {
+    $('input[name="c_other_seriousness_of_the_symptoms[]"]').on('click', function() {
       if ($(this).val() == '6') {
         $('#text_other_seriousness_of_the_symptoms').show();
       } else {
@@ -553,7 +553,7 @@ $(document).ready(function() {
         $('#other_region_text').val('');
       }
     });
-    $('input[name="patient_status"]').on('click', function() {
+    $('input[name="c_patient_status[]"]').on('click', function() {
       if ($(this).val() == '6') {
         $('#other_patian_sta').show();
       } else {
@@ -601,7 +601,7 @@ $(document).ready(function() {
         $('#other_symptom_position_text').val('');
       }
     });
-    $('input[name="funeral"]').on('click', function() {
+    $('input[name="c_funeral[]"]').on('click', function() {
       if ($(this).val() == '3') {
         $('#other_address_funeral').show();
       } else {

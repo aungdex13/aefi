@@ -80,7 +80,7 @@
                   <tbody>
                       <tr>
                           <td>
-                            <a href="https://apps.doe.moph.go.th/boe/software/file/AW_AEFI%20WEB_25Oct2020.pdf" target="_blank">
+                            <a href="https://apps-doe.moph.go.th/boe/software/file/AW_AEFI%20WEB_25Oct2020.pdf" target="_blank">
                                 <div class="caption">
                                     <p>แนวทางการเฝ้าระวังและตอบโต้เหตุการณ์ไม่พึงประสงค์ภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรคของประเทศไทย</p>
                                 </div>
@@ -88,7 +88,7 @@
                           </td>
                       </tr>
                       <tr>
-                          <td>          <a href="https://apps.doe.moph.go.th/boe/software/file/AEFI_1.pdf" target="_blank">
+                          <td>          <a href="https://apps-doe.moph.go.th/boe/software/file/AEFI_1.pdf" target="_blank">
                                       <div class="caption">
                                         <p>แบบรายงานอาการภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรค (AEFI1)</p>
                                       </div>
@@ -96,7 +96,7 @@
                           </td>
                       </tr>
                       <tr>
-                          <td>          <a href="https://apps.doe.moph.go.th/boe/software/file/AEFI_2.pdf" target="_blank">
+                          <td>          <a href="https://apps-doe.moph.go.th/boe/software/file/AEFI_2.pdf" target="_blank">
                                       <div class="caption">
                                         <p>แบบสอบสวนอาการภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรค (AEFI2)</p>
                                       </div>
@@ -105,7 +105,7 @@
                       </tr>
                       <tr>
                           <td>
-                            <a href="https://apps.doe.moph.go.th/boe/software/file/aefi_system_manual.pdf" target="_blank">
+                            <a href="https://apps-doe.moph.go.th/boe/software/file/aefi_system_manual.pdf" target="_blank">
                                       <div class="caption">
                                         <p>คู่มือการใช้งานระบบรายงานอาการภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรค (AEFI)</p>
                                       </div>
@@ -123,7 +123,7 @@
                       </tr>
                       <tr>
                           <td>
-                            <a href="https://apps.doe.moph.go.th/boe/software/file/ISRR_25Apr2021.pdf" target="_blank">
+                            <a href="https://apps-doe.moph.go.th/boe/software/file/ISRR_25Apr2021.pdf" target="_blank">
                                       <div class="caption">
                                         <p>แนวทางปฏิบัติสำหรับอาการไม่พึงประสงค์หลังการได้รับวัคซีนป้องกันโรค
                             กรณีปฏิกิริยาที่สัมพันธ์กับ ความเครียดจากการฉีดวัคซีน กลุ่มอาการคล้ายภาวะหลอดเลือดสมอง</p>
@@ -133,7 +133,7 @@
                       </tr>
                       <tr>
                           <td>
-                            <a href="https://apps.doe.moph.go.th/boe/software/file/aefi_covid19_06.pdf" target="_blank">
+                            <a href="https://apps-doe.moph.go.th/boe/software/file/aefi_covid19_06.pdf" target="_blank">
                                       <div class="caption">
                                         <p>เหตุการณ์ไม่พึงประสงค์ภายหลังได้รับวัคซีนโควิด 19 </p>
                                       </div>
@@ -142,7 +142,7 @@
                       </tr>
                       <tr>
                           <td>
-                            <a href="https://apps.doe.moph.go.th/boe/software/file/aefi_hz.pdf" target="_blank">
+                            <a href="https://apps-doe.moph.go.th/boe/software/file/aefi_hz.pdf" target="_blank">
                                       <div class="caption">
                                         <p>รายงานผู้ป่วยงูสวัดตามหลังการฉีดวัคซีนป้องกันโควิด-19 ชนิดต่างๆ</p>
                                       </div>
@@ -151,7 +151,7 @@
                       </tr>
                       <tr>
                           <td>
-                              <a href="https://apps.doe.moph.go.th/boe/software/file/aefi_thrombosis.pdf" target="_blank">
+                              <a href="https://apps-doe.moph.go.th/boe/software/file/aefi_thrombosis.pdf" target="_blank">
                                       <div class="caption">
                                         <p>ภาวะการเกิดลิ่มเลือดอุดตันในปอดกับวัคซีนโควิด 19</p>
                                       </div>
@@ -160,7 +160,7 @@
                       </tr>
                       <tr>
                           <td>
-                             <a href="https://apps.doe.moph.go.th/boe/software/file/aefi_arteriovenous.pdf" target="_blank">
+                             <a href="https://apps-doe.moph.go.th/boe/software/file/aefi_arteriovenous.pdf" target="_blank">
                                       <div class="caption">
                                         <p>ภาวะผิดปกติที่หลอดเลือดแดงต่อกับหลอดเลือดดำ</p>
                                       </div>
@@ -169,7 +169,7 @@
                       </tr>
                       <tr>
                           <td>
-                            <a href="https://apps.doe.moph.go.th/boe/software/file/Guideline_AEFI_COVID19vaccine_DOE_17062021.pdf" target="_blank">
+                            <a href="https://apps-doe.moph.go.th/boe/software/file/Guideline_AEFI_COVID19vaccine_DOE_17062021.pdf" target="_blank">
                             <div class="caption">
                               <p>แนวทางการเฝ้าระวังและสอบสวนเหตุการณ์ไม่พึงประสงค์ภายหลังได้รับวัคซีนป้องกันโรคโควิด-19</p>
                             </div>
@@ -178,7 +178,7 @@
                       </tr>
                       <tr>
                           <td>
-                            <a href="https://apps.doe.moph.go.th/boe/software/file/ISRR_25Apr2021.pdf" target="_blank">
+                            <a href="https://apps-doe.moph.go.th/boe/software/file/ISRR_25Apr2021.pdf" target="_blank">
                             <div class="caption">
                               <p>แนวทางปฏิบัติสำหรับอาการไม่พึงประสงค์หลังการได้รับวัคซีนป้องกันโรค
                   กรณีปฏิกิริยาที่สัมพันธ์กับ ความเครียดจากการฉีดวัคซีน กลุ่มอาการคล้ายภาวะหลอดเลือดสมอง</p>
@@ -188,7 +188,7 @@
                       </tr>
                       <tr>
                           <td>
-                            <a href="https://apps.doe.moph.go.th/boe/software/file/Vaccine induced myocarditis_Jul29_2021_Final_v2.pdf" target="_blank">
+                            <a href="https://apps-doe.moph.go.th/boe/software/file/Vaccine induced myocarditis_Jul29_2021_Final_v2.pdf" target="_blank">
                             <div class="caption">
                               <p>ภาวะกล้ามเนื้อหัวใจและเยื่อหุ้มหัวใจอักเสบที่เกิดจากวัคซีนโควิด 19 ชนิดเอ็มอาร์เอ็นเอ</p>
                             </div>
@@ -196,7 +196,7 @@
                         </td>
                       </tr>
                       <tr>
-                          <td><a href="https://apps.doe.moph.go.th/boe/software/file/Vaccine induced_Immune_Thrombotic Thrombocytopenia_Thrombosis_with_Thrombocytopenia_Syndrome.pdf" target="_blank">
+                          <td><a href="https://apps-doe.moph.go.th/boe/software/file/Vaccine induced_Immune_Thrombotic Thrombocytopenia_Thrombosis_with_Thrombocytopenia_Syndrome.pdf" target="_blank">
                               <div class="caption">
                                 <p>ภาวะลิ่มเลือดอุดตันที่ร่วมกับเกล็ดเลือดต่ำภายหลังได้รับวัคซีน
                   Vaccine-induced Immune Thrombotic Thrombocytopenia (VITT)
@@ -206,7 +206,7 @@
                           </td>
                       </tr>
                       <tr>
-                          <td> <a href="https://apps.doe.moph.go.th/boe/software/file/aefi_d_a_v_Final_06082021.pdf" target="_blank">
+                          <td> <a href="https://apps-doe.moph.go.th/boe/software/file/aefi_d_a_v_Final_06082021.pdf" target="_blank">
                             <div class="caption">
                               <p>กรณีการเสียชีวิตหลังได้รับวัคซีนโควิด 19 สลับชนิดที่ จ.ประจวบคีรีขันธ์</p>
                             </div>
@@ -215,9 +215,27 @@
                       </tr>
                       <tr>
                           <td>
-                            <a href="https://apps.doe.moph.go.th/boe/software/file/Final_poster%20myocarditis_v9_03092021.pdf" target="_blank">
+                            <a href="https://apps-doe.moph.go.th/boe/software/file/Final_poster%20myocarditis_v9_03092021.pdf" target="_blank">
                             <div class="caption">
                               <p>โปสเตอร์ภาวะกล้ามเนื้อหัวใจและเยื่อหุ้มหัวใจอักเสบที่เกิดจากวัคซีนโควิด 19 ชนิดเอ็มอาร์เอ็นเอ</p>
+                            </div>
+                          </a>
+                        </td>
+                      </tr>
+                      <tr>
+                          <td>
+                            <a href="https://apps-doe.moph.go.th/boe/software/file/COVID%20arm_v1+logo.pdf" target="_blank">
+                            <div class="caption">
+                              <p>คำแนะนำภาวะ COVID ARM</p>
+                            </div>
+                          </a>
+                        </td>
+                      </tr>
+                      <tr>
+                          <td>
+                            <a href="https://apps-doe.moph.go.th/boe/software/file/Final_COVID_ARM.jpg" target="_blank">
+                            <div class="caption">
+                              <p>โปสเตอร์ COVID ARM คืออะไร</p>
                             </div>
                           </a>
                         </td>
@@ -231,77 +249,80 @@
         </section>
     <div class="row" style="margin-top:5px;">
       <h2>เอกสารดาวน์โหลด</h2>
+                    <h3>เอกสารดาวน์โหลด</h3>
+              <div class="col-md-2">
+                <div class="thumbnail">
+                  <a href="https://apps-doe.moph.go.th/boe/software/file/AW_AEFI%20WEB_25Oct2020.pdf" target="_blank">
+                    <img src="{{ asset('public/asset/dist/img/d1.jpg') }}" style="width:50%">
+                    {{-- <img src="/w3images/nature.jpg" alt="Nature" style="width:100%"> --}}
+                    <div class="caption">
+                      <p>แนวทางการเฝ้าระวังและตอบโต้เหตุการณ์ไม่พึงประสงค์ภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรคของประเทศไทย</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="thumbnail">
+                  <a href="https://apps-doe.moph.go.th/boe/software/file/AEFI_1.pdf" target="_blank">
+                    <img src="{{ asset('public/asset/dist/img/d2.jpg') }}" style="width:50%">
+                    {{-- <img src="/w3images/nature.jpg" alt="Nature" style="width:100%"> --}}
+                    <div class="caption">
+                      <p>แบบรายงานอาการภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรค (AEFI1)</br></br></p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="thumbnail">
+                  <a href="https://apps-doe.moph.go.th/boe/software/file/AEFI_2.pdf" target="_blank">
+                    <img src="{{ asset('public/asset/dist/img/d3.jpg') }}" style="width:50%">
+                    {{-- <img src="/w3images/nature.jpg" alt="Nature" style="width:100%"> --}}
+                    <div class="caption">
+                      <p>แบบสอบสวนอาการภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรค (AEFI2)</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="thumbnail">
+                  <a href="https://apps-doe.moph.go.th/boe/software/file/aefi_system_manual.pdf" target="_blank">
+                    <img src="{{ asset('public/asset/dist/img/d4.jpg') }}" style="width:50%">
+                    {{-- <img src="/w3images/nature.jpg" alt="Nature" style="width:100%"> --}}
+                    <div class="caption">
+                      <p>คู่มือการใช้งานระบบรายงานอาการภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรค (AEFI)</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="thumbnail">
+                  <a href="https://online.pubhtml5.com/nqwl/vxcg/#p=1" target="_blank">
+                    <img src="{{ asset('public/asset/dist/img/d5.jpg') }}" style="width:50%">
+                    {{-- <img src="/w3images/nature.jpg" alt="Nature" style="width:100%"> --}}
+                    <div class="caption">
+                      <p>แนวทางการให้วัคซีน โควิด 19 ในสถานการณ์การระบาดปี 64 ของประเทศไทย</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="thumbnail">
+                  <a href="https://apps-doe.moph.go.th/boe/software/file/Adverse Event Following Immunization.pdf" target="_blank">
+                    <img src="{{ asset('public/asset/dist/img/d6.jpg') }}" style="width:50%">
+                    {{-- <img src="/w3images/nature.jpg" alt="Nature" style="width:100%"> --}}
+                    <div class="caption">
+                      <p>คํานิยามที่เกี่ยวข้องกับเหตุการณ์ไมพึงประสงค์หลังการได้รับวัคซีน
+(Adverse Event Following Immunization)
+และคําแนะนําเบื้องต้นสำหรับการให้วัคซีน
+</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
       <div class="col-md-2">
         <div class="thumbnail">
-          <a href="https://apps.doe.moph.go.th/boe/software/file/AW_AEFI%20WEB_25Oct2020.pdf" target="_blank">
-            <img src="{{ asset('asset/dist/img/d1.jpg') }}" style="width:100%">
-            {{-- <img src="/w3images/nature.jpg" alt="Nature" style="width:100%"> --}}
-            <div class="caption">
-              <p>แนวทางการเฝ้าระวังและตอบโต้เหตุการณ์ไม่พึงประสงค์ภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรคของประเทศไทย</p>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="col-md-2">
-        <div class="thumbnail">
-          <a href="https://apps.doe.moph.go.th/boe/software/file/AEFI_1.pdf" target="_blank">
-            <img src="{{ asset('asset/dist/img/d2.jpg') }}" style="width:100%">
-            {{-- <img src="/w3images/nature.jpg" alt="Nature" style="width:100%"> --}}
-            <div class="caption">
-              <p>แบบรายงานอาการภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรค (AEFI1)</br></br></p>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="col-md-2">
-        <div class="thumbnail">
-          <a href="https://apps.doe.moph.go.th/boe/software/file/AEFI_2.pdf" target="_blank">
-            <img src="{{ asset('asset/dist/img/d3.jpg') }}" style="width:100%">
-            {{-- <img src="/w3images/nature.jpg" alt="Nature" style="width:100%"> --}}
-            <div class="caption">
-              <p>แบบสอบสวนอาการภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรค (AEFI2)</p>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="col-md-2">
-        <div class="thumbnail">
-          <a href="https://apps.doe.moph.go.th/boe/software/file/aefi_system_manual.pdf" target="_blank">
-            <img src="{{ asset('asset/dist/img/d4.jpg') }}" style="width:100%">
-            {{-- <img src="/w3images/nature.jpg" alt="Nature" style="width:100%"> --}}
-            <div class="caption">
-              <p>คู่มือการใช้งานระบบรายงานอาการภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรค (AEFI)</p>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="col-md-2">
-        <div class="thumbnail">
-          <a href="https://online.pubhtml5.com/nqwl/vxcg/#p=1" target="_blank">
-            <img src="{{ asset('asset/dist/img/d5.jpg') }}" style="width:100%">
-            {{-- <img src="/w3images/nature.jpg" alt="Nature" style="width:100%"> --}}
-            <div class="caption">
-              <p>แนวทางการให้วัคซีน โควิด 19 ในสถสนการณ์การระบาดปี64 ของประเทศไทย</p>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="col-md-2">
-        <div class="thumbnail">
-          <a href="https://apps.doe.moph.go.th/boe/software/file/ISRR_25Apr2021.pdf" target="_blank">
-            <img src="{{ asset('asset/dist/img/d7.jpg') }}" style="width:100%">
-            {{-- <img src="/w3images/nature.jpg" alt="Nature" style="width:100%"> --}}
-            <div class="caption">
-              <p>แนวทางปฏิบัติสำหรับอาการไม่พึงประสงค์หลังการได้รับวัคซีนป้องกันโรค
-  กรณีปฏิกิริยาที่สัมพันธ์กับ ความเครียดจากการฉีดวัคซีน กลุ่มอาการคล้ายภาวะหลอดเลือดสมอง</p>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="col-md-2">
-        <div class="thumbnail">
-          <a href="https://apps.doe.moph.go.th/boe/software/file/aefi_covid19_06.pdf" target="_blank">
-            <img src="{{ asset('asset/dist/img/d8.jpg') }}" style="width:100%">
+          <a href="https://apps-doe.moph.go.th/boe/software/file/aefi_covid19_06.pdf" target="_blank">
+            <img src="{{ asset('public/asset/dist/img/d8.jpg') }}" style="width:50%">
             {{-- <img src="/w3images/nature.jpg" alt="Nature" style="width:100%"> --}}
             <div class="caption">
               <p>เหตุการณ์ไม่พึงประสงค์ภายหลังได้รับวัคซีนโควิด 19 </p>
@@ -311,8 +332,8 @@
       </div>
       <div class="col-md-2">
         <div class="thumbnail">
-          <a href="https://apps.doe.moph.go.th/boe/software/file/aefi_hz.pdf" target="_blank">
-            <img src="{{ asset('asset/dist/img/d9.jpg') }}" style="width:100%">
+          <a href="https://apps-doe.moph.go.th/boe/software/file/aefi_hz.pdf" target="_blank">
+            <img src="{{ asset('public/asset/dist/img/d9.jpg') }}" style="width:50%">
             {{-- <img src="/w3images/nature.jpg" alt="Nature" style="width:100%"> --}}
             <div class="caption">
               <p>รายงานผู้ป่วยงูสวัดตามหลังการฉีดวัคซีนป้องกันโควิด-19 ชนิดต่างๆ</p>
@@ -322,8 +343,8 @@
       </div>
       <div class="col-md-2">
         <div class="thumbnail">
-          <a href="https://apps.doe.moph.go.th/boe/software/file/aefi_thrombosis.pdf" target="_blank">
-            <img src="{{ asset('asset/dist/img/d10.jpg') }}" style="width:100%">
+          <a href="https://apps-doe.moph.go.th/boe/software/file/aefi_thrombosis.pdf" target="_blank">
+            <img src="{{ asset('public/asset/dist/img/d10.jpg') }}" style="width:50%">
             {{-- <img src="/w3images/nature.jpg" alt="Nature" style="width:100%"> --}}
             <div class="caption">
               <p>ภาวะการเกิดลิ่มเลือดอุดตันในปอดกับวัคซีนโควิด 19</p>
@@ -333,8 +354,8 @@
       </div>
       <div class="col-md-2">
         <div class="thumbnail">
-          <a href="https://apps.doe.moph.go.th/boe/software/file/aefi_arteriovenous.pdf" target="_blank">
-            <img src="{{ asset('asset/dist/img/d11.jpg') }}" style="width:100%">
+          <a href="https://apps-doe.moph.go.th/boe/software/file/aefi_arteriovenous.pdf" target="_blank">
+            <img src="{{ asset('public/asset/dist/img/d11.jpg') }}" style="width:50%">
             {{-- <img src="/w3images/nature.jpg" alt="Nature" style="width:100%"> --}}
             <div class="caption">
               <p>ภาวะผิดปกติที่หลอดเลือดแดงต่อกับหลอดเลือดดำ</p>
@@ -342,6 +363,100 @@
           </a>
         </div>
       </div>
+      <div class="col-md-2">
+        <div class="thumbnail">
+          <a href="https://apps-doe.moph.go.th/boe/software/file/Guideline_AEFI_COVID19vaccine_DOE_17062021.pdf" target="_blank">
+            <img src="{{ asset('public/asset/dist/img/d12.jpg') }}" style="width:50%">
+            {{-- <img src="/w3images/nature.jpg" alt="Nature" style="width:100%"> --}}
+            <div class="caption">
+              <p>แนวทางการเฝ้าระวังและสอบสวนเหตุการณ์ไม่พึงประสงค์ภายหลังได้รับวัคซีนป้องกันโรคโควิด-19</p>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="thumbnail">
+          <a href="https://apps-doe.moph.go.th/boe/software/file/ISRR_25Apr2021.pdf" target="_blank">
+            <img src="{{ asset('public/asset/dist/img/d7.jpg') }}" style="width:50%">
+            {{-- <img src="/w3images/nature.jpg" alt="Nature" style="width:100%"> --}}
+            <div class="caption">
+              <p>แนวทางปฏิบัติสำหรับอาการไม่พึงประสงค์หลังการได้รับวัคซีนป้องกันโรค
+  กรณีปฏิกิริยาที่สัมพันธ์กับ ความเครียดจากการฉีดวัคซีน กลุ่มอาการคล้ายภาวะหลอดเลือดสมอง</p>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="col-md-2">
+        <div class="thumbnail">
+          <a href="https://apps-doe.moph.go.th/boe/software/file/Vaccine induced myocarditis_Jul29_2021_Final_v2.pdf" target="_blank">
+            <img src="{{ asset('public/asset/dist/img/d13.jpg') }}" style="width:50%">
+            {{-- <img src="/w3images/nature.jpg" alt="Nature" style="width:100%"> --}}
+            <div class="caption">
+              <p>ภาวะกล้ามเนื้อหัวใจและเยื่อหุ้มหัวใจอักเสบที่เกิดจากวัคซีนโควิด 19 ชนิดเอ็มอาร์เอ็นเอ</p>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="col-md-2">
+        <div class="thumbnail">
+          <a href="https://apps-doe.moph.go.th/boe/software/file/Vaccine induced_Immune_Thrombotic Thrombocytopenia_Thrombosis_with_Thrombocytopenia_Syndrome.pdf" target="_blank">
+            <img src="{{ asset('public/asset/dist/img/d16.jpg') }}" style="width:50%">
+            {{-- <img src="/w3images/nature.jpg" alt="Nature" style="width:100%"> --}}
+            <div class="caption">
+              <p>ภาวะลิ่มเลือดอุดตันที่ร่วมกับเกล็ดเลือดต่ำภายหลังได้รับวัคซีน
+Vaccine-induced Immune Thrombotic Thrombocytopenia (VITT)
+Thrombosis with Thrombocytopenia Syndrome (TTS)</p>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="thumbnail">
+          <a href="https://apps-doe.moph.go.th/boe/software/file/aefi_d_a_v_Final_06082021.pdf" target="_blank">
+            <img src="{{ asset('public/asset/dist/img/d15.jpg') }}" style="width:50%">
+            {{-- <img src="/w3images/nature.jpg" alt="Nature" style="width:100%"> --}}
+            <div class="caption">
+              <p>กรณีการเสียชีวิตหลังได้รับวัคซีนโควิด 19 สลับชนิดที่ จ.ประจวบคีรีขันธ์</p>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="thumbnail">
+          <a href="https://apps-doe.moph.go.th/boe/software/file/Final_poster%20myocarditis_v9_03092021.pdf" target="_blank">
+            <img src="{{ asset('public/asset/dist/img/d17.jpg') }}" style="width:50%">
+            {{-- <img src="/w3images/nature.jpg" alt="Nature" style="width:100%"> --}}
+            <div class="caption">
+              <p>โปสเตอร์ภาวะกล้ามเนื้อหัวใจและเยื่อหุ้มหัวใจอักเสบที่เกิดจากวัคซีนโควิด 19 ชนิดเอ็มอาร์เอ็นเอ</p>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="thumbnail">
+          <a href="https://apps-doe.moph.go.th/boe/software/file/COVID%20arm_v1+logo.pdf" target="_blank">
+            <img src="{{ asset('public/asset/dist/img/d18.jpg') }}" style="width:50%">
+            {{-- <img src="/w3images/nature.jpg" alt="Nature" style="width:100%"> --}}
+            <div class="caption">
+              <p>คำแนะนำภาวะ COVID ARM</p>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="thumbnail">
+          <a href="https://apps-doe.moph.go.th/boe/software/file/Final_COVID_ARM.jpg" target="_blank">
+            <img src="{{ asset('public/asset/dist/img/d19.jpg') }}" style="width:50%">
+            {{-- <img src="/w3images/nature.jpg" alt="Nature" style="width:100%"> --}}
+            <div class="caption">
+              <p>โปสเตอร์ COVID ARM คืออะไร</p>
+            </div>
+          </a>
+        </div>
+      </div>
+
     </div>
 </div>
 <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
