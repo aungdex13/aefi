@@ -1534,14 +1534,14 @@ foreach ($aecode as $value) {
 '                              <input type="checkbox" id="c_rash" name="c_rash[]" value="0027">'+
 '                              Rash'+
 '                            </label>'+
-'                            <input type="text" id="rash" name="rash[]" >'+
+'                            <input type="text" id="rash' + rowCount + '" name="rash[]" value="' + rowCount + '" >'+
 '                          </div>'+
 '                          <div class="col-md-4" id="erythema_' + rowCount + '">'+
 '                            <label>'+
 '                              <input type="checkbox" id="erythema1" name="c_erythema[]" value="0028">'+
 '                              Erythema'+
 '                            </label>'+
-'                            <input type="text" id="erythema" name="erythema[]" hidden>'+
+'                            <input type="text" id="erythema" name="erythema[]">'+
 '                          </div>'+
 '                          <div class="col-md-4" id="urticaria_' + rowCount + '">'+
 '                            <label>'+
@@ -2251,336 +2251,7 @@ foreach ($aecode as $value) {
         '<button type="button" id="btnDelete" class="deleteContact btn btn btn-danger btn-m">ลบข้อมูลวัคซีน</button></td>' +
         '</tr>';
       $('.maintable').append(contactdiv); // Adding these controls to Main table class
-      
-      $('#rash_' + rowCount + '').change(function() {
-          var s = $('#rash_' + rowCount + ' input:checked').map(function() {
-            return this.value;
-          }).get().join(',');
-          $('#rash').val((s.length > 0 ? s : ""));
-        })
-
-        $('#erythema_' + rowCount + '').change(function() {
-          var s = $('#erythema_' + rowCount + ' input:checked').map(function() {
-            return this.value;
-          }).get().join(',');
-          $('#erythema').val((s.length > 0 ? s : ""));
-        })
-
-        $('#urticaria_' + rowCount + '').change(function() {
-          var s = $('#urticaria_' + rowCount + ' input:checked').map(function() {
-            return this.value;
-          }).get().join(',');
-          $('#urticaria').val((s.length > 0 ? s : ""));
-        })
-
-        $('#itching_' + rowCount + '').change(function() {
-          var s = $('#itching_' + rowCount + ' input:checked').map(function() {
-            return this.value;
-          }).get().join(',');
-          $('#itching').val((s.length > 0 ? s : ""));
-        })
-
-        $('#edema_' + rowCount + '').change(function() {
-          var s = $('#edema_' + rowCount + ' input:checked').map(function() {
-            return this.value;
-          }).get().join(',');
-          $('#edema').val((s.length > 0 ? s : ""));
-        })
-
-        $('#angioedema_' + rowCount + '').change(function() {
-          var s = $('#angioedema_' + rowCount + ' input:checked').map(function() {
-            return this.value;
-          }).get().join(',');
-          $('#angioedema').val((s.length > 0 ? s : ""));
-        })
-
-        $('#fainting_' + rowCount + '').change(function() {
-          var s = $('#fainting_' + rowCount + ' input:checked').map(function() {
-            return this.value;
-          }).get().join(',');
-          $('#fainting').val((s.length > 0 ? s : ""));
-        })
-
-        $('#hyperventilation_' + rowCount + '').change(function() {
-          var s = $('#hyperventilation_' + rowCount + ' input:checked').map(function() {
-            return this.value;
-          }).get().join(',');
-          $('#hyperventilation').val((s.length > 0 ? s : ""));
-        })
-
-        $('#syncope_' + rowCount + '').change(function() {
-          var s = $('#syncope_' + rowCount + ' input:checked').map(function() {
-            return this.value;
-          }).get().join(',');
-          $('#syncope').val((s.length > 0 ? s : ""));
-        })
-
-        $('#headche_' + rowCount + '').change(function() {
-          var s = $('#headche_' + rowCount + ' input:checked').map(function() {
-            return this.value;
-          }).get().join(',');
-          $('#headche').val((s.length > 0 ? s : ""));
-        })
-
-        $('#dizziness_' + rowCount + '').change(function() {
-          var s = $('#dizziness_' + rowCount + ' input:checked').map(function() {
-            return this.value;
-          }).get().join(',');
-          $('#dizziness').val((s.length > 0 ? s : ""));
-        })
-
-        $('#fatigue_' + rowCount + '').change(function() {
-          var s = $('#fatigue_' + rowCount + ' input:checked').map(function() {
-            return this.value;
-          }).get().join(',');
-          $('#fatigue').val((s.length > 0 ? s : ""));
-        })
-
-        $('#malaise_' + rowCount + '').change(function() {
-          var s = $('#malaise_' + rowCount + ' input:checked').map(function() {
-            return this.value;
-          }).get().join(',');
-          $('#malaise').val((s.length > 0 ? s : ""));
-        })
-
-        $('#dyspepsia_' + rowCount + '').change(function() {
-          var s = $('#dyspepsia_' + rowCount + ' input:checked').map(function() {
-            return this.value;
-          }).get().join(',');
-          $('#dyspepsia').val((s.length > 0 ? s : ""));
-        })
-
-        $('#diarrhea_' + rowCount + '').change(function() {
-          var s = $('#diarrhea_' + rowCount + ' input:checked').map(function() {
-            return this.value;
-          }).get().join(',');
-          $('#diarrhea').val((s.length > 0 ? s : ""));
-        })
-
-        $('#vomiting_' + rowCount + '').change(function() {
-          var s = $('#vomiting_' + rowCount + ' input:checked').map(function() {
-            return this.value;
-          }).get().join(',');
-          $('#vomiting').val((s.length > 0 ? s : ""));
-        })
-
-        $('#abdominal_pain_' + rowCount + '').change(function() {
-          var s = $('#abdominal_pain input:checked').map(function() {
-            return this.value;
-          }).get().join(',');
-          $('#abdominal_pain').val((s.length > 0 ? s : ""));
-        })
-
-        $('#arthalgia_' + rowCount + '').change(function() {
-          var s = $('#arthalgia_' + rowCount + ' input:checked').map(function() {
-            return this.value;
-          }).get().join(',');
-          $('#arthalgia').val((s.length > 0 ? s : ""));
-        })
-
-        $('#myalgia_' + rowCount + '').change(function() {
-          var s = $('#myalgia_' + rowCount + ' input:checked').map(function() {
-            return this.value;
-          }).get().join(',');
-          $('#myalgia').val((s.length > 0 ? s : ""));
-        })
-
-        $('#fever38c_' + rowCount + '').change(function() {
-          var s = $('#fever38c_' + rowCount + ' input:checked').map(function() {
-            return this.value;
-          }).get().join(',');
-          $('#fever38c').val((s.length > 0 ? s : ""));
-        })
-
-        $('#swelling_at_the_injection_' + rowCount + '').change(function() {
-          var s = $('#swelling_at_the_injection_' + rowCount + ' input:checked').map(function() {
-            return this.value;
-          }).get().join(',');
-          $('#swelling_at_the_injection').val((s.length > 0 ? s : ""));
-        })
-
-        $('#swelling_beyond_nearest_joint_' + rowCount + '').change(function() {
-          var s = $('#swelling_beyond_nearest_joint_' + rowCount + ' input:checked').map(function() {
-            return this.value;
-          }).get().join(',');
-          $('#swelling_beyond_nearest_joint').val((s.length > 0 ? s : ""));
-        })
-
-        $('#lymphadenopathy_' + rowCount + '').change(function() {
-          var s = $('#lymphadenopathy_' + rowCount + ' input:checked').map(function() {
-            return this.value;
-          }).get().join(',');
-          $('#lymphadenopathy').val((s.length > 0 ? s : ""));
-        })
-
-        $('#lymphadenitis_' + rowCount + '').change(function() {
-          var s = $('#lymphadenitis_' + rowCount + ' input:checked').map(function() {
-            return this.value;
-          }).get().join(',');
-          $('#lymphadenitis').val((s.length > 0 ? s : ""));
-        })
-
-        $('#sterile_abscess_' + rowCount + '').change(function() {
-          var s = $('#sterile_abscess_' + rowCount + ' input:checked').map(function() {
-            return this.value;
-          }).get().join(',');
-          $('#sterile_abscess').val((s.length > 0 ? s : ""));
-        })
-
-        $('#bacterial_abscess_' + rowCount + '').change(function() {
-          var s = $('#bacterial_abscess_' + rowCount + ' input:checked').map(function() {
-            return this.value;
-          }).get().join(',');
-          $('#bacterial_abscess').val((s.length > 0 ? s : ""));
-        })
-
-        $('#febrile_convulsion_' + rowCount + '').change(function() {
-          var s = $('#febrile_convulsion_' + rowCount + ' input:checked').map(function() {
-            return this.value;
-          }).get().join(',');
-          $('#afebrile_convulsion').val((s.length > 0 ? s : ""));
-        })
-
-        $('#encephalopathy_' + rowCount + '').change(function() {
-          var s = $('#encephalopathy_' + rowCount + ' input:checked').map(function() {
-            return this.value;
-          }).get().join(',');
-          $('#encephalopathy').val((s.length > 0 ? s : ""));
-        })
-
-        $('#flaccid_paralysis_' + rowCount + '').change(function() {
-          var s = $('#flaccid_paralysis_' + rowCount + ' input:checked').map(function() {
-            return this.value;
-          }).get().join(',');
-          $('#flaccid_paralysis').val((s.length > 0 ? s : ""));
-        })
-
-        $('#spastic_paralysis_' + rowCount + '').change(function() {
-          var s = $('#spastic_paralysis_' + rowCount + ' input:checked').map(function() {
-            return this.value;
-          }).get().join(',');
-          $('#spastic_paralysis').val((s.length > 0 ? s : ""));
-        })
-
-        $('#hhe_' + rowCount + '').change(function() {
-          var s = $('#hhe_' + rowCount + ' input:checked').map(function() {
-            return this.value;
-          }).get().join(',');
-          $('#hhe').val((s.length > 0 ? s : ""));
-        })
-
-        $('#persistent_inconsolable_crying_' + rowCount + '').change(function() {
-          var s = $('#persistent_inconsolable_crying_' + rowCount + ' input:checked').map(function() {
-            return this.value;
-          }).get().join(',');
-          $('#persistent_inconsolable_crying').val((s.length > 0 ? s : ""));
-        })
-
-        $('#thrombocytopenia_' + rowCount + '').change(function() {
-          var s = $('#thrombocytopenia_' + rowCount + ' input:checked').map(function() {
-            return this.value;
-          }).get().join(',');
-          $('#thrombocytopenia').val((s.length > 0 ? s : ""));
-        })
-
-        $('#osteomyelitis_' + rowCount + '').change(function() {
-          var s = $('#osteomyelitis_' + rowCount + ' input:checked').map(function() {
-            return this.value;
-          }).get().join(',');
-          $('#osteomyelitis').val((s.length > 0 ? s : ""));
-        })
-
-        $('#toxic_shock_syndrome_' + rowCount + '').change(function() {
-          var s = $('#toxic_shock_syndrome_' + rowCount + ' input:checked').map(function() {
-            return this.value;
-          }).get().join(',');
-          $('#toxic_shock_syndrome').val((s.length > 0 ? s : ""));
-        })
-
-        $('#sepsis_' + rowCount + '').change(function() {
-          var s = $('#sepsis_' + rowCount + ' input:checked').map(function() {
-            return this.value;
-          }).get().join(',');
-          $('#sepsis').val((s.length > 0 ? s : ""));
-        })
-
-        $('#anaphylaxis_' + rowCount + '').change(function() {
-          var s = $('#anaphylaxis_' + rowCount + ' input:checked').map(function() {
-            return this.value;
-          }).get().join(',');
-          $('#anaphylaxis').val((s.length > 0 ? s : ""));
-        })
-
-        $('#gbs_' + rowCount + '').change(function() {
-          var s = $('#gbs_' + rowCount + ' input:checked').map(function() {
-            return this.value;
-          }).get().join(',');
-          $('#gbs').val((s.length > 0 ? s : ""));
-        })
-
-        $('#transverse myelitis_' + rowCount + '').change(function() {
-          var s = $('#transverse myelitis_' + rowCount + ' input:checked').map(function() {
-            return this.value;
-          }).get().join(',');
-          $('#transverse myelitis').val((s.length > 0 ? s : ""));
-        })
-
-        $('#adem_' + rowCount + '').change(function() {
-          var s = $('#adem_' + rowCount + ' input:checked').map(function() {
-            return this.value;
-          }).get().join(',');
-          $('#adem').val((s.length > 0 ? s : ""));
-        })
-
-        $('#acute_myocardial_' + rowCount + '').change(function() {
-          var s = $('#acute_myocardial_' + rowCount + ' input:checked').map(function() {
-            return this.value;
-          }).get().join(',');
-          $('#acute_myocardial').val((s.length > 0 ? s : ""));
-        })
-
-        $('#ards_' + rowCount + '').change(function() {
-          var s = $('#ards_' + rowCount + ' input:checked').map(function() {
-            return this.value;
-          }).get().join(',');
-          $('#ards').val((s.length > 0 ? s : ""));
-        })
-
-        $('#symptoms_later_immunized_' + rowCount + '').change(function() {
-          var s = $('#symptoms_later_immunized_' + rowCount + ' input:checked').map(function() {
-            return this.value;
-          }).get().join(',');
-          $('#symptoms_later_immunized').val((s.length > 0 ? s : ""));
-        })
-
-        $('#seriousness_of_the_symptoms_' + rowCount + '').change(function() {
-          var s = $('#seriousness_of_the_symptoms_' + rowCount + ' input:checked').map(function() {
-            return this.value;
-          }).get().join(',');
-          $('#seriousness_of_the_symptoms').val((s.length > 0 ? s : ""));
-        })
-
-        $('#other_seriousness_of_the_symptoms_' + rowCount + '').change(function() {
-          var s = $('#other_seriousness_of_the_symptoms_' + rowCount + ' input:checked').map(function() {
-            return this.value;
-          }).get().join(',');
-          $('#other_seriousness_of_the_symptoms').val((s.length > 0 ? s : ""));
-        })
-
-        $('#patient_status_' + rowCount + '').change(function() {
-          var s = $('#patient_status_' + rowCount + ' input:checked').map(function() {
-            return this.value;
-          }).get().join(',');
-          $('#patient_status').val((s.length > 0 ? s : ""));
-        })
-
-        $('#funeral_' + rowCount + '').change(function() {
-          var s = $('#funeral_' + rowCount + ' input:checked').map(function() {
-            return this.value;
-          }).get().join(',');
-          $('#funeral').val((s.length > 0 ? s : ""));
-        })
-
+    
       $('#date_of_vaccination1' + rowCount + '').datepicker({
         dateFormat: "yy-mm-dd"
       })
@@ -2593,8 +2264,14 @@ foreach ($aecode as $value) {
       $('#datepicker_expiry_date_diluent1' + rowCount + '').datepicker({
         dateFormat: "yy-mm-dd"
       })
-
+      $('#rash_' + rowCount + '').change(function() {
+      var s = $('#rash_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#rash' + rowCount + '').val((s.length > 0 ? s : ""));
     });
+    });
+
     $(document).on("click", ".deleteContact", function() {
       $(this).closest("tr").remove(); // closest used to remove the respective 'tr' in which I have my controls
     });
