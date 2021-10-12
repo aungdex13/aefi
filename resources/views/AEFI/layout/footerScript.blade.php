@@ -136,8 +136,19 @@ $(document).ready(function() {
     // $('#datepicker').datepicker({
     //   dateFormat: "yy-mm-dd"
     // })
+    $('#time_of_treatment').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+        //Date picker
+    $('#date_of_treatment').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
     //Date picker
-    $('#datepicker_found_event').datepicker({
+    $('#date_of_symptoms').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+        //Date picker
+        $('#datepicker_found_event').datepicker({
       dateFormat: "yy-mm-dd"
     })
     //Date picker
@@ -335,12 +346,12 @@ $(document).ready(function() {
 {{-- อื่นๆ --}}
 <script>
   $(function() {
-    $('input[name="seriousness_of_the_symptoms"]').on('click', function() {
+    $('input[name="c_other_seriousness_of_the_symptoms"]').on('click', function() {
       if ($(this).val() == '2') {
-        $('#other_seriousness_of_the_symptoms').show();
+        $('#text_other_seriousness_of_the_symptoms').show();
       } else {
-        $('#other_seriousness_of_the_symptoms').hide();
-        $('#other_seriousness_of_the_symptoms_text').val('');
+        $('#text_other_seriousness_of_the_symptoms').hide();
+        $('#text_other_seriousness_of_the_symptoms').val('');
       }
     });
     $('input[name="c_other_seriousness_of_the_symptoms[]"]').on('click', function() {
@@ -609,22 +620,7 @@ $(document).ready(function() {
         $('#other_address_funeral_text').val('');
       }
     });
-    $('input[name="funeral_2"]').on('click', function() {
-      if ($(this).val() == '3') {
-        $('#other_address_funeral_2').show();
-      } else {
-        $('#other_address_funeral_2').hide();
-        $('#other_address_funeral_text_2').val('');
-      }
-    });
-    $('input[name="funeral_3"]').on('click', function() {
-      if ($(this).val() == '3') {
-        $('#other_address_funeral_3').show();
-      } else {
-        $('#other_address_funeral_3').hide();
-        $('#other_address_funeral_text_3').val('');
-      }
-    });
+
     $('input[name="nationality"]').on('click', function() {
       if ($(this).val() == '4') {
         $('#other_nationality_d').show();

@@ -21,7 +21,7 @@
                               <input type="checkbox" id="c_rash" name="c_rash[]" value="0027">
                               Rash
                             </label>
-                            <input type="text" id="rash" name="rash[]" >
+                            <input type="text" id="rash" name="rash[]" hidden>
                           </div>
                           <div class="col-md-4" id="erythema_1">
                             <label>
@@ -439,7 +439,7 @@
                               <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                               </div>
-                              <input type="text" class="form-control pull-right" id="date_of_symptoms1" name="date_of_symptoms[]" data-date-format="yyyy-mm-dd" readonly>
+                              <input type="text" class="form-control pull-right" id="date_of_symptoms" name="date_of_symptoms[]" data-date-format="yyyy-mm-dd" readonly>
                             </div>
                           </div>
                         </div>
@@ -464,7 +464,7 @@
                               <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                               </div>
-                              <input type="text" class="form-control pull-right" id="date_of_treatment1" name="date_of_treatment[]" data-date-format="yyyy-mm-dd" readonly>
+                              <input type="text" class="form-control pull-right" id="date_of_treatment" name="date_of_treatment[]" data-date-format="yyyy-mm-dd" readonly>
                             </div>
                           </div>
                         </div>
@@ -475,7 +475,7 @@
                               <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                               </div>
-                              <input type="text" class="form-control pull-right" id="time_of_treatment1" name="time_of_treatment[]" data-date-format="yyyy-mm-dd" readonly>
+                              <input type="text" class="form-control pull-right" id="time_of_treatment" name="time_of_treatment[]" data-date-format="yyyy-mm-dd" readonly>
                             </div>
                           </div>
                         </div>
@@ -541,19 +541,19 @@
                     <div class="form-group">
                       <div class="col-md-4">
                         <label>
-                          <input type="checkbox" name="c_other_seriousness_of_the_symptoms[]" id="other_seriousness_of_the_symptoms1" value="1">
+                          <input type="checkbox" name="c_other_seriousness_of_the_symptoms[]" id="other_seriousness_of_the_symptoms" value="1">
                           เสียชีวิต
                         </label>
                       </div>
                       <div class="col-md-4">
                         <label>
-                          <input type="checkbox" name="c_other_seriousness_of_the_symptoms[]" id="other_seriousness_of_the_symptoms1" value="2">
+                          <input type="checkbox" name="c_other_seriousness_of_the_symptoms[]" id="other_seriousness_of_the_symptoms" value="2">
                           อันตรายถึงชีวิต
                         </label>
                       </div>
                       <div class="col-md-4">
                         <label>
-                          <input type="checkbox" name="c_other_seriousness_of_the_symptoms[]" id="other_seriousness_of_the_symptoms1" value="3">
+                          <input type="checkbox" name="c_other_seriousness_of_the_symptoms[]" id="other_seriousness_of_the_symptoms" value="3">
                           พิการ/ไร้ความสามารถ
                         </label>
                       </div>
@@ -561,26 +561,26 @@
                     <div class="form-group">
                       <div class="col-md-4">
                         <label>
-                          <input type="checkbox" name="c_other_seriousness_of_the_symptoms[]" id="other_seriousness_of_the_symptoms1" value="4">
+                          <input type="checkbox" name="c_other_seriousness_of_the_symptoms[]" id="other_seriousness_of_the_symptoms" value="4">
                           รับไว้รักษาในโรงพยาบาล
                         </label>
                       </div>
                       <div class="col-md-4">
                         <label>
-                          <input type="checkbox" name="c_other_seriousness_of_the_symptoms[]" id="other_seriousness_of_the_symptoms1" value="5">
+                          <input type="checkbox" name="c_other_seriousness_of_the_symptoms[]" id="other_seriousness_of_the_symptoms" value="5">
                           ความผิดปกติแต่กำเนิด
                         </label>
                       </div>
                       <div class="col-md-4">
                         <label>
-                          <input type="checkbox" name="c_other_seriousness_of_the_symptoms[]" id="other_seriousness_of_the_symptoms1" value="6">
+                          <input type="checkbox" name="c_other_seriousness_of_the_symptoms[]" id="other_seriousness_of_the_symptoms" value="6">
                           อื่นๆที่มีความสำคัญทางการแพทย์
                         </label>
                       </div>
                       <div class="col-lg-4">
                         <div id="text_other_seriousness_of_the_symptoms" style="display: none">
                           <label></label>
-                          <input type="text" id="text_other_seriousness_of_the_symptoms_text1" name="text_other_seriousness_symptoms[]" class="form-control" placeholder="อื่นๆ">
+                          <input type="text" id="text_other_seriousness_of_the_symptoms_text" name="text_other_seriousness_symptoms[]" class="form-control" placeholder="อื่นๆ">
                         </div>
                       </div>
                     </div>
@@ -657,7 +657,7 @@
                   <!-- checkbox3.1.1 -->
                   <div class="form-group">
                     <div class="col-lg-12"  id="funeral_1">
-                      <div class="col-md-2">
+                      <div class="col-md-2" hidden>
                         <label>
                           <input type="radio" id="c_funeral" name="c_funeral[]" value="" >
                           ไม่ระบุ

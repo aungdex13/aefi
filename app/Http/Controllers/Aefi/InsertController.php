@@ -285,7 +285,7 @@ if ($res1) {
 		$gbs = $req ->input ('gbs');
 		$date_dead = $req ->input ('date_dead');
 		// $time_of_reconstitution = $req ->input('time_of_reconstitution');
-		dd($date_of_vaccination,$rash);
+		// dd($date_of_vaccination,$rash);
 $x=0;
 	 for ($i=0; $i < count($name_of_vaccine); $i++) {
 		 $data_vac[]  = [
@@ -336,13 +336,13 @@ $x=0;
 		'sterile_abscess'=>(isset($sterile_abscess[$i])) ? $sterile_abscess[$i]  : '0',
 		'bacterial_abscess'=>(isset($bacterial_abscess[$i])) ? $bacterial_abscess[$i]  : '0',
 		'febrile_convulsion'=>(isset($febrile_convulsion[$i])) ? $febrile_convulsion[$i]  : '0',
-		'afebrile_convulsion'=>(isset($afebrile_convulsion)) ? $afebrile_convulsion  : '0',
+		'afebrile_convulsion'=>(isset($afebrile_convulsion[$i])) ? $afebrile_convulsion[$i]  : '0',
 		'encephalopathy'=>(isset($encephalopathy[$i])) ? $encephalopathy[$i]  : '0',
 		'flaccid_paralysis'=>(isset($flaccid_paralysis[$i])) ? $flaccid_paralysis[$i]  : '0',
 		'spastic_paralysis'=>(isset($spastic_paralysis[$i])) ? $spastic_paralysis[$i]  : '0',
 		'hhe'=>(isset($hhe[$i])) ? $hhe[$i]  : '0',
 		'persistent_inconsolable_crying'=>(isset($persistent_inconsolable_crying[$i])) ? $persistent_inconsolable_crying[$i]  : '0',
-		'thrombocytopenia'=>(isset($thrombocytopenia)) ? $thrombocytopenia  : '0',
+		'thrombocytopenia'=>(isset($thrombocytopenia[$i])) ? $thrombocytopenia[$i]  : '0',
 		'osteomyelitis'=>(isset($osteomyelitis[$i])) ? $osteomyelitis[$i]  : '0',
 		'toxic_shock_syndrome'=>(isset($toxic_shock_syndrome[$i])) ? $toxic_shock_syndrome[$i]  : '0',
 		'sepsis'=>(isset($sepsis[$i])) ? $sepsis[$i]  : '0',
@@ -352,25 +352,25 @@ $x=0;
 		'time_of_symptoms'=>$time_of_symptoms[$i],
 		'date_of_treatment'=>$date_of_treatment[$i],
 		'time_of_treatment'=>$time_of_treatment[$i],
-		// 'Symptoms_details'=>$Symptoms_details[$i],
-		// 'symptoms_later_immunized'=>$symptoms_later_immunized[$i],
-		// 'other_symptoms_later_immunized'=>$other_symptoms_later_immunized[$i],
-		// 'diagnosis'=>$diagnosis[$i],
-		// 'seriousness_of_the_symptoms'=>$seriousness_of_the_symptoms[$i],
-		// 'other_seriousness_of_the_symptoms'=>$other_seriousness_of_the_symptoms[$i],
-		// 'patient_status'=>$patient_status[$i],
-		// 'funeral'=>$funeral[$i],
-		// 'other_address_funeral'=>$other_address_funeral[$i],
-		// 'transverse_myelitis' => $transverse_myelitis[$i],
-		// 'adem' => $adem[$i],
-		// 'acute_myocardial' => $acute_myocardial[$i],
-		// 'ards' => $ards[$i],
-		// 'gbs'=>$gbs[$i],
+		'Symptoms_details'=>$Symptoms_details[$i],
+		'symptoms_later_immunized'=>$symptoms_later_immunized[$i],
+		'other_symptoms_later_immunized'=>$other_symptoms_later_immunized[$i],
+		'diagnosis'=>$diagnosis[$i],
+		'seriousness_of_the_symptoms'=>$seriousness_of_the_symptoms[$i],
+		'other_seriousness_of_the_symptoms'=>$other_seriousness_of_the_symptoms[$i],
+		'patient_status'=>$patient_status[$i],
+		'funeral'=>$funeral[$i],
+		'other_address_funeral'=>$other_address_funeral[$i],
+		'transverse_myelitis' => $transverse_myelitis[$i],
+		'adem' => $adem[$i],
+		'acute_myocardial' => $acute_myocardial[$i],
+		'ards' => $ards[$i],
+		'gbs'=>$gbs[$i],
 		'date_entry'=>$date_entry
 		];
 		$x++;
 		}
-		dd($data_vac,$data);
+		dd($data_vac);
 		//  $res2= $data_vac;
 		//  $res2= DB::table('aefi_form_1_vac')->insert($data_vac);
 }

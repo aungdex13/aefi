@@ -19,7 +19,6 @@ class Form1Controller extends Controller
 		$aecode=$this->aecode();
 		$groupproduct=$this->groupproduct();
 		$vac_list=$this->vaclist();
-
 		return view('AEFI.Apps.form1',
 			[
 				'vac_list'=>$vac_list,
@@ -101,4 +100,5 @@ class Form1Controller extends Controller
 		echo $outputD;
 
 }
+
 }

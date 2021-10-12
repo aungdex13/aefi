@@ -291,23 +291,41 @@ foreach ($aecode as $value) {
                         <div class="col-lg-2">
                           <div class="radio">
                             <label>
-                              <input type="radio" name="group_age" value="0" >
-                              5-18
+                              <input type="radio" name="group_age" value="1" >
+                              < 1 ปี
+                            </label>
+                        </div>
+                      </div>
+                      <div class="col-lg-2">
+                        <div class="radio">
+                          <label>
+                            <input type="radio" name="group_age" value="2" >
+                            1-4 ปี
+                          </label>
+                        </div>
+                      </div>
+                        <div class="col-lg-2">
+                          <div class="radio">
+                            <label>
+                              <input type="radio" name="group_age" value="3" >
+                              5-17 ปี
                             </label>
                           </div>
                         </div>
                         <div class="col-lg-2">
                           <div class="radio">
                             <label>
-                              <input type="radio" name="group_age" id="G_age1" value="1">
+                              <input type="radio" name="group_age" id="G_age1" value="4">
                               18-20 ปี
                              </label> 
                             </div> 
                           </div>
+                          <div class="col-lg-3">
+                          </div>
                           <div class="col-lg-2">
                             <div class="radio">
                                 <label>
-                                  <input type="radio" name="group_age" id="G_age2" value="2">
+                                  <input type="radio" name="group_age" id="G_age2" value="5">
                                   21-40 ปี
                                 </label>
                             </div>
@@ -315,17 +333,15 @@ foreach ($aecode as $value) {
                           <div class="col-lg-2">
                             <div class="radio">
                               <label>
-                                <input type="radio" name="group_age" id="G_age3" value="3">
+                                <input type="radio" name="group_age" id="G_age3" value="6">
                                 41-60 ปี
                               </label>
                             </div>
                           </div>                     
-                          <div class="col-lg-3">
-                          </div>
                           <div class="col-lg-2">
                             <div class="radio">
                               <label>
-                                <input type="radio" name="group_age" id="G_age4" value="4">
+                                <input type="radio" name="group_age" id="G_age4" value="7">
                                 61-80 ปี
                               </label>
                             </div>
@@ -333,7 +349,7 @@ foreach ($aecode as $value) {
                           <div class="col-lg-2">
                             <div class="radio">
                               <label>
-                                <input type="radio" name="group_age" id="G_age5" value="5">
+                                <input type="radio" name="group_age" id="G_age5" value="8">
                                 >80 ปี
                               </label>
                             </div>
@@ -1534,14 +1550,14 @@ foreach ($aecode as $value) {
 '                              <input type="checkbox" id="c_rash" name="c_rash[]" value="0027">'+
 '                              Rash'+
 '                            </label>'+
-'                            <input type="text" id="rash' + rowCount + '" name="rash[]" value="' + rowCount + '" >'+
+'                            <input type="text" id="rash' + rowCount + '" name="rash[]" hidden>'+
 '                          </div>'+
 '                          <div class="col-md-4" id="erythema_' + rowCount + '">'+
 '                            <label>'+
 '                              <input type="checkbox" id="erythema1" name="c_erythema[]" value="0028">'+
 '                              Erythema'+
 '                            </label>'+
-'                            <input type="text" id="erythema" name="erythema[]">'+
+'                            <input type="text" id="erythema" name="erythema[]" hidden>'+
 '                          </div>'+
 '                          <div class="col-md-4" id="urticaria_' + rowCount + '">'+
 '                            <label>'+
@@ -1952,7 +1968,7 @@ foreach ($aecode as $value) {
 '                              <div class="input-group-addon">'+
 '                                <i class="fa fa-calendar"></i>'+
 '                              </div>'+
-'                              <input type="text" class="form-control pull-right" id="date_of_symptoms1" name="date_of_symptoms[]" data-date-format="yyyy-mm-dd" readonly>'+
+'                              <input type="text" class="form-control pull-right" id="date_of_symptoms1' + rowCount + '" name="date_of_symptoms[]" data-date-format="yyyy-mm-dd" readonly>'+
 '                            </div>'+
 '                          </div>'+
 '                        </div>'+
@@ -1961,7 +1977,7 @@ foreach ($aecode as $value) {
 '                            <div class="col-lg-8">'+
 '                              <label>เวลาที่เกิดอาการ :</label>'+
 '                              <div class="input-group">'+
-'                                <input  id="time_of_symptoms1" type="text" class="form-control" name="time_of_symptoms[]">'+
+'                                <input  id="time_of_symptoms1' + rowCount + '" type="text" class="form-control" name="time_of_symptoms[]">'+
 '    '+
 '                                <div class="input-group-addon">'+
 '                                  <i class="fa fa-clock-o"></i>'+
@@ -1977,7 +1993,7 @@ foreach ($aecode as $value) {
 '                              <div class="input-group-addon">'+
 '                                <i class="fa fa-calendar"></i>'+
 '                              </div>'+
-'                              <input type="text" class="form-control pull-right" id="date_of_treatment1" name="date_of_treatment[]" data-date-format="yyyy-mm-dd" readonly>'+
+'                              <input type="text" class="form-control pull-right" id="date_of_treatment1' + rowCount + '" name="date_of_treatment[]" data-date-format="yyyy-mm-dd" readonly>'+
 '                            </div>'+
 '                          </div>'+
 '                        </div>'+
@@ -1988,14 +2004,14 @@ foreach ($aecode as $value) {
 '                              <div class="input-group-addon">'+
 '                                <i class="fa fa-calendar"></i>'+
 '                              </div>'+
-'                              <input type="text" class="form-control pull-right" id="time_of_treatment1" name="time_of_treatment[]" data-date-format="yyyy-mm-dd" readonly>'+
+'                              <input type="text" class="form-control pull-right" id="time_of_treatment1' + rowCount + '" name="time_of_treatment[]" data-date-format="yyyy-mm-dd" readonly>'+
 '                            </div>'+
 '                          </div>'+
 '                        </div>'+
 '                      </div>'+
 '                      <!-- /.box-header -->'+
 '                      <!-- form start -->'+
-'    '+
+'   '+
 '                      <div class="box-body">'+
 '                        {{-- input content --}}'+
 '                        <!-- textarea -->'+
@@ -2093,11 +2109,11 @@ foreach ($aecode as $value) {
 '                      <div class="col-lg-4">'+
 '                        <div id="text_other_seriousness_of_the_symptoms" style="display: none">'+
 '                          <label></label>'+
-'                          <input type="text" id="text_other_seriousness_of_the_symptoms_text1" name="text_other_seriousness_symptoms[]" class="form-control" placeholder="อื่นๆ">'+
+'                          <input type="text" id="text_other_seriousness_of_the_symptoms_text" name="text_other_seriousness_symptoms[]" class="form-control" placeholder="อื่นๆ">'+
 '                        </div>'+
 '                      </div>'+
 '                    </div>'+
-'                    <input type="text" id="other_seriousness_of_the_symptoms" name="other_seriousness_of_the_symptoms[]" hidden>'+
+'                    <input type="text" id="other_seriousness_of_the_symptoms' + rowCount + '" name="other_seriousness_of_the_symptoms[]" hidden>'+
 '                  </div>'+
 '                </div>'+
 '                </div>'+
@@ -2157,7 +2173,7 @@ foreach ($aecode as $value) {
 '                            </div>'+
 '                          </div>'+
 '                        </div>'+
-'                        <input type="text" id="patient_status" name="patient_status[]" hidden>'+
+'                        <input type="text" id="patient_status' + rowCount + '" name="patient_status[]" hidden>'+
 '                      </div>'+
 '                    </div>'+
 '                  </div>'+
@@ -2170,37 +2186,37 @@ foreach ($aecode as $value) {
 '                  <!-- checkbox3.1.1 -->'+
 '                  <div class="form-group">'+
 '                    <div class="col-lg-12"  id="funeral_' + rowCount + '">'+
-'                      <div class="col-md-2">'+
+'                      <div class="col-md-2" hidden>'+
 '                        <label>'+
-'                          <input type="radio" id="c_funeral" name="c_funeral[]" value="" >'+
+'                          <input type="radio" id="c_funeral' + rowCount + '" name="c_funeral[]" value="" >'+
 '                          ไม่ระบุ'+
 '                        </label>'+
 '                      </div>'+
 '                      <div class="col-md-2">'+
 '                        <label>'+
-'                          <input type="radio" id="c_funeral" name="c_funeral[]" value="1" >'+
+'                          <input type="radio" id="c_funeral' + rowCount + '" name="c_funeral[]" value="1" >'+
 '                          ไม่มี'+
 '                        </label>'+
 '                      </div>'+
 '                      <div class="col-md-2">'+
 '                        <label>'+
-'                          <input type="radio" id="c_funeral" name="c_funeral[]" value="2">'+
+'                          <input type="radio" id="c_funeral' + rowCount + '" name="c_funeral[]" value="2">'+
 '                          ไม่ทราบ'+
 '                        </label>'+
 '                      </div>'+
 '                      <div class="col-md-2">'+
 '                        <label>'+
-'                          <input type="radio" id="c_funeral" name="c_funeral[]" value="3">'+
+'                          <input type="radio" id="c_funeral' + rowCount + '" name="c_funeral[]" value="3">'+
 '                          มี'+
 '                        </label>'+
 '                      </div>'+
 '                      <div class="col-lg-3">'+
-'                        <div id="other_address_funeral" style="display: none">'+
+'                        <div id="other_address_funeral' + rowCount + '" style="display: none">'+
 '                          <label>สถานที่ทำการ :</label>'+
-'                          <input type="text" id="other_address_funeral_text" name="other_address_funeral[]" class="form-control" placeholder="ระบุสถานที่ทำการ">'+
+'                          <input type="text" id="other_address_funeral_text' + rowCount + '" name="other_address_funeral[]" class="form-control" placeholder="ระบุสถานที่ทำการ">'+
 '                        </div>'+
 '                      </div>'+
-'                      <input type="text" id="funeral" name="funeral[]" hidden>'+
+'                      <input type="text" id="funeral' + rowCount + '" name="funeral[]" hidden>'+
 '                    </div>'+
 '                  </div>'+
 '                </div>'+
@@ -2213,7 +2229,7 @@ foreach ($aecode as $value) {
 '        </div>'+
 '      </div>'+
 '    </div>'+
-'  </div>'
+'  </div>'+
           '</td>' +
         '<td>' +
         '<select type="text" id="manufacturer1" name="manufacturer[]' + rowCount + '" class="form-control">' +
@@ -2264,11 +2280,280 @@ foreach ($aecode as $value) {
       $('#datepicker_expiry_date_diluent1' + rowCount + '').datepicker({
         dateFormat: "yy-mm-dd"
       })
+      $('#date_of_symptoms1' + rowCount + '').datepicker({
+        dateFormat: "yy-mm-dd"
+      })
+      $('#date_of_treatment1' + rowCount + '').datepicker({
+        dateFormat: "yy-mm-dd"
+      })
+      $('#time_of_treatment1' + rowCount + '').datepicker({
+        dateFormat: "yy-mm-dd"
+      })
       $('#rash_' + rowCount + '').change(function() {
       var s = $('#rash_' + rowCount + ' input:checked').map(function() {
         return this.value;
       }).get().join(',');
       $('#rash' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#erythema_' + rowCount + '').change(function() {
+      var s = $('#erythema_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#erythema' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#urticaria_' + rowCount + '').change(function() {
+      var s = $('#urticaria_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#urticaria' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#itching_' + rowCount + '').change(function() {
+      var s = $('#itching_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#itching' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#edema_' + rowCount + '').change(function() {
+      var s = $('#edema_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#edema' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#angioedema_' + rowCount + '').change(function() {
+      var s = $('#angioedema_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#angioedema' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#fainting_' + rowCount + '').change(function() {
+      var s = $('#fainting_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#fainting' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#hyperventilation_' + rowCount + '').change(function() {
+      var s = $('#hyperventilation_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#hyperventilation' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#syncope_' + rowCount + '').change(function() {
+      var s = $('#syncope_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#syncope' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#headche_' + rowCount + '').change(function() {
+      var s = $('#headche_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#headche' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#dizziness_' + rowCount + '').change(function() {
+      var s = $('#dizziness_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#dizziness' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#fatigue_' + rowCount + '').change(function() {
+      var s = $('#fatigue_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#fatigue' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#malaise_' + rowCount + '').change(function() {
+      var s = $('#malaise_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#malaise' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#dyspepsia_' + rowCount + '').change(function() {
+      var s = $('#dyspepsia_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#dyspepsia' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#diarrhea_' + rowCount + '').change(function() {
+      var s = $('#diarrhea_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#diarrhea' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#nausea_' + rowCount + '').change(function() {
+      var s = $('#nausea_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#nausea' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#vomiting_' + rowCount + '').change(function() {
+      var s = $('#vomiting_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#vomiting' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#abdominal_pain_' + rowCount + '').change(function() {
+      var s = $('#abdominal_pain_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#abdominal_pain' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#arthalgia_' + rowCount + '').change(function() {
+      var s = $('#arthalgia_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#arthalgia' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#myalgia_' + rowCount + '').change(function() {
+      var s = $('#myalgia_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#myalgia' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#fever38c_' + rowCount + '').change(function() {
+      var s = $('#fever38c_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#fever38c' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#swelling_at_the_injection_' + rowCount + '').change(function() {
+      var s = $('#swelling_at_the_injection_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#swelling_at_the_injection' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#swelling_beyond_nearest_joint_' + rowCount + '').change(function() {
+      var s = $('#swelling_beyond_nearest_joint_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#swelling_beyond_nearest_joint' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#lymphadenopathy_' + rowCount + '').change(function() {
+      var s = $('#lymphadenopathy_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#lymphadenopathy' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#lymphadenitis_' + rowCount + '').change(function() {
+      var s = $('#lymphadenitis_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#lymphadenitis' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#sterile_abscess_' + rowCount + '').change(function() {
+      var s = $('#sterile_abscess_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#sterile_abscess' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#bacterial_abscess_' + rowCount + '').change(function() {
+      var s = $('#bacterial_abscess_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#bacterial_abscess' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#febrile_convulsion_' + rowCount + '').change(function() {
+      var s = $('#febrile_convulsion_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#febrile_convulsion' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#encephalopathy_' + rowCount + '').change(function() {
+      var s = $('#encephalopathy_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#encephalopathy' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#flaccid_paralysis_' + rowCount + '').change(function() {
+      var s = $('#flaccid_paralysis_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#flaccid_paralysis' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#spastic_paralysis_' + rowCount + '').change(function() {
+      var s = $('#spastic_paralysis_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#spastic_paralysis' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#hhe_' + rowCount + '').change(function() {
+      var s = $('#hhe_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#hhe' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#persistent_inconsolable_crying_' + rowCount + '').change(function() {
+      var s = $('#persistent_inconsolable_crying_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#persistent_inconsolable_crying' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#thrombocytopenia_' + rowCount + '').change(function() {
+      var s = $('#thrombocytopenia_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#thrombocytopenia' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#osteomyelitis_' + rowCount + '').change(function() {
+      var s = $('#osteomyelitis_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#osteomyelitis' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#toxic_shock_syndrome_' + rowCount + '').change(function() {
+      var s = $('#toxic_shock_syndrome_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#toxic_shock_syndrome' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#sepsis_' + rowCount + '').change(function() {
+      var s = $('#sepsis_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#sepsis' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#anaphylaxis_' + rowCount + '').change(function() {
+      var s = $('#anaphylaxis_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#anaphylaxis' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#other_' + rowCount + '').change(function() {
+      var s = $('#other_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#other' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#seriousness_of_the_symptoms_' + rowCount + '').change(function() {
+      var s = $('#seriousness_of_the_symptoms_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#seriousness_of_the_symptoms' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#other_seriousness_of_the_symptoms_' + rowCount + '').change(function() {
+      var s = $('#other_seriousness_of_the_symptoms_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#other_seriousness_of_the_symptoms' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#patient_status_' + rowCount + '').change(function() {
+      var s = $('#patient_status_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#patient_status' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#funeral_' + rowCount + '').change(function() {
+      var s = $('#funeral_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#funeral' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('input[name="c_funeral[]"]').on('click', function() {
+      if ($(this).val() == '3') {
+        $('#other_address_funeral' + rowCount + '').show();
+      } else {
+        $('#other_address_funeral' + rowCount + '').hide();
+        $('#other_address_funeral_text' + rowCount + '').val('');
+      }
     });
     });
 
