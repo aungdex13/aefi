@@ -161,7 +161,16 @@ $(document).ready(function() {
     })
     //Date picker
     $('#datepicker_bdate').datepicker({
-      dateFormat: "yy-mm-dd"
+      onSelect: function(value, ui) {
+        var today = new Date(), 
+            age = today.getFullYear() - ui.selectedYear;
+        $('#age').text(age);
+    },
+    maxDate: '+0d',
+    changeMonth: true,
+    changeYear: true,
+    defaultDate: '-18yr',
+    dateFormat: "yy-mm-dd"
     })
     //Date picker
     $('#datepicker_stdiag').datepicker({

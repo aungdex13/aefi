@@ -264,7 +264,8 @@ foreach ($aecode as $value) {
                           <label>อายุขณะป่วย:</label>
                         </div>
                         <div class="col-lg-3">
-                          <input type="text" id="age_while_sick_year" name="age_while_sick_year" class="form-control" placeholder="ปี">
+                          <div class="checked" id="age">tests</div>
+                          <input type="text" id="age" name="age_while_sick_year" class="form-control" placeholder="ปี">
                           <!-- /input-group -->
                         </div>
                         <!-- /.col-lg-4 -->
@@ -913,7 +914,11 @@ foreach ($aecode as $value) {
                           </select>
                         </td>
                         <td>
-                          <input type="number" id="dose1" name="dose[]" class="form-control" min="1" max="20">
+                          <select name="dose[]" id="dose1" class="form-control">
+                            <option value="1">เข็มที่ 1</option>
+                            <option value="2">เข็มที่ 2</option>
+                            <option value="3">เข็มที่ 3</option>
+                          </select>
                         </td>
                         <td>
                           <input type="text" name="date_of_vaccination[]" value="" id="date_of_vaccination1" class="form-control datepicker" data-date-format="yyyy-mm-dd" readonly>
@@ -1514,8 +1519,12 @@ foreach ($aecode as $value) {
         '</select>' +
         '</td>' +
         '<td>' +
-        '<input type="number" id="dose1" name="dose[]' + rowCount + '" class="form-control" min="1" max="20">' +
-        '</td>' +
+          '<select name="dose[]' + rowCount + '" id="dose1' + rowCount + '" class="form-control">'+
+  '<option value="1">เข็มที่ 1</option>'+
+  '<option value="2">เข็มที่ 2</option>'+
+  '<option value="3">เข็มที่ 3</option>'+
+'</select>'+
+'</td>' +
         '<td>' +
         '<input type="text" name="date_of_vaccination[]' + rowCount + '" value="" id="date_of_vaccination1' + rowCount + '" class="form-control datepicker" data-date-format="yyyy-mm-dd" readonly>' +
         '</td>' +

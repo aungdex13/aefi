@@ -203,8 +203,8 @@
 			'hospcode_get_vac'=>$hospcode_get_vac
 		);
 	// echo($data);
-	$res1 = $data;
-	// $res1	= DB::table('aefi_form_1')->insert($data);
+	// $res1 = $data;
+	$res1	= DB::table('aefi_form_1')->insert($data);
 	 // dd($data);
 if ($res1) {
 		$name_of_vaccine = $req ->input('name_of_vaccine');
@@ -370,142 +370,10 @@ $x=0;
 		];
 		$x++;
 		}
-		dd($data_vac);
+		// dd($data_vac);
 		//  $res2= $data_vac;
-		//  $res2= DB::table('aefi_form_1_vac')->insert($data_vac);
-}
-if ($res2) {
-		$rash = $req ->input('rash');
-		$erythema = $req ->input ('erythema');
-		$urticaria = $req ->input ('urticaria');
-		$itching = $req ->input ('itching');
-		$edema = $req ->input ('edema');
-		$angioedema = $req ->input ('angioedema');
-		$fainting = $req ->input ('fainting');
-		$hyperventilation = $req ->input ('hyperventilation');
-		$syncope = $req ->input ('syncope');
-		$headche = $req ->input ('headche');
-		$dizziness = $req ->input ('dizziness');
-		$fatigue = $req ->input ('fatigue');
-		$malaise = $req ->input ('malaise');
-		$dyspepsia = $req ->input ('dyspepsia');
-		$diarrhea = $req ->input ('diarrhea');
-		$nausea = $req ->input ('nausea');
-		$vomiting = $req ->input ('vomiting');
-		$abdominal_pain = $req ->input ('abdominal_pain');
-		$arthalgia = $req ->input ('arthalgia');
-		$myalgia = $req ->input ('myalgia');
-		$fever38c = $req ->input ('fever38c');
-		$swelling_at_the_injection = $req ->input ('swelling_at_the_injection');
-		$swelling_beyond_nearest_joint = $req ->input ('swelling_beyond_nearest_joint');
-		$lymphadenopathy = $req ->input ('lymphadenopathy');
-		$lymphadenitis = $req ->input ('lymphadenitis');
-		$sterile_abscess = $req ->input ('sterile_abscess');
-		$bacterial_abscess = $req ->input ('bacterial_abscess');
-		$febrile_convulsion = $req ->input ('febrile_convulsion');
-		$afebrile_convulsion = $req ->input ('afebrile_convulsion');
-		$encephalopathy = $req ->input ('encephalopathy');
-		$flaccid_paralysis = $req ->input ('flaccid_paralysis');
-		$spastic_paralysis = $req ->input ('spastic_paralysis');
-		$hhe = $req ->input ('hhe');
-		$persistent_inconsolable_crying = $req ->input ('persistent_inconsolable_crying');
-		$thrombocytopenia = $req ->input ('thrombocytopenia');
-		$osteomyelitis = $req ->input ('osteomyelitis');
-		$toxic_shock_syndrome = $req ->input ('toxic_shock_syndrome');
-		$sepsis = $req ->input ('sepsis');
-		$anaphylaxis = $req ->input ('anaphylaxis');
-		$other = $req ->input ('other');
-		$date_of_symptoms = $req ->input ('date_of_symptoms');
-		$time_of_symptoms = $req ->input ('time_of_symptoms');
-		$date_of_treatment = $req ->input ('date_of_treatment');
-		$time_of_treatment = $req ->input ('time_of_treatment');
-		$Symptoms_details = $req ->input ('Symptoms_details');
-		$text_other_seriousness_symptoms = $req ->input ('text_other_seriousness_symptoms');
-		$symptoms_later_immunized = $req ->input ('symptoms_later_immunized');
-		$other_symptoms_later_immunized = $req ->input ('other_symptoms_later_immunized');
-		$diagnosis = $req ->input ('diagnosis');
-		$seriousness_of_the_symptoms = $req ->input ('seriousness_of_the_symptoms');
-		$other_seriousness_of_the_symptoms = $req ->input ('other_seriousness_of_the_symptoms');
-		$patient_status = $req ->input ('patient_status');
-		$funeral = $req ->input ('funeral');
-		$other_address_funeral = $req ->input ('other_address_funeral');
-		$transverse_myelitis = $req ->input ('transverse_myelitis');
-		$adem = $req ->input ('adem');
-		$acute_myocardial = $req ->input ('acute_myocardial');
-		$ards = $req ->input ('ards');
-		$gbs = $req ->input ('gbs');
-		$date_dead = $req ->input ('date_dead');
-$x=0;
- for ($i=0; $i < count($id_case); $i++) {
-	 $data_symptom[]  = [
-		 
-		'id_case'=>$id_case,
-		'date_dead'=>$date_dead,
-		'text_other_seriousness_symptoms'=>$text_other_seriousness_symptoms,
-		'rash'=>(isset($rash)) ? $rash  : '0',
-		'erythema'=>(isset($erythema)) ? $erythema  : '0',
-		'urticaria'=>(isset($urticaria)) ? $urticaria  : '0',
-		'itching'=>(isset($itching)) ? $itching  : '0',
-		'edema'=>(isset($edema)) ? $edema  : '0',
-		'angioedema'=>(isset($angioedema)) ? $angioedema  : '0',
-		'fainting'=>(isset($fainting)) ? $fainting  : '0',
-		'hyperventilation'=>(isset($hyperventilation)) ? $hyperventilation  : '0',
-		'syncope'=>(isset($syncope)) ? $syncope  : '0',
-		'headche'=>(isset($headche)) ? $headche  : '0',
-		'dizziness'=>(isset($dizziness)) ? $dizziness  : '0',
-		'fatigue'=>(isset($fatigue)) ? $fatigue  : '0',
-		'malaise'=>(isset($malaise)) ? $malaise  : '0',
-		'dyspepsia'=>(isset($dyspepsia)) ? $dyspepsia  : '0',
-		'diarrhea'=>(isset($diarrhea)) ? $diarrhea  : '0',
-		'nausea'=>(isset($nausea)) ? $nausea  : '0',
-		'vomiting'=>(isset($vomiting)) ? $vomiting  : '0',
-		'abdominal_pain'=>(isset($abdominal_pain)) ? $abdominal_pain  : '0',
-		'arthalgia'=>(isset($arthalgia)) ? $arthalgia  : '0',
-		'myalgia'=>(isset($myalgia)) ? $myalgia  : '0',
-		'fever38c'=>(isset($fever38c)) ? $fever38c  : '0',
-		'swelling_at_the_injection'=>(isset($swelling_at_the_injection)) ? $swelling_at_the_injection  : '0',
-		'swelling_beyond_nearest_joint'=>(isset($swelling_beyond_nearest_joint)) ? $swelling_beyond_nearest_joint  : '0',
-		'lymphadenopathy'=>(isset($lymphadenopathy)) ? $lymphadenopathy  : '0',
-		'lymphadenitis'=>(isset($lymphadenitis)) ? $lymphadenitis  : '0',
-		'sterile_abscess'=>(isset($sterile_abscess)) ? $sterile_abscess  : '0',
-		'bacterial_abscess'=>(isset($bacterial_abscess)) ? $bacterial_abscess  : '0',
-		'febrile_convulsion'=>(isset($febrile_convulsion)) ? $febrile_convulsion  : '0',
-		'afebrile_convulsion'=>(isset($afebrile_convulsion)) ? $afebrile_convulsion  : '0',
-		'encephalopathy'=>(isset($encephalopathy)) ? $encephalopathy  : '0',
-		'flaccid_paralysis'=>(isset($flaccid_paralysis)) ? $flaccid_paralysis  : '0',
-		'spastic_paralysis'=>(isset($spastic_paralysis)) ? $spastic_paralysis  : '0',
-		'hhe'=>(isset($hhe)) ? $hhe  : '0',
-		'persistent_inconsolable_crying'=>(isset($persistent_inconsolable_crying)) ? $persistent_inconsolable_crying  : '0',
-		'thrombocytopenia'=>(isset($thrombocytopenia)) ? $thrombocytopenia  : '0',
-		'osteomyelitis'=>(isset($osteomyelitis)) ? $osteomyelitis  : '0',
-		'toxic_shock_syndrome'=>(isset($toxic_shock_syndrome)) ? $toxic_shock_syndrome  : '0',
-		'sepsis'=>(isset($sepsis)) ? $sepsis  : '0',
-		'anaphylaxis'=>(isset($anaphylaxis)) ? $anaphylaxis  : '0',
-		'other'=>(isset($other)) ? $other  : '0',
-		'date_of_symptoms'=>$date_of_symptoms,
-		'time_of_symptoms'=>$time_of_symptoms,
-		'date_of_treatment'=>$date_of_treatment,
-		'time_of_treatment'=>$time_of_treatment,
-		'Symptoms_details'=>$Symptoms_details,
-		'symptoms_later_immunized'=>$symptoms_later_immunized,
-		'other_symptoms_later_immunized'=>$other_symptoms_later_immunized,
-		'diagnosis'=>$diagnosis,
-		'seriousness_of_the_symptoms'=>$seriousness_of_the_symptoms,
-		'other_seriousness_of_the_symptoms'=>$other_seriousness_of_the_symptoms,
-		'patient_status'=>$patient_status,
-		'funeral'=>$funeral,
-		'other_address_funeral'=>$other_address_funeral,
-		'transverse_myelitis' => $transverse_myelitis,
-		'adem' => $adem,
-		'acute_myocardial' => $acute_myocardial,
-		'ards' => $ards,
-		'gbs'=>$gbs,
-		'date_entry'=>$date_entry
-	];
-	$x++;
+		 $res2= DB::table('aefi_form_1_vac')->insert($data_vac);
 	}
-	dd($data_vac,$data);
-}
 											if ($res2) {
 												$msg = " ส่งข้อมูลสำเร็จ";
 												$url_rediect = "<script>alert('".$msg."'); window.location='lstf1';</script> ";
