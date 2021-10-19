@@ -264,19 +264,28 @@ if ($res1) {
 		$anaphylaxis = $req ->input ('anaphylaxis');
 		$other = $req ->input ('other');
 		$date_of_symptoms = $req ->input ('date_of_symptoms');
+		$date_of_symptoms2 = $req ->input ('date_of_symptoms2');
 		$time_of_symptoms = $req ->input ('time_of_symptoms');
 		$date_of_treatment = $req ->input ('date_of_treatment');
 		$time_of_treatment = $req ->input ('time_of_treatment');
+		$time_of_symptoms2 = $req ->input ('time_of_symptoms2');
+		$date_of_treatment2 = $req ->input ('date_of_treatment2');
+		$time_of_treatment2 = $req ->input ('time_of_treatment2');
 		$Symptoms_details = $req ->input ('Symptoms_details');
-		 
+		$Symptoms_details2 = $req ->input ('Symptoms_details2');
 		$text_other_seriousness_symptoms = $req ->input ('text_other_seriousness_symptoms');
 		$symptoms_later_immunized = $req ->input ('symptoms_later_immunized');
 		$other_symptoms_later_immunized = $req ->input ('other_symptoms_later_immunized');
 		$diagnosis = $req ->input ('diagnosis');
+		$diagnosis2 = $req ->input ('diagnosis2');
 		$seriousness_of_the_symptoms = $req ->input ('seriousness_of_the_symptoms');
+		$seriousness_of_the_symptoms2 = $req ->input ('seriousness_of_the_symptoms2');
 		$other_seriousness_of_the_symptoms = $req ->input ('other_seriousness_of_the_symptoms');
+		$other_seriousness_of_the_symptoms2 = $req ->input ('other_seriousness_of_the_symptoms2');
 		$patient_status = $req ->input ('patient_status');
+		$patient_status2 = $req ->input ('patient_status2');
 		$funeral = $req ->input ('funeral');
+		$funeral2 = $req ->input ('funeral2');
 		$other_address_funeral = $req ->input ('other_address_funeral');
 		$transverse_myelitis = $req ->input ('transverse_myelitis');
 		$adem = $req ->input ('adem');
@@ -284,6 +293,7 @@ if ($res1) {
 		$ards = $req ->input ('ards');
 		$gbs = $req ->input ('gbs');
 		$date_dead = $req ->input ('date_dead');
+		$symptomstatus = $req ->input ('symptomstatus');
 		// $time_of_reconstitution = $req ->input('time_of_reconstitution');
 		// dd($date_of_vaccination,$rash);
 $x=0;
@@ -353,24 +363,35 @@ $x=0;
 		'date_of_treatment'=>$date_of_treatment[$i],
 		'time_of_treatment'=>$time_of_treatment[$i],
 		'Symptoms_details'=>$Symptoms_details[$i],
+		'date_of_symptoms2'=>$date_of_symptoms2[$i],
+		'time_of_symptoms2'=>$time_of_symptoms2[$i],
+		'date_of_treatment2'=>$date_of_treatment2[$i],
+		'time_of_treatment2'=>$time_of_treatment2[$i],
+		'Symptoms_details2'=>$Symptoms_details2[$i],
 		'symptoms_later_immunized'=>$symptoms_later_immunized[$i],
 		'other_symptoms_later_immunized'=>$other_symptoms_later_immunized[$i],
 		'diagnosis'=>$diagnosis[$i],
+		'diagnosis2'=>$diagnosis2[$i],
 		'seriousness_of_the_symptoms'=>$seriousness_of_the_symptoms[$i],
+		'seriousness_of_the_symptoms2'=>$seriousness_of_the_symptoms2[$i],
 		'other_seriousness_of_the_symptoms'=>$other_seriousness_of_the_symptoms[$i],
+		'other_seriousness_of_the_symptoms2'=>$other_seriousness_of_the_symptoms2[$i],
 		'patient_status'=>$patient_status[$i],
+		'patient_status2'=>$patient_status2[$i],
 		'funeral'=>$funeral[$i],
+		'funeral2'=>$funeral2[$i],
 		'other_address_funeral'=>$other_address_funeral[$i],
 		'transverse_myelitis' => $transverse_myelitis[$i],
 		'adem' => $adem[$i],
 		'acute_myocardial' => $acute_myocardial[$i],
 		'ards' => $ards[$i],
 		'gbs'=>$gbs[$i],
-		'date_entry'=>$date_entry
+		'date_entry'=>$date_entry,
+		'symptomstatus'=>$symptomstatus
 		];
 		$x++;
 		}
-		// dd($data_vac);
+		dd($data_vac);
 		//  $res2= $data_vac;
 		 $res2= DB::table('aefi_form_1_vac')->insert($data_vac);
 	}

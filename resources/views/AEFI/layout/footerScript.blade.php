@@ -139,12 +139,23 @@ $(document).ready(function() {
     $('#time_of_treatment').datepicker({
       dateFormat: "yy-mm-dd"
     })
+        $('#time_of_treatment2').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
         //Date picker
     $('#date_of_treatment').datepicker({
       dateFormat: "yy-mm-dd"
     })
+            //Date picker
+    $('#date_of_treatment2').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
     //Date picker
     $('#date_of_symptoms').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+        //Date picker
+    $('#date_of_symptoms2').datepicker({
       dateFormat: "yy-mm-dd"
     })
         //Date picker
@@ -217,7 +228,7 @@ $(document).ready(function() {
       dateFormat: "yy-mm-dd"
     })
     //Date picker
-    $('#datepicker_dead_2').datepicker({
+    $('#datepicker_dead2').datepicker({
       dateFormat: "yy-mm-dd"
     })
     //Date picker
@@ -355,12 +366,12 @@ $(document).ready(function() {
 {{-- อื่นๆ --}}
 <script>
   $(function() {
-    $('input[name="c_other_seriousness_of_the_symptoms"]').on('click', function() {
+    $('input[name="c_other_seriousness_of_the_symptoms[]"]').on('click', function() {
       if ($(this).val() == '2') {
         $('#text_other_seriousness_of_the_symptoms').show();
       } else {
         $('#text_other_seriousness_of_the_symptoms').hide();
-        $('#text_other_seriousness_of_the_symptoms').val('');
+        $('#text_other_seriousness_of_the_symptoms_text').val('');
       }
     });
     $('input[name="c_other_seriousness_of_the_symptoms[]"]').on('click', function() {
@@ -581,12 +592,12 @@ $(document).ready(function() {
         $('#other_patian_sta_text').val('');
       }
     });
-    $('input[name="patient_status_2"]').on('click', function() {
+    $('input[name="c_patient_status2[]"]').on('click', function() {
       if ($(this).val() == '6') {
-        $('#other_patian_sta_2').show();
+        $('#other_patian_sta2').show();
       } else {
-        $('#other_patian_sta_2').hide();
-        $('#other_patian_sta_text_2').val('');
+        $('#other_patian_sta2').hide();
+        $('#datepicker_dead2').val('');
       }
     });
     $('input[name="patient_status_3"]').on('click', function() {
@@ -629,7 +640,14 @@ $(document).ready(function() {
         $('#other_address_funeral_text').val('');
       }
     });
-
+    $('input[name="c_funeral2[]"]').on('click', function() {
+      if ($(this).val() == '3') {
+        $('#other_address_funeral2').show();
+      } else {
+        $('#other_address_funeral2').hide();
+        $('#other_address_funeral_text2').val('');
+      }
+    });
     $('input[name="nationality"]').on('click', function() {
       if ($(this).val() == '4') {
         $('#other_nationality_d').show();
