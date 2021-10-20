@@ -963,7 +963,7 @@ foreach ($aecode as $value) {
                 <th>
                   <font style="color:red;">*</font> เวลาที่ได้รับ
                 </th>
-                <th>ชื่อผู้ผลิต</th>
+                <th style="width:150px;">อาการ</th>
                 <th>ชื่อผู้ผลิตอื่นๆ</th>
                 <th>
                   <font style="color:red;">*</font> เลขที่ผลิต
@@ -1138,9 +1138,17 @@ foreach ($aecode as $value) {
                   <input type="text" id="time_of_vaccination1" name="time_of_vaccination[]" value="{{isset($value->vaccination_site) ? $value->time_of_vaccination:""}}" class="form-control">
                 </td>
                 <td>
-                  <input type="radio" id="symptom1_1" name="symptom1[]" value="1" data-toggle="modal" data-target="#Symptom1">
+                  <input type="radio" id="symptom1_1" name="symptom1[]" value="1" data-toggle="modal" data-target="#Symptom1" @if($value->symptomstatus == '1')
+                      checked
+                  @else
+                
+                  @endif>
                   <label for="age1"> : มีอาการ</label><br>
-                  <input type="radio" id="symptom1_2" name="symptom1[]" value="0">
+                  <input type="radio" id="symptom1_2" name="symptom1[]" value="0"  data-toggle="modal" data-target="#nonSymptom1" @if($value->symptomstatus == '0')
+                  checked
+              @else
+            
+              @endif>
                   <label for="age2"> : ไม่มีอาการ</label><br>
                 </td>
                 <td>
