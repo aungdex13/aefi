@@ -1599,6 +1599,13 @@ foreach ($aecode as $value) {
 '                            </label>'+
 '                            <input type="text" id="angioedema" name="angioedema[]" hidden>'+
 '                          </div>'+
+'                          <div class="col-md-5" id=chest_pain_' + rowCount + '">'+
+'                            <label>'+
+'                              <input type="checkbox" id="chest_pain1" name="c_chest_pain[]" value="1">'+
+'                              chest pain'+
+'                            </label>'+
+'                            <input type="text" id="chest_pain" name="chest_pain[]" hidden>'+
+'                          </div>'+
 '                        </div>'+
 '                      </div>'+
 '                      <!-- /.box-header -->'+
@@ -2897,6 +2904,13 @@ $('#patient_status_2' + rowCount + '').change(function() {
     return this.value;
   }).get().join(',');
   $('#funeral2' + rowCount + '').val((s.length > 0 ? s : ""));
+});
+
+$('#chest_pain_2' + rowCount + '').change(function() {
+  var s = $('#chest_pain_2 input:checked').map(function() {
+    return this.value;
+  }).get().join(',');
+  $('#chest_pain2').val((s.length > 0 ? s : ""));
 });
     $('input[name="c_funeral2[]"]').on('click', function() {
       if ($(this).val() == '3') {

@@ -327,4 +327,11 @@ $('#funeral_1').change(function() {
   }).get().join(',');
   $('#funeral').val((s.length > 0 ? s : ""));
 });
+
+$('#chest_pain_1').change(function() {
+  var s = $('#chest_pain_1 input:checked').map(function() {
+    return this.value;
+  }).get().join(',');
+  $('#chest_pain').val((s.length > 0 ? s : ""));
+});
 </script>

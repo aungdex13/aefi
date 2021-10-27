@@ -60,6 +60,13 @@
                             </label>
                             <input type="text" id="angioedema" name="angioedema[]" hidden>
                           </div>
+                          <div class="col-md-5" id="chest_pain_1">
+                            <label>
+                              <input type="checkbox" id="chest_pain1" name="c_chest_pain[]" value="0072">
+                              chest pain
+                            </label>
+                            <input type="text" id="chest_pain" name="chest_pain[]" hidden>
+                          </div>
                         </div>
                       </div>
                       <!-- /.box-header -->

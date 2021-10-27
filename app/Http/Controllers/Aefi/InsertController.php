@@ -294,6 +294,7 @@ if ($res1) {
 		$gbs = $req ->input ('gbs');
 		$date_dead = $req ->input ('date_dead');
 		$symptomstatus = $req ->input ('symptomstatus');
+		$chest_pain = $req ->input ('chest_pain');
 		// $time_of_reconstitution = $req ->input('time_of_reconstitution');
 		// dd($date_of_vaccination,$rash);
 $x=0;
@@ -387,7 +388,8 @@ $x=0;
 		'ards' => $ards[$i],
 		'gbs'=>$gbs[$i],
 		'date_entry'=>$date_entry,
-		'symptomstatus'=>$symptomstatus
+		'symptomstatus'=>$symptomstatus,
+		'chest_pain'=>$chest_pain
 		];
 		$x++;
 		}
