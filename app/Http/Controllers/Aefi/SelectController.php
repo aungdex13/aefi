@@ -434,7 +434,7 @@
 			$vac_list=$this->vaclist();
 			$listvac_arr=$this->listvac_arr();
 			$list_hos=$this->list_hos();
-						//dd($EditAEFI1vac);
+						// dd($EditAEFI1vac);
 		 return view('AEFI.Apps.EditAEFI1')
 		 				->with('data', $EditAEFI1)
 						->with('datavac', $EditAEFI1vac)

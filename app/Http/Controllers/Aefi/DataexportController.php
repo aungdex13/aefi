@@ -6,9 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use DB;
 use Carbon\Carbon;
-use Cache;
+use Illuminate\Support\Facades\DB;
 class DataexportController extends Controller
 {
 	public $result;
@@ -34,7 +33,7 @@ $selectgroupprov = DB::table('chospital_new')
 											 ->get()
 											 ->pluck('prov_code');
 		$yearnow =  now()->year;
-		$selectcaselstF1= DB::table('aefi_form_1')
+		$selectcaselstF1 =  DB::table('aefi_form_1')
 		->join('aefi_form_1_vac', 'aefi_form_1.id_case', '=', 'aefi_form_1_vac.id_case')
 		->select('aefi_form_1.date_entry',
 													'aefi_form_1.id',
@@ -111,7 +110,8 @@ $selectgroupprov = DB::table('chospital_new')
 													'aefi_form_1.datepicker_resiver',
 													'aefi_form_1.other_medical_history',
 													'aefi_form_1.lab_result',
-													'aefi_form_1.more_reviews',		DB::raw('GROUP_CONCAT( aefi_form_1_vac.name_of_vaccine ) as "name_of_vaccine",
+													'aefi_form_1.more_reviews',		
+						DB::raw('GROUP_CONCAT( aefi_form_1_vac.name_of_vaccine ) as "name_of_vaccine",
 						 GROUP_CONCAT( aefi_form_1_vac.lot_number ) as "lot_number",
 						 GROUP_CONCAT( aefi_form_1_vac.manufacturer  ) as "manufacturer",
 				 		 GROUP_CONCAT( aefi_form_1_vac.dose  ) as "dose",
@@ -123,7 +123,7 @@ $selectgroupprov = DB::table('chospital_new')
 			 $user_role = $roleArr[0];
 		 switch ($user_role) {
 			 case 'hospital':
-				$selectdata  = $selectcaselstF1->whereDate('aefi_form_1.date_entry',$datenow)
+				$selectdata  =   $selectcaselstF1->whereDate('aefi_form_1.date_entry',$datenow)
 								->whereNull('aefi_form_1.status')
 								->where(function($query) {
 											$query->orWhere('aefi_form_1.user_hospcode',auth()->user()->hospcode)
@@ -166,10 +166,12 @@ $selectgroupprov = DB::table('chospital_new')
 						 ->get();
 						 break;
 						 case 'admin':
-							 $selectdata = $selectcaselstF1->whereNull('aefi_form_1.status')
+							 $selectdata =  $selectcaselstF1
+							 ->whereNull('aefi_form_1.status')
 							 ->whereDate('aefi_form_1.date_entry',$datenow)
 							 ->groupBy('aefi_form_1.id_case')
 							 ->get();
+							
 							 break;
 							 case 'admin-dpc':
 							 $selectdata = $selectcaselstF1->whereIn('aefi_form_1.province',$selectgroupprov)
@@ -181,6 +183,7 @@ $selectgroupprov = DB::table('chospital_new')
 			 break;
 	 }
  }
+
  		// dd($selectdata);
 		 $listProvince=$this->listProvince();
 		 $listDistrict=$this->listDistrict();
@@ -218,7 +221,7 @@ $selectgroupprov = DB::table('chospital_new')
 											 ->groupBy('prov_code')
 											 ->get()
 											 ->pluck('prov_code');
-		$selectcaselstF1=DB::table('aefi_form_1')
+		$selectcaselstF1= DB::table('aefi_form_1')
 		->join('aefi_form_1_vac', 'aefi_form_1.id_case', '=', 'aefi_form_1_vac.id_case')
 		->select('aefi_form_1.date_entry',
 													'aefi_form_1.id',
@@ -353,7 +356,8 @@ $selectgroupprov = DB::table('chospital_new')
 							 $selectdata = $selectcaselstF1
 							 ->whereNull('aefi_form_1.status')
 							 ->groupBy('aefi_form_1.id_case')
-							 ->get();
+							 ->orderBy('id')
+							 ->paginate(150);
 							 break;
 							 case 'admin-dpc':
 							 $selectdata = $selectcaselstF1
@@ -374,6 +378,7 @@ $selectgroupprov = DB::table('chospital_new')
 		return view('AEFI.Apps.dataf1export',
 			[
 				'selectdata'=>$selectdata,
+				'selectdatas'=>$selectdatas,
 				'listsubdistrict'=>$listsubdistrict,
 				'listDistrict'=>$listDistrict,
 				'listProvince'=>$listProvince,

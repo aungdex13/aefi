@@ -59,7 +59,8 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
             วันที่  {{$date_of_symptoms_from}} ถึง วันที่ {{$date_of_symptoms_to}}
           @else
             วันที่  {{$date_of_symptoms_from}} ถึง วันที่ {{$date_of_symptoms_to}}
-          @endif</p>				<table id="example" class="display table-striped table-bordered" style="width:600%">
+          @endif</p>
+          				<table id="example" class="display table-striped table-bordered" style="width:600%">
 				        <thead>
 				            <tr>
         							  <th>no</th>
@@ -177,7 +178,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
 								        <td>{{ $arr_gender[$value->gender] }}</td>
 								        <td>{{ $arr_type_of_patient[$value->type_of_patient] }}</td>
                         <td>{{ $arr_patient_status[$value->patient_status] }}</td>
-<td>{{ isset($value->career) ? $value->career: "-" }}</td>
+                        <td>{{ isset($value->career) ? $value->career: "-" }}</td>
                         <td>{{ $value->date_of_symptoms }}</td>
                         <td>{{ $value->time_of_symptoms }}</td>
                         <td>{{ $value->time_of_treatment }}</td>

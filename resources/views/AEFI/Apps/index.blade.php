@@ -76,6 +76,7 @@
 	            <div class="nav-tabs-custom">
 	              <ul class="nav nav-tabs">
 	                <li class="active"><a href="#tab_1" data-toggle="tab">เอกสารดาวน์โหลด</a></li>
+					<li><a href="#tab_5" data-toggle="tab">สถานการณ์ AEFI COVID-19</a></li>
                   <li><a href="#tab_2" data-toggle="tab">2559</a></li>
 	                <li><a href="#tab_3" data-toggle="tab">2558</a></li>
 	                <li><a href="#tab_4" data-toggle="tab">2557</a></li>
@@ -88,7 +89,7 @@
                   <thead>
                       <tr>
                           <th>รายชื่อเอกสาร</th>
-
+						  <th>id</th>
                       </tr>
                   </thead>
                   <tbody>
@@ -100,6 +101,9 @@
                                 </div>
                             </a>
                           </td>
+						  <td>
+                            1
+                          </td>
                       </tr>
                       <tr>
                           <td>          <a href="https://apps-doe.moph.go.th/boe/software/file/AEFI_1.pdf" target="_blank">
@@ -108,6 +112,9 @@
                                       </div>
                                     </a>
                           </td>
+						  <td>
+                            2
+                          </td>
                       </tr>
                       <tr>
                           <td>          <a href="https://apps-doe.moph.go.th/boe/software/file/AEFI_2.pdf" target="_blank">
@@ -115,6 +122,9 @@
                                         <p>แบบสอบสวนอาการภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรค (AEFI2)</p>
                                       </div>
                                     </a>
+                          </td>
+						  <td>
+                            3
                           </td>
                       </tr>
                       <tr>
@@ -125,6 +135,9 @@
                                       </div>
                                     </a>
                           </td>
+						  <td>
+                            4
+                          </td>
                       </tr>
                       <tr>
                           <td>
@@ -133,6 +146,9 @@
                                         <p>แนวทางการให้วัคซีน โควิด 19 ในสถสนการณ์การระบาดปี64 ของประเทศไทย</p>
                                       </div>
                                     </a>
+                          </td>
+						  <td>
+                            5
                           </td>
                       </tr>
                       <tr>
@@ -144,6 +160,9 @@
                                       </div>
                                     </a>
                             </td>
+							<td>
+							  6
+							</td>
                       </tr>
                       <tr>
                           <td>
@@ -152,6 +171,9 @@
                                         <p>เหตุการณ์ไม่พึงประสงค์ภายหลังได้รับวัคซีนโควิด 19 </p>
                                       </div>
                                     </a>
+                          </td>
+						  <td>
+                            7
                           </td>
                       </tr>
                       <tr>
@@ -162,6 +184,9 @@
                                       </div>
                                     </a>
                           </td>
+						  <td>
+                            8
+                          </td>
                       </tr>
                       <tr>
                           <td>
@@ -170,6 +195,9 @@
                                         <p>ภาวะการเกิดลิ่มเลือดอุดตันในปอดกับวัคซีนโควิด 19</p>
                                       </div>
                               </a>
+                          </td>
+						  <td>
+                            9
                           </td>
                       </tr>
                       <tr>
@@ -180,6 +208,9 @@
                                       </div>
                               </a>
                             </td>
+							<td>
+							  10
+							</td>
                       </tr>
                       <tr>
                           <td>
@@ -189,6 +220,9 @@
                             </div>
                           </a>
                         </td>
+						<td>
+						  11
+						</td>
                       </tr>
                       <tr>
                           <td>
@@ -199,6 +233,9 @@
                             </div>
                           </a>
                         </td>
+						<td>
+						  12
+						</td>
                       </tr>
                       <tr>
                           <td>
@@ -208,57 +245,74 @@
                             </div>
                           </a>
                         </td>
+						<td>
+						  13
+						</td>
                       </tr>
                       <tr>
                           <td><a href="https://apps-doe.moph.go.th/boe/software/file/Vaccine induced_Immune_Thrombotic Thrombocytopenia_Thrombosis_with_Thrombocytopenia_Syndrome.pdf" target="_blank">
                               <div class="caption">
                                 <p>ภาวะลิ่มเลือดอุดตันที่ร่วมกับเกล็ดเลือดต่ำภายหลังได้รับวัคซีน
                   Vaccine-induced Immune Thrombotic Thrombocytopenia (VITT)
-                  Thrombosis with Thrombocytopenia Syndrome (TTS)</p>
+                  Thrombosis with Thrombocytopenia Syndrome (TTS)</p><p style="color:red">(ใหม่)</p>
                               </div>
                             </a>
+                          </td>
+						  <td>
+                            14
                           </td>
                       </tr>
                       <tr>
                           <td> <a href="https://apps-doe.moph.go.th/boe/software/file/aefi_d_a_v_Final_06082021.pdf" target="_blank">
                             <div class="caption">
-                              <p>กรณีการเสียชีวิตหลังได้รับวัคซีนโควิด 19 สลับชนิดที่ จ.ประจวบคีรีขันธ์</p>
+                              <p>กรณีการเสียชีวิตหลังได้รับวัคซีนโควิด 19 สลับชนิดที่ จ.ประจวบคีรีขันธ์</p><p style="color:red">(ใหม่)</p>
                             </div>
                           </a>
                         </td>
+						<td>
+                            15
+                          </td>
                       </tr>
                       <tr>
                           <td>
                             <a href="https://apps-doe.moph.go.th/boe/software/file/Final_poster%20myocarditis_v9_03092021.pdf" target="_blank">
                             <div class="caption">
-                              <p>โปสเตอร์ภาวะกล้ามเนื้อหัวใจและเยื่อหุ้มหัวใจอักเสบที่เกิดจากวัคซีนโควิด 19 ชนิดเอ็มอาร์เอ็นเอ</p>
+                              <p>โปสเตอร์ภาวะกล้ามเนื้อหัวใจและเยื่อหุ้มหัวใจอักเสบที่เกิดจากวัคซีนโควิด 19 ชนิดเอ็มอาร์เอ็นเอ</p><p style="color:red">(ใหม่)</p>
                             </div>
                           </a>
                         </td>
+						<td>
+						  16
+						</td>
                       </tr>
                       <tr>
                           <td>
                             <a href="https://apps-doe.moph.go.th/boe/software/file/COVID%20arm_v1+logo.pdf" target="_blank">
                             <div class="caption">
-                              <p>คำแนะนำภาวะ COVID ARM</p>
+                              <p>คำแนะนำภาวะ COVID ARM</p><p style="color:red">(ใหม่)</p>
                             </div>
                           </a>
                         </td>
+						<td>
+						  17
+						</td>
                       </tr>
                       <tr>
                           <td>
                             <a href="https://apps-doe.moph.go.th/boe/software/file/Final_COVID_ARM.jpg" target="_blank">
                             <div class="caption">
-                              <p>โปสเตอร์ COVID ARM คืออะไร</p>
+                              <p>โปสเตอร์ COVID ARM คืออะไร</p><p style="color:red">(ใหม่)</p>
                             </div>
                           </a>
                         </td>
+						<td>
+						  18
+						</td>
                       </tr>
                   </tbody>
               </table>
               </div>
                   </div>
-
 	                <div class="tab-pane" id="tab_2">
 						<p>
 							สถานการณ์การเฝ้าระวังอาการภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรค ประจำเดือนตุลาคม-ธันวาคม 2559</br>
@@ -352,6 +406,114 @@
 						</p>
 	                </div>
 	                <!-- /.tab-pane -->
+					<div class="tab-pane" id="tab_5">
+						<div class="box-body">
+							<table id="example2" class="table is-striped" style="width:100%">
+							  <thead>
+								  <tr>
+									  <th>รายชื่อเอกสาร</th>
+									  <th>id</th>
+								  </tr>
+							  </thead>
+							  <tbody>
+								  <tr>
+									  <td>
+										<a href="https://ddc.moph.go.th/uploads/ckeditor2//files/2003220210813023823.pdf" target="_blank">
+										<div class="caption">
+										  <p>สถานการณ์เหตุการณ์ไม่พึงประสงค์หลังรับวัคซีนป้องกันโรคโควิด 19 (ข้อมูล ณ วันที่ 8 สิงหาคม 2564)</p>
+										</div>
+									  </a>
+									</td>
+									<td>
+									  1
+									</td>
+								  </tr>
+								  <tr>
+									  <td><a href="https://ddc.moph.go.th/uploads/ckeditor2//files/15082021_AEFI_COVID-19%20Vaccine%20Situation.pdf" target="_blank">
+										  <div class="caption">
+											<p>สถานการณ์เหตุการณ์ไม่พึงประสงค์หลังรับวัคซีนป้องกันโรคโควิด 19 (ข้อมูล ณ วันที่ 15 สิงหาคม 2564)</p>
+										  </div>
+										</a>
+									  </td>
+									  <td>
+										2
+									  </td>
+								  </tr>
+								  <tr>
+									  <td> <a href="https://ddc.moph.go.th/uploads/ckeditor2//files/22082021_AEFI%20Situation_COVID%20Vaccine_update.pdf" target="_blank">
+										<div class="caption">
+										  <p>สถานการณ์เหตุการณ์ไม่พึงประสงค์หลังรับวัคซีนป้องกันโรคโควิด 19 (ข้อมูล ณ วันที่ 22 สิงหาคม 2564)</p>
+										</div>
+									  </a>
+									</td>
+									<td>
+										3
+									  </td>
+								  </tr>
+								  <tr>
+									  <td>
+										<a href="https://ddc.moph.go.th/uploads/ckeditor2//files/29082021_AEFI%20Situation_COVID%20Vaccine_update%20-%202.pdf" target="_blank">
+										<div class="caption">
+										  <p>สถานการณ์เหตุการณ์ไม่พึงประสงค์หลังรับวัคซีนป้องกันโรคโควิด 19 (ข้อมูล ณ วันที่ 29 สิงหาคม 2564)</p>
+										</div>
+									  </a>
+									</td>
+									<td>
+									  4
+									</td>
+								  </tr>
+								  <tr>
+									  <td>
+										<a href="https://ddc.moph.go.th/uploads/ckeditor2//files/05092021_AEFI%20Situation_COVID%20Vaccine_update.pdf" target="_blank">
+										<div class="caption">
+										  <p>สถานการณ์เหตุการณ์ไม่พึงประสงค์หลังรับวัคซีนป้องกันโรคโควิด 19 (ข้อมูล ณ วันที่ 5 กันยายน 2564)</p>
+										</div>
+									  </a>
+									</td>
+									<td>
+									  5
+									</td>
+								  </tr>
+								  <tr>
+									  <td>
+										<a href="https://https://ddc.moph.go.th/uploads/ckeditor2//files/19092021_AEFI%20Situation_COVID%20Vaccine_%E0%B8%AA%E0%B8%B3%E0%B8%AB%E0%B8%A3%E0%B8%B1%E0%B8%9A%E0%B9%80%E0%B8%9C%E0%B8%A2%E0%B9%81%E0%B8%9E%E0%B8%A3%E0%B9%88.pdf" target="_blank">
+										<div class="caption">
+										  <p>สถานการณ์เหตุการณ์ไม่พึงประสงค์หลังรับวัคซีนป้องกันโรคโควิด 19 (ข้อมูล ณ วันที่ 19 กันยายน 2564)</p>
+										</div>
+									  </a>
+									</td>
+									<td>
+									  6
+									</td>
+								  </tr>
+								  <tr>
+									<td>
+									  <a href="https://ddc.moph.go.th/uploads/ckeditor2//files/26092021_AEFI%20Situation_COVID%20Vaccine.pdf" target="_blank">
+									  <div class="caption">
+										<p>สถานการณ์เหตุการณ์ไม่พึงประสงค์หลังรับวัคซีนป้องกันโรคโควิด 19 (ข้อมูล ณ วันที่ 26 กันยายน 2564)</p>
+									  </div>
+									</a>
+								  </td>
+								  <td>
+									7
+								  </td>
+								</tr>
+								<tr>
+									<td>
+									  <a href="https://ddc.moph.go.th/uploads/ckeditor2//files/03102021_AEFI%20Situation_COVID%20Vaccine.pdf" target="_blank">
+									  <div class="caption">
+										<p>สถานการณ์เหตุการณ์ไม่พึงประสงค์หลังรับวัคซีนป้องกันโรคโควิด 19 (ข้อมูล ณ วันที่ 3 ตุลาคม 2564)</p>
+									  </div>
+									</a>
+								  </td>
+								  <td>
+									8
+								  </td>
+								</tr>
+							  </tbody>
+						  </table>
+						  </div>
+						</div>
 	              </div>
 	              <!-- /.tab-content -->
 	            </div>
@@ -490,7 +652,28 @@
 <script src="asset/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
-    $('#example').DataTable();
+    $('#example').DataTable( {
+        "order": [[ 1, "desc" ]],
+		"columnDefs": [
+            {
+                "targets": [ 1 ],
+                "visible": false,
+                "searchable": false
+            }
+        ]
+    });
+} );
+$(document).ready(function() {
+    $('#example2').DataTable( {
+        "order": [[ 1, "desc" ]],
+		"columnDefs": [
+            {
+                "targets": [ 1 ],
+                "visible": false,
+                "searchable": false
+            }
+        ]
+    });
 } );
 </script>
 <!-- /.content -->

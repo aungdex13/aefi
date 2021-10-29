@@ -2049,7 +2049,802 @@ foreach ($aecode as $value) {
     {{-- หัวข้อที่ 3 --}}
     
     @include('AEFI.Apps.SymptomModal.SymptomModal_1')
+    <div class="col-md-12">
+      <!-- general form elements -->
+      <div class="box box-success">
+        <div class="box-header with-border">
+          <h3 class="box-title">(3) อาการภายหลังได้รับการสร้างภูมิคุ้มกันโรคและวินิจฉัย</h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
 
+        <div class="box-body">
+          {{-- คอรั่มภายใน3.1 --}}
+          <div class="col-md-3">
+            <!-- general form elements -->
+            <div class="box box-success">
+              <div class="box-header with-border">
+                <!-- checkbox3.1.1 -->
+                <div class="form-group">
+                  <div class="col-md-4">
+                    <label>
+                      <input type="checkbox" name="rash" value="0027" @if ($data[0]->rash == '0027')
+                      {{ "checked" }}
+                      @endif>
+                        Rash
+                    </label>
+                  </div>
+                  <div class="col-md-4">
+                    <label>
+                      <input type="checkbox" name="erythema" value="0028" @if ($data[0]->erythema == '0028')
+                      {{ "checked" }}
+                      @endif>
+                        Erythema
+                    </label>
+                  </div>
+                  <div class="col-md-4">
+                    <label>
+                      <input type="checkbox" name="urticaria" value="0044" @if ($data[0]->urticaria == '0044')
+                      {{ "checked" }}
+                      @endif>
+                        Urticaria
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-md-4">
+                    <label>
+                      <input type="checkbox" name="itching" value="0026" @if ($data[0]->itching == '0026')
+                      {{ "checked" }}
+                      @endif>
+                        Itching
+                    </label>
+                  </div>
+                  <div class="col-md-4">
+                    <label>
+                      <input type="checkbox" name="edema" value="0003A" @if ($data[0]->edema == '0003A')
+                      {{ "checked" }}
+                      @endif>
+                        Edema
+                    </label>
+                  </div>
+                  <div class="col-md-5">
+                    <label>
+                      <input type="checkbox" name="angioedema" value="0003" @if ($data[0]->angioedema == '0003')
+                      {{ "checked" }}
+                      @endif>
+                        Angioedema
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <!-- /.box-header -->
+              <!-- form start -->
+
+              <div class="box-body">
+                {{-- input content --}}
+                <!-- checkbox3.1.2  -->
+                <div class="form-group">
+                  <div class="col-md-4">
+                    <label>
+                      <input type="checkbox" name="fainting" value="1" @if ($data[0]->fainting == '1')
+                      {{ "checked" }}
+                      @endif>
+                        Fainting
+                    </label>
+                  </div>
+                  <div class="col-md-6">
+                    <label>
+                      <input type="checkbox" name="hyperventilation" value="0517" @if ($data[0]->hyperventilation == '0517')
+                      {{ "checked" }}
+                      @endif>
+                        Hyperventilation
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-md-4">
+                    <label>
+                      <input type="checkbox" name="syncope" value="0223" @if ($data[0]->syncope == '0223')
+                      {{ "checked" }}
+                      @endif>
+                        Syncope
+                    </label>
+                  </div>
+                  <div class="col-md-4">
+                    <label>
+                      <input type="checkbox" name="headche" value="1" @if ($data[0]->headche == '1')
+                      {{ "checked" }}
+                      @endif>
+                        Headche
+                    </label>
+                  </div>
+                  <div class="col-md-4">
+                    <label>
+                      <input type="checkbox" name="dizziness" value="0101" @if ($data[0]->dizziness == '0101')
+                      {{ "checked" }}
+                      @endif>
+                        Dizziness
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-md-4">
+                    <label>
+                      <input type="checkbox" name="fatigue" value="0724" @if ($data[0]->fatigue == '0724')
+                      {{ "checked" }}
+                      @endif>
+                        Fatigue
+                    </label>
+                  </div>
+                  <div class="col-md-4">
+                    <label>
+                      <input type="checkbox" name="malaise" value="0728" @if ($data[0]->malaise == '0728')
+                      {{ "checked" }}
+                      @endif>
+                        Malaise
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <!-- /.box-body -->
+              <div class="box-footer">
+                <!-- checkbox3.1.3  -->
+                <div class="form-group">
+                  <div class="col-md-4">
+                    <label>
+                      <input type="checkbox" name="dyspepsia" value="0279" @if ($data[0]->dyspepsia == '0279')
+                      {{ "checked" }}
+                      @endif>
+                        Dyspepsia
+                    </label>
+                  </div>
+                  <div class="col-md-4">
+                    <label>
+                      <input type="checkbox" name="diarrhea" value="1" @if ($data[0]->diarrhea == '1')
+                      {{ "checked" }}
+                      @endif>
+                        Diarrhea
+                    </label>
+                  </div>
+                  <div class="col-md-4">
+                    <label>
+                      <input type="checkbox" name="nausea" value="0308" @if ($data[0]->nausea == '0308')
+                      {{ "checked" }}
+                      @endif>
+                        Nausea
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-md-4">
+                    <label>
+                      <input type="checkbox" name="vomiting" value="0228" @if ($data[0]->vomiting == '0228')
+                      {{ "checked" }}
+                      @endif>
+                        Vomiting
+                    </label>
+                  </div>
+                  <div class="col-md-6">
+                    <label>
+                      <input type="checkbox" name="abdominal_pain" value="0268" @if ($data[0]->abdominal_pain == '0268')
+                      {{ "checked" }}
+                      @endif>
+                        Abdominal pain
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <!-- /.box-body -->
+              <div class="box-footer">
+                <!-- checkbox3.1.4  -->
+                <div class="form-group">
+                  <div class="col-md-4">
+                    <label>
+                      <input type="checkbox" name="arthalgia" value="1" @if ($data[0]->arthalgia == '1')
+                      {{ "checked" }}
+                      @endif>
+                        Arthalgia
+                    </label>
+                  </div>
+                  <div class="col-md-4">
+                    <label>
+                      <input type="checkbox" name="myalgia" value="0072" @if ($data[0]->myalgia == '0072')
+                      {{ "checked" }}
+                      @endif>
+                        Myalgia
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <!-- /.box -->
+          </div>
+          {{-- คอรั่มภายใน3.2 --}}
+          <div class="col-md-3">
+            <!-- general form elements -->
+            <div class="box box-success">
+              <div class="box-header with-border">
+                <!-- checkbox3.2.1 -->
+                <div class="form-group">
+                  <div class="col-md-5">
+                    <label>
+                      <input type="checkbox" name="fever38c" value="0725" @if ($data[0]->fever38c == '0725')
+                      {{ "checked" }}
+                      @endif>
+                        Fever >= 38 C
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <!-- /.box-header -->
+              <!-- form start -->
+
+              <div class="box-body">
+                {{-- input content --}}
+                <div class="box-body">
+                  {{-- input content --}}
+                  <!-- checkbox3.2.2  -->
+                  <div class="form-group">
+                    <div class="col-md-12">
+                      <label>
+                        <input type="checkbox" name="swelling_at_the_injection" value="1" @if ($data[0]->swelling_at_the_injection == '1')
+                        {{ "checked" }}
+                        @endif>
+                          บวมบริเวณที่ฉีดนานเกิน3วัน
+                      </label>
+                    </div>
+                    <div class="col-md-12">
+                      <label>
+                        <input type="checkbox" name="swelling_beyond_nearest_joint" value="1" @if ($data[0]->swelling_beyond_nearest_joint == '1')
+                        {{ "checked" }}
+                        @endif>
+                          บวมลามไปถึงข้อที่ใกล้ที่สุด
+                      </label>
+                    </div>
+                    <div class="col-md-12">
+                      <label>
+                        <input type="checkbox" name="lymphadenopathy" value="0577" @if ($data[0]->lymphadenopathy == '0577')
+                        {{ "checked" }}
+                        @endif>
+                          Lymphadenopathy
+                      </label>
+                    </div>
+                    <div class="col-md-12">
+                      <label>
+                        <input type="checkbox" name="lymphadenitis" value="0577D" @if ($data[0]->lymphadenitis == '0577D')
+                        {{ "checked" }}
+                        @endif>
+                          Lymphadenitis
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-md-6">
+                      <label>
+                        <input type="checkbox" name="sterile_abscess" value="0051" @if ($data[0]->sterile_abscess == '0051')
+                        {{ "checked" }}
+                        @endif>
+                          Sterile abscess
+                      </label>
+                    </div>
+                    <div class="col-md-6">
+                      <label>
+                        <input type="checkbox" name="bacterial_abscess" value="1" @if ($data[0]->bacterial_abscess == '1')
+                        {{ "checked" }}
+                        @endif>
+                          Bacterial abscess
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /.box-body -->
+              <div class="box-footer">
+                <!-- checkbox3.2.3  -->
+                <div class="form-group">
+                  <div class="col-md-12">
+                    <label>
+                      <input type="checkbox" name="febrile_convulsion" value="1" @if ($data[0]->febrile_convulsion == '1')
+                      {{ "checked" }}
+                      @endif>
+                        Febrile convulsion
+                    </label>
+                  </div>
+                  <div class="col-md-12">
+                    <label>
+                      <input type="checkbox" name="afebrile_convulsion" value="1" @if ($data[0]->afebrile_convulsion == '1')
+                      {{ "checked" }}
+                      @endif>
+                        Afebrile convulsion
+                    </label>
+                  </div>
+                  <div class="col-md-12">
+                    <label>
+                      <input type="checkbox" name="encephalopathy" value="0105" @if ($data[0]->encephalopathy == '0105')
+                      {{ "checked" }}
+                      @endif>
+                        Encephalopathy/Encephalitis
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-md-6">
+                    <label>
+                      <input type="checkbox" name="flaccid_paralysis" value="0139" @if ($data[0]->flaccid_paralysis == '0139')
+                      {{ "checked" }}
+                      @endif>
+                        Flaccid paralysis
+                    </label>
+                  </div>
+                  <div class="col-md-6">
+                    <label>
+                      <input type="checkbox" name="spastic_paralysis" value="0775" @if ($data[0]->spastic_paralysis == '0775')
+                      {{ "checked" }}
+                      @endif>
+                        Spastic paralysis
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <!-- /.box -->
+          {{-- คอรั่มภายใน3.3 --}}
+          <div class="col-md-3">
+            <!-- general form elements -->
+            <div class="box box-success">
+              <!-- /.box-header -->
+              <!-- form start -->
+
+              <div class="box-body">
+                {{-- input content --}}
+                <!-- checkbox3.3.1  -->
+                <div class="form-group">
+                  <div class="col-md-12">
+                    <label>
+                      <input name="hhe" type="checkbox" value="1704" @if ($data[0]->hhe == '1704')
+                      {{ "checked" }}
+                      @endif>
+                        Hypotonic Hyporesponsive episode (HHE)
+                    </label>
+                  </div>
+                  <div class="col-md-12">
+                    <label>
+                      <input name="persistent_inconsolable_crying" type="checkbox" value="1" @if ($data[0]->persistent_inconsolable_crying == '1')
+                      {{ "checked" }}
+                      @endif>
+                        Persistent inconsolable crying
+                    </label>
+                  </div>
+                  <div class="col-md-12">
+                    <label>
+                      <input name="thrombocytopenia" type="checkbox" value="0594" @if ($data[0]->thrombocytopenia == '0594')
+                      {{ "checked" }}
+                      @endif>
+                        Thrombocytopenia
+                    </label>
+                  </div>
+                  <div class="col-md-12">
+                    <label>
+                      <input name="osteomyelitis" type="checkbox" value="1184" @if ($data[0]->osteomyelitis == '1184')
+                      {{ "checked" }}
+                      @endif>
+                        Osteitis/Osteomyelitis
+                    </label>
+                  </div>
+                  <div class="col-md-12">
+                    <label>
+                      <input name="toxic_shock_syndrome" type="checkbox" value="1" @if ($data[0]->toxic_shock_syndrome == '1')
+                      {{ "checked" }}
+                      @endif>
+                        Toxic shock syndrome
+                    </label>
+                  </div>
+                  <div class="col-md-12">
+                    <label>
+                      <input name="sepsis" type="checkbox" value="0744" @if ($data[0]->sepsis == '0744')
+                      {{ "checked" }}
+                      @endif>
+                        Sepsis
+                    </label>
+                  </div>
+                  <div class="col-md-12">
+                    <label>
+                      <input name="anaphylaxis" type="checkbox" value="2237" @if ($data[0]->anaphylaxis == '2237')
+                      {{ "checked" }}
+                      @endif>
+                        Anaphylaxis
+                    </label>
+                  </div>
+                  <div class="col-md-12">
+                    <label>
+                      <input name="gbs" type="checkbox" value="1" @if ($data[0]->gbs == '1')
+                      {{ "checked" }}
+                      @endif>
+                        Guillain-Barré syndrome (GBS)
+                    </label>
+                  </div>
+                  <div class="col-md-12">
+                    <label>
+                      <input name="transverse_myelitis" type="checkbox" value="1" @if ($data[0]->transverse_myelitis == '1')
+                      {{ "checked" }}
+                      @endif>
+                        Transverse myelitis
+                    </label>
+                  </div>
+                  <div class="col-md-12">
+                    <label>
+                      <input name="adem" type="checkbox" value="1" @if ($data[0]->adem == '1')
+                      {{ "checked" }}
+                      @endif>
+                        Acute disseminated encephalomyelitis (ADEM)
+                    </label>
+                  </div>
+                  <div class="col-md-12">
+                    <label>
+                      <input name="acute_myocardial" type="checkbox" value="1" @if ($data[0]->acute_myocardial == '1')
+                      {{ "checked" }}
+                      @endif>
+                        Acute Myocardial
+                    </label>
+                  </div>
+                  <div class="col-md-12">
+                    <label>
+                      <input name="ards" type="checkbox" value="1" @if ($data[0]->ards == '1')
+                      {{ "checked" }}
+                      @endif>
+                        Acute respiratory distress syndrome (ARDS)
+                    </label>
+                  </div>
+                  <div class="col-md-12">
+                    <label>
+                      <input name="symptoms_later_immunized" type="checkbox" value="9999" @if ($data[0]->symptoms_later_immunized == '9999')
+                      {{ "checked" }}
+                      @endif>
+                        other
+                    </label>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-lg-12">
+                      <div id="other_symptoms_later_immunized" @if ($data[0]->symptoms_later_immunized != '9999')
+                      style="display: none"
+                      @endif>
+                        <input type="text" id="other_symptoms_later_immunized_text" name="other_symptoms_later_immunized" class="form-control" value="{{$data[0]->other_symptoms_later_immunized}}">
+                    </div>
+                    {{-- <div id="other_symptoms_later_immunized_t" style="display: none">
+                          <input type="text" class="form-control pull-right" id="other_symptoms_later_immunized_text" name="other_symptoms_later_immunized" placeholder="ระบุอาการอื่นๆ">
+                        </div> --}}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+          <!-- /.box -->
+        </div>
+        {{-- คอรั่มภายใน3.4 --}}
+        <div class="col-md-3">
+          <!-- general form elements -->
+          <div class="box box-success">
+            <div class="box-header with-border">
+              <div class="form-group">
+                <div class="col-lg-8">
+                  <label>ว/ด/ป ที่เกิดอาการ :</label>
+                  <div class="input-group date">
+                    <div class="input-group-addon">
+                      <i class="fa fa-calendar"></i>
+                    </div>
+                    <input type="text" class="form-control pull-right" id="datepicker_stdiag" name="date_of_symptoms" value="{{$data[0]->date_of_symptoms}}"  data-date-format="yyyy-mm-dd" readonly>
+
+                  </div>
+                </div>
+              </div>
+              <div class="bootstrap-timepicker">
+                <div class="form-group">
+                  <div class="col-lg-8">
+                    <label>เวลาที่เกิดอาการ :</label>
+                    <div class="input-group">
+                      <input type="text" class="form-control" name="time_of_symptoms" value="{{$data[0]->time_of_symptoms}}"  >
+
+                      <div class="input-group-addon">
+                        <i class="fa fa-clock-o"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-lg-8">
+                  <label>ว/ด/ป ที่รับรักษา :</label>
+                  <div class="input-group date">
+                    <div class="input-group-addon">
+                      <i class="fa fa-calendar"></i>
+                    </div>
+                    <input type="text" class="form-control pull-right" id="datepicker_hdate" name="date_of_treatment" value="{{$data[0]->date_of_treatment}}" data-date-format="yyyy-mm-dd" readonly>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-lg-8">
+                  <label>ว/ด/ป ที่จำหน่าย :</label>
+                  <div class="input-group date">
+                    <div class="input-group-addon">
+                      <i class="fa fa-calendar"></i>
+                    </div>
+                    <input type="text" class="form-control pull-right" id="datepicker_sell" name="time_of_treatment" value="{{$data[0]->time_of_treatment}}"  data-date-format="yyyy-mm-dd" readonlys>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+
+            <div class="box-body">
+              {{-- input content --}}
+              <!-- textarea -->
+              <div class="form-group">
+                <div class="col-lg-12">
+                  <label>รายละเอียดอาการและการตรวจสอบ</label>
+                  <textarea class="form-control" rows="5" name="Symptoms_details">{{$data[0]->Symptoms_details}}</textarea>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-lg-8">
+                  <label>วินิจฉัยของแพทย์ :</label><input type="text" id="diagnosis" name="diagnosis" class="form-control" placeholder="" value="{{$data[0]->diagnosis}}">
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+          <!-- /.box -->
+        </div>
+      </div>
+      <!-- /.box-body -->
+      <div class="box-footer">
+        <div class="form-group">
+          <div class="col-lg-12">
+            <label>
+              <font style="color:red;">*</font> ความร้ายแรงของอาการ
+            </label>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-lg-12">
+            <!-- checkbox3.5.1  -->
+            <div class="form-group">
+              <div class="col-md-2" hidden>
+                <label>
+                  <input type="radio" name="seriousness_of_the_symptoms" value="" @if ($data[0]->seriousness_of_the_symptoms == null)
+                  {{ "checked" }}
+                  @endif>
+                    ไม่ระบุ
+                </label>
+              </div>
+              <div class="col-md-2">
+                <label>
+                  <input type="radio" name="seriousness_of_the_symptoms" value="1" @if ($data[0]->seriousness_of_the_symptoms == '1')
+                  {{ "checked" }}
+                  @endif>
+                    ไม่ร้ายแรง
+                </label>
+              </div>
+              <div class="col-md-2">
+                <label>
+                  <input type="radio" name="seriousness_of_the_symptoms" value="2" @if ($data[0]->seriousness_of_the_symptoms == '2')
+                  {{ "checked" }}
+                  @endif>
+                    ร้ายแรง
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="other_seriousness_of_the_symptoms"
+         @if ($data[0]->seriousness_of_the_symptoms == null || $data[0]->seriousness_of_the_symptoms == '1')
+            style="display: none"
+        @else
+        @endif >
+          <div class="form-group">
+            <div class="col-lg-12">
+              <label>ระบุ :</label>
+            </div>
+          </div>
+          <!-- checkbox3.1.1 -->
+          <div class="form-group">
+            <div class="col-md-4">
+              <label>
+                <input type="checkbox" name="other_seriousness_of_the_symptoms" value="1" @if ($data[0]->other_seriousness_of_the_symptoms == '1')
+                {{ "checked" }}
+                @endif>
+                  เสียชีวิต
+              </label>
+            </div>
+            <div class="col-md-4">
+              <label>
+                <input type="checkbox" name="other_seriousness_of_the_symptoms" value="2" @if ($data[0]->other_seriousness_of_the_symptoms == '2')
+                {{ "checked" }}
+                @endif>
+                  อันตรายถึงชีวิต
+              </label>
+            </div>
+            <div class="col-md-4">
+              <label>
+                <input type="checkbox" name="other_seriousness_of_the_symptoms" value="3" @if ($data[0]->other_seriousness_of_the_symptoms == '3')
+                {{ "checked" }}
+                @endif>
+                  พิการ/ไร้ความสามารถ
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-4">
+              <label>
+                <input type="checkbox" name="other_seriousness_of_the_symptoms" value="4" @if ($data[0]->other_seriousness_of_the_symptoms == '4')
+                {{ "checked" }}
+                @endif>
+                  รับไว้รักษาในโรงพยาบาล
+              </label>
+            </div>
+            <div class="col-md-4">
+              <label>
+                <input type="checkbox" name="other_seriousness_of_the_symptoms" value="5" @if ($data[0]->other_seriousness_of_the_symptoms == '5')
+                {{ "checked" }}
+                @endif>
+                  ความผิดปกติแต่กำเนิด
+              </label>
+            </div>
+            <div class="col-md-5">
+              <label>
+                <input type="checkbox" name="other_seriousness_of_the_symptoms" value="6" @if ($data[0]->other_seriousness_of_the_symptoms == '6')
+                {{ "checked" }}
+                @endif>
+                  อื่นๆที่มีความสำคัญทางการแพทย์
+              </label>
+            </div>
+            <div class="col-lg-3">
+              <div id="text_other_seriousness_of_the_symptoms" style="display: none">
+                <label></label><input type="text" id="text_other_seriousness_of_the_symptoms_text" name="text_other_seriousness_symptoms" class="form-control" value="{{$data[0]->text_other_seriousness_symptoms}}">
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+    <!-- /.box-body -->
+    <div class="box-footer">
+      <div class="form-group">
+        <div class="col-lg-12">
+          <label>
+            <font style="color:red;">*</font> สภาพผู้ป่วย
+          </label>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-lg-12">
+          <!-- checkbox3.5.1  -->
+          <div class="form-group">
+            <div class="col-md-2">
+              <label>
+                <input type="radio" name="patient_status" value="" @if ($data[0]->patient_status == null)
+                {{ "checked" }}
+                @endif>
+                  ไม่ระบุ
+              </label>
+            </div>
+            <div class="col-md-2">
+              <label>
+                <input type="radio" name="patient_status" value="1" @if ($data[0]->patient_status == '1')
+                {{ "checked" }}
+                @endif>
+                  หาย
+              </label>
+            </div>
+            <div class="col-md-2">
+              <label>
+                <input type="radio" name="patient_status" value="2" @if ($data[0]->patient_status == '2')
+                {{ "checked" }}
+                @endif>
+                  หายโดยมีร่องรอย
+              </label>
+            </div>
+            <div class="col-md-2">
+              <label>
+                <input type="radio" name="patient_status" value="3" @if ($data[0]->patient_status == '3')
+                {{ "checked" }}
+                @endif>
+                  อาการดีขึ้นแต่ยังไม่หาย
+              </label>
+            </div>
+            <div class="col-md-1">
+              <label>
+                <input type="radio" name="patient_status" value="4" @if ($data[0]->patient_status == '4')
+                {{ "checked" }}
+                @endif>
+                  ไม่หาย
+              </label>
+            </div>
+            <div class="col-md-1">
+              <label>
+                <input type="radio" name="patient_status" value="5" @if ($data[0]->patient_status == '5')
+                {{ "checked" }}
+                @endif>
+                  ไม่ทราบ
+              </label>
+            </div>
+            <div class="col-md-1">
+              <label>
+                <input type="radio" name="patient_status" value="6" @if ($data[0]->patient_status == '6')
+                {{ "checked" }}
+                @endif>
+                  เสียชีวิต
+              </label>
+            </div>
+            <div class="col-lg-4">
+              <div class="input-group date">
+                <div id="other_patian_sta" style="display: none">
+                  <input type="text" class="form-control" id="datepicker_dead" name="date_dead" hidden="true" value="{{($data[0]->date_dead)}}">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- checkbox3.1.1 -->
+      <div class="form-group">
+        <div class="col-lg-12">
+          <label>ผ่าพิสูจน์ศพ :</label>
+        </div>
+      </div>
+      <!-- checkbox3.1.1 -->
+      <div class="form-group">
+        <div class="col-lg-12">
+        <div class="col-md-2">
+          <label>
+            <input type="radio" name="funeral" value="" @if ($data[0]->funeral == null)
+            {{ "checked" }}
+            @endif>
+              ไม่ระบุ
+          </label>
+        </div>
+        <div class="col-md-2">
+          <label>
+            <input type="radio" name="funeral" value="1" @if ($data[0]->funeral == '1')
+            {{ "checked" }}
+            @endif>
+              ไม่มี
+          </label>
+        </div>
+        <div class="col-md-2">
+          <label>
+            <input type="radio" name="funeral" value="2" @if ($data[0]->funeral == '2')
+            {{ "checked" }}
+            @endif>
+              ไม่ทราบ
+          </label>
+        </div>
+        <div class="col-md-2">
+          <label>
+            <input type="radio" name="funeral" value="3" @if ($data[0]->funeral == '3')
+            {{ "checked" }}
+            @endif>
+              มี
+          </label>
+        </div>
+        <div class="col-lg-3">
+          <div id="other_address_funeral" style="display: none">
+            <label>สถานที่ทำการ :</label><input type="text" id="other_address_funeral_text" name="other_address_funeral" class="form-control" value="{{$data[0]->other_address_funeral}}">
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+
+    </div>
+    </div>
     <!-- /.box -->
     <!-- หัวข้อที่4 -->
     <div class="col-md-12">
