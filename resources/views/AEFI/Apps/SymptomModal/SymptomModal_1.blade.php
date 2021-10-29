@@ -434,13 +434,111 @@
                     </div>
                     <!-- /.box -->
                   </div>
+                   {{-- คอรั่มภายใน3.3 --}}
+                   <div class="col-md-6">
+                    <!-- general form elements -->
+                    <div class="box box-success">
+                      <!-- /.box-header -->
+                      <!-- form start -->
+
+                      <div class="box-body">
+                        {{-- input content --}}
+                        <!-- checkbox3.3.1  -->
+                        <div class="form-group">
+                          <div class="col-md-12">
+                            <label>
+                              <input name="chest_pain" type="checkbox" value="1">
+                              Chest pain
+                            </label>
+                          </div>
+                          <div class="col-md-12">
+                            <label>
+                              <input name="myocarditis" type="checkbox" value="1">
+                              Myocarditis
+                            </label>
+                          </div>
+                          <div class="col-md-12">
+                            <label>
+                              <input name="heart_failure" type="checkbox" value="1">
+                              Heart failure
+                            </label>
+                          </div>
+                          <div class="col-md-12">
+                            <label>
+                              <input name="pericarditis" type="checkbox" value="1">
+                              Pericarditis
+                            </label>
+                          </div>
+                          <div class="col-md-12">
+                            <label>
+                              <input name="sudden_cardiac_arrest" type="checkbox" value="1">
+                              Sudden cardiac arrest
+                            </label>
+                          </div>
+                          <div class="col-md-12">
+                            <label>
+                              <input name="covid_19" type="checkbox" value="1">
+                              Covid-19
+                            </label>
+                          </div>
+                          <div class="col-md-12">
+                            <label>
+                              <input name="ischemic_stroke" type="checkbox" value="1">
+                              Ischemic stroke
+                            </label>
+                          </div>
+                          <div class="col-md-12">
+                            <label>
+                              <input name="hemorrhagic_stroke" type="checkbox" value="1">
+                            Hemorrhagic stroke
+                            </label>
+                          </div>
+                          <div class="col-md-12">
+                            <label>
+                              <input name="deep_vein_thrombosis" type="checkbox" value="1">
+                              Deep vein thrombosis                            
+			</label>
+                          </div>
+                          <div class="col-md-12">
+                            <label>
+                              <input name="pulmonary_embolism" type="checkbox" value="1">
+                              Pulmonary embolism
+                            </label>
+                          </div>
+                          <div class="col-md-12">
+                            <label>
+                              <input name="hypertension" type="checkbox" value="1">
+                              Hypertension
+                            </label>
+                          </div>
+                          <div class="col-md-12">
+                            <label>
+                              <input name="hypertensive_urgency" type="checkbox" value="1">
+                               Hypertensive urgency
+                            </label>
+                          </div>
+                          <div class="col-md-12">
+                            <label>
+                              <input name="bells_palsy" type="checkbox" value="1">
+                              Bell's palsy
+                            </label>
+                          </div>
+
+                          </div>
+                        </div>
+
+                    </div>
+                    <!-- /.box -->
+                  </div>
+
+
                   {{-- คอรั่มภายใน3.4 --}}
-                  <div class="col-md-6">
+                  <div class="col-md-12">
                     <!-- general form elements -->
                     <div class="box box-success">
                       <div class="box-header with-border">
                         <div class="form-group">
-                          <div class="col-lg-8">
+                          <div class="col-lg-6">
                             <label>ว/ด/ป ที่เกิดอาการ :</label>
                             <div class="input-group date">
                               <div class="input-group-addon">
@@ -452,7 +550,7 @@
                         </div>
                         <div class="bootstrap-timepicker">
                           <div class="form-group">
-                            <div class="col-lg-8">
+                            <div class="col-lg-6">
                               <label>เวลาที่เกิดอาการ :</label>
                               <div class="input-group">
                                 <input  id="time_of_symptoms1" type="text" class="form-control" name="time_of_symptoms[]">
@@ -465,7 +563,7 @@
                           </div>
                         </div>
                         <div class="form-group">
-                          <div class="col-lg-8">
+                          <div class="col-lg-6">
                             <label>ว/ด/ป ที่รับรักษา :</label>
                             <div class="input-group date">
                               <div class="input-group-addon">
@@ -476,7 +574,7 @@
                           </div>
                         </div>
                         <div class="form-group">
-                          <div class="col-lg-8">
+                          <div class="col-lg-6">
                             <label>ว/ด/ป ที่จำหน่าย :</label>
                             <div class="input-group date">
                               <div class="input-group-addon">
@@ -494,7 +592,7 @@
                         {{-- input content --}}
                         <!-- textarea -->
                         <div class="form-group">
-                          <div class="col-lg-12">
+                          <div class="col-lg-8">
                             <label>รายละเอียดอาการและการตรวจสอบ</label>
                             <input class="form-control" rows="5"  id="Symptoms_details1" name="Symptoms_details[]">
                           </div>
