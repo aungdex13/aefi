@@ -295,6 +295,19 @@ if ($res1) {
 		$date_dead = $req ->input ('date_dead');
 		$symptomstatus = $req ->input ('symptomstatus');
 		$chest_pain = $req ->input ('chest_pain');
+$myocarditis = $req ->input ('myocarditis');
+$heart_failure = $req ->input ('heart_failure');
+$pericarditis = $req ->input ('pericarditis');
+$sudden_cardiac_arrest = $req ->input ('sudden_cardiac_arrest');
+$covid_19 = $req ->input ('covid_19');
+$ischemic_stroke = $req ->input ('ischemic_stroke');
+$hemorrhagic_stroke = $req ->input ('hemorrhagic_stroke');
+$deep_vein_thrombosis = $req ->input ('deep_vein_thrombosis');
+$pulmonary_embolism= $req ->input ('pulmonary_embolism');
+$hypertension= $req ->input ('hypertension');
+$hypertensive_urgency= $req ->input ('hypertensive_urgency');
+$bells_palsy= $req ->input ('bells_palsy');
+
 		// $time_of_reconstitution = $req ->input('time_of_reconstitution');
 		// dd($date_of_vaccination,$rash);
 $x=0;
@@ -389,7 +402,20 @@ $x=0;
 		'gbs'=>$gbs[$i],
 		'date_entry'=>$date_entry,
 		'symptomstatus'=>$symptomstatus,
-		'chest_pain'=>$chest_pain
+		'chest_pain'=>$chest_pain,
+'myocarditis'=>$myocarditis,
+'heart_failure'=>$heart_failure,
+'pericarditis'=>$pericarditis,
+'sudden_cardiac_arrest'=>$sudden_cardiac_arrest,
+'covid_19'=>$covid_19,
+'ischemic_stroke'=>$ischemic_stroke,
+'hemorrhagic_stroke'=>$hemorrhagic_stroke,
+'deep_vein_thrombosis'=>$deep_vein_thrombosis,
+'pulmonary_embolism'=>$pulmonary_embolism,
+'hypertension'=>$hypertension,
+'hypertensive_urgency'=>$hypertensive_urgency,
+'bells_palsy'=>$bells_palsy
+
 		];
 		$x++;
 		}

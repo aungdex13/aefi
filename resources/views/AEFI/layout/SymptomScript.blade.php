@@ -112,10 +112,17 @@ $('#vomiting_1').change(function() {
 });
 
 $('#abdominal_pain_1').change(function() {
-  var s = $('#abdominal_pain input:checked').map(function() {
+  var s = $('#abdominal_pain_1 input:checked').map(function() {
     return this.value;
   }).get().join(',');
   $('#abdominal_pain').val((s.length > 0 ? s : ""));
+});
+
+$('#nausea_1').change(function() {
+  var s = $('#nausea_1 input:checked').map(function() {
+    return this.value;
+  }).get().join(',');
+  $('#nausea').val((s.length > 0 ? s : ""));
 });
 
 $('#arthalgia_1').change(function() {
@@ -183,6 +190,13 @@ $('#bacterial_abscess_1').change(function() {
 
 $('#febrile_convulsion_1').change(function() {
   var s = $('#febrile_convulsion_1 input:checked').map(function() {
+    return this.value;
+  }).get().join(',');
+  $('#febrile_convulsion').val((s.length > 0 ? s : ""));
+});
+
+$('#afebrile_convulsion_1').change(function() {
+  var s = $('#afebrile_convulsion_1 input:checked').map(function() {
     return this.value;
   }).get().join(',');
   $('#afebrile_convulsion').val((s.length > 0 ? s : ""));
@@ -333,5 +347,89 @@ $('#chest_pain_1').change(function() {
     return this.value;
   }).get().join(',');
   $('#chest_pain').val((s.length > 0 ? s : ""));
+});
+
+$('#myocarditis_1').change(function() {
+  var s = $('#myocarditis_1 input:checked').map(function() {
+    return this.value;
+  }).get().join(',');
+  $('#myocarditis').val((s.length > 0 ? s : ""));
+});
+
+$('#heart_failure_1').change(function() {
+  var s = $('#heart_failure_1 input:checked').map(function() {
+    return this.value;
+  }).get().join(',');
+  $('#heart_failure').val((s.length > 0 ? s : ""));
+});
+
+$('#pericarditis_1').change(function() {
+  var s = $('#pericarditis_1 input:checked').map(function() {
+    return this.value;
+  }).get().join(',');
+  $('#pericarditis').val((s.length > 0 ? s : ""));
+});
+
+$('#sudden_cardiac_arrest_1').change(function() {
+  var s = $('#sudden_cardiac_arrest_1 input:checked').map(function() {
+    return this.value;
+  }).get().join(',');
+  $('#sudden_cardiac_arrest').val((s.length > 0 ? s : ""));
+});
+
+$('#covid_19_1').change(function() {
+  var s = $('#covid_19_1 input:checked').map(function() {
+    return this.value;
+  }).get().join(',');
+  $('#covid_19').val((s.length > 0 ? s : ""));
+});
+
+$('#ischemic_stroke_1').change(function() {
+  var s = $('#ischemic_stroke_1 input:checked').map(function() {
+    return this.value;
+  }).get().join(',');
+  $('#ischemic_stroke').val((s.length > 0 ? s : ""));
+});
+
+$('#hemorrhagic_stroke_1').change(function() {
+  var s = $('#hemorrhagic_stroke_1 input:checked').map(function() {
+    return this.value;
+  }).get().join(',');
+  $('#hemorrhagic_stroke').val((s.length > 0 ? s : ""));
+});
+
+$('#deep_vein_thrombosis_1').change(function() {
+  var s = $('#deep_vein_thrombosis_1 input:checked').map(function() {
+    return this.value;
+  }).get().join(',');
+  $('#deep_vein_thrombosis').val((s.length > 0 ? s : ""));
+});
+
+$('#pulmonary_embolism_1').change(function() {
+  var s = $('#pulmonary_embolism_1 input:checked').map(function() {
+    return this.value;
+  }).get().join(',');
+  $('#pulmonary_embolism').val((s.length > 0 ? s : ""));
+});
+
+$('#hypertension_1').change(function() {
+  var s = $('#hypertension_1 input:checked').map(function() {
+    return this.value;
+  }).get().join(',');
+  $('#hypertension').val((s.length > 0 ? s : ""));
+});
+
+$('#hypertensive_urgency_1').change(function() {
+  var s = $('#hypertensive_urgency_1 input:checked').map(function() {
+    return this.value;
+  }).get().join(',');
+  $('#hypertensive_urgency').val((s.length > 0 ? s : ""));
+});
+
+$('#bells_palsy_1').change(function() {
+  var s = $('#bells_palsy_1 input:checked').map(function() {
+    return this.value;
+  }).get().join(',');
+  $('#bells_palsy').val((s.length > 0 ? s : ""));
 });
 </script>
