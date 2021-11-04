@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Aefi;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use DB;
+use App\Career;
 class Form1Controller extends Controller
 {
 	public $result;
@@ -100,5 +101,23 @@ class Form1Controller extends Controller
 		echo $outputD;
 
 }
+
+public function Get_Career_All(Request $request){
+    $result = Career::query();
+
+    if(isset($request->searchTerm)){
+        $result = $result->where('career_name', 'like', '%' . $request->searchTerm . '%');
+
+    $result = $result->select('career_code','career_name');
+    $result = $result->get();
+    }
+    $datas = array();
+    foreach($result as $data){
+      $json_datas[] = array("id"=>$data->career_code, "text"=>$data->career_name);
+    }
+    if(count($result)>0){
+      return response()->json($json_datas);
+    }
+  }
 
 }

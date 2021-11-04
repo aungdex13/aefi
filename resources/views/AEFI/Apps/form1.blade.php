@@ -463,7 +463,9 @@ foreach ($aecode as $value) {
                               <div class="input-group-addon">
                                 {{-- <i class="fa fa-calendar"></i> --}}
                               </div>
-                              <input type="text" name="career" class="form-control" id="career" placeholder="อาชีพ" required>
+                              <select id="js-example-basic-single2" name="hospcode" class="js-example-basic-single2 form-control" data-dropdown-css-class="select2-danger">
+                              </select>
+                              {{-- <input type="text" name="career" class="form-control" id="career" placeholder="อาชีพ" required> --}}
                             </div>
                           </div>
                         </div>
@@ -2894,6 +2896,40 @@ $('#afebrile_convulsion_' + rowCount + '').change(function() {
       minimumResultsForSearch: 5,
       ajax: {
        url: "{{ route('list-division-json') }}",
+       type: "GET",
+       dataType: 'json',
+       delay: 250,
+       data: function (params) {
+        return {
+          searchTerm: params.term // search term
+        };
+       },
+       processResults: function (response) {
+         return {
+            results: response
+         };
+       },
+       cache: true
+      }
+    });
+    $(".js-example-basic-single2").select2({
+      allowClear: true,
+      language: {
+      inputTooShort: function (args) {
+          return "กรุณาพิมพ์คำค้นหาอย่างน้อย 3 ตัวอักษร";
+      },
+      noResults: function () {
+          return "ไม่พบข้อมูล";
+      },
+      searching: function () {
+          return "กำลังค้นหาข้อมูล...";
+      }
+      },
+      placeholder: "กรุณาพิมพ์ชื่ออาชีพ",
+      minimumInputLength: 3,
+      minimumResultsForSearch: 5,
+      ajax: {
+       url: "{{ route('list-career-json') }}",
        type: "GET",
        dataType: 'json',
        delay: 250,

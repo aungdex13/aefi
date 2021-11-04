@@ -48,6 +48,7 @@ Route::group(['prefix' => 'Developer','middleware' => ['auth']], function() {
 Route::get('/welcome', 'Aefi\AEFIController@welcome');
 /* formaeif link */
 Route::get('/form1', 'Aefi\Form1Controller@index')->name('form1');
+Route::get('/List-Career', 'Aefi\Form1Controller@Get_Career_All')->name('list-career-json');
 Route::get('/form1group', 'Aefi\Form1Controller@indexform1group')->name('form1group');
 // Route::get('/form1', 'Aefi\Form1Controller@index')->name('form1');
 Route::post('/form1/fetch', 'Aefi\AEFIController@fetch')->name('dropdown.fetch');
