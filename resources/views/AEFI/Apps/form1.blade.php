@@ -250,7 +250,8 @@ foreach ($aecode as $value) {
                             <div class="input-group-addon">
                               <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" name="birthdate" class="form-control pull-right" id="datepicker_bdate" data-date-format="yyyy-mm-dd" required readonly>
+                            <input type="text" name="birthdate" class="form-control pull-right" id="datepicker_bdate"required readonly>
+                            {{-- <input type="text" class="form-control" id="birthdate" name="birthday" data-error="Please enter your Birth Date" autocomplete="off"  readonly> --}}
                           </div>
                         </div>
                       </div>
@@ -264,8 +265,13 @@ foreach ($aecode as $value) {
                           <label>อายุขณะป่วย:</label>
                         </div>
                         <div class="col-lg-3">
-                          <div class="checked" id="age">tests</div>
-                          <input type="text" id="age" name="age_while_sick_year" class="form-control" placeholder="ปี">
+                          <div id="numnights">
+                            <span id="allage">
+                            {{-- <h4 class="text-primary"><br><span id="yearofbirth"></span> ปี <span id="monthofbirth"></span> เดือน <span id="dayofbirth"></span> วัน</h4> --}}
+                          </div>
+                      <span id="y_age">
+                          {{-- <div class="checked" id="age">tests</div> --}}
+                          <input type="text" id="y_age" name="age_while_sick_year" class="form-control" placeholder="ปี">
                           <!-- /input-group -->
                         </div>
                         <!-- /.col-lg-4 -->
@@ -2946,6 +2952,34 @@ $('#afebrile_convulsion_' + rowCount + '').change(function() {
        cache: true
       }
     });
+    $('#datepicker_bdate').on('change', function(){
+  // let dayBirth=$('#datepicker_bdate').val();
+  var dayBirth=$('#datepicker_bdate').val();
+      var getdayBirth=dayBirth.split("-");
+      var YB=getdayBirth[2]-543;
+      var MB=getdayBirth[1];
+      var DB=getdayBirth[0];
+
+      var setdayBirth=moment(YB+"-"+MB+"-"+DB);
+      var setNowDate=moment();
+      var ageInMilliseconds = new Date(setNowDate - setdayBirth);
+      var years = ageInMilliseconds / (24 * 60 * 60 * 1000 * 365.25 );
+      var months = 12 * (years % 1);
+      var days = Math.floor(30 * (months % 1)+1);
+      // alert(days);
+      var yearData=setNowDate.diff(setdayBirth, 'years', true); // ข้อมูลปีแบบทศนิยม
+      var yearFinal=Math.round(setNowDate.diff(setdayBirth, 'years', true),0); // ปีเต็ม
+      var yearReal=setNowDate.diff(setdayBirth, 'years'); // ปีจริง
+      var monthDiff=Math.floor((yearData-yearReal)*12); // เดือน
+      var dayDiff=Math.floor(30 * (monthDiff % 1));; // เดือน
+      // var dayDiff=Math.floor(30 * (monthDiff % 1));
+      var str_year_month="( "+yearReal+" ปี "+ monthDiff+" เดือน "+ days+" วัน )"; // ต่อวันเดือนปี
+      // $("#age").val(str_year_month);
+  $('#y_age').val(yearReal);
+  $('#allage').text(str_year_month);
+  $("#numnights").hide().slideDown(1200);
+// alert(year);
+})
   });
 </script>
 @include('AEFI.layout.SymptomScript')

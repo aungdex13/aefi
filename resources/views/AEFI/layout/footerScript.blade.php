@@ -331,6 +331,11 @@ $(document).ready(function() {
       dateFormat: "yy-mm-dd"
     })
 
+    //Date picker
+    $('#BIRTHDATE').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+    
 
     //iCheck for checkbox and radio inputs
     $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({

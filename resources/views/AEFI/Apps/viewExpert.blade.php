@@ -75,7 +75,11 @@ $arr_load_aefi_classification = load_seriousness_of_the_symptoms();
           <tbody>
               <tr>
                 <td></td>
-                <td  style="text-align:center;background-color:#fa3c4c"><p class="lead">แบบรายงานการประชุมผู้เชี่ยวชาญ</p></td>
+                <td  style="text-align:center;background-color:#fa3c4c"><p class="lead">แบบรายงานการประชุมผู้เชี่ยวชาญ</p>
+                  <div class="col-sm-12">
+                    <p class="lead">โรงพยาบาลที่รับรักษา : {{ isset($list_hos[$ViewAEFI1Data[0]->hospcode_treat]) ? $list_hos[$ViewAEFI1Data[0]->hospcode_treat]:""}}
+                              {{ isset($ViewAEFI1Data[0]->event_location) ? $ViewAEFI1Data[0]->event_location : "" }}<br></p>
+                    </div></td>
                 <td></td>
               </tr>
           </tbody>
