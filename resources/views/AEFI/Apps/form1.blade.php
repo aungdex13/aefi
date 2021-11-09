@@ -265,30 +265,33 @@ foreach ($aecode as $value) {
                           <label>อายุขณะป่วย:</label>
                         </div>
                         <div class="col-lg-3">
-                          <div id="numnights">
-                            <span id="allage">
-                            {{-- <h4 class="text-primary"><br><span id="yearofbirth"></span> ปี <span id="monthofbirth"></span> เดือน <span id="dayofbirth"></span> วัน</h4> --}}
-                          </div>
-                      <span id="y_age">
+                          {{-- <div id="numnights">
+                            <span >
+                            <h4 class="text-primary"><br><span id="yearofbirth"></span> ปี <span id="monthofbirth"></span> เดือน <span id="dayofbirth"></span> วัน</h4>
+                          </div> --}}
+                        {{-- <span id="y_age"> --}}
+                        <textarea class="form-control" name="age_while_sick_year" id="yallage" placeholder="ปี" rows="1"></textarea>
                           {{-- <div class="checked" id="age">tests</div> --}}
-                          <input type="text" id="y_age" name="age_while_sick_year" class="form-control" placeholder="ปี">
+                          {{-- <input type="text" id="y_age" name="age_while_sick_year" class="form-control" placeholder="ปี"> --}}
                           <!-- /input-group -->
                         </div>
                         <!-- /.col-lg-4 -->
                         <div class="col-lg-3">
-                          <input type="text" id="age_while_sick_month" name="age_while_sick_month" class="form-control" placeholder="เดือน">
+                          <textarea class="form-control" name="age_while_sick_month" id="mallage" placeholder="เดือน" rows="1"></textarea>
+                          {{-- <input type="text" id="age_while_sick_month" name="age_while_sick_month" class="form-control" placeholder="เดือน"> --}}
                           <!-- /input-group -->
                         </div>
                         <!-- /.col-lg-4 -->
                         <div class="col-lg-3">
-                          <input type="text" id="age_while_sick_day" name="age_while_sick_day" class="form-control" placeholder="วัน">
+                          <textarea class="form-control" name="age_while_sick_day" id="dallage" placeholder="วัน" rows="1"></textarea>
+                          {{-- <input type="text" id="age_while_sick_day" name="age_while_sick_day" class="form-control" placeholder="วัน"> --}}
                           <!-- /input-group -->
                         </div>
                       </div>
                     </div>
 
                     <!-- กลุ่มอายุ -->
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                       <div class="row">
                         <div class="col-lg-3">
                           <div class="control-label">
@@ -362,7 +365,7 @@ foreach ($aecode as $value) {
                             </div>
                           </div>
                         </div>
-                      </div>
+                      </div> --}}
 
                       <!-- เชื้อชาติ -->
                       <div class="form-group">
@@ -2977,6 +2980,9 @@ $('#afebrile_convulsion_' + rowCount + '').change(function() {
       // $("#age").val(str_year_month);
   $('#y_age').val(yearReal);
   $('#allage').text(str_year_month);
+  $('#yallage').text(yearReal);
+  $('#mallage').text(monthDiff);
+  $('#dallage').text(days);
   $("#numnights").hide().slideDown(1200);
 // alert(year);
 })
