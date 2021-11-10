@@ -76,8 +76,6 @@
 		$parent_name = $req ->input ('parent_name');
 		$parent_sur_name = $req ->input ('parent_sur_name');
 		$parent_phone_number = str_replace('-', '', $req ->input ('parent_phone_number'));
-		
-
 		$necessary_to_investigate = $req ->input ('necessary_to_investigate');
 		$necessary_to_investigate_date = $req ->input ('necessary_to_investigate_date');
 		$symptom_name = $req ->input ('symptom_name');
@@ -107,7 +105,6 @@
 		$assessment9 = $req ->input ('assessment9');
 		$assessment10 = $req ->input ('assessment10');
 		$date_entry = date('Y-m-d') ;
-		
 		$lab_result = $req ->input ('lab_result');
 		$other_text_patient_develop_symptoms_after_previous_vaccination = $req ->input ('other_text_patient_develop_symptoms_after_previous_vaccination');
 		$other_text_underlying_disease = $req ->input ('other_text_underlying_disease');
@@ -117,7 +114,6 @@
 		$user_hospcode = $req ->input ('user_hospcode');
 		$user_provcode = $req ->input ('user_provcode');
 		$user_region = $req ->input ('user_region');
-	
 		$hospcode_treat = $req ->input ('hospcode_treat');
 		$hospcode_report = $req ->input ('hospcode_report');
 		$hospcode_get_vac = $req ->input ('hospcode_get_vac');
@@ -157,7 +153,6 @@
 			'parent_name'=>$parent_name,
 			'parent_sur_name'=>$parent_sur_name,
 			'parent_phone_number'=>$parent_phone_number,
-			
 			'necessary_to_investigate'=>$necessary_to_investigate,
 			'necessary_to_investigate_date'=>$necessary_to_investigate_date,
 			'symptom_name'=>$symptom_name,
