@@ -279,11 +279,11 @@ $('#gbs_1').change(function() {
   $('#gbs1').val((s.length > 0 ? s : ""));
 });
 
-$('#transverse myelitis_1').change(function() {
-  var s = $('#transverse myelitis_1 input:checked').map(function() {
+$('#transverse_myelitis_1').change(function() {
+  var s = $('#transverse_myelitis_1 input:checked').map(function() {
     return this.value;
   }).get().join(',');
-  $('#transverse myelitis1').val((s.length > 0 ? s : ""));
+  $('#transverse_myelitis1').val((s.length > 0 ? s : ""));
 });
 
 $('#adem_1').change(function() {
@@ -1740,5 +1740,61 @@ $('#bells_palsy_1').change(function() {
     }).get().join(',');
     $('#bells_palsy4').val((s.length > 0 ? s : ""));
   });
+
+  $('#seriousness_of_the_symptoms_1').change(function() {
+  var s = $('#seriousness_of_the_symptoms_1 input:checked').map(function() {
+    return this.value;
+  }).get().join(',');
+  $('#seriousness_of_the_symptoms1').val((s.length > 0 ? s : ""));
+});
+
+$('#other_seriousness_of_the_symptoms_1').change(function() {
+  var s = $('#other_seriousness_of_the_symptoms_1 input:checked').map(function() {
+    return this.value;
+  }).get().join(',');
+  $('#other_seriousness_of_the_symptoms1').val((s.length > 0 ? s : ""));
+});
+
+$('#seriousness_of_the_symptoms_2').change(function() {
+  var s = $('#seriousness_of_the_symptoms_2 input:checked').map(function() {
+    return this.value;
+  }).get().join(',');
+  $('#seriousness_of_the_symptoms2').val((s.length > 0 ? s : ""));
+});
+
+$('#other_seriousness_of_the_symptoms_2').change(function() {
+  var s = $('#other_seriousness_of_the_symptoms_2 input:checked').map(function() {
+    return this.value;
+  }).get().join(',');
+  $('#other_seriousness_of_the_symptoms2').val((s.length > 0 ? s : ""));
+});
+
+$('#seriousness_of_the_symptoms_3').change(function() {
+  var s = $('#seriousness_of_the_symptoms_3 input:checked').map(function() {
+    return this.value;
+  }).get().join(',');
+  $('#seriousness_of_the_symptoms3').val((s.length > 0 ? s : ""));
+});
+
+$('#other_seriousness_of_the_symptoms_3').change(function() {
+  var s = $('#other_seriousness_of_the_symptoms_3 input:checked').map(function() {
+    return this.value;
+  }).get().join(',');
+  $('#other_seriousness_of_the_symptoms3').val((s.length > 0 ? s : ""));
+});
+
+$('#seriousness_of_the_symptoms_4').change(function() {
+  var s = $('#seriousness_of_the_symptoms_4 input:checked').map(function() {
+    return this.value;
+  }).get().join(',');
+  $('#seriousness_of_the_symptoms4').val((s.length > 0 ? s : ""));
+});
+
+$('#other_seriousness_of_the_symptoms_4').change(function() {
+  var s = $('#other_seriousness_of_the_symptoms_4 input:checked').map(function() {
+    return this.value;
+  }).get().join(',');
+  $('#other_seriousness_of_the_symptoms4').val((s.length > 0 ? s : ""));
+});
   </script>
   
