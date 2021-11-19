@@ -190,6 +190,7 @@ $selectgroupprov = DB::table('chospital_new')
 		 $listsubdistrict=$this->listsubdistrict();
 		 $listvac_arr=$this->listvac_arr();
 		 $list_hos=$this->list_hos();
+		 $list_career=$this->list_career();
 		return view('AEFI.Apps.dataf1export',
 			[
 				'selectdata'=>$selectdata,
@@ -199,7 +200,8 @@ $selectgroupprov = DB::table('chospital_new')
 				'yearnow'=>$yearnow,
 				'listvac_arr'=>$listvac_arr,
 				'datenow'=>$datenow,
-				'list_hos'=>$list_hos
+				'list_hos'=>$list_hos,
+				'list_career'=>$list_career
 			]);
 	}
 
@@ -375,6 +377,7 @@ $selectgroupprov = DB::table('chospital_new')
 		 $listsubdistrict=$this->listsubdistrict();
 		 $listvac_arr=$this->listvac_arr();
 		 $list_hos=$this->list_hos();
+		 $list_career=$this->list_career();
 		return view('AEFI.Apps.dataf1export',
 			[
 				'selectdata'=>$selectdata,
@@ -386,7 +389,8 @@ $selectgroupprov = DB::table('chospital_new')
 				'date_of_symptoms_from'=>$date_of_symptoms_from,
 				'date_of_symptoms_to'=>$date_of_symptoms_to,
 				'datenow'=>$datenow,
-				'list_hos'=>$list_hos
+				'list_hos'=>$list_hos,
+				'list_career'=>$list_career
 			]);
 	}
 
@@ -433,5 +437,13 @@ $selectgroupprov = DB::table('chospital_new')
 		}
 		// dd($province_arr);
 		return $arr_hos;
+	}
+	protected function list_career(){
+		$arr_career = DB::table('ref_career')->select('career_code','career_name')->get();
+		foreach ($arr_career as  $value) {
+			$arr_career[$value->career_code] =trim($value->career_name);
+		}
+		// dd($province_arr);
+		return $arr_career;
 	}
 }

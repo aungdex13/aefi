@@ -129,8 +129,8 @@ $selectgroupprov = DB::table('chospital_new')
 							'expertmeeting.expert_meet_date',
 							// 'aefi_form_1_vac.name_of_vaccine',
 							// 'aefi_form_1_vac.date_of_vaccination'
-		// DB::raw('GROUP_CONCAT( aefi_form_1_vac.name_of_vaccine ) as "name_of_vaccine",
-		// 		 		 GROUP_CONCAT( aefi_form_1_vac.date_of_vaccination   ) as "date_of_vaccination" ')
+							// DB::raw('GROUP_CONCAT( aefi_form_1_vac.name_of_vaccine ) as "name_of_vaccine",
+							//GROUP_CONCAT( aefi_form_1_vac.date_of_vaccination   ) as "date_of_vaccination" ')
 						)
 						->whereDate('aefi_form_1.date_entry', '>=', $date_of_symptoms_from)
 						->whereDate('aefi_form_1.date_entry', '<=', $date_of_symptoms_to);

@@ -472,7 +472,7 @@ foreach ($aecode as $value) {
                               <div class="input-group-addon">
                                 {{-- <i class="fa fa-calendar"></i> --}}
                               </div>
-                              <select id="js-example-basic-single2" name="hospcode" class="js-example-basic-single2 form-control" data-dropdown-css-class="select2-danger">
+                              <select id="js-example-basic-single2" name="career_code" class="js-example-basic-single2 form-control" data-dropdown-css-class="select2-danger">
                               </select>
                               {{-- <input type="text" name="career" class="form-control" id="career" placeholder="อาชีพ" required> --}}
                             </div>

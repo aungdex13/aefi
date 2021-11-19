@@ -434,6 +434,7 @@
 			$vac_list=$this->vaclist();
 			$listvac_arr=$this->listvac_arr();
 			$list_hos=$this->list_hos();
+			$list_career=$this->list_career();
 						// dd($EditAEFI1vac);
 		 return view('AEFI.Apps.EditAEFI1')
 		 				->with('data', $EditAEFI1)
@@ -445,7 +446,8 @@
 						->with('vac_list',$vac_list)
 						->with('count_data_vac',$count_data_vac)
 						->with('listvac_arr',$listvac_arr)
-						->with('list_hos',$list_hos);
+						->with('list_hos',$list_hos)
+						->with('list_career',$list_career);
 
 		}
 		public function selectalldataAEFI2(Request $req)
@@ -536,6 +538,14 @@
 			}
 			// dd($province_arr);
 			return $arr_hos;
+		}
+		protected function list_career(){
+			$arr_career = DB::table('ref_career')->select('career_code','career_name')->get();
+			foreach ($arr_career as  $value) {
+				$arr_career[$value->career_code] =trim($value->career_name);
+			}
+			// dd($province_arr);
+			return $arr_career;
 		}
 		protected function vaclist(){
 			$arr_vaclist = DB::table('vac_tbl')

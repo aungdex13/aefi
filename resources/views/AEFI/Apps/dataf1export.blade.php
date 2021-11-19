@@ -178,7 +178,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
 								        <td>{{ $arr_gender[$value->gender] }}</td>
 								        <td>{{ $arr_type_of_patient[$value->type_of_patient] }}</td>
                         <td>{{ $arr_patient_status[$value->patient_status] }}</td>
-                        <td>{{ isset($value->career) ? $value->career: "-" }}</td>
+                        <td>{{ isset($value->career) ? $value->career: "-" }}{{ isset($list_career[$value->career_code]) ? $list_career[$value->career_code]:"ไม่ระบุข้อมูล"}}</td>
                         <td>{{ $value->date_of_symptoms }}</td>
                         <td>{{ $value->time_of_symptoms }}</td>
                         <td>{{ $value->time_of_treatment }}</td>
