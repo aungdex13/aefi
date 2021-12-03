@@ -114,6 +114,7 @@
 									$hypertension= $req ->input ('hypertension');
 									$hypertensive_urgency= $req ->input ('hypertensive_urgency');
 									$bells_palsy= $req ->input ('bells_palsy');
+									$symptom_status= $req ->input ('symptom_status');
 							$x=0;
 								 for ($i=0; $i < count($name_of_vaccine); $i++) {
 									 $data_vac[]  = [
@@ -209,7 +210,8 @@
 									'hypertension'=>$hypertension[$i],
 									'hypertensive_urgency'=>$hypertensive_urgency[$i],
 									'bells_palsy'=>$bells_palsy[$i],
-									'date_entry'=>date('Y-m-d H:i:s')
+									'date_entry'=>date('Y-m-d H:i:s'),
+									'symptom_status'=>$symptom_status[$i]
 									];
 									$x++;
 									}
@@ -308,6 +310,7 @@
 							$hypertension= $req ->input ('hypertension');
 							$hypertensive_urgency= $req ->input ('hypertensive_urgency');
 							$bells_palsy= $req ->input ('bells_palsy');
+							$symptom_status= $req ->input ('symptom_status');
 					$x=0;
 						 for ($i=0; $i < count($name_of_vaccine); $i++) {
 							 $data_vac[]  = [
@@ -402,7 +405,8 @@
 							'hypertension'=>$hypertension[$i],
 							'hypertensive_urgency'=>$hypertensive_urgency[$i],
 							'bells_palsy'=>$bells_palsy[$i],
-							'date_entry'=>date('Y-m-d H:i:s')
+							'date_entry'=>date('Y-m-d H:i:s'),
+							'symptom_status'=>$symptom_status[$i]
 							];
 							$x++;
 							}

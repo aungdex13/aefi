@@ -91,8 +91,8 @@
 		  </span>
 		</a>
 		<ul class="treeview-menu">
-		  <li class="{{ Active::checkRoute(['roles.index','roles.create','roles.edit']) }}"><a href="{{ route('roles.index') }}"><i class="fa fa-circle-o"></i>จัดการกลุ่มผู้ใช้งาน</a></li>
-      <li class="{{ Active::checkRoute(['listusers.index','listusers.create','listusers.edit']) }}"><a href="{{ route('listusers.index') }}"><i class="fa fa-circle-o"></i>จัดการผู้ใช้งาน</a></li>
+		<li class="{{ Active::checkRoute(['roles.index','roles.create','roles.edit']) }}"><a href="{{ route('roles.index') }}"><i class="fa fa-circle-o"></i>จัดการกลุ่มผู้ใช้งาน</a></li>
+      	<li class="{{ Active::checkRoute(['listusers.index','listusers.create','listusers.edit']) }}"><a href="{{ route('listusers.index') }}"><i class="fa fa-circle-o"></i>จัดการผู้ใช้งาน</a></li>
 		</ul>
 	  </li>
     <li>

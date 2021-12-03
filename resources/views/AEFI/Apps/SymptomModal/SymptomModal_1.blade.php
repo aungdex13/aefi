@@ -21,21 +21,21 @@
                               <input type="checkbox" id="c_rash" name="c_rash[]" value="0027">
                               Rash
                             </label>
-                            <input type="text" id="rash" name="rash[]" >
+                            <input type="text" id="rash" name="rash[]" hidden>
                           </div>
                           <div class="col-md-4" id="erythema_1">
                             <label>
                               <input type="checkbox" id="erythema1" name="c_erythema[]" value="0028">
                               Erythema
                             </label>
-                            <input type="text" id="erythema" name="erythema[]" >
+                            <input type="text" id="erythema" name="erythema[]" hidden>
                           </div>
                           <div class="col-md-4" id="urticaria_1">
                             <label>
                               <input type="checkbox" id="urticaria1" name="c_urticaria[]" value="0044">
                               Urticaria
                             </label>
-                            <input type="text" id="urticaria" name="urticaria[]" >
+                            <input type="text" id="urticaria" name="urticaria[]" hidden>
                           </div>
                         </div>
                         <div class="form-group">
@@ -44,29 +44,29 @@
                               <input type="checkbox" id="itching1" name="c_itching[]" value="0026">
                               Itching
                             </label>
-                            <input type="text" id="itching" name="itching[]" >
+                            <input type="text" id="itching" name="itching[]" hidden>
                           </div>
                           <div class="col-md-4" id="edema_1">
                             <label>
                               <input type="checkbox" id="edema1" name="c_edema[]" value="0003A">
                               Edema
                             </label>
-                            <input type="text" id="edema" name="edema[]" >
+                            <input type="text" id="edema" name="edema[]" hidden>
                           </div>
                           <div class="col-md-5" id="angioedema_1">
                             <label>
                               <input type="checkbox" id="angioedema1" name="c_angioedema[]" value="0003">
                               Angioedema
                             </label>
-                            <input type="text" id="angioedema" name="angioedema[]" >
+                            <input type="text" id="angioedema" name="angioedema[]" hidden>
                           </div>
-                          <div class="col-md-5" id="chest_pain_1">
+                          {{-- <div class="col-md-5" id="chest_pain_1">
                             <label>
                               <input type="checkbox" id="chest_pain1" name="c_chest_pain[]" value="0072">
                               chest pain
                             </label>
-                            <input type="text" id="chest_pain" name="chest_pain[]" >
-                          </div>
+                            <input type="text" id="chest_pain" name="chest_pain[]" hidden>
+                          </div> --}}
                         </div>
                       </div>
                       <!-- /.box-header -->
@@ -81,14 +81,14 @@
                               <input type="checkbox" id="fainting1" name="c_fainting[]" value="1">
                               Fainting
                             </label>
-                            <input type="text" id="fainting" name="fainting[]" >
+                            <input type="text" id="fainting" name="fainting[]" hidden>
                           </div>
                           <div class="col-md-6" id="hyperventilation_1">
                             <label>
                               <input type="checkbox" id="hyperventilation1" name="c_hyperventilation[]" value="0517">
                               Hyperventilation
                             </label>
-                            <input type="text" id="hyperventilation" name="hyperventilation[]" >
+                            <input type="text" id="hyperventilation" name="hyperventilation[]" hidden>
                           </div>
                         </div>
                         <div class="form-group">
@@ -97,21 +97,21 @@
                               <input type="checkbox" id="syncope1" name="c_syncope[]" value="0223">
                               Syncope
                             </label>
-                            <input type="text" id="syncope" name="syncope[]" >
+                            <input type="text" id="syncope" name="syncope[]" hidden>
                           </div>
                           <div class="col-md-4" id="headche_1">
                             <label>
                               <input type="checkbox" id="headche1" name="c_headche[]" value="1">
                               Headche
                             </label>
-                            <input type="text" id="headche" name="headche[]" >
+                            <input type="text" id="headche" name="headche[]" hidden>
                           </div>
                           <div class="col-md-4" id="dizziness_1">
                             <label>
                               <input type="checkbox" id="dizziness1" name="c_dizziness[]" value="0101">
                               Dizziness
                             </label>
-                            <input type="text" id="dizziness" name="dizziness[]" >
+                            <input type="text" id="dizziness" name="dizziness[]" hidden>
                           </div>
                         </div>
                         <div class="form-group">
@@ -120,14 +120,14 @@
                               <input type="checkbox" id="fatigue1" name="c_fatigue[]" value="0724">
                               Fatigue
                             </label>
-                            <input type="text" id="fatigue" name="fatigue[]" >
+                            <input type="text" id="fatigue" name="fatigue[]" hidden>
                           </div>
                           <div class="col-md-4" id="malaise_1">
                             <label>
                               <input type="checkbox" id="malaise1" name="c_malaise[]" value="0728">
                               Malaise
                             </label>
-                            <input type="text" id="malaise" name="malaise[]" >
+                            <input type="text" id="malaise" name="malaise[]" hidden>
                           </div>
                         </div>
                       </div>
@@ -140,21 +140,21 @@
                               <input type="checkbox" id="dyspepsia1" name="c_dyspepsia[]" value="0279">
                               Dyspepsia
                             </label>
-                            <input type="text" id="dyspepsia" name="dyspepsia[]" >
+                            <input type="text" id="dyspepsia" name="dyspepsia[]" hidden>
                           </div>
                           <div class="col-md-4" id="diarrhea_1">
                             <label>
                               <input type="checkbox" id="diarrhea1" name="c_diarrhea[]" value="1">
                               Diarrhea
                             </label>
-                            <input type="text" id="diarrhea" name="diarrhea[]" >
+                            <input type="text" id="diarrhea" name="diarrhea[]" hidden>
                           </div>
                           <div class="col-md-4" id="nausea_1">
                             <label>
                               <input type="checkbox" id="nausea1" name="c_nausea[]" value="0308">
                               Nausea
                             </label>
-                            <input type="text" id="nausea" name="nausea[]" >
+                            <input type="text" id="nausea" name="nausea[]" hidden>
                           </div>
                         </div>
                         <div class="form-group">
@@ -163,14 +163,14 @@
                               <input type="checkbox" id="vomiting1" name="c_vomiting[]" value="0228">
                               Vomiting
                             </label>
-                            <input type="text" id="vomiting" name="vomiting[]" >
+                            <input type="text" id="vomiting" name="vomiting[]" hidden>
                           </div>
                           <div class="col-md-6" id="abdominal_pain_1">
                             <label>
                               <input type="checkbox" id="abdominal_pain1" name="c_abdominal_pain[]" value="0268">
                               Abdominal pain
                             </label>
-                            <input type="text" id="abdominal_pain" name="abdominal_pain[]" >
+                            <input type="text" id="abdominal_pain" name="abdominal_pain[]" hidden>
                           </div>
                         </div>
                       </div>
@@ -183,14 +183,14 @@
                               <input type="checkbox" id="arthalgia1" name="c_arthalgia[]" value="1">
                               Arthalgia
                             </label>
-                            <input type="text" id="arthalgia" name="arthalgia[]" >
+                            <input type="text" id="arthalgia" name="arthalgia[]" hidden>
                           </div>
                           <div class="col-md-4" id="myalgia_1">
                             <label>
                               <input type="checkbox" id="myalgia1" name="c_myalgia[]" value="0072">
                               Myalgia
                             </label>
-                            <input type="text" id="myalgia" name="myalgia[]" >
+                            <input type="text" id="myalgia" name="myalgia[]" hidden>
                           </div>
                         </div>
                       </div>
@@ -210,7 +210,7 @@
                               <input type="checkbox" id="fever38c1" name="c_fever38c[]" value="0725">
                               Fever >= 38 C
                             </label>
-                            <input type="text" id="fever38c" name="fever38c[]" >
+                            <input type="text" id="fever38c" name="fever38c[]" hidden>
                           </div>
                         </div>
                       </div>
@@ -228,28 +228,28 @@
                                 <input type="checkbox" id="swelling_at_the_injection1" name="c_swelling_at_the_injection[]" value="1">
                                 บวมบริเวณที่ฉีดนานเกิน3วัน
                               </label>
-                              <input type="text" id="swelling_at_the_injection" name="swelling_at_the_injection[]" >
+                              <input type="text" id="swelling_at_the_injection" name="swelling_at_the_injection[]" hidden>
                             </div>
                             <div class="col-md-12" id="swelling_beyond_nearest_joint_1">
                               <label>
                                 <input type="checkbox" id="swelling_beyond_nearest_joint1" name="c_swelling_beyond_nearest_joint[]" value="1">
                                 บวมลามไปถึงข้อที่ใกล้ที่สุด
                               </label>
-                              <input type="text" id="swelling_beyond_nearest_joint" name="swelling_beyond_nearest_joint[]" >
+                              <input type="text" id="swelling_beyond_nearest_joint" name="swelling_beyond_nearest_joint[]" hidden>
                             </div>
                             <div class="col-md-12" id="lymphadenopathy_1">
                               <label>
                                 <input type="checkbox" id="lymphadenopathy1" name="c_lymphadenopathy[]" value="0577">
                                 Lymphadenopathy
                               </label>
-                              <input type="text" id="lymphadenopathy" name="lymphadenopathy[]" >
+                              <input type="text" id="lymphadenopathy" name="lymphadenopathy[]" hidden>
                             </div>
                             <div class="col-md-12" id="lymphadenitis_1">
                               <label>
                                 <input type="checkbox" id="lymphadenitis1" name="c_lymphadenitis[]" value="0577D">
                                 Lymphadenitis
                               </label>
-                              <input type="text" id="lymphadenitis" name="lymphadenitis[]" >
+                              <input type="text" id="lymphadenitis" name="lymphadenitis[]" hidden>
                             </div>
                           </div>
                           <div class="form-group">
@@ -258,14 +258,14 @@
                                 <input type="checkbox" id="sterile_abscess1" name="c_sterile_abscess[]" value="0051">
                                 Sterile abscess
                               </label>
-                              <input type="text" id="sterile_abscess" name="sterile_abscess[]" >
+                              <input type="text" id="sterile_abscess" name="sterile_abscess[]" hidden>
                             </div>
                             <div class="col-md-6" id="bacterial_abscess_1">
                               <label>
                                 <input type="checkbox" id="bacterial_abscess1" name="c_bacterial_abscess[]" value="1">
                                 Bacterial abscess
                               </label>
-                              <input type="text" id="bacterial_abscess" name="bacterial_abscess[]" >
+                              <input type="text" id="bacterial_abscess" name="bacterial_abscess[]" hidden>
                             </div>
                           </div>
                         </div>
@@ -279,21 +279,21 @@
                               <input type="checkbox" id="febrile_convulsion1" name="c_febrile_convulsion[]" value="1">
                               Febrile convulsion
                             </label>
-                            <input type="text" id="febrile_convulsion" name="febrile_convulsion[]" >
+                            <input type="text" id="febrile_convulsion" name="febrile_convulsion[]" hidden>
                           </div>
                           <div class="col-md-12" id="afebrile_convulsion_1">
                             <label>
                               <input type="checkbox" id="afebrile_convulsion1" name="c_afebrile_convulsion[]" value="1">
                               Afebrile convulsion
                             </label>
-                            <input type="text" id="afebrile_convulsion" name="afebrile_convulsion[]" >
+                            <input type="text" id="afebrile_convulsion" name="afebrile_convulsion[]" hidden>
                           </div>
                           <div class="col-md-12" id="encephalopathy_1">
                             <label>
                               <input type="checkbox" id="encephalopathy1" name="c_encephalopathy[]" value="0105">
                               Encephalopathy/Encephalitis
                             </label>
-                            <input type="text" id="encephalopathy" name="encephalopathy[]" >
+                            <input type="text" id="encephalopathy" name="encephalopathy[]" hidden>
                           </div>
                         </div>
                         <div class="form-group">
@@ -302,14 +302,14 @@
                               <input type="checkbox" id="flaccid_paralysis1" name="c_flaccid_paralysis[]" value="0139">
                               Flaccid paralysis
                             </label>
-                            <input type="text" id="flaccid_paralysis" name="flaccid_paralysis[]" >
+                            <input type="text" id="flaccid_paralysis" name="flaccid_paralysis[]" hidden>
                           </div>
                           <div class="col-md-6" id="spastic_paralysis_1">
                             <label>
                               <input type="checkbox" id="spastic_paralysis1" name="c_spastic_paralysis[]" value="0775">
                               Spastic paralysis
                             </label>
-                            <input type="text" id="spastic_paralysis" name="spastic_paralysis[]" >
+                            <input type="text" id="spastic_paralysis" name="spastic_paralysis[]" hidden>
                           </div>
                         </div>
                       </div>
@@ -333,91 +333,91 @@
                               <input id="hhe1" name="c_hhe[]" type="checkbox" value="1704">
                               Hypotonic Hyporesponsive episode (HHE)
                             </label>
-                            <input type="text" id="hhe" name="hhe[]" >
+                            <input type="text" id="hhe" name="hhe[]" hidden>
                           </div>
-                          <div class="col-md-12" id="persistent_inconsolable_crying_1">
+                          <div class="col-md-12" id="persistent_inconsolable_crying_1" hidden>
                             <label>
                               <input id="persistent_inconsolable_crying1" name="c_persistent_inconsolable_crying[]" type="checkbox" value="1">
                               Persistent inconsolable crying
                             </label>
-                            <input type="text" id="persistent_inconsolable_crying" name="persistent_inconsolable_crying[]" >
+                            <input type="text" id="persistent_inconsolable_crying" name="persistent_inconsolable_crying[]" hidden>
                           </div>
                           <div class="col-md-12" id="thrombocytopenia_1">
                             <label>
                               <input id="thrombocytopenia1" name="c_thrombocytopenia[]" type="checkbox" value="0594">
                               Thrombocytopenia
                             </label>
-                            <input type="text" id="thrombocytopenia" name="thrombocytopenia[]" >
+                            <input type="text" id="thrombocytopenia" name="thrombocytopenia[]" hidden>
                           </div>
                           <div class="col-md-12" id="osteomyelitis_1">
                             <label>
                               <input id="osteomyelitis1" name="c_osteomyelitis[]" type="checkbox" value="1184">
                               Osteitis/Osteomyelitis
                             </label>
-                            <input type="text" id="osteomyelitis" name="osteomyelitis[]" >
+                            <input type="text" id="osteomyelitis" name="osteomyelitis[]" hidden>
                           </div>
                           <div class="col-md-12" id="toxic_shock_syndrome_1">
                             <label>
                               <input id="toxic_shock_syndrome1" name="c_toxic_shock_syndrome[]" type="checkbox" value="1">
                               Toxic shock syndrome
                             </label>
-                            <input type="text" id="toxic_shock_syndrome" name="toxic_shock_syndrome[]" >
+                            <input type="text" id="toxic_shock_syndrome" name="toxic_shock_syndrome[]" hidden>
                           </div>
                           <div class="col-md-12" id="sepsis_1">
                             <label>
                               <input id="sepsis1" name="c_sepsis[]" type="checkbox" value="0744">
                               Sepsis
                             </label>
-                            <input type="text" id="sepsis" name="sepsis[]" >
+                            <input type="text" id="sepsis" name="sepsis[]" hidden>
                           </div>
                           <div class="col-md-12" id="anaphylaxis_1">
                             <label>
                               <input id="anaphylaxis1" name="c_anaphylaxis[]" type="checkbox" value="2237">
                               Anaphylaxis
                             </label>
-                            <input type="text" id="anaphylaxis" name="anaphylaxis[]" >
+                            <input type="text" id="anaphylaxis" name="anaphylaxis[]" hidden>
                           </div>
                           <div class="col-md-12" id="gbs_1">
                             <label>
                               <input id="gbs1" name="c_gbs[]" type="checkbox" value="1">
                               Guillain-Barré syndrome (GBS)
                             </label>
-                            <input type="text" id="gbs" name="gbs[]" >
+                            <input type="text" id="gbs" name="gbs[]" hidden>
                           </div>
                           <div class="col-md-12" id="transverse myelitis_1">
                             <label>
                               <input id="transverse myelitis1" name="c_transverse myelitis[]" type="checkbox" value="1">
                               Transverse myelitis
                             </label>
-                            <input type="text" id="transverse myelitis" name="transverse myelitis[]" >
+                            <input type="text" id="transverse myelitis" name="transverse myelitis[]" hidden>
                           </div>
                           <div class="col-md-12" id="adem_1">
                             <label>
                               <input id="adem1" name="c_adem[]" type="checkbox" value="1">
                               Acute disseminated encephalomyelitis (ADEM)
                             </label>
-                            <input type="text" id="adem" name="adem[]" >
+                            <input type="text" id="adem" name="adem[]" hidden>
                           </div>
                           <div class="col-md-12" id="acute_myocardial_1">
                             <label>
                               <input id="acute_myocardial1" name="c_acute_myocardial[]" type="checkbox" value="1">
                               Acute Myocardial
                             </label>
-                            <input type="text" id="acute_myocardial" name="acute_myocardial[]" >
+                            <input type="text" id="acute_myocardial" name="acute_myocardial[]" hidden>
                           </div>
                           <div class="col-md-12" id="ards_1">
                             <label>
                               <input id="ards1" name="c_ards[]" type="checkbox" value="1">
                                Acute respiratory distress syndrome (ARDS)
                             </label>
-                            <input type="text" id="ards" name="ards[]" >
+                            <input type="text" id="ards" name="ards[]" hidden>
                           </div>
                           <div class="col-md-12" id="symptoms_later_immunized_1">
                             <label>
                               <input id="symptoms_later_immunized1" name="c_symptoms_later_immunized[]" type="checkbox" value="9999">
                               other
                             </label>
-                            <input type="text" id="symptoms_later_immunized" name="symptoms_later_immunized[]" >
+                            <input type="text" id="symptoms_later_immunized" name="symptoms_later_immunized[]" hidden>
                           </div>
                           <div class="form-group">
                             <div class="col-lg-12">
@@ -450,91 +450,91 @@
                               <input name="c_chest_pain[]" type="checkbox" value="1">
                               Chest pain
                             </label>
-                            <input type="text" id="chest_pain" name="chest_pain[]" >
+                            <input type="text" id="chest_pain" name="chest_pain[]" hidden>
                           </div>
                           <div class="col-md-12" id="myocarditis_1">
                             <label>
                               <input name="c_myocarditis[]" type="checkbox" value="1">
                               Myocarditis
                             </label>
-                            <input type="text" id="myocarditis" name="myocarditis[]" >
+                            <input type="text" id="myocarditis" name="myocarditis[]" hidden>
                           </div>
                           <div class="col-md-12" id="heart_failure_1">
                             <label>
                               <input name="c_heart_failure[]" type="checkbox" value="1">
                               Heart failure
                             </label>
-                            <input type="text" id="heart_failure" name="heart_failure[]" >
+                            <input type="text" id="heart_failure" name="heart_failure[]" hidden>
                           </div>
                           <div class="col-md-12" id="pericarditis_1">
                             <label>
                               <input name="c_pericarditis[]" type="checkbox" value="1">
                               Pericarditis
                             </label>
-                            <input type="text" id="pericarditis" name="pericarditis[]" >
+                            <input type="text" id="pericarditis" name="pericarditis[]" hidden>
                           </div>
                           <div class="col-md-12" id="sudden_cardiac_arrest_1">
                             <label>
                               <input name="c_sudden_cardiac_arrest[]" type="checkbox" value="1">
                               Sudden cardiac arrest
                             </label>
-                            <input type="text" id="sudden_cardiac_arrest" name="sudden_cardiac_arrest[]" >
+                            <input type="text" id="sudden_cardiac_arrest" name="sudden_cardiac_arrest[]" hidden>
                           </div>
                           <div class="col-md-12" id="covid_19_1">
                             <label>
                               <input name="c_covid_19[]" type="checkbox" value="1">
                               Covid-19
                             </label>
-                            <input type="text" id="covid_19" name="covid_19[]" >
+                            <input type="text" id="covid_19" name="covid_19[]" hidden>
                           </div>
                           <div class="col-md-12" id="ischemic_stroke_1">
                             <label>
                               <input name="c_ischemic_stroke[]" type="checkbox" value="1">
                               Ischemic stroke
                             </label>
-                            <input type="text" id="ischemic_stroke" name="ischemic_stroke[]" >
+                            <input type="text" id="ischemic_stroke" name="ischemic_stroke[]" hidden>
                           </div>
                           <div class="col-md-12" id="hemorrhagic_stroke_1">
                             <label>
                               <input name="c_hemorrhagic_stroke[]" type="checkbox" value="1">
                             Hemorrhagic stroke
                             </label>
-                            <input type="text" id="hemorrhagic_stroke" name="hemorrhagic_stroke[]" >
+                            <input type="text" id="hemorrhagic_stroke" name="hemorrhagic_stroke[]" hidden>
                           </div>
                           <div class="col-md-12" id="deep_vein_thrombosis_1">
                             <label>
                               <input name="c_deep_vein_thrombosis[]" type="checkbox" value="1">
                               Deep vein thrombosis                            
 		                      	</label>
-                            <input type="text" id="deep_vein_thrombosis" name="deep_vein_thrombosis[]" >
+                            <input type="text" id="deep_vein_thrombosis" name="deep_vein_thrombosis[]" hidden>
                           </div>
                           <div class="col-md-12" id="pulmonary_embolism_1">
                             <label>
                               <input name="c_pulmonary_embolism[]" type="checkbox" value="1">
                               Pulmonary embolism
                             </label>
-                            <input type="text" id="pulmonary_embolism" name="pulmonary_embolism[]" >
+                            <input type="text" id="pulmonary_embolism" name="pulmonary_embolism[]" hidden>
                           </div>
                           <div class="col-md-12" id="hypertension_1">
                             <label>
                               <input name="c_hypertension[]" type="checkbox" value="1">
                               Hypertension
                             </label>
-                            <input type="text" id="hypertension" name="hypertension[]" >
+                            <input type="text" id="hypertension" name="hypertension[]" hidden>
                           </div>
                           <div class="col-md-12" id="hypertensive_urgency_1">
                             <label>
                               <input name="c_hypertensive_urgency[]" type="checkbox" value="1">
                                Hypertensive urgency
                             </label>
-                            <input type="text" id="hypertensive_urgency" name="hypertensive_urgency[]" >
+                            <input type="text" id="hypertensive_urgency" name="hypertensive_urgency[]" hidden>
                           </div>
                           <div class="col-md-12" id="bells_palsy_1">
                             <label>
                               <input name="c_bells_palsy[]" type="checkbox" value="1">
                               Bell's palsy
                             </label>
-                            <input type="text" id="bells_palsy" name="bells_palsy[]">
+                            <input type="text" id="bells_palsy" name="bells_palsy[]" hidden>
                           </div>
 
                           </div>
@@ -644,7 +644,7 @@
                             ร้ายแรง
                           </label>
                         </div>
-                        <input type="text" id="seriousness_of_the_symptoms" name="seriousness_of_the_symptoms[]" >
+                        <input type="text" id="seriousness_of_the_symptoms" name="seriousness_of_the_symptoms[]" hidden>
                       </div>
                     </div>
                   </div>
@@ -702,7 +702,7 @@
                         </div>
                       </div>
                     </div>
-                    <input type="text" id="other_seriousness_of_the_symptoms" name="other_seriousness_of_the_symptoms[]" >
+                    <input type="text" id="other_seriousness_of_the_symptoms" name="other_seriousness_of_the_symptoms[]" hidden>
                   </div>
                 </div>
                 </div>
@@ -762,7 +762,7 @@
                             </div>
                           </div>
                         </div>
-                        <input type="text" id="patient_status" name="patient_status[]" >
+                        <input type="text" id="patient_status" name="patient_status[]" hidden>
                       </div>
                     </div>
                   </div>
@@ -805,7 +805,7 @@
                           <input type="text" id="other_address_funeral_text" name="other_address_funeral[]" class="form-control" placeholder="ระบุสถานที่ทำการ">
                         </div>
                       </div>
-                      <input type="text" id="funeral" name="funeral[]" >
+                      <input type="text" id="funeral" name="funeral[]" hidden>
                     </div>
                   </div>
                 </div>

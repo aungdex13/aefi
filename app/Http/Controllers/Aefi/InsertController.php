@@ -137,7 +137,6 @@
 			'type_of_patient'=>$type_of_patient,
 			'career'=>$career,
 			'career_code'=>$career_code,
-			
 			'history_of_vaccine_drug_allergies_of_patient'=>$history_of_vaccine_drug_allergies_of_patient,
 			'other_vaccination_history'=>$other_vaccination_history,
 			'patient_develop_symptoms_after_previous_vaccination'=>$patient_develop_symptoms_after_previous_vaccination,
@@ -201,8 +200,8 @@
 			'hospcode_get_vac'=>$hospcode_get_vac
 		);
 	// echo($data);
-	 $res1 = $data;
-	// $res1	= DB::table('aefi_form_1')->insert($data);
+	//  $res1 = $data;
+	$res1	= DB::table('aefi_form_1')->insert($data);
 	 // dd($data);
 if ($res1) {
 		$name_of_vaccine = $req ->input('name_of_vaccine');
@@ -284,19 +283,19 @@ if ($res1) {
 		$date_dead = $req ->input ('date_dead');
 		$symptomstatus = $req ->input ('symptomstatus');
 		$chest_pain = $req ->input ('chest_pain');
-$myocarditis = $req ->input ('myocarditis');
-$heart_failure = $req ->input ('heart_failure');
-$pericarditis = $req ->input ('pericarditis');
-$sudden_cardiac_arrest = $req ->input ('sudden_cardiac_arrest');
-$covid_19 = $req ->input ('covid_19');
-$ischemic_stroke = $req ->input ('ischemic_stroke');
-$hemorrhagic_stroke = $req ->input ('hemorrhagic_stroke');
-$deep_vein_thrombosis = $req ->input ('deep_vein_thrombosis');
-$pulmonary_embolism= $req ->input ('pulmonary_embolism');
-$hypertension= $req ->input ('hypertension');
-$hypertensive_urgency= $req ->input ('hypertensive_urgency');
-$bells_palsy= $req ->input ('bells_palsy');
-
+		$myocarditis = $req ->input ('myocarditis');
+		$heart_failure = $req ->input ('heart_failure');
+		$pericarditis = $req ->input ('pericarditis');
+		$sudden_cardiac_arrest = $req ->input ('sudden_cardiac_arrest');
+		$covid_19 = $req ->input ('covid_19');
+		$ischemic_stroke = $req ->input ('ischemic_stroke');
+		$hemorrhagic_stroke = $req ->input ('hemorrhagic_stroke');
+		$deep_vein_thrombosis = $req ->input ('deep_vein_thrombosis');
+		$pulmonary_embolism= $req ->input ('pulmonary_embolism');
+		$hypertension= $req ->input ('hypertension');
+		$hypertensive_urgency= $req ->input ('hypertensive_urgency');
+		$bells_palsy= $req ->input ('bells_palsy');
+		$symptom_status= $req ->input ('symptom_status');
 		// $time_of_reconstitution = $req ->input('time_of_reconstitution');
 		// dd($date_of_vaccination,$rash);
 $x=0;
@@ -393,12 +392,12 @@ $x=0;
 		'pulmonary_embolism'=>$pulmonary_embolism[$i],
 		'hypertension'=>$hypertension[$i],
 		'hypertensive_urgency'=>$hypertensive_urgency[$i],
-		'bells_palsy'=>$bells_palsy[$i]
-
+		'bells_palsy'=>$bells_palsy[$i],
+		'symptom_status'=>$symptom_status[$i]
 		];
 		$x++;
 		}
-		dd($data,$data_vac);
+		// dd($data,$data_vac);
 		//  $res2= $data_vac;
 		 $res2= DB::table('aefi_form_1_vac')->insert($data_vac);
 	}

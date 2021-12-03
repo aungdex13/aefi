@@ -938,9 +938,9 @@ foreach ($aecode as $value) {
                           <input type="text" id="time_of_vaccination1" name="time_of_vaccination[]" class="form-control">
                         </td>
                         <td>
-                          <input type="radio" id="symptom1_1" name="symptom1[]" value="1" data-toggle="modal" data-target="#Symptom1">
+                          <input type="radio" id="symptom1_1" name="symptom_status[0]" value="1" data-toggle="modal" data-target="#Symptom1">
                           <label for="age1"> : มีอาการ</label><br>
-                          <input type="radio" id="symptom1_2" name="symptom1[]" value="0"  data-toggle="modal" data-target="#nonSymptom1">
+                          <input type="radio" id="symptom1_2" name="symptom_status[0]" value="0"  data-toggle="modal" data-target="#nonSymptom1">
                           <label for="age2"> : ไม่มีอาการ</label><br>
                         </td>
                         <td>
@@ -1489,6 +1489,7 @@ foreach ($aecode as $value) {
   $(document).ready(function() {
     $(document).on("click", ".classAdd", function() { //
       var rowCount = $('.data-contact-person').length + 1;
+      var rowCountSyntom = $('.data-contact-person').length;
       var contactdiv = '<tr class="data-contact-person">' +
         '<td>' +
         '<select type="text" id="name_of_vaccine1" name="name_of_vaccine[]' + rowCount + '" class="form-control">' +
@@ -1544,9 +1545,9 @@ foreach ($aecode as $value) {
         '<input type="text" id="time_of_vaccination1' + rowCount + '" name="time_of_vaccination[]' + rowCount + '" class="form-control">' +
         '</td>' +
         '<td>' +
-          '<input type="radio" id="symptom' + rowCount + '_1" name="symptomstatus' + rowCount + '[]" value="1" data-toggle="modal" data-target="#Symptom' + rowCount + '">' +
+          '<input type="radio" id="symptom' + rowCount + '_1" name="symptom_status[' + rowCountSyntom + ']" value="1" data-toggle="modal" data-target="#Symptom' + rowCount + '">' +
           '<label for="symptom1"> : มีอาการ</label><br>' +
-          '<input type="radio" id="symptom' + rowCount + '_2" name="symptomstatus' + rowCount + '[]" value="0" data-toggle="modal" data-target="#nonSymptom' + rowCount + '">' +
+          '<input type="radio" id="symptom' + rowCount + '_2" name="symptom_status[' + rowCountSyntom + ']" value="0" data-toggle="modal" data-target="#nonSymptom' + rowCount + '">' +
           '<label for="symptom2"> : ไม่มีอาการ</label><br>' +
           '<!-- Modal_1 -->'+
 '<div class="modal fade" id="Symptom' + rowCount + '" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">'+

@@ -259,7 +259,11 @@ foreach ($aecode as $value) {
                           <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                           </div>
-                          <input type="text" name="birthdate" class="form-control pull-right" id="datepicker_bdate" readonly>
+                          @php
+                             $var = $data[0]->birthdate;
+                             $date = str_replace('-', '/', $var); 
+                          @endphp
+                          <input type="text" name="birthdate" class="form-control pull-right" id="datepicker_bdate" value="{{ date('d/m/Y', strtotime($date)) }}" readonly>
                         </div>
                       </div>
                     </div>
@@ -1047,9 +1051,9 @@ foreach ($aecode as $value) {
                   <input type="text" id="time_of_vaccination1" name="time_of_vaccination[]" class="form-control">
                 </td>
                 <td>
-                  <input type="radio" id="symptom1_1" name="symptom1[]" value="1" data-toggle="modal" data-target="#Symptom1">
+                  <input type="radio" id="symptom1_1" name="symptom_status[0]" value="1" data-toggle="modal" data-target="#Symptom1">
                   <label for="age1"> : มีอาการ</label><br>
-                  <input type="radio" id="symptom1_2" name="symptom1[]" value="0"  data-toggle="modal" data-target="#nonSymptom1">
+                  <input type="radio" id="symptom1_2" name="symptom_status[0]" value="0"  data-toggle="modal" data-target="#nonSymptom1">
                   <label for="age2"> : ไม่มีอาการ</label><br>
                 </td>
                 <td>
@@ -1091,8 +1095,10 @@ foreach ($aecode as $value) {
               <?php 
               $i = 0;
               foreach($datavac as $value) : 
+              
               $i++;
               ?>
+              
               <tr class="data-contact-person">
                 <td>
                   <select type="text" id="name_of_vaccine" name="name_of_vaccine[]" class="form-control">
@@ -1155,19 +1161,22 @@ foreach ($aecode as $value) {
                   <input type="text" id="time_of_vaccination1" name="time_of_vaccination[]" value="{{isset($value->vaccination_site) ? $value->time_of_vaccination:""}}" class="form-control">
                 </td>
                 <td>
-                  <input type="radio" id="symptom1_1{{isset($value->id) ? $value->id:""}}" name="symptom1{{isset($value->id) ? $value->id:""}}[]" value="1" data-toggle="modal" data-target="#Symptom1{{isset($value->id) ? $value->id:""}}" @if($value->symptomstatus == '1')
+                  <input type="radio" id="symptom1_1{{isset($value->id) ? $value->id:""}}" name="symptom_status[{{$i-1}}]" value="1" data-toggle="modal" data-target="#Symptom1{{isset($value->id) ? $value->id:""}}" 
+                  @if($value->symptom_status == '1')
                   {{'checked'}}
                   @else
                   
                   @endif>
                   <label > : มีอาการ</label><br>
-                  <input type="radio" id="symptom1_2{{isset($value->id) ? $value->id:""}}" name="symptom1{{isset($value->id) ? $value->id:""}}[]" value="0"  data-toggle="modal" data-target="#nonSymptom1" @if($value->symptomstatus == '0')
+                  <input type="radio" id="symptom1_2{{isset($value->id) ? $value->id:""}}" name="symptom_status[{{$i-1}}]" value="0"  data-toggle="modal" data-target="#nonSymptom1" 
+                  @if($value->symptom_status == '0')
                   {{'checked'}}
                   @else
+                  
                   @endif>
                   <label > : ไม่มีอาการ</label><br>
                   <!-- Modal_1 -->
-<div class="modal fade" id="Symptom1{{isset($value->id) ? $value->id:""}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal fade" id="Symptom1{{isset($value->id) ? $value->id:""}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
@@ -1921,7 +1930,7 @@ foreach ($aecode as $value) {
                     <div class="form-group">
                       <div class="col-md-2">
                         <label>
-                          <input type="radio" name="c_seriousness_of_the_symptoms[]"  id="seriousness_of_the_symptoms" value="1"  @if ($value->seriousness_of_the_symptoms == '1')
+                          <input type="radio" name="c_seriousness_of_the_symptoms[{{$i-1}}]"  id="seriousness_of_the_symptoms" value="1"  @if ($value->seriousness_of_the_symptoms == '1')
                           {{ "checked" }}
                           @endif>
                           ไม่ร้ายแรง
@@ -1929,7 +1938,7 @@ foreach ($aecode as $value) {
                       </div>
                       <div class="col-md-2">
                         <label>
-                          <input type="radio" name="c_seriousness_of_the_symptoms[]" id="seriousness_of_the_symptoms" value="2" @if ($value->seriousness_of_the_symptoms == '2')
+                          <input type="radio" name="c_seriousness_of_the_symptoms[{{$i-1}}]" id="seriousness_of_the_symptoms" value="2" @if ($value->seriousness_of_the_symptoms == '2')
                           {{ "checked" }}
                           @endif>
                           ร้ายแรง
@@ -2024,7 +2033,7 @@ foreach ($aecode as $value) {
                     <div class="form-group">
                       <div class="col-md-4">
                         <label>
-                          <input type="radio" id="c_patient_status1" name="c_patient_status[]" value="1"  @if ($value->patient_status == '1')
+                          <input type="radio" id="c_patient_status1" name="c_patient_status[{{$i-1}}]" value="1"  @if ($value->patient_status == '1')
                           {{ "checked" }}
                           @endif>
                           หาย
@@ -2032,7 +2041,7 @@ foreach ($aecode as $value) {
                       </div>
                       <div class="col-md-4">
                         <label>
-                          <input type="radio" id="c_patient_status1" name="c_patient_status[]" value="2" @if ($value->patient_status == '2')
+                          <input type="radio" id="c_patient_status1" name="c_patient_status[{{$i-1}}]" value="2" @if ($value->patient_status == '2')
                           {{ "checked" }}
                           @endif>
                           หายโดยมีร่องรอย
@@ -2040,7 +2049,7 @@ foreach ($aecode as $value) {
                       </div>
                       <div class="col-md-4">
                         <label>
-                          <input type="radio" id="c_patient_status1" name="c_patient_status[]" value="3" @if ($value->patient_status == '3')
+                          <input type="radio" id="c_patient_status1" name="c_patient_status[{{$i-1}}]" value="3" @if ($value->patient_status == '3')
                           {{ "checked" }}
                           @endif>
                           อาการดีขึ้นแต่ยังไม่หาย
@@ -2048,7 +2057,7 @@ foreach ($aecode as $value) {
                       </div>
                       <div class="col-md-4">
                         <label>
-                          <input type="radio" id="c_patient_status1" name="c_patient_status[]" value="4" @if ($value->patient_status == '4')
+                          <input type="radio" id="c_patient_status1" name="c_patient_status[{{$i-1}}]" value="4" @if ($value->patient_status == '4')
                           {{ "checked" }}
                           @endif>
                           ไม่หาย
@@ -2056,7 +2065,7 @@ foreach ($aecode as $value) {
                       </div>
                       <div class="col-md-4">
                         <label>
-                          <input type="radio" id="c_patient_status1" name="c_patient_status[]" value="5" @if ($value->patient_status == '5')
+                          <input type="radio" id="c_patient_status1" name="c_patient_status[{{$i-1}}]" value="5" @if ($value->patient_status == '5')
                           {{ "checked" }}
                           @endif>
                           ไม่ทราบ
@@ -2064,7 +2073,7 @@ foreach ($aecode as $value) {
                       </div>
                       <div class="col-md-4">
                         <label>
-                          <input type="radio" id="c_patient_status1" name="c_patient_status[]" value="6" @if ($value->patient_status == '6')
+                          <input type="radio" id="c_patient_status1" name="c_patient_status[{{$i-1}}]" value="6" @if ($value->patient_status == '6')
                           {{ "checked" }}
                           @endif>
                           เสียชีวิต
@@ -2092,7 +2101,7 @@ foreach ($aecode as $value) {
                   <div class="col-lg-12"  id="funeral_{{$i}}">
                     <div class="col-md-2">
                       <label>
-                        <input type="radio" id="funeral" name="c_funeral[]" value="1"  @if($value->funeral == '1')
+                        <input type="radio" id="funeral" name="c_funeral[{{$i-1}}]" value="1"  @if($value->funeral == '1')
                         {{ "checked" }}
                         @endif>
                         ไม่มี
@@ -2100,7 +2109,7 @@ foreach ($aecode as $value) {
                     </div>
                     <div class="col-md-2">
                       <label>
-                        <input type="radio" id="funeral" name="c_funeral[]" value="2" @if($value->funeral == '2')
+                        <input type="radio" id="funeral" name="c_funeral[{{$i-1}}]" value="2" @if($value->funeral == '2')
                         {{ "checked" }}
                         @endif>
                         ไม่ทราบ
@@ -2108,7 +2117,7 @@ foreach ($aecode as $value) {
                     </div>
                     <div class="col-md-2">
                       <label>
-                        <input type="radio" name="c_funeral[]" id="funeral" value="3" @if($value->funeral == '3')
+                        <input type="radio" name="c_funeral[{{$i-1}}]" id="funeral" value="3" @if($value->funeral == '3')
                         {{ "checked" }}
                         @endif>
                         ร้ายแรง
@@ -2737,7 +2746,8 @@ $(function(){
   $(document).ready(function() {
     $(document).on("click", ".classAdd", function() { //
       var rowCount = $('.data-contact-person').length + 1;
-      alert(rowCount);
+      var rowCountSyntom = $('.data-contact-person').length;
+      // alert(rowCount);
       var contactdiv = '<tr class="data-contact-person">' +
         '<td>' +
         '<select type="text" id="name_of_vaccine1" name="name_of_vaccine[]' + rowCount + '" class="form-control">' +
@@ -2794,9 +2804,9 @@ $(function(){
         '<input type="text" id="time_of_vaccination1' + rowCount + '" name="time_of_vaccination[]' + rowCount + '" class="form-control">' +
         '</td>' +
         '<td>' +
-          '<input type="radio" id="symptom' + rowCount + '_1" name="symptom' + rowCount + '[]" value="1" data-toggle="modal" data-target="#Symptom' + rowCount + '">' +
+          '<input type="radio" id="symptom' + rowCount + '_1" name="symptom_status[' + rowCountSyntom + ']" value="1" data-toggle="modal" data-target="#Symptom' + rowCount + '">' +
           '<label for="symptom1"> : มีอาการ</label><br>' +
-          '<input type="radio" id="symptom' + rowCount + '_2" name="symptom' + rowCount + '[]" value="0">' +
+          '<input type="radio" id="symptom' + rowCount + '_2" name="symptom_status[' + rowCountSyntom + ']" value="0">' +
           '<label for="symptom2"> : ไม่มีอาการ</label><br>' +
           '<!-- Modal_1 -->'+
 '<div class="modal fade" id="Symptom' + rowCount + '" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">'+
