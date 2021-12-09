@@ -19,9 +19,8 @@
 			$timenow =  now()->format('H:m:s') ;
 			// dd($timenow);
 			$listvac_arr =  $this->listvac_arr();
-			$count_all_sinovac = Cache::remember('month_dec', 1020, function() {
+			$count_all_sinovac = Cache::remember('count_sinovac', 1020, function() {
 				return DB::table('aefi_form_1')
-				
 				});
 			return view('AEFI.Apps.dashboardcovid',compact(
 			 'listProvince',
