@@ -104,6 +104,7 @@
 									$chest_pain = $req ->input ('chest_pain');
 									$myocarditis = $req ->input ('myocarditis');
 									$heart_failure = $req ->input ('heart_failure');
+									// dd($chest_pain);
 									$pericarditis = $req ->input ('pericarditis');
 									$sudden_cardiac_arrest = $req ->input ('sudden_cardiac_arrest');
 									$covid_19 = $req ->input ('covid_19');
@@ -215,7 +216,7 @@
 									];
 									$x++;
 									}
-									//   dd($data_vac);
+								    //  dd($heart_failure);
 									$res2= DB::table('aefi_form_1_vac')->insert($data_vac);
 						}else {
 							$name_of_vaccine = $req ->input('name_of_vaccine');

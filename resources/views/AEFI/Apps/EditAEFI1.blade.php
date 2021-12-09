@@ -1200,54 +1200,54 @@ foreach ($aecode as $value) {
                             @endif>
                             Rash
                           </label>
-                          <input type="text" id="rash{{$i}}" name="rash[]"  value="{{isset($value->rash) ? $value->rash:""}}" hidden>
+                          <input type="text" id="rash{{$i}}" name="rash[0]"  value="{{isset($value->rash) ? $value->rash:""}}" hidden>
                         </div>
                         <div class="col-md-4" id="erythema_{{$i}}">
                           <label>
-                            <input type="checkbox" id="erythema" name="c_erythema[]" value="0028" @if ($value->erythema == '0028')
+                            <input type="checkbox" id="erythema" name="c_erythema[{{$i-1}}]" value="0028" @if ($value->erythema == '0028')
                             {{ "checked" }}
                             @endif>
                             Erythema
                           </label>
-                          <input type="text" id="erythema{{$i}}" name="erythema[]"  value="{{isset($value->erythema) ? $value->erythema:""}}" hidden>
+                          <input type="text" id="erythema{{$i}}" name="erythema[{{$i-1}}]"  value="{{isset($value->erythema) ? $value->erythema:""}}" hidden>
                         </div>
                         <div class="col-md-4" id="urticaria_{{$i}}">
                           <label>
-                            <input type="checkbox" id="urticaria" name="c_urticaria[]" value="0044" @if ($value->urticaria == '0044')
+                            <input type="checkbox" id="urticaria" name="c_urticaria[{{$i-1}}]" value="0044" @if ($value->urticaria == '0044')
                             {{ "checked" }}
                             @endif>
                             Urticaria
                           </label>
-                          <input type="text" id="urticaria{{$i}}" name="urticaria[]"  value="{{isset($value->urticaria) ? $value->urticaria:""}}" hidden>
+                          <input type="text" id="urticaria{{$i}}" name="urticaria[{{$i-1}}]"  value="{{isset($value->urticaria) ? $value->urticaria:""}}" hidden>
                         </div>
                       </div>
                       <div class="form-group">
                         <div class="col-md-4" id="itching_{{$i}}">
                           <label>
-                            <input type="checkbox" id="itching" name="c_itching[]" value="0026" @if ($value->itching == '0026')
+                            <input type="checkbox" id="itching" name="c_itching[{{$i-1}}]" value="0026" @if ($value->itching == '0026')
                             {{ "checked" }}
                             @endif>
                             Itching
                           </label>
-                          <input type="text" id="itching{{$i}}" name="itching[]"  value="{{isset($value->itching) ? $value->itching:""}}" hidden>
+                          <input type="text" id="itching{{$i}}" name="itching[{{$i-1}}]"  value="{{isset($value->itching) ? $value->itching:""}}" hidden>
                         </div>
                         <div class="col-md-4" id="edema_{{$i}}">
                           <label>
-                            <input type="checkbox" id="edema" name="c_edema[]" value="0003A" @if ($value->edema == '0003A')
+                            <input type="checkbox" id="edema" name="c_edema[{{$i-1}}]" value="0003A" @if ($value->edema == '0003A')
                             {{ "checked" }}
                             @endif>
                             Edema
                           </label>
-                          <input type="text" id="edema{{$i}}" name="edema[]"  value="{{isset($value->edema) ? $value->edema:""}}" hidden>
+                          <input type="text" id="edema{{$i}}" name="edema[{{$i-1}}]"  value="{{isset($value->edema) ? $value->edema:""}}" hidden>
                         </div>
                         <div class="col-md-5" id="angioedema_{{$i}}">
                           <label>
-                            <input type="checkbox" id="angioedema" name="c_angioedema[]" value="0003" @if ($value->angioedema == '0003')
+                            <input type="checkbox" id="angioedema" name="c_angioedema[{{$i-1}}]" value="0003" @if ($value->angioedema == '0003')
                             {{ "checked" }}
                             @endif>
                             Angioedema
                           </label>
-                          <input type="text" id="angioedema{{$i}}" name="angioedema[]"  value="{{isset($value->angioedema) ? $value->angioedema:""}}" hidden>
+                          <input type="text" id="angioedema{{$i}}" name="angioedema[{{$i-1}}]"  value="{{isset($value->angioedema) ? $value->angioedema:""}}" hidden>
                         </div>
                       </div>
                     </div>
@@ -1260,70 +1260,70 @@ foreach ($aecode as $value) {
                       <div class="form-group">
                         <div class="col-md-4" id="fainting_{{$i}}">
                           <label>
-                            <input type="checkbox" id="fainting" name="c_fainting[]" value="1" @if ($value->fainting == '1')
+                            <input type="checkbox" id="fainting" name="c_fainting[{{$i-1}}]" value="1" @if ($value->fainting == '1')
                             {{ "checked" }}
                             @endif>
                             Fainting
                           </label>
-                          <input type="text" id="fainting{{$i}}" name="fainting[]"  value="{{isset($value->fainting) ? $value->fainting:""}}" hidden>
+                          <input type="text" id="fainting{{$i}}" name="fainting[{{$i-1}}]"  value="{{isset($value->fainting) ? $value->fainting:""}}" hidden>
                         </div>
                         <div class="col-md-6" id="hyperventilation_{{$i}}">
                           <label>
-                            <input type="checkbox" id="hyperventilation" name="c_hyperventilation[]" value="0517" @if ($value->hyperventilation == '0517')
+                            <input type="checkbox" id="hyperventilation" name="c_hyperventilation[{{$i-1}}]" value="0517" @if ($value->hyperventilation == '0517')
                             {{ "checked" }}
                             @endif>
                             Hyperventilation
                           </label>
-                          <input type="text" id="hyperventilation{{$i}}" name="hyperventilation[]"  value="{{isset($value->hyperventilation) ? $value->hyperventilation:""}}" hidden>
+                          <input type="text" id="hyperventilation{{$i}}" name="hyperventilation[{{$i-1}}]"  value="{{isset($value->hyperventilation) ? $value->hyperventilation:""}}" hidden>
                         </div>
                       </div>
                       <div class="form-group">
                         <div class="col-md-4" id="syncope_{{$i}}">
                           <label>
-                            <input type="checkbox" id="syncope" name="c_syncope[]" value="0223" @if ($value->syncope == '0223')
+                            <input type="checkbox" id="syncope" name="c_syncope[{{$i-1}}]" value="0223" @if ($value->syncope == '0223')
                             {{ "checked" }}
                             @endif>
                             Syncope
                           </label>
-                          <input type="text" id="syncope{{$i}}" name="syncope[]"  value="{{isset($value->syncope) ? $value->syncope:""}}" hidden>
+                          <input type="text" id="syncope{{$i}}" name="syncope[{{$i-1}}]"  value="{{isset($value->syncope) ? $value->syncope:""}}" hidden>
                         </div>
                         <div class="col-md-4" id="headche_{{$i}}">
                           <label>
-                            <input type="checkbox" id="headche" name="c_headche[]" value="1" @if ($value->headche == '1')
+                            <input type="checkbox" id="headche" name="c_headche[{{$i-1}}]" value="1" @if ($value->headche == '1')
                             {{ "checked" }}
                             @endif>
                             Headche
                           </label>
-                          <input type="text" id="headche{{$i}}" name="headche[]"  value="{{isset($value->headche) ? $value->headche:""}}" hidden>
+                          <input type="text" id="headche{{$i}}" name="headche[{{$i-1}}]"  value="{{isset($value->headche) ? $value->headche:""}}" hidden>
                         </div>
                         <div class="col-md-4" id="dizziness_{{$i}}">
                           <label>
-                            <input type="checkbox" id="dizziness" name="c_dizziness[]" value="0101" @if ($value->dizziness == '0101')
+                            <input type="checkbox" id="dizziness" name="c_dizziness[{{$i-1}}]" value="0101" @if ($value->dizziness == '0101')
                             {{ "checked" }}
                             @endif>
                             Dizziness
                           </label>
-                          <input type="text" id="dizziness{{$i}}" name="dizziness[]" value="{{isset($value->dizziness) ? $value->dizziness:""}}" hidden>
+                          <input type="text" id="dizziness{{$i}}" name="dizziness[{{$i-1}}]" value="{{isset($value->dizziness) ? $value->dizziness:""}}" hidden>
                         </div>
                       </div>
                       <div class="form-group">
                         <div class="col-md-4" id="fatigue_{{$i}}">
                           <label>
-                            <input type="checkbox" id="fatigue" name="c_fatigue[]" value="0724" @if ($value->fatigue == '0724')
+                            <input type="checkbox" id="fatigue" name="c_fatigue[{{$i-1}}]" value="0724" @if ($value->fatigue == '0724')
                             {{ "checked" }}
                             @endif>
                             Fatigue
                           </label>
-                          <input type="text" id="fatigue{{$i}}" name="fatigue[]"  value="{{isset($value->fatigue) ? $value->fatigue:""}}" hidden>
+                          <input type="text" id="fatigue{{$i}}" name="fatigue[{{$i-1}}]"  value="{{isset($value->fatigue) ? $value->fatigue:""}}" hidden>
                         </div>
                         <div class="col-md-4" id="malaise_{{$i}}">
                           <label>
-                            <input type="checkbox" id="malaise" name="c_malaise[]" value="0728" @if ($value->malaise == '0728')
+                            <input type="checkbox" id="malaise" name="c_malaise[{{$i-1}}]" value="0728" @if ($value->malaise == '0728')
                             {{ "checked" }}
                             @endif>
                             Malaise
                           </label>
-                          <input type="text" id="malaise{{$i}}" name="malaise[]"  value="{{isset($value->malaise) ? $value->malaise:""}}" hidden>
+                          <input type="text" id="malaise{{$i}}" name="malaise[{{$i-1}}]"  value="{{isset($value->malaise) ? $value->malaise:""}}" hidden>
                         </div>
                       </div>
                     </div>
@@ -1333,50 +1333,50 @@ foreach ($aecode as $value) {
                       <div class="form-group">
                         <div class="col-md-4" id="dyspepsia_{{$i}}">
                           <label>
-                            <input type="checkbox" id="dyspepsia" name="c_dyspepsia[]" value="0279" @if ($value->dyspepsia == '0279')
+                            <input type="checkbox" id="dyspepsia" name="c_dyspepsia[{{$i-1}}]" value="0279" @if ($value->dyspepsia == '0279')
                             {{ "checked" }}
                             @endif>
                             Dyspepsia
                           </label>
-                          <input type="text" id="dyspepsia{{$i}}" name="dyspepsia[]" value="{{isset($value->dyspepsia) ? $value->dyspepsia:""}}" hidden>
+                          <input type="text" id="dyspepsia{{$i}}" name="dyspepsia[{{$i-1}}]" value="{{isset($value->dyspepsia) ? $value->dyspepsia:""}}" hidden>
                         </div>
                         <div class="col-md-4" id="diarrhea_{{$i}}">
                           <label>
-                            <input type="checkbox" id="diarrhea" name="c_diarrhea[]" value="1" @if ($value->diarrhea == '1')
+                            <input type="checkbox" id="diarrhea" name="c_diarrhea[{{$i-1}}]" value="1" @if ($value->diarrhea == '1')
                             {{ "checked" }}
                             @endif>
                             Diarrhea
                           </label>
-                          <input type="text" id="diarrhea{{$i}}" name="diarrhea[]" value="{{isset($value->diarrhea) ? $value->diarrhea:""}}" hidden>
+                          <input type="text" id="diarrhea{{$i}}" name="diarrhea[{{$i-1}}]" value="{{isset($value->diarrhea) ? $value->diarrhea:""}}" hidden>
                         </div>
                         <div class="col-md-4" id="nausea_{{$i}}">
                           <label>
-                            <input type="checkbox" id="nausea" name="c_nausea[]" value="0308" @if ($value->nausea == '0308')
+                            <input type="checkbox" id="nausea" name="c_nausea[{{$i-1}}]" value="0308" @if ($value->nausea == '0308')
                             {{ "checked" }}
                             @endif>
                             Nausea
                           </label>
-                          <input type="text" id="nausea{{$i}}" name="nausea[]" value="{{isset($value->nausea) ? $value->nausea:""}}" hidden>
+                          <input type="text" id="nausea{{$i}}" name="nausea[{{$i-1}}]" value="{{isset($value->nausea) ? $value->nausea:""}}" hidden>
                         </div>
                       </div>
                       <div class="form-group">
                         <div class="col-md-4" id="vomiting_{{$i}}">
                           <label>
-                            <input type="checkbox" id="vomiting" name="c_vomiting[]" value="0228" @if ($value->vomiting == '0228')
+                            <input type="checkbox" id="vomiting" name="c_vomiting[{{$i-1}}]" value="0228" @if ($value->vomiting == '0228')
                             {{ "checked" }}
                             @endif>
                             Vomiting
                           </label>
-                          <input type="text" id="vomiting{{$i}}" name="vomiting[]" value="{{isset($value->vomiting) ? $value->vomiting:""}}" hidden>
+                          <input type="text" id="vomiting{{$i}}" name="vomiting[{{$i-1}}]" value="{{isset($value->vomiting) ? $value->vomiting:""}}" hidden>
                         </div>
                         <div class="col-md-6" id="abdominal_pain_{{$i}}">
                           <label>
-                            <input type="checkbox" id="abdominal_pain" name="c_abdominal_pain[]" value="0268" @if ($value->abdominal_pain == '0268')
+                            <input type="checkbox" id="abdominal_pain" name="c_abdominal_pain[{{$i-1}}]" value="0268" @if ($value->abdominal_pain == '0268')
                             {{ "checked" }}
                             @endif>
                             Abdominal pain
                           </label>
-                          <input type="text" id="abdominal_pain{{$i}}" name="abdominal_pain[]" value="{{isset($value->abdominal_pain) ? $value->abdominal_pain:""}}" hidden>
+                          <input type="text" id="abdominal_pain{{$i}}" name="abdominal_pain[{{$i-1}}]" value="{{isset($value->abdominal_pain) ? $value->abdominal_pain:""}}" hidden>
                         </div>
                       </div>
                     </div>
@@ -1386,21 +1386,21 @@ foreach ($aecode as $value) {
                       <div class="form-group">
                         <div class="col-md-4" id="arthalgia_{{$i}}">
                           <label>
-                            <input type="checkbox" id="arthalgia" name="c_arthalgia[]" value="1" @if ($value->arthalgia == '1')
+                            <input type="checkbox" id="arthalgia" name="c_arthalgia[{{$i-1}}]" value="1" @if ($value->arthalgia == '1')
                             {{ "checked" }}
                             @endif>
                             Arthalgia
                           </label>
-                          <input type="text" id="arthalgia{{$i}}" name="arthalgia[]" value="{{isset($value->arthalgia) ? $value->arthalgia:""}}" hidden>
+                          <input type="text" id="arthalgia{{$i}}" name="arthalgia[{{$i-1}}]" value="{{isset($value->arthalgia) ? $value->arthalgia:""}}" hidden>
                         </div>
                         <div class="col-md-4" id="myalgia_{{$i}}">
                           <label>
-                            <input type="checkbox" id="myalgia" name="c_myalgia[]" value="0072" @if ($value->myalgia == '0072')
+                            <input type="checkbox" id="myalgia" name="c_myalgia[{{$i-1}}]" value="0072" @if ($value->myalgia == '0072')
                             {{ "checked" }}
                             @endif>
                             Myalgia
                           </label>
-                          <input type="text" id="myalgia{{$i}}" name="myalgia[]" value="{{isset($value->myalgia) ? $value->myalgia:""}}" hidden>
+                          <input type="text" id="myalgia{{$i}}" name="myalgia[{{$i-1}}]" value="{{isset($value->myalgia) ? $value->myalgia:""}}" hidden>
                         </div>
                       </div>
                     </div>
@@ -1417,12 +1417,12 @@ foreach ($aecode as $value) {
                       <div class="form-group">
                         <div class="col-md-5" id="fever38c_{{$i}}">
                           <label>
-                            <input type="checkbox" id="fever38c" name="c_fever38c[]" value="0725" @if ($value->fever38c == '0725')
+                            <input type="checkbox" id="fever38c" name="c_fever38c[{{$i-1}}]" value="0725" @if ($value->fever38c == '0725')
                             {{ "checked" }}
                             @endif>
                             Fever >= 38 C
                           </label>
-                          <input type="text" id="fever38c{{$i}}" name="fever38c[]" value="{{isset($value->fever38c) ? $value->fever38c:""}}" hidden>
+                          <input type="text" id="fever38c{{$i}}" name="fever38c[{{$i-1}}]" value="{{isset($value->fever38c) ? $value->fever38c:""}}" hidden>
                         </div>
                       </div>
                     </div>
@@ -1437,59 +1437,59 @@ foreach ($aecode as $value) {
                         <div class="form-group">
                           <div class="col-md-12" id="swelling_at_the_injection_{{$i}}">
                             <label>
-                              <input type="checkbox" id="swelling_at_the_injection" name="c_swelling_at_the_injection[]" value="1" @if ($value->swelling_at_the_injection == '1')
+                              <input type="checkbox" id="swelling_at_the_injection" name="c_swelling_at_the_injection[{{$i-1}}]" value="1" @if ($value->swelling_at_the_injection == '1')
                               {{ "checked" }}
                               @endif>
                               บวมบริเวณที่ฉีดนานเกิน3วัน
                             </label>
-                            <input type="text" id="swelling_at_the_injection{{$i}}" name="swelling_at_the_injection[]" value="{{isset($value->swelling_at_the_injection) ? $value->swelling_at_the_injection:""}}" hidden>
+                            <input type="text" id="swelling_at_the_injection{{$i}}" name="swelling_at_the_injection[{{$i-1}}]" value="{{isset($value->swelling_at_the_injection) ? $value->swelling_at_the_injection:""}}" hidden>
                           </div>
                           <div class="col-md-12" id="swelling_beyond_nearest_joint_{{$i}}">
                             <label>
-                              <input type="checkbox" id="swelling_beyond_nearest_joint" name="c_swelling_beyond_nearest_joint[]" value="1" @if ($value->swelling_beyond_nearest_joint == '1')
+                              <input type="checkbox" id="swelling_beyond_nearest_joint" name="c_swelling_beyond_nearest_joint[{{$i-1}}]" value="1" @if ($value->swelling_beyond_nearest_joint == '1')
                               {{ "checked" }}
                               @endif>
                               บวมลามไปถึงข้อที่ใกล้ที่สุด
                             </label>
-                            <input type="text" id="swelling_beyond_nearest_joint{{$i}}" name="swelling_beyond_nearest_joint[]" value="{{isset($value->swelling_beyond_nearest_joint) ? $value->swelling_beyond_nearest_joint:""}}" hidden>
+                            <input type="text" id="swelling_beyond_nearest_joint{{$i}}" name="swelling_beyond_nearest_joint[{{$i-1}}]" value="{{isset($value->swelling_beyond_nearest_joint) ? $value->swelling_beyond_nearest_joint:""}}" hidden>
                           </div>
                           <div class="col-md-12" id="lymphadenopathy_{{$i}}">
                             <label>
-                              <input type="checkbox" id="lymphadenopathy" name="c_lymphadenopathy[]" value="0577" @if ($value->lymphadenopathy == '0577')
+                              <input type="checkbox" id="lymphadenopathy" name="c_lymphadenopathy[{{$i-1}}]" value="0577" @if ($value->lymphadenopathy == '0577')
                               {{ "checked" }}
                               @endif>
                               Lymphadenopathy
                             </label>
-                            <input type="text" id="lymphadenopathy{{$i}}" name="lymphadenopathy[]" value="{{isset($value->lymphadenopathy) ? $value->lymphadenopathy:""}}" hidden>
+                            <input type="text" id="lymphadenopathy{{$i}}" name="lymphadenopathy[{{$i-1}}]" value="{{isset($value->lymphadenopathy) ? $value->lymphadenopathy:""}}" hidden>
                           </div>
                           <div class="col-md-12" id="lymphadenitis_{{$i}}">
                             <label>
-                              <input type="checkbox" id="lymphadenitis" name="c_lymphadenitis[]" value="0577D" @if ($value->lymphadenitis == '0577D')
+                              <input type="checkbox" id="lymphadenitis" name="c_lymphadenitis[{{$i-1}}]" value="0577D" @if ($value->lymphadenitis == '0577D')
                               {{ "checked" }}
                               @endif>
                               Lymphadenitis
                             </label>
-                            <input type="text" id="lymphadenitis{{$i}}" name="lymphadenitis[]" value="{{isset($value->lymphadenitis) ? $value->lymphadenitis:""}}" hidden>
+                            <input type="text" id="lymphadenitis{{$i}}" name="lymphadenitis[{{$i-1}}]" value="{{isset($value->lymphadenitis) ? $value->lymphadenitis:""}}" hidden>
                           </div>
                         </div>
                         <div class="form-group">
                           <div class="col-md-6" id="sterile_abscess_{{$i}}">
                             <label>
-                              <input type="checkbox" id="sterile_abscess" name="c_sterile_abscess[]" value="0051" @if ($value->sterile_abscess == '0051')
+                              <input type="checkbox" id="sterile_abscess" name="c_sterile_abscess[{{$i-1}}]" value="0051" @if ($value->sterile_abscess == '0051')
                               {{ "checked" }}
                               @endif>
                               Sterile abscess
                             </label>
-                            <input type="text" id="sterile_abscess{{$i}}" name="sterile_abscess[]" value="{{isset($value->sterile_abscess) ? $value->sterile_abscess:""}}" hidden>
+                            <input type="text" id="sterile_abscess{{$i}}" name="sterile_abscess[{{$i-1}}]" value="{{isset($value->sterile_abscess) ? $value->sterile_abscess:""}}" hidden>
                           </div>
                           <div class="col-md-6" id="bacterial_abscess_{{$i}}">
                             <label>
-                              <input type="checkbox" id="bacterial_abscess" name="c_bacterial_abscess[]" value="1" @if ($value->bacterial_abscess == '1')
+                              <input type="checkbox" id="bacterial_abscess" name="c_bacterial_abscess[{{$i-1}}]" value="1" @if ($value->bacterial_abscess == '1')
                               {{ "checked" }}
                               @endif>
                               Bacterial abscess
                             </label>
-                            <input type="text" id="bacterial_abscess{{$i}}" name="bacterial_abscess[]" value="{{isset($value->bacterial_abscess) ? $value->bacterial_abscess:""}}" hidden>
+                            <input type="text" id="bacterial_abscess{{$i}}" name="bacterial_abscess[{{$i-1}}]" value="{{isset($value->bacterial_abscess) ? $value->bacterial_abscess:""}}" hidden>
                           </div>
                         </div>
                       </div>
@@ -1500,50 +1500,50 @@ foreach ($aecode as $value) {
                       <div class="form-group">
                         <div class="col-md-12" id="febrile_convulsion_{{$i}}">
                           <label>
-                            <input type="checkbox" id="febrile_convulsion" name="c_febrile_convulsion[]" value="1" @if ($value->febrile_convulsion == '1')
+                            <input type="checkbox" id="febrile_convulsion" name="c_febrile_convulsion[{{$i-1}}]" value="1" @if ($value->febrile_convulsion == '1')
                             {{ "checked" }}
                             @endif>
                             Febrile convulsion
                           </label>
-                          <input type="text" id="febrile_convulsion{{$i}}" name="febrile_convulsion[]" value="{{isset($value->febrile_convulsion) ? $value->febrile_convulsion:""}}" hidden>
+                          <input type="text" id="febrile_convulsion{{$i}}" name="febrile_convulsion[{{$i-1}}]" value="{{isset($value->febrile_convulsion) ? $value->febrile_convulsion:""}}" hidden>
                         </div>
                         <div class="col-md-12" id="afebrile_convulsion_{{$i}}">
                           <label>
-                            <input type="checkbox" id="afebrile_convulsion" name="c_afebrile_convulsion[]" value="1" @if ($value->afebrile_convulsion == '1')
+                            <input type="checkbox" id="afebrile_convulsion" name="c_afebrile_convulsion[{{$i-1}}]" value="1" @if ($value->afebrile_convulsion == '1')
                             {{ "checked" }}
                             @endif>
                             Afebrile convulsion
                           </label>
-                          <input type="text" id="afebrile_convulsion{{$i}}" name="afebrile_convulsion[]" value="{{isset($value->afebrile_convulsion) ? $value->afebrile_convulsion:""}}" hidden>
+                          <input type="text" id="afebrile_convulsion{{$i}}" name="afebrile_convulsion[{{$i-1}}]" value="{{isset($value->afebrile_convulsion) ? $value->afebrile_convulsion:""}}" hidden>
                         </div>
                         <div class="col-md-12" id="encephalopathy_{{$i}}">
                           <label>
-                            <input type="checkbox" id="encephalopathy" name="c_encephalopathy[]" value="0105" @if ($value->encephalopathy == '0105')
+                            <input type="checkbox" id="encephalopathy" name="c_encephalopathy[{{$i-1}}]" value="0105" @if ($value->encephalopathy == '0105')
                             {{ "checked" }}
                             @endif>
                             Encephalopathy/Encephalitis
                           </label>
-                          <input type="text" id="encephalopathy{{$i}}" name="encephalopathy[]" value="{{isset($value->encephalopathy) ? $value->encephalopathy:""}}" hidden>
+                          <input type="text" id="encephalopathy{{$i}}" name="encephalopathy[{{$i-1}}]" value="{{isset($value->encephalopathy) ? $value->encephalopathy:""}}" hidden>
                         </div>
                       </div>
                       <div class="form-group">
                         <div class="col-md-6" id="flaccid_paralysis_{{$i}}">
                           <label>
-                            <input type="checkbox" id="flaccid_paralysis" name="c_flaccid_paralysis[]" value="0139" @if ($value->flaccid_paralysis == '0139')
+                            <input type="checkbox" id="flaccid_paralysis" name="c_flaccid_paralysis[{{$i-1}}]" value="0139" @if ($value->flaccid_paralysis == '0139')
                             {{ "checked" }}
                             @endif>
                             Flaccid paralysis
                           </label>
-                          <input type="text" id="flaccid_paralysis{{$i}}" name="flaccid_paralysis[]" value="{{isset($value->flaccid_paralysis) ? $value->flaccid_paralysis:""}}" hidden>
+                          <input type="text" id="flaccid_paralysis{{$i}}" name="flaccid_paralysis[{{$i-1}}]" value="{{isset($value->flaccid_paralysis) ? $value->flaccid_paralysis:""}}" hidden>
                         </div>
                         <div class="col-md-6" id="spastic_paralysis_{{$i}}">
                           <label>
-                            <input type="checkbox" id="spastic_paralysis" name="c_spastic_paralysis[]" value="0775" @if ($value->spastic_paralysis == '0775')
+                            <input type="checkbox" id="spastic_paralysis" name="c_spastic_paralysis[{{$i-1}}]" value="0775" @if ($value->spastic_paralysis == '0775')
                             {{ "checked" }}
                             @endif>
                             Spastic paralysis
                           </label>
-                          <input type="text" id="spastic_paralysis{{$i}}" name="spastic_paralysis[]" value="{{isset($value->spastic_paralysis) ? $value->spastic_paralysis:""}}" hidden>
+                          <input type="text" id="spastic_paralysis{{$i}}" name="spastic_paralysis[{{$i-1}}]" value="{{isset($value->spastic_paralysis) ? $value->spastic_paralysis:""}}" hidden>
                         </div>
                       </div>
                     </div>
@@ -1564,125 +1564,125 @@ foreach ($aecode as $value) {
                       <div class="form-group">
                         <div class="col-md-12" id="hhe_{{$i}}">
                           <label>
-                            <input id="hhe" name="c_hhe[]" type="checkbox" value="1704" @if ($value->hhe == '1704')
+                            <input id="hhe" name="c_hhe[{{$i-1}}]" type="checkbox" value="1704" @if ($value->hhe == '1704')
                             {{ "checked" }}
                             @endif>
                             Hypotonic Hyporesponsive episode (HHE)
                           </label>
-                          <input type="text" id="hhe{{$i}}" name="hhe[]" value="{{isset($value->hhe) ? $value->hhe:""}}" hidden>
+                          <input type="text" id="hhe{{$i}}" name="hhe[{{$i-1}}]" value="{{isset($value->hhe) ? $value->hhe:""}}" hidden>
                         </div>
                         <div class="col-md-12" id="persistent_inconsolable_crying_{{$i}}">
                           <label>
-                            <input id="persistent_inconsolable_crying" name="c_persistent_inconsolable_crying[]" type="checkbox" value="1" @if ($value->persistent_inconsolable_crying == '1')
+                            <input id="persistent_inconsolable_crying" name="c_persistent_inconsolable_crying[{{$i-1}}]" type="checkbox" value="1" @if ($value->persistent_inconsolable_crying == '1')
                             {{ "checked" }}
                             @endif>
                             Persistent inconsolable crying
                           </label>
-                          <input type="text" id="persistent_inconsolable_crying{{$i}}" name="persistent_inconsolable_crying[]" value="{{isset($value->persistent_inconsolable_crying) ? $value->persistent_inconsolable_crying:""}}" hidden>
+                          <input type="text" id="persistent_inconsolable_crying{{$i}}" name="persistent_inconsolable_crying[{{$i-1}}]" value="{{isset($value->persistent_inconsolable_crying) ? $value->persistent_inconsolable_crying:""}}" hidden>
                         </div>
                         <div class="col-md-12" id="thrombocytopenia_{{$i}}">
                           <label>
-                            <input id="thrombocytopenia" name="c_thrombocytopenia[]" type="checkbox" value="0594" @if ($value->thrombocytopenia == '0594')
+                            <input id="thrombocytopenia" name="c_thrombocytopenia[{{$i-1}}]" type="checkbox" value="0594" @if ($value->thrombocytopenia == '0594')
                             {{ "checked" }}
                             @endif>
                             Thrombocytopenia
                           </label>
-                          <input type="text" id="thrombocytopenia{{$i}}" name="thrombocytopenia[]" value="{{isset($value->thrombocytopenia) ? $value->thrombocytopenia:""}}" hidden>
+                          <input type="text" id="thrombocytopenia{{$i}}" name="thrombocytopenia[{{$i-1}}]" value="{{isset($value->thrombocytopenia) ? $value->thrombocytopenia:""}}" hidden>
                         </div>
                         <div class="col-md-12" id="osteomyelitis_{{$i}}">
                           <label>
-                            <input id="osteomyelitis" name="c_osteomyelitis[]" type="checkbox" value="1184" @if ($value->osteomyelitis == '1184')
+                            <input id="osteomyelitis" name="c_osteomyelitis[{{$i-1}}]" type="checkbox" value="1184" @if ($value->osteomyelitis == '1184')
                             {{ "checked" }}
                             @endif>
                             Osteitis/Osteomyelitis
                           </label>
-                          <input type="text" id="osteomyelitis{{$i}}" name="osteomyelitis[]" value="{{isset($value->osteomyelitis) ? $value->osteomyelitis:""}}" hidden>
+                          <input type="text" id="osteomyelitis{{$i}}" name="osteomyelitis[{{$i-1}}]" value="{{isset($value->osteomyelitis) ? $value->osteomyelitis:""}}" hidden>
                         </div>
                         <div class="col-md-12" id="toxic_shock_syndrome_{{$i}}">
                           <label>
-                            <input id="toxic_shock_syndrome" name="c_toxic_shock_syndrome[]" type="checkbox" value="1" @if ($value->toxic_shock_syndrome == '1')
+                            <input id="toxic_shock_syndrome" name="c_toxic_shock_syndrome[{{$i-1}}]" type="checkbox" value="1" @if ($value->toxic_shock_syndrome == '1')
                             {{ "checked" }}
                             @endif>
                             Toxic shock syndrome
                           </label>
-                          <input type="text" id="toxic_shock_syndrome{{$i}}" name="toxic_shock_syndrome[]" value="{{isset($value->toxic_shock_syndrome) ? $value->toxic_shock_syndrome:""}}" hidden>
+                          <input type="text" id="toxic_shock_syndrome{{$i}}" name="toxic_shock_syndrome[{{$i-1}}]" value="{{isset($value->toxic_shock_syndrome) ? $value->toxic_shock_syndrome:""}}" hidden>
                         </div>
                         <div class="col-md-12" id="sepsis_{{$i}}">
                           <label>
-                            <input id="sepsis" name="c_sepsis[]" type="checkbox" value="0744" @if ($value->sepsis == '0744')
+                            <input id="sepsis" name="c_sepsis[{{$i-1}}]" type="checkbox" value="0744" @if ($value->sepsis == '0744')
                             {{ "checked" }}
                             @endif>
                             Sepsis
                           </label>
-                          <input type="text" id="sepsis{{$i}}" name="sepsis[]" value="{{isset($value->sepsis) ? $value->sepsis:""}}" hidden>
+                          <input type="text" id="sepsis{{$i}}" name="sepsis[{{$i-1}}]" value="{{isset($value->sepsis) ? $value->sepsis:""}}" hidden>
                         </div>
                         <div class="col-md-12" id="anaphylaxis_{{$i}}">
                           <label>
-                            <input id="anaphylaxis" name="c_anaphylaxis[]" type="checkbox" value="2237" @if ($value->anaphylaxis == '2237')
+                            <input id="anaphylaxis" name="c_anaphylaxis[{{$i-1}}]" type="checkbox" value="2237" @if ($value->anaphylaxis == '2237')
                             {{ "checked" }}
                             @endif>
                             Anaphylaxis
                           </label>
-                          <input type="text" id="anaphylaxis{{$i}}" name="anaphylaxis[]" value="{{isset($value->anaphylaxis) ? $value->anaphylaxis:""}}" hidden>
+                          <input type="text" id="anaphylaxis{{$i}}" name="anaphylaxis[{{$i-1}}]" value="{{isset($value->anaphylaxis) ? $value->anaphylaxis:""}}" hidden>
                         </div>
                         <div class="col-md-12" id="gbs_{{$i}}">
                           <label>
-                            <input id="gbs" name="c_gbs[]" type="checkbox" value="1" @if ($value->gbs == '1')
+                            <input id="gbs" name="c_gbs[{{$i-1}}]" type="checkbox" value="1" @if ($value->gbs == '1')
                             {{ "checked" }}
                             @endif>
                             Guillain-Barré syndrome (GBS)
                           </label>
-                          <input type="text" id="gbs{{$i}}" name="gbs[]" value="{{isset($value->gbs) ? $value->gbs:""}}" hidden>
+                          <input type="text" id="gbs{{$i}}" name="gbs[{{$i-1}}]" value="{{isset($value->gbs) ? $value->gbs:""}}" hidden>
                         </div>
                         <div class="col-md-12" id="transverse_myelitis_{{$i}}">
                           <label>
-                            <input id="transverse_myelitis" name="c_transverse_myelitis[]" type="checkbox" value="1" @if ($value->transverse_myelitis == '1')
+                            <input id="transverse_myelitis" name="c_transverse_myelitis[{{$i-1}}]" type="checkbox" value="1" @if ($value->transverse_myelitis == '1')
                             {{ "checked" }}
                             @endif>
                             Transverse myelitis
                           </label>
-                          <input type="text" id="transverse_myelitis{{$i}}" name="transverse_myelitis[]" value="{{isset($value->transverse_myelitis) ? $value->transverse_myelitis:""}}" hidden>
+                          <input type="text" id="transverse_myelitis{{$i}}" name="transverse_myelitis[{{$i-1}}]" value="{{isset($value->transverse_myelitis) ? $value->transverse_myelitis:""}}" hidden>
                         </div>
                         <div class="col-md-12" id="adem_{{$i}}">
                           <label>
-                            <input id="adem" name="c_adem[]" type="checkbox" value="1" @if ($value->adem == '1')
+                            <input id="adem" name="c_adem[{{$i-1}}]" type="checkbox" value="1" @if ($value->adem == '1')
                             {{ "checked" }}
                             @endif>
                             Acute disseminated encephalomyelitis (ADEM)
                           </label>
-                          <input type="text" id="adem{{$i}}" name="adem[]" value="{{isset($value->adem) ? $value->adem:""}}" hidden>
+                          <input type="text" id="adem{{$i}}" name="adem[{{$i-1}}]" value="{{isset($value->adem) ? $value->adem:""}}" hidden>
                         </div>
                         <div class="col-md-12" id="acute_myocardial_{{$i}}">
                           <label>
-                            <input id="acute_myocardial" name="c_acute_myocardial[]" type="checkbox" value="1" @if ($value->acute_myocardial == '1')
+                            <input id="acute_myocardial" name="c_acute_myocardial[{{$i-1}}]" type="checkbox" value="1" @if ($value->acute_myocardial == '1')
                             {{ "checked" }}
                             @endif>
                             Acute Myocardial
                           </label>
-                          <input type="text" id="acute_myocardial{{$i}}" name="acute_myocardial[]" value="{{isset($value->acute_myocardial) ? $value->acute_myocardial:""}}" hidden>
+                          <input type="text" id="acute_myocardial{{$i}}" name="acute_myocardial[{{$i-1}}]" value="{{isset($value->acute_myocardial) ? $value->acute_myocardial:""}}" hidden>
                         </div>
                         <div class="col-md-12" id="ards_{{$i}}">
                           <label>
-                            <input id="ards" name="c_ards[]" type="checkbox" value="1" @if ($value->ards == '1')
+                            <input id="ards" name="c_ards[{{$i-1}}]" type="checkbox" value="1" @if ($value->ards == '1')
                             {{ "checked" }}
                             @endif>
                              Acute respiratory distress syndrome (ARDS)
                           </label>
-                          <input type="text" id="ards{{$i}}" name="ards[]" value="{{isset($value->ards) ? $value->ards:""}}" hidden>
+                          <input type="text" id="ards{{$i}}" name="ards[{{$i-1}}]" value="{{isset($value->ards) ? $value->ards:""}}" hidden>
                         </div>
                         <div class="col-md-12" id="symptoms_later_immunized_{{$i}}">
                           <label>
-                            <input id="symptoms_later_immunized" name="c_symptoms_later_immunized[]" type="checkbox" value="9999" @if ($value->symptoms_later_immunized == '9999')
+                            <input id="symptoms_later_immunized" name="c_symptoms_later_immunized[{{$i-1}}]" type="checkbox" value="9999" @if ($value->symptoms_later_immunized == '9999')
                             {{ "checked" }}
                             @endif>
                             other
                           </label>
-                          <input type="text" id="symptoms_later_immunized{{$i}}" name="symptoms_later_immunized[]" value="{{isset($value->symptoms_later_immunized) ? $value->symptoms_later_immunized:""}}" hidden>
+                          <input type="text" id="symptoms_later_immunized{{$i}}" name="symptoms_later_immunized[{{$i-1}}]" value="{{isset($value->symptoms_later_immunized) ? $value->symptoms_later_immunized:""}}" hidden>
                         </div>
                         <div class="form-group">
                           <div class="col-lg-12">
                             <div id="other_symptoms_later_immunized" style="display: none">
-                              <input type="text" id="other_symptoms_later_immunized_text1" name="other_symptoms_later_immunized[]" class="form-control" placeholder="" hidden="true"  value="{{isset($value->other_symptoms_later_immunized) ? $value->other_symptoms_later_immunized:""}}">
+                              <input type="text" id="other_symptoms_later_immunized_text1" name="other_symptoms_later_immunized[{{$i-1}}]" class="form-control" placeholder="" hidden="true"  value="{{isset($value->other_symptoms_later_immunized) ? $value->other_symptoms_later_immunized:""}}">
                             </div>
                             {{-- <div id="other_symptoms_later_immunized_t" style="display: none">
                               <input type="text" class="form-control pull-right" id="other_symptoms_later_immunized_text" name="other_symptoms_later_immunized" placeholder="ระบุอาการอื่นๆ">
@@ -1707,12 +1707,12 @@ foreach ($aecode as $value) {
                       <div class="form-group">
                         <div class="col-md-12" id="chest_pain_{{$i}}">
                           <label>
-                            <input name="c_chest_pain[]" type="checkbox" value="1" @if ($value->chest_pain == '1')
+                            <input name="c_chest_pain[{{$i-1}}]" type="checkbox" value="1" @if ($value->chest_pain == '1')
                           {{ "checked" }}
                     @endif>
                             Chest pain
                           </label>
-                          <input type="text" id="chest_pain{{$i}}" name="chest_pain[]"  value="{{isset($value->chest_pain) ? $value->chest_pain:""}}" hidden>
+                          <input type="text" id="chest_pain{{$i}}" name="chest_pain[{{$i-1}}]"  value="{{isset($value->chest_pain) ? $value->chest_pain:""}}" hidden>
                         </div>
                         <div class="col-md-12" id="myocarditis_{{$i}}">
                           <label>
@@ -1721,17 +1721,16 @@ foreach ($aecode as $value) {
                     @endif>
                             Myocarditis
                           </label>
-                          <input type="text" id="myocarditis{{$i}}" name="myocarditis[]"  value="{{isset($value->myocarditis) ? $value->myocarditis:""}}" hidden>
+                          <input type="text" id="myocarditis{{$i}}" name="myocarditis[{{$i-1}}]"  value="{{isset($value->myocarditis) ? $value->myocarditis:""}}" hidden>
                         </div>
                         <div class="col-md-12" id="heart_failure_{{$i}}">
                           <label>
-                            <input name="heart_failure" type="checkbox" value="1" @if ($value->heart_failure == '1')
+                            <input name="c_heart_failure" type="checkbox" value="1" @if ($value->heart_failure == '1')
                           {{ "checked" }}
                     @endif>
-
                             Heart failure
                           </label>
-                          <input type="text" id="heart_failure{{$i}}" name="heart_failure[]"  value="{{isset($value->heart_failure) ? $value->heart_failure:""}}" hidden>
+                          <input type="text" id="heart_failure{{$i}}" name="heart_failure[{{$i-1}}]"  value="{{isset($value->heart_failure) ? $value->heart_failure:""}}">
                         </div>
                         <div class="col-md-12" id="pericarditis_{{$i}}">
                           <label>
@@ -1741,7 +1740,7 @@ foreach ($aecode as $value) {
 
                             Pericarditis
                           </label>
-                          <input type="text" id="pericarditis{{$i}}" name="pericarditis[]"  value="{{isset($value->pericarditis) ? $value->pericarditis:""}}" hidden>
+                          <input type="text" id="pericarditis{{$i}}" name="pericarditis[{{$i-1}}]"  value="{{isset($value->pericarditis) ? $value->pericarditis:""}}" hidden>
                         </div>
                         <div class="col-md-12" id="sudden_cardiac_arrest_{{$i}}">
                           <label>
@@ -1751,7 +1750,7 @@ foreach ($aecode as $value) {
 
                             Sudden cardiac arrest
                           </label>
-                          <input type="text" id="sudden_cardiac_arrest{{$i}}" name="sudden_cardiac_arrest[]"  value="{{isset($value->sudden_cardiac_arrest) ? $value->sudden_cardiac_arrest:""}}" hidden>
+                          <input type="text" id="sudden_cardiac_arrest{{$i}}" name="sudden_cardiac_arrest[{{$i-1}}]"  value="{{isset($value->sudden_cardiac_arrest) ? $value->sudden_cardiac_arrest:""}}" hidden>
                         </div>
                         <div class="col-md-12" id="covid_19_{{$i}}">
                           <label>
@@ -1761,7 +1760,7 @@ foreach ($aecode as $value) {
 
                             Covid-19
                           </label>
-                          <input type="text" id="covid_19{{$i}}" name="covid_19[]"  value="{{isset($value->covid_19) ? $value->covid_19:""}}" hidden>
+                          <input type="text" id="covid_19{{$i}}" name="covid_19[{{$i-1}}]"  value="{{isset($value->covid_19) ? $value->covid_19:""}}" hidden>
                         </div>
                         <div class="col-md-12" id="ischemic_stroke_{{$i}}">
                           <label>
@@ -1771,7 +1770,7 @@ foreach ($aecode as $value) {
 
                             Ischemic stroke
                           </label>
-                          <input type="text" id="ischemic_stroke{{$i}}" name="ischemic_stroke[]"  value="{{isset($value->ischemic_stroke) ? $value->ischemic_stroke:""}}" hidden>
+                          <input type="text" id="ischemic_stroke{{$i}}" name="ischemic_stroke[{{$i-1}}]"  value="{{isset($value->ischemic_stroke) ? $value->ischemic_stroke:""}}" hidden>
                         </div>
                         <div class="col-md-12" id="hemorrhagic_stroke_{{$i}}">
                           <label>
@@ -1781,7 +1780,7 @@ foreach ($aecode as $value) {
 
                           Hemorrhagic stroke
                           </label>
-                          <input type="text" id="hemorrhagic_stroke{{$i}}" name="hemorrhagic_stroke[]"  value="{{isset($value->hemorrhagic_stroke) ? $value->hemorrhagic_stroke:""}}" hidden>
+                          <input type="text" id="hemorrhagic_stroke{{$i}}" name="hemorrhagic_stroke[{{$i-1}}]"  value="{{isset($value->hemorrhagic_stroke) ? $value->hemorrhagic_stroke:""}}" hidden>
                         </div>
                         <div class="col-md-12" id="deep_vein_thrombosis_{{$i}}">
                           <label>
@@ -1791,7 +1790,7 @@ foreach ($aecode as $value) {
 
                             Deep vein thrombosis                            
                         </label>
-                        <input type="text" id="deep_vein_thrombosis{{$i}}" name="deep_vein_thrombosis[]"  value="{{isset($value->deep_vein_thrombosis) ? $value->deep_vein_thrombosis:""}}" hidden>
+                        <input type="text" id="deep_vein_thrombosis{{$i}}" name="deep_vein_thrombosis[{{$i-1}}]"  value="{{isset($value->deep_vein_thrombosis) ? $value->deep_vein_thrombosis:""}}" hidden>
                         </div>
                         <div class="col-md-12" id="pulmonary_embolism_{{$i}}">
                           <label>
@@ -1800,7 +1799,7 @@ foreach ($aecode as $value) {
                     @endif>
                             Pulmonary embolism
                           </label>
-                          <input type="text" id="pulmonary_embolism{{$i}}" name="pulmonary_embolism[]"  value="{{isset($value->pulmonary_embolism) ? $value->pulmonary_embolism:""}}" hidden>
+                          <input type="text" id="pulmonary_embolism{{$i}}" name="pulmonary_embolism[{{$i-1}}]"  value="{{isset($value->pulmonary_embolism) ? $value->pulmonary_embolism:""}}" hidden>
                         </div>
                         <div class="col-md-12" id="hypertension_{{$i}}">
                           <label>
@@ -1810,7 +1809,7 @@ foreach ($aecode as $value) {
 
                             Hypertension
                           </label>
-                          <input type="text" id="hypertension{{$i}}" name="hypertension[]"  value="{{isset($value->hypertension) ? $value->hypertension:""}}" hidden>
+                          <input type="text" id="hypertension{{$i}}" name="hypertension[{{$i-1}}]"  value="{{isset($value->hypertension) ? $value->hypertension:""}}" hidden>
                         </div>
                         <div class="col-md-12" id="hypertensive_urgency_{{$i}}">
                           <label>
@@ -1820,7 +1819,7 @@ foreach ($aecode as $value) {
 
                              Hypertensive urgency
                           </label>
-                          <input type="text" id="hypertensive_urgency{{$i}}" name="hypertensive_urgency[]"  value="{{isset($value->hypertensive_urgency) ? $value->hypertensive_urgency:""}}" hidden>
+                          <input type="text" id="hypertensive_urgency{{$i}}" name="hypertensive_urgency[{{$i-1}}]"  value="{{isset($value->hypertensive_urgency) ? $value->hypertensive_urgency:""}}" hidden>
                         </div>
                         <div class="col-md-12" id="bells_palsy_{{$i}}">
                           <label>
@@ -1830,7 +1829,7 @@ foreach ($aecode as $value) {
 
                             Bell's palsy
                           </label>
-                          <input type="text" id="bells_palsy{{$i}}" name="bells_palsy[]"  value="{{isset($value->bells_palsy) ? $value->bells_palsy:""}}" hidden>
+                          <input type="text" id="bells_palsy{{$i}}" name="bells_palsy[{{$i-1}}]"  value="{{isset($value->bells_palsy) ? $value->bells_palsy:""}}" hidden>
                         </div>
 
                         </div>
@@ -1853,7 +1852,7 @@ foreach ($aecode as $value) {
                             <div class="input-group-addon">
                               <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control pull-right" id="date_of_symptoms" name="date_of_symptoms[]" data-date-format="yyyy-mm-dd" value="{{isset($value->date_of_symptoms) ? $value->date_of_symptoms:""}}" readonly>
+                            <input type="text" class="form-control pull-right" id="date_of_symptoms" name="date_of_symptoms[{{$i-1}}]" data-date-format="yyyy-mm-dd" value="{{isset($value->date_of_symptoms) ? $value->date_of_symptoms:""}}" readonly>
                           </div>
                         </div>
                       </div>
@@ -1862,7 +1861,7 @@ foreach ($aecode as $value) {
                           <div class="col-lg-6">
                             <label>เวลาที่เกิดอาการ :</label>
                             <div class="input-group">
-                              <input  id="time_of_symptoms1" type="text" class="form-control" name="time_of_symptoms[]" value="{{isset($value->time_of_symptoms) ? $value->time_of_symptoms:""}}">
+                              <input  id="time_of_symptoms1" type="text" class="form-control" name="time_of_symptoms[{{$i-1}}]" value="{{isset($value->time_of_symptoms) ? $value->time_of_symptoms:""}}">
   
                               <div class="input-group-addon">
                                 <i class="fa fa-clock-o"></i>
@@ -1878,7 +1877,7 @@ foreach ($aecode as $value) {
                             <div class="input-group-addon">
                               <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control pull-right" id="date_of_treatment" name="date_of_treatment[]" data-date-format="yyyy-mm-dd" value="{{isset($value->date_of_treatment) ? $value->date_of_treatment:""}}" readonly>
+                            <input type="text" class="form-control pull-right" id="date_of_treatment" name="date_of_treatment[{{$i-1}}]" data-date-format="yyyy-mm-dd" value="{{isset($value->date_of_treatment) ? $value->date_of_treatment:""}}" readonly>
                           </div>
                         </div>
                       </div>
@@ -1889,7 +1888,7 @@ foreach ($aecode as $value) {
                             <div class="input-group-addon">
                               <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control pull-right" id="time_of_treatment" name="time_of_treatment[]" data-date-format="yyyy-mm-dd"  value="{{isset($value->time_of_treatment) ? $value->time_of_treatment:""}}" readonly>
+                            <input type="text" class="form-control pull-right" id="time_of_treatment" name="time_of_treatment[{{$i-1}}]" data-date-format="yyyy-mm-dd"  value="{{isset($value->time_of_treatment) ? $value->time_of_treatment:""}}" readonly>
                           </div>
                         </div>
                       </div>
@@ -1903,12 +1902,12 @@ foreach ($aecode as $value) {
                       <div class="form-group">
                         <div class="col-lg-8">
                           <label>รายละเอียดอาการและการตรวจสอบ</label>
-                          <input class="form-control" rows="5"  id="Symptoms_details1" name="Symptoms_details[]" value="{{isset($value->Symptoms_details) ? $value->Symptoms_details:""}}">
+                          <input class="form-control" rows="5"  id="Symptoms_details1" name="Symptoms_details[{{$i-1}}]" value="{{isset($value->Symptoms_details) ? $value->Symptoms_details:""}}">
                         </div>
                       </div>
                       <div class="form-group">
                         <div class="col-lg-8">
-                          <label>วินิจฉัยของแพทย์ :</label><input type="text" id="diagnosis1" name="diagnosis[]" class="form-control" placeholder="" value="{{isset($value->diagnosis) ? $value->diagnosis:""}}">
+                          <label>วินิจฉัยของแพทย์ :</label><input type="text" id="diagnosis1" name="diagnosis[{{$i-1}}]" class="form-control" placeholder="" value="{{isset($value->diagnosis) ? $value->diagnosis:""}}">
                         </div>
                       </div>
                     </div>
@@ -1944,7 +1943,7 @@ foreach ($aecode as $value) {
                           ร้ายแรง
                         </label>
                       </div>
-                      <input type="text" id="seriousness_of_the_symptoms{{$i}}" name="seriousness_of_the_symptoms[]" value="{{isset($value->seriousness_of_the_symptoms) ? $value->seriousness_of_the_symptoms:""}}" hidden>
+                      <input type="text" id="seriousness_of_the_symptoms{{$i}}" name="seriousness_of_the_symptoms[{{$i-1}}]" value="{{isset($value->seriousness_of_the_symptoms) ? $value->seriousness_of_the_symptoms:""}}" hidden>
                     </div>
                   </div>
                 </div>
@@ -1959,7 +1958,7 @@ foreach ($aecode as $value) {
                   <div class="form-group">
                     <div class="col-md-4">
                       <label>
-                        <input type="checkbox" name="c_other_seriousness_of_the_symptoms[]" id="other_seriousness_of_the_symptoms" value="1" @if ($value->other_seriousness_of_the_symptoms == '1')
+                        <input type="checkbox" name="c_other_seriousness_of_the_symptoms[{{$i-1}}]" id="other_seriousness_of_the_symptoms" value="1" @if ($value->other_seriousness_of_the_symptoms == '1')
                         {{ "checked" }}
                         @endif>
                         เสียชีวิต
@@ -1967,7 +1966,7 @@ foreach ($aecode as $value) {
                     </div>
                     <div class="col-md-4">
                       <label>
-                        <input type="checkbox" name="c_other_seriousness_of_the_symptoms[]" id="other_seriousness_of_the_symptoms" value="2" @if ($value->other_seriousness_of_the_symptoms == '2')
+                        <input type="checkbox" name="c_other_seriousness_of_the_symptoms[{{$i-1}}]" id="other_seriousness_of_the_symptoms" value="2" @if ($value->other_seriousness_of_the_symptoms == '2')
                         {{ "checked" }}
                         @endif>
                         อันตรายถึงชีวิต
@@ -1975,7 +1974,7 @@ foreach ($aecode as $value) {
                     </div>
                     <div class="col-md-4">
                       <label>
-                        <input type="checkbox" name="c_other_seriousness_of_the_symptoms[]" id="other_seriousness_of_the_symptoms" value="3" @if ($value->other_seriousness_of_the_symptoms == '3')
+                        <input type="checkbox" name="c_other_seriousness_of_the_symptoms[{{$i-1}}]" id="other_seriousness_of_the_symptoms" value="3" @if ($value->other_seriousness_of_the_symptoms == '3')
                         {{ "checked" }}
                         @endif>
                         พิการ/ไร้ความสามารถ
@@ -1985,7 +1984,7 @@ foreach ($aecode as $value) {
                   <div class="form-group">
                     <div class="col-md-4">
                       <label>
-                        <input type="checkbox" name="c_other_seriousness_of_the_symptoms[]" id="other_seriousness_of_the_symptoms" value="4" @if ($value->other_seriousness_of_the_symptoms == '4')
+                        <input type="checkbox" name="c_other_seriousness_of_the_symptoms[{{$i-1}}]" id="other_seriousness_of_the_symptoms" value="4" @if ($value->other_seriousness_of_the_symptoms == '4')
                         {{ "checked" }}
                         @endif>
                         รับไว้รักษาในโรงพยาบาล
@@ -1993,7 +1992,7 @@ foreach ($aecode as $value) {
                     </div>
                     <div class="col-md-4">
                       <label>
-                        <input type="checkbox" name="c_other_seriousness_of_the_symptoms[]" id="other_seriousness_of_the_symptoms" value="5" @if ($value->other_seriousness_of_the_symptoms == '5')
+                        <input type="checkbox" name="c_other_seriousness_of_the_symptoms[{{$i-1}}]" id="other_seriousness_of_the_symptoms" value="5" @if ($value->other_seriousness_of_the_symptoms == '5')
                         {{ "checked" }}
                         @endif>
                         ความผิดปกติแต่กำเนิด
@@ -2001,7 +2000,7 @@ foreach ($aecode as $value) {
                     </div>
                     <div class="col-md-4">
                       <label>
-                        <input type="checkbox" name="c_other_seriousness_of_the_symptoms[]" id="other_seriousness_of_the_symptoms" value="6" @if ($value->other_seriousness_of_the_symptoms == '6')
+                        <input type="checkbox" name="c_other_seriousness_of_the_symptoms[{{$i-1}}]" id="other_seriousness_of_the_symptoms" value="6" @if ($value->other_seriousness_of_the_symptoms == '6')
                         {{ "checked" }}
                         @endif>
                         อื่นๆที่มีความสำคัญทางการแพทย์
@@ -2010,11 +2009,11 @@ foreach ($aecode as $value) {
                     <div class="col-lg-4">
                       <div id="text_other_seriousness_of_the_symptoms" style="display: none">
                         <label></label>
-                        <input type="text" id="text_other_seriousness_of_the_symptoms_text" name="text_other_seriousness_symptoms[]" class="form-control" placeholder="อื่นๆ" value="{{isset($value->text_other_seriousness_symptoms) ? $value->text_other_seriousness_symptoms:""}}">
+                        <input type="text" id="text_other_seriousness_of_the_symptoms_text" name="text_other_seriousness_symptoms[{{$i-1}}]" class="form-control" placeholder="อื่นๆ" value="{{isset($value->text_other_seriousness_symptoms) ? $value->text_other_seriousness_symptoms:""}}">
                       </div>
                     </div>
                   </div>
-                  <input type="text"  id="other_seriousness_of_the_symptoms{{$i}}" name="other_seriousness_of_the_symptoms[]" value="{{isset($value->other_seriousness_of_the_symptoms) ? $value->other_seriousness_of_the_symptoms:""}}" hidden>
+                  <input type="text"  id="other_seriousness_of_the_symptoms{{$i}}" name="other_seriousness_of_the_symptoms[{{$i-1}}]" value="{{isset($value->other_seriousness_of_the_symptoms) ? $value->other_seriousness_of_the_symptoms:""}}" hidden>
                 </div>
               </div>
               </div>
@@ -2082,11 +2081,11 @@ foreach ($aecode as $value) {
                       <div class="col-lg-4">
                         <div class="input-group date">
                           <div id="other_patian_sta" style="display: none">
-                            <input type="text" class="form-control" placeholder="ระบุ ว/ด/ป เสียชีวิต" id="datepicker_dead" name="date_dead[]" hidden="true" data-date-format="yyyy-mm-dd" readonly>
+                            <input type="text" class="form-control" placeholder="ระบุ ว/ด/ป เสียชีวิต" id="datepicker_dead" name="date_dead[{{$i-1}}]" hidden="true" data-date-format="yyyy-mm-dd" readonly>
                           </div>
                         </div>
                       </div>
-                      <input type="text" id="patient_status{{$i}}" name="patient_status[]" value="{{isset($value->patient_status) ? $value->patient_status:""}}" hidden>
+                      <input type="text" id="patient_status{{$i}}" name="patient_status[{{$i-1}}]" value="{{isset($value->patient_status) ? $value->patient_status:""}}" hidden>
                     </div>
                   </div>
                 </div>
@@ -2123,11 +2122,11 @@ foreach ($aecode as $value) {
                         ร้ายแรง
                       </label>
                     </div>
-                    <input type="text" id="funeral{{$i}}" name="funeral[]" value="{{isset($value->funeral) ? $value->funeral:""}}"  hidden>
+                    <input type="text" id="funeral{{$i}}" name="funeral[{{$i-1}}]" value="{{isset($value->funeral) ? $value->funeral:""}}"  hidden>
                     <div class="col-lg-3">
                       <div id="other_address_funeral" style="display: none">
                         <label>สถานที่ทำการ :</label>
-                        <input type="text" id="other_address_funeral_text" name="other_address_funeral[]" class="form-control" placeholder="ระบุสถานที่ทำการ" value="{{isset($value->other_address_funeral) ? $value->other_address_funeral:""}}">
+                        <input type="text" id="other_address_funeral_text" name="other_address_funeral[{{$i-1}}]" class="form-control" placeholder="ระบุสถานที่ทำการ" value="{{isset($value->other_address_funeral) ? $value->other_address_funeral:""}}">
                       </div>
                     </div>
                     
@@ -2750,7 +2749,7 @@ $(function(){
       // alert(rowCount);
       var contactdiv = '<tr class="data-contact-person">' +
         '<td>' +
-        '<select type="text" id="name_of_vaccine1" name="name_of_vaccine[]' + rowCount + '" class="form-control">' +
+        '<select type="text" id="name_of_vaccine1" name="name_of_vaccine[]' + rowCount + '" class="form-control" required>' +
         '<option value="">กรุณาระบชนิดวัคซีน</option>' +
         @foreach($vac_list as $row)
       '<option value="{{$row->VAC_CODE}}">{{$row->VAC_NAME_EN}}</option>' +
@@ -4231,5 +4230,7 @@ $(".js-example-basic-single2").select2({
     });
   });
 </script>
+@include('AEFI.layout.SymptomScript')
 @include('AEFI.layout.SymptomEditScript')
+@include('AEFI.layout.nonSymptomScript')
 @stop

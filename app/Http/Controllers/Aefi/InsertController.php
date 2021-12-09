@@ -397,7 +397,7 @@ $x=0;
 		];
 		$x++;
 		}
-		// dd($data,$data_vac);
+		//  dd($data,$data_vac);
 		//  $res2= $data_vac;
 		 $res2= DB::table('aefi_form_1_vac')->insert($data_vac);
 	}

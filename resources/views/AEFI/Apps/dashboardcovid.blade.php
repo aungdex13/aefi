@@ -1,5 +1,6 @@
 @extends('AEFI.layout.template')
 @section('content')
+{{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> --}}
 <section class="content-header">
   <!-- Content Header (Page header) -->
   <?php
@@ -13,8 +14,93 @@ $arr_manufacturer = load_manufacturer();
 $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
 
  ?>
+ <style>
+  #sinovac {
+    
+    width: 100%;
+  }
+  
+  #sinovac td, #sinovac th {
+    border: 1px solid #000;
+    padding: 8px;
+  }
+  
+  #sinovac tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #sinovac tr:hover {background-color: #ddd;}
+  
+  #sinovac th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #F58840;
+    color: black;
+  }
+  #astrazaneca {
+    
+    width: 100%;
+  }
+  
+  #astrazaneca td, #astrazaneca th {
+    border: 1px solid #000;
+    padding: 8px;
+  }
+  
+  #astrazaneca tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #astrazaneca tr:hover {background-color: #ddd;}
+  
+  #astrazaneca th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #B983FF;
+    color: black;
+  }
+  #sinopharm {
+    
+    width: 100%;
+  }
+  
+  #sinopharm td, #sinopharm th {
+    border: 1px solid #000;
+    padding: 8px;
+  }
+  
+  #sinopharm tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #sinopharm tr:hover {background-color: #ddd;}
+  
+  #sinopharm th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #BFD8B8;
+    color: black;
+  }
+  #phizer {
+    width: 100%;
+  }
+  
+  #phizer td, #phizer th {
+    border: 1px solid #000;
+    padding: 8px;
+  }
+  
+  #phizer tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #phizer tr:hover {background-color: #ddd;}
+  
+  #phizer th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #577BC1;
+    color: black;
+  }
+  </style>
   <h1>
-    แบบรายงานอาการภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรค
+    แบบรายงานอาการภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรคโควิด 19
     <small>AEFI COVID</small>
   </h1>
   <ol class="breadcrumb">
@@ -26,7 +112,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
     <div class="col-md-12">
       <div class="row">
         <div class="col-md-12">
-          <div class="box">
+          <div class="box box-success">
             <div class="box-header with-border">
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -36,72 +122,146 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
             <!-- /.box-header -->
             <div class="box-body">
               <div class="row">
-                <div class="col-md-8">
+              <div class="col-md-12">
+                <p class="text-center">
+                  ร้อยละของอาการที่พบหลังการได้รับวัคซีนป้องกันโรคโควิด 19
+                  ของผู้ป่วยที่เข้ารับการรักษาเป็นผู้ป่วยใน จำแนกตามชนิดวัคซีน
+                </p>
+              </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <p class="text-center">
+                    ข้อมูล ณ วันที่ {{$datenow}} เวลา {{$timenow}} จากฐานข้อมูล AEFI-DDC กองระบาดวิทยา กรมควบคุมโรค
+                  </p>
+                </div>
+                </div>
+              <div class="row">
+                <div class="col-md-12">
                   <p class="text-center">
                   </p>
-                  <div class="chart">
+                  <div class="col-md-3">
                     <!-- Sales Chart Canvas -->
-                    <div id="chartContainer" style="height: 290px;"></div>
+                    <table id="sinovac">
+                      <tr>
+                        <th>อาการและอาการแสดง</th>
+                        <th>Sinovac</th>
+                      </tr>
+                      <tr>
+                        <td>Alfreds Futterkiste</td>
+                        <td>Maria Anders</td>
+                      </tr>
+                      <tr>
+                        <td>Berglunds snabbköp</td>
+                        <td>Christina Berglund</td>
+                      </tr>
+                      <tr>
+                        <td>Centro comercial Moctezuma</td>
+                        <td>Francisco Chang</td>
+                      </tr>
+                      <tr>
+                        <td>Ernst Handel</td>
+                        <td>Roland Mendel</td>
+                      </tr>
+                      <tr>
+                        <td>Island Trading</td>
+                        <td>Helen Bennett</td>
+                      </tr>
+                    </table>
+                    
                   </div>
+                  <div class="col-md-3">
+                    <!-- Sales Chart Canvas -->
+                    <table id="astrazaneca">
+                      <tr>
+                        <th>อาการและอาการแสดง</th>
+                        <th>Astrazaneca</th>
+                      </tr>
+                      <tr>
+                        <td>Alfreds Futterkiste</td>
+                        <td>Maria Anders</td>
+                      </tr>
+                      <tr>
+                        <td>Berglunds snabbköp</td>
+                        <td>Christina Berglund</td>
+                      </tr>
+                      <tr>
+                        <td>Centro comercial Moctezuma</td>
+                        <td>Francisco Chang</td>
+                      </tr>
+                      <tr>
+                        <td>Ernst Handel</td>
+                        <td>Roland Mendel</td>
+                      </tr>
+                      <tr>
+                        <td>Island Trading</td>
+                        <td>Helen Bennett</td>
+                      </tr>
+                    </table>
+                    
+                  </div>
+                  <div class="col-md-3">
+                    <!-- Sales Chart Canvas -->
+                    <table id="sinopharm">
+                      <tr>
+                        <th>อาการและอาการแสดง</th>
+                        <th>Sinopharm</th>
+                      </tr>
+                      <tr>
+                        <td>Alfreds Futterkiste</td>
+                        <td>Maria Anders</td>
+                      </tr>
+                      <tr>
+                        <td>Berglunds snabbköp</td>
+                        <td>Christina Berglund</td>
+                      </tr>
+                      <tr>
+                        <td>Centro comercial Moctezuma</td>
+                        <td>Francisco Chang</td>
+                      </tr>
+                      <tr>
+                        <td>Ernst Handel</td>
+                        <td>Roland Mendel</td>
+                      </tr>
+                      <tr>
+                        <td>Island Trading</td>
+                        <td>Helen Bennett</td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div class="col-md-3">
+                    <!-- Sales Chart Canvas -->
+                    <table id="phizer">
+                      <tr>
+                        <th>อาการและอาการแสดง</th>
+                        <th>Pfizer</th>
+                      </tr>
+                      <tr>
+                        <td>Alfreds Futterkiste</td>
+                        <td>Maria Anders</td>
+                      </tr>
+                      <tr>
+                        <td>Berglunds snabbköp</td>
+                        <td>Christina Berglund</td>
+                      </tr>
+                      <tr>
+                        <td>Centro comercial Moctezuma</td>
+                        <td>Francisco Chang</td>
+                      </tr>
+                      <tr>
+                        <td>Ernst Handel</td>
+                        <td>Roland Mendel</td>
+                      </tr>
+                      <tr>
+                        <td>Island Trading</td>
+                        <td>Helen Bennett</td>
+                      </tr>
+                    </table>
+                  </div>
+                  
                   <!-- /.chart-responsive -->
                 </div>
                 <!-- /.col -->
-                <div class="col-md-4">
-                  <p class="text-center">
-                    <strong>จำนวนผู้ป่วย AEFI COVID รายภาคปี {{$yearnow+543}}</strong>
-                  </p>
-                  <div class="progress-group">
-                    <span class="progress-text">ภาคเหนือ</span>
-                    <span class="progress-number"><b>{{$count_north[0]->count_north}}</b>/คน</span>
-                    <div class="progress sm">
-                      <div class="progress-bar progress-bar-aqua" style="width: {{$count_north[0]->count_north}}px"></div>
-                    </div>
-                  </div>
-                  <!-- /.progress-group -->
-                  <div class="progress-group">
-                    <span class="progress-text">ภาคตะวันออกเฉียงเหนือ</span>
-                    <span class="progress-number"><b>{{$count_northeast[0]->count_northeast}}</b>/คน</span>
-
-                    <div class="progress sm">
-                      <div class="progress-bar progress-bar-red" style="width: {{$count_northeast[0]->count_northeast}}px"></div>
-                    </div>
-                  </div>
-                  <!-- /.progress-group -->
-                  <div class="progress-group">
-                    <span class="progress-text">ภาคตะวันตก</span>
-                    <span class="progress-number"><b>{{$count_western[0]->count_western}}</b>/คน</span>
-                    <div class="progress sm">
-                      <div class="progress-bar progress-bar-green" style="width: {{$count_western[0]->count_western}}px"></div>
-                    </div>
-                  </div>
-                  <!-- /.progress-group -->
-                  <div class="progress-group">
-                    <span class="progress-text">ภาคกลาง</span>
-                    <span class="progress-number"><b>{{$count_central[0]->count_central}}</b>/คน</span>
-
-                    <div class="progress sm">
-                      <div class="progress-bar progress-bar-yellow" style="width: {{$count_central[0]->count_central}}px"></div>
-                    </div>
-                  </div>
-                  <!-- /.progress-group -->
-                  <div class="progress-group">
-                    <span class="progress-text">ภาคตะวันออก</span>
-                    <span class="progress-number"><b>{{$count_eastern[0]->count_eastern}}</b>/คน</span>
-
-                    <div class="progress sm">
-                      <div class="progress-bar progress-bar-Tomato" style="width: {{$count_eastern[0]->count_eastern}}px"></div>
-                    </div>
-                  </div>
-                  <!-- /.progress-group -->
-                  <div class="progress-group">
-                    <span class="progress-text">ภาคใต้</span>
-                    <span class="progress-number"><b>{{$count_south[0]->count_south}}</b>/คน</span>
-                    <div class="progress sm">
-                      <div class="progress-bar progress-bar-orange" style="width: {{$count_south[0]->count_south}}px"></div>
-                    </div>
-                  </div>
-                  <!-- /.progress-group -->
-                </div>
                 <!-- /.col -->
               </div>
               <!-- /.row -->
@@ -113,7 +273,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
       </div>
     </div>
     <!-- /.row -->
-    <div class="col-md-6">
+    <div class="col-md-12">
       <div class="box box-default">
         <div class="box-header with-border">
           <h3 class="box-title">การวินิจฉัยเบื้องต้นเกี่ยวกับความร้ายแรงของอาการของผู้ป่วย AEFI COVID</h3>
@@ -143,118 +303,6 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
           </div>
           <!-- /.row -->
         </div>
-        <!-- /.box-body -->
-        <div class="box-footer no-padding">
-          <ul class="nav nav-pills nav-stacked">
-            <li><a href="#">เพศชาย อาการไม่รุนแรง
-              {{-- <i class="fa fa-angle-down"></i> --}}
-                <span class="pull-right text-light-blue"> {{$count_seriousness_of_the_symptoms_m[0]->count_seriousness_of_the_symptoms}} คน</span></a>
-            </li>
-            <li><a href="#">เพศหญิง อาการไม่รุนแรง
-              {{-- <i class="fa fa-angle-up"></i>  --}}
-              <span class="pull-right text-light-blue">{{$count_seriousness_of_the_symptoms_f[0]->count_seriousness_of_the_symptoms}} คน</span></a>
-            </li>
-            <li><a href="#">เพศชาย อาการรุนแรง
-              {{-- <i class="fa fa-angle-left"></i> --}}
-                <span class="pull-right text-red"> {{isset($count_seriousness_of_the_symptoms_m[1]->count_seriousness_of_the_symptoms) ? $count_seriousness_of_the_symptoms_m[1]->count_seriousness_of_the_symptoms:"0"}} คน</span></a></li>
-            <li><a href="#">เพศหญิง อาการรุนแรง
-              {{-- <i class="fa fa-angle-left"></i> --}}
-                <span class="pull-right text-red"> {{isset($count_seriousness_of_the_symptoms_f[1]->count_seriousness_of_the_symptoms) ? $count_seriousness_of_the_symptoms_f[1]->count_seriousness_of_the_symptoms:"0"}} คน</span></a></li>
-          </ul>
-        </div>
-        <!-- /.footer -->
-      </div>
-      <!-- /.box -->
-    </div>
-    <div class="col-md-6">
-      <div class="box box-default">
-        <div class="box-header with-border">
-          <h3 class="box-title">กราฟอัตราป่วย AEFI COVID รายจังหวัด</h3>
-          <div class="box-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-            </button>
-          </div>
-        </div>
-        <!-- /.box-header -->
-        <div class="box-body">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="chart-responsive">
-                <div id="regions_div" style="height: 543px; width: 100%;"></div>
-              </div>
-              <!-- ./chart-responsive -->
-            </div>
-            <!-- /.col -->
-          </div>
-          <!-- /.row -->
-        </div>
-        <!-- /.box-body -->
-        <!-- /.footer -->
-      </div>
-      <!-- /.box -->
-    </div>
-    <div class="col-md-6">
-      <div class="box box-default">
-        <div class="box-header with-border">
-          <h3 class="box-title">จำนวนของชนิดวัคซีนที่ผู้ป่วยได้รับทั้งหมด</h3>
-          <div class="box-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-            </button>
-          </div>
-        </div>
-        <!-- /.box-header -->
-        <div class="box-body">
-          <div class="row">
-            <div class="col-md-8">
-              <div class="chart-responsive">
-                <div id="chartVacname" style="height: 370px; width: 150%;"></div>
-              </div>
-              <!-- ./chart-responsive -->
-            </div>
-            <!-- /.col -->
-            <div class="col-md-4">
-              <ul class="chart-legend clearfix">
-              </ul>
-            </div>
-            <!-- /.col -->
-          </div>
-          <!-- /.row -->
-        </div>
-        <!-- /.box-body -->
-        <!-- /.footer -->
-      </div>
-      <!-- /.box -->
-    </div>
-    <div class="col-md-6">
-      <div class="box box-default">
-        <div class="box-header with-border">
-          <h3 class="box-title">อัตราของกลุ่มอายุ ของผู้ป่วยทั้งหมดในปี {{$yearnow+543}}</h3>
-
-          <div class="box-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-            </button>
-            {{-- <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button> --}}
-          </div>
-        </div>
-        <!-- /.box-header -->
-        <div class="box-body">
-          <div class="row">
-            <div class="col-md-8">
-              <div class="chart-responsive">
-                <div id="agegroup" style="height: 370px; width: 150%;"></div>
-              </div>
-              <!-- ./chart-responsive -->
-            </div>
-            <!-- /.col -->
-            <div class="col-md-4">
-              <ul class="chart-legend clearfix">
-              </ul>
-            </div>
-            <!-- /.col -->
-          </div>
-          <!-- /.row -->
-        </div>
-        <!-- /.box-body -->
         <!-- /.footer -->
       </div>
       <!-- /.box -->

@@ -1569,47 +1569,47 @@ foreach ($aecode as $value) {
 '                        <div class="form-group">'+
 '                          <div class="col-md-4" id="rash_' + rowCount + '">'+
 '                            <label>'+
-'                              <input type="checkbox" id="c_rash" name="c_rash[]" value="0027">'+
+'                              <input type="checkbox" id="c_rash" name="c_rash[' + rowCountSyntom + ']" value="0027">'+
 '                              Rash'+
 '                            </label>'+
-'                            <input type="text" id="rash' + rowCount + '" name="rash[]" hidden>'+
+'                            <input type="text" id="rash' + rowCount + '" name="rash[' + rowCountSyntom + ']" hidden>'+
 '                          </div>'+
 '                          <div class="col-md-4" id="erythema_' + rowCount + '">'+
 '                            <label>'+
-'                              <input type="checkbox" id="erythema1" name="c_erythema[]" value="0028">'+
+'                              <input type="checkbox" id="erythema1" name="c_erythema[' + rowCountSyntom + ']" value="0028">'+
 '                              Erythema'+
 '                            </label>'+
-'                            <input type="text" id="erythema' + rowCount + '" name="erythema[]" hidden>'+
+'                            <input type="text" id="erythema' + rowCount + '" name="erythema[' + rowCountSyntom + ']" hidden>'+
 '                          </div>'+
 '                          <div class="col-md-4" id="urticaria_' + rowCount + '">'+
 '                            <label>'+
-'                              <input type="checkbox" id="urticaria1" name="c_urticaria[]" value="0044">'+
+'                              <input type="checkbox" id="urticaria1" name="c_urticaria[' + rowCountSyntom + ']" value="0044">'+
 '                              Urticaria'+
 '                            </label>'+
-'                            <input type="text" id="urticaria' + rowCount + '" name="urticaria[]" hidden>'+
+'                            <input type="text" id="urticaria' + rowCount + '" name="urticaria[' + rowCountSyntom + ']" hidden>'+
 '                          </div>'+
 '                        </div>'+
 '                        <div class="form-group">'+
 '                          <div class="col-md-4" id="itching_' + rowCount + '">'+
 '                            <label>'+
-'                              <input type="checkbox" id="itching1" name="c_itching[]" value="0026">'+
+'                              <input type="checkbox" id="itching1" name="c_itching[' + rowCountSyntom + ']" value="0026">'+
 '                              Itching'+
 '                            </label>'+
-'                            <input type="text" id="itching' + rowCount + '" name="itching[]" hidden>'+
+'                            <input type="text" id="itching' + rowCount + '" name="itching[' + rowCountSyntom + ']" hidden>'+
 '                          </div>'+
 '                          <div class="col-md-4" id="edema_' + rowCount + '">'+
 '                            <label>'+
-'                              <input type="checkbox" id="edema1" name="c_edema[]" value="0003A">'+
+'                              <input type="checkbox" id="edema1" name="c_edema[' + rowCountSyntom + ']" value="0003A">'+
 '                              Edema'+
 '                            </label>'+
-'                            <input type="text" id="edema' + rowCount + '" name="edema[]" hidden>'+
+'                            <input type="text" id="edema' + rowCount + '" name="edema[' + rowCountSyntom + ']" hidden>'+
 '                          </div>'+
 '                          <div class="col-md-5" id="angioedema_' + rowCount + '">'+
 '                            <label>'+
-'                              <input type="checkbox" id="angioedema" name="c_angioedema[]" value="0003">'+
+'                              <input type="checkbox" id="angioedema" name="c_angioedema[' + rowCountSyntom + ']" value="0003">'+
 '                              Angioedema'+
 '                            </label>'+
-'                            <input type="text" id="angioedema' + rowCount + '" name="angioedema[]" hidden>'+
+'                            <input type="text" id="angioedema' + rowCount + '" name="angioedema[' + rowCountSyntom + ']" hidden>'+
 '                          </div>'+
 '                        </div>'+
 '                      </div>'+
@@ -1622,56 +1622,56 @@ foreach ($aecode as $value) {
 '                        <div class="form-group">'+
 '                          <div class="col-md-4" id="fainting_' + rowCount + '">'+
 '                            <label>'+
-'                              <input type="checkbox" id="fainting1" name="c_fainting[]" value="1">'+
+'                              <input type="checkbox" id="fainting1" name="c_fainting[' + rowCountSyntom + ']" value="1">'+
 '                              Fainting'+
 '                            </label>'+
-'                            <input type="text" id="fainting' + rowCount + '" name="fainting[]" hidden>'+
+'                            <input type="text" id="fainting' + rowCount + '" name="fainting[' + rowCountSyntom + ']" hidden>'+
 '                          </div>'+
 '                          <div class="col-md-6" id="hyperventilation_' + rowCount + '">'+
 '                            <label>'+
-'                              <input type="checkbox" id="hyperventilation1" name="c_hyperventilation[]" value="0517">'+
+'                              <input type="checkbox" id="hyperventilation1" name="c_hyperventilation[' + rowCountSyntom + ']" value="0517">'+
 '                              Hyperventilation'+
 '                            </label>'+
-'                            <input type="text" id="hyperventilation' + rowCount + '" name="hyperventilation[]" hidden>'+
+'                            <input type="text" id="hyperventilation' + rowCount + '" name="hyperventilation[' + rowCountSyntom + ']" hidden>'+
 '                          </div>'+
 '                        </div>'+
 '                        <div class="form-group">'+
 '                          <div class="col-md-4" id="syncope_' + rowCount + '">'+
 '                            <label>'+
-'                              <input type="checkbox" id="syncope1" name="c_syncope[]" value="0223">'+
+'                              <input type="checkbox" id="syncope1" name="c_syncope[' + rowCountSyntom + ']" value="0223">'+
 '                              Syncope'+
 '                            </label>'+
-'                            <input type="text" id="syncope' + rowCount + '" name="syncope[]" hidden>'+
+'                            <input type="text" id="syncope' + rowCount + '" name="syncope[' + rowCountSyntom + ']" hidden>'+
 '                          </div>'+
 '                          <div class="col-md-4" id="headche_' + rowCount + '">'+
 '                            <label>'+
-'                              <input type="checkbox" id="headche1" name="c_headche[]" value="1">'+
+'                              <input type="checkbox" id="headche1" name="c_headche[' + rowCountSyntom + ']" value="1">'+
 '                              Headche'+
 '                            </label>'+
-'                            <input type="text" id="headche' + rowCount + '" name="headche[]" hidden>'+
+'                            <input type="text" id="headche' + rowCount + '" name="headche[' + rowCountSyntom + ']" hidden>'+
 '                          </div>'+
 '                          <div class="col-md-4" id="dizziness_' + rowCount + '">'+
 '                            <label>'+
-'                              <input type="checkbox" id="dizziness1" name="c_dizziness[]" value="0101">'+
+'                              <input type="checkbox" id="dizziness1" name="c_dizziness[' + rowCountSyntom + ']" value="0101">'+
 '                              Dizziness'+
 '                            </label>'+
-'                            <input type="text" id="dizziness' + rowCount + '" name="dizziness[]" hidden>'+
+'                            <input type="text" id="dizziness' + rowCount + '" name="dizziness[' + rowCountSyntom + ']" hidden>'+
 '                          </div>'+
 '                        </div>'+
 '                        <div class="form-group">'+
 '                          <div class="col-md-4" id="fatigue_' + rowCount + '">'+
 '                            <label>'+
-'                              <input type="checkbox" id="fatigue" name="c_fatigue[]" value="0724">'+
+'                              <input type="checkbox" id="fatigue" name="c_fatigue[' + rowCountSyntom + ']" value="0724">'+
 '                              Fatigue'+
 '                            </label>'+
-'                            <input type="text" id="fatigue' + rowCount + '" name="fatigue[]" hidden>'+
+'                            <input type="text" id="fatigue' + rowCount + '" name="fatigue[' + rowCountSyntom + ']" hidden>'+
 '                          </div>'+
 '                          <div class="col-md-4" id="malaise_' + rowCount + '">'+
 '                            <label>'+
-'                              <input type="checkbox" id="malaise" name="c_malaise[]" value="0728">'+
+'                              <input type="checkbox" id="malaise" name="c_malaise[' + rowCountSyntom + ']" value="0728">'+
 '                              Malaise'+
 '                            </label>'+
-'                            <input type="text" id="malaise' + rowCount + '" name="malaise[]" hidden>'+
+'                            <input type="text" id="malaise' + rowCount + '" name="malaise[' + rowCountSyntom + ']" hidden>'+
 '                          </div>'+
 '                        </div>'+
 '                      </div>'+
@@ -1681,40 +1681,40 @@ foreach ($aecode as $value) {
 '                        <div class="form-group">'+
 '                          <div class="col-md-4" id="dyspepsia_' + rowCount + '">'+
 '                            <label>'+
-'                              <input type="checkbox" id="dyspepsia" name="c_dyspepsia[]" value="0279">'+
+'                              <input type="checkbox" id="dyspepsia" name="c_dyspepsia[' + rowCountSyntom + ']" value="0279">'+
 '                              Dyspepsia'+
 '                            </label>'+
-'                            <input type="text" id="dyspepsia' + rowCount + '" name="dyspepsia[]" hidden>'+
+'                            <input type="text" id="dyspepsia' + rowCount + '" name="dyspepsia[' + rowCountSyntom + ']" hidden>'+
 '                          </div>'+
 '                          <div class="col-md-4" id="diarrhea_' + rowCount + '">'+
 '                            <label>'+
-'                              <input type="checkbox" id="diarrhea" name="c_diarrhea[]" value="1">'+
+'                              <input type="checkbox" id="diarrhea" name="c_diarrhea[' + rowCountSyntom + ']" value="1">'+
 '                              Diarrhea'+
 '                            </label>'+
-'                            <input type="text" id="diarrhea' + rowCount + '" name="diarrhea[]" hidden>'+
+'                            <input type="text" id="diarrhea' + rowCount + '" name="diarrhea[' + rowCountSyntom + ']" hidden>'+
 '                          </div>'+
 '                          <div class="col-md-4" id="nausea_' + rowCount + '">'+
 '                            <label>'+
-'                              <input type="checkbox" id="nausea" name="c_nausea[]" value="0308">'+
+'                              <input type="checkbox" id="nausea" name="c_nausea[' + rowCountSyntom + ']" value="0308">'+
 '                              Nausea'+
 '                            </label>'+
-'                            <input type="text" id="nausea' + rowCount + '" name="nausea[]" hidden>'+
+'                            <input type="text" id="nausea' + rowCount + '" name="nausea[' + rowCountSyntom + ']" hidden>'+
 '                          </div>'+
 '                        </div>'+
 '                        <div class="form-group">'+
 '                          <div class="col-md-4" id="vomiting_' + rowCount + '">'+
 '                            <label>'+
-'                              <input type="checkbox" id="vomiting" name="c_vomiting[]" value="0228">'+
+'                              <input type="checkbox" id="vomiting" name="c_vomiting[' + rowCountSyntom + ']" value="0228">'+
 '                              Vomiting'+
 '                            </label>'+
-'                            <input type="text" id="vomiting' + rowCount + '" name="vomiting[]" hidden>'+
+'                            <input type="text" id="vomiting' + rowCount + '" name="vomiting[' + rowCountSyntom + ']" hidden>'+
 '                          </div>'+
 '                          <div class="col-md-6" id="abdominal_pain_' + rowCount + '">'+
 '                            <label>'+
-'                              <input type="checkbox" id="abdominal_pain1" name="c_abdominal_pain[]" value="0268">'+
+'                              <input type="checkbox" id="abdominal_pain1" name="c_abdominal_pain[' + rowCountSyntom + ']" value="0268">'+
 '                              Abdominal pain'+
 '                            </label>'+
-'                            <input type="text" id="abdominal_pain' + rowCount + '" name="abdominal_pain[]" hidden>'+
+'                            <input type="text" id="abdominal_pain' + rowCount + '" name="abdominal_pain[' + rowCountSyntom + ']" hidden>'+
 '                          </div>'+
 '                        </div>'+
 '                      </div>'+
@@ -1724,17 +1724,17 @@ foreach ($aecode as $value) {
 '                        <div class="form-group">'+
 '                          <div class="col-md-4" id="arthalgia_' + rowCount + '">'+
 '                            <label>'+
-'                              <input type="checkbox" id="arthalgia1" name="c_arthalgia[]" value="1">'+
+'                              <input type="checkbox" id="arthalgia1" name="c_arthalgia[' + rowCountSyntom + ']" value="1">'+
 '                              Arthalgia'+
 '                            </label>'+
-'                            <input type="text" id="arthalgia' + rowCount + '" name="arthalgia[]" hidden>'+
+'                            <input type="text" id="arthalgia' + rowCount + '" name="arthalgia[' + rowCountSyntom + ']" hidden>'+
 '                          </div>'+
 '                          <div class="col-md-4" id="myalgia_' + rowCount + '">'+
 '                            <label>'+
-'                              <input type="checkbox" id="myalgia1" name="c_myalgia[]" value="0072">'+
+'                              <input type="checkbox" id="myalgia1" name="c_myalgia[' + rowCountSyntom + ']" value="0072">'+
 '                              Myalgia'+
 '                            </label>'+
-'                            <input type="text" id="myalgia' + rowCount + '" name="myalgia[]" hidden>'+
+'                            <input type="text" id="myalgia' + rowCount + '" name="myalgia[' + rowCountSyntom + ']" hidden>'+
 '                          </div>'+
 '                        </div>'+
 '                      </div>'+
@@ -1751,10 +1751,10 @@ foreach ($aecode as $value) {
 '                        <div class="form-group">'+
 '                          <div class="col-md-5" id="fever38c_' + rowCount + '">'+
 '                            <label>'+
-'                              <input type="checkbox" id="fever38c1" name="c_fever38c[]" value="0725">'+
+'                              <input type="checkbox" id="fever38c1" name="c_fever38c[' + rowCountSyntom + ']" value="0725">'+
 '                              Fever >= 38 C'+
 '                            </label>'+
-'                            <input type="text" id="fever38c' + rowCount + '" name="fever38c[]" hidden>'+
+'                            <input type="text" id="fever38c' + rowCount + '" name="fever38c[' + rowCountSyntom + ']" hidden>'+
 '                          </div>'+
 '                        </div>'+
 '                      </div>'+
@@ -1769,47 +1769,47 @@ foreach ($aecode as $value) {
 '                          <div class="form-group">'+
 '                            <div class="col-md-12" id="swelling_at_the_injection_' + rowCount + '">'+
 '                              <label>'+
-'                                <input type="checkbox" id="swelling_at_the_injection1" name="c_swelling_at_the_injection[]" value="1">'+
+'                                <input type="checkbox" id="swelling_at_the_injection1" name="c_swelling_at_the_injection[' + rowCountSyntom + ']" value="1">'+
 '                                บวมบริเวณที่ฉีดนานเกิน3วัน'+
 '                              </label>'+
-'                              <input type="text" id="swelling_at_the_injection' + rowCount + '" name="swelling_at_the_injection[]" hidden>'+
+'                              <input type="text" id="swelling_at_the_injection' + rowCount + '" name="swelling_at_the_injection[' + rowCountSyntom + ']" hidden>'+
 '                            </div>'+
 '                            <div class="col-md-12" id="swelling_beyond_nearest_joint_' + rowCount + '">'+
 '                              <label>'+
-'                                <input type="checkbox" id="swelling_beyond_nearest_joint1" name="c_swelling_beyond_nearest_joint[]" value="1">'+
+'                                <input type="checkbox" id="swelling_beyond_nearest_joint1" name="c_swelling_beyond_nearest_joint[' + rowCountSyntom + ']" value="1">'+
 '                                บวมลามไปถึงข้อที่ใกล้ที่สุด'+
 '                              </label>'+
-'                              <input type="text" id="swelling_beyond_nearest_joint' + rowCount + '" name="swelling_beyond_nearest_joint[]" hidden>'+
+'                              <input type="text" id="swelling_beyond_nearest_joint' + rowCount + '" name="swelling_beyond_nearest_joint[' + rowCountSyntom + ']" hidden>'+
 '                            </div>'+
 '                            <div class="col-md-12" id="lymphadenopathy_' + rowCount + '">'+
 '                              <label>'+
-'                                <input type="checkbox" id="lymphadenopathy1" name="c_lymphadenopathy[]" value="0577">'+
+'                                <input type="checkbox" id="lymphadenopathy1" name="c_lymphadenopathy[' + rowCountSyntom + ']" value="0577">'+
 '                                Lymphadenopathy'+
 '                              </label>'+
-'                              <input type="text" id="lymphadenopathy' + rowCount + '" name="lymphadenopathy[]" hidden>'+
+'                              <input type="text" id="lymphadenopathy' + rowCount + '" name="lymphadenopathy[' + rowCountSyntom + ']" hidden>'+
 '                            </div>'+
 '                            <div class="col-md-12" id="lymphadenitis_' + rowCount + '">'+
 '                              <label>'+
-'                                <input type="checkbox" id="lymphadenitis1" name="c_lymphadenitis[]" value="0577D">'+
+'                                <input type="checkbox" id="lymphadenitis1" name="c_lymphadenitis[' + rowCountSyntom + ']" value="0577D">'+
 '                                Lymphadenitis'+
 '                              </label>'+
-'                              <input type="text" id="lymphadenitis' + rowCount + '" name="lymphadenitis[]" hidden>'+
+'                              <input type="text" id="lymphadenitis' + rowCount + '" name="lymphadenitis[' + rowCountSyntom + ']" hidden>'+
 '                            </div>'+
 '                          </div>'+
 '                          <div class="form-group">'+
 '                            <div class="col-md-6" id="sterile_abscess_' + rowCount + '">'+
 '                              <label>'+
-'                                <input type="checkbox" id="sterile_abscess1" name="c_sterile_abscess[]" value="0051">'+
+'                                <input type="checkbox" id="sterile_abscess1" name="c_sterile_abscess[' + rowCountSyntom + ']" value="0051">'+
 '                                Sterile abscess'+
 '                              </label>'+
-'                              <input type="text" id="sterile_abscess' + rowCount + '" name="sterile_abscess[]" hidden>'+
+'                              <input type="text" id="sterile_abscess' + rowCount + '" name="sterile_abscess[' + rowCountSyntom + ']" hidden>'+
 '                            </div>'+
 '                            <div class="col-md-6" id="bacterial_abscess_' + rowCount + '">'+
 '                              <label>'+
-'                                <input type="checkbox" id="bacterial_abscess1" name="c_bacterial_abscess[]" value="1">'+
+'                                <input type="checkbox" id="bacterial_abscess1" name="c_bacterial_abscess[' + rowCountSyntom + ']" value="1">'+
 '                                Bacterial abscess'+
 '                              </label>'+
-'                              <input type="text" id="bacterial_abscess' + rowCount + '" name="bacterial_abscess[]" hidden>'+
+'                              <input type="text" id="bacterial_abscess' + rowCount + '" name="bacterial_abscess[' + rowCountSyntom + ']" hidden>'+
 '                            </div>'+
 '                          </div>'+
 '                        </div>'+
@@ -1820,40 +1820,40 @@ foreach ($aecode as $value) {
 '                        <div class="form-group">'+
 '                          <div class="col-md-12" id="febrile_convulsion_' + rowCount + '">'+
 '                            <label>'+
-'                              <input type="checkbox" id="febrile_convulsion1" name="c_febrile_convulsion[]" value="1">'+
+'                              <input type="checkbox" id="febrile_convulsion1" name="c_febrile_convulsion[' + rowCountSyntom + ']" value="1">'+
 '                              Febrile convulsion'+
 '                            </label>'+
-'                            <input type="text" id="febrile_convulsion' + rowCount + '" name="febrile_convulsion[]" hidden>'+
+'                            <input type="text" id="febrile_convulsion' + rowCount + '" name="febrile_convulsion[' + rowCountSyntom + ']" hidden>'+
 '                          </div>'+
 '                          <div class="col-md-12" id="afebrile_convulsion_' + rowCount + '">'+
 '                            <label>'+
-'                              <input type="checkbox" id="afebrile_convulsion" name="c_afebrile_convulsion[]" value="1">'+
+'                              <input type="checkbox" id="afebrile_convulsion" name="c_afebrile_convulsion[' + rowCountSyntom + ']" value="1">'+
 '                              Afebrile convulsion'+
 '                            </label>'+
-'                            <input type="text" id="afebrile_convulsion' + rowCount + '" name="afebrile_convulsion[]" hidden>'+
+'                            <input type="text" id="afebrile_convulsion' + rowCount + '" name="afebrile_convulsion[' + rowCountSyntom + ']" hidden>'+
 '                          </div>'+
 '                          <div class="col-md-12" id="encephalopathy_' + rowCount + '">'+
 '                            <label>'+
-'                              <input type="checkbox" id="encephalopathy1" name="c_encephalopathy[]" value="0105">'+
+'                              <input type="checkbox" id="encephalopathy1" name="c_encephalopathy[' + rowCountSyntom + ']" value="0105">'+
 '                              Encephalopathy/Encephalitis'+
 '                            </label>'+
-'                            <input type="text" id="encephalopathy' + rowCount + '" name="encephalopathy[]" hidden>'+
+'                            <input type="text" id="encephalopathy' + rowCount + '" name="encephalopathy[' + rowCountSyntom + ']" hidden>'+
 '                          </div>'+
 '                        </div>'+
 '                        <div class="form-group">'+
 '                          <div class="col-md-6" id="flaccid_paralysis_' + rowCount + '">'+
 '                            <label>'+
-'                              <input type="checkbox" id="flaccid_paralysis1" name="c_flaccid_paralysis[]" value="0139">'+
+'                              <input type="checkbox" id="flaccid_paralysis1" name="c_flaccid_paralysis[' + rowCountSyntom + ']" value="0139">'+
 '                              Flaccid paralysis'+
 '                            </label>'+
-'                            <input type="text" id="flaccid_paralysis' + rowCount + '" name="flaccid_paralysis[]" hidden>'+
+'                            <input type="text" id="flaccid_paralysis' + rowCount + '" name="flaccid_paralysis[' + rowCountSyntom + ']" hidden>'+
 '                          </div>'+
 '                          <div class="col-md-6" id="spastic_paralysis_' + rowCount + '">'+
 '                            <label>'+
-'                              <input type="checkbox" id="spastic_paralysis1" name="c_spastic_paralysis[]" value="0775">'+
+'                              <input type="checkbox" id="spastic_paralysis1" name="c_spastic_paralysis[' + rowCountSyntom + ']" value="0775">'+
 '                              Spastic paralysis'+
 '                            </label>'+
-'                            <input type="text" id="spastic_paralysis' + rowCount + '" name="spastic_paralysis[]" hidden>'+
+'                            <input type="text" id="spastic_paralysis' + rowCount + '" name="spastic_paralysis[' + rowCountSyntom + ']" hidden>'+
 '                          </div>'+
 '                        </div>'+
 '                      </div>'+
@@ -1874,99 +1874,99 @@ foreach ($aecode as $value) {
 '                        <div class="form-group">'+
 '                          <div class="col-md-12" id="hhe_' + rowCount + '">'+
 '                            <label>'+
-'                              <input id="hhe1" name="c_hhe[]" type="checkbox" value="1704">'+
+'                              <input id="hhe1" name="c_hhe[' + rowCountSyntom + ']" type="checkbox" value="1704">'+
 '                              Hypotonic Hyporesponsive episode (HHE)'+
 '                            </label>'+
-'                            <input type="text" id="hhe' + rowCount + '" name="hhe[]" hidden>'+
+'                            <input type="text" id="hhe' + rowCount + '" name="hhe[' + rowCountSyntom + ']" hidden>'+
 '                          </div>'+
 '                          <div class="col-md-12" id="persistent_inconsolable_crying_' + rowCount + '">'+
 '                            <label>'+
-'                              <input id="persistent_inconsolable_crying1" name="c_persistent_inconsolable_crying[]" type="checkbox" value="1">'+
+'                              <input id="persistent_inconsolable_crying1" name="c_persistent_inconsolable_crying[' + rowCountSyntom + ']" type="checkbox" value="1">'+
 '                              Persistent inconsolable crying'+
 '                            </label>'+
-'                            <input type="text" id="persistent_inconsolable_crying' + rowCount + '" name="persistent_inconsolable_crying[]" hidden>'+
+'                            <input type="text" id="persistent_inconsolable_crying' + rowCount + '" name="persistent_inconsolable_crying[' + rowCountSyntom + ']" hidden>'+
 '                          </div>'+
 '                          <div class="col-md-12" id="thrombocytopenia_' + rowCount + '">'+
 '                            <label>'+
-'                              <input id="thrombocytopenia1" name="c_thrombocytopenia[]" type="checkbox" value="0594">'+
+'                              <input id="thrombocytopenia1" name="c_thrombocytopenia[' + rowCountSyntom + ']" type="checkbox" value="0594">'+
 '                              Thrombocytopenia'+
 '                            </label>'+
-'                            <input type="text" id="thrombocytopenia' + rowCount + '" name="thrombocytopenia[]" hidden>'+
+'                            <input type="text" id="thrombocytopenia' + rowCount + '" name="thrombocytopenia[' + rowCountSyntom + ']" hidden>'+
 '                          </div>'+
 '                          <div class="col-md-12" id="osteomyelitis_' + rowCount + '">'+
 '                            <label>'+
-'                              <input id="osteomyelitis1" name="c_osteomyelitis[]" type="checkbox" value="1184">'+
+'                              <input id="osteomyelitis1" name="c_osteomyelitis[' + rowCountSyntom + ']" type="checkbox" value="1184">'+
 '                              Osteitis/Osteomyelitis'+
 '                            </label>'+
-'                            <input type="text" id="osteomyelitis' + rowCount + '" name="osteomyelitis[]" hidden>'+
+'                            <input type="text" id="osteomyelitis' + rowCount + '" name="osteomyelitis[' + rowCountSyntom + ']" hidden>'+
 '                          </div>'+
 '                          <div class="col-md-12" id="toxic_shock_syndrome_' + rowCount + '">'+
 '                            <label>'+
-'                              <input id="toxic_shock_syndrome1" name="c_toxic_shock_syndrome[]" type="checkbox" value="1">'+
+'                              <input id="toxic_shock_syndrome1" name="c_toxic_shock_syndrome[' + rowCountSyntom + ']" type="checkbox" value="1">'+
 '                              Toxic shock syndrome'+
 '                            </label>'+
-'                            <input type="text" id="toxic_shock_syndrome' + rowCount + '" name="toxic_shock_syndrome[]" hidden>'+
+'                            <input type="text" id="toxic_shock_syndrome' + rowCount + '" name="toxic_shock_syndrome[' + rowCountSyntom + ']" hidden>'+
 '                          </div>'+
 '                          <div class="col-md-12" id="sepsis_' + rowCount + '">'+
 '                            <label>'+
-'                              <input id="sepsis1" name="c_sepsis[]" type="checkbox" value="0744">'+
+'                              <input id="sepsis1" name="c_sepsis[' + rowCountSyntom + ']" type="checkbox" value="0744">'+
 '                              Sepsis'+
 '                            </label>'+
-'                            <input type="text" id="sepsis' + rowCount + '" name="sepsis[]" hidden>'+
+'                            <input type="text" id="sepsis' + rowCount + '" name="sepsis[' + rowCountSyntom + ']" hidden>'+
 '                          </div>'+
 '                          <div class="col-md-12" id="anaphylaxis_' + rowCount + '">'+
 '                            <label>'+
-'                              <input id="anaphylaxis1" name="c_anaphylaxis[]" type="checkbox" value="2237">'+
+'                              <input id="anaphylaxis1" name="c_anaphylaxis[' + rowCountSyntom + ']" type="checkbox" value="2237">'+
 '                              Anaphylaxis'+
 '                            </label>'+
-'                            <input type="text" id="anaphylaxis' + rowCount + '" name="anaphylaxis[]" hidden>'+
+'                            <input type="text" id="anaphylaxis' + rowCount + '" name="anaphylaxis[' + rowCountSyntom + ']" hidden>'+
 '                          </div>'+
 '                          <div class="col-md-12" id="gbs_' + rowCount + '">'+
 '                            <label>'+
-'                              <input id="gbs" name="c_gbs[]" type="checkbox" value="1">'+
+'                              <input id="gbs" name="c_gbs[' + rowCountSyntom + ']" type="checkbox" value="1">'+
 '                              Guillain-Barré syndrome (GBS)'+
 '                            </label>'+
-'                            <input type="text" id="gbs' + rowCount + '" name="gbs[]" hidden>'+
+'                            <input type="text" id="gbs' + rowCount + '" name="gbs[' + rowCountSyntom + ']" hidden>'+
 '                          </div>'+
 '                          <div class="col-md-12" id="transverse_myelitis_' + rowCount + '">'+
 '                            <label>'+
-'                              <input id="transverse myelitis1" name="c_transverse myelitis[]" type="checkbox" value="1">'+
+'                              <input id="transverse myelitis1" name="c_transverse myelitis[' + rowCountSyntom + ']" type="checkbox" value="1">'+
 '                              Transverse myelitis'+
 '                            </label>'+
-'                            <input type="text" id="transverse_myelitis' + rowCount + '" name="transverse_myelitis[]" hidden>'+
+'                            <input type="text" id="transverse_myelitis' + rowCount + '" name="transverse_myelitis[' + rowCountSyntom + ']" hidden>'+
 '                          </div>'+
 '                          <div class="col-md-12" id="adem_' + rowCount + '">'+
 '                            <label>'+
-'                              <input id="adem1" name="c_adem[]" type="checkbox" value="1">'+
+'                              <input id="adem1" name="c_adem[' + rowCountSyntom + ']" type="checkbox" value="1">'+
 '                              Acute disseminated encephalomyelitis (ADEM)'+
 '                            </label>'+
-'                            <input type="text" id="adem' + rowCount + '" name="adem[]" hidden>'+
+'                            <input type="text" id="adem' + rowCount + '" name="adem[' + rowCountSyntom + ']" hidden>'+
 '                          </div>'+
 '                          <div class="col-md-12" id="acute_myocardial_' + rowCount + '">'+
 '                            <label>'+
-'                              <input id="acute_myocardial1" name="c_acute_myocardial[]" type="checkbox" value="1">'+
+'                              <input id="acute_myocardial1" name="c_acute_myocardial[' + rowCountSyntom + ']" type="checkbox" value="1">'+
 '                              Acute Myocardial'+
 '                            </label>'+
-'                            <input type="text" id="acute_myocardial' + rowCount + '" name="acute_myocardial[]" hidden>'+
+'                            <input type="text" id="acute_myocardial' + rowCount + '" name="acute_myocardial[' + rowCountSyntom + ']" hidden>'+
 '                          </div>'+
 '                          <div class="col-md-12" id="ards_' + rowCount + '">'+
 '                            <label>'+
-'                              <input id="ards1" name="c_ards[]" type="checkbox" value="1">'+
+'                              <input id="ards1" name="c_ards[' + rowCountSyntom + ']" type="checkbox" value="1">'+
 '                               Acute respiratory distress syndrome (ARDS)'+
 '                            </label>'+
-'                            <input type="text" id="ards' + rowCount + '" name="ards[]" hidden>'+
+'                            <input type="text" id="ards' + rowCount + '" name="ards[' + rowCountSyntom + ']" hidden>'+
 '                          </div>'+
 '                          <div class="col-md-12" id="symptoms_later_immunized_' + rowCount + '">'+
 '                            <label>'+
-'                              <input id="symptoms_later_immunized" name="c_symptoms_later_immunized[]" type="checkbox" value="9999">'+
+'                              <input id="symptoms_later_immunized" name="c_symptoms_later_immunized[' + rowCountSyntom + ']" type="checkbox" value="9999">'+
 '                              other'+
 '                            </label>'+
-'                            <input type="text" id="symptoms_later_immunized' + rowCount + '" name="symptoms_later_immunized[]" hidden>'+
+'                            <input type="text" id="symptoms_later_immunized' + rowCount + '" name="symptoms_later_immunized[' + rowCountSyntom + ']" hidden>'+
 '                          </div>'+
 '                          <div class="form-group">'+
 '                            <div class="col-lg-12">'+
 '                              <div id="other_symptoms_later_immunized" style="display: none">'+
-'                                <input type="text" id="other_symptoms_later_immunized_text1" name="other_symptoms_later_immunized[]" class="form-control" placeholder="" hidden="true">'+
+'                                <input type="text" id="other_symptoms_later_immunized_text1" name="other_symptoms_later_immunized[' + rowCountSyntom + ']" class="form-control" placeholder="" hidden="true">'+
 '                              </div>'+
 '                              {{-- <div id="other_symptoms_later_immunized_t" style="display: none">'+
 '                                <input type="text" class="form-control pull-right" id="other_symptoms_later_immunized_text" name="other_symptoms_later_immunized" placeholder="ระบุอาการอื่นๆ">'+
@@ -1991,94 +1991,94 @@ foreach ($aecode as $value) {
 '                        <div class="form-group">'+
 '                          <div class="col-md-12" id="chest_pain_' + rowCount + '" >'+
 '                            <label>'+
-'                              <input name="c_chest_pain[]" type="checkbox" value="1">'+
+'                              <input name="c_chest_pain[' + rowCountSyntom + ']" type="checkbox" value="1">'+
 '                              Chest pain'+
 '                            </label>'+
-'                            <input type="text" id="chest_pain' + rowCount + '" name="chest_pain[]" hidden>'+
+'                            <input type="text" id="chest_pain' + rowCount + '" name="chest_pain[' + rowCountSyntom + ']" hidden>'+
 '                          </div>'+
 '                          <div class="col-md-12" id="myocarditis_' + rowCount + '">'+
 '                            <label>'+
-'                              <input name="c_myocarditis[]" type="checkbox" value="1">'+
+'                              <input name="c_myocarditis[' + rowCountSyntom + ']" type="checkbox" value="1">'+
 '                              Myocarditis'+
 '                            </label>'+
-'                            <input type="text" id="myocarditis' + rowCount + '" name="myocarditis[]" hidden>'+
+'                            <input type="text" id="myocarditis' + rowCount + '" name="myocarditis[' + rowCountSyntom + ']" hidden>'+
 '                          </div>'+
 '                          <div class="col-md-12" id="heart_failure_' + rowCount + '">'+
 '                            <label>'+
-'                              <input name="c_heart_failure[]" type="checkbox" value="1">'+
+'                              <input name="c_heart_failure[' + rowCountSyntom + ']" type="checkbox" value="1">'+
 '                              Heart failure'+
 '                            </label>'+
-'                            <input type="text" id="heart_failure' + rowCount + '" name="heart_failure[]" hidden>'+
+'                            <input type="text" id="heart_failure' + rowCount + '" name="heart_failure[' + rowCountSyntom + ']" hidden>'+
 '                          </div>'+
 '                          <div class="col-md-12" id="pericarditis_' + rowCount + '">'+
 '                            <label>'+
-'                              <input name="c_pericarditis[]" type="checkbox" value="1">'+
+'                              <input name="c_pericarditis[' + rowCountSyntom + ']" type="checkbox" value="1">'+
 '                              Pericarditis'+
 '                            </label>'+
-'                            <input type="text" id="pericarditis' + rowCount + '" name="pericarditis[]" hidden>'+
+'                            <input type="text" id="pericarditis' + rowCount + '" name="pericarditis[' + rowCountSyntom + ']" hidden>'+
 '                          </div>'+
 '                          <div class="col-md-12" id="sudden_cardiac_arrest_' + rowCount + '">'+
 '                            <label>'+
-'                              <input name="c_sudden_cardiac_arrest[]" type="checkbox" value="1">'+
+'                              <input name="c_sudden_cardiac_arrest[' + rowCountSyntom + ']" type="checkbox" value="1">'+
 '                              Sudden cardiac arrest'+
 '                            </label>'+
-'                            <input type="text" id="sudden_cardiac_arrest' + rowCount + '" name="sudden_cardiac_arrest[]" hidden>'+
+'                            <input type="text" id="sudden_cardiac_arrest' + rowCount + '" name="sudden_cardiac_arrest[' + rowCountSyntom + ']" hidden>'+
 '                          </div>'+
 '                          <div class="col-md-12" id="covid_19_' + rowCount + '">'+
 '                            <label>'+
-'                              <input name="c_covid_19[]" type="checkbox" value="1">'+
+'                              <input name="c_covid_19[' + rowCountSyntom + ']" type="checkbox" value="1">'+
 '                              Covid-19'+
 '                            </label>'+
-'                            <input type="text" id="covid_19' + rowCount + '" name="covid_19[]" hidden>'+
+'                            <input type="text" id="covid_19' + rowCount + '" name="covid_19[' + rowCountSyntom + ']" hidden>'+
 '                          </div>'+
 '                          <div class="col-md-12" id="ischemic_stroke_' + rowCount + '">'+
 '                            <label>'+
-'                              <input name="c_ischemic_stroke[]" type="checkbox" value="1">'+
+'                              <input name="c_ischemic_stroke[' + rowCountSyntom + ']" type="checkbox" value="1">'+
 '                              Ischemic stroke'+
 '                            </label>'+
-'                            <input type="text" id="ischemic_stroke' + rowCount + '" name="ischemic_stroke[]" hidden>'+
+'                            <input type="text" id="ischemic_stroke' + rowCount + '" name="ischemic_stroke[' + rowCountSyntom + ']" hidden>'+
 '                          </div>'+
 '                          <div class="col-md-12" id="hemorrhagic_stroke_' + rowCount + '">'+
 '                            <label>'+
-'                              <input name="c_hemorrhagic_stroke[]" type="checkbox" value="1">'+
+'                              <input name="c_hemorrhagic_stroke[' + rowCountSyntom + ']" type="checkbox" value="1">'+
 '                            Hemorrhagic stroke'+
 '                            </label>'+
-'                            <input type="text" id="hemorrhagic_stroke' + rowCount + '" name="hemorrhagic_stroke[]" hidden>'+
+'                            <input type="text" id="hemorrhagic_stroke' + rowCount + '" name="hemorrhagic_stroke[' + rowCountSyntom + ']" hidden>'+
 '                          </div>'+
 '                          <div class="col-md-12" id="deep_vein_thrombosis_' + rowCount + '">'+
 '                            <label>'+
-'                              <input name="c_deep_vein_thrombosis[]" type="checkbox" value="1">'+
+'                              <input name="c_deep_vein_thrombosis[' + rowCountSyntom + ']" type="checkbox" value="1">'+
 '                              Deep vein thrombosis                            '+
 '		                      	</label>'+
-'                            <input type="text" id="deep_vein_thrombosis' + rowCount + '" name="deep_vein_thrombosis[]" hidden>'+
+'                            <input type="text" id="deep_vein_thrombosis' + rowCount + '" name="deep_vein_thrombosis[' + rowCountSyntom + ']" hidden>'+
 '                          </div>'+
 '                          <div class="col-md-12" id="pulmonary_embolism_' + rowCount + '">'+
 '                            <label>'+
-'                              <input name="c_pulmonary_embolism[]" type="checkbox" value="1">'+
+'                              <input name="c_pulmonary_embolism[' + rowCountSyntom + ']" type="checkbox" value="1">'+
 '                              Pulmonary embolism'+
 '                            </label>'+
-'                            <input type="text" id="pulmonary_embolism' + rowCount + '" name="pulmonary_embolism[]" hidden>'+
+'                            <input type="text" id="pulmonary_embolism' + rowCount + '" name="pulmonary_embolism[' + rowCountSyntom + ']" hidden>'+
 '                          </div>'+
 '                          <div class="col-md-12" id="hypertension_' + rowCount + '">'+
 '                            <label>'+
-'                              <input name="c_hypertension[]" type="checkbox" value="1">'+
+'                              <input name="c_hypertension[' + rowCountSyntom + ']" type="checkbox" value="1">'+
 '                              Hypertension'+
 '                            </label>'+
-'                            <input type="text" id="hypertension' + rowCount + '" name="hypertension[]" hidden>'+
+'                            <input type="text" id="hypertension' + rowCount + '" name="hypertension[' + rowCountSyntom + ']" hidden>'+
 '                          </div>'+
 '                          <div class="col-md-12" id="hypertensive_urgency_' + rowCount + '">'+
 '                            <label>'+
-'                              <input name="c_hypertensive_urgency[]" type="checkbox" value="1">'+
+'                              <input name="c_hypertensive_urgency[' + rowCountSyntom + ']" type="checkbox" value="1">'+
 '                               Hypertensive urgency'+
 '                            </label>'+
-'                            <input type="text" id="hypertensive_urgency' + rowCount + '" name="hypertensive_urgency[]" hidden>'+
+'                            <input type="text" id="hypertensive_urgency' + rowCount + '" name="hypertensive_urgency[' + rowCountSyntom + ']" hidden>'+
 '                          </div>'+
 '                          <div class="col-md-12" id="bells_palsy_' + rowCount + '">'+
 '                            <label>'+
-'                              <input name="c_bells_palsy[]" type="checkbox" value="1">'+
+'                              <input name="c_bells_palsy[' + rowCountSyntom + ']" type="checkbox" value="1">'+
 '                              Bells palsy'+
 '                            </label>'+
-'                            <input type="text" id="bells_palsy' + rowCount + '" name="bells_palsy[]" hidden>'+
+'                            <input type="text" id="bells_palsy' + rowCount + '" name="bells_palsy[' + rowCountSyntom + ']" hidden>'+
 '                          </div>'+
 ''+
 '                          </div>'+
@@ -2099,7 +2099,7 @@ foreach ($aecode as $value) {
 '                              <div class="input-group-addon">'+
 '                                <i class="fa fa-calendar"></i>'+
 '                              </div>'+
-'                              <input type="text" class="form-control pull-right" id="date_of_symptoms1' + rowCount + '" name="date_of_symptoms[]" data-date-format="yyyy-mm-dd" readonly>'+
+'                              <input type="text" class="form-control pull-right" id="date_of_symptoms1' + rowCount + '" name="date_of_symptoms[' + rowCountSyntom + ']" data-date-format="yyyy-mm-dd" readonly>'+
 '                            </div>'+
 '                          </div>'+
 '                        </div>'+
@@ -2108,7 +2108,7 @@ foreach ($aecode as $value) {
 '                            <div class="col-lg-6">'+
 '                              <label>เวลาที่เกิดอาการ :</label>'+
 '                              <div class="input-group">'+
-'                                <input  id="time_of_symptoms1' + rowCount + '" type="text" class="form-control" name="time_of_symptoms[]">'+
+'                                <input  id="time_of_symptoms1' + rowCount + '" type="text" class="form-control" name="time_of_symptoms[' + rowCountSyntom + ']">'+
 '    '+
 '                                <div class="input-group-addon">'+
 '                                  <i class="fa fa-clock-o"></i>'+
@@ -2124,7 +2124,7 @@ foreach ($aecode as $value) {
 '                              <div class="input-group-addon">'+
 '                                <i class="fa fa-calendar"></i>'+
 '                              </div>'+
-'                              <input type="text" class="form-control pull-right" id="date_of_treatment1' + rowCount + '" name="date_of_treatment[]" data-date-format="yyyy-mm-dd" readonly>'+
+'                              <input type="text" class="form-control pull-right" id="date_of_treatment1' + rowCount + '" name="date_of_treatment[' + rowCountSyntom + ']" data-date-format="yyyy-mm-dd" readonly>'+
 '                            </div>'+
 '                          </div>'+
 '                        </div>'+
@@ -2135,7 +2135,7 @@ foreach ($aecode as $value) {
 '                              <div class="input-group-addon">'+
 '                                <i class="fa fa-calendar"></i>'+
 '                              </div>'+
-'                              <input type="text" class="form-control pull-right" id="time_of_treatment1' + rowCount + '" name="time_of_treatment[]" data-date-format="yyyy-mm-dd" readonly>'+
+'                              <input type="text" class="form-control pull-right" id="time_of_treatment1' + rowCount + '" name="time_of_treatment[' + rowCountSyntom + ']" data-date-format="yyyy-mm-dd" readonly>'+
 '                            </div>'+
 '                          </div>'+
 '                        </div>'+
@@ -2149,12 +2149,12 @@ foreach ($aecode as $value) {
 '                        <div class="form-group">'+
 '                          <div class="col-lg-8">'+
 '                            <label>รายละเอียดอาการและการตรวจสอบ</label>'+
-'                            <input class="form-control" rows="5"  id="Symptoms_details1" name="Symptoms_details[]">'+
+'                            <input class="form-control" rows="5"  id="Symptoms_details1" name="Symptoms_details[' + rowCountSyntom + ']">'+
 '                          </div>'+
 '                        </div>'+
 '                        <div class="form-group">'+
 '                          <div class="col-lg-8">'+
-'                            <label>วินิจฉัยของแพทย์ :</label><input type="text" id="diagnosis1" name="diagnosis[]" class="form-control" placeholder="">'+
+'                            <label>วินิจฉัยของแพทย์ :</label><input type="text" id="diagnosis1" name="diagnosis[' + rowCountSyntom + ']" class="form-control" placeholder="">'+
 '                          </div>'+
 '                        </div>'+
 '                      </div>'+
@@ -2176,17 +2176,17 @@ foreach ($aecode as $value) {
 '                      <div class="form-group">'+
 '                        <div class="col-md-2">'+
 '                          <label>'+
-'                            <input type="radio" name="c_seriousness_of_the_symptoms[]"  id="seriousness_of_the_symptoms1" value="1" >'+
+'                            <input type="radio" name="c_seriousness_of_the_symptoms[' + rowCountSyntom + ']"  id="seriousness_of_the_symptoms1" value="1" >'+
 '                            ไม่ร้ายแรง'+
 '                          </label>'+
 '                        </div>'+
 '                        <div class="col-md-2">'+
 '                          <label>'+
-'                            <input type="radio" name="c_seriousness_of_the_symptoms[]" id="seriousness_of_the_symptoms1" value="2">'+
+'                            <input type="radio" name="c_seriousness_of_the_symptoms[' + rowCountSyntom + ']" id="seriousness_of_the_symptoms1" value="2">'+
 '                            ร้ายแรง'+
 '                          </label>'+
 '                        </div>'+
-'                        <input type="text" id="seriousness_of_the_symptoms" name="seriousness_of_the_symptoms[]" hidden>'+
+'                        <input type="text" id="seriousness_of_the_symptoms" name="seriousness_of_the_symptoms[' + rowCountSyntom + ']" hidden>'+
 '                      </div>'+
 '                    </div>'+
 '                  </div>'+
@@ -2201,19 +2201,19 @@ foreach ($aecode as $value) {
 '                    <div class="form-group">'+
 '                      <div class="col-md-4">'+
 '                        <label>'+
-'                          <input type="checkbox" name="c_other_seriousness_of_the_symptoms[]" id="other_seriousness_of_the_symptoms1" value="1">'+
+'                          <input type="checkbox" name="c_other_seriousness_of_the_symptoms[' + rowCountSyntom + ']" id="other_seriousness_of_the_symptoms1" value="1">'+
 '                          เสียชีวิต'+
 '                        </label>'+
 '                      </div>'+
 '                      <div class="col-md-4">'+
 '                        <label>'+
-'                          <input type="checkbox" name="c_other_seriousness_of_the_symptoms[]" id="other_seriousness_of_the_symptoms1" value="2">'+
+'                          <input type="checkbox" name="c_other_seriousness_of_the_symptoms[' + rowCountSyntom + ']" id="other_seriousness_of_the_symptoms1" value="2">'+
 '                          อันตรายถึงชีวิต'+
 '                        </label>'+
 '                      </div>'+
 '                      <div class="col-md-4">'+
 '                        <label>'+
-'                          <input type="checkbox" name="c_other_seriousness_of_the_symptoms[]" id="other_seriousness_of_the_symptoms1" value="3">'+
+'                          <input type="checkbox" name="c_other_seriousness_of_the_symptoms[' + rowCountSyntom + ']" id="other_seriousness_of_the_symptoms1" value="3">'+
 '                          พิการ/ไร้ความสามารถ'+
 '                        </label>'+
 '                      </div>'+
@@ -2221,30 +2221,30 @@ foreach ($aecode as $value) {
 '                    <div class="form-group">'+
 '                      <div class="col-md-4">'+
 '                        <label>'+
-'                          <input type="checkbox" name="c_other_seriousness_of_the_symptoms[]" id="other_seriousness_of_the_symptoms1" value="4">'+
+'                          <input type="checkbox" name="c_other_seriousness_of_the_symptoms[' + rowCountSyntom + ']" id="other_seriousness_of_the_symptoms1" value="4">'+
 '                          รับไว้รักษาในโรงพยาบาล'+
 '                        </label>'+
 '                      </div>'+
 '                      <div class="col-md-4">'+
 '                        <label>'+
-'                          <input type="checkbox" name="c_other_seriousness_of_the_symptoms[]" id="other_seriousness_of_the_symptoms1" value="5">'+
+'                          <input type="checkbox" name="c_other_seriousness_of_the_symptoms[' + rowCountSyntom + ']" id="other_seriousness_of_the_symptoms1" value="5">'+
 '                          ความผิดปกติแต่กำเนิด'+
 '                        </label>'+
 '                      </div>'+
 '                      <div class="col-md-4">'+
 '                        <label>'+
-'                          <input type="checkbox" name="c_other_seriousness_of_the_symptoms[]" id="other_seriousness_of_the_symptoms1" value="6">'+
+'                          <input type="checkbox" name="c_other_seriousness_of_the_symptoms[' + rowCountSyntom + ']" id="other_seriousness_of_the_symptoms1" value="6">'+
 '                          อื่นๆที่มีความสำคัญทางการแพทย์'+
 '                        </label>'+
 '                      </div>'+
 '                      <div class="col-lg-4">'+
 '                        <div id="text_other_seriousness_of_the_symptoms" style="display: none">'+
 '                          <label></label>'+
-'                          <input type="text" id="text_other_seriousness_of_the_symptoms_text" name="text_other_seriousness_symptoms[]" class="form-control" placeholder="อื่นๆ">'+
+'                          <input type="text" id="text_other_seriousness_of_the_symptoms_text" name="text_other_seriousness_symptoms[' + rowCountSyntom + ']" class="form-control" placeholder="อื่นๆ">'+
 '                        </div>'+
 '                      </div>'+
 '                    </div>'+
-'                    <input type="text" id="other_seriousness_of_the_symptoms' + rowCount + '" name="other_seriousness_of_the_symptoms[]" hidden>'+
+'                    <input type="text" id="other_seriousness_of_the_symptoms' + rowCount + '" name="other_seriousness_of_the_symptoms[' + rowCountSyntom + ']" hidden>'+
 '                  </div>'+
 '                </div>'+
 '                </div>'+
@@ -2263,48 +2263,48 @@ foreach ($aecode as $value) {
 '                      <div class="form-group">'+
 '                        <div class="col-md-4">'+
 '                          <label>'+
-'                            <input type="radio" id="c_patient_status1" name="c_patient_status[]" value="1" >'+
+'                            <input type="radio" id="c_patient_status1" name="c_patient_status[' + rowCountSyntom + ']" value="1" >'+
 '                            หาย'+
 '                          </label>'+
 '                        </div>'+
 '                        <div class="col-md-4">'+
 '                          <label>'+
-'                            <input type="radio" id="c_patient_status1" name="c_patient_status[]" value="2">'+
+'                            <input type="radio" id="c_patient_status1" name="c_patient_status[' + rowCountSyntom + ']" value="2">'+
 '                            หายโดยมีร่องรอย'+
 '                          </label>'+
 '                        </div>'+
 '                        <div class="col-md-4">'+
 '                          <label>'+
-'                            <input type="radio" id="c_patient_status1" name="c_patient_status[]" value="3">'+
+'                            <input type="radio" id="c_patient_status1" name="c_patient_status[' + rowCountSyntom + ']" value="3">'+
 '                            อาการดีขึ้นแต่ยังไม่หาย'+
 '                          </label>'+
 '                        </div>'+
 '                        <div class="col-md-4">'+
 '                          <label>'+
-'                            <input type="radio" id="c_patient_status1" name="c_patient_status[]" value="4">'+
+'                            <input type="radio" id="c_patient_status1" name="c_patient_status[' + rowCountSyntom + ']" value="4">'+
 '                            ไม่หาย'+
 '                          </label>'+
 '                        </div>'+
 '                        <div class="col-md-4">'+
 '                          <label>'+
-'                            <input type="radio" id="c_patient_status1" name="c_patient_status[]" value="5">'+
+'                            <input type="radio" id="c_patient_status1" name="c_patient_status[' + rowCountSyntom + ']" value="5">'+
 '                            ไม่ทราบ'+
 '                          </label>'+
 '                        </div>'+
 '                        <div class="col-md-4">'+
 '                          <label>'+
-'                            <input type="radio" id="c_patient_status1" name="c_patient_status[]" value="6">'+
+'                            <input type="radio" id="c_patient_status1" name="c_patient_status[' + rowCountSyntom + ']" value="6">'+
 '                            เสียชีวิต'+
 '                          </label>'+
 '                        </div>'+
 '                        <div class="col-lg-4">'+
 '                          <div class="input-group date">'+
 '                            <div id="other_patian_sta" style="display: none">'+
-'                              <input type="text" class="form-control" placeholder="ระบุ ว/ด/ป เสียชีวิต" id="datepicker_dead" name="date_dead[]" hidden="true" data-date-format="yyyy-mm-dd" readonly>'+
+'                              <input type="text" class="form-control" placeholder="ระบุ ว/ด/ป เสียชีวิต" id="datepicker_dead" name="date_dead[' + rowCountSyntom + ']" hidden="true" data-date-format="yyyy-mm-dd" readonly>'+
 '                            </div>'+
 '                          </div>'+
 '                        </div>'+
-'                        <input type="text" id="patient_status' + rowCount + '" name="patient_status[]" hidden>'+
+'                        <input type="text" id="patient_status' + rowCount + '" name="patient_status[' + rowCountSyntom + ']" hidden>'+
 '                      </div>'+
 '                    </div>'+
 '                  </div>'+
@@ -2319,35 +2319,35 @@ foreach ($aecode as $value) {
 '                    <div class="col-lg-12"  id="funeral_' + rowCount + '">'+
 '                      <div class="col-md-2" hidden>'+
 '                        <label>'+
-'                          <input type="radio" id="c_funeral' + rowCount + '" name="c_funeral[]" value="" >'+
+'                          <input type="radio" id="c_funeral' + rowCount + '" name="c_funeral[' + rowCountSyntom + ']" value="" >'+
 '                          ไม่ระบุ'+
 '                        </label>'+
 '                      </div>'+
 '                      <div class="col-md-2">'+
 '                        <label>'+
-'                          <input type="radio" id="c_funeral' + rowCount + '" name="c_funeral[]" value="1" >'+
+'                          <input type="radio" id="c_funeral' + rowCount + '" name="c_funeral[' + rowCountSyntom + ']" value="1" >'+
 '                          ไม่มี'+
 '                        </label>'+
 '                      </div>'+
 '                      <div class="col-md-2">'+
 '                        <label>'+
-'                          <input type="radio" id="c_funeral' + rowCount + '" name="c_funeral[]" value="2">'+
+'                          <input type="radio" id="c_funeral' + rowCount + '" name="c_funeral[' + rowCountSyntom + ']" value="2">'+
 '                          ไม่ทราบ'+
 '                        </label>'+
 '                      </div>'+
 '                      <div class="col-md-2">'+
 '                        <label>'+
-'                          <input type="radio" id="c_funeral' + rowCount + '" name="c_funeral[]" value="3">'+
+'                          <input type="radio" id="c_funeral' + rowCount + '" name="c_funeral[' + rowCountSyntom + ']" value="3">'+
 '                          มี'+
 '                        </label>'+
 '                      </div>'+
 '                      <div class="col-lg-3">'+
 '                        <div id="other_address_funeral' + rowCount + '" style="display: none">'+
 '                          <label>สถานที่ทำการ :</label>'+
-'                          <input type="text" id="other_address_funeral_text' + rowCount + '" name="other_address_funeral[]" class="form-control" placeholder="ระบุสถานที่ทำการ">'+
+'                          <input type="text" id="other_address_funeral_text' + rowCount + '" name="other_address_funeral[' + rowCountSyntom + ']" class="form-control" placeholder="ระบุสถานที่ทำการ">'+
 '                        </div>'+
 '                      </div>'+
-'                      <input type="text" id="funeral' + rowCount + '" name="funeral[]" hidden>'+
+'                      <input type="text" id="funeral' + rowCount + '" name="funeral[' + rowCountSyntom + ']" hidden>'+
 '                    </div>'+
 '                  </div>'+
 '                </div>'+
