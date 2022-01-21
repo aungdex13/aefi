@@ -118,3 +118,10 @@ Route::get('/DeleteRefer', 'Aefi\ReferController@DeleteRefer')->name('DeleteRefe
 // Symtoms By dose
 Route::get('/SymtomsbyDoseLst', 'Aefi\SymtomsbyDoseController@SymtomsbyDoseLst')->name('SymtomsbyDoseLst');
 Route::get('/SymtomsbyDoseFrm', 'Aefi\SymtomsbyDoseController@SymtomsbyDoseFrm')->name('SymtomsbyDoseFrm');
+
+// AESI
+Route::get('/lstaesif1', 'Aefi\AESISelectController@selectdatatablecaseAESI1')->name('lstaesi1');
+Route::post('/lstaesif1', 'Aefi\AESISelectController@selectdatatablecaseAESI1src')->name('lstaesi1');
+Route::get('/formaesi1', 'Aefi\FormAESIController@index')->name('formaesi1');
+Route::get('/dataaesiexport', 'Aefi\DataAESIexportController@dataexport')->name('dataaesiexport');
+Route::post('/dataaesiexport', 'Aefi\DataAESIexportController@dataexportfrm')->name('dataaesiexport');

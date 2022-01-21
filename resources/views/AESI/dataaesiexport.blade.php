@@ -19,8 +19,8 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
 <section class="content-header">
 <!-- Content Header (Page header) -->
 <h1>
-  ส่งออกข้อมูลผู้มีอาการภายหลังได้รับการสร้างเสริมภูมิคุ้มกันโรค
-  <small>AEFI</small>
+  แบบรายงานการเฝ้าระวังกลุ่มอาการที่อาจเกี่ยวข้องกับการได้รับวัคซีนโควิด 19 (AESI Form)
+  <small>AESI</small>
 </h1>
 <ol class="breadcrumb">
 
@@ -33,7 +33,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
 		<div class="col-md-12">
 		  <div class="box box-solid">
 			<div class="box-header with-border">
-			  <h3 class="box-title">รายงาน :: Adverse Events Following Immunization : AEFI</h3>
+			  <h3 class="box-title">รายงาน :: Adverse Event of Special Interest: AESI</h3>
 			</div>
 			<!-- /.box-header -->
       <form action="{{route('dataf1export') }}" method="post">

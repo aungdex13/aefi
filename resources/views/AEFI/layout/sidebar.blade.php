@@ -30,7 +30,10 @@
 		  </span>
 		</a>
 		<ul class="treeview-menu">
-		  <li><a href="{{ route('lstf1') }}"><i class="fa fa-circle-o"></i> แบบฟอร์ม v1</a></li>
+		  <li><a href="{{ route('lstf1') }}"><i class="fa fa-circle-o"></i> แบบฟอร์ม AEFI</a></li>
+		  @hasrole('admin')
+		  <li><a href="{{ route('lstaesi1') }}"><i class="fa fa-circle-o"></i> แบบฟอร์ม AESI</a></li>
+		  @endhasrole
 		  {{-- <li class="treeview">
 			<a href="#"><i class="fa fa-circle-o"></i>  แบบฟอร์ม v2
 			  <span class="pull-right-container">
@@ -70,6 +73,9 @@
 		</a>
 		<ul class="treeview-menu">
 		  <li><a href="{{ route('dataf1export') }}"><i class="fa fa-circle-o"></i>รายงาน AEFI 1 </a></li>
+		  @hasrole('admin')
+      <li><a href="{{ route('dataaesiexport') }}"><i class="fa fa-circle-o"></i>รายงาน AESI</a></li>
+      @endhasrole
       @hasrole('admin')
       <li><a href="{{ route('ExpertExport') }}"><i class="fa fa-circle-o"></i>รายงานการพิจารณาผู้ป่วย</br>โดยคณะผู้เชี่ยวชาญ</a></li>
       @endhasrole
