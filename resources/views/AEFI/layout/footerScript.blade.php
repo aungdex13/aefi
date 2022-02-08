@@ -142,6 +142,50 @@ $(document).ready(function() {
         $('#time_of_treatment2').datepicker({
       dateFormat: "yy-mm-dd"
     })
+
+
+
+            //Date picker
+    $('#date_of_dischrge').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+    $('#CT_date').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+    $('#MRI_date').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+    $('#EKG_date').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+    $('#NPS_date').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+    $('#Serum_COVID-19_IgM1_date').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+    $('#Serum_COVID-19_IgM2_date').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+    $('#Serum_COVID-19_IgG1_date').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+    $('#Serum_COVID-19_IgG2_date').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+    $('#inspect_covid_date').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+    $('#other_date_examination').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+    $('#CSF_date').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+    
+
+
+
         //Date picker
     $('#date_of_treatment').datepicker({
       dateFormat: "yy-mm-dd"

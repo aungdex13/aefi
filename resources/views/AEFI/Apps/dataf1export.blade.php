@@ -43,6 +43,15 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
           <input type="text" id="reservation" name="date_of_symptoms" class="form-control" placeholder="ระบุวันที่ที่ต้องการค้นหาข้อมูล" readonly>
           <!-- /input-group -->
         </div>
+        <div class="col-lg-3">
+          <select type="text" id="name_of_vaccine" name="name_of_vaccine" class="form-control">
+            <option value="">ชื่อวัคซีนที่ได้รับ</option>
+            @foreach ($vac_list as $row)
+            <option value="{{$row->VAC_CODE}}">{{$row->VAC_NAME_EN}}</option>
+            @endforeach
+          </select>
+          <!-- /input-group -->
+        </div>
         <h3 class="box-title">
           <button type="submit" class="btn btn-block  btn-success">ค้นหาข้อมูล</button>
             {{-- <i class="fa fa-pencil-square-o" aria-hidden="true"></i>ค้นหาข้อมูล</a> --}}

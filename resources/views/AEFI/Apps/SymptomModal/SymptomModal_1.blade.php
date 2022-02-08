@@ -21,7 +21,7 @@
                               <input type="checkbox" id="c_rash" name="c_rash[0]" value="0027">
                               Rash
                             </label>
-                            <input type="text" id="rash" name="rash[0]" >
+                            <input type="text" id="rash" name="rash[0]" hidden>
                           </div>
                           <div class="col-md-4" id="erythema_1">
                             <label>

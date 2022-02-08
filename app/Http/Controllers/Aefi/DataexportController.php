@@ -198,6 +198,7 @@ $selectgroupprov = DB::table('chospital_new')
 		 $listvac_arr=$this->listvac_arr();
 		 $list_hos=$this->list_hos();
 		 $list_career=$this->list_career();
+		 $vac_list=$this->vaclist();
 		return view('AEFI.Apps.dataf1export',
 			[
 				'selectdata'=>$selectdata,
@@ -208,7 +209,8 @@ $selectgroupprov = DB::table('chospital_new')
 				'listvac_arr'=>$listvac_arr,
 				'datenow'=>$datenow,
 				'list_hos'=>$list_hos,
-				'list_career'=>$list_career
+				'list_career'=>$list_career,
+				'vac_list'=>$vac_list
 			]);
 	}
 
@@ -219,6 +221,16 @@ $selectgroupprov = DB::table('chospital_new')
 		$roleArrregion = auth()->user()->region;
 		$roleArr = auth()->user()->getRoleNames()->toArray();
 		$date_of_symptoms_in = $req->input('date_of_symptoms');
+		$name_of_vaccine[] = $req->input('name_of_vaccine');
+		if ($name_of_vaccine == [null]) {
+			$name_of_vaccine = [
+				1,2,3,4,5,6,7,8,9,
+				10,11,12,13,14,15,16,17,18,19,
+				20,21,22,23,24,25,26,27,28,29,
+				30,31,32,33,34,35,36,37,38,39,
+				40,41,42,43
+			];
+		}
 		$date_of_symptoms = explode('-', $date_of_symptoms_in);
 		$date_of_symptoms_from = $date_of_symptoms[0]."-".$date_of_symptoms[1]."-".$date_of_symptoms[2];
 		$date_of_symptoms_to = $date_of_symptoms[3]."-".$date_of_symptoms[4]."-".$date_of_symptoms[5];
@@ -324,7 +336,8 @@ $selectgroupprov = DB::table('chospital_new')
 		// 		 		 GROUP_CONCAT( aefi_form_1_vac.time_of_vaccination   ) as "time_of_vaccination" ')
 						)
 						->whereDate('aefi_form_1.date_entry', '>=', $date_of_symptoms_from)
-						->whereDate('aefi_form_1.date_entry', '<=', $date_of_symptoms_to);
+						->whereDate('aefi_form_1.date_entry', '<=', $date_of_symptoms_to)
+						->whereIn('aefi_form_1_vac.name_of_vaccine', $name_of_vaccine);
 	if (count($roleArr) > 0) {
 			 $user_role = $roleArr[0];
 		 switch ($user_role) {
@@ -393,6 +406,7 @@ $selectgroupprov = DB::table('chospital_new')
 		 $listvac_arr=$this->listvac_arr();
 		 $list_hos=$this->list_hos();
 		 $list_career=$this->list_career();
+		 $vac_list=$this->vaclist();
 		return view('AEFI.Apps.dataf1export',
 			[
 				'selectdata'=>$selectdata,
@@ -405,7 +419,8 @@ $selectgroupprov = DB::table('chospital_new')
 				'date_of_symptoms_to'=>$date_of_symptoms_to,
 				'datenow'=>$datenow,
 				'list_hos'=>$list_hos,
-				'list_career'=>$list_career
+				'list_career'=>$list_career,
+				'vac_list'=>$vac_list
 			]);
 	}
 
@@ -460,5 +475,13 @@ $selectgroupprov = DB::table('chospital_new')
 		}
 		// dd($province_arr);
 		return $arr_career;
+	}
+	protected function vaclist(){
+		$arr_vaclist = DB::table('vac_tbl')
+		->select('VAC_CODE','VAC_NAME_EN')
+		->orderBy('ID', 'ASC')
+		->get();
+		 // dd($vaclist);
+		return $arr_vaclist;
 	}
 }

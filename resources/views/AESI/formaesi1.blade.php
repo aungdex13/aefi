@@ -108,19 +108,19 @@ foreach ($aecode as $value) {
                         <div class="row">
                           <div class="col-xs-2">
                             <label>ID</label>
-                            <input type="text" class="form-control" placeholder="ID">
+                            <input type="text" class="form-control" name="id" placeholder="ID">
                           </div>
                           <div class="col-xs-2">
                             <label>คำนำหน้า</label>
-                            <input type="text" class="form-control" placeholder="คำนำหน้า">
+                            <input type="text" class="form-control" name="title_name" placeholder="คำนำหน้า">
                           </div>
                           <div class="col-xs-4">
                             <label>ชื่อ</label>
-                            <input type="text" class="form-control" placeholder="ชื่อ">
+                            <input type="text" class="form-control" name="first_name" placeholder="ชื่อ">
                           </div>
                           <div class="col-xs-4">
                             <label>สกุล</label>
-                            <input type="text" class="form-control" placeholder="สกุล">
+                            <input type="text" class="form-control" name="sur_name" placeholder="สกุล">
                           </div>
                         </div>
                       </div>
@@ -128,15 +128,15 @@ foreach ($aecode as $value) {
                         <div class="row">
                           <div class="col-xs-2">
                             <label>HN</label>
-                            <input type="text" class="form-control" placeholder="HN">
+                            <input type="text" class="form-control" name="hn" placeholder="HN">
                           </div>
                           <div class="col-xs-2">
                             <label>AN</label>
-                            <input type="text" class="form-control" placeholder="AN">
+                            <input type="text" class="form-control" name="an" placeholder="AN">
                           </div>
                           <div class="col-xs-4">
                             <label>เลขประจำตัวประชาชน 13 หลัก </label>
-                            <input type="text" class="form-control" placeholder="เลขประจำตัวประชาชน 13 หลัก">
+                            <input type="text" class="form-control" name="id_number" placeholder="เลขประจำตัวประชาชน 13 หลัก">
                           </div>
                         </div>
                       </div>
@@ -144,15 +144,15 @@ foreach ($aecode as $value) {
                         <div class="row">
                           <div class="col-xs-2">
                             <label>สถานภาพสมรส</label>
-                            <input type="text" class="form-control" placeholder="สถานภาพสมรส">
+                            <input type="text" class="form-control" name="marital_status" placeholder="สถานภาพสมรส">
                           </div>
                           <div class="col-xs-2">
                             <label>อาชีพ</label>
-                            <input type="text" class="form-control" placeholder="อาชีพ">
+                            <input type="text" class="form-control" name="career_code" placeholder="อาชีพ">
                           </div>
                           <div class="col-xs-4">
                             <label>ประวัติโรคประจำตัว</label>
-                            <input type="text" class="form-control" placeholder="ประวัติโรคประจำตัว">
+                            <input type="text" class="form-control" name="congenital_disease" placeholder="ประวัติโรคประจำตัว">
                           </div>
                         </div>
                       </div>
@@ -160,7 +160,7 @@ foreach ($aecode as $value) {
                         <div class="row">
                           <div class="col-xs-2">
                             <label>ยาที่ใช้ประจำ</label>
-                            <input type="text" class="form-control" placeholder="ยาที่ใช้ประจำ">
+                            <input type="text" class="form-control" name="regular_medication" placeholder="ยาที่ใช้ประจำ">
                           </div>
                         </div>
                       </div>
@@ -168,47 +168,58 @@ foreach ($aecode as $value) {
                         <div class="row">
                           <div class="col-xs-2">
                             <label>ที่อยู่ขณะเริ่มป่วย บ้านเลขที่</label>
-                            <input type="text" class="form-control" placeholder="บ้านเลขที่">
+                            <input type="text" class="form-control" name="house_number" placeholder="บ้านเลขที่">
                           </div>
                           <div class="col-xs-2">
                             <label>หมู่ที่</label>
-                            <input type="text" class="form-control" placeholder="หมู่ที่">
-                          </div>
-                          <div class="col-xs-2">
-                            <label>ตำบล</label>
-                            <input type="text" class="form-control" placeholder="ตำบล">
-                          </div>
-                          <div class="col-xs-2">
-                            <label>อำเภอ</label>
-                            <input type="อำเภอ" class="form-control" placeholder="อำเภอ">
+                            <input type="text" class="form-control" name="village_no"  placeholder="หมู่ที่">
                           </div>
                           <div class="col-xs-2">
                             <label>จังหวัด</label>
-                            <input type="จังหวัด" class="form-control" placeholder="จังหวัด">
+                            <select class="form-control provinces" name="province" id="provinces" required>
+                              <option value="">=== จังหวัด ===</option>
+                              @foreach ($list as $row)
+                              <option value="{{$row->province_code}}">{{$row->province_name}}</option>
+                              @endforeach
+                            </select>
                           </div>
+                          <div class="col-xs-2">
+                            <label>อำเภอ</label>
+                            <select class="form-control amphures" name="district">
+                              <option value="">=== อำเภอ ===</option>
+                            </select>
+                          </div>
+                          <div class="col-xs-2">
+                            <label>ตำบล</label>
+                            <select class="form-control district" name="subdistrict">
+                              <option value="">=== ตำบล ===</option>
+                            </select>
+                          </div>
+                          
+                          
                         </div>
                       </div>
                       <div class="form-group">
                         <div class="row">
                           <div class="col-xs-2">
                             <label>หมายเลขโทรศัพท์ </label>
-                            <input type="text" class="form-control" placeholder="หมายเลขโทรศัพท์ ">
+                            <input type="text" class="form-control" name="phone_number" placeholder="หมายเลขโทรศัพท์ ">
                           </div>
                           <div class="col-xs-2">
                             <label>คำนำหน้า</label>
-                            <input type="text" class="form-control" placeholder="ชื่อผู้ปกครอง (กรณีผู้ป่วยอายุ < 15 ปี) ">
+                            <input type="text" class="form-control" name="parent_title_name" placeholder="ชื่อผู้ปกครอง (กรณีผู้ป่วยอายุ < 15 ปี) ">
                           </div>
                           <div class="col-xs-2">
                             <label>ชื่อ</label>
-                            <input type="text" class="form-control" placeholder="ชื่อ">
+                            <input type="text" class="form-control" name="parent_first_name" placeholder="ชื่อ">
                           </div>
                           <div class="col-xs-2">
                             <label>สกุล</label>
-                            <input type="text" class="form-control" placeholder="สกุล">
+                            <input type="text" class="form-control" name="parent_last_name" placeholder="สกุล">
                           </div>
                           <div class="col-xs-2">
                             <label>โทร.</label>
-                            <input type="text" class="form-control" placeholder="โทร.">
+                            <input type="text" class="form-control" name="parent_phone_number" placeholder="โทร.">
                           </div>
                         </div>
                       </div>
@@ -241,19 +252,22 @@ foreach ($aecode as $value) {
                         <div class="row">
                           <div class="col-xs-2">
                             <label>วันเริ่มป่วย</label>
-                            <input type="text" class="form-control" placeholder="วันเริ่มป่วย">
+                            <input type="text" class="form-control" id="date_of_symptoms" name="date_of_symptoms" placeholder="วันเริ่มป่วย">
                           </div>
                           <div class="col-xs-2">
-                            <label>คำนำหน้า</label>
-                            <input type="text" class="form-control" placeholder="วันที่เข้ารับการรักษา">
+                            <label>วันที่เข้ารับการรักษา</label>
+                            <input type="text" class="form-control" id="date_of_treatment" name="date_of_treatment" placeholder="วันที่เข้ารับการรักษา">
                           </div>
                           <div class="col-xs-4">
                             <label>วันที่จำหน่ายผู้ป่วย</label>
-                            <input type="text" class="form-control" placeholder="วันที่จำหน่ายผู้ป่วย">
+                            <input type="text" class="form-control" id="date_of_dischrge" name="date_of_dischrge" placeholder="วันที่จำหน่ายผู้ป่วย">
                           </div>
                           <div class="col-xs-4">
                             <label>สถานที่รักษา</label>
-                            <input type="text" class="form-control" placeholder="สถานที่รักษา">
+                            {{-- <input type="text" class="form-control" id="hospital" name="hospital" placeholder="สถานที่รักษา"> --}}
+                            <select id="js-example-basic-single" name="hospcode_treat" class="js-example-basic-single form-control" data-dropdown-css-class="select2-danger" required>
+
+                            </select>
                           </div>
                         </div>
                       </div>
@@ -263,13 +277,13 @@ foreach ($aecode as $value) {
                             <label>ประเภทผู้ป่วย  </label>
                             <div class="radio">
                               <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                                <input type="radio" name="patient_type" id="patient_type1" value="0" checked>
                                 ผู้ป่วยนอก
                               </label>
                             </div>
                             <div class="radio">
                               <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                                <input type="radio" name="patient_type" id="patient_type2" value="2">
                                 ผู้ป่วยใน  
                               </label>
                             </div>
@@ -278,13 +292,13 @@ foreach ($aecode as $value) {
                             <label>ใส่ท่อช่วยหายใจ   </label>
                             <div class="radio">
                               <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                                <input type="radio" name="patient_tube" id="patient_tube1" value="0" checked>
                                 ไม่ใส่
                               </label>
                             </div>
                             <div class="radio">
                               <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                                <input type="radio" name="patient_tube" id="patient_tube2" value="1">
                                 ใส่
                               </label>
                             </div>
@@ -296,7 +310,7 @@ foreach ($aecode as $value) {
                         <div class="row">
                           <div class="col-xs-6">
                             <label>อาการสำคัญ</label>
-                            <input type="text" class="form-control" placeholder="อาการสำคัญ">
+                            <input type="text" class="form-control" name="chief_complaint" placeholder="อาการสำคัญ">
                           </div>
                         </div>
                       </div>
@@ -316,19 +330,19 @@ foreach ($aecode as $value) {
                           </div>
                           <div class="col-xs-2">
                             <label>Temp</label>
-                            <input type="text" class="form-control" placeholder="สัญญาณชีพ (Vital sign) Temp..............C  ">
+                            <input type="text" class="form-control" name="temp" placeholder="สัญญาณชีพ (Vital sign) Temp..............C  ">
                           </div>
                           <div class="col-xs-2">
                             <label>RR</label>
-                            <input type="text" class="form-control" placeholder="RR........./min">
+                            <input type="text" class="form-control" name="rr" placeholder="RR........./min">
                           </div>
                           <div class="col-xs-2">
                             <label>PR</label>
-                            <input type="text" class="form-control" placeholder="PR........./min">
+                            <input type="text" class="form-control" name="pr" placeholder="PR........./min">
                           </div>
                           <div class="col-xs-2">
                             <label>BP</label>
-                            <input type="text" class="form-control" placeholder="BP........./.........mmHg">
+                            <input type="text" class="form-control" name="bp" placeholder="BP........./.........mmHg">
                           </div>
                         </div>
                       </div>
@@ -339,15 +353,15 @@ foreach ($aecode as $value) {
                           </div>
                           <div class="col-xs-2">
                             <label>E</label>
-                            <input type="text" class="form-control" placeholder="E">
+                            <input type="text" class="form-control" name="gcs_e" placeholder="E">
                           </div>
                           <div class="col-xs-2">
                             <label>M</label>
-                            <input type="text" class="form-control" placeholder="M">
+                            <input type="text" class="form-control" name="gcs_m" placeholder="M">
                           </div>
                           <div class="col-xs-2">
                             <label>V</label>
-                            <input type="text" class="form-control" placeholder="V">
+                            <input type="text" class="form-control" name="gcs_v" placeholder="V">
                           </div>
                         </div>
                       </div>
@@ -355,11 +369,11 @@ foreach ($aecode as $value) {
                         <div class="row">
                           <div class="col-xs-2">
                             <label>Pupils ข้างซ้าย </label>
-                            <input type="text" class="form-control" placeholder="Pupils ข้างซ้าย...………mm  ">
+                            <input type="text" class="form-control" name="pupils_l" placeholder="Pupils ข้างซ้าย...………mm  ">
                           </div>
                           <div class="col-xs-2">
                             <label>Pupils ข้างขวา</label>
-                            <input type="text" class="form-control" placeholder="ข้างขวา...………mm   ">
+                            <input type="text" class="form-control" name="pupils_r" placeholder="ข้างขวา...………mm   ">
                           </div>
                         </div>
                       </div>
@@ -367,11 +381,11 @@ foreach ($aecode as $value) {
                         <div class="row">
                           <div class="col-xs-6">
                             <label>ผลการตรวจร่างกายที่สำคัญ</label>
-                            <input type="text" class="form-control" placeholder="ผลการตรวจร่างกายที่สำคัญ">
+                            <input type="text" class="form-control" name="physical_examination" placeholder="ผลการตรวจร่างกายที่สำคัญ">
                           </div>
                           <div class="col-xs-6">
                             <label>ผลการตรวจระบบประสาทที่สำคัญ</label>
-                            <input type="text" class="form-control" placeholder="ผลการตรวจระบบประสาทที่สำคัญ (motor power, sensory, reflex ฯลฯ) ">
+                            <input type="text" class="form-control" name="neurological_examination" placeholder="ผลการตรวจระบบประสาทที่สำคัญ (motor power, sensory, reflex ฯลฯ) ">
                           </div>
                         </div>
                       </div>
@@ -672,7 +686,7 @@ foreach ($aecode as $value) {
                             </div>
                           </div>
                           <div class="col-xs-2">
-                            <label><li>	Pulmonary embolism (I26))</li>   </label>
+                            <label><li>	Pulmonary embolism (I26)</li>   </label>
                             <div class="radio">
                               <label>
                                 <input type="radio" name="I26" id="I26_1" value="0" checked>
@@ -732,38 +746,41 @@ foreach ($aecode as $value) {
                             <label><li> ผลการรักษา</li>   </label>
                             <div class="radio">
                               <label>
-                                <input type="radio" name="last_diagnosis" id="last_diagnosis_1" value="0" checked>
+                                <input type="radio" name="diagnosis" id="diagnosis_1" value="0" checked>
                                 กำลังรักษา
                               </label>
                             </div>
                             <div class="radio">
                               <label>
-                                <input type="radio" name="last_diagnosis" id="last_diagnosis_2" value="1">
+                                <input type="radio" name="diagnosis" id="diagnosis_2" value="1">
                                 หาย 
                               </label>
                             </div>
                             <div class="radio">
                               <label>
-                                <input type="radio" name="last_diagnosis" id="last_diagnosis_2" value="1">
+                                <input type="radio" name="diagnosis" id="diagnosis_3" value="2">
                                 ส่งต่อโรงพยาบาล 
                               </label>
                             </div>
                             <div class="radio">
                               <label>
-                                <input type="radio" name="last_diagnosis" id="last_diagnosis_2" value="1">
+                                <input type="radio" name="diagnosis" id="diagnosis_4" value="3">
                                 อื่นๆ 
                               </label>
                             </div>
                             <div class="radio">
                               <label>
-                                <input type="radio" name="last_diagnosis" id="last_diagnosis_2" value="1">
+                                <input type="radio" name="diagnosis" id="diagnosis_5" value="4">
                                 ไม่ทราบ 
                               </label>
                             </div>
                           </div>
                           <div class="col-xs-4">
-                            <label>ระบุ</label>
-                            <input type="text" class="form-control" name="text_last_diagnosis" placeholder="ระบุโรงพยาบาลที่ส่งต่อ">
+                            <label>ระบุโรงพยาบาลที่ส่งต่อ</label>
+                            {{-- <input type="text" class="form-control" name="text_last_diagnosis" placeholder="ระบุโรงพยาบาลที่ส่งต่อ"> --}}
+                            <select id="js-example-basic-single" name="hospcode_treat" class="js-example-basic-single form-control" data-dropdown-css-class="select2-danger" required>
+
+                            </select>
                             <label></label>
                             <input type="text" class="form-control" name="text_last_diagnosis" placeholder="ระบุอื่นๆ">
                           </div>
@@ -777,7 +794,7 @@ foreach ($aecode as $value) {
             </div> 
           </div>
             <!-- /.box -->
-                        <!--ส่วนที่ 1 ข้อมูลทั่วไป -->
+                        <!--ส่วนที่ 3 การตรวจทางห้องปฏิบัติการ การตรวจทางรังสีวิทยา และอื่นๆ -->
                         <div class="col-md-12">
                           <!-- general form elements -->
                           <div class="box box-success">
@@ -845,11 +862,11 @@ foreach ($aecode as $value) {
                                         </div>
                                         <div class="col-xs-4">
                                           <label>อวัยวะที่ตรวจ</label>
-                                          <input type="text" class="form-control" name="CT_body_organs" placeholder="วันที่">
+                                          <input type="text" class="form-control" name="CT_body_organs" placeholder="อวัยวะที่ตรวจ">
                                         </div>
                                         <div class="col-xs-4">
                                           <label>วันที่</label>
-                                          <input type="text" class="form-control" name="CT_date" placeholder="วันที่">
+                                          <input type="text" class="form-control" id="CT_date" name="CT_date" placeholder="วันที่">
                                         </div>
                                         <div class="col-xs-4">
                                           <label>ผลการตรวจ</label>
@@ -879,11 +896,11 @@ foreach ($aecode as $value) {
                                         </div>
                                         <div class="col-xs-4">
                                           <label>อวัยวะที่ตรวจ</label>
-                                          <input type="text" class="form-control" name="MRI_body_organs" placeholder="วันที่">
+                                          <input type="text" class="form-control" name="MRI_body_organs" placeholder="อวัยวะที่ตรวจ">
                                         </div>
                                         <div class="col-xs-4">
                                           <label>วันที่</label>
-                                          <input type="text" class="form-control" name="MRI_date" placeholder="วันที่">
+                                          <input type="text" class="form-control" id="MRI_date" name="MRI_date" placeholder="วันที่">
                                         </div>
                                         <div class="col-xs-4">
                                           <label>ผลการตรวจ</label>
@@ -913,7 +930,7 @@ foreach ($aecode as $value) {
                                         </div>
                                         <div class="col-xs-4">
                                           <label>วันที่</label>
-                                          <input type="text" class="form-control" name="EKG_date" placeholder="วันที่">
+                                          <input type="text" class="form-control" id="EKG_date" name="EKG_date" placeholder="วันที่">
                                         </div>
                                         <div class="col-xs-4">
                                           <label>ผลการตรวจ</label>
@@ -1085,7 +1102,7 @@ foreach ($aecode as $value) {
                                         </div>
                                         <div class="col-xs-4">
                                           <label>วันที่</label>
-                                          <input type="text" class="form-control" name="CSF_date" placeholder="วันที่">
+                                          <input type="text" class="form-control" id="CSF_date" name="CSF_date" placeholder="วันที่">
                                         </div>
                                         <div class="col-xs-4">
                                           <label>ลักษณะ</label>
@@ -1135,7 +1152,7 @@ foreach ($aecode as $value) {
                                         </div>
                                         <div class="col-xs-4">
                                           <label>วันที่</label>
-                                          <input type="text" class="form-control" name="NPS_date" placeholder="วันที่">
+                                          <input type="text" class="form-control" id="NPS_date" name="NPS_date" placeholder="วันที่">
                                         </div>
                                         <div class="col-xs-2">
                                           <label><li> ผลการตรวจ</li>   </label>
@@ -1181,7 +1198,7 @@ foreach ($aecode as $value) {
                                         </div>
                                         <div class="col-xs-2">
                                           <label>IgM  ครั้งที่ 1 : วันที่</label>
-                                          <input type="text" class="form-control" name="Serum_COVID-19_IgM1_date" placeholder="วันที่">
+                                          <input type="text" class="form-control" id="Serum_COVID-19_IgM1_date" name="Serum_COVID-19_IgM1_date" placeholder="วันที่">
                                         </div>
                                         <div class="col-xs-2">
                                           <label><li>IgM  ครั้งที่ 1 : ผลการตรวจ</li>   </label>
@@ -1207,7 +1224,7 @@ foreach ($aecode as $value) {
                                         </div>
                                         <div class="col-xs-2">
                                           <label>IgM  ครั้งที่ 2 : วันที่</label>
-                                          <input type="text" class="form-control" name="Serum_COVID-19_IgM2_date" placeholder="วันที่">
+                                          <input type="text" class="form-control" id="Serum_COVID-19_IgM2_date" name="Serum_COVID-19_IgM2_date" placeholder="วันที่">
                                         </div>
                                         <div class="col-xs-2">
                                           <label><li>IgM  ครั้งที่ 2 : ผลการตรวจ</li>   </label>
@@ -1253,7 +1270,7 @@ foreach ($aecode as $value) {
                                         </div>
                                         <div class="col-xs-2">
                                           <label>IgG  ครั้งที่ 1 : วันที่</label>
-                                          <input type="text" class="form-control" name="Serum_COVID-19_IgG1_date" placeholder="วันที่">
+                                          <input type="text" class="form-control" id="Serum_COVID-19_IgG1_date" name="Serum_COVID-19_IgG1_date" placeholder="วันที่">
                                         </div>
                                         <div class="col-xs-2">
                                           <label><li>IgG  ครั้งที่ 1 : ผลการตรวจ</li>   </label>
@@ -1279,7 +1296,7 @@ foreach ($aecode as $value) {
                                         </div>
                                         <div class="col-xs-2">
                                           <label>IgG  ครั้งที่ 2 : วันที่</label>
-                                          <input type="text" class="form-control" name="Serum_COVID-19_IgG2_date" placeholder="วันที่">
+                                          <input type="text" class="form-control" id="Serum_COVID-19_IgG2_date" name="Serum_COVID-19_IgG2_date" placeholder="วันที่">
                                         </div>
                                         <div class="col-xs-2">
                                           <label><li>IgG  ครั้งที่ 2 : ผลการตรวจ</li>   </label>
@@ -1314,7 +1331,7 @@ foreach ($aecode as $value) {
                                       </div>
                                       <div class="col-xs-4">
                                         <label>วันที่</label>
-                                        <input type="text" class="form-control" name="other_date_examination" placeholder="วันที่">
+                                        <input type="text" class="form-control" id="other_date_examination" name="other_date_examination" placeholder="วันที่">
                                       </div>
                                       <div class="col-xs-4">
                                         <label>ชนิดตัวอย่าง</label>
@@ -1343,409 +1360,420 @@ foreach ($aecode as $value) {
                         </div> 
                       </div>
                         <!-- /.box -->
-            <!-- หัวข้อที่4 -->
-            <div class="col-md-12">
-              <!-- general form elements -->
-              <div class="box box-warning">
-                <div class="box-header with-border">
-                  <!-- form start -->
-                  <div class="form-group">
-                    <div class="row">
-                      <div class="col-lg-3">
-                        <h3 class="box-title">(4) การตัดสินใจว่ามีความจำเป็นที่จะสอบสวน</h3>
-                      </div>
-                      <div class="col-lg-1">
-                        <div class="radio">
-                          <label>
-                            <input type="radio" name="necessary_to_investigate" id="necessary_to_investigate1" value="1" >
-                            ไม่มี
-                          </label>
-                        </div>
-                      </div>
-                      <div class="col-lg-1">
-                        <div class="radio">
-                          <label>
-                            <input type="radio" name="necessary_to_investigate" id="necessary_to_investigate2" value="2">
-                            มี
-                          </label>
-                        </div>
-                      </div>
-                      <div class="col-lg-1">
-                        <div class="radio">
-                          <label>
-                            วันที่สอบสวน
-                          </label>
-                        </div>
-                      </div>
-                      <div class="col-lg-2">
-                        <div class="">
-                          <label>
-                            <div class="input-group date">
-                              <div class="input-group-addon">
-                                <i class="fa fa-calendar"></i>
-                              </div>
-                              <input type="text" class="form-control pull-right" id="datepicker_invest" name="necessary_to_investigate_date" data-date-format="yyyy-mm-dd" readonly>
-                            </div>
-                          </label>
-                        </div>
-                      </div>
-                    </div>
+   <!--ส่วนที่ 1 ข้อมูลทั่วไป -->
+   <div class="col-md-12">
+    <!-- general form elements -->
+    <div class="box box-success">
+      <div class="box-header with-border">
+        <h3 class="box-title">ส่วนที่ 4 ประวัติการได้รับวัคซีน</h3>
+      </div>
+      <!-- /.box-header -->
+      <!-- form start -->
+
+      <div class="box-body">
+        {{-- คอรั่มภายใน3.1 --}}
+        <div class="col-md-12">
+          <!-- general form elements -->
+          <div class="box box-success">
+            <div class="box-header with-border">
+              <!-- checkbox3.1.1 -->
+              <div class="form-group">
+              <div class="row">
+                <div class="col-xs-2">
+                  <label><li>วัคซีนโควิด 19 </li>   </label>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="covid19" id="covid19" value="0" checked>
+                      ไม่ได้รับ
+                    </label>
+                  </div>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="covid19" id="covid19" value="1">
+                      ได้รับ
+                    </label>
                   </div>
                 </div>
-                <!-- /.box-header -->
-              </div>
-              <!-- /.box -->
-            </div>
-            <!--หัวข้อที่5 -->
-            <div class="col-md-12">
-              <!-- general form elements -->
-              <div class="box box-danger">
-                <div class="box-header with-border">
-                  <h3 class="box-title">(5) ข้อมูลผู้รายงาน สถานที่เกิดเหตุการณ์ และหน่วยงานที่รายงาน</h3>
+                <div class="col-xs-4">
+                  <label>ระบุ</label>
+                  <input type="text" class="form-control" name="Serum_COVID-19_IgG2_lab" placeholder="ระบุ">
                 </div>
-                <!-- /.box-header -->
-                <!-- form start -->
-                <div class="box-body">
-                  {{-- คอรั่มภายใน3.1 --}}
-                  <div class="col-md-8">
-                    <!-- general form elements -->
-                    <div class="box box-danger">
-                      <div class="box-header with-border">
-                        <!-- checkbox3.1.1 -->
-                        <div class="form-group">
-                          <div class="row">
-                            <div class="col-lg-6">
-                              <label>ชื่อผู้วินิจฉัยอาการ :</label><input type="text" id="symptom_name" name="symptom_name" class="form-control" placeholder="ชื่อ นามสกุล">
-                            </div>
-                          </div>
-                        </div>
-                        <!-- ประวัติการแพ้วัคซีน/ยา -->
-                        <div class="form-group">
-                          <div class="row">
-                            <div class="col-lg-12">
-                              <div class="control-label">
-                                <label>ตำแหน่ง :</label>
-                              </div>
-                            </div>
-                            <div class="col-lg-2">
-                              <div class="radio">
-                                <label>
-                                  <input type="radio" name="symptom_position" value="1" >
-                                  แพทย์
-                                </label>
-                              </div>
-                            </div>
-                            <div class="col-lg-2">
-                              <div class="radio">
-                                <label>
-                                  <input type="radio" name="symptom_position" value="2">
-                                  เภสัชกร
-                                </label>
-                              </div>
-                            </div>
-                            <div class="col-lg-2">
-                              <div class="radio">
-                                <label>
-                                  <input type="radio" name="symptom_position" value="3">
-                                  พยาบาล
-                                </label>
-                              </div>
-                            </div>
-                            <div class="col-lg-2">
-                              <div class="radio">
-                                <label>
-                                  <input type="radio" name="symptom_position" value="4">
-                                  อื่นๆระบุ
-                                </label>
-                              </div>
-                            </div>
-                            <div class="col-lg-4">
-                              <div id="other_symptom_position" style="display: none">
-                                <input type="text" id="other_symptom_position_text" name="other_symptom_position" class="form-control" placeholder="ระบุตำแหน่ง" hidden="true">
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <div class="row">
-                            <div class="col-lg-6">
-                              <label>ชื่อผู้รายงาน :</label><input type="text" id="reporter_name" name="reporter_name" class="form-control" placeholder="ชื่อ นามสกุล">
-                            </div>
-                          </div>
-                        </div>
-                        <!-- ประวัติการแพ้วัคซีน/ยา -->
-                        <div class="form-group">
-                          <div class="row">
-                            <div class="col-lg-12">
-                              <div class="control-label">
-                                <label>ตำแหน่ง :</label>
-                              </div>
-                            </div>
-                            <div class="col-lg-2">
-                              <div class="radio">
-                                <label>
-                                  <input type="radio" name="reporter_position" value="1" >
-                                  งานระบาดวิทยา
-                                </label>
-                              </div>
-                            </div>
-                            <div class="col-lg-2">
-                              <div class="radio">
-                                <label>
-                                  <input type="radio" name="reporter_position" value="2">
-                                  เภสัชกร
-                                </label>
-                              </div>
-                            </div>
-                            <div class="col-lg-2">
-                              <div class="radio">
-                                <label>
-                                  <input type="radio" name="reporter_position" value="3" />
-                                  งานEIP
-                                </label>
-                              </div>
-                            </div>
-                            <div class="col-lg-2">
-                              <div class="radio">
-                                <label>
-                                  <input type="radio" name="reporter_position" value="4" />
-                                  อื่นๆระบุ
-                                </label>
-                              </div>
-                            </div>
-                            <div class="col-lg-4">
-                              <div id="other_reporter_position" style="display: none">
-                                <input type="text" id="other_reporter_position_text" name="other_reporter_position" class="form-control" placeholder="ระบุตำแหน่ง" hidden="true">
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <div class="row">
-                            <div class="col-lg-4">
-                              <label>ว/ด/ป ที่พบเหตุการณ์ :</label>
-                              <div class="input-group date">
-                                <div class="input-group-addon">
-                                  <i class="fa fa-calendar"></i>
-                                </div>
-                                <input type="text" class="form-control pull-right" id="datepicker_found_event" name="date_found_event" data-date-format="yyyy-mm-dd" readonly>
-                              </div>
-                            </div>
-                            <div class="col-lg-4">
-                              <label>โรงพยาบาลที่รับรักษา :</label>
-                              <select id="js-example-basic-single" name="hospcode_treat" class="js-example-basic-single form-control" data-dropdown-css-class="select2-danger" required>
+              </div>
+            </div>
+              <div class="form-group">
+              <div class="row">
+                <div class="col-md-12">
+                  <!-- general form elements -->
+                  <div class="box box-info">
+                    <div style="overflow: scroll;">
+                      <table class="maintable" id="customers">
+                        <button type="button" id="btnAdd" class="btn btn-m btn-success classAdd">+ เพิ่มข้อมูลวัคซีน</button></br>
+                        <thead>
+                          <tr>
+                            <th>
+                              <font style="color:red;">*</font> ชื่อวัคซีน
+                            </th>
+                            <th>ปริมาณที่ให้</th>
+                            <th>วิธีที่ให้</th>
+                            <th>ตำแหน่ง</th>
+                            <th>เข็มที่/ครั้งที่</th>
+                            <th>
+                              <font style="color:red;">*</font> ว/ด/ปที่ได้รับ
+                            </th>
+                            <th>
+                              <font style="color:red;">*</font> เวลาที่ได้รับ
+                            </th>
+                            <th style="width:150px;">อาการ</th>
+                            <th>ชื่อผู้ผลิต</th>
+                            <th>ชื่อผู้ผลิตอื่นๆ</th>
+                            <th>
+                              <font style="color:red;">*</font> เลขที่ผลิต
+                            </th>
+                            <th>
+                              <font style="color:red;">*</font> วันหมดอายุ
+                            </th>
+                            
+                            <th>
+                              <font style="color:red;">*</font> เลขที่ผลิต
+                            </th>
+                            <th>
+                              <font style="color:red;">*</font> วันหมดอายุ
+                            </th>
+                            {{-- <th>
+                              <font style="color:red;">*</font> ว/ด/ปที่ผสม
+                            </th>
+                            <th>
+                              <font style="color:red;">*</font> เวลาที่ผสม
+                            </th> --}}
+                            <th>#</th>
+                            {{-- <th><a href="javascript:void(0);" style="font-size:18px;" id="addMore" title="Add More Person"><span class="glyphicon glyphicon-plus"></span></a></th> --}}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="data-contact-person">
+                            <td>
+                              <select type="text" id="name_of_vaccine" name="name_of_vaccine[]" class="form-control" required>
+                                <option value="">กรุณาระบุชื่อวัคซีน</option>
+                                @foreach ($vac_list as $row)
+                                <option value="{{$row->VAC_CODE}}">{{$row->VAC_NAME_EN}}</option>
+                                @endforeach
                               </select>
-                              {{-- <input type="text" id="event_location" name="event_location" class="form-control" placeholder="สถานที่เกิดเหตุการณ์"> --}}
-                            </div>                            <div class="col-lg-4">
-                              <label>จังหวัด :</label>
-                              <select id="province_found_event" name="province_found_event" class="form-control" style="width: 100%;" required>
-					                    <option class="badge filter badge-info" data-color="info" value=""></option>
+                            </td>
+                            <td>
+                              <select type="text" id="vaccine_volume" name="vaccine_volume[]" class="form-control">
+                                <option value="">กรุณาระบุปริมาณที่ให้</option>
                                 <?php
-												  foreach ($arr_provinces as $k=>$v) { ?>
-                                <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+                                     foreach ($arr_vaccine_volume as $k=>$v) {
+                                     ?>
+                                <option  value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
                                 <?php } ?>
                               </select>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <div class="row">
-                            <div class="col-lg-4">
-                              <label>หน่วยที่รายงาน :</label>
-                              <select id="js-example-basic-single" name="hospcode_report" class="js-example-basic-single form-control" data-dropdown-css-class="select2-danger" required>
-                              </select>
-                            </div>
-                            <div class="col-lg-4">
-                              <label>จังหวัด :</label>
-                              <select id="province_reported" name="province_reported" class="form-control" style="width: 100%;" required>
-				                      <option class="badge filter badge-info" data-color="info" value=""></option>
+                            </td>
+                            <td>
+                              <select type="text" id="route_of_vaccination1" name="route_of_vaccination[]" class="form-control">
+                                <option value="">กรุณาระบุวิธีที่ให้</option>
                                 <?php
-												  foreach ($arr_provinces as $k=>$v) { ?>
-                                <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+                                       foreach ($arr_route_of_vaccination as $k=>$v) {
+                                   ?>
+                                <option  value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
                                 <?php } ?>
                               </select>
-                            </div>
-                            <div class="col-lg-4">
-                              <label>โทร :</label><input type="text" id="tel_reported" name="tel_reported" class="form-control" placeholder="โทร" data-inputmask='"mask": "99-9999-9999"' data-mask>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <div class="row">
-                            <div class="col-lg-4">
-                              <label>Email :</label><input type="text" id="email_reported" name="email_reported" class="form-control" placeholder="Email">
-                            </div>
-                            <div class="col-lg-4">
-                              <label>ว/ด/ป ที่ส่งรายงาน :</label>
-                              <div class="input-group date">
-                                <div class="input-group-addon">
-                                  <i class="fa fa-calendar"></i>
-                                </div>
-
-                              <input type="text" class="form-control readonly pull-right"  name="datepicker_send_reported" data-date-format="yyyy-mm-dd" value="<?php echo date("Y-m-d") ; ?>" readonly>
-
-                                {{-- <input type="text" class="form-control pull-right" id="datepicker_send_reported" name="datepicker_send_reported" data-date-format="yyyy-mm-dd" readonly> --}}                              </div>
-                            </div>
-                            <div class="col-lg-4">
-                              <label>ว/ด/ป ที่รับรายงาน :</label>
-                              <div class="input-group date">
-                                <div class="input-group-addon">
-                                  <i class="fa fa-calendar"></i>
-                                </div>
-                                <input type="text" class="form-control pull-right" id="datepicker_resiver" name="datepicker_resiver" data-date-format="yyyy-mm-dd" readonly>
-                              </div>
-                            </div>
-                            <div class="col-lg-12">
-                              <label>ความคิดเห็นเพิ่มเติม</label>
-                              <textarea class="form-control" rows="3" id="more_reviews" name="more_reviews"></textarea>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- /.box-header -->
-                      <!-- /.box-body -->
+                            </td>
+                            <td>
+                              <select type="text" id="vaccination_site1" name="vaccination_site[]" class="form-control">
+                                <option value="">กรุณาระบุวิธีตำแหน่ง</option>
+                                <?php
+                                       foreach ($arr_vaccination_site as $k=>$v) {
+                                   ?>
+                                <option  value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+                                <?php } ?>
+                              </select>
+                            </td>
+                            <td>
+                              <select name="dose[]" id="dose1" class="form-control">
+                                <option value="1">เข็มที่ 1</option>
+                                <option value="2">เข็มที่ 2</option>
+                                <option value="3">เข็มที่ 3</option>
+                              </select>
+                            </td>
+                            <td>
+                              <input type="text" name="date_of_vaccination[]" value="" id="date_of_vaccination1" class="form-control datepicker" data-date-format="yyyy-mm-dd" readonly>
+                            </td>
+                            <td>
+                              <input type="text" id="time_of_vaccination1" name="time_of_vaccination[]" class="form-control">
+                            </td>
+                            <td>
+                              <input type="radio" id="symptom1_1" name="symptom_status[0]" value="1" data-toggle="modal" data-target="#Symptom1">
+                              <label for="age1"> : มีอาการ</label><br>
+                              <input type="radio" id="symptom1_2" name="symptom_status[0]" value="0"  data-toggle="modal" data-target="#nonSymptom1">
+                              <label for="age2"> : ไม่มีอาการ</label><br>
+                            </td>
+                            <td>
+                              <select type="text" id="manufacturer1" name="manufacturer[]" class="form-control">
+                                <option value="">กรุณาระบุชื่อผู้ผลิต</option>
+                                <?php
+                                       foreach ($arr_manufacturer as $k=>$v) {
+                                   ?>
+                                <option  value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+                                <?php } ?>
+                              </select>
+                            </td>
+                            <td>
+                              <input type="text" id="other_manufacturer" name="other_manufacturer[]" class="form-control">
+                            </td>
+                            <td>
+                              <input type="text" id="lot_number1" name="lot_number[]" class="form-control">
+                            </td>
+                            <td>
+                              <input type="text" id="datepicker_expiry_date1" name="expiry_date[]" class="form-control" data-date-format="yyyy-mm-dd" readonly>
+                            </td>
+                            {{-- <td>
+                              <input type="text" id="name_of_diluent1" name="name_of_diluent[]" class="form-control">
+                            </td> --}}
+                            <td>
+                             {{-- <input type="text"  id="rash1" name="rash[]" value="0027"> --}}
+                              <input type="text" id="lot_number_diluent1" name="lot_number_diluent[]" class="form-control">
+                            </td>
+                            <td>
+                              <input type="text" id="datepicker_expiry_date_diluent1" name="expiry_date_diluent[]" class="form-control" data-date-format="yyyy-mm-dd" readonly>
+                            </td>
+                            {{-- <td><input type="text" id="date_of_reconstitution1" name="date_of_reconstitution[]" class="form-control" data-date-format="yyyy-mm-dd"></td> --}}
+                            {{-- <td><input type="text" id="time_of_reconstitution1" name="time_of_reconstitution[]" class="form-control"></td> --}}
+                            {{-- <td><a href='javascript:void(0);' class='remove'><span class='glyphicon glyphicon-remove'></span></a></td> --}}
+                            <td>
+                              <button type="button" id="btnAdd" class="btn btn-m btn-success classAdd">เพิ่มข้อมูลวัคซีน</button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
                     </div>
                     <!-- /.box -->
                   </div>
-                  {{-- คอรั่มภายใน3.2 --}}
-                  <div class="col-md-4">
-                    <!-- general form elements -->
-                    <div class="box box-danger">
-                      <div class="box-header with-border">
-                        <!-- checkbox3.2.1 -->
-                        <div class="form-group">
-                          <div class="col-md-12">
-                            <label>
-                              ประเมินสาเหตุเบื้องต้น
-                            </label>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- /.box-header -->
-                      <!-- form start -->
+                </div>
+              {{-- หัวข้อที่ 3 --}}
+                @include('AEFI.Apps.SymptomModal.SymptomModal_1')
+              </div>
+            </div>
+           
+         
+            </div>
+            <!-- /.box-header -->
+        </div>
+        </div>
+    </div>
+  </div> 
+</div>
+  <!-- /.box -->
+  <!--ส่วนที่ 3 การตรวจทางห้องปฏิบัติการ การตรวจทางรังสีวิทยา และอื่นๆ -->
+  <div class="col-md-12">
+    <!-- general form elements -->
+    <div class="box box-success">
+      <div class="box-header with-border">
+        <h3 class="box-title">ส่วนที่ 5 ประวัติเสี่ยงอื่นๆ </h3>
+      </div>
+      <!-- /.box-header -->
+      <!-- form start -->
 
-                      <div class="box-body">
-                        {{-- input content --}}
-                        <div class="box-body">
-                          {{-- input content --}}
-                          <!-- checkbox3.2.2  -->
-                          <div class="form-group">
-                            <div class="col-md-12">
-                              <label>
-                                <input type="checkbox" name="assessment1" value="1">
-                                ปฏิกิริยาของวัคซีน ระดับความสัมพันธ์
-                              </label>
-                            </div>
-                            <div class="col-md-2">
-                              {{-- <label>
-                                <input type="checkbox" name="assessment2" value="1">
-                                ใช่
-                              </label> --}}
-                            </div>
-                            <div class="col-md-5">
-                              <label>
-                                <input type="checkbox" name="assessment2" value="1">
-                                ใช่
-                              </label>
-                            </div>
-                            <div class="col-md-5">
-                              <label>
-                                <input type="checkbox" name="assessment3" value="1">
-                                น่าจะใช่
-                              </label>
-                            </div>
-                            <div class="col-md-2">
-                              {{-- <label>
-                                <input type="checkbox" name="assessment3" value="1">
-                                น่าจะใช่
-                              </label> --}}
-                            </div>
-                            <div class="col-md-5">
-                              <label>
-                                <input type="checkbox" name="assessment4" value="1">
-                                อาจจะใช่
-                              </label>
-                            </div>
-                            <div class="col-md-5">
-                              <label>
-                                <input type="checkbox" name="assessment5" value="1">
-                                ไม่ใช่
-                              </label>
-                            </div>
-                          </div>
-                          <div class="col-md-12">
-                            </br>
-                            {{-- <label>
-                              <input type="checkbox" name="assessment7" value="1">
-                              ความคลาดเคลื่อนด้านการให้บริการ
-                            </label> --}}
-                          </div>
-                          <div class="form-group">
-                            </br>
-                            <div class="col-md-12">
-                              <label>
-                                <input type="checkbox" name="assessment6" value="1">
-                                ความบกพร่องของวัคซีน
-                              </label>
-                            </div>
-                            <div class="col-md-12">
-                              <label>
-                                <input type="checkbox" name="assessment7" value="1">
-                                ความคลาดเคลื่อนด้านการให้บริการ
-                              </label>
-                            </div>
-                            <div class="col-md-12">
-                              <label>
-                                <input type="checkbox" name="assessment8" value="1">
-                                เหตุบังเอิญ/เห็นพ้อง
-                              </label>
-                            </div>
-                            <div class="col-md-12">
-                              <label>
-                                <input type="checkbox" name="assessment9" value="1">
-                                ความกลัว/ความกังวล
-                              </label>
-                            </div>
-                            <div class="col-md-12">
-                              <label>
-                                <input type="checkbox" name="assessment10" value="1">
-                                ไม่สามารถระบุได้
-                              </label>
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <div class="col-md-12">
-                              <hr>
-                              <label>
-                                การตรวจทางห้องปฏิบัติการ
-                              </label>
-                              <textarea class="form-control" rows="3" id="lab_result" name="lab_result"></textarea>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- /.box-body -->
+      <div class="box-body">
+        {{-- คอรั่มภายใน3.1 --}}
+        <div class="col-md-12">
+          <!-- general form elements -->
+          <div class="box box-success">
+            <div class="box-header with-border">
+              <!-- checkbox3.1.1 -->
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-xs-4">
+                    <label><li> เคยตรวจหาการติดเชื้อโควิด 19</li>   </label>
+                    <div class="radio">
+                      <label>
+                        <input type="radio" name="inspect_covid" id="inspect_covid_1" value="0" checked>
+                        ไม่ได้ตรวจ   
+                      </label>
+                    </div>
+                    <div class="radio">
+                      <label>
+                        <input type="radio" name="inspect_covid" id="inspect_covid_2" value="1">
+                        ตรวจ 
+                      </label>
                     </div>
                   </div>
-                  <!-- /.box -->
+                  <div class="col-xs-4">
+                    <label><li> ผลการตรวจ </li>   </label>
+                    <div class="radio">
+                      <label>
+                        <input type="radio" name="inspect_covid_results" id="inspect_covid_results_1" value="0" checked>
+                        ไม่ได้ตรวจ   
+                      </label>
+                    </div>
+                    <div class="radio">
+                      <label>
+                        <input type="radio" name="inspect_covid_results" id="inspect_covid_results_2" value="1">
+                        ตรวจ 
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-xs-12">
+                  </div>
+                  <div class="col-xs-4">
+                    <label>หน่วยงานที่ตรวจ</label>
+                    <input type="text" class="form-control" name="inspect_covid_location" placeholder="หน่วยงานที่ตรวจ">
+                  </div>
+                  <div class="col-xs-4">
+                    <label>วันที่</label>
+                    <input type="text" class="form-control" id="inspect_covid_date" name="inspect_covid_date" placeholder="วันที่">
+                  </div>
                 </div>
-                <!-- /.box-body -->
-                <div class="box-footer">
-                  <div class="col-md-3">
-                  </div>
-                  <div class="col-md-3">
-                    <a href="{{ route('lstf1') }}" class="btn btn-block btn-danger">ย้อนกลับ</a>
-                  </div>
-                  <div class="col-md-3">
-                    <input type="submit" name="submit" value="บันทึกข้อมูล" class="btn btn-block btn-success"></input>
-                  </div>
-                  <div class="col-md-3">
-                  </div>
-                </div>
-
               </div>
-              <!-- /.box -->
+              <hr>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-xs-2">
+                    <label><li> เคยสัมผัสใกล้ชิดกับผู้ป่วยโควิด 19</li>   </label>
+                    <div class="radio">
+                      <label>
+                        <input type="radio" name="covid_close_contact" id="covid_close_contact_1" value="0" checked>
+                        เคย   
+                      </label>
+                    </div>
+                    <div class="radio">
+                      <label>
+                        <input type="radio" name="covid_close_contact" id="covid_close_contact_2" value="1">
+                        ไม่เคย 
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-xs-4">
+                    <label><li> ลักษณะการสัมผัส </li>   </label>
+                    <div class="radio">
+                      <label>
+                        <input type="radio" name="contact_nature" id="contact_nature_1" value="0" checked>
+                        พูดคุย   
+                      </label>
+                    </div>
+                    <div class="radio">
+                      <label>
+                        <input type="radio" name="contact_nature" id="contact_nature_2" value="1">
+                        อาศัยอยู่ร่วมบ้าน  
+                      </label>
+                    </div>
+                    <div class="radio">
+                      <label>
+                        <input type="radio" name="contact_nature" id="contact_nature_3" value="2">
+                        ศึกษา/ทำงานร่วมกัน  
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-xs-12">
+                  </div>
+                  <div class="col-xs-4">
+                    <label>อื่นๆ</label>
+                    <input type="text" class="form-control" name="other_contact_nature" placeholder="อื่นๆ">
+                  </div>
+                  
+                </div>
+              </div>
+              <hr>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-xs-2">
+                    <label><li> เคยมีประวัติแพ้ยา</li>   </label>
+                    <div class="radio">
+                      <label>
+                        <input type="radio" name="drug_allergy" id="drug_allergy_1" value="0" checked>
+                        ไม่เคย     
+                      </label>
+                    </div>
+                    <div class="radio">
+                      <label>
+                        <input type="radio" name="drug_allergy" id="drug_allergy_2" value="1">
+                        เคย 
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-xs-12">
+                  </div>
+                  <div class="col-xs-4">
+                    <label>ระบุชื่อยา</label>
+                    <input type="text" class="form-control" name="drug_allergy_name" placeholder="ระบุชื่อยา">
+                  </div>
+                 
+                </div>
+              </div>
+              <hr>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-xs-2">
+                    <label><li> เคยมีประวัติแพ้วัคซีน</li>   </label>
+                    <div class="radio">
+                      <label>
+                        <input type="radio" name="allergic_vaccines" id="allergic_vaccines_1" value="0" checked>
+                        ไม่เคย     
+                      </label>
+                    </div>
+                    <div class="radio">
+                      <label>
+                        <input type="radio" name="allergic_vaccines" id="allergic_vaccines_2" value="1">
+                        เคย
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-xs-12">
+                  </div>
+                  <div class="col-xs-4">
+                    <label>ระบุชื่อวัคซีน</label>
+                    <input type="text" class="form-control" name="allergic_vaccines_name" placeholder="ระบุชื่อวัคซีน">
+                  </div>
+                </div>
+              </div>
+              <hr>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-xs-2">
+                    <label><li> เคยมีประวัติแพ้อาหาร และอื่นๆ  </li>   </label>
+                    <div class="radio">
+                      <label>
+                        <input type="radio" name="allergy" id="first_CBC_1" value="0" checked>
+                        ไม่เคย   
+                      </label>
+                    </div>
+                    <div class="radio">
+                      <label>
+                        <input type="radio" name="allergy" id="first_CBC_2" value="1">
+                        เคย 
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-xs-12">
+                  </div>
+                  <div class="col-xs-2">
+                    <label>ระบุชนิดอาหารหรือสิ่งที่แพ้</label>
+                    <input type="text" class="form-control" name="detail_allergy" placeholder="ระบุชนิดอาหารหรือสิ่งที่แพ้">
+                  </div>
+                  
+                </div>
+              </div>
+              <hr>
             </div>
+            <!-- /.box-header -->
+            <div class="box-footer">
+              <div class="col-md-3">
+              </div>
+              <div class="col-md-3">
+                <a href="{{ route('lstaesi1') }}" class="btn btn-block btn-danger">ย้อนกลับ</a>
+              </div>
+              <div class="col-md-3">
+                <input type="submit" name="submit" value="บันทึกข้อมูล" class="btn btn-block btn-success"></input>
+              </div>
+              <div class="col-md-3">
+              </div>
+            </div>
+        </div>
+        </div>
+    </div>
+  </div> 
+</div>
+  <!-- /.box -->
   </form>
   </div>
   <!-- /.row -->
@@ -1834,9 +1862,10 @@ foreach ($aecode as $value) {
   $(document).ready(function() {
     $(document).on("click", ".classAdd", function() { //
       var rowCount = $('.data-contact-person').length + 1;
+      var rowCountSyntom = $('.data-contact-person').length;
       var contactdiv = '<tr class="data-contact-person">' +
         '<td>' +
-        '<select type="text" id="name_of_vaccine1" name="name_of_vaccine[]' + rowCount + '" class="form-control" required>' +
+        '<select type="text" id="name_of_vaccine1" name="name_of_vaccine[]' + rowCount + '" class="form-control">' +
         '<option value="">กรุณาระบุชื่อวัคซีน</option>' +
         @foreach($vac_list as $row)
       '<option value="{{$row->VAC_CODE}}">{{$row->VAC_NAME_EN}}</option>' +
@@ -1849,7 +1878,7 @@ foreach ($aecode as $value) {
         <?php
       foreach($arr_vaccine_volume as $k => $v) {
         ?>
-          '<option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>' +
+          '<option  value="<?php echo $k ; ?>"><?php echo $v ; ?></option>' +
           <?php } ?>
         '</select>' +
         '</td>' +
@@ -1859,7 +1888,7 @@ foreach ($aecode as $value) {
         <?php
       foreach($arr_route_of_vaccination as $k => $v) {
           ?>
-          '<option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>' +
+          '<option  value="<?php echo $k ; ?>"><?php echo $v ; ?></option>' +
           <?php
         } ?>
         '</select>' +
@@ -1870,33 +1899,849 @@ foreach ($aecode as $value) {
         <?php
       foreach($arr_vaccination_site as $k => $v) {
           ?>
-          '<option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>' +
+          '<option  value="<?php echo $k ; ?>"><?php echo $v ; ?></option>' +
           <?php
         } ?>
         '</select>' +
         '</td>' +
         '<td>' +
-'<select name="dose[]' + rowCount + '" id="dose1' + rowCount + '" class="form-control">'+
+          '<select name="dose[]' + rowCount + '" id="dose1' + rowCount + '" class="form-control">'+
   '<option value="1">เข็มที่ 1</option>'+
   '<option value="2">เข็มที่ 2</option>'+
   '<option value="3">เข็มที่ 3</option>'+
-'<option value="4">เข็มที่ 4</option>'+
-
 '</select>'+
+'</td>' +
+        '<td>' +
+        '<input type="text" name="date_of_vaccination[]' + rowCount + '" value="" id="date_of_vaccination1' + rowCount + '" class="form-control datepicker" data-date-format="yyyy-mm-dd" readonly>' +
         '</td>' +
         '<td>' +
-        '<input type="text" name="date_of_vaccination[]' + rowCount + '" id="date_of_vaccination1' + rowCount + '" class="form-control readonly datepicker" data-date-format="yyyy-mm-dd" required>' +
+        '<input type="text" id="time_of_vaccination1' + rowCount + '" name="time_of_vaccination[]' + rowCount + '" class="form-control">' +
         '</td>' +
         '<td>' +
-        '<input type="text" id="time_of_vaccination1' + rowCount + '" name="time_of_vaccination[]' + rowCount + '" class="form-control" required>' +
-        '</td>' +
+          '<input type="radio" id="symptom' + rowCount + '_1" name="symptom_status[' + rowCountSyntom + ']" value="1" data-toggle="modal" data-target="#Symptom' + rowCount + '">' +
+          '<label for="symptom1"> : มีอาการ</label><br>' +
+          '<input type="radio" id="symptom' + rowCount + '_2" name="symptom_status[' + rowCountSyntom + ']" value="0" data-toggle="modal" data-target="#nonSymptom' + rowCount + '">' +
+          '<label for="symptom2"> : ไม่มีอาการ</label><br>' +
+          '<!-- Modal_1 -->'+
+'<div class="modal fade" id="Symptom' + rowCount + '" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">'+
+'    <div class="modal-dialog modal-lg">'+
+'      <div class="modal-content">'+
+'        <div class="modal-header">'+
+'          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>'+
+'          <h4 class="modal-title" id="myModalLabel">อาการภายหลังได้รับวัคซีน</h4>'+
+'        </div>'+
+'        <div class="modal-body">'+
+'            <div class="tab-pane active" id="tab_1">'+
+'                <div class="box-body">'+
+'                  {{-- คอรั่มภายใน3.1 --}}'+
+'                  <div class="col-md-6">'+
+'                    <!-- general form elements -->'+
+'                    <div class="box box-success">'+
+'                      <div class="box-header with-border">'+
+'                        <!-- checkbox3.1.1 -->'+
+'                        <div class="form-group">'+
+'                          <div class="col-md-4" id="rash_' + rowCount + '">'+
+'                            <label>'+
+'                              <input type="checkbox" id="c_rash" name="c_rash[' + rowCountSyntom + ']" value="0027">'+
+'                              Rash'+
+'                            </label>'+
+'                            <input type="text" id="rash' + rowCount + '" name="rash[' + rowCountSyntom + ']" hidden>'+
+'                          </div>'+
+'                          <div class="col-md-4" id="erythema_' + rowCount + '">'+
+'                            <label>'+
+'                              <input type="checkbox" id="erythema1" name="c_erythema[' + rowCountSyntom + ']" value="0028">'+
+'                              Erythema'+
+'                            </label>'+
+'                            <input type="text" id="erythema' + rowCount + '" name="erythema[' + rowCountSyntom + ']" hidden>'+
+'                          </div>'+
+'                          <div class="col-md-4" id="urticaria_' + rowCount + '">'+
+'                            <label>'+
+'                              <input type="checkbox" id="urticaria1" name="c_urticaria[' + rowCountSyntom + ']" value="0044">'+
+'                              Urticaria'+
+'                            </label>'+
+'                            <input type="text" id="urticaria' + rowCount + '" name="urticaria[' + rowCountSyntom + ']" hidden>'+
+'                          </div>'+
+'                        </div>'+
+'                        <div class="form-group">'+
+'                          <div class="col-md-4" id="itching_' + rowCount + '">'+
+'                            <label>'+
+'                              <input type="checkbox" id="itching1" name="c_itching[' + rowCountSyntom + ']" value="0026">'+
+'                              Itching'+
+'                            </label>'+
+'                            <input type="text" id="itching' + rowCount + '" name="itching[' + rowCountSyntom + ']" hidden>'+
+'                          </div>'+
+'                          <div class="col-md-4" id="edema_' + rowCount + '">'+
+'                            <label>'+
+'                              <input type="checkbox" id="edema1" name="c_edema[' + rowCountSyntom + ']" value="0003A">'+
+'                              Edema'+
+'                            </label>'+
+'                            <input type="text" id="edema' + rowCount + '" name="edema[' + rowCountSyntom + ']" hidden>'+
+'                          </div>'+
+'                          <div class="col-md-5" id="angioedema_' + rowCount + '">'+
+'                            <label>'+
+'                              <input type="checkbox" id="angioedema" name="c_angioedema[' + rowCountSyntom + ']" value="0003">'+
+'                              Angioedema'+
+'                            </label>'+
+'                            <input type="text" id="angioedema' + rowCount + '" name="angioedema[' + rowCountSyntom + ']" hidden>'+
+'                          </div>'+
+'                        </div>'+
+'                      </div>'+
+'                      <!-- /.box-header -->'+
+'                      <!-- form start -->'+
+'    '+
+'                      <div class="box-body">'+
+'                        {{-- input content --}}'+
+'                        <!-- checkbox3.1.2  -->'+
+'                        <div class="form-group">'+
+'                          <div class="col-md-4" id="fainting_' + rowCount + '">'+
+'                            <label>'+
+'                              <input type="checkbox" id="fainting1" name="c_fainting[' + rowCountSyntom + ']" value="1">'+
+'                              Fainting'+
+'                            </label>'+
+'                            <input type="text" id="fainting' + rowCount + '" name="fainting[' + rowCountSyntom + ']" hidden>'+
+'                          </div>'+
+'                          <div class="col-md-6" id="hyperventilation_' + rowCount + '">'+
+'                            <label>'+
+'                              <input type="checkbox" id="hyperventilation1" name="c_hyperventilation[' + rowCountSyntom + ']" value="0517">'+
+'                              Hyperventilation'+
+'                            </label>'+
+'                            <input type="text" id="hyperventilation' + rowCount + '" name="hyperventilation[' + rowCountSyntom + ']" hidden>'+
+'                          </div>'+
+'                        </div>'+
+'                        <div class="form-group">'+
+'                          <div class="col-md-4" id="syncope_' + rowCount + '">'+
+'                            <label>'+
+'                              <input type="checkbox" id="syncope1" name="c_syncope[' + rowCountSyntom + ']" value="0223">'+
+'                              Syncope'+
+'                            </label>'+
+'                            <input type="text" id="syncope' + rowCount + '" name="syncope[' + rowCountSyntom + ']" hidden>'+
+'                          </div>'+
+'                          <div class="col-md-4" id="headche_' + rowCount + '">'+
+'                            <label>'+
+'                              <input type="checkbox" id="headche1" name="c_headche[' + rowCountSyntom + ']" value="1">'+
+'                              Headche'+
+'                            </label>'+
+'                            <input type="text" id="headche' + rowCount + '" name="headche[' + rowCountSyntom + ']" hidden>'+
+'                          </div>'+
+'                          <div class="col-md-4" id="dizziness_' + rowCount + '">'+
+'                            <label>'+
+'                              <input type="checkbox" id="dizziness1" name="c_dizziness[' + rowCountSyntom + ']" value="0101">'+
+'                              Dizziness'+
+'                            </label>'+
+'                            <input type="text" id="dizziness' + rowCount + '" name="dizziness[' + rowCountSyntom + ']" hidden>'+
+'                          </div>'+
+'                        </div>'+
+'                        <div class="form-group">'+
+'                          <div class="col-md-4" id="fatigue_' + rowCount + '">'+
+'                            <label>'+
+'                              <input type="checkbox" id="fatigue" name="c_fatigue[' + rowCountSyntom + ']" value="0724">'+
+'                              Fatigue'+
+'                            </label>'+
+'                            <input type="text" id="fatigue' + rowCount + '" name="fatigue[' + rowCountSyntom + ']" hidden>'+
+'                          </div>'+
+'                          <div class="col-md-4" id="malaise_' + rowCount + '">'+
+'                            <label>'+
+'                              <input type="checkbox" id="malaise" name="c_malaise[' + rowCountSyntom + ']" value="0728">'+
+'                              Malaise'+
+'                            </label>'+
+'                            <input type="text" id="malaise' + rowCount + '" name="malaise[' + rowCountSyntom + ']" hidden>'+
+'                          </div>'+
+'                        </div>'+
+'                      </div>'+
+'                      <!-- /.box-body -->'+
+'                      <div class="box-footer">'+
+'                        <!-- checkbox3.1.3  -->'+
+'                        <div class="form-group">'+
+'                          <div class="col-md-4" id="dyspepsia_' + rowCount + '">'+
+'                            <label>'+
+'                              <input type="checkbox" id="dyspepsia" name="c_dyspepsia[' + rowCountSyntom + ']" value="0279">'+
+'                              Dyspepsia'+
+'                            </label>'+
+'                            <input type="text" id="dyspepsia' + rowCount + '" name="dyspepsia[' + rowCountSyntom + ']" hidden>'+
+'                          </div>'+
+'                          <div class="col-md-4" id="diarrhea_' + rowCount + '">'+
+'                            <label>'+
+'                              <input type="checkbox" id="diarrhea" name="c_diarrhea[' + rowCountSyntom + ']" value="1">'+
+'                              Diarrhea'+
+'                            </label>'+
+'                            <input type="text" id="diarrhea' + rowCount + '" name="diarrhea[' + rowCountSyntom + ']" hidden>'+
+'                          </div>'+
+'                          <div class="col-md-4" id="nausea_' + rowCount + '">'+
+'                            <label>'+
+'                              <input type="checkbox" id="nausea" name="c_nausea[' + rowCountSyntom + ']" value="0308">'+
+'                              Nausea'+
+'                            </label>'+
+'                            <input type="text" id="nausea' + rowCount + '" name="nausea[' + rowCountSyntom + ']" hidden>'+
+'                          </div>'+
+'                        </div>'+
+'                        <div class="form-group">'+
+'                          <div class="col-md-4" id="vomiting_' + rowCount + '">'+
+'                            <label>'+
+'                              <input type="checkbox" id="vomiting" name="c_vomiting[' + rowCountSyntom + ']" value="0228">'+
+'                              Vomiting'+
+'                            </label>'+
+'                            <input type="text" id="vomiting' + rowCount + '" name="vomiting[' + rowCountSyntom + ']" hidden>'+
+'                          </div>'+
+'                          <div class="col-md-6" id="abdominal_pain_' + rowCount + '">'+
+'                            <label>'+
+'                              <input type="checkbox" id="abdominal_pain1" name="c_abdominal_pain[' + rowCountSyntom + ']" value="0268">'+
+'                              Abdominal pain'+
+'                            </label>'+
+'                            <input type="text" id="abdominal_pain' + rowCount + '" name="abdominal_pain[' + rowCountSyntom + ']" hidden>'+
+'                          </div>'+
+'                        </div>'+
+'                      </div>'+
+'                      <!-- /.box-body -->'+
+'                      <div class="box-footer">'+
+'                        <!-- checkbox3.1.4  -->'+
+'                        <div class="form-group">'+
+'                          <div class="col-md-4" id="arthalgia_' + rowCount + '">'+
+'                            <label>'+
+'                              <input type="checkbox" id="arthalgia1" name="c_arthalgia[' + rowCountSyntom + ']" value="1">'+
+'                              Arthalgia'+
+'                            </label>'+
+'                            <input type="text" id="arthalgia' + rowCount + '" name="arthalgia[' + rowCountSyntom + ']" hidden>'+
+'                          </div>'+
+'                          <div class="col-md-4" id="myalgia_' + rowCount + '">'+
+'                            <label>'+
+'                              <input type="checkbox" id="myalgia1" name="c_myalgia[' + rowCountSyntom + ']" value="0072">'+
+'                              Myalgia'+
+'                            </label>'+
+'                            <input type="text" id="myalgia' + rowCount + '" name="myalgia[' + rowCountSyntom + ']" hidden>'+
+'                          </div>'+
+'                        </div>'+
+'                      </div>'+
+'    '+
+'                    </div>'+
+'                    <!-- /.box -->'+
+'                  </div>'+
+'                  {{-- คอรั่มภายใน3.2 --}}'+
+'                  <div class="col-md-6">'+
+'                    <!-- general form elements -->'+
+'                    <div class="box box-success">'+
+'                      <div class="box-header with-border">'+
+'                        <!-- checkbox3.2.1 -->'+
+'                        <div class="form-group">'+
+'                          <div class="col-md-5" id="fever38c_' + rowCount + '">'+
+'                            <label>'+
+'                              <input type="checkbox" id="fever38c1" name="c_fever38c[' + rowCountSyntom + ']" value="0725">'+
+'                              Fever >= 38 C'+
+'                            </label>'+
+'                            <input type="text" id="fever38c' + rowCount + '" name="fever38c[' + rowCountSyntom + ']" hidden>'+
+'                          </div>'+
+'                        </div>'+
+'                      </div>'+
+'                      <!-- /.box-header -->'+
+'                      <!-- form start -->'+
+'    '+
+'                      <div class="box-body">'+
+'                        {{-- input content --}}'+
+'                        <div class="box-body">'+
+'                          {{-- input content --}}'+
+'                          <!-- checkbox3.2.2  -->'+
+'                          <div class="form-group">'+
+'                            <div class="col-md-12" id="swelling_at_the_injection_' + rowCount + '">'+
+'                              <label>'+
+'                                <input type="checkbox" id="swelling_at_the_injection1" name="c_swelling_at_the_injection[' + rowCountSyntom + ']" value="1">'+
+'                                บวมบริเวณที่ฉีดนานเกิน3วัน'+
+'                              </label>'+
+'                              <input type="text" id="swelling_at_the_injection' + rowCount + '" name="swelling_at_the_injection[' + rowCountSyntom + ']" hidden>'+
+'                            </div>'+
+'                            <div class="col-md-12" id="swelling_beyond_nearest_joint_' + rowCount + '">'+
+'                              <label>'+
+'                                <input type="checkbox" id="swelling_beyond_nearest_joint1" name="c_swelling_beyond_nearest_joint[' + rowCountSyntom + ']" value="1">'+
+'                                บวมลามไปถึงข้อที่ใกล้ที่สุด'+
+'                              </label>'+
+'                              <input type="text" id="swelling_beyond_nearest_joint' + rowCount + '" name="swelling_beyond_nearest_joint[' + rowCountSyntom + ']" hidden>'+
+'                            </div>'+
+'                            <div class="col-md-12" id="lymphadenopathy_' + rowCount + '">'+
+'                              <label>'+
+'                                <input type="checkbox" id="lymphadenopathy1" name="c_lymphadenopathy[' + rowCountSyntom + ']" value="0577">'+
+'                                Lymphadenopathy'+
+'                              </label>'+
+'                              <input type="text" id="lymphadenopathy' + rowCount + '" name="lymphadenopathy[' + rowCountSyntom + ']" hidden>'+
+'                            </div>'+
+'                            <div class="col-md-12" id="lymphadenitis_' + rowCount + '">'+
+'                              <label>'+
+'                                <input type="checkbox" id="lymphadenitis1" name="c_lymphadenitis[' + rowCountSyntom + ']" value="0577D">'+
+'                                Lymphadenitis'+
+'                              </label>'+
+'                              <input type="text" id="lymphadenitis' + rowCount + '" name="lymphadenitis[' + rowCountSyntom + ']" hidden>'+
+'                            </div>'+
+'                          </div>'+
+'                          <div class="form-group">'+
+'                            <div class="col-md-6" id="sterile_abscess_' + rowCount + '">'+
+'                              <label>'+
+'                                <input type="checkbox" id="sterile_abscess1" name="c_sterile_abscess[' + rowCountSyntom + ']" value="0051">'+
+'                                Sterile abscess'+
+'                              </label>'+
+'                              <input type="text" id="sterile_abscess' + rowCount + '" name="sterile_abscess[' + rowCountSyntom + ']" hidden>'+
+'                            </div>'+
+'                            <div class="col-md-6" id="bacterial_abscess_' + rowCount + '">'+
+'                              <label>'+
+'                                <input type="checkbox" id="bacterial_abscess1" name="c_bacterial_abscess[' + rowCountSyntom + ']" value="1">'+
+'                                Bacterial abscess'+
+'                              </label>'+
+'                              <input type="text" id="bacterial_abscess' + rowCount + '" name="bacterial_abscess[' + rowCountSyntom + ']" hidden>'+
+'                            </div>'+
+'                          </div>'+
+'                        </div>'+
+'                      </div>'+
+'                      <!-- /.box-body -->'+
+'                      <div class="box-footer">'+
+'                        <!-- checkbox3.2.3  -->'+
+'                        <div class="form-group">'+
+'                          <div class="col-md-12" id="febrile_convulsion_' + rowCount + '">'+
+'                            <label>'+
+'                              <input type="checkbox" id="febrile_convulsion1" name="c_febrile_convulsion[' + rowCountSyntom + ']" value="1">'+
+'                              Febrile convulsion'+
+'                            </label>'+
+'                            <input type="text" id="febrile_convulsion' + rowCount + '" name="febrile_convulsion[' + rowCountSyntom + ']" hidden>'+
+'                          </div>'+
+'                          <div class="col-md-12" id="afebrile_convulsion_' + rowCount + '">'+
+'                            <label>'+
+'                              <input type="checkbox" id="afebrile_convulsion" name="c_afebrile_convulsion[' + rowCountSyntom + ']" value="1">'+
+'                              Afebrile convulsion'+
+'                            </label>'+
+'                            <input type="text" id="afebrile_convulsion' + rowCount + '" name="afebrile_convulsion[' + rowCountSyntom + ']" hidden>'+
+'                          </div>'+
+'                          <div class="col-md-12" id="encephalopathy_' + rowCount + '">'+
+'                            <label>'+
+'                              <input type="checkbox" id="encephalopathy1" name="c_encephalopathy[' + rowCountSyntom + ']" value="0105">'+
+'                              Encephalopathy/Encephalitis'+
+'                            </label>'+
+'                            <input type="text" id="encephalopathy' + rowCount + '" name="encephalopathy[' + rowCountSyntom + ']" hidden>'+
+'                          </div>'+
+'                        </div>'+
+'                        <div class="form-group">'+
+'                          <div class="col-md-6" id="flaccid_paralysis_' + rowCount + '">'+
+'                            <label>'+
+'                              <input type="checkbox" id="flaccid_paralysis1" name="c_flaccid_paralysis[' + rowCountSyntom + ']" value="0139">'+
+'                              Flaccid paralysis'+
+'                            </label>'+
+'                            <input type="text" id="flaccid_paralysis' + rowCount + '" name="flaccid_paralysis[' + rowCountSyntom + ']" hidden>'+
+'                          </div>'+
+'                          <div class="col-md-6" id="spastic_paralysis_' + rowCount + '">'+
+'                            <label>'+
+'                              <input type="checkbox" id="spastic_paralysis1" name="c_spastic_paralysis[' + rowCountSyntom + ']" value="0775">'+
+'                              Spastic paralysis'+
+'                            </label>'+
+'                            <input type="text" id="spastic_paralysis' + rowCount + '" name="spastic_paralysis[' + rowCountSyntom + ']" hidden>'+
+'                          </div>'+
+'                        </div>'+
+'                      </div>'+
+'                    </div>'+
+'    '+
+'                  </div>'+
+'                  <!-- /.box -->'+
+'                  {{-- คอรั่มภายใน3.3 --}}'+
+'                  <div class="col-md-6">'+
+'                    <!-- general form elements -->'+
+'                    <div class="box box-success">'+
+'                      <!-- /.box-header -->'+
+'                      <!-- form start -->'+
+'    '+
+'                      <div class="box-body">'+
+'                        {{-- input content --}}'+
+'                        <!-- checkbox3.3.1  -->'+
+'                        <div class="form-group">'+
+'                          <div class="col-md-12" id="hhe_' + rowCount + '">'+
+'                            <label>'+
+'                              <input id="hhe1" name="c_hhe[' + rowCountSyntom + ']" type="checkbox" value="1704">'+
+'                              Hypotonic Hyporesponsive episode (HHE)'+
+'                            </label>'+
+'                            <input type="text" id="hhe' + rowCount + '" name="hhe[' + rowCountSyntom + ']" hidden>'+
+'                          </div>'+
+'                          <div class="col-md-12" id="persistent_inconsolable_crying_' + rowCount + '">'+
+'                            <label>'+
+'                              <input id="persistent_inconsolable_crying1" name="c_persistent_inconsolable_crying[' + rowCountSyntom + ']" type="checkbox" value="1">'+
+'                              Persistent inconsolable crying'+
+'                            </label>'+
+'                            <input type="text" id="persistent_inconsolable_crying' + rowCount + '" name="persistent_inconsolable_crying[' + rowCountSyntom + ']" hidden>'+
+'                          </div>'+
+'                          <div class="col-md-12" id="thrombocytopenia_' + rowCount + '">'+
+'                            <label>'+
+'                              <input id="thrombocytopenia1" name="c_thrombocytopenia[' + rowCountSyntom + ']" type="checkbox" value="0594">'+
+'                              Thrombocytopenia'+
+'                            </label>'+
+'                            <input type="text" id="thrombocytopenia' + rowCount + '" name="thrombocytopenia[' + rowCountSyntom + ']" hidden>'+
+'                          </div>'+
+'                          <div class="col-md-12" id="osteomyelitis_' + rowCount + '">'+
+'                            <label>'+
+'                              <input id="osteomyelitis1" name="c_osteomyelitis[' + rowCountSyntom + ']" type="checkbox" value="1184">'+
+'                              Osteitis/Osteomyelitis'+
+'                            </label>'+
+'                            <input type="text" id="osteomyelitis' + rowCount + '" name="osteomyelitis[' + rowCountSyntom + ']" hidden>'+
+'                          </div>'+
+'                          <div class="col-md-12" id="toxic_shock_syndrome_' + rowCount + '">'+
+'                            <label>'+
+'                              <input id="toxic_shock_syndrome1" name="c_toxic_shock_syndrome[' + rowCountSyntom + ']" type="checkbox" value="1">'+
+'                              Toxic shock syndrome'+
+'                            </label>'+
+'                            <input type="text" id="toxic_shock_syndrome' + rowCount + '" name="toxic_shock_syndrome[' + rowCountSyntom + ']" hidden>'+
+'                          </div>'+
+'                          <div class="col-md-12" id="sepsis_' + rowCount + '">'+
+'                            <label>'+
+'                              <input id="sepsis1" name="c_sepsis[' + rowCountSyntom + ']" type="checkbox" value="0744">'+
+'                              Sepsis'+
+'                            </label>'+
+'                            <input type="text" id="sepsis' + rowCount + '" name="sepsis[' + rowCountSyntom + ']" hidden>'+
+'                          </div>'+
+'                          <div class="col-md-12" id="anaphylaxis_' + rowCount + '">'+
+'                            <label>'+
+'                              <input id="anaphylaxis1" name="c_anaphylaxis[' + rowCountSyntom + ']" type="checkbox" value="2237">'+
+'                              Anaphylaxis'+
+'                            </label>'+
+'                            <input type="text" id="anaphylaxis' + rowCount + '" name="anaphylaxis[' + rowCountSyntom + ']" hidden>'+
+'                          </div>'+
+'                          <div class="col-md-12" id="gbs_' + rowCount + '">'+
+'                            <label>'+
+'                              <input id="gbs" name="c_gbs[' + rowCountSyntom + ']" type="checkbox" value="1">'+
+'                              Guillain-Barré syndrome (GBS)'+
+'                            </label>'+
+'                            <input type="text" id="gbs' + rowCount + '" name="gbs[' + rowCountSyntom + ']" hidden>'+
+'                          </div>'+
+'                          <div class="col-md-12" id="transverse_myelitis_' + rowCount + '">'+
+'                            <label>'+
+'                              <input id="transverse myelitis1" name="c_transverse myelitis[' + rowCountSyntom + ']" type="checkbox" value="1">'+
+'                              Transverse myelitis'+
+'                            </label>'+
+'                            <input type="text" id="transverse_myelitis' + rowCount + '" name="transverse_myelitis[' + rowCountSyntom + ']" hidden>'+
+'                          </div>'+
+'                          <div class="col-md-12" id="adem_' + rowCount + '">'+
+'                            <label>'+
+'                              <input id="adem1" name="c_adem[' + rowCountSyntom + ']" type="checkbox" value="1">'+
+'                              Acute disseminated encephalomyelitis (ADEM)'+
+'                            </label>'+
+'                            <input type="text" id="adem' + rowCount + '" name="adem[' + rowCountSyntom + ']" hidden>'+
+'                          </div>'+
+'                          <div class="col-md-12" id="acute_myocardial_' + rowCount + '">'+
+'                            <label>'+
+'                              <input id="acute_myocardial1" name="c_acute_myocardial[' + rowCountSyntom + ']" type="checkbox" value="1">'+
+'                              Acute Myocardial'+
+'                            </label>'+
+'                            <input type="text" id="acute_myocardial' + rowCount + '" name="acute_myocardial[' + rowCountSyntom + ']" hidden>'+
+'                          </div>'+
+'                          <div class="col-md-12" id="ards_' + rowCount + '">'+
+'                            <label>'+
+'                              <input id="ards1" name="c_ards[' + rowCountSyntom + ']" type="checkbox" value="1">'+
+'                               Acute respiratory distress syndrome (ARDS)'+
+'                            </label>'+
+'                            <input type="text" id="ards' + rowCount + '" name="ards[' + rowCountSyntom + ']" hidden>'+
+'                          </div>'+
+'                          <div class="col-md-12" id="symptoms_later_immunized_' + rowCount + '">'+
+'                            <label>'+
+'                              <input id="symptoms_later_immunized" name="c_symptoms_later_immunized[' + rowCountSyntom + ']" type="checkbox" value="9999">'+
+'                              other'+
+'                            </label>'+
+'                            <input type="text" id="symptoms_later_immunized' + rowCount + '" name="symptoms_later_immunized[' + rowCountSyntom + ']" hidden>'+
+'                          </div>'+
+'                          <div class="form-group">'+
+'                            <div class="col-lg-12">'+
+'                              <div id="other_symptoms_later_immunized" style="display: none">'+
+'                                <input type="text" id="other_symptoms_later_immunized_text1" name="other_symptoms_later_immunized[' + rowCountSyntom + ']" class="form-control" placeholder="" hidden="true">'+
+'                              </div>'+
+'                              {{-- <div id="other_symptoms_later_immunized_t" style="display: none">'+
+'                                <input type="text" class="form-control pull-right" id="other_symptoms_later_immunized_text" name="other_symptoms_later_immunized" placeholder="ระบุอาการอื่นๆ">'+
+'                              </div> --}}'+
+'                            </div>'+
+'                          </div>'+
+'                        </div>'+
+'                      </div>'+
+'                    </div>'+
+'                    <!-- /.box -->'+
+'                  </div>'+
+'{{-- คอรั่มภายใน3.3 --}}'+
+'                   <div class="col-md-6">'+
+'                    <!-- general form elements -->'+
+'                    <div class="box box-success">'+
+'                      <!-- /.box-header -->'+
+'                      <!-- form start -->'+
+''+
+'                      <div class="box-body">'+
+'                        {{-- input content --}}'+
+'                        <!-- checkbox3.3.1  -->'+
+'                        <div class="form-group">'+
+'                          <div class="col-md-12" id="chest_pain_' + rowCount + '" >'+
+'                            <label>'+
+'                              <input name="c_chest_pain[' + rowCountSyntom + ']" type="checkbox" value="1">'+
+'                              Chest pain'+
+'                            </label>'+
+'                            <input type="text" id="chest_pain' + rowCount + '" name="chest_pain[' + rowCountSyntom + ']" hidden>'+
+'                          </div>'+
+'                          <div class="col-md-12" id="myocarditis_' + rowCount + '">'+
+'                            <label>'+
+'                              <input name="c_myocarditis[' + rowCountSyntom + ']" type="checkbox" value="1">'+
+'                              Myocarditis'+
+'                            </label>'+
+'                            <input type="text" id="myocarditis' + rowCount + '" name="myocarditis[' + rowCountSyntom + ']" hidden>'+
+'                          </div>'+
+'                          <div class="col-md-12" id="heart_failure_' + rowCount + '">'+
+'                            <label>'+
+'                              <input name="c_heart_failure[' + rowCountSyntom + ']" type="checkbox" value="1">'+
+'                              Heart failure'+
+'                            </label>'+
+'                            <input type="text" id="heart_failure' + rowCount + '" name="heart_failure[' + rowCountSyntom + ']" hidden>'+
+'                          </div>'+
+'                          <div class="col-md-12" id="pericarditis_' + rowCount + '">'+
+'                            <label>'+
+'                              <input name="c_pericarditis[' + rowCountSyntom + ']" type="checkbox" value="1">'+
+'                              Pericarditis'+
+'                            </label>'+
+'                            <input type="text" id="pericarditis' + rowCount + '" name="pericarditis[' + rowCountSyntom + ']" hidden>'+
+'                          </div>'+
+'                          <div class="col-md-12" id="sudden_cardiac_arrest_' + rowCount + '">'+
+'                            <label>'+
+'                              <input name="c_sudden_cardiac_arrest[' + rowCountSyntom + ']" type="checkbox" value="1">'+
+'                              Sudden cardiac arrest'+
+'                            </label>'+
+'                            <input type="text" id="sudden_cardiac_arrest' + rowCount + '" name="sudden_cardiac_arrest[' + rowCountSyntom + ']" hidden>'+
+'                          </div>'+
+'                          <div class="col-md-12" id="covid_19_' + rowCount + '">'+
+'                            <label>'+
+'                              <input name="c_covid_19[' + rowCountSyntom + ']" type="checkbox" value="1">'+
+'                              Covid-19'+
+'                            </label>'+
+'                            <input type="text" id="covid_19' + rowCount + '" name="covid_19[' + rowCountSyntom + ']" hidden>'+
+'                          </div>'+
+'                          <div class="col-md-12" id="ischemic_stroke_' + rowCount + '">'+
+'                            <label>'+
+'                              <input name="c_ischemic_stroke[' + rowCountSyntom + ']" type="checkbox" value="1">'+
+'                              Ischemic stroke'+
+'                            </label>'+
+'                            <input type="text" id="ischemic_stroke' + rowCount + '" name="ischemic_stroke[' + rowCountSyntom + ']" hidden>'+
+'                          </div>'+
+'                          <div class="col-md-12" id="hemorrhagic_stroke_' + rowCount + '">'+
+'                            <label>'+
+'                              <input name="c_hemorrhagic_stroke[' + rowCountSyntom + ']" type="checkbox" value="1">'+
+'                            Hemorrhagic stroke'+
+'                            </label>'+
+'                            <input type="text" id="hemorrhagic_stroke' + rowCount + '" name="hemorrhagic_stroke[' + rowCountSyntom + ']" hidden>'+
+'                          </div>'+
+'                          <div class="col-md-12" id="deep_vein_thrombosis_' + rowCount + '">'+
+'                            <label>'+
+'                              <input name="c_deep_vein_thrombosis[' + rowCountSyntom + ']" type="checkbox" value="1">'+
+'                              Deep vein thrombosis                            '+
+'		                      	</label>'+
+'                            <input type="text" id="deep_vein_thrombosis' + rowCount + '" name="deep_vein_thrombosis[' + rowCountSyntom + ']" hidden>'+
+'                          </div>'+
+'                          <div class="col-md-12" id="pulmonary_embolism_' + rowCount + '">'+
+'                            <label>'+
+'                              <input name="c_pulmonary_embolism[' + rowCountSyntom + ']" type="checkbox" value="1">'+
+'                              Pulmonary embolism'+
+'                            </label>'+
+'                            <input type="text" id="pulmonary_embolism' + rowCount + '" name="pulmonary_embolism[' + rowCountSyntom + ']" hidden>'+
+'                          </div>'+
+'                          <div class="col-md-12" id="hypertension_' + rowCount + '">'+
+'                            <label>'+
+'                              <input name="c_hypertension[' + rowCountSyntom + ']" type="checkbox" value="1">'+
+'                              Hypertension'+
+'                            </label>'+
+'                            <input type="text" id="hypertension' + rowCount + '" name="hypertension[' + rowCountSyntom + ']" hidden>'+
+'                          </div>'+
+'                          <div class="col-md-12" id="hypertensive_urgency_' + rowCount + '">'+
+'                            <label>'+
+'                              <input name="c_hypertensive_urgency[' + rowCountSyntom + ']" type="checkbox" value="1">'+
+'                               Hypertensive urgency'+
+'                            </label>'+
+'                            <input type="text" id="hypertensive_urgency' + rowCount + '" name="hypertensive_urgency[' + rowCountSyntom + ']" hidden>'+
+'                          </div>'+
+'                          <div class="col-md-12" id="bells_palsy_' + rowCount + '">'+
+'                            <label>'+
+'                              <input name="c_bells_palsy[' + rowCountSyntom + ']" type="checkbox" value="1">'+
+'                              Bells palsy'+
+'                            </label>'+
+'                            <input type="text" id="bells_palsy' + rowCount + '" name="bells_palsy[' + rowCountSyntom + ']" hidden>'+
+'                          </div>'+
+''+
+'                          </div>'+
+'                        </div>'+
+''+
+'                    </div>'+
+'                    <!-- /.box -->'+
+'                  </div>'+
+'                  {{-- คอรั่มภายใน3.4 --}}'+
+'                  <div class="col-md-12">'+
+'                    <!-- general form elements -->'+
+'                    <div class="box box-success">'+
+'                      <div class="box-header with-border">'+
+'                        <div class="form-group">'+
+'                          <div class="col-lg-6">'+
+'                            <label>ว/ด/ป ที่เกิดอาการ :</label>'+
+'                            <div class="input-group date">'+
+'                              <div class="input-group-addon">'+
+'                                <i class="fa fa-calendar"></i>'+
+'                              </div>'+
+'                              <input type="text" class="form-control pull-right" id="date_of_symptoms1' + rowCount + '" name="date_of_symptoms[' + rowCountSyntom + ']" data-date-format="yyyy-mm-dd" readonly>'+
+'                            </div>'+
+'                          </div>'+
+'                        </div>'+
+'                        <div class="bootstrap-timepicker">'+
+'                          <div class="form-group">'+
+'                            <div class="col-lg-6">'+
+'                              <label>เวลาที่เกิดอาการ :</label>'+
+'                              <div class="input-group">'+
+'                                <input  id="time_of_symptoms1' + rowCount + '" type="text" class="form-control" name="time_of_symptoms[' + rowCountSyntom + ']">'+
+'    '+
+'                                <div class="input-group-addon">'+
+'                                  <i class="fa fa-clock-o"></i>'+
+'                                </div>'+
+'                              </div>'+
+'                            </div>'+
+'                          </div>'+
+'                        </div>'+
+'                        <div class="form-group">'+
+'                          <div class="col-lg-6">'+
+'                            <label>ว/ด/ป ที่รับรักษา :</label>'+
+'                            <div class="input-group date">'+
+'                              <div class="input-group-addon">'+
+'                                <i class="fa fa-calendar"></i>'+
+'                              </div>'+
+'                              <input type="text" class="form-control pull-right" id="date_of_treatment1' + rowCount + '" name="date_of_treatment[' + rowCountSyntom + ']" data-date-format="yyyy-mm-dd" readonly>'+
+'                            </div>'+
+'                          </div>'+
+'                        </div>'+
+'                        <div class="form-group">'+
+'                          <div class="col-lg-6">'+
+'                            <label>ว/ด/ป ที่จำหน่าย :</label>'+
+'                            <div class="input-group date">'+
+'                              <div class="input-group-addon">'+
+'                                <i class="fa fa-calendar"></i>'+
+'                              </div>'+
+'                              <input type="text" class="form-control pull-right" id="time_of_treatment1' + rowCount + '" name="time_of_treatment[' + rowCountSyntom + ']" data-date-format="yyyy-mm-dd" readonly>'+
+'                            </div>'+
+'                          </div>'+
+'                        </div>'+
+'                      </div>'+
+'                      <!-- /.box-header -->'+
+'                      <!-- form start -->'+
+'   '+
+'                      <div class="box-body">'+
+'                        {{-- input content --}}'+
+'                        <!-- textarea -->'+
+'                        <div class="form-group">'+
+'                          <div class="col-lg-8">'+
+'                            <label>รายละเอียดอาการและการตรวจสอบ</label>'+
+'                            <input class="form-control" rows="5"  id="Symptoms_details1" name="Symptoms_details[' + rowCountSyntom + ']">'+
+'                          </div>'+
+'                        </div>'+
+'                        <div class="form-group">'+
+'                          <div class="col-lg-8">'+
+'                            <label>วินิจฉัยของแพทย์ :</label><input type="text" id="diagnosis1" name="diagnosis[' + rowCountSyntom + ']" class="form-control" placeholder="">'+
+'                          </div>'+
+'                        </div>'+
+'                      </div>'+
+'                    </div>'+
+'                    <!-- /.box -->'+
+'                  </div>'+
+'                </div>'+
+'                <div class="box-footer">'+
+'                  <div class="form-group">'+
+'                    <div class="col-lg-12">'+
+'                      <label>'+
+'                        <font style="color:red;">*</font> ความร้ายแรงของอาการ'+
+'                      </label>'+
+'                    </div>'+
+'                  </div>'+
+'                  <div class="form-group">'+
+'                    <div class="col-lg-12"  id="seriousness_of_the_symptoms_' + rowCount + '">'+
+'                      <!-- checkbox3.5.1  -->'+
+'                      <div class="form-group">'+
+'                        <div class="col-md-2">'+
+'                          <label>'+
+'                            <input type="radio" name="c_seriousness_of_the_symptoms[' + rowCountSyntom + ']"  id="seriousness_of_the_symptoms1" value="1" >'+
+'                            ไม่ร้ายแรง'+
+'                          </label>'+
+'                        </div>'+
+'                        <div class="col-md-2">'+
+'                          <label>'+
+'                            <input type="radio" name="c_seriousness_of_the_symptoms[' + rowCountSyntom + ']" id="seriousness_of_the_symptoms1" value="2">'+
+'                            ร้ายแรง'+
+'                          </label>'+
+'                        </div>'+
+'                        <input type="text" id="seriousness_of_the_symptoms" name="seriousness_of_the_symptoms[' + rowCountSyntom + ']" hidden>'+
+'                      </div>'+
+'                    </div>'+
+'                  </div>'+
+'                  <div id="other_seriousness_of_the_symptoms_bk1">'+
+'                    <div id="other_seriousness_of_the_symptoms_' + rowCount + '">'+
+'                    <div class="form-group">'+
+'                      <div class="col-lg-12">'+
+'                        <label>ระบุ :</label>'+
+'                      </div>'+
+'                    </div>'+
+'                    <!-- checkbox3.1.1 -->'+
+'                    <div class="form-group">'+
+'                      <div class="col-md-4">'+
+'                        <label>'+
+'                          <input type="checkbox" name="c_other_seriousness_of_the_symptoms[' + rowCountSyntom + ']" id="other_seriousness_of_the_symptoms1" value="1">'+
+'                          เสียชีวิต'+
+'                        </label>'+
+'                      </div>'+
+'                      <div class="col-md-4">'+
+'                        <label>'+
+'                          <input type="checkbox" name="c_other_seriousness_of_the_symptoms[' + rowCountSyntom + ']" id="other_seriousness_of_the_symptoms1" value="2">'+
+'                          อันตรายถึงชีวิต'+
+'                        </label>'+
+'                      </div>'+
+'                      <div class="col-md-4">'+
+'                        <label>'+
+'                          <input type="checkbox" name="c_other_seriousness_of_the_symptoms[' + rowCountSyntom + ']" id="other_seriousness_of_the_symptoms1" value="3">'+
+'                          พิการ/ไร้ความสามารถ'+
+'                        </label>'+
+'                      </div>'+
+'                    </div>'+
+'                    <div class="form-group">'+
+'                      <div class="col-md-4">'+
+'                        <label>'+
+'                          <input type="checkbox" name="c_other_seriousness_of_the_symptoms[' + rowCountSyntom + ']" id="other_seriousness_of_the_symptoms1" value="4">'+
+'                          รับไว้รักษาในโรงพยาบาล'+
+'                        </label>'+
+'                      </div>'+
+'                      <div class="col-md-4">'+
+'                        <label>'+
+'                          <input type="checkbox" name="c_other_seriousness_of_the_symptoms[' + rowCountSyntom + ']" id="other_seriousness_of_the_symptoms1" value="5">'+
+'                          ความผิดปกติแต่กำเนิด'+
+'                        </label>'+
+'                      </div>'+
+'                      <div class="col-md-4">'+
+'                        <label>'+
+'                          <input type="checkbox" name="c_other_seriousness_of_the_symptoms[' + rowCountSyntom + ']" id="other_seriousness_of_the_symptoms1" value="6">'+
+'                          อื่นๆที่มีความสำคัญทางการแพทย์'+
+'                        </label>'+
+'                      </div>'+
+'                      <div class="col-lg-4">'+
+'                        <div id="text_other_seriousness_of_the_symptoms" style="display: none">'+
+'                          <label></label>'+
+'                          <input type="text" id="text_other_seriousness_of_the_symptoms_text" name="text_other_seriousness_symptoms[' + rowCountSyntom + ']" class="form-control" placeholder="อื่นๆ">'+
+'                        </div>'+
+'                      </div>'+
+'                    </div>'+
+'                    <input type="text" id="other_seriousness_of_the_symptoms' + rowCount + '" name="other_seriousness_of_the_symptoms[' + rowCountSyntom + ']" hidden>'+
+'                  </div>'+
+'                </div>'+
+'                </div>'+
+'                <!-- /.box-body -->'+
+'                <div class="box-footer">'+
+'                  <div class="form-group">'+
+'                    <div class="col-lg-12">'+
+'                      <label>'+
+'                        <font style="color:red;">*</font> สถานะผู้ป่วย'+
+'                      </label>'+
+'                    </div>'+
+'                  </div>'+
+'                  <div class="form-group">'+
+'                    <div class="col-lg-12" id="patient_status_' + rowCount + '">'+
+'                      <!-- checkbox3.5.1  -->'+
+'                      <div class="form-group">'+
+'                        <div class="col-md-4">'+
+'                          <label>'+
+'                            <input type="radio" id="c_patient_status1" name="c_patient_status[' + rowCountSyntom + ']" value="1" >'+
+'                            หาย'+
+'                          </label>'+
+'                        </div>'+
+'                        <div class="col-md-4">'+
+'                          <label>'+
+'                            <input type="radio" id="c_patient_status1" name="c_patient_status[' + rowCountSyntom + ']" value="2">'+
+'                            หายโดยมีร่องรอย'+
+'                          </label>'+
+'                        </div>'+
+'                        <div class="col-md-4">'+
+'                          <label>'+
+'                            <input type="radio" id="c_patient_status1" name="c_patient_status[' + rowCountSyntom + ']" value="3">'+
+'                            อาการดีขึ้นแต่ยังไม่หาย'+
+'                          </label>'+
+'                        </div>'+
+'                        <div class="col-md-4">'+
+'                          <label>'+
+'                            <input type="radio" id="c_patient_status1" name="c_patient_status[' + rowCountSyntom + ']" value="4">'+
+'                            ไม่หาย'+
+'                          </label>'+
+'                        </div>'+
+'                        <div class="col-md-4">'+
+'                          <label>'+
+'                            <input type="radio" id="c_patient_status1" name="c_patient_status[' + rowCountSyntom + ']" value="5">'+
+'                            ไม่ทราบ'+
+'                          </label>'+
+'                        </div>'+
+'                        <div class="col-md-4">'+
+'                          <label>'+
+'                            <input type="radio" id="c_patient_status1" name="c_patient_status[' + rowCountSyntom + ']" value="6">'+
+'                            เสียชีวิต'+
+'                          </label>'+
+'                        </div>'+
+'                        <div class="col-lg-4">'+
+'                          <div class="input-group date">'+
+'                            <div id="other_patian_sta" style="display: none">'+
+'                              <input type="text" class="form-control" placeholder="ระบุ ว/ด/ป เสียชีวิต" id="datepicker_dead" name="date_dead[' + rowCountSyntom + ']" hidden="true" data-date-format="yyyy-mm-dd" readonly>'+
+'                            </div>'+
+'                          </div>'+
+'                        </div>'+
+'                        <input type="text" id="patient_status' + rowCount + '" name="patient_status[' + rowCountSyntom + ']" hidden>'+
+'                      </div>'+
+'                    </div>'+
+'                  </div>'+
+'                  <!-- checkbox3.1.1 -->'+
+'                  <div class="form-group">'+
+'                    <div class="col-lg-12">'+
+'                      <label>ผ่าพิสูจน์ศพ :</label>'+
+'                    </div>'+
+'                  </div>'+
+'                  <!-- checkbox3.1.1 -->'+
+'                  <div class="form-group">'+
+'                    <div class="col-lg-12"  id="funeral_' + rowCount + '">'+
+'                      <div class="col-md-2" hidden>'+
+'                        <label>'+
+'                          <input type="radio" id="c_funeral' + rowCount + '" name="c_funeral[' + rowCountSyntom + ']" value="" >'+
+'                          ไม่ระบุ'+
+'                        </label>'+
+'                      </div>'+
+'                      <div class="col-md-2">'+
+'                        <label>'+
+'                          <input type="radio" id="c_funeral' + rowCount + '" name="c_funeral[' + rowCountSyntom + ']" value="1" >'+
+'                          ไม่มี'+
+'                        </label>'+
+'                      </div>'+
+'                      <div class="col-md-2">'+
+'                        <label>'+
+'                          <input type="radio" id="c_funeral' + rowCount + '" name="c_funeral[' + rowCountSyntom + ']" value="2">'+
+'                          ไม่ทราบ'+
+'                        </label>'+
+'                      </div>'+
+'                      <div class="col-md-2">'+
+'                        <label>'+
+'                          <input type="radio" id="c_funeral' + rowCount + '" name="c_funeral[' + rowCountSyntom + ']" value="3">'+
+'                          มี'+
+'                        </label>'+
+'                      </div>'+
+'                      <div class="col-lg-3">'+
+'                        <div id="other_address_funeral' + rowCount + '" style="display: none">'+
+'                          <label>สถานที่ทำการ :</label>'+
+'                          <input type="text" id="other_address_funeral_text' + rowCount + '" name="other_address_funeral[' + rowCountSyntom + ']" class="form-control" placeholder="ระบุสถานที่ทำการ">'+
+'                        </div>'+
+'                      </div>'+
+'                      <input type="text" id="funeral' + rowCount + '" name="funeral[' + rowCountSyntom + ']" hidden>'+
+'                    </div>'+
+'                  </div>'+
+'                </div>'+
+'    '+
+'              </div>'+
+'        </div>'+
+'        <div class="modal-footer">'+
+'            <button type="button" class="btn btn-primary" data-dismiss="modal">เสร็จสิ้น</button>'+
+'            {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}'+
+'        </div>'+
+'      </div>'+
+'    </div>'+
+'  </div>'+
+          '</td>' +
         '<td>' +
         '<select type="text" id="manufacturer1" name="manufacturer[]' + rowCount + '" class="form-control">' +
         '<option value="">กรุณาระบชื่อผู้ผลิต</option>' +
         <?php
       foreach($arr_manufacturer as $k => $v) {
           ?>
-          '<option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>' +
+          '<option  value="<?php echo $k ; ?>"><?php echo $v ; ?></option>' +
           <?php
         } ?>
         '</select>' +
@@ -1908,16 +2753,17 @@ foreach ($aecode as $value) {
         '<input type="text" id="lot_number1" name="lot_number[]' + rowCount + '" class="form-control">' +
         '</td>' +
         '<td>' +
-        '<input type="text" id="datepicker_expiry_date1' + rowCount + '" name="expiry_date[]' + rowCount + '" class="form-control readonly " data-date-format="yyyy-mm-dd">' +
+        '<input type="text" id="datepicker_expiry_date1' + rowCount + '" name="expiry_date[]' + rowCount + '" class="form-control" data-date-format="yyyy-mm-dd" readonly>' +
         '</td>' +
         // '<td>' +
         // '<input type="text" id="name_of_diluent1" name="name_of_diluent[]' + rowCount + '" class="form-control">' +
         // '</td>' +
         '<td>' +
+        // '<input type="text"  id="rash1' + rowCount + '" name="rash[]' + rowCount + '" value="0027">'+
         '<input type="text" id="lot_number_diluent1" name="lot_number_diluent[]' + rowCount + '" class="form-control">' +
         '</td>' +
         '<td>' +
-        '<input type="text" id="datepicker_expiry_date_diluent1' + rowCount + '" name="expiry_date_diluent[]' + rowCount + '" class="form-control readonly " data-date-format="yyyy-mm-dd">' +
+        '<input type="text" id="datepicker_expiry_date_diluent1' + rowCount + '" name="expiry_date_diluent[]' + rowCount + '" class="form-control" data-date-format="yyyy-mm-dd" readonly>' +
         '</td>' +
         // '<td><input type="text" id="date_of_reconstitution1' + rowCount + '" name="date_of_reconstitution[]' + rowCount + '" class="form-control datepicker" data-date-format="yyyy-mm-dd"></td>' +
         // '<td><input type="text" id="time_of_reconstitution1" name="time_of_reconstitution[]' + rowCount + '" class="form-control"></td>' +
@@ -1925,6 +2771,7 @@ foreach ($aecode as $value) {
         '<button type="button" id="btnDelete" class="deleteContact btn btn btn-danger btn-m">ลบข้อมูลวัคซีน</button></td>' +
         '</tr>';
       $('.maintable').append(contactdiv); // Adding these controls to Main table class
+    
       $('#date_of_vaccination1' + rowCount + '').datepicker({
         dateFormat: "yy-mm-dd"
       })
@@ -1937,8 +2784,480 @@ foreach ($aecode as $value) {
       $('#datepicker_expiry_date_diluent1' + rowCount + '').datepicker({
         dateFormat: "yy-mm-dd"
       })
-
+      $('#date_of_symptoms1' + rowCount + '').datepicker({
+        dateFormat: "yy-mm-dd"
+      })
+      $('#date_of_treatment1' + rowCount + '').datepicker({
+        dateFormat: "yy-mm-dd"
+      })
+      $('#time_of_treatment1' + rowCount + '').datepicker({
+        dateFormat: "yy-mm-dd"
+      })
+      $('#date_of_symptoms2' + rowCount + '').datepicker({
+        dateFormat: "yy-mm-dd"
+      })
+      $('#date_of_treatment2' + rowCount + '').datepicker({
+        dateFormat: "yy-mm-dd"
+      })
+      $('#time_of_treatment2' + rowCount + '').datepicker({
+        dateFormat: "yy-mm-dd"
+      })
+      $('#time_of_treatment2' + rowCount + '').datepicker({
+        dateFormat: "yy-mm-dd"
+      })
+    $('#datepicker_dead2' + rowCount + '').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+      $('#rash_' + rowCount + '').change(function() {
+      var s = $('#rash_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#rash' + rowCount + '').val((s.length > 0 ? s : ""));
     });
+    $('#erythema_' + rowCount + '').change(function() {
+      var s = $('#erythema_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#erythema' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#urticaria_' + rowCount + '').change(function() {
+      var s = $('#urticaria_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#urticaria' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#itching_' + rowCount + '').change(function() {
+      var s = $('#itching_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#itching' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#edema_' + rowCount + '').change(function() {
+      var s = $('#edema_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#edema' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#angioedema_' + rowCount + '').change(function() {
+      var s = $('#angioedema_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#angioedema' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#fainting_' + rowCount + '').change(function() {
+      var s = $('#fainting_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#fainting' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#hyperventilation_' + rowCount + '').change(function() {
+      var s = $('#hyperventilation_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#hyperventilation' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#syncope_' + rowCount + '').change(function() {
+      var s = $('#syncope_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#syncope' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#headche_' + rowCount + '').change(function() {
+      var s = $('#headche_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#headche' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#dizziness_' + rowCount + '').change(function() {
+      var s = $('#dizziness_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#dizziness' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#fatigue_' + rowCount + '').change(function() {
+      var s = $('#fatigue_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#fatigue' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#malaise_' + rowCount + '').change(function() {
+      var s = $('#malaise_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#malaise' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#dyspepsia_' + rowCount + '').change(function() {
+      var s = $('#dyspepsia_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#dyspepsia' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#diarrhea_' + rowCount + '').change(function() {
+      var s = $('#diarrhea_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#diarrhea' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#nausea_' + rowCount + '').change(function() {
+      var s = $('#nausea_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#nausea' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#vomiting_' + rowCount + '').change(function() {
+      var s = $('#vomiting_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#vomiting' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#abdominal_pain_' + rowCount + '').change(function() {
+      var s = $('#abdominal_pain_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#abdominal_pain' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#arthalgia_' + rowCount + '').change(function() {
+      var s = $('#arthalgia_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#arthalgia' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#myalgia_' + rowCount + '').change(function() {
+      var s = $('#myalgia_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#myalgia' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#fever38c_' + rowCount + '').change(function() {
+      var s = $('#fever38c_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#fever38c' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#swelling_at_the_injection_' + rowCount + '').change(function() {
+      var s = $('#swelling_at_the_injection_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#swelling_at_the_injection' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#swelling_beyond_nearest_joint_' + rowCount + '').change(function() {
+      var s = $('#swelling_beyond_nearest_joint_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#swelling_beyond_nearest_joint' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#lymphadenopathy_' + rowCount + '').change(function() {
+      var s = $('#lymphadenopathy_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#lymphadenopathy' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#lymphadenitis_' + rowCount + '').change(function() {
+      var s = $('#lymphadenitis_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#lymphadenitis' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#sterile_abscess_' + rowCount + '').change(function() {
+      var s = $('#sterile_abscess_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#sterile_abscess' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#bacterial_abscess_' + rowCount + '').change(function() {
+      var s = $('#bacterial_abscess_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#bacterial_abscess' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#febrile_convulsion_' + rowCount + '').change(function() {
+      var s = $('#febrile_convulsion_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#febrile_convulsion' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#encephalopathy_' + rowCount + '').change(function() {
+      var s = $('#encephalopathy_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#encephalopathy' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#flaccid_paralysis_' + rowCount + '').change(function() {
+      var s = $('#flaccid_paralysis_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#flaccid_paralysis' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#spastic_paralysis_' + rowCount + '').change(function() {
+      var s = $('#spastic_paralysis_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#spastic_paralysis' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#hhe_' + rowCount + '').change(function() {
+      var s = $('#hhe_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#hhe' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#persistent_inconsolable_crying_' + rowCount + '').change(function() {
+      var s = $('#persistent_inconsolable_crying_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#persistent_inconsolable_crying' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#thrombocytopenia_' + rowCount + '').change(function() {
+      var s = $('#thrombocytopenia_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#thrombocytopenia' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#osteomyelitis_' + rowCount + '').change(function() {
+      var s = $('#osteomyelitis_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#osteomyelitis' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#toxic_shock_syndrome_' + rowCount + '').change(function() {
+      var s = $('#toxic_shock_syndrome_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#toxic_shock_syndrome' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#sepsis_' + rowCount + '').change(function() {
+      var s = $('#sepsis_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#sepsis' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#anaphylaxis_' + rowCount + '').change(function() {
+      var s = $('#anaphylaxis_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#anaphylaxis' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#other_' + rowCount + '').change(function() {
+      var s = $('#other_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#other' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#seriousness_of_the_symptoms_' + rowCount + '').change(function() {
+      var s = $('#seriousness_of_the_symptoms_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#seriousness_of_the_symptoms' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#other_seriousness_of_the_symptoms_' + rowCount + '').change(function() {
+      var s = $('#other_seriousness_of_the_symptoms_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#other_seriousness_of_the_symptoms' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#patient_status_' + rowCount + '').change(function() {
+      var s = $('#patient_status_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#patient_status' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#funeral_' + rowCount + '').change(function() {
+      var s = $('#funeral_' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#funeral' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('input[name="c_funeral[]"]').on('click', function() {
+      if ($(this).val() == '3') {
+        $('#other_address_funeral' + rowCount + '').show();
+      } else {
+        $('#other_address_funeral' + rowCount + '').hide();
+        $('#other_address_funeral_text' + rowCount + '').val('');
+      }
+    });
+        $('#seriousness_of_the_symptoms_2' + rowCount + '').change(function() {
+      var s = $('#seriousness_of_the_symptoms_2' + rowCount + ' input:checked').map(function() {
+        return this.value;
+      }).get().join(',');
+      $('#seriousness_of_the_symptoms2' + rowCount + '').val((s.length > 0 ? s : ""));
+    });
+    $('#other_seriousness_of_the_symptoms_2' + rowCount + '').change(function() {
+  var s = $('#other_seriousness_of_the_symptoms_2' + rowCount + ' input:checked').map(function() {
+    return this.value;
+  }).get().join(',');
+  $('#other_seriousness_of_the_symptoms2' + rowCount + '').val((s.length > 0 ? s : ""));
+});
+$('#patient_status_2' + rowCount + '').change(function() {
+  var s = $('#patient_status_2' + rowCount + ' input:checked').map(function() {
+    return this.value;
+  }).get().join(',');
+  $('#patient_status2' + rowCount + '').val((s.length > 0 ? s : ""));
+});
+    $('input[name="c_patient_status2[]"]').on('click', function() {
+      if ($(this).val() == '6') {
+        $('#other_patian_sta2' + rowCount + '').show();
+      } else {
+        $('#other_patian_sta2' + rowCount + '').hide();
+        $('#datepicker_dead2' + rowCount + '').val('');
+      }
+    });
+    $('#funeral_2' + rowCount + '').change(function() {
+  var s = $('#funeral_2' + rowCount + ' input:checked').map(function() {
+    return this.value;
+  }).get().join(',');
+  $('#funeral2' + rowCount + '').val((s.length > 0 ? s : ""));
+});
+
+
+$('#chest_pain_' + rowCount + '').change(function() {
+  var s = $('#chest_pain_' + rowCount + ' input:checked').map(function() {
+    return this.value;
+  }).get().join(',');
+  $('#chest_pain' + rowCount + '').val((s.length > 0 ? s : ""));
+});
+
+$('#myocarditis_' + rowCount + '').change(function() {
+  var s = $('#myocarditis_' + rowCount + ' input:checked').map(function() {
+    return this.value;
+  }).get().join(',');
+  $('#myocarditis' + rowCount + '').val((s.length > 0 ? s : ""));
+});
+
+$('#heart_failure_' + rowCount + '').change(function() {
+  var s = $('#heart_failure_' + rowCount + ' input:checked').map(function() {
+    return this.value;
+  }).get().join(',');
+  $('#heart_failure' + rowCount + '').val((s.length > 0 ? s : ""));
+});
+
+$('#pericarditis_' + rowCount + '').change(function() {
+  var s = $('#pericarditis_' + rowCount + ' input:checked').map(function() {
+    return this.value;
+  }).get().join(',');
+  $('#pericarditis' + rowCount + '').val((s.length > 0 ? s : ""));
+});
+
+$('#sudden_cardiac_arrest_' + rowCount + '').change(function() {
+  var s = $('#sudden_cardiac_arrest_' + rowCount + ' input:checked').map(function() {
+    return this.value;
+  }).get().join(',');
+  $('#sudden_cardiac_arrest' + rowCount + '').val((s.length > 0 ? s : ""));
+});
+
+$('#covid_19_' + rowCount + '').change(function() {
+  var s = $('#covid_19_' + rowCount + ' input:checked').map(function() {
+    return this.value;
+  }).get().join(',');
+  $('#covid_19' + rowCount + '').val((s.length > 0 ? s : ""));
+});
+
+$('#ischemic_stroke_' + rowCount + '').change(function() {
+  var s = $('#ischemic_stroke_' + rowCount + ' input:checked').map(function() {
+    return this.value;
+  }).get().join(',');
+  $('#ischemic_stroke' + rowCount + '').val((s.length > 0 ? s : ""));
+});
+
+$('#hemorrhagic_stroke_' + rowCount + '').change(function() {
+  var s = $('#hemorrhagic_stroke_' + rowCount + ' input:checked').map(function() {
+    return this.value;
+  }).get().join(',');
+  $('#hemorrhagic_stroke' + rowCount + '').val((s.length > 0 ? s : ""));
+});
+
+$('#deep_vein_thrombosis_' + rowCount + '').change(function() {
+  var s = $('#deep_vein_thrombosis_' + rowCount + ' input:checked').map(function() {
+    return this.value;
+  }).get().join(',');
+  $('#deep_vein_thrombosis' + rowCount + '').val((s.length > 0 ? s : ""));
+});
+
+$('#pulmonary_embolism_' + rowCount + '').change(function() {
+  var s = $('#pulmonary_embolism_' + rowCount + ' input:checked').map(function() {
+    return this.value;
+  }).get().join(',');
+  $('#pulmonary_embolism' + rowCount + '').val((s.length > 0 ? s : ""));
+});
+
+$('#hypertension_' + rowCount + '').change(function() {
+  var s = $('#hypertension_' + rowCount + ' input:checked').map(function() {
+    return this.value;
+  }).get().join(',');
+  $('#hypertension' + rowCount + '').val((s.length > 0 ? s : ""));
+});
+
+$('#hypertensive_urgency_' + rowCount + '').change(function() {
+  var s = $('#hypertensive_urgency_' + rowCount + ' input:checked').map(function() {
+    return this.value;
+  }).get().join(',');
+  $('#hypertensive_urgency' + rowCount + '').val((s.length > 0 ? s : ""));
+});
+
+$('#bells_palsy_' + rowCount + '').change(function() {
+  var s = $('#bells_palsy_' + rowCount + ' input:checked').map(function() {
+    return this.value;
+  }).get().join(',');
+  $('#bells_palsy' + rowCount + '').val((s.length > 0 ? s : ""));
+});
+
+$('#gbs_' + rowCount + '').change(function() {
+  var s = $('#gbs_' + rowCount + ' input:checked').map(function() {
+    return this.value;
+  }).get().join(',');
+  $('#gbs' + rowCount + '').val((s.length > 0 ? s : ""));
+});
+
+$('#transverse_myelitis_' + rowCount + '').change(function() {
+  var s = $('#transverse_myelitis_' + rowCount + ' input:checked').map(function() {
+    return this.value;
+  }).get().join(',');
+  $('#transverse_myelitis' + rowCount + '').val((s.length > 0 ? s : ""));
+});
+
+$('#adem_' + rowCount + '').change(function() {
+  var s = $('#adem_' + rowCount + ' input:checked').map(function() {
+    return this.value;
+  }).get().join(',');
+  $('#adem' + rowCount + '').val((s.length > 0 ? s : ""));
+});
+
+$('#ards_' + rowCount + '').change(function() {
+  var s = $('#ards_' + rowCount + ' input:checked').map(function() {
+    return this.value;
+  }).get().join(',');
+  $('#ards' + rowCount + '').val((s.length > 0 ? s : ""));
+});
+
+$('#acute_myocardial_' + rowCount + '').change(function() {
+  var s = $('#acute_myocardial_' + rowCount + ' input:checked').map(function() {
+    return this.value;
+  }).get().join(',');
+  $('#acute_myocardial' + rowCount + '').val((s.length > 0 ? s : ""));
+});
+
+$('#symptoms_later_immunized_' + rowCount + '').change(function() {
+  var s = $('#symptoms_later_immunized_' + rowCount + ' input:checked').map(function() {
+    return this.value;
+  }).get().join(',');
+  $('#symptoms_later_immunized' + rowCount + '').val((s.length > 0 ? s : ""));
+});
+
+$('#afebrile_convulsion_' + rowCount + '').change(function() {
+  var s = $('#afebrile_convulsion_' + rowCount + ' input:checked').map(function() {
+    return this.value;
+  }).get().join(',');
+  $('#afebrile_convulsion' + rowCount + '').val((s.length > 0 ? s : ""));
+});
+
+    $('input[name="c_funeral2[]"]').on('click', function() {
+      if ($(this).val() == '3') {
+        $('#other_address_funeral2' + rowCount + '').show();
+      } else {
+        $('#other_address_funeral2' + rowCount + '').hide();
+        $('#other_address_funeral_text2' + rowCount + '').val('');
+      }
+    });
+    });
+
     $(document).on("click", ".deleteContact", function() {
       $(this).closest("tr").remove(); // closest used to remove the respective 'tr' in which I have my controls
     });
@@ -2044,4 +3363,6 @@ $('#datepicker_bdate').on('change', function(){
 
   });
 </script>
+@include('AEFI.layout.SymptomScript')
+@include('AEFI.layout.nonSymptomScript')
 @stop
