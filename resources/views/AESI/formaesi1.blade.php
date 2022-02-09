@@ -77,7 +77,7 @@ foreach ($aecode as $value) {
 </section>
 <!-- Main content -->
 <section class="content">
-  <form role="form" action="{{ route('insertform1') }}" method="post">
+  <form role="form" action="{{ route('insertaesiform1') }}" method="post">
     {{ csrf_field() }}
     <div class="row">
           @php
@@ -782,7 +782,7 @@ foreach ($aecode as $value) {
 
                             </select>
                             <label></label>
-                            <input type="text" class="form-control" name="text_last_diagnosis" placeholder="ระบุอื่นๆ">
+                            <input type="text" class="form-control" name="text_hospcode_treat" placeholder="ระบุอื่นๆ">
                           </div>
                         </div>
                       </div>
@@ -832,11 +832,11 @@ foreach ($aecode as $value) {
                                         </div>
                                         <div class="col-xs-4">
                                           <label>วันที่</label>
-                                          <input type="text" class="form-control" name="CXR_date" placeholder="ระบุวินิจฉัยใหม่">
+                                          <input type="text" class="form-control" name="CXR_date" placeholder="วันที่">
                                         </div>
                                         <div class="col-xs-4">
                                           <label>ผลการตรวจ</label>
-                                          <input type="text" class="form-control" name="CXR_results" placeholder="ระบุวินิจฉัยใหม่">
+                                          <input type="text" class="form-control" name="CXR_results" placeholder="ผลการตรวจ">
                                         </div>
                                       </div>
                                     </div>
@@ -1000,35 +1000,35 @@ foreach ($aecode as $value) {
                                         </div>
                                         <div class="col-xs-2">
                                           <label>Hct</label>
-                                          <input type="text" class="form-control" name="first_CBC_Hct" placeholder="Hct.........%  ">
+                                          <input type="text" class="form-control" name="first_blood_bhemistry_Hct" placeholder="Hct.........%  ">
                                         </div>
                                         <div class="col-xs-2">
                                           <label>WBC </label>
-                                          <input type="text" class="form-control" name="first_CBC_WBC" placeholder="WBC.........%">
+                                          <input type="text" class="form-control" name="first_blood_bhemistry_WBC" placeholder="WBC.........%">
                                         </div>
                                         <div class="col-xs-2">
                                           <label>Neu</label>
-                                          <input type="text" class="form-control" name="first_CBC_Neu" placeholder="Neu.........%">
+                                          <input type="text" class="form-control" name="first_blood_bhemistry_Neu" placeholder="Neu.........%">
                                         </div>
                                         <div class="col-xs-2">
                                           <label>Lymp </label>
-                                          <input type="text" class="form-control" name="first_CBC_Lymp" placeholder="Lymp.........%">
+                                          <input type="text" class="form-control" name="first_blood_bhemistry_Lymp" placeholder="Lymp.........%">
                                         </div>
                                         <div class="col-xs-2">
                                           <label>Mono </label>
-                                          <input type="text" class="form-control" name="first_CBC_Mono" placeholder="Mono.........%">
+                                          <input type="text" class="form-control" name="first_blood_bhemistry_Mono" placeholder="Mono.........%">
                                         </div>
                                         <div class="col-xs-2">
                                           <label>Eo  </label>
-                                          <input type="text" class="form-control" name="first_CBC_Eo" placeholder="Eo.........%">
+                                          <input type="text" class="form-control" name="first_blood_bhemistry_Eo" placeholder="Eo.........%">
                                         </div>
                                         <div class="col-xs-2">
                                           <label>Baso  </label>
-                                          <input type="text" class="form-control" name="first_CBC_Baso" placeholder="Baso.........%">
+                                          <input type="text" class="form-control" name="first_blood_bhemistry_Baso" placeholder="Baso.........%">
                                         </div>
                                         <div class="col-xs-2">
                                           <label>Plt. count </label>
-                                          <input type="text" class="form-control" name="first_CBC_Plt_count" placeholder="Plt. count.........%">
+                                          <input type="text" class="form-control" name="first_blood_bhemistry_Plt_count" placeholder="Plt. count.........%">
                                         </div>
                                       </div>
                                     </div>
@@ -1396,7 +1396,7 @@ foreach ($aecode as $value) {
                 </div>
                 <div class="col-xs-4">
                   <label>ระบุ</label>
-                  <input type="text" class="form-control" name="Serum_COVID-19_IgG2_lab" placeholder="ระบุ">
+                  <input type="text" class="form-control" name="othercovid19" placeholder="ระบุ">
                 </div>
               </div>
             </div>

@@ -41,35 +41,27 @@
 														 ->get()
 														 ->pluck('prov_code');
 
-		$selectcaselstF1 = DB::table('aesi_form_1')
-		->join('aesi_form_1_vac', 'aesi_form_1.id_case', '=', 'aesi_form_1_vac.id_case')
-		->leftjoin('aefi_form_2', 'aesi_form_1.id_case', '=', 'aefi_form_2.id_case')
-		->leftjoin('expertmeeting', 'aesi_form_1.id_case', '=', 'expertmeeting.id_case')
-		->select(	'aesi_form_1.id',
+		$selectcaselstF1 = DB::table('aesi_form')
+		->join('aesi_form_vac', 'aesi_form.id_case', '=', 'aesi_form_vac.id_case')
+		->leftjoin('aefi_form_2', 'aesi_form.id_case', '=', 'aefi_form_2.id_case')
+		->leftjoin('expertmeeting', 'aesi_form.id_case', '=', 'expertmeeting.id_case')
+		->select(	'aesi_form.id',
 							'aefi_form_2.id_case as aefi2',
 							'aefi_form_2.status as aefi2status',
-							'aesi_form_1.id_case',
-							'aesi_form_1.hn',
-							'aesi_form_1.an',
-							'aesi_form_1.first_name',
-							'aesi_form_1.sur_name',
-							'aesi_form_1.age_while_sick_year',
-							'aesi_form_1.nationality',
-							'aesi_form_1.gender',
-							'aesi_form_1.other_nationality',
-							'aesi_form_1.village_no',
-							'aesi_form_1.province',
-							'aesi_form_1.district',
-							'aesi_form_1.subdistrict',
-							'aesi_form_1.necessary_to_investigate',
-							'aesi_form_1.case_vac_id',
-							'aesi_form_1_vac.name_of_vaccine',
-							'aesi_form_1.date_of_symptoms',
-							'aesi_form_1.refer_status',
-							'aesi_form_1.hospcode_refer',
-							'aesi_form_1.diagnosis',
-							'aesi_form_1.hospcode_treat',
-							'aesi_form_1.province_found_event',
+							'aesi_form.id_case',
+							'aesi_form.hn',
+							'aesi_form.an',
+							'aesi_form.first_name',
+							'aesi_form.sur_name',
+							'aesi_form.village_no',
+							'aesi_form.province',
+							'aesi_form.district',
+							'aesi_form.subdistrict',
+							'aesi_form_vac.name_of_vaccine',
+							'aesi_form.date_of_symptoms',
+							'aesi_form.diagnosis',
+							'aesi_form.hospcode_treat',
+							'aesi_form.province_reporter',
 							'expertmeeting.id_case AS expertst',
 							DB::raw('MIN(aefi_form_2.status) as "maxaefi2"')
 						);
@@ -80,70 +72,70 @@
 					// dd("p;p");
 					$caselstF1  = $selectcaselstF1
 								->where(function($query) {
-											$query->orWhere('aesi_form_1.user_hospcode',auth()->user()->hospcode)
-														->orWhere('aesi_form_1.hospcode_treat',auth()->user()->hospcode)
-														->orWhere('aesi_form_1.hospcode_report',auth()->user()->hospcode)
-														->orWhere('aesi_form_1.hospcode_refer',auth()->user()->hospcode)
-														->orWhere('aesi_form_1.hosp_update_refer',auth()->user()->hospcode);
+											$query->orWhere('aesi_form.user_hospcode',auth()->user()->hospcode)
+														->orWhere('aesi_form.hospcode_treat',auth()->user()->hospcode)
+														->orWhere('aesi_form.hospcode_report',auth()->user()->hospcode)
+														->orWhere('aesi_form.hospcode_refer',auth()->user()->hospcode)
+														->orWhere('aesi_form.hosp_update_refer',auth()->user()->hospcode);
 									})
-									// ->whereDate('aesi_form_1.date_entry',$datenow)
-									->whereNull('aesi_form_1.status')
-									->groupBy('aesi_form_1.id_case')
+									// ->whereDate('aesi_form.date_entry',$datenow)
+									->whereNull('aesi_form.status')
+									->groupBy('aesi_form.id_case')
 									->get();
 
 				break;
 				case 'pho':
 					$caselstF1 = $selectcaselstF1
 								->where(function($query) {
-											$query->orWhere('aesi_form_1.user_provcode',auth()->user()->prov_code)
-														->orWhere('aesi_form_1.province_found_event',auth()->user()->prov_code)
-														->orWhere('aesi_form_1.province_reported',auth()->user()->prov_code)
-														->orWhere('aesi_form_1.prov_update_refer',auth()->user()->prov_code)
-														->orWhere('aesi_form_1.province_refer',auth()->user()->prov_code)
-														->orWhere('aesi_form_1.province_record_refer',auth()->user()->prov_code);
+											$query->orWhere('aesi_form.user_provcode',auth()->user()->prov_code)
+														->orWhere('aesi_form.province_reporter',auth()->user()->prov_code)
+														->orWhere('aesi_form.province_reported',auth()->user()->prov_code)
+														->orWhere('aesi_form.prov_update_refer',auth()->user()->prov_code)
+														->orWhere('aesi_form.province_refer',auth()->user()->prov_code)
+														->orWhere('aesi_form.province_record_refer',auth()->user()->prov_code);
 									})
-									// ->whereDate('aesi_form_1.date_entry',$datenow)
-									->whereNull('aesi_form_1.status')
-									->groupBy('aesi_form_1.id_case')
+									// ->whereDate('aesi_form.date_entry',$datenow)
+									->whereNull('aesi_form.status')
+									->groupBy('aesi_form.id_case')
 									->get();
 					break;
 					case 'dpc':
 					if ($roleArrhospcode == "41173" || $roleArrhospcode == "41169") {
 							$caselstF1 = $selectcaselstF1
-								->whereDate('aesi_form_1.date_entry',$datenow)
-									->whereNull('aesi_form_1.status')
-									->groupBy('aesi_form_1.id_case')
+								->whereDate('aesi_form.date_entry',$datenow)
+									->whereNull('aesi_form.status')
+									->groupBy('aesi_form.id_case')
 									->get();
 					}else {
 						$caselstF1 = $selectcaselstF1
 								// ->where('user_region',$roleArrregion)
-								// ->whereDate('aesi_form_1.date_entry',$datenow)
-								->whereIn('aesi_form_1.province',$selectgroupprov)
-								->whereNull('aesi_form_1.status')
-								->groupBy('aesi_form_1.id_case')
+								// ->whereDate('aesi_form.date_entry',$datenow)
+								->whereIn('aesi_form.province',$selectgroupprov)
+								->whereNull('aesi_form.status')
+								->groupBy('aesi_form.id_case')
 								->get();
 					}
 						break;
 						case 'ddc':
 							$caselstF1 = $selectcaselstF1
-							->whereDate('aesi_form_1.date_entry',$datenow)
-							->whereNull('aesi_form_1.status')
-							->groupBy('aesi_form_1.id_case')
+							->whereDate('aesi_form.date_entry',$datenow)
+							->whereNull('aesi_form.status')
+							->groupBy('aesi_form.id_case')
 							->get();
 							break;
 						case 'admin':
 							$caselstF1 = $selectcaselstF1
-							->whereDate('aesi_form_1.date_entry',$datenow)
-							->whereNull('aesi_form_1.status')
-							->groupBy('aesi_form_1.id_case')
+							->whereDate('aesi_form.date_entry',$datenow)
+							->whereNull('aesi_form.status')
+							->groupBy('aesi_form.id_case')
 							->get();
 							break;
 						case 'admin-dpc':
 						$caselstF1 = $selectcaselstF1
-						->whereDate('aesi_form_1.date_entry',$datenow)
-						->whereIn('aesi_form_1.province',$selectgroupprov)
-						->whereNull('aesi_form_1.status')
-						->groupBy('aesi_form_1.id_case')
+						->whereDate('aesi_form.date_entry',$datenow)
+						->whereIn('aesi_form.province',$selectgroupprov)
+						->whereNull('aesi_form.status')
+						->groupBy('aesi_form.id_case')
 						->get();
 						break;
 			default:
@@ -208,72 +200,63 @@
 														 ->get()
 														 ->pluck('prov_code');
 
-		$selectcaselstF1 = DB::table('aesi_form_1')
-		->join('aesi_form_1_vac', 'aesi_form_1.id_case', '=', 'aesi_form_1_vac.id_case')
-		->leftjoin('aefi_form_2', 'aesi_form_1.id_case', '=', 'aefi_form_2.id_case')
-		->leftjoin('expertmeeting', 'aesi_form_1.id_case', '=', 'expertmeeting.id_case')
-		->select(	'aesi_form_1.id',
+		$selectcaselstF1 = DB::table('aesi_form')
+		->join('aesi_form_vac', 'aesi_form.id_case', '=', 'aesi_form_vac.id_case')
+		->leftjoin('aefi_form_2', 'aesi_form.id_case', '=', 'aefi_form_2.id_case')
+		->leftjoin('expertmeeting', 'aesi_form.id_case', '=', 'expertmeeting.id_case')
+		->select(	'aesi_form.id',
 							'aefi_form_2.id_case as aefi2',
 							// 'aefi_form_2.status as aefi2status',
-							'aesi_form_1.id_case',
-							'aesi_form_1.hn',
-							'aesi_form_1.an',
-							'aesi_form_1.first_name',
-							'aesi_form_1.sur_name',
-							'aesi_form_1.age_while_sick_year',
-							'aesi_form_1.nationality',
-							'aesi_form_1.gender',
-							'aesi_form_1.other_nationality',
-							'aesi_form_1.village_no',
-							'aesi_form_1.province',
-							'aesi_form_1.district',
-							'aesi_form_1.subdistrict',
-							'aesi_form_1.necessary_to_investigate',
-							'aesi_form_1.case_vac_id',
-							'aesi_form_1_vac.name_of_vaccine',
-							'aesi_form_1.date_of_symptoms',
-							'aesi_form_1.refer_status',
-							'aesi_form_1.hospcode_refer',
-							'aesi_form_1.diagnosis',
-							'aesi_form_1.hospcode_treat',
-							'aesi_form_1.province_found_event',
+							'aesi_form.id_case',
+							'aesi_form.hn',
+							'aesi_form.an',
+							'aesi_form.first_name',
+							'aesi_form.sur_name',
+							'aesi_form.village_no',
+							'aesi_form.province',
+							'aesi_form.district',
+							'aesi_form.subdistrict',
+							'aesi_form_vac.name_of_vaccine',
+							'aesi_form.date_of_symptoms',
+							'aesi_form.diagnosis',
+							'aesi_form.hospcode_treat',
 							'expertmeeting.status_expert_frm AS expertst',
 							DB::raw('MIN(aefi_form_2.status) as "maxaefi2"')
 						);
 						if ($province != null) {
 							$caselstWhere = $selectcaselstF1
-															->where('aesi_form_1.province_found_event', '=', $province);
+									->where('aesi_form.province_reporter', '=', $province);
 						}
 						else{
 						}
 						// if ($date_of_symptoms_in != null) {
 						// 	$caselstWhere = $selectcaselstF1
-						// 									->whereDate('aesi_form_1.date_entry', '>=', $date_of_symptoms_from)
-						// 									->whereDate('aesi_form_1.date_entry', '<=', $date_of_symptoms_to);
+						// 									->whereDate('aesi_form.date_entry', '>=', $date_of_symptoms_from)
+						// 									->whereDate('aesi_form.date_entry', '<=', $date_of_symptoms_to);
 						// }
 						// else{
 						// }
 						// if ($hospcode_treat != null) {
 						// 	$caselstWhere = $selectcaselstF1
-						// 									->where('aesi_form_1.hospcode_treat', '=', $hospcode_treat);
+						// 									->where('aesi_form.hospcode_treat', '=', $hospcode_treat);
 						// }
 						// else{
 						// }
 						if ($first_name != null) {
 							$caselstWhere = $selectcaselstF1
-															->orwhere('aesi_form_1.first_name', 'LIKE', "%{$first_name}%");
+															->orwhere('aesi_form.first_name', 'LIKE', "%{$first_name}%");
 															}
 															else{
 															}
 						if ($sur_name != null) {
 							$caselstWhere = $selectcaselstF1
-															->orwhere('aesi_form_1.sur_name', 'LIKE', "%{$sur_name}%");
+															->orwhere('aesi_form.sur_name', 'LIKE', "%{$sur_name}%");
 						}
 						else{
 						}
 						if ($id != null) {
 							$caselstWhere = $selectcaselstF1
-															->orwhere('aesi_form_1.id', 'LIKE', "%{$id}%");
+															->orwhere('aesi_form.id', 'LIKE', "%{$id}%");
 						}
 						else{
 						}
@@ -284,62 +267,62 @@
 					// dd("p;p");
 					$caselstF1  = $selectcaselstF1
 								->where(function($query) {
-											$query->orWhere('aesi_form_1.user_hospcode',auth()->user()->hospcode)
-														->orWhere('aesi_form_1.hospcode_treat',auth()->user()->hospcode)
-														->orWhere('aesi_form_1.hospcode_report',auth()->user()->hospcode)
-														->orWhere('aesi_form_1.hospcode_refer',auth()->user()->hospcode)
-														->orWhere('aesi_form_1.hosp_update_refer',auth()->user()->hospcode);
+											$query->orWhere('aesi_form.user_hospcode',auth()->user()->hospcode)
+														->orWhere('aesi_form.hospcode_treat',auth()->user()->hospcode)
+														->orWhere('aesi_form.hospcode_report',auth()->user()->hospcode)
+														->orWhere('aesi_form.hospcode_refer',auth()->user()->hospcode)
+														->orWhere('aesi_form.hosp_update_refer',auth()->user()->hospcode);
 									})
-									->whereNull('aesi_form_1.status')
-									->groupBy('aesi_form_1.id_case')
+									->whereNull('aesi_form.status')
+									->groupBy('aesi_form.id_case')
 									->get();
 
 				break;
 				case 'pho':
 					$caselstF1 = $selectcaselstF1
 								->where(function($query) {
-											$query->orWhere('aesi_form_1.province_found_event',auth()->user()->prov_code)
-														->orWhere('aesi_form_1.province_reported',auth()->user()->prov_code)
-														->orWhere('aesi_form_1.prov_update_refer',auth()->user()->prov_code)
-														->orWhere('aesi_form_1.province_refer',auth()->user()->prov_code)
-														->orWhere('aesi_form_1.province_record_refer',auth()->user()->prov_code);
+											$query->orWhere('aesi_form.province_reporter',auth()->user()->prov_code)
+														->orWhere('aesi_form.province_reported',auth()->user()->prov_code)
+														->orWhere('aesi_form.prov_update_refer',auth()->user()->prov_code)
+														->orWhere('aesi_form.province_refer',auth()->user()->prov_code)
+														->orWhere('aesi_form.province_record_refer',auth()->user()->prov_code);
 									})
-									->whereNull('aesi_form_1.status')
-									->groupBy('aesi_form_1.id_case')
+									->whereNull('aesi_form.status')
+									->groupBy('aesi_form.id_case')
 									->get();
 					break;
 					case 'dpc':
 					if ($roleArrhospcode == "41173" || $roleArrhospcode == "41169") {
 							$caselstF1 = $selectcaselstF1
-									->whereNull('aesi_form_1.status')
-									->groupBy('aesi_form_1.id_case')
+									->whereNull('aesi_form.status')
+									->groupBy('aesi_form.id_case')
 									->get();
 					}else {
 						$caselstF1 = $selectcaselstF1
 								// ->where('user_region',$roleArrregion)
-								->whereIn('aesi_form_1.province',$selectgroupprov)
-								->whereNull('aesi_form_1.status')
-								->groupBy('aesi_form_1.id_case')
+								->whereIn('aesi_form.province',$selectgroupprov)
+								->whereNull('aesi_form.status')
+								->groupBy('aesi_form.id_case')
 								->get();
 					}
 						break;
 						case 'ddc':
 							$caselstF1 = $selectcaselstF1
-							->whereNull('aesi_form_1.status')
-							->groupBy('aesi_form_1.id_case')
+							->whereNull('aesi_form.status')
+							->groupBy('aesi_form.id_case')
 							->get();
 							break;
 						case 'admin':
 							$caselstF1 = $caselstWhere
-							->whereNull('aesi_form_1.status')
-							->groupBy('aesi_form_1.id_case')
+							->whereNull('aesi_form.status')
+							->groupBy('aesi_form.id_case')
 							->get();
 							break;
 						case 'admin-dpc':
 						$caselstF1 = $selectcaselstF1
-						->whereIn('aesi_form_1.province',$selectgroupprov)
-						->whereNull('aesi_form_1.status')
-						->groupBy('aesi_form_1.id_case')
+						->whereIn('aesi_form.province',$selectgroupprov)
+						->whereNull('aesi_form.status')
+						->groupBy('aesi_form.id_case')
 						->get();
 						break;
 			default:
@@ -380,16 +363,11 @@
 		an,
 		first_name,
 		sur_name,
-		age_while_sick_year,
-		nationality,
-		gender,
-		other_nationality,
 		village_no,
 		province,
 		district,
 		subdistrict,
-		necessary_to_investigate
-		FROM aesi_form_1' );
+		FROM aesi_form' );
 		 //dd($caselst);
 		 return view('AESI.Apps.caselstAESI1group')->with('data', $caselstF1group);
 
@@ -410,19 +388,19 @@
 
 		public function selectdataAESI2()
 		{
-		$aefiF2id = DB::select('select id_case FROM aesi_form_1');
+		$aefiF2id = DB::select('select id_case FROM aesi_form');
 		// dd($aefiF2id);
 		 return view('AESI.Apps.form2')->with('data', $aefiF2id);
 
 		}
 		public function selectalldataAESI1(Request $req)
 		{
-		$EditAESI1 = DB::table('aesi_form_1')->select('*')->where('id_case', [$req->id_case] )->get();
+		$EditAESI1 = DB::table('aesi_form')->select('*')->where('id_case', [$req->id_case] )->get();
 		 	//dd($EditAESI1);
 			if ($EditAESI1) {
-				$EditAESI1vac = DB::table('aesi_form_1_vac')->select('*')->where('id_case', [$req->id_case] )->get();
+				$EditAESI1vac = DB::table('aesi_form_vac')->select('*')->where('id_case', [$req->id_case] )->get();
 			}
-			$count_data_vac= DB::table('aesi_form_1_vac')
+			$count_data_vac= DB::table('aesi_form_vac')
                      ->select(DB::raw('count(*) as vac_count'))
                      ->where('id_case', [$req->id_case])
                      ->get();
@@ -468,18 +446,16 @@
 		}
 		public function selectdatatableEditcaseAESI2(Request $reqef2)
 		{
-		$ecaselstF2 = DB::table('aesi_form_1')
-		->join('aefi_form_2', 'aesi_form_1.id_case', '=', 'aefi_form_2.id_case')
-		->select('aesi_form_1.id_case','aesi_form_1.hn',
-		'aesi_form_1.an',
-		'aesi_form_1.first_name',
-		'aesi_form_1.sur_name',
-		'aesi_form_1.gender',
-		'aesi_form_1.birthdate',
-		'aesi_form_1.nationality',
-		'aesi_form_1.province',
-		'aesi_form_1.district',
-		'aesi_form_1.subdistrict')
+		$ecaselstF2 = DB::table('aesi_form')
+		->join('aefi_form_2', 'aesi_form.id_case', '=', 'aefi_form_2.id_case')
+		->select('aesi_form.id_case','aesi_form.hn',
+		'aesi_form.an',
+		'aesi_form.first_name',
+		'aesi_form.sur_name',
+		'aesi_form.birthdate',
+		'aesi_form.province',
+		'aesi_form.district',
+		'aesi_form.subdistrict')
 		->get();
 		 // dd($caselstF2);
 		 return view('AESI.Apps.EditlstAESI2')->with('data', $ecaselstF2);

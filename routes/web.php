@@ -125,3 +125,4 @@ Route::post('/lstaesif1', 'Aefi\AESISelectController@selectdatatablecaseAESI1src
 Route::get('/formaesi1', 'Aefi\FormAESIController@index')->name('formaesi1');
 Route::get('/dataaesiexport', 'Aefi\DataAESIexportController@dataexport')->name('dataaesiexport');
 Route::post('/dataaesiexport', 'Aefi\DataAESIexportController@dataexportfrm')->name('dataaesiexport');
+Route::post('/insertaesiform1', 'Aefi\AESIInsertController@insertaesiform1')->name('insertaesiform1');
