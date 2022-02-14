@@ -43,11 +43,7 @@
 
 		$selectcaselstF1 = DB::table('aesi_form')
 		->join('aesi_form_vac', 'aesi_form.id_case', '=', 'aesi_form_vac.id_case')
-		->leftjoin('aefi_form_2', 'aesi_form.id_case', '=', 'aefi_form_2.id_case')
-		->leftjoin('expertmeeting', 'aesi_form.id_case', '=', 'expertmeeting.id_case')
 		->select(	'aesi_form.id',
-							'aefi_form_2.id_case as aefi2',
-							'aefi_form_2.status as aefi2status',
 							'aesi_form.id_case',
 							'aesi_form.hn',
 							'aesi_form.an',
@@ -61,9 +57,7 @@
 							'aesi_form.date_of_symptoms',
 							'aesi_form.diagnosis',
 							'aesi_form.hospcode_treat',
-							'aesi_form.province_reporter',
-							'expertmeeting.id_case AS expertst',
-							DB::raw('MIN(aefi_form_2.status) as "maxaefi2"')
+							'aesi_form.province_reporter'
 						);
 		 if (count($roleArr) > 0) {
 				$user_role = $roleArr[0];
@@ -142,7 +136,7 @@
 				break;
 		}
 	}
-	 //dd($caselstF1);
+	//  dd($caselstF1);
 	 $list=$this->form1();
 	 $listProvince=$this->listProvince();
 	 $listDistrict=$this->listDistrict();
@@ -202,11 +196,7 @@
 
 		$selectcaselstF1 = DB::table('aesi_form')
 		->join('aesi_form_vac', 'aesi_form.id_case', '=', 'aesi_form_vac.id_case')
-		->leftjoin('aefi_form_2', 'aesi_form.id_case', '=', 'aefi_form_2.id_case')
-		->leftjoin('expertmeeting', 'aesi_form.id_case', '=', 'expertmeeting.id_case')
 		->select(	'aesi_form.id',
-							'aefi_form_2.id_case as aefi2',
-							// 'aefi_form_2.status as aefi2status',
 							'aesi_form.id_case',
 							'aesi_form.hn',
 							'aesi_form.an',
@@ -220,8 +210,7 @@
 							'aesi_form.date_of_symptoms',
 							'aesi_form.diagnosis',
 							'aesi_form.hospcode_treat',
-							'expertmeeting.status_expert_frm AS expertst',
-							DB::raw('MIN(aefi_form_2.status) as "maxaefi2"')
+							'aesi_form.province_reporter'
 						);
 						if ($province != null) {
 							$caselstWhere = $selectcaselstF1

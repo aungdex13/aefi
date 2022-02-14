@@ -132,25 +132,10 @@
               <th hidden>ID</th>
               <th style="text-align:center;" >ID</th>
               <th style="text-align:center;">เลขที่ผู้ป่วย HN</th>
-              {{-- <th style="text-align:center;">เลขที่ผู้ป่วย AN</th> --}}
               <th style="text-align:center;">ชื่อ-นามสกุลผู้ป่วย</th>
               <th style="text-align:center;">อายุ</th>
               <th style="text-align:center;">การวินิจฉัยของแพทย์</th>
               <th style="text-align:center;">โรงพยาบาล</th>
-              <th style="text-align:center;">จังหวัด</th>
-              <th style="text-align:center;">ข้อมูล AESI2</th>
-              <th style="text-align:center;">การส่งต่อผู้ป่วย</th>
-              @hasrole('admin-dpc')
-              <th style="text-align:center;">รายงานการประชุม<br>ผู้เชี่ยวชาญ</th>
-              @endhasrole
-              @hasrole('admin')
-              <th style="text-align:center;">รายงานการประชุม<br>ผู้เชี่ยวชาญ</th>
-              @endhasrole
-              @hasrole('dpc')
-              @if (auth()->user()->hospcode == "41173")
-              <th style="text-align:center;">รายงานการประชุม<br>ผู้เชี่ยวชาญ</th>
-            @endif
-            @endhasrole
               <th style="text-align:center;">***</th>
             </tr>
           </thead>
@@ -181,80 +166,7 @@
             <td>
               <p style="text-align:center;">{{ isset($list_hos[ $value->hospcode_treat]) ? $list_hos[ $value->hospcode_treat] : "ไม่ระบุข้อมูล"}}</p>
             </td>
-            <td>
-              <p style="text-align:center;">{{ isset($listProvince[ $value->province_found_event]) ? $listProvince[ $value->province_found_event] : "ไม่ระบุข้อมูล"}}</p>
-              {{-- {{$value->aefi2status}}</br>
-              {{$value->maxaefi2}} --}}
-            </td>
-               @if ($value->maxaefi2 == null || $value->maxaefi2 == 2)
-            <td style="background-color:#fa3c4c">
-                <p style="text-align:center;">ไม่มี</p>
-            </td>
-              @else
-            <td style="background-color:#44bec7">
-                <p style="text-align:center;">มี</p>
-            </td>
-              @endif
-              @if ($value->refer_status == null)
-            <td style="background-color:#ffc300">
-                <p style="text-align:center;">ไม่มี</p>
-            </td>
-              @elseif ($value->refer_status == 2)
-                <td style="background-color:#fa3c4c">
-                    <p style="text-align:center;">ยกเลิกการส่งต่อผู้ป่วย</p>
-                </td>
-              @else
-            <td style="background-color:#44bec7">
-                <p style="text-align:center;">ส่งต่อผู้ป่วยไปยัง {{$list_hos[$value->hospcode_refer]}}</p>
-            </td>
-              @endif
-              @hasrole('admin-dpc')
-              @if ($value->expertst == 2 )
-            <td style="background-color:#44bec7">
-                <p style="text-align:center;">มี</p>
-            </td>
-          @elseif ($value->expertst == null || $value->expertst == 1)
-                <td style="background-color:#fa3c4c">
-                    <p style="text-align:center;">ไม่มี</p>
-                </td>
-              @else
-            <td style="background-color:#fa3c4c">
-                <p style="text-align:center;">ไม่มี</p>
-            </td>
-              @endif
-              @endhasrole
-              @hasrole('admin')
-              @if ($value->expertst == 2 )
-            <td style="background-color:#44bec7">
-                <p style="text-align:center;">มี</p>
-            </td>
-          @elseif ($value->expertst == null || $value->expertst == 1)
-                <td style="background-color:#fa3c4c">
-                    <p style="text-align:center;">ไม่มี</p>
-                </td>
-              @else
-            <td style="background-color:#fa3c4c">
-                <p style="text-align:center;">ไม่มี</p>
-            </td>
-              @endif
-              @endhasrole
-              @hasrole('dpc')
-              @if (auth()->user()->hospcode == "41173")
-              @if ($value->expertst == 2 )
-            <td style="background-color:#44bec7">
-                <p style="text-align:center;">มี</p>
-            </td>
-          @elseif ($value->expertst == null || $value->expertst == 1)
-                <td style="background-color:#fa3c4c">
-                    <p style="text-align:center;">ไม่มี</p>
-                </td>
-              @else
-            <td style="background-color:#fa3c4c">
-                <p style="text-align:center;">ไม่มี</p>
-            </td>
-            @endif
-              @endif
-              @endhasrole
+             
             <td>
               <div class="btn-group">
                 <button type="button" class="btn btn-info" data-toggle="dropdown">เมนูการใช้งาน</button>
@@ -285,20 +197,6 @@
                   @hasrole('admin')
                   <li><a href="{{ route('viewExpert') }}?id_case={{ $value->id_case }}" target="_blank"><i class="fa fa-list-alt" aria-hidden="true" style="color:#809C7C;"></i>รายงานการประชุม<br>ผู้เชี่ยวชาญ</a></li>
                   @endhasrole
-                  @hasrole('dpc')
-                  @if (auth()->user()->hospcode == "41173")
-                  <li><a href="{{ route('viewExpert') }}?id_case={{ $value->id_case }}" target="_blank"><i class="fa fa-list-alt" aria-hidden="true" style="color:#809C7C;"></i>รายงานการประชุม<br>ผู้เชี่ยวชาญ</a></li>
-                  @endif
-                  @endhasrole
-
-                  {{-- @hasrole('dpc')
-                  @if (auth()->user()->hospcode == "41173")
-                    <li><a href="{{ route('deleteAESI1') }}?id_case={{ $value->id_case }}" id="btnDelete" type="button" onclick="return confirm('ต้องการลบข้อมูล ใช่หรือไม่?');"><i class="fa  fa-trash-o" aria-hidden="true" style="color:#d9534f;"></i>ลบข้อมูล</a></li>
-                  @endif
-                  @endhasrole
-                  @hasrole('admin')
-                  <li><a href="{{ route('deleteAESI1') }}?id_case={{ $value->id_case }}" id="btnDelete" type="button" onclick="return confirm('ต้องการลบข้อมูล ใช่หรือไม่?');"><i class="fa  fa-trash-o" aria-hidden="true" style="color:#d9534f;"></i>ลบข้อมูล</a></li>
-                  @endhasrole --}}
                 </ul>
               </div>
             </td>

@@ -161,16 +161,16 @@ $(document).ready(function() {
     $('#NPS_date').datepicker({
       dateFormat: "yy-mm-dd"
     })
-    $('#Serum_COVID-19_IgM1_date').datepicker({
+    $('#Serum_COVID_19_IgM1_date').datepicker({
       dateFormat: "yy-mm-dd"
     })
-    $('#Serum_COVID-19_IgM2_date').datepicker({
+    $('#Serum_COVID_19_IgM2_date').datepicker({
       dateFormat: "yy-mm-dd"
     })
-    $('#Serum_COVID-19_IgG1_date').datepicker({
+    $('#Serum_COVID_19_IgG1_date').datepicker({
       dateFormat: "yy-mm-dd"
     })
-    $('#Serum_COVID-19_IgG2_date').datepicker({
+    $('#Serum_COVID_19_IgG2_date').datepicker({
       dateFormat: "yy-mm-dd"
     })
     $('#inspect_covid_date').datepicker({
@@ -180,6 +180,9 @@ $(document).ready(function() {
       dateFormat: "yy-mm-dd"
     })
     $('#CSF_date').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+    $('#CXR_date').datepicker({
       dateFormat: "yy-mm-dd"
     })
     

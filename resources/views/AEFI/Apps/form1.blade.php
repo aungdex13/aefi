@@ -163,23 +163,15 @@ foreach ($aecode as $value) {
                         <div class="col-lg-4">
                           <select type="text" class="form-control" id="title_name" name="title_name" required onchange="showDiv1('hidden_div1', this)">
                             <option value="">กรุณาเลือก</option>
-                            {{-- < ?php foreach ($mas_title_th as $key_title => $value_title) : ?> --}}
-                            {{-- } --}}
                             <option value="1">นาย</option>
                             <option value="2">นางสาว</option>
                             <option value="3">นาง</option>
                             <option value="4">ด.ช.</option>
                             <option value="5">ด.ญ.</option>
-                            <option value="99">อื่นๆ</option>
-                            {{-- < ?php endforeach; ?> --}}
                           </select>
-                          {{-- <input type="text" id="title_name" name="title_name" class="form-control" placeholder="คำนำหน้าชื่อ"> --}}
-                          <!-- /.p_id tname  -->
                         </div>
                         <div class="col-lg-4" id="hidden_div1" style="display: none;">
                           <input type="text" id="title_name_other" name="title_name_other" class="form-control" placeholder="คำนำหน้าชื่ออื่นๆ">
-                          {{-- <input type="text" id="title_name" name="title_name" class="form-control" placeholder="คำนำหน้าชื่อ"> --}}
-                          <!-- /.p_id tname  -->
                         </div>
                       </div>
                     </div>

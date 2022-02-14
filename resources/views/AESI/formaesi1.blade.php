@@ -108,11 +108,19 @@ foreach ($aecode as $value) {
                         <div class="row">
                           <div class="col-xs-2">
                             <label>ID</label>
+                            <input type="hidden" id="id_case" name="id_case" value="<?php echo $id_case; ?>" class="form-control" hidden>
                             <input type="text" class="form-control" name="id" placeholder="ID">
                           </div>
                           <div class="col-xs-2">
                             <label>คำนำหน้า</label>
-                            <input type="text" class="form-control" name="title_name" placeholder="คำนำหน้า">
+                            <select type="text" class="form-control" id="title_name" name="title_name">
+                              <option value="">กรุณาเลือก</option>
+                              <option value="1">นาย</option>
+                              <option value="2">นางสาว</option>
+                              <option value="3">นาง</option>
+                              <option value="4">ด.ช.</option>
+                              <option value="5">ด.ญ.</option>
+                            </select>
                           </div>
                           <div class="col-xs-4">
                             <label>ชื่อ</label>
@@ -144,11 +152,20 @@ foreach ($aecode as $value) {
                         <div class="row">
                           <div class="col-xs-2">
                             <label>สถานภาพสมรส</label>
-                            <input type="text" class="form-control" name="marital_status" placeholder="สถานภาพสมรส">
+                            <select type="text" class="form-control" id="marital_status" name="marital_status">
+                              <option value="">กรุณาเลือก</option>
+                              <option value="1">โสด </option>
+                              <option value="2">สมรส </option>
+                              <option value="3">หม้าย </option>
+                              <option value="4">หย่า </option>
+                              <option value="5">แยกกันอยู่ </option>
+                              <option value="5">เคยสมรสแต่ไม่ทราบสถานภาพสมรส </option>
+                            </select>
                           </div>
                           <div class="col-xs-2">
                             <label>อาชีพ</label>
-                            <input type="text" class="form-control" name="career_code" placeholder="อาชีพ">
+                            <select id="js-example-basic-single2" name="career_code" class="js-example-basic-single2 form-control" data-dropdown-css-class="select2-danger">
+                            </select>
                           </div>
                           <div class="col-xs-4">
                             <label>ประวัติโรคประจำตัว</label>
@@ -207,7 +224,14 @@ foreach ($aecode as $value) {
                           </div>
                           <div class="col-xs-2">
                             <label>คำนำหน้า</label>
-                            <input type="text" class="form-control" name="parent_title_name" placeholder="ชื่อผู้ปกครอง (กรณีผู้ป่วยอายุ < 15 ปี) ">
+                            <select type="text" class="form-control" id="parent_title_name" name="parent_title_name">
+                              <option value="">กรุณาเลือก</option>
+                              <option value="1">นาย</option>
+                              <option value="2">นางสาว</option>
+                              <option value="3">นาง</option>
+                              <option value="4">ด.ช.</option>
+                              <option value="5">ด.ญ.</option>
+                            </select>
                           </div>
                           <div class="col-xs-2">
                             <label>ชื่อ</label>
@@ -250,18 +274,18 @@ foreach ($aecode as $value) {
                         <!-- checkbox3.1.1 -->
                         <div class="form-group">
                         <div class="row">
-                          <div class="col-xs-2">
+                          {{-- <div class="col-xs-2">
                             <label>วันเริ่มป่วย</label>
-                            <input type="text" class="form-control" id="date_of_symptoms" name="date_of_symptoms" placeholder="วันเริ่มป่วย">
+                            <input type="text" class="form-control" id="date_of_symptoms" name="date_of_symptoms" placeholder="วันเริ่มป่วย" autocomplete="off">
                           </div>
                           <div class="col-xs-2">
                             <label>วันที่เข้ารับการรักษา</label>
-                            <input type="text" class="form-control" id="date_of_treatment" name="date_of_treatment" placeholder="วันที่เข้ารับการรักษา">
+                            <input type="text" class="form-control" id="date_of_treatment" name="date_of_treatment" placeholder="วันที่เข้ารับการรักษา" autocomplete="off">
                           </div>
                           <div class="col-xs-4">
                             <label>วันที่จำหน่ายผู้ป่วย</label>
-                            <input type="text" class="form-control" id="date_of_dischrge" name="date_of_dischrge" placeholder="วันที่จำหน่ายผู้ป่วย">
-                          </div>
+                            <input type="text" class="form-control" id="date_of_dischrge" name="date_of_dischrge" placeholder="วันที่จำหน่ายผู้ป่วย" autocomplete="off">
+                          </div> --}}
                           <div class="col-xs-4">
                             <label>สถานที่รักษา</label>
                             {{-- <input type="text" class="form-control" id="hospital" name="hospital" placeholder="สถานที่รักษา"> --}}
@@ -742,7 +766,7 @@ foreach ($aecode as $value) {
                       </div>
                       <div class="form-group">
                         <div class="row">
-                          <div class="col-xs-2">
+                          {{-- <div class="col-xs-2">
                             <label><li> ผลการรักษา</li>   </label>
                             <div class="radio">
                               <label>
@@ -774,7 +798,7 @@ foreach ($aecode as $value) {
                                 ไม่ทราบ 
                               </label>
                             </div>
-                          </div>
+                          </div> --}}
                           <div class="col-xs-4">
                             <label>ระบุโรงพยาบาลที่ส่งต่อ</label>
                             {{-- <input type="text" class="form-control" name="text_last_diagnosis" placeholder="ระบุโรงพยาบาลที่ส่งต่อ"> --}}
@@ -832,7 +856,7 @@ foreach ($aecode as $value) {
                                         </div>
                                         <div class="col-xs-4">
                                           <label>วันที่</label>
-                                          <input type="text" class="form-control" name="CXR_date" placeholder="วันที่">
+                                          <input type="text" class="form-control" id="CXR_date" name="CXR_date" placeholder="วันที่" data-date-format="yyyy-mm-dd">
                                         </div>
                                         <div class="col-xs-4">
                                           <label>ผลการตรวจ</label>
@@ -866,7 +890,7 @@ foreach ($aecode as $value) {
                                         </div>
                                         <div class="col-xs-4">
                                           <label>วันที่</label>
-                                          <input type="text" class="form-control" id="CT_date" name="CT_date" placeholder="วันที่">
+                                          <input type="text" class="form-control" id="CT_date" name="CT_date" placeholder="วันที่"  data-date-format="yyyy-mm-dd">
                                         </div>
                                         <div class="col-xs-4">
                                           <label>ผลการตรวจ</label>
@@ -900,7 +924,7 @@ foreach ($aecode as $value) {
                                         </div>
                                         <div class="col-xs-4">
                                           <label>วันที่</label>
-                                          <input type="text" class="form-control" id="MRI_date" name="MRI_date" placeholder="วันที่">
+                                          <input type="text" class="form-control" id="MRI_date" name="MRI_date" placeholder="วันที่"  data-date-format="yyyy-mm-dd">
                                         </div>
                                         <div class="col-xs-4">
                                           <label>ผลการตรวจ</label>
@@ -930,7 +954,7 @@ foreach ($aecode as $value) {
                                         </div>
                                         <div class="col-xs-4">
                                           <label>วันที่</label>
-                                          <input type="text" class="form-control" id="EKG_date" name="EKG_date" placeholder="วันที่">
+                                          <input type="text" class="form-control" id="EKG_date" name="EKG_date" placeholder="วันที่"  data-date-format="yyyy-mm-dd">
                                         </div>
                                         <div class="col-xs-4">
                                           <label>ผลการตรวจ</label>
@@ -1102,7 +1126,7 @@ foreach ($aecode as $value) {
                                         </div>
                                         <div class="col-xs-4">
                                           <label>วันที่</label>
-                                          <input type="text" class="form-control" id="CSF_date" name="CSF_date" placeholder="วันที่">
+                                          <input type="text" class="form-control" id="CSF_date" name="CSF_date" placeholder="วันที่"  data-date-format="yyyy-mm-dd">
                                         </div>
                                         <div class="col-xs-4">
                                           <label>ลักษณะ</label>
@@ -1152,7 +1176,7 @@ foreach ($aecode as $value) {
                                         </div>
                                         <div class="col-xs-4">
                                           <label>วันที่</label>
-                                          <input type="text" class="form-control" id="NPS_date" name="NPS_date" placeholder="วันที่">
+                                          <input type="text" class="form-control" id="NPS_date" name="NPS_date" placeholder="วันที่"  data-date-format="yyyy-mm-dd">
                                         </div>
                                         <div class="col-xs-2">
                                           <label><li> ผลการตรวจ</li>   </label>
@@ -1182,13 +1206,13 @@ foreach ($aecode as $value) {
                                           <label><li> Serum for COVID-19 IgM </li>   </label>
                                           <div class="radio">
                                             <label>
-                                              <input type="radio" name="Serum_COVID-19_IgM" id="NPS_1" value="0" checked>
+                                              <input type="radio" name="Serum_COVID_19_IgM" id="NPS_1" value="0" checked>
                                               ไม่ได้ตรวจ   
                                             </label>
                                           </div>
                                           <div class="radio">
                                             <label>
-                                              <input type="radio" name="Serum_COVID-19_IgM" id="NPS_2" value="1">
+                                              <input type="radio" name="Serum_COVID_19_IgM" id="NPS_2" value="1">
                                               ตรวจ 
                                             </label>
                                           </div>
@@ -1198,52 +1222,52 @@ foreach ($aecode as $value) {
                                         </div>
                                         <div class="col-xs-2">
                                           <label>IgM  ครั้งที่ 1 : วันที่</label>
-                                          <input type="text" class="form-control" id="Serum_COVID-19_IgM1_date" name="Serum_COVID-19_IgM1_date" placeholder="วันที่">
+                                          <input type="text" class="form-control" id="Serum_COVID_19_IgM1_date" name="Serum_COVID_19_IgM1_date" placeholder="วันที่"  data-date-format="yyyy-mm-dd">
                                         </div>
                                         <div class="col-xs-2">
                                           <label><li>IgM  ครั้งที่ 1 : ผลการตรวจ</li>   </label>
                                           <div class="radio">
                                             <label>
-                                              <input type="radio" name="Serum_COVID-19_IgM1_PCR" id="Serum_COVID-19_IgM1_PCR_1" value="0" checked>
+                                              <input type="radio" name="Serum_COVID_19_IgM1_PCR" id="Serum_COVID_19_IgM1_PCR_1" value="0" checked>
                                               Negative
                                             </label>
                                           </div>
                                           <div class="radio">
                                             <label>
-                                              <input type="radio" name="Serum_COVID-19_IgM1_PCR" id="Serum_COVID-19_IgM1_PCR_2" value="1">
+                                              <input type="radio" name="Serum_COVID_19_IgM1_PCR" id="Serum_COVID_19_IgM1_PCR_2" value="1">
                                               Positive
                                             </label>
                                           </div>
                                         </div>
                                         <div class="col-xs-4">
                                           <label>ห้องปฏิบัติการ ครั้งที่ 1</label>
-                                          <input type="text" class="form-control" name="Serum_COVID-19_IgM2_lab" placeholder="ห้องปฏิบัติการ">
+                                          <input type="text" class="form-control" name="Serum_COVID_19_IgM2_lab" placeholder="ห้องปฏิบัติการ">
                                         </div>
                                         <div class="col-xs-12">
                                           
                                         </div>
                                         <div class="col-xs-2">
                                           <label>IgM  ครั้งที่ 2 : วันที่</label>
-                                          <input type="text" class="form-control" id="Serum_COVID-19_IgM2_date" name="Serum_COVID-19_IgM2_date" placeholder="วันที่">
+                                          <input type="text" class="form-control" id="Serum_COVID_19_IgM2_date" name="Serum_COVID_19_IgM2_date" placeholder="วันที่" data-date-format="yyyy-mm-dd">
                                         </div>
                                         <div class="col-xs-2">
                                           <label><li>IgM  ครั้งที่ 2 : ผลการตรวจ</li>   </label>
                                           <div class="radio">
                                             <label>
-                                              <input type="radio" name="Serum_COVID-19_IgM2_PCR" id="Serum_COVID-19_IgM2_PCR_1" value="0" checked>
+                                              <input type="radio" name="Serum_COVID_19_IgM2_PCR" id="Serum_COVID_19_IgM2_PCR_1" value="0" checked>
                                               Negative
                                             </label>
                                           </div>
                                           <div class="radio">
                                             <label>
-                                              <input type="radio" name="Serum_COVID-19_IgM2_PCR" id="Serum_COVID-19_IgM2_PCR_2" value="1">
+                                              <input type="radio" name="Serum_COVID_19_IgM2_PCR" id="Serum_COVID_19_IgM2_PCR_2" value="1">
                                               Positive
                                             </label>
                                           </div>
                                         </div>
                                         <div class="col-xs-4">
                                           <label>ห้องปฏิบัติการ ครั้งที่ 2</label>
-                                          <input type="text" class="form-control" name="Serum_COVID-19_IgM2_lab" placeholder="ห้องปฏิบัติการ">
+                                          <input type="text" class="form-control" name="Serum_COVID_19_IgM2_lab" placeholder="ห้องปฏิบัติการ">
                                         </div>
                                       </div>
                                     </div>
@@ -1254,13 +1278,13 @@ foreach ($aecode as $value) {
                                           <label><li> Serum for COVID-19 IgG </li>   </label>
                                           <div class="radio">
                                             <label>
-                                              <input type="radio" name="Serum_COVID-19_IgG" id="NPS_1" value="0" checked>
+                                              <input type="radio" name="Serum_COVID_19_IgG" id="NPS_1" value="0" checked>
                                               ไม่ได้ตรวจ   
                                             </label>
                                           </div>
                                           <div class="radio">
                                             <label>
-                                              <input type="radio" name="Serum_COVID-19_IgG" id="NPS_2" value="1">
+                                              <input type="radio" name="Serum_COVID_19_IgG" id="NPS_2" value="1">
                                               ตรวจ 
                                             </label>
                                           </div>
@@ -1270,52 +1294,52 @@ foreach ($aecode as $value) {
                                         </div>
                                         <div class="col-xs-2">
                                           <label>IgG  ครั้งที่ 1 : วันที่</label>
-                                          <input type="text" class="form-control" id="Serum_COVID-19_IgG1_date" name="Serum_COVID-19_IgG1_date" placeholder="วันที่">
+                                          <input type="text" class="form-control" id="Serum_COVID_19_IgG1_date" name="Serum_COVID_19_IgG1_date" placeholder="วันที่" data-date-format="yyyy-mm-dd">
                                         </div>
                                         <div class="col-xs-2">
                                           <label><li>IgG  ครั้งที่ 1 : ผลการตรวจ</li>   </label>
                                           <div class="radio">
                                             <label>
-                                              <input type="radio" name="Serum_COVID-19_IgG1_PCR" id="Serum_COVID-19_IgG1_PCR_1" value="0" checked>
+                                              <input type="radio" name="Serum_COVID_19_IgG1_PCR" id="Serum_COVID_19_IgG1_PCR_1" value="0" checked>
                                               Negative
                                             </label>
                                           </div>
                                           <div class="radio">
                                             <label>
-                                              <input type="radio" name="Serum_COVID-19_IgG1_PCR" id="Serum_COVID-19_IgG1_PCR_2" value="1">
+                                              <input type="radio" name="Serum_COVID_19_IgG1_PCR" id="Serum_COVID_19_IgG1_PCR_2" value="1">
                                               Positive
                                             </label>
                                           </div>
                                         </div>
                                         <div class="col-xs-4">
                                           <label>ห้องปฏิบัติการ ครั้งที่ 1</label>
-                                          <input type="text" class="form-control" name="Serum_COVID-19_IgG2_lab" placeholder="ห้องปฏิบัติการ">
+                                          <input type="text" class="form-control" name="Serum_COVID_19_IgG2_lab" placeholder="ห้องปฏิบัติการ">
                                         </div>
                                         <div class="col-xs-12">
                                           
                                         </div>
                                         <div class="col-xs-2">
                                           <label>IgG  ครั้งที่ 2 : วันที่</label>
-                                          <input type="text" class="form-control" id="Serum_COVID-19_IgG2_date" name="Serum_COVID-19_IgG2_date" placeholder="วันที่">
+                                          <input type="text" class="form-control" id="Serum_COVID_19_IgG2_date" name="Serum_COVID_19_IgG2_date" placeholder="วันที่" data-date-format="yyyy-mm-dd">
                                         </div>
                                         <div class="col-xs-2">
                                           <label><li>IgG  ครั้งที่ 2 : ผลการตรวจ</li>   </label>
                                           <div class="radio">
                                             <label>
-                                              <input type="radio" name="Serum_COVID-19_IgG2_PCR" id="Serum_COVID-19_IgG2_PCR_1" value="0" checked>
+                                              <input type="radio" name="Serum_COVID_19_IgG2_PCR" id="Serum_COVID_19_IgG2_PCR_1" value="0" checked>
                                               Negative
                                             </label>
                                           </div>
                                           <div class="radio">
                                             <label>
-                                              <input type="radio" name="Serum_COVID-19_IgG2_PCR" id="Serum_COVID-19_IgG2_PCR_2" value="1">
+                                              <input type="radio" name="Serum_COVID_19_IgG2_PCR" id="Serum_COVID_19_IgG2_PCR_2" value="1">
                                               Positive
                                             </label>
                                           </div>
                                         </div>
                                         <div class="col-xs-4">
                                           <label>ห้องปฏิบัติการ ครั้งที่ 2</label>
-                                          <input type="text" class="form-control" name="Serum_COVID-19_IgG2_lab" placeholder="ห้องปฏิบัติการ">
+                                          <input type="text" class="form-control" name="Serum_COVID_19_IgG2_lab" placeholder="ห้องปฏิบัติการ">
                                         </div>
                                       </div>
                                     </div>
@@ -1331,7 +1355,7 @@ foreach ($aecode as $value) {
                                       </div>
                                       <div class="col-xs-4">
                                         <label>วันที่</label>
-                                        <input type="text" class="form-control" id="other_date_examination" name="other_date_examination" placeholder="วันที่">
+                                        <input type="text" class="form-control" id="other_date_examination" name="other_date_examination" placeholder="วันที่" data-date-format="yyyy-mm-dd">
                                       </div>
                                       <div class="col-xs-4">
                                         <label>ชนิดตัวอย่าง</label>
@@ -1617,11 +1641,13 @@ foreach ($aecode as $value) {
                   </div>
                   <div class="col-xs-4">
                     <label>หน่วยงานที่ตรวจ</label>
-                    <input type="text" class="form-control" name="inspect_covid_location" placeholder="หน่วยงานที่ตรวจ">
+                    <select id="js-example-basic-single" name="inspect_covid_location" class="js-example-basic-single form-control" data-dropdown-css-class="select2-danger" required>
+
+                    </select>
                   </div>
                   <div class="col-xs-4">
                     <label>วันที่</label>
-                    <input type="text" class="form-control" id="inspect_covid_date" name="inspect_covid_date" placeholder="วันที่">
+                    <input type="text" class="form-control" id="inspect_covid_date" name="inspect_covid_date" placeholder="วันที่" data-date-format="yyyy-mm-dd">
                   </div>
                 </div>
               </div>
