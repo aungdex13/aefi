@@ -123,6 +123,8 @@ Route::get('/SymtomsbyDoseFrm', 'Aefi\SymtomsbyDoseController@SymtomsbyDoseFrm')
 Route::get('/lstaesif1', 'Aefi\AESISelectController@selectdatatablecaseAESI1')->name('lstaesi1');
 Route::post('/lstaesif1', 'Aefi\AESISelectController@selectdatatablecaseAESI1src')->name('lstaesi1');
 Route::get('/formaesi1', 'Aefi\FormAESIController@index')->name('formaesi1');
+Route::get('/EditAESI1', 'Aefi\EditAESIController@index')->name('EditAESI1');
 Route::get('/dataaesiexport', 'Aefi\DataAESIexportController@dataexport')->name('dataaesiexport');
 Route::post('/dataaesiexport', 'Aefi\DataAESIexportController@dataexportfrm')->name('dataaesiexport');
 Route::post('/insertaesiform1', 'Aefi\AESIInsertController@insertaesiform1')->name('insertaesiform1');
+Route::post('/updateaesiform1', 'Aefi\AESIInsertController@updateaesiform1')->name('updateaesiform1');

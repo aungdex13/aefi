@@ -551,4 +551,20 @@ if (! function_exists('provinces')) {
                   return 	$aefi_refer_status;
                   }
                   }
+
+                  if (! function_exists('load_marital_status')) {
+                    function load_marital_status() {
+              
+                    $marital_status = array(
+                      '1'=>'โสด',
+                      '2'=>'สมรส',
+                      '3'=>'หม้าย',
+                      '4'=>'หย่า',
+                      '5'=>'แยกกันอยู่',
+                      '6'=>'เคยสมรสแต่ไม่ทราบสถานภาพสมรส',
+                      ''=>'NULL'
+                                            );
+                    return 	$marital_status;
+                    }
+                }
  ?>

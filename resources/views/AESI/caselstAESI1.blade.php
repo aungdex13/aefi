@@ -177,7 +177,7 @@
                 <ul class="dropdown-menu" role="menu">
                   <li><a href="{{ route('lstf2') }}?id_case={{ $value->id_case }}" target="_blank"><i class="fa fa-file-o" aria-hidden="true" style="color:#428bca;"></i>กรอก AESI2</a></li>
                   <li><a href="{{ route('viewform1') }}?id_case={{ $value->id_case }}" target="_blank"><i class="fa fa-eye" aria-hidden="true" style="color:#5cb85c;"></i>ดูข้อมูล AESI1</a></li>
-                  {{-- <li><a href="{{ route('EditAESI1') }}?id_case={{ $value->id_case }}" target="_blank"><i class="fa fa-pencil-square-o" aria-hidden="true" style="color:#5bc0de;"></i>แก้ไขข้อมูล</a></li> --}}
+                  <li><a href="{{ route('EditAESI1') }}?id_case={{ $value->id_case }}" target="_blank"><i class="fa fa-pencil-square-o" aria-hidden="true" style="color:#5bc0de;"></i>แก้ไขข้อมูล</a></li>
                   <li><a href="{{ route('ReferFrm') }}?id={{ $value->id }}&id_case={{ $value->id_case }}" target="_blank"><i class="fa fa-ambulance" aria-hidden="true" style="color:#e6c34a;"></i>Refer ผู้ป่วย</a></li>
                   {{-- <li><a href="{{ route('SymtomsbyDoseLst') }}?id={{ $value->id }}&id_case={{ $value->id_case }}" target="_blank"><i class="fa fa-braille" aria-hidden="true" style="color:#b00b69;"></i>อาการภายหลัง<br>ได้รับการสร้างภูมิคุ้ม<br>กันโรคตามครั้งที่ฉีด</a></li> --}}
                   @hasrole('admin')
