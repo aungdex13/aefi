@@ -551,7 +551,7 @@ public function updateaesiform1(Request $req) {
 	$count_data_vac = $req->input('count_data_vac');
 	// dd($id,$id_case,$count_data_vac);
 	if ($count_data_vac != '0') {
-			//  $delvac=DB::table('aesi_form_vac')->where('id_case', '=', $id_case)->delete();
+			 $delvac=DB::table('aesi_form_vac')->where('id_case', '=', $id_case)->delete();
 			 $name_of_vaccine = $req ->input('name_of_vaccine');
 			 $vaccine_volume = $req ->input('vaccine_volume');
 			 $route_of_vaccination = $req ->input('route_of_vaccination');
@@ -744,7 +744,7 @@ public function updateaesiform1(Request $req) {
 					$x++;
 					}
 					//  dd($heart_failure);
-					$res2= DB::table('aefi_form_1_vac')->insert($data_vac);
+					$res2= DB::table('aesi_form_vac')->insert($data_vac);
 		}else {
 			$name_of_vaccine = $req ->input('name_of_vaccine');
 			$vaccine_volume = $req ->input('vaccine_volume');
@@ -1097,7 +1097,6 @@ public function updateaesiform1(Request $req) {
 		'region_reporter' => auth()->user()->region,
 		'hospital_reporter' => auth()->user()->hospcode,
 		'district_reporter' => auth()->user()->ampur_code, 
-		'date_entry' => date('Y-m-d') ,
 		'date_update' => date('Y-m-d') ,
 		'status' => null,
 	]);

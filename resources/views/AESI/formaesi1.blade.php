@@ -1637,12 +1637,9 @@ foreach ($aecode as $value) {
                       </label>
                     </div>
                   </div>
-                  <div class="col-xs-12">
-                  </div>
                   <div class="col-xs-4">
                     <label>หน่วยงานที่ตรวจ</label>
                     <select id="js-example-basic-single" name="inspect_covid_location" class="js-example-basic-single form-control" data-dropdown-css-class="select2-danger" required>
-
                     </select>
                   </div>
                   <div class="col-xs-4">
@@ -1804,7 +1801,7 @@ foreach ($aecode as $value) {
   </div>
   <!-- /.row -->
 </section>
-@include('AEFI.layout.footerScript')
+@include('AEFI.layout.footerScriptAESI')
 
 <script type="text/javascript">
   $('.provinces').change(function() {

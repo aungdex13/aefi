@@ -128,3 +128,5 @@ Route::get('/dataaesiexport', 'Aefi\DataAESIexportController@dataexport')->name(
 Route::post('/dataaesiexport', 'Aefi\DataAESIexportController@dataexportfrm')->name('dataaesiexport');
 Route::post('/insertaesiform1', 'Aefi\AESIInsertController@insertaesiform1')->name('insertaesiform1');
 Route::post('/updateaesiform1', 'Aefi\AESIInsertController@updateaesiform1')->name('updateaesiform1');
+Route::get('/deleteAESI1', 'Aefi\AESISelectController@deletedata')->name('deleteAESI1');
+Route::get('/ViewAESI1', 'Aefi\ViewAESIController@index')->name('ViewAESI1');

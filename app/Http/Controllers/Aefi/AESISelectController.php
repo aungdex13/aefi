@@ -57,7 +57,8 @@
 							'aesi_form.date_of_symptoms',
 							'aesi_form.diagnosis',
 							'aesi_form.hospcode_treat',
-							'aesi_form.province_reporter'
+							'aesi_form.province_reporter',
+							'aesi_form.date_entry'
 						);
 		 if (count($roleArr) > 0) {
 				$user_role = $roleArr[0];
@@ -96,7 +97,7 @@
 					case 'dpc':
 					if ($roleArrhospcode == "41173" || $roleArrhospcode == "41169") {
 							$caselstF1 = $selectcaselstF1
-								->whereDate('aesi_form.date_entry',$datenow)
+								->whereDate('aesi_form.date_update',$datenow)
 									->whereNull('aesi_form.status')
 									->groupBy('aesi_form.id_case')
 									->get();
@@ -112,21 +113,21 @@
 						break;
 						case 'ddc':
 							$caselstF1 = $selectcaselstF1
-							->whereDate('aesi_form.date_entry',$datenow)
+							->whereDate('aesi_form.date_update',$datenow)
 							->whereNull('aesi_form.status')
 							->groupBy('aesi_form.id_case')
 							->get();
 							break;
 						case 'admin':
 							$caselstF1 = $selectcaselstF1
-							->whereDate('aesi_form.date_entry',$datenow)
+							->whereDate('aesi_form.date_update',$datenow)
 							->whereNull('aesi_form.status')
 							->groupBy('aesi_form.id_case')
 							->get();
 							break;
 						case 'admin-dpc':
 						$caselstF1 = $selectcaselstF1
-						->whereDate('aesi_form.date_entry',$datenow)
+						->whereDate('aesi_form.date_update',$datenow)
 						->whereIn('aesi_form.province',$selectgroupprov)
 						->whereNull('aesi_form.status')
 						->groupBy('aesi_form.id_case')
@@ -210,7 +211,8 @@
 							'aesi_form.date_of_symptoms',
 							'aesi_form.diagnosis',
 							'aesi_form.hospcode_treat',
-							'aesi_form.province_reporter'
+							'aesi_form.province_reporter',
+							'aesi_form.date_entry'
 						);
 						if ($province != null) {
 							$caselstWhere = $selectcaselstF1
@@ -448,6 +450,28 @@
 		->get();
 		 // dd($caselstF2);
 		 return view('AESI.Apps.EditlstAESI2')->with('data', $ecaselstF2);
+		}
+
+		public function deletedata(Request $req){
+			$deletedata = DB::table('aesi_form')
+								  ->where('id_case', $req->id_case)
+								  ->update(['status' => 1]);
+			 if ($deletedata) {
+				 $deletedata_vac = DB::table('aesi_form_vac')
+													 ->where('id_case', $req->id_case)
+													 ->update(['status' => 1]);
+					if ($deletedata_vac) {
+						$msg = " ส่งข้อมูลสำเร็จ";
+						$url_rediect = "<script>alert('".$msg."');location.href='lstaesif1';</script> ";
+					}else {
+						$msg = "ส่งข้อมูลไม่สำเร็จ";
+						$url_rediect = "<script>alert('".$msg."');location.href='lstaesif1';</script> ";
+					}
+			}else {
+				$msg = "ส่งข้อมูลไม่สำเร็จ";
+				$url_rediect = "<script>alert('".$msg."');location.href='lstaesif1';</script> ";
+			}
+			echo $url_rediect;
 		}
 
 		public function aecode(){

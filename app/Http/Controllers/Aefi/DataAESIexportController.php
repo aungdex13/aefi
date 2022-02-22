@@ -33,157 +33,151 @@ $selectgroupprov = DB::table('chospital_new')
 											 ->get()
 											 ->pluck('prov_code');
 		$yearnow =  now()->year;
-		$selectcaselstF1 =  DB::table('aesi_form_1')
-		->join('aesi_form_1_vac', 'aesi_form_1.id_case', '=', 'aesi_form_1_vac.id_case')
-		->select('aesi_form_1.date_entry',
-													'aesi_form_1.id',
-													'aesi_form_1.hn',
-													'aesi_form_1.first_name',
-													'aesi_form_1.sur_name',
-													'aesi_form_1.house_number',
-													'aesi_form_1.village_no',
-													'aesi_form_1.province',
-													'aesi_form_1.district',
-													'aesi_form_1.subdistrict',
-													'aesi_form_1.age_while_sick_year',
-													'aesi_form_1.age_while_sick_month',
-													'aesi_form_1.age_while_sick_day',
-													'aesi_form_1.gender',
-													'aesi_form_1.type_of_patient',
-													'aesi_form_1_vac.patient_status',
-													'aesi_form_1.career',
-													'aesi_form_1_vac.date_of_symptoms',
-													'aesi_form_1_vac.time_of_symptoms',
-													'aesi_form_1_vac.time_of_treatment',
-													'aesi_form_1_vac.date_of_treatment',
-													'aesi_form_1_vac.rash',
-													'aesi_form_1_vac.erythema',
-													'aesi_form_1_vac.urticaria',
-													'aesi_form_1_vac.itching',
-													'aesi_form_1_vac.edema',
-													'aesi_form_1_vac.angioedema',
-													'aesi_form_1_vac.fainting',
-													'aesi_form_1_vac.hyperventilation',
-													'aesi_form_1_vac.syncope',
-													'aesi_form_1_vac.headche',
-													'aesi_form_1_vac.dizziness',
-													'aesi_form_1_vac.fatigue',
-													'aesi_form_1_vac.malaise',
-													'aesi_form_1_vac.dyspepsia',
-													'aesi_form_1_vac.diarrhea',
-													'aesi_form_1_vac.nausea',
-													'aesi_form_1_vac.vomiting',
-													'aesi_form_1_vac.abdominal_pain',
-													'aesi_form_1_vac.arthalgia',
-													'aesi_form_1_vac.myalgia',
-													'aesi_form_1_vac.fever38c',
-													'aesi_form_1_vac.swelling_at_the_injection',
-													'aesi_form_1_vac.swelling_beyond_nearest_joint',
-													'aesi_form_1_vac.lymphadenopathy',
-													'aesi_form_1_vac.lymphadenitis',
-													'aesi_form_1_vac.sterile_abscess',
-													'aesi_form_1_vac.bacterial_abscess',
-													'aesi_form_1_vac.febrile_convulsion',
-													'aesi_form_1_vac.afebrile_convulsion',
-													'aesi_form_1_vac.encephalopathy',
-													'aesi_form_1_vac.flaccid_paralysis',
-													'aesi_form_1_vac.spastic_paralysis',
-													'aesi_form_1_vac.hhe',
-													'aesi_form_1_vac.persistent_inconsolable_crying',
-													'aesi_form_1_vac.thrombocytopenia',
-													'aesi_form_1_vac.osteomyelitis',
-													'aesi_form_1_vac.toxic_shock_syndrome',
-													'aesi_form_1_vac.sepsis',
-													'aesi_form_1_vac.anaphylaxis',
-													'aesi_form_1_vac.transverse_myelitis',
-													'aesi_form_1_vac.gbs',
-													'aesi_form_1_vac.adem',
-													'aesi_form_1_vac.acute_myocardial',
-													'aesi_form_1_vac.ards',
-													'aesi_form_1_vac.symptoms_later_immunized',
-													'aesi_form_1_vac.other_symptoms_later_immunized',
-													'aesi_form_1_vac.Symptoms_details',
-													'aesi_form_1_vac.seriousness_of_the_symptoms',
-													'aesi_form_1.diagnosis',
-													'aesi_form_1.hospcode_treat',
-													'aesi_form_1.province_reported',
-													'aesi_form_1.datepicker_resiver',
-													'aesi_form_1.other_medical_history',
-													'aesi_form_1.lab_result',
-													'aesi_form_1.more_reviews',		
-													'aesi_form_1_vac.name_of_vaccine',
-													'aesi_form_1_vac.lot_number',
-													'aesi_form_1_vac.manufacturer',
-													'aesi_form_1_vac.dose',
-													'aesi_form_1_vac.date_of_vaccination',
-													'aesi_form_1_vac.time_of_vaccination',
-													'aesi_form_1.career_code'
-						// DB::raw('GROUP_CONCAT( aesi_form_1_vac.name_of_vaccine ) as "name_of_vaccine",
-						//  GROUP_CONCAT( aesi_form_1_vac.lot_number ) as "lot_number",
-						//  GROUP_CONCAT( aesi_form_1_vac.manufacturer  ) as "manufacturer",
-				 		//  GROUP_CONCAT( aesi_form_1_vac.dose  ) as "dose",
-				 		//  GROUP_CONCAT( aesi_form_1_vac.date_of_vaccination   ) as "date_of_vaccination",
-				 		//  GROUP_CONCAT( aesi_form_1_vac.time_of_vaccination   ) as "time_of_vaccination" ')
+		$selectcaselstF1 =  DB::table('aesi_form')
+		->join('aesi_form_vac', 'aesi_form.id_case', '=', 'aesi_form_vac.id_case')
+		->select('aesi_form.date_entry',
+													'aesi_form.id',
+													'aesi_form.hn',
+													'aesi_form.first_name',
+													'aesi_form.sur_name',
+													'aesi_form.house_number',
+													'aesi_form.village_no',
+													'aesi_form.province',
+													'aesi_form.district',
+													'aesi_form.subdistrict',
+													'aesi_form.marital_status',
+													'aesi_form.congenital_disease',
+													'aesi_form_vac.patient_status',
+													'aesi_form.regular_medication',
+													'aesi_form_vac.date_of_symptoms',
+													'aesi_form_vac.time_of_symptoms',
+													'aesi_form_vac.time_of_treatment',
+													'aesi_form_vac.date_of_treatment',
+													'aesi_form_vac.rash',
+													'aesi_form_vac.erythema',
+													'aesi_form_vac.urticaria',
+													'aesi_form_vac.itching',
+													'aesi_form_vac.edema',
+													'aesi_form_vac.angioedema',
+													'aesi_form_vac.fainting',
+													'aesi_form_vac.hyperventilation',
+													'aesi_form_vac.syncope',
+													'aesi_form_vac.headche',
+													'aesi_form_vac.dizziness',
+													'aesi_form_vac.fatigue',
+													'aesi_form_vac.malaise',
+													'aesi_form_vac.dyspepsia',
+													'aesi_form_vac.diarrhea',
+													'aesi_form_vac.nausea',
+													'aesi_form_vac.vomiting',
+													'aesi_form_vac.abdominal_pain',
+													'aesi_form_vac.arthalgia',
+													'aesi_form_vac.myalgia',
+													'aesi_form_vac.fever38c',
+													'aesi_form_vac.swelling_at_the_injection',
+													'aesi_form_vac.swelling_beyond_nearest_joint',
+													'aesi_form_vac.lymphadenopathy',
+													'aesi_form_vac.lymphadenitis',
+													'aesi_form_vac.sterile_abscess',
+													'aesi_form_vac.bacterial_abscess',
+													'aesi_form_vac.febrile_convulsion',
+													'aesi_form_vac.afebrile_convulsion',
+													'aesi_form_vac.encephalopathy',
+													'aesi_form_vac.flaccid_paralysis',
+													'aesi_form_vac.spastic_paralysis',
+													'aesi_form_vac.hhe',
+													'aesi_form_vac.persistent_inconsolable_crying',
+													'aesi_form_vac.thrombocytopenia',
+													'aesi_form_vac.osteomyelitis',
+													'aesi_form_vac.toxic_shock_syndrome',
+													'aesi_form_vac.sepsis',
+													'aesi_form_vac.anaphylaxis',
+													'aesi_form_vac.transverse_myelitis',
+													'aesi_form_vac.gbs',
+													'aesi_form_vac.adem',
+													'aesi_form_vac.acute_myocardial',
+													'aesi_form_vac.ards',
+													'aesi_form_vac.symptoms_later_immunized',
+													'aesi_form_vac.other_symptoms_later_immunized',
+													'aesi_form_vac.Symptoms_details',
+													'aesi_form_vac.seriousness_of_the_symptoms',
+													'aesi_form.diagnosis',
+													'aesi_form.hospcode_treat',
+													'aesi_form.province_reporter',
+													'aesi_form.date_entry',	
+													'aesi_form_vac.name_of_vaccine',
+													'aesi_form_vac.lot_number',
+													'aesi_form_vac.manufacturer',
+													'aesi_form_vac.dose',
+													'aesi_form_vac.date_of_vaccination',
+													'aesi_form_vac.time_of_vaccination',
+													'aesi_form.career_code'
+						// DB::raw('GROUP_CONCAT( aesi_form_vac.name_of_vaccine ) as "name_of_vaccine",
+						//  GROUP_CONCAT( aesi_form_vac.lot_number ) as "lot_number",
+						//  GROUP_CONCAT( aesi_form_vac.manufacturer  ) as "manufacturer",
+				 		//  GROUP_CONCAT( aesi_form_vac.dose  ) as "dose",
+				 		//  GROUP_CONCAT( aesi_form_vac.date_of_vaccination   ) as "date_of_vaccination",
+				 		//  GROUP_CONCAT( aesi_form_vac.time_of_vaccination   ) as "time_of_vaccination" ')
 						);
-	//->orwhere('aesi_form_1.date_entry',$datenow);
+	//->orwhere('aesi_form.date_entry',$datenow);
 		if (count($roleArr) > 0) {
 			 $user_role = $roleArr[0];
 		 switch ($user_role) {
 			 case 'hospital':
-				$selectdata  =   $selectcaselstF1->whereDate('aesi_form_1.date_entry',$datenow)
-								->whereNull('aesi_form_1.status')
+				$selectdata  =   $selectcaselstF1->whereDate('aesi_form.date_update',$datenow)
+								->whereNull('aesi_form.status')
 								->where(function($query) {
-											$query->orWhere('aesi_form_1.user_hospcode',auth()->user()->hospcode)
-														->orWhere('aesi_form_1.hospcode_treat',auth()->user()->hospcode)
-														->orWhere('aesi_form_1.hospcode_report',auth()->user()->hospcode);
+											$query->orWhere('aesi_form.user_hospcode',auth()->user()->hospcode)
+														->orWhere('aesi_form.hospcode_treat',auth()->user()->hospcode)
+														->orWhere('aesi_form.hospcode_report',auth()->user()->hospcode);
 									})
-								// ->groupBy('aesi_form_1.id_case')
+								// ->groupBy('aesi_form.id_case')
 								->get();
 			 break;
 			 			 case 'pho':
-				 $selectdata = $selectcaselstF1->whereDate('aesi_form_1.date_entry',$datenow)
-				 				->whereNull('aesi_form_1.status')
+				 $selectdata = $selectcaselstF1->whereDate('aesi_form.date_update',$datenow)
+				 				->whereNull('aesi_form.status')
 								->where(function($query) {
-											$query->orWhere('aesi_form_1.province_found_event',auth()->user()->prov_code)
-														->orWhere('aesi_form_1.province_reported',auth()->user()->prov_code);
+											$query->orWhere('aesi_form.province_found_event',auth()->user()->prov_code)
+														->orWhere('aesi_form.province_reported',auth()->user()->prov_code);
 									})
-								// ->groupBy('aesi_form_1.id_case')
+								// ->groupBy('aesi_form.id_case')
 								->get();				 break;
 				 case 'dpc':
 				 if ($roleArrhospcode == "41173" || $roleArrhospcode == "41169") {
-						 $selectdata = $selectcaselstF1->whereNull('aesi_form_1.status')
-								 ->whereDate('aesi_form_1.date_entry',$datenow)
-								//  ->groupBy('aesi_form_1.id_case')
+						 $selectdata = $selectcaselstF1->whereNull('aesi_form.status')
+								 ->whereDate('aesi_form.date_entry',$datenow)
+								//  ->groupBy('aesi_form.id_case')
 								 ->get();
 				 }else {
-					 $selectdata = $selectcaselstF1->whereDate('aesi_form_1.date_entry',$datenow)
-							->whereIn('aesi_form_1.province_found_event',$selectgroupprov)
-							//->whereIn('aesi_form_1.province_reported',$selectgroupprov)
+					 $selectdata = $selectcaselstF1->whereDate('aesi_form.date_update',$datenow)
+							->whereIn('aesi_form.province_found_event',$selectgroupprov)
+							//->whereIn('aesi_form.province_reported',$selectgroupprov)
 							 //->orWhere('user_region',$roleArrregion)
-							 ->whereNull('aesi_form_1.status')
-							//  ->groupBy('aesi_form_1.id_case')
+							 ->whereNull('aesi_form.status')
+							//  ->groupBy('aesi_form.id_case')
 							 ->get();
 				 }
 					 break;
 					 case 'ddc':
 
-						 $selectdata = $selectcaselstF1->whereNull('aesi_form_1.status')
-						 ->whereDate('aesi_form_1.date_entry',$datenow)
-						//  ->groupBy('aesi_form_1.id_case')
+						 $selectdata = $selectcaselstF1->whereNull('aesi_form.status')
+						 ->whereDate('aesi_form.date_update',$datenow)
+						//  ->groupBy('aesi_form.id_case')
 						 ->get();
 						 break;
 						 case 'admin':
 							 $selectdata =  $selectcaselstF1
-							 ->whereNull('aesi_form_1.status')
-							 ->whereDate('aesi_form_1.date_entry',$datenow)
-							//  ->groupBy('aesi_form_1.id_case')
+							 ->whereNull('aesi_form.status')
+							 ->whereDate('aesi_form.date_update',$datenow)
+							//  ->groupBy('aesi_form.id_case')
 							 ->get();
 							
 							 break;
 							 case 'admin-dpc':
-							 $selectdata = $selectcaselstF1->whereIn('aesi_form_1.province',$selectgroupprov)
-							 ->whereNull('aesi_form_1.status')
-							//  ->groupBy('aesi_form_1.id_case')
+							 $selectdata = $selectcaselstF1->whereIn('aesi_form.province',$selectgroupprov)
+							 ->whereNull('aesi_form.status')
+							//  ->groupBy('aesi_form.id_case')
 							 ->get();
 							 break;
 		 default:
@@ -230,157 +224,150 @@ $selectgroupprov = DB::table('chospital_new')
 											 ->groupBy('prov_code')
 											 ->get()
 											 ->pluck('prov_code');
-		$selectcaselstF1= DB::table('aesi_form_1')
-		->join('aesi_form_1_vac', 'aesi_form_1.id_case', '=', 'aesi_form_1_vac.id_case')
-		->select('aesi_form_1.date_entry',
-													'aesi_form_1.id',
-													'aesi_form_1.hn',
-													'aesi_form_1.first_name',
-													'aesi_form_1.sur_name',
-													'aesi_form_1.house_number',
-													'aesi_form_1.village_no',
-													'aesi_form_1.province',
-													'aesi_form_1.district',
-													'aesi_form_1.subdistrict',
-													'aesi_form_1.age_while_sick_year',
-													'aesi_form_1.age_while_sick_month',
-													'aesi_form_1.age_while_sick_day',
-													'aesi_form_1.gender',
-													'aesi_form_1.type_of_patient',
-													'aesi_form_1.patient_status',
-													'aesi_form_1_vac.patient_status',
-													'aesi_form_1.career',
-													'aesi_form_1_vac.date_of_symptoms',
-													'aesi_form_1_vac.time_of_symptoms',
-													'aesi_form_1_vac.time_of_treatment',
-													'aesi_form_1_vac.date_of_treatment',
-													'aesi_form_1_vac.rash',
-													'aesi_form_1_vac.erythema',
-													'aesi_form_1_vac.urticaria',
-													'aesi_form_1_vac.itching',
-													'aesi_form_1_vac.edema',
-													'aesi_form_1_vac.angioedema',
-													'aesi_form_1_vac.fainting',
-													'aesi_form_1_vac.hyperventilation',
-													'aesi_form_1_vac.syncope',
-													'aesi_form_1_vac.headche',
-													'aesi_form_1_vac.dizziness',
-													'aesi_form_1_vac.fatigue',
-													'aesi_form_1_vac.malaise',
-													'aesi_form_1_vac.dyspepsia',
-													'aesi_form_1_vac.diarrhea',
-													'aesi_form_1_vac.nausea',
-													'aesi_form_1_vac.vomiting',
-													'aesi_form_1_vac.abdominal_pain',
-													'aesi_form_1_vac.arthalgia',
-													'aesi_form_1_vac.myalgia',
-													'aesi_form_1_vac.fever38c',
-													'aesi_form_1_vac.swelling_at_the_injection',
-													'aesi_form_1_vac.swelling_beyond_nearest_joint',
-													'aesi_form_1_vac.lymphadenopathy',
-													'aesi_form_1_vac.lymphadenitis',
-													'aesi_form_1_vac.sterile_abscess',
-													'aesi_form_1_vac.bacterial_abscess',
-													'aesi_form_1_vac.febrile_convulsion',
-													'aesi_form_1_vac.afebrile_convulsion',
-													'aesi_form_1_vac.encephalopathy',
-													'aesi_form_1_vac.flaccid_paralysis',
-													'aesi_form_1_vac.spastic_paralysis',
-													'aesi_form_1_vac.hhe',
-													'aesi_form_1_vac.persistent_inconsolable_crying',
-													'aesi_form_1_vac.thrombocytopenia',
-													'aesi_form_1_vac.osteomyelitis',
-													'aesi_form_1_vac.toxic_shock_syndrome',
-													'aesi_form_1_vac.sepsis',
-													'aesi_form_1_vac.anaphylaxis',
-													'aesi_form_1_vac.transverse_myelitis',
-													'aesi_form_1_vac.gbs',
-													'aesi_form_1_vac.adem',
-													'aesi_form_1_vac.acute_myocardial',
-													'aesi_form_1_vac.ards',
-													'aesi_form_1_vac.symptoms_later_immunized',
-													'aesi_form_1_vac.other_symptoms_later_immunized',
-													'aesi_form_1_vac.Symptoms_details',
-													'aesi_form_1_vac.seriousness_of_the_symptoms',
-													'aesi_form_1.diagnosis',
-													'aesi_form_1.hospcode_treat',
-													'aesi_form_1.province_reported',
-													'aesi_form_1.datepicker_resiver',
-													'aesi_form_1.other_medical_history',
-													'aesi_form_1.lab_result',
-													'aesi_form_1.more_reviews',
-													'aesi_form_1_vac.name_of_vaccine',
-													'aesi_form_1_vac.lot_number',
-													'aesi_form_1_vac.manufacturer',
-													'aesi_form_1_vac.dose',
-													'aesi_form_1_vac.date_of_vaccination',
-													'aesi_form_1_vac.time_of_vaccination',
-													'aesi_form_1.career_code'
-		// DB::raw('GROUP_CONCAT( aesi_form_1_vac.name_of_vaccine ) as "name_of_vaccine",
-		// 				 GROUP_CONCAT( aesi_form_1_vac.lot_number ) as "lot_number",
-		// 				 GROUP_CONCAT( aesi_form_1_vac.manufacturer  ) as "manufacturer",
-		// 		 		 GROUP_CONCAT( aesi_form_1_vac.dose  ) as "dose",
-		// 		 		 GROUP_CONCAT( aesi_form_1_vac.date_of_vaccination   ) as "date_of_vaccination",
-		// 		 		 GROUP_CONCAT( aesi_form_1_vac.time_of_vaccination   ) as "time_of_vaccination" ')
+		$selectcaselstF1= DB::table('aesi_form')
+		->join('aesi_form_vac', 'aesi_form.id_case', '=', 'aesi_form_vac.id_case')
+		->select('aesi_form.date_entry',
+		'aesi_form.id',
+		'aesi_form.hn',
+		'aesi_form.first_name',
+		'aesi_form.sur_name',
+		'aesi_form.house_number',
+		'aesi_form.village_no',
+		'aesi_form.province',
+		'aesi_form.district',
+		'aesi_form.subdistrict',
+		'aesi_form.marital_status',
+		'aesi_form.congenital_disease',
+		'aesi_form_vac.patient_status',
+		'aesi_form.regular_medication',
+		'aesi_form_vac.date_of_symptoms',
+		'aesi_form_vac.time_of_symptoms',
+		'aesi_form_vac.time_of_treatment',
+		'aesi_form_vac.date_of_treatment',
+		'aesi_form_vac.rash',
+		'aesi_form_vac.erythema',
+		'aesi_form_vac.urticaria',
+		'aesi_form_vac.itching',
+		'aesi_form_vac.edema',
+		'aesi_form_vac.angioedema',
+		'aesi_form_vac.fainting',
+		'aesi_form_vac.hyperventilation',
+		'aesi_form_vac.syncope',
+		'aesi_form_vac.headche',
+		'aesi_form_vac.dizziness',
+		'aesi_form_vac.fatigue',
+		'aesi_form_vac.malaise',
+		'aesi_form_vac.dyspepsia',
+		'aesi_form_vac.diarrhea',
+		'aesi_form_vac.nausea',
+		'aesi_form_vac.vomiting',
+		'aesi_form_vac.abdominal_pain',
+		'aesi_form_vac.arthalgia',
+		'aesi_form_vac.myalgia',
+		'aesi_form_vac.fever38c',
+		'aesi_form_vac.swelling_at_the_injection',
+		'aesi_form_vac.swelling_beyond_nearest_joint',
+		'aesi_form_vac.lymphadenopathy',
+		'aesi_form_vac.lymphadenitis',
+		'aesi_form_vac.sterile_abscess',
+		'aesi_form_vac.bacterial_abscess',
+		'aesi_form_vac.febrile_convulsion',
+		'aesi_form_vac.afebrile_convulsion',
+		'aesi_form_vac.encephalopathy',
+		'aesi_form_vac.flaccid_paralysis',
+		'aesi_form_vac.spastic_paralysis',
+		'aesi_form_vac.hhe',
+		'aesi_form_vac.persistent_inconsolable_crying',
+		'aesi_form_vac.thrombocytopenia',
+		'aesi_form_vac.osteomyelitis',
+		'aesi_form_vac.toxic_shock_syndrome',
+		'aesi_form_vac.sepsis',
+		'aesi_form_vac.anaphylaxis',
+		'aesi_form_vac.transverse_myelitis',
+		'aesi_form_vac.gbs',
+		'aesi_form_vac.adem',
+		'aesi_form_vac.acute_myocardial',
+		'aesi_form_vac.ards',
+		'aesi_form_vac.symptoms_later_immunized',
+		'aesi_form_vac.other_symptoms_later_immunized',
+		'aesi_form_vac.Symptoms_details',
+		'aesi_form_vac.seriousness_of_the_symptoms',
+		'aesi_form.diagnosis',
+		'aesi_form.hospcode_treat',
+		'aesi_form.province_reporter',
+		'aesi_form.date_entry',	
+		'aesi_form_vac.name_of_vaccine',
+		'aesi_form_vac.lot_number',
+		'aesi_form_vac.manufacturer',
+		'aesi_form_vac.dose',
+		'aesi_form_vac.date_of_vaccination',
+		'aesi_form_vac.time_of_vaccination',
+		'aesi_form.career_code'
+		// DB::raw('GROUP_CONCAT( aesi_form_vac.name_of_vaccine ) as "name_of_vaccine",
+		// 				 GROUP_CONCAT( aesi_form_vac.lot_number ) as "lot_number",
+		// 				 GROUP_CONCAT( aesi_form_vac.manufacturer  ) as "manufacturer",
+		// 		 		 GROUP_CONCAT( aesi_form_vac.dose  ) as "dose",
+		// 		 		 GROUP_CONCAT( aesi_form_vac.date_of_vaccination   ) as "date_of_vaccination",
+		// 		 		 GROUP_CONCAT( aesi_form_vac.time_of_vaccination   ) as "time_of_vaccination" ')
 						)
-						->whereDate('aesi_form_1.date_entry', '>=', $date_of_symptoms_from)
-						->whereDate('aesi_form_1.date_entry', '<=', $date_of_symptoms_to);
+						->whereDate('aesi_form.date_update', '>=', $date_of_symptoms_from)
+						->whereDate('aesi_form.date_update', '<=', $date_of_symptoms_to);
 	if (count($roleArr) > 0) {
 			 $user_role = $roleArr[0];
 		 switch ($user_role) {
 			 case 'hospital':
 				 $selectdata  = $selectcaselstF1
 								 ->where(function($query) {
-											 $query->orWhere('aesi_form_1.user_hospcode',auth()->user()->hospcode)
-														 ->orWhere('aesi_form_1.hospcode_treat',auth()->user()->hospcode)
-														 ->orWhere('aesi_form_1.hospcode_report',auth()->user()->hospcode);
+											 $query->orWhere('aesi_form.user_hospcode',auth()->user()->hospcode)
+														 ->orWhere('aesi_form.hospcode_treat',auth()->user()->hospcode)
+														 ->orWhere('aesi_form.hospcode_report',auth()->user()->hospcode);
 									 })
-								 ->whereNull('aesi_form_1.status')
-								//  ->groupBy('aesi_form_1.id_case')
+								 ->whereNull('aesi_form.status')
+								//  ->groupBy('aesi_form.id_case')
 								 ->get();			 break;
 			 case 'pho':
 				 $selectdata = $selectcaselstF1
-				 ->whereNull('aesi_form_1.status')
+				 ->whereNull('aesi_form.status')
 				 ->where(function($query) {
-							 $query->orWhere('aesi_form_1.province_found_event',auth()->user()->prov_code)
-										 ->orWhere('aesi_form_1.province_reported',auth()->user()->prov_code);
+							 $query->orWhere('aesi_form.province_found_event',auth()->user()->prov_code)
+										 ->orWhere('aesi_form.province_reported',auth()->user()->prov_code);
 					 })
-				 ->groupBy('aesi_form_1.id_case')
+				 ->groupBy('aesi_form.id_case')
 								 ->get();				 break;
 				 case 'dpc':
 				 if ($roleArrhospcode == "41173" || $roleArrhospcode == "41169") {
 						 $selectdata = $selectcaselstF1
 								 // ->where('user_region',$roleArrregion)
-								 ->whereNull('aesi_form_1.status')
-								//  ->groupBy('aesi_form_1.id_case')
+								 ->whereNull('aesi_form.status')
+								//  ->groupBy('aesi_form.id_case')
 								 ->get();
 				 }else {
 					 $selectdata = $selectcaselstF1
-							 ->whereIn('aesi_form_1.province_found_event',$selectgroupprov)
-								//->whereIn('aesi_form_1.province_reported',$selectgroupprov)
-							 ->whereNull('aesi_form_1.status')
-							//  ->groupBy('aesi_form_1.id_case')
+							 ->whereIn('aesi_form.province_found_event',$selectgroupprov)
+								//->whereIn('aesi_form.province_reported',$selectgroupprov)
+							 ->whereNull('aesi_form.status')
+							//  ->groupBy('aesi_form.id_case')
 							 ->get();
 				 }
 					 break;
 					 case 'ddc':
 						 $selectdata = $selectcaselstF1
-						 ->whereNull('aesi_form_1.status')
-						//  ->groupBy('aesi_form_1.id_case')
+						 ->whereNull('aesi_form.status')
+						//  ->groupBy('aesi_form.id_case')
 						 ->get();
 						 break;
 						 case 'admin':
 							 $selectdata = $selectcaselstF1
-							 ->whereNull('aesi_form_1.status')
-							//  ->groupBy('aesi_form_1.id_case')
+							 ->whereNull('aesi_form.status')
+							//  ->groupBy('aesi_form.id_case')
 							 ->orderBy('id')
 							 ->paginate(150);
 							 break;
 							 case 'admin-dpc':
 							 $selectdata = $selectcaselstF1
-							 ->whereIn('aesi_form_1.province',$selectgroupprov)
-							 ->whereNull('aesi_form_1.status')
-							//  ->groupBy('aesi_form_1.id_case')
+							 ->whereIn('aesi_form.province',$selectgroupprov)
+							 ->whereNull('aesi_form.status')
+							//  ->groupBy('aesi_form.id_case')
 							 ->get();
 							 break;
 		 default:

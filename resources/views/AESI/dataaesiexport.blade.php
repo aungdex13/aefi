@@ -36,7 +36,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
 			  <h3 class="box-title">รายงาน :: Adverse Event of Special Interest: AESI</h3>
 			</div>
 			<!-- /.box-header -->
-      <form action="{{route('dataf1export') }}" method="post">
+      <form action="{{route('dataaesiexport') }}" method="post">
         {{ csrf_field() }}
       <div class="box-header with-border">
         <div class="col-lg-3">
@@ -72,12 +72,6 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
                         <th>จังหวัดขณะเริ่มป่วย</th>
                         <th>อำเภอขณะเริ่มป่วย</th>
                         <th>ตำบลขณะเริ่มป่วย</th>
-                        <th>อายุปีขณะป่วย</th>
-                        <th>อายุเดือนขณะป่วย</th>
-                        <th>อายุวันขณะป่วย</th>
-			                  <th>เพศ</th>
-                        <th>ประเภทผู้ป่วย</th>
-                        <th>สถานะผู้ป่วย</th>
                         <th>อาชีพ</th>
                         <th>ว/ด/ป ที่เกิดอาการ</th>
                         <th>เวลาที่เกิดอาการ</th>
@@ -143,9 +137,6 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
                         <th>จังหวัดที่รายงาน</th>
 			                  <th>ว/ด/ป ที่ส่งรายงาน</th>
                         <th>ว/ด/ป ที่รับรายงาน</th>
-                        <th>ประวัติทางการแพทย์</th>
-                        <th>การตรวจทางห้องปฏิบัติการ</th>
-                        <th>หมายเหตุ</th>
 				            </tr>
 				        </thead>
 				        <tbody>
@@ -157,7 +148,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
                             $vac_name = isset($value->name_of_vaccine) ? $value->name_of_vaccine : "NULL" ;
                              $cutVacName = explode(',', $vac_name);
                           @endphp
-                          <p style="text-align:center;">{{date('Y',strtotime(isset($value->datepicker_send_reported) ? $value->datepicker_send_reported : "-"))  }}-{{str_pad(isset($cutVacName[0]) ? $cutVacName[0] : "NULL", 2, '0', STR_PAD_LEFT)}}-{{$value->id}}</p>
+                          <p style="text-align:center;">{{date('Y',strtotime(isset($value->date_entry) ? $value->date_entry : "-"))  }}-{{str_pad(isset($cutVacName[0]) ? $cutVacName[0] : "NULL", 2, '0', STR_PAD_LEFT)}}-{{$value->id}}</p>
                         </td>
                         								        <td>{{ $value->hn }}</td>
 				                <td style="text-align: center; vertical-align: middle;" width="4%">{{ $value->first_name }}</td>
@@ -172,12 +163,6 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
                         <td>{{ isset($listProvince[ $value->province]) ?$listProvince[ $value->province] : "ไม่ระบุข้อมูล"}}</td>
                         <td>{{ isset($listDistrict[$value->district]) ? $listDistrict[$value->district]: "ไม่ระบุข้อมูล" }}</td>
                         <td>{{ isset($listsubdistrict[$value->subdistrict]) ?  $listsubdistrict[$value->subdistrict] : "ไม่ระบุข้อมูล"}}</td>
-                        <td>{{ isset($value->age_while_sick_year) ? $value->age_while_sick_year: "-" }}</td>
-                        <td>{{ isset($value->age_while_sick_month) ? $value->age_while_sick_month:"-" }}</td>
-                        <td>{{ isset($value->age_while_sick_day) ? $value->age_while_sick_day:"-"}}</td>
-								        <td>{{ $arr_gender[$value->gender] }}</td>
-								        <td>{{ $arr_type_of_patient[$value->type_of_patient] }}</td>
-                        <td>{{ $arr_patient_status[$value->patient_status] }}</td>
                         <td>{{ isset($value->career) ? $value->career: "-" }}{{ isset($list_career[$value->career_code]) ? $list_career[$value->career_code]:"ไม่ระบุข้อมูล"}}</td>
                         <td>{{ $value->date_of_symptoms }}</td>
                         <td>{{ $value->time_of_symptoms }}</td>
@@ -556,13 +541,9 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
                         <td>{{ $arr_seriousness_of_the_symptoms[$value->seriousness_of_the_symptoms] }}</td>
                         <td>{{ $value->diagnosis }}</td>
                         <td>{{ isset($list_hos[ $value->hospcode_treat]) ? $list_hos[ $value->hospcode_treat] : ""}}</td>
-                       <td>{{ isset($listProvince[ $value->province_reported]) ?$listProvince[ $value->province_reported] : "ไม่ระบุข้อมูล"}}</td>
+                       <td>{{ isset($listProvince[ $value->province_reporter]) ?$listProvince[ $value->province_reporter] : "ไม่ระบุข้อมูล"}}</td>
 			                 <td>{{ isset($value->date_entry) ? $value->date_entry: "-" }}</td>
 			                 <td>{{ isset($value->datepicker_resiver) ? $value->datepicker_resiver: "-" }}</td>
-                        <td>{{ $value->other_medical_history }}</td>
-
-                        <td>{{ $value->lab_result }}</td>
-                        <td>{{ $value->more_reviews }}</td>
 				            </tr>
 							<?php endforeach;?>
 				        </tbody>

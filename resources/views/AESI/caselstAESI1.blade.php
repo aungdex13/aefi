@@ -133,8 +133,8 @@
               <th style="text-align:center;" >ID</th>
               <th style="text-align:center;">เลขที่ผู้ป่วย HN</th>
               <th style="text-align:center;">ชื่อ-นามสกุลผู้ป่วย</th>
-              <th style="text-align:center;">อายุ</th>
-              <th style="text-align:center;">การวินิจฉัยของแพทย์</th>
+              {{-- <th style="text-align:center;">อายุ</th> --}}
+              <th style="text-align:center;">อาการสำคัญ</th>
               <th style="text-align:center;">โรงพยาบาล</th>
               <th style="text-align:center;">***</th>
             </tr>
@@ -146,7 +146,7 @@
               <p style="text-align:center;">{{ isset($value->id) ? $value->id : "-"}}</p>
             </td>
             <td>
-              <p style="text-align:center;">{{date('Y',strtotime(isset($value->date_of_symptoms) ? $value->date_of_symptoms : "-"))}}-{{str_pad( isset($value->name_of_vaccine) ? $value->name_of_vaccine : "NULL", 2, '0', STR_PAD_LEFT)}}-{{$value->id}}</p>
+              <p style="text-align:center;">{{date('Y',strtotime(isset($value->date_entry) ? $value->date_entry : "-"))}}-{{str_pad( isset($value->name_of_vaccine) ? $value->name_of_vaccine : "NULL", 2, '0', STR_PAD_LEFT)}}-{{$value->id}}</p>
             </td>
             <td>
               <p style="text-align:center;">{{ isset($value->hn) ? $value->hn : "-"}}</p>
@@ -157,11 +157,11 @@
             <td>
               <p style="text-align:center;">{{ $value->first_name }} {{ $value->sur_name }}</p>
             </td>
-            <td>
+            {{-- <td>
               <p style="text-align:center;">{{ isset($value->age_while_sick_year) ? $value->age_while_sick_year :"-" }}ปี {{ isset($value->age_while_sick_month) ? $value->age_while_sick_month : "-" }}เดือน {{ isset($value->age_while_sick_day) ? $value->age_while_sick_day:"-"}}วัน</p>
-            </td>
+            </td> --}}
             <td>
-              <p style="text-align:center;">{{ $value->diagnosis }}</p>
+              <p style="text-align:center;">{{ isset( $value->chief_complaint) ?  $value->chief_complaint : "ไม่ระบุข้อมูล"}}</p>
             </td>
             <td>
               <p style="text-align:center;">{{ isset($list_hos[ $value->hospcode_treat]) ? $list_hos[ $value->hospcode_treat] : "ไม่ระบุข้อมูล"}}</p>
@@ -175,12 +175,12 @@
                   <span class="sr-only">Toggle Dropdown</spfan>
                 </button> --}}
                 <ul class="dropdown-menu" role="menu">
-                  <li><a href="{{ route('lstf2') }}?id_case={{ $value->id_case }}" target="_blank"><i class="fa fa-file-o" aria-hidden="true" style="color:#428bca;"></i>กรอก AESI2</a></li>
-                  <li><a href="{{ route('viewform1') }}?id_case={{ $value->id_case }}" target="_blank"><i class="fa fa-eye" aria-hidden="true" style="color:#5cb85c;"></i>ดูข้อมูล AESI1</a></li>
+                  {{-- <li><a href="{{ route('lstf2') }}?id_case={{ $value->id_case }}" target="_blank"><i class="fa fa-file-o" aria-hidden="true" style="color:#428bca;"></i>กรอก AESI2</a></li> --}}
+                  <li><a href="{{ route('ViewAESI1') }}?id_case={{ $value->id_case }}" target="_blank"><i class="fa fa-eye" aria-hidden="true" style="color:#5cb85c;"></i>ดูข้อมูล AESI1</a></li>
                   <li><a href="{{ route('EditAESI1') }}?id_case={{ $value->id_case }}" target="_blank"><i class="fa fa-pencil-square-o" aria-hidden="true" style="color:#5bc0de;"></i>แก้ไขข้อมูล</a></li>
-                  <li><a href="{{ route('ReferFrm') }}?id={{ $value->id }}&id_case={{ $value->id_case }}" target="_blank"><i class="fa fa-ambulance" aria-hidden="true" style="color:#e6c34a;"></i>Refer ผู้ป่วย</a></li>
+                  {{-- <li><a href="{{ route('ReferFrm') }}?id={{ $value->id }}&id_case={{ $value->id_case }}" target="_blank"><i class="fa fa-ambulance" aria-hidden="true" style="color:#e6c34a;"></i>Refer ผู้ป่วย</a></li> --}}
                   {{-- <li><a href="{{ route('SymtomsbyDoseLst') }}?id={{ $value->id }}&id_case={{ $value->id_case }}" target="_blank"><i class="fa fa-braille" aria-hidden="true" style="color:#b00b69;"></i>อาการภายหลัง<br>ได้รับการสร้างภูมิคุ้ม<br>กันโรคตามครั้งที่ฉีด</a></li> --}}
-                  @hasrole('admin')
+                  {{-- @hasrole('admin')
                   <li><a href="{{ route('ExpertDiagFrm') }}?id_case={{ $value->id_case }}" target="_blank"><i class="fa fa-user-circle-o" aria-hidden="true" style="color:#f46732;"></i>การประชุม<br>ผู้เชี่ยวชาญ</a></li>
                   @endhasrole
                   @hasrole('admin-dpc')
@@ -196,6 +196,9 @@
                   @endhasrole
                   @hasrole('admin')
                   <li><a href="{{ route('viewExpert') }}?id_case={{ $value->id_case }}" target="_blank"><i class="fa fa-list-alt" aria-hidden="true" style="color:#809C7C;"></i>รายงานการประชุม<br>ผู้เชี่ยวชาญ</a></li>
+                  @endhasrole --}}
+                  @hasrole('admin')
+                  <li><a href="{{ route('deleteAESI1') }}?id_case={{ $value->id_case }}" id="btnDelete" type="button" onclick="return confirm('ต้องการลบข้อมูล ใช่หรือไม่?');"><i class="fa  fa-trash-o" aria-hidden="true" style="color:#d9534f;"></i>ลบข้อมูล</a></li>
                   @endhasrole
                 </ul>
               </div>
