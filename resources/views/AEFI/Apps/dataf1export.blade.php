@@ -57,7 +57,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
             {{-- <i class="fa fa-pencil-square-o" aria-hidden="true"></i>ค้นหาข้อมูล</a> --}}
         </h3>
       </div>
-    </from>
+    </form>
 			<div class="box-body table-responsive">
           <!-- /.form group -->
 				<!-- Custom Tabs -->

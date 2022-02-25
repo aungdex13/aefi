@@ -109,7 +109,7 @@ foreach ($aecode as $value) {
                           <div class="col-xs-2">
                             <label>ID</label>
                             <input type="hidden" id="id_case" name="id_case" value="<?php echo $id_case; ?>" class="form-control" hidden>
-                            <input type="text" class="form-control" name="id" placeholder="ID">
+                            <input type="text" class="form-control" name="id" placeholder="ID" hidden>
                           </div>
                           <div class="col-xs-2">
                             <label>คำนำหน้า</label>
