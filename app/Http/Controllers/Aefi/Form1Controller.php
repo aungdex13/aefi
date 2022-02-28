@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use DB;
 use App\Career;
+use App\ICD10;
 class Form1Controller extends Controller
 {
 	public $result;
@@ -120,4 +121,22 @@ public function Get_Career_All(Request $request){
     }
   }
 
+  public function Get_icd10_All(Request $request){
+    $result = ICD10::query();
+
+    if(isset($request->searchTerm)){
+        $result = $result->where('name', 'like', '%' . $request->searchTerm . '%')->orWhere('code', 'like', '%' . $request->searchTerm . '%');
+
+    $result = $result->select('code','name');
+    $result = $result->get();
+    }
+    $datas = array();
+
+    foreach($result as $data){
+      $json_datas[] = array("id"=>$data->code, "text"=>($data->code)." : ".$data->name);
+    }
+    if(count($result)>0){
+      return response()->json($json_datas);
+    }
+  }
 }

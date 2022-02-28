@@ -118,6 +118,8 @@
 		$hospcode_treat = $req ->input ('hospcode_treat');
 		$hospcode_report = $req ->input ('hospcode_report');
 		$hospcode_get_vac = $req ->input ('hospcode_get_vac');
+		$main_diagnosis = $req ->input ('main_diagnosis');
+		$minor_diagnosis = $req ->input ('minor_diagnosis');
 		$data = array(
 			'id_case'=>$id_case,
 			'hn'=>$hn,
@@ -197,7 +199,9 @@
 			// 'case_vac_id'=>$case_vac_id,
 			'hospcode_treat'=>$hospcode_treat,
 			'hospcode_report'=>$hospcode_report,
-			'hospcode_get_vac'=>$hospcode_get_vac
+			'hospcode_get_vac'=>$hospcode_get_vac,
+			'main_diagnosis'=>$main_diagnosis,
+			'minor_diagnosis'=>$minor_diagnosis
 		);
 	// echo($data);
 	//  $res1 = $data;

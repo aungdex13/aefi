@@ -88,7 +88,7 @@ Route::get('/lstef2', 'Aefi\SelectController@selectdatatableEditcaseAEFI2')->nam
 /* loginsys */
 Auth::routes();
 Route::get('/index', 'HomeController@index')->name('index');
-
+Route::get('/List-icd10', 'Aefi\Form1Controller@Get_icd10_All')->name('list-icd10-json');
 // test
 Route::get('/test', 'Aefi\testController@test')->name('test');
 Route::get('/dataf1export', 'Aefi\DataexportController@dataexport')->name('dataf1export');

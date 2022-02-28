@@ -1899,6 +1899,7 @@ foreach ($aecode as $value) {
                     <div class="box-body">
                       {{-- input content --}}
                       <!-- textarea -->
+                      
                       <div class="form-group">
                         <div class="col-lg-8">
                           <label>รายละเอียดอาการและการตรวจสอบ</label>
@@ -4212,6 +4213,40 @@ $(".js-example-basic-single2").select2({
       minimumResultsForSearch: 5,
       ajax: {
        url: "{{ route('list-career-json') }}",
+       type: "GET",
+       dataType: 'json',
+       delay: 250,
+       data: function (params) {
+        return {
+          searchTerm: params.term // search term
+        };
+       },
+       processResults: function (response) {
+         return {
+            results: response
+         };
+       },
+       cache: true
+      }
+    });
+    $(".js-example-basic-single3").select2({
+      allowClear: true,
+      language: {
+      inputTooShort: function (args) {
+          return "กรุณาพิมพ์คำค้นหาอย่างน้อย 3 ตัวอักษร";
+      },
+      noResults: function () {
+          return "ไม่พบข้อมูล";
+      },
+      searching: function () {
+          return "กำลังค้นหาข้อมูล...";
+      }
+      },
+      placeholder: "กรุณาพิมพ์ชื่อICD-10",
+      minimumInputLength: 3,
+      minimumResultsForSearch: 5,
+      ajax: {
+       url: "{{ route('list-icd10-json') }}",
        type: "GET",
        dataType: 'json',
        delay: 250,

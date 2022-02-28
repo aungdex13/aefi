@@ -117,7 +117,9 @@ $selectgroupprov = DB::table('chospital_new')
 													'aefi_form_1_vac.dose',
 													'aefi_form_1_vac.date_of_vaccination',
 													'aefi_form_1_vac.time_of_vaccination',
-													'aefi_form_1.career_code'
+													'aefi_form_1.career_code',
+													'aefi_form_1.main_diagnosis',
+													'aefi_form_1.minor_diagnosis'
 						// DB::raw('GROUP_CONCAT( aefi_form_1_vac.name_of_vaccine ) as "name_of_vaccine",
 						//  GROUP_CONCAT( aefi_form_1_vac.lot_number ) as "lot_number",
 						//  GROUP_CONCAT( aefi_form_1_vac.manufacturer  ) as "manufacturer",
@@ -199,6 +201,7 @@ $selectgroupprov = DB::table('chospital_new')
 		 $list_hos=$this->list_hos();
 		 $list_career=$this->list_career();
 		 $vac_list=$this->vaclist();
+		 $list_icd10=$this->list_icd10();
 		return view('AEFI.Apps.dataf1export',
 			[
 				'selectdata'=>$selectdata,
@@ -210,7 +213,8 @@ $selectgroupprov = DB::table('chospital_new')
 				'datenow'=>$datenow,
 				'list_hos'=>$list_hos,
 				'list_career'=>$list_career,
-				'vac_list'=>$vac_list
+				'vac_list'=>$vac_list,
+				'list_icd10'=>$list_icd10,
 			]);
 	}
 
@@ -327,7 +331,9 @@ $selectgroupprov = DB::table('chospital_new')
 													'aefi_form_1_vac.dose',
 													'aefi_form_1_vac.date_of_vaccination',
 													'aefi_form_1_vac.time_of_vaccination',
-													'aefi_form_1.career_code'
+													'aefi_form_1.career_code',
+													'aefi_form_1.main_diagnosis',
+													'aefi_form_1.minor_diagnosis'
 		// DB::raw('GROUP_CONCAT( aefi_form_1_vac.name_of_vaccine ) as "name_of_vaccine",
 		// 				 GROUP_CONCAT( aefi_form_1_vac.lot_number ) as "lot_number",
 		// 				 GROUP_CONCAT( aefi_form_1_vac.manufacturer  ) as "manufacturer",
@@ -407,6 +413,7 @@ $selectgroupprov = DB::table('chospital_new')
 		 $list_hos=$this->list_hos();
 		 $list_career=$this->list_career();
 		 $vac_list=$this->vaclist();
+		 $list_icd10=$this->list_icd10();
 		return view('AEFI.Apps.dataf1export',
 			[
 				'selectdata'=>$selectdata,
@@ -419,6 +426,7 @@ $selectgroupprov = DB::table('chospital_new')
 				'date_of_symptoms_to'=>$date_of_symptoms_to,
 				'datenow'=>$datenow,
 				'list_hos'=>$list_hos,
+				'list_icd10'=>$list_icd10,
 				'list_career'=>$list_career,
 				'vac_list'=>$vac_list
 			]);
@@ -475,6 +483,14 @@ $selectgroupprov = DB::table('chospital_new')
 		}
 		// dd($province_arr);
 		return $arr_career;
+	}
+	protected function list_icd10(){
+		$arr_icd10 = DB::table('ref_icd10')->select('code','name')->get();
+		foreach ($arr_icd10 as  $value) {
+			$arr_icd10[$value->code] =trim($value->name);
+		}
+		// dd($province_arr);
+		return $arr_icd10;
 	}
 	protected function vaclist(){
 		$arr_vaclist = DB::table('vac_tbl')

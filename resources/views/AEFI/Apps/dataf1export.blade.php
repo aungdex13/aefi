@@ -148,6 +148,8 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
 
                         <th>Seriousness</th>
                         <th>conclusion</th>
+                        <th>การวินิจฉัยหลักของแพทย์ </th>
+                        <th>การวินิจฉัยรองของแพทย์ </th>
                         <th>โรงพยาบาลที่รับรักษา</th>
                         <th>จังหวัดที่รายงาน</th>
 			                  <th>ว/ด/ป ที่ส่งรายงาน</th>
@@ -564,6 +566,8 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
 			                   <td @hasrole('ddc') hidden @endhasrole>{{ $value->Symptoms_details }}</td>
                         <td>{{ $arr_seriousness_of_the_symptoms[$value->seriousness_of_the_symptoms] }}</td>
                         <td>{{ $value->diagnosis }}</td>
+                        <td>{{ isset($list_icd10[$value->main_diagnosis]) ? $list_icd10[ $value->main_diagnosis] : "" }}</td>
+                        <td>{{ isset($list_icd10[$value->minor_diagnosis]) ? $list_icd10[ $value->minor_diagnosis] : "" }}</td>
                         <td>{{ isset($list_hos[ $value->hospcode_treat]) ? $list_hos[ $value->hospcode_treat] : ""}}</td>
                        <td>{{ isset($listProvince[ $value->province_reported]) ?$listProvince[ $value->province_reported] : "ไม่ระบุข้อมูล"}}</td>
 			                 <td>{{ isset($value->date_entry) ? $value->date_entry: "-" }}</td>

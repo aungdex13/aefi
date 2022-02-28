@@ -1158,7 +1158,7 @@ foreach ($aecode as $value) {
                                     <div class="form-group">
                                       <div class="row">
                                         <div class="col-xs-2">
-                                          <label><li> NPS for RT-PCR</li>   </label>
+                                          <label><li> NPS for RT-PCR COVID-19</li>   </label>
                                           <div class="radio">
                                             <label>
                                               <input type="radio" name="NPS" id="NPS_1" value="0" checked>
@@ -1418,10 +1418,10 @@ foreach ($aecode as $value) {
                     </label>
                   </div>
                 </div>
-                <div class="col-xs-4">
+                {{-- <div class="col-xs-4">
                   <label>ระบุ</label>
                   <input type="text" class="form-control" name="othercovid19" placeholder="ระบุ">
-                </div>
+                </div> --}}
               </div>
             </div>
               <div class="form-group">
@@ -1608,7 +1608,7 @@ foreach ($aecode as $value) {
               <div class="form-group">
                 <div class="row">
                   <div class="col-xs-4">
-                    <label><li> เคยตรวจหาการติดเชื้อโควิด 19</li>   </label>
+                    <label><li> เคยมีประวัติการติดเชื้อโควิด 19</li>   </label>
                     <div class="radio">
                       <label>
                         <input type="radio" name="inspect_covid" id="inspect_covid_1" value="0" checked>
@@ -1627,13 +1627,13 @@ foreach ($aecode as $value) {
                     <div class="radio">
                       <label>
                         <input type="radio" name="inspect_covid_results" id="inspect_covid_results_1" value="0" checked>
-                        ไม่ได้ตรวจ   
+                        Negative   
                       </label>
                     </div>
                     <div class="radio">
                       <label>
                         <input type="radio" name="inspect_covid_results" id="inspect_covid_results_2" value="1">
-                        ตรวจ 
+                        Positive 
                       </label>
                     </div>
                   </div>

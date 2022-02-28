@@ -1560,18 +1560,7 @@ foreach ($aecode as $value) {
                       <div class="box-body">
                         {{-- input content --}}
                         <!-- textarea -->
-                        <div class="form-group">
-                          <div class="col-lg-6">
-                            <label>รายละเอียดอาการและการตรวจสอบ</label>
-                            <textarea class="form-control" rows="5" name="Symptoms_details"></textarea>
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <div class="col-lg-6">
-                            <label>วินิจฉัยของแพทย์ :</label><input type="text" id="diagnosis" name="diagnosis" class="form-control" placeholder="">
-                          </div>
-                        </div>
-                      </div>
+                        
 
 
                     </div>
@@ -1647,7 +1636,34 @@ foreach ($aecode as $value) {
                         </label>
                       </div>
                       <div class="col-md-4">
-                        <label>
+                        <label><div class="form-group">
+                          <div class="form-group">
+                            <div class="col-lg-6">
+                              <label>การวินิจฉัยหลักของแพทย์ :</label>
+                              <select id="js-example-basic-single3" name="main_diagnosis" class="js-example-basic-single3 form-control" data-dropdown-css-class="select2-danger" required>
+                              </select>
+                              {{-- <input type="text" id="main_diagnosis" name="main_diagnosis" class="form-control" placeholder=""> --}}
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <div class="col-lg-6">
+                              <label>การวินิจฉัยรองของแพทย์ :</label>
+                              <select id="js-example-basic-single3" name="minor_diagnosis" class="js-example-basic-single3 form-control" data-dropdown-css-class="select2-danger" required>
+                              </select>
+                              {{-- <input type="text" id="minor_diagnosis" name="minor_diagnosis" class="form-control" placeholder=""> --}}
+                            </div>
+                          </div>
+                          <div class="col-lg-6">
+                            <label>รายละเอียดอาการและการตรวจสอบ</label>
+                            <textarea class="form-control" rows="5" name="Symptoms_details"></textarea>
+                          </div>
+                        </div>
+                        {{-- <div class="form-group">
+                          <div class="col-lg-6">
+                            <label>วินิจฉัยของแพทย์ :</label><input type="text" id="diagnosis" name="diagnosis" class="form-control" placeholder="">
+                          </div>
+                        </div> --}}
+                      </div>
                           <input type="checkbox" name="other_seriousness_of_the_symptoms" value="5">
                           ความผิดปกติแต่กำเนิด
                         </label>
@@ -1975,9 +1991,9 @@ foreach ($aecode as $value) {
                             </div>                            <div class="col-lg-4">
                               <label>จังหวัด :</label>
                               <select id="province_found_event" name="province_found_event" class="form-control" style="width: 100%;" required>
-					<option class="badge filter badge-info" data-color="info" value=""></option>
+					                    <option class="badge filter badge-info" data-color="info" value=""></option>
                                 <?php
-												  foreach ($arr_provinces as $k=>$v) { ?>
+												        foreach ($arr_provinces as $k=>$v) { ?>
                                 <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
                                 <?php } ?>
                               </select>
@@ -2430,6 +2446,40 @@ foreach ($aecode as $value) {
       minimumResultsForSearch: 5,
       ajax: {
        url: "{{ route('list-career-json') }}",
+       type: "GET",
+       dataType: 'json',
+       delay: 250,
+       data: function (params) {
+        return {
+          searchTerm: params.term // search term
+        };
+       },
+       processResults: function (response) {
+         return {
+            results: response
+         };
+       },
+       cache: true
+      }
+    });
+    $(".js-example-basic-single3").select2({
+      allowClear: true,
+      language: {
+      inputTooShort: function (args) {
+          return "กรุณาพิมพ์คำค้นหาอย่างน้อย 3 ตัวอักษร";
+      },
+      noResults: function () {
+          return "ไม่พบข้อมูล";
+      },
+      searching: function () {
+          return "กำลังค้นหาข้อมูล...";
+      }
+      },
+      placeholder: "กรุณาพิมพ์ชื่อICD-10",
+      minimumInputLength: 3,
+      minimumResultsForSearch: 5,
+      ajax: {
+       url: "{{ route('list-icd10-json') }}",
        type: "GET",
        dataType: 'json',
        delay: 250,
