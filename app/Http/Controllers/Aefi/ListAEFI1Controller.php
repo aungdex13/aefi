@@ -17,7 +17,7 @@ class ListAEFI1Controller extends Controller
 			$roleArrregion = auth()->user()->region;
 			$roleArrdist_code = auth()->user()->ampur_code;
 			$district_user=$roleArrprov_code.$roleArrdist_code;
-      $roleArr = auth()->user()->getRoleNames()->toArray();
+    		$roleArr = auth()->user()->getRoleNames()->toArray();
         if ($request->ajax()) {
             $selectcaselstF1 = ListAEFI1::join('aefi_form_1_vac', 'aefi_form_1.id_case', '=', 'aefi_form_1_vac.id_case')
         		->leftjoin('aefi_form_2', 'aefi_form_1.id_case', '=', 'aefi_form_2.id_case')
@@ -39,7 +39,9 @@ class ListAEFI1Controller extends Controller
         							'aefi_form_1.necessary_to_investigate',
         							'aefi_form_1.case_vac_id',
         							'aefi_form_1_vac.name_of_vaccine',
-        							'aefi_form_1.date_of_symptoms'
+        							'aefi_form_1.date_of_symptoms',
+        							'aefi_form_1_vac.main_diagnosis',
+        							'aefi_form_1.minor_diagnosis'
         						);
         		 if (count($roleArr) > 0) {
         				$user_role = $roleArr[0];
