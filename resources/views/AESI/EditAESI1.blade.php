@@ -1409,7 +1409,7 @@ foreach ($aecode as $value) {
           <div class="box box-success">
             <div class="box-header with-border">
               <!-- checkbox3.1.1 -->
-              <div class="form-group">
+              {{-- <div class="form-group">
               <div class="row">
                 <div class="col-xs-2">
                   <label><li>วัคซีนโควิด 19 </li>   </label>
@@ -1431,7 +1431,7 @@ foreach ($aecode as $value) {
                   <input type="text" class="form-control" name="othercovid19" placeholder="ระบุ" value="{{isset($data[0]->othercovid19) ? $data[0]->othercovid19 :null}}">
                 </div>
               </div>
-            </div>
+            </div> --}}
               <div class="form-group">
               <div class="row">
                 <div class="col-md-12">

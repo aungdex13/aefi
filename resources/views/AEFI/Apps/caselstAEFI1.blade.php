@@ -161,7 +161,9 @@
               <p style="text-align:center;">{{ isset($value->id) ? $value->id : "-"}}</p>
             </td>
             <td>
-              <p style="text-align:center;">{{date('Y',strtotime(isset($value->date_of_symptoms) ? $value->date_of_symptoms : "-"))}}-{{str_pad( isset($value->name_of_vaccine) ? $value->name_of_vaccine : "NULL", 2, '0', STR_PAD_LEFT)}}-{{$value->id}}</p>
+              {{-- <p style="text-align:center;">{{date('Y',strtotime(isset($value->datepicker_send_reported) ? $value->datepicker_send_reported : "0000"))}}-{{str_pad( isset($value->name_of_vaccine) ? $value->name_of_vaccine : "NULL", 2, '0', STR_PAD_LEFT)}}-{{$value->id}}</p> --}}
+
+              <p style="text-align:center;">{{date('Y',strtotime(isset($value->date_of_symptoms) ? $value->date_of_symptoms : "-"))}}-{{ isset($vacgrouplist[$value->name_of_vaccine]) ? $vacgrouplist[$value->name_of_vaccine] : ""}}-{{$value->id}}</p>
             </td>
             <td>
               <p style="text-align:center;">{{ isset($value->hn) ? $value->hn : "-"}}</p>

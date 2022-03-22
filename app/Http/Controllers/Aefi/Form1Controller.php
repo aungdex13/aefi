@@ -122,13 +122,14 @@ public function Get_Career_All(Request $request){
   }
 
   public function Get_icd10_All(Request $request){
+
     $result = ICD10::query();
-
     if(isset($request->searchTerm)){
-        $result = $result->where('name', 'like', '%' . $request->searchTerm . '%')->orWhere('code', 'like', '%' . $request->searchTerm . '%');
+        $result = $result->where('status', '=', '1')->where('name', 'like', '%' . $request->searchTerm . '%')->orWhere('code', 'like', '%' . $request->searchTerm . '%');
 
-    $result = $result->select('code','name');
+    $result = $result->select('code','name')->where('status','=',1);
     $result = $result->get();
+
     }
     $datas = array();
 

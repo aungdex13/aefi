@@ -708,6 +708,14 @@ $(document).ready(function() {
         $('#other_nationality_text').val('');
       }
     });
+    $('input[name="other_pregnant_symptoms_later_immunized"]').on('click', function() {
+      if ($(this).val() == '9999') {
+        $('#other_symptoms_pregnant').show();
+      } else {
+        $('#other_symptoms_pregnant').hide();
+        $('#other_pregnant_symptoms_later_immunized_text').val('');
+      }
+    });
   });
 </script>
 <script>

@@ -202,6 +202,7 @@ $selectgroupprov = DB::table('chospital_new')
 		 $list_career=$this->list_career();
 		 $vac_list=$this->vaclist();
 		 $list_icd10=$this->list_icd10();
+		 $vacgrouplist=$this->vacgrouplist();
 		return view('AEFI.Apps.dataf1export',
 			[
 				'selectdata'=>$selectdata,
@@ -215,6 +216,7 @@ $selectgroupprov = DB::table('chospital_new')
 				'list_career'=>$list_career,
 				'vac_list'=>$vac_list,
 				'list_icd10'=>$list_icd10,
+				'vacgrouplist'=>$vacgrouplist
 			]);
 	}
 
@@ -414,6 +416,7 @@ $selectgroupprov = DB::table('chospital_new')
 		 $list_career=$this->list_career();
 		 $vac_list=$this->vaclist();
 		 $list_icd10=$this->list_icd10();
+		 $vacgrouplist=$this->vacgrouplist();
 		return view('AEFI.Apps.dataf1export',
 			[
 				'selectdata'=>$selectdata,
@@ -428,7 +431,8 @@ $selectgroupprov = DB::table('chospital_new')
 				'list_hos'=>$list_hos,
 				'list_icd10'=>$list_icd10,
 				'list_career'=>$list_career,
-				'vac_list'=>$vac_list
+				'vac_list'=>$vac_list,
+				'vacgrouplist'=>$vacgrouplist
 			]);
 	}
 
@@ -499,5 +503,16 @@ $selectgroupprov = DB::table('chospital_new')
 		->get();
 		 // dd($vaclist);
 		return $arr_vaclist;
+	}
+	protected function vacgrouplist(){
+		$vacgroup_arr = DB::table('vac_tbl')
+		->select('VAC_CODE','vac_group')
+		->orderBy('VAC_CODE', 'ASC')
+		->get();
+		foreach ($vacgroup_arr as  $value) {
+			$vacgroup_arr[$value->VAC_CODE] =trim($value->vac_group);
+		}
+		// dd($province_arr);
+		return $vacgroup_arr;
 	}
 }

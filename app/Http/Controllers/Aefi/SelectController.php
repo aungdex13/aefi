@@ -70,6 +70,8 @@
 							'aefi_form_1.diagnosis',
 							'aefi_form_1.hospcode_treat',
 							'aefi_form_1.province_found_event',
+							'aefi_form_1.main_diagnosis',
+							'aefi_form_1.minor_diagnosis',
 							'expertmeeting.id_case AS expertst',
 							DB::raw('MIN(aefi_form_2.status) as "maxaefi2"')
 						);
@@ -158,7 +160,7 @@
 	 $vac_list=$this->vaclist();
 	 $listvac_arr=$this->listvac_arr();
 	 $list_hos=$this->list_hos();
-		 //dd($caselst);
+	 $vacgrouplist=$this->vacgrouplist();
 		 return view('AEFI.Apps.caselstAEFI1')
 			->with('listProvince', $listProvince)
 			->with('listDistrict', $listDistrict)
@@ -172,7 +174,8 @@
 			->with('vac_list',$vac_list)
 			->with('listvac_arr',$listvac_arr)
 			->with('list_hos',$list_hos)
-			->with('datenow',$datenow);
+			->with('datenow',$datenow)
+			->with('vacgrouplist',$vacgrouplist);
 
 	 	}
 
@@ -354,6 +357,7 @@
 	 $vac_list=$this->vaclist();
 	 $listvac_arr=$this->listvac_arr();
 	 $list_hos=$this->list_hos();
+	 $vacgrouplist=$this->vacgrouplist();
 	// dd("test");
 		 return view('AEFI.Apps.caselstAEFI1')
 			->with('listProvince', $listProvince)
@@ -368,7 +372,8 @@
 			->with('vac_list',$vac_list)
 			->with('listvac_arr',$listvac_arr)
 			->with('list_hos',$list_hos)
-			->with('datenow',$datenow);
+			->with('datenow',$datenow)
+			->with('vacgrouplist',$vacgrouplist);
 			// ->with('date_of_symptoms_from',$date_of_symptoms_from)
 			// ->with('date_of_symptoms_to',$date_of_symptoms_to);
 		}
@@ -554,6 +559,17 @@
 			->get();
 			 // dd($vaclist);
 			return $arr_vaclist;
+		}
+		protected function vacgrouplist(){
+			$vacgroup_arr = DB::table('vac_tbl')
+			->select('VAC_CODE','vac_group')
+			->orderBy('VAC_CODE', 'ASC')
+			->get();
+			foreach ($vacgroup_arr as  $value) {
+				$vacgroup_arr[$value->VAC_CODE] =trim($value->vac_group);
+			}
+			// dd($province_arr);
+			return $vacgroup_arr;
 		}
 
 }

@@ -120,6 +120,10 @@
 		$hospcode_get_vac = $req ->input ('hospcode_get_vac');
 		$main_diagnosis = $req ->input ('main_diagnosis');
 		$minor_diagnosis = $req ->input ('minor_diagnosis');
+		$num_of_pregnant_text = $req ->input ('num_of_pregnant_text');
+		$other_pregnant_text = $req ->input ('other_pregnant_text');
+		$given_pregnant_text = $req ->input ('given_pregnant_text');
+		$miscarriages_pregnant_text = $req ->input ('miscarriages_pregnant_text');
 		$data = array(
 			'id_case'=>$id_case,
 			'hn'=>$hn,
@@ -201,7 +205,11 @@
 			'hospcode_report'=>$hospcode_report,
 			'hospcode_get_vac'=>$hospcode_get_vac,
 			'main_diagnosis'=>$main_diagnosis,
-			'minor_diagnosis'=>$minor_diagnosis
+			'minor_diagnosis'=>$minor_diagnosis,
+			'num_of_pregnant_text'=>$num_of_pregnant_text,
+			'other_pregnant_text'=>$other_pregnant_text,
+			'given_pregnant_text'=>$given_pregnant_text,
+			'miscarriages_pregnant_text'=>$miscarriages_pregnant_text
 		);
 	// echo($data);
 	//  $res1 = $data;

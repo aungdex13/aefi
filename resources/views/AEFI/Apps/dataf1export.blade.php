@@ -168,7 +168,8 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
                             $vac_name = isset($value->name_of_vaccine) ? $value->name_of_vaccine : "NULL" ;
                              $cutVacName = explode(',', $vac_name);
                           @endphp
-                          <p style="text-align:center;">{{date('Y',strtotime(isset($value->datepicker_send_reported) ? $value->datepicker_send_reported : "-"))  }}-{{str_pad(isset($cutVacName[0]) ? $cutVacName[0] : "NULL", 2, '0', STR_PAD_LEFT)}}-{{$value->id}}</p>
+                          {{-- <p style="text-align:center;">{{date('Y',strtotime(isset($value->datepicker_send_reported) ? $value->datepicker_send_reported : "-"))  }}-{{str_pad(isset($cutVacName[0]) ? $cutVacName[0] : "NULL", 2, '0', STR_PAD_LEFT)}}-{{$value->id}}</p> --}}
+                          <p style="text-align:center;">{{date('Y',strtotime(isset($value->datepicker_send_reported) ? $value->datepicker_send_reported : "-"))  }}-{{ isset($vacgrouplist[$value->name_of_vaccine]) ? $vacgrouplist[$value->name_of_vaccine] : ""}}-{{$value->id}}</p>
                         </td>
                         								        <td>{{ $value->hn }}</td>
 				                <td style="text-align: center; vertical-align: middle;" width="4%">{{ $value->first_name }}</td>
@@ -183,7 +184,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
                         <td>{{ isset($listProvince[ $value->province]) ?$listProvince[ $value->province] : "ไม่ระบุข้อมูล"}}</td>
                         <td>{{ isset($listDistrict[$value->district]) ? $listDistrict[$value->district]: "ไม่ระบุข้อมูล" }}</td>
                         <td>{{ isset($listsubdistrict[$value->subdistrict]) ?  $listsubdistrict[$value->subdistrict] : "ไม่ระบุข้อมูล"}}</td>
-                        <td>{{ isset($value->age_while_sick_year) ? $value->age_while_sick_year: "-" }}</td>
+                        {{-- <td>{{ isset($value->age_while_sick_year) ? $value->age_while_sick_year: "-" }}</td> --}}
                         <td>{{ isset($value->age_while_sick_month) ? $value->age_while_sick_month:"-" }}</td>
                         <td>{{ isset($value->age_while_sick_day) ? $value->age_while_sick_day:"-"}}</td>
 								        <td>{{ $arr_gender[$value->gender] }}</td>

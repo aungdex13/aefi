@@ -528,11 +528,10 @@ foreach ($aecode as $value) {
                           <div id="other_vaccination_history" style="display: none">
                             <label>วัคซีนที่แพ้ :</label>
                             <select id="other_vaccination_history_text" name="other_vaccination_history" class="form-control select2" style="width: 100%;">
-                              <option class="badge filter badge-info" data-color="info" value="">กรุณาเลือก</option>
-                              <?php
-										  foreach ($arr_history_of_vaccine as $k=>$v) { ?>
-                              <option class="badge filter badge-info" data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
-                              <?php } ?>
+                              <option value="">กรุณาระบุชื่อวัคซีน</option>
+                              @foreach ($vac_list as $row)
+                              <option value="{{$row->VAC_CODE}}">{{$row->VAC_NAME_EN}}</option>
+                              @endforeach
                             </select>
                             <label></br>ยาที่แพ้ :</label>
                             <input type="text" name="other_drug_history" id="other_secymptoms_after_vaccination_text" class="form-control" placeholder="ระบุ" hidden="true">
@@ -747,11 +746,29 @@ foreach ($aecode as $value) {
                           </label>
                         </div>
                       </div>
-                      <div class="col-lg-12">
+                      <div class="col-lg-6">
+                        <div id="other_pregnant" style="display: none">
+                          <input type="text" name="num_of_pregnant_text" id="num_of_pregnant_text" class="form-control" placeholder="ครรภ์ที่เท่าไหร่" hidden="true">
+                          <input type="text" name="other_pregnant_text" id="other_pregnant_text" class="form-control" placeholder="ระบุอายุครรภ์" hidden="true">
+                          <input type="text" name="given_pregnant_text" id="given_pregnant_text" class="form-control" placeholder="คลอดบุตรมาแล้วกี่คน" hidden="true">
+                          <input type="text" name="miscarriages_pregnant_text" id="miscarriages_pregnant_text" class="form-control" placeholder="เคยแท้งมาแล้วกี่คน" hidden="true">
+                        </div>
+                      </div>
+                      {{-- <div class="col-lg-6">
                         <div id="other_pregnant" style="display: none">
                           <input type="text" name="other_pregnant_text" id="other_pregnant_text" class="form-control" placeholder="ระบุอายุครรภ์" hidden="true">
                         </div>
                       </div>
+                      <div class="col-lg-6">
+                        <div id="other_pregnant" style="display: none">
+                          <input type="text" name="given_pregnant_text" id="given_pregnant_text" class="form-control" placeholder="คลอดบุตรมาแล้วกี่คน" hidden="true">
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div id="other_pregnant" style="display: none">
+                          <input type="text" name="miscarriages_pregnant_text" id="miscarriages_pregnant_text" class="form-control" placeholder="เคยแท้งมาแล้วกี่คน" hidden="true">
+                        </div>
+                      </div> --}}
                     </div>
                   </div>
                   <!-- /.box-header -->
@@ -1437,6 +1454,22 @@ foreach ($aecode as $value) {
                               Abruptio placenta
                             </label>
                           </div>
+                          <div class="col-md-3">
+                            <label>
+                              <input name="other_pregnant_symptoms" type="checkbox" value="9999">
+                              อื่นๆ
+                            </label>
+                          </div>
+                          <div class="form-group">
+                            <div class="col-lg-12">
+                              <div id="other_symptoms_pregnant" style="display: none">
+                                <input type="text" id="other_pregnant_symptoms_later_immunized_text" name="other_pregnant_symptoms_later_immunized" class="form-control" placeholder="" hidden="true">
+                              </div>
+                              {{-- <div id="other_symptoms_later_immunized_t" style="display: none">
+                                <input type="text" class="form-control pull-right" id="other_symptoms_later_immunized_text" name="other_symptoms_later_immunized" placeholder="ระบุอาการอื่นๆ">
+                              </div> --}}
+                            </div>
+                          </div>
                           <div class="col-md-12">
                             <hr>
                           <label>
@@ -1482,7 +1515,7 @@ foreach ($aecode as $value) {
                           <div class="col-md-3">
                             <label>
                               <input name="symptoms_later_immunized" type="checkbox" value="9999">
-                              other
+                              อื่นๆ
                             </label>
                           </div>
                           <div class="form-group">
@@ -1635,10 +1668,10 @@ foreach ($aecode as $value) {
                           รับไว้รักษาในโรงพยาบาล
                         </label>
                       </div>
-                      <div class="col-md-4">
+                      <div class="col-md-12">
                         <label><div class="form-group">
                           <div class="form-group">
-                            <div class="col-lg-6">
+                            <div class="col-lg-12">
                               <label>การวินิจฉัยหลักของแพทย์ :</label>
                               <select id="js-example-basic-single3" name="main_diagnosis" class="js-example-basic-single3 form-control" data-dropdown-css-class="select2-danger" required>
                               </select>
@@ -1646,14 +1679,14 @@ foreach ($aecode as $value) {
                             </div>
                           </div>
                           <div class="form-group">
-                            <div class="col-lg-6">
+                            <div class="col-lg-12">
                               <label>การวินิจฉัยรองของแพทย์ :</label>
                               <select id="js-example-basic-single3" name="minor_diagnosis" class="js-example-basic-single3 form-control" data-dropdown-css-class="select2-danger" required>
                               </select>
                               {{-- <input type="text" id="minor_diagnosis" name="minor_diagnosis" class="form-control" placeholder=""> --}}
                             </div>
                           </div>
-                          <div class="col-lg-6">
+                          <div class="col-lg-12">
                             <label>รายละเอียดอาการและการตรวจสอบ</label>
                             <textarea class="form-control" rows="5" name="Symptoms_details"></textarea>
                           </div>
