@@ -197,8 +197,52 @@ $(document).ready(function() {
     $('#date_of_treatment2').datepicker({
       dateFormat: "yy-mm-dd"
     })
+            //Date picker
+            $('#date_of_symptoms').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
     //Date picker
-    $('#date_of_symptoms').datepicker({
+    $('#date_of_symptoms10').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+      //Date picker
+      $('#date_of_symptoms11').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+      //Date picker
+      $('#date_of_symptoms12').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+      //Date picker
+      $('#date_of_symptoms13').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+      //Date picker
+      $('#date_of_symptoms14').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+      //Date picker
+      $('#date_of_symptoms15').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+      //Date picker
+      $('#date_of_symptoms16').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+     //Date picker
+     $('#date_of_symptoms17').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+     //Date picker
+     $('#date_of_symptoms18').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+     //Date picker
+     $('#date_of_symptoms19').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+     //Date picker
+     $('#date_of_symptoms20').datepicker({
       dateFormat: "yy-mm-dd"
     })
         //Date picker

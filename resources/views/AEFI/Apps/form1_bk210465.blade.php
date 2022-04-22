@@ -973,6 +973,7 @@ foreach ($aecode as $value) {
                       </tr>
                     </tbody>
                   </table>
+                  
                 </div>
                 <!-- /.box -->
               </div>
@@ -991,12 +992,16 @@ foreach ($aecode as $value) {
               <div class="box box-warning">
                 <div class="box-header with-border">
                   <!-- form start -->
-
-                  <div class="form-group">
+                  <div class="col-md-12">
+                    <label>
+                    <div class="form-group">
                     <div class="row">
-                      <div class="col-lg-3">
+                      <div class="box-header with-border">
                         <h3 class="box-title">(4) การตัดสินใจว่ามีความจำเป็นที่จะสอบสวน</h3>
                       </div>
+                      {{-- <div class="col-lg-3">
+                        <h3 class="box-title">(4) การตัดสินใจว่ามีความจำเป็นที่จะสอบสวน</h3>
+                      </div> --}}
                       <div class="col-lg-1">
                         <div class="radio">
                           <label>
@@ -1033,14 +1038,13 @@ foreach ($aecode as $value) {
                         </div>
                       </div>
                     </div>
+                    </div>
                   </div>
-
-                </div>
                 <!-- /.box-header -->
-
               </div>
               <!-- /.box -->
             </div>
+          </div>
             <!--หัวข้อที่5 -->
             <div class="col-md-12">
               <!-- general form elements -->
@@ -1552,533 +1556,482 @@ foreach ($aecode as $value) {
 '        <div class="modal-body">'+
 '            <div class="tab-pane active" id="tab_1">'+
 '                <div class="box-body">'+
-'                  {{-- คอรั่มภายใน3.1 --}}'+
-'                  <div class="col-md-6">'+
-'                    <!-- general form elements -->'+
-'                    <div class="box box-success">'+
-'                      <div class="box-header with-border">'+
-'                        <!-- checkbox3.1.1 -->'+
-'                        <div class="form-group">'+
-'                          <div class="col-md-4" id="rash_' + rowCount + '">'+
-'                            <label>'+
-'                              <input type="checkbox" id="c_rash" name="c_rash[' + rowCountSyntom + ']" value="0027">'+
-'                              Rash'+
-'                            </label>'+
-'                            <input type="text" id="rash' + rowCount + '" name="rash[' + rowCountSyntom + ']" hidden>'+
-'                          </div>'+
-'                          <div class="col-md-4" id="erythema_' + rowCount + '">'+
-'                            <label>'+
-'                              <input type="checkbox" id="erythema1" name="c_erythema[' + rowCountSyntom + ']" value="0028">'+
-'                              Erythema'+
-'                            </label>'+
-'                            <input type="text" id="erythema' + rowCount + '" name="erythema[' + rowCountSyntom + ']" hidden>'+
-'                          </div>'+
-'                          <div class="col-md-4" id="urticaria_' + rowCount + '">'+
-'                            <label>'+
-'                              <input type="checkbox" id="urticaria1" name="c_urticaria[' + rowCountSyntom + ']" value="0044">'+
-'                              Urticaria'+
-'                            </label>'+
-'                            <input type="text" id="urticaria' + rowCount + '" name="urticaria[' + rowCountSyntom + ']" hidden>'+
-'                          </div>'+
-'                        </div>'+
-'                        <div class="form-group">'+
-'                          <div class="col-md-4" id="itching_' + rowCount + '">'+
-'                            <label>'+
-'                              <input type="checkbox" id="itching1" name="c_itching[' + rowCountSyntom + ']" value="0026">'+
-'                              Itching'+
-'                            </label>'+
-'                            <input type="text" id="itching' + rowCount + '" name="itching[' + rowCountSyntom + ']" hidden>'+
-'                          </div>'+
-'                          <div class="col-md-4" id="edema_' + rowCount + '">'+
-'                            <label>'+
-'                              <input type="checkbox" id="edema1" name="c_edema[' + rowCountSyntom + ']" value="0003A">'+
-'                              Edema'+
-'                            </label>'+
-'                            <input type="text" id="edema' + rowCount + '" name="edema[' + rowCountSyntom + ']" hidden>'+
-'                          </div>'+
-'                          <div class="col-md-5" id="angioedema_' + rowCount + '">'+
-'                            <label>'+
-'                              <input type="checkbox" id="angioedema" name="c_angioedema[' + rowCountSyntom + ']" value="0003">'+
-'                              Angioedema'+
-'                            </label>'+
-'                            <input type="text" id="angioedema' + rowCount + '" name="angioedema[' + rowCountSyntom + ']" hidden>'+
-'                          </div>'+
-'                        </div>'+
-'                      </div>'+
-'                      <!-- /.box-header -->'+
-'                      <!-- form start -->'+
-'    '+
-'                      <div class="box-body">'+
-'                        {{-- input content --}}'+
-'                        <!-- checkbox3.1.2  -->'+
-'                        <div class="form-group">'+
-'                          <div class="col-md-4" id="fainting_' + rowCount + '">'+
-'                            <label>'+
-'                              <input type="checkbox" id="fainting1" name="c_fainting[' + rowCountSyntom + ']" value="1">'+
-'                              Fainting'+
-'                            </label>'+
-'                            <input type="text" id="fainting' + rowCount + '" name="fainting[' + rowCountSyntom + ']" hidden>'+
-'                          </div>'+
-'                          <div class="col-md-6" id="hyperventilation_' + rowCount + '">'+
-'                            <label>'+
-'                              <input type="checkbox" id="hyperventilation1" name="c_hyperventilation[' + rowCountSyntom + ']" value="0517">'+
-'                              Hyperventilation'+
-'                            </label>'+
-'                            <input type="text" id="hyperventilation' + rowCount + '" name="hyperventilation[' + rowCountSyntom + ']" hidden>'+
-'                          </div>'+
-'                        </div>'+
-'                        <div class="form-group">'+
-'                          <div class="col-md-4" id="syncope_' + rowCount + '">'+
-'                            <label>'+
-'                              <input type="checkbox" id="syncope1" name="c_syncope[' + rowCountSyntom + ']" value="0223">'+
-'                              Syncope'+
-'                            </label>'+
-'                            <input type="text" id="syncope' + rowCount + '" name="syncope[' + rowCountSyntom + ']" hidden>'+
-'                          </div>'+
-'                          <div class="col-md-4" id="headche_' + rowCount + '">'+
-'                            <label>'+
-'                              <input type="checkbox" id="headche1" name="c_headche[' + rowCountSyntom + ']" value="1">'+
-'                              Headche'+
-'                            </label>'+
-'                            <input type="text" id="headche' + rowCount + '" name="headche[' + rowCountSyntom + ']" hidden>'+
-'                          </div>'+
-'                          <div class="col-md-4" id="dizziness_' + rowCount + '">'+
-'                            <label>'+
-'                              <input type="checkbox" id="dizziness1" name="c_dizziness[' + rowCountSyntom + ']" value="0101">'+
-'                              Dizziness'+
-'                            </label>'+
-'                            <input type="text" id="dizziness' + rowCount + '" name="dizziness[' + rowCountSyntom + ']" hidden>'+
-'                          </div>'+
-'                        </div>'+
-'                        <div class="form-group">'+
-'                          <div class="col-md-4" id="fatigue_' + rowCount + '">'+
-'                            <label>'+
-'                              <input type="checkbox" id="fatigue" name="c_fatigue[' + rowCountSyntom + ']" value="0724">'+
-'                              Fatigue'+
-'                            </label>'+
-'                            <input type="text" id="fatigue' + rowCount + '" name="fatigue[' + rowCountSyntom + ']" hidden>'+
-'                          </div>'+
-'                          <div class="col-md-4" id="malaise_' + rowCount + '">'+
-'                            <label>'+
-'                              <input type="checkbox" id="malaise" name="c_malaise[' + rowCountSyntom + ']" value="0728">'+
-'                              Malaise'+
-'                            </label>'+
-'                            <input type="text" id="malaise' + rowCount + '" name="malaise[' + rowCountSyntom + ']" hidden>'+
-'                          </div>'+
-'                        </div>'+
-'                      </div>'+
-'                      <!-- /.box-body -->'+
-'                      <div class="box-footer">'+
-'                        <!-- checkbox3.1.3  -->'+
-'                        <div class="form-group">'+
-'                          <div class="col-md-4" id="dyspepsia_' + rowCount + '">'+
-'                            <label>'+
-'                              <input type="checkbox" id="dyspepsia" name="c_dyspepsia[' + rowCountSyntom + ']" value="0279">'+
-'                              Dyspepsia'+
-'                            </label>'+
-'                            <input type="text" id="dyspepsia' + rowCount + '" name="dyspepsia[' + rowCountSyntom + ']" hidden>'+
-'                          </div>'+
-'                          <div class="col-md-4" id="diarrhea_' + rowCount + '">'+
-'                            <label>'+
-'                              <input type="checkbox" id="diarrhea" name="c_diarrhea[' + rowCountSyntom + ']" value="1">'+
-'                              Diarrhea'+
-'                            </label>'+
-'                            <input type="text" id="diarrhea' + rowCount + '" name="diarrhea[' + rowCountSyntom + ']" hidden>'+
-'                          </div>'+
-'                          <div class="col-md-4" id="nausea_' + rowCount + '">'+
-'                            <label>'+
-'                              <input type="checkbox" id="nausea" name="c_nausea[' + rowCountSyntom + ']" value="0308">'+
-'                              Nausea'+
-'                            </label>'+
-'                            <input type="text" id="nausea' + rowCount + '" name="nausea[' + rowCountSyntom + ']" hidden>'+
-'                          </div>'+
-'                        </div>'+
-'                        <div class="form-group">'+
-'                          <div class="col-md-4" id="vomiting_' + rowCount + '">'+
-'                            <label>'+
-'                              <input type="checkbox" id="vomiting" name="c_vomiting[' + rowCountSyntom + ']" value="0228">'+
-'                              Vomiting'+
-'                            </label>'+
-'                            <input type="text" id="vomiting' + rowCount + '" name="vomiting[' + rowCountSyntom + ']" hidden>'+
-'                          </div>'+
-'                          <div class="col-md-6" id="abdominal_pain_' + rowCount + '">'+
-'                            <label>'+
-'                              <input type="checkbox" id="abdominal_pain1" name="c_abdominal_pain[' + rowCountSyntom + ']" value="0268">'+
-'                              Abdominal pain'+
-'                            </label>'+
-'                            <input type="text" id="abdominal_pain' + rowCount + '" name="abdominal_pain[' + rowCountSyntom + ']" hidden>'+
-'                          </div>'+
-'                        </div>'+
-'                      </div>'+
-'                      <!-- /.box-body -->'+
-'                      <div class="box-footer">'+
-'                        <!-- checkbox3.1.4  -->'+
-'                        <div class="form-group">'+
-'                          <div class="col-md-4" id="arthalgia_' + rowCount + '">'+
-'                            <label>'+
-'                              <input type="checkbox" id="arthalgia1" name="c_arthalgia[' + rowCountSyntom + ']" value="1">'+
-'                              Arthalgia'+
-'                            </label>'+
-'                            <input type="text" id="arthalgia' + rowCount + '" name="arthalgia[' + rowCountSyntom + ']" hidden>'+
-'                          </div>'+
-'                          <div class="col-md-4" id="myalgia_' + rowCount + '">'+
-'                            <label>'+
-'                              <input type="checkbox" id="myalgia1" name="c_myalgia[' + rowCountSyntom + ']" value="0072">'+
-'                              Myalgia'+
-'                            </label>'+
-'                            <input type="text" id="myalgia' + rowCount + '" name="myalgia[' + rowCountSyntom + ']" hidden>'+
-'                          </div>'+
-'                        </div>'+
-'                      </div>'+
-'    '+
-'                    </div>'+
-'                    <!-- /.box -->'+
-'                  </div>'+
-'                  {{-- คอรั่มภายใน3.2 --}}'+
-'                  <div class="col-md-6">'+
-'                    <!-- general form elements -->'+
-'                    <div class="box box-success">'+
-'                      <div class="box-header with-border">'+
-'                        <!-- checkbox3.2.1 -->'+
-'                        <div class="form-group">'+
-'                          <div class="col-md-5" id="fever38c_' + rowCount + '">'+
-'                            <label>'+
-'                              <input type="checkbox" id="fever38c1" name="c_fever38c[' + rowCountSyntom + ']" value="0725">'+
-'                              Fever >= 38 C'+
-'                            </label>'+
-'                            <input type="text" id="fever38c' + rowCount + '" name="fever38c[' + rowCountSyntom + ']" hidden>'+
-'                          </div>'+
-'                        </div>'+
-'                      </div>'+
-'                      <!-- /.box-header -->'+
-'                      <!-- form start -->'+
-'    '+
-'                      <div class="box-body">'+
-'                        {{-- input content --}}'+
-'                        <div class="box-body">'+
-'                          {{-- input content --}}'+
-'                          <!-- checkbox3.2.2  -->'+
-'                          <div class="form-group">'+
-'                            <div class="col-md-12" id="swelling_at_the_injection_' + rowCount + '">'+
-'                              <label>'+
-'                                <input type="checkbox" id="swelling_at_the_injection1" name="c_swelling_at_the_injection[' + rowCountSyntom + ']" value="1">'+
-'                                บวมบริเวณที่ฉีดนานเกิน3วัน'+
-'                              </label>'+
-'                              <input type="text" id="swelling_at_the_injection' + rowCount + '" name="swelling_at_the_injection[' + rowCountSyntom + ']" hidden>'+
-'                            </div>'+
-'                            <div class="col-md-12" id="swelling_beyond_nearest_joint_' + rowCount + '">'+
-'                              <label>'+
-'                                <input type="checkbox" id="swelling_beyond_nearest_joint1" name="c_swelling_beyond_nearest_joint[' + rowCountSyntom + ']" value="1">'+
-'                                บวมลามไปถึงข้อที่ใกล้ที่สุด'+
-'                              </label>'+
-'                              <input type="text" id="swelling_beyond_nearest_joint' + rowCount + '" name="swelling_beyond_nearest_joint[' + rowCountSyntom + ']" hidden>'+
-'                            </div>'+
-'                            <div class="col-md-12" id="lymphadenopathy_' + rowCount + '">'+
-'                              <label>'+
-'                                <input type="checkbox" id="lymphadenopathy1" name="c_lymphadenopathy[' + rowCountSyntom + ']" value="0577">'+
-'                                Lymphadenopathy'+
-'                              </label>'+
-'                              <input type="text" id="lymphadenopathy' + rowCount + '" name="lymphadenopathy[' + rowCountSyntom + ']" hidden>'+
-'                            </div>'+
-'                            <div class="col-md-12" id="lymphadenitis_' + rowCount + '">'+
-'                              <label>'+
-'                                <input type="checkbox" id="lymphadenitis1" name="c_lymphadenitis[' + rowCountSyntom + ']" value="0577D">'+
-'                                Lymphadenitis'+
-'                              </label>'+
-'                              <input type="text" id="lymphadenitis' + rowCount + '" name="lymphadenitis[' + rowCountSyntom + ']" hidden>'+
-'                            </div>'+
-'                          </div>'+
-'                          <div class="form-group">'+
-'                            <div class="col-md-6" id="sterile_abscess_' + rowCount + '">'+
-'                              <label>'+
-'                                <input type="checkbox" id="sterile_abscess1" name="c_sterile_abscess[' + rowCountSyntom + ']" value="0051">'+
-'                                Sterile abscess'+
-'                              </label>'+
-'                              <input type="text" id="sterile_abscess' + rowCount + '" name="sterile_abscess[' + rowCountSyntom + ']" hidden>'+
-'                            </div>'+
-'                            <div class="col-md-6" id="bacterial_abscess_' + rowCount + '">'+
-'                              <label>'+
-'                                <input type="checkbox" id="bacterial_abscess1" name="c_bacterial_abscess[' + rowCountSyntom + ']" value="1">'+
-'                                Bacterial abscess'+
-'                              </label>'+
-'                              <input type="text" id="bacterial_abscess' + rowCount + '" name="bacterial_abscess[' + rowCountSyntom + ']" hidden>'+
-'                            </div>'+
-'                          </div>'+
-'                        </div>'+
-'                      </div>'+
-'                      <!-- /.box-body -->'+
-'                      <div class="box-footer">'+
-'                        <!-- checkbox3.2.3  -->'+
-'                        <div class="form-group">'+
-'                          <div class="col-md-12" id="febrile_convulsion_' + rowCount + '">'+
-'                            <label>'+
-'                              <input type="checkbox" id="febrile_convulsion1" name="c_febrile_convulsion[' + rowCountSyntom + ']" value="1">'+
-'                              Febrile convulsion'+
-'                            </label>'+
-'                            <input type="text" id="febrile_convulsion' + rowCount + '" name="febrile_convulsion[' + rowCountSyntom + ']" hidden>'+
-'                          </div>'+
-'                          <div class="col-md-12" id="afebrile_convulsion_' + rowCount + '">'+
-'                            <label>'+
-'                              <input type="checkbox" id="afebrile_convulsion" name="c_afebrile_convulsion[' + rowCountSyntom + ']" value="1">'+
-'                              Afebrile convulsion'+
-'                            </label>'+
-'                            <input type="text" id="afebrile_convulsion' + rowCount + '" name="afebrile_convulsion[' + rowCountSyntom + ']" hidden>'+
-'                          </div>'+
-'                          <div class="col-md-12" id="encephalopathy_' + rowCount + '">'+
-'                            <label>'+
-'                              <input type="checkbox" id="encephalopathy1" name="c_encephalopathy[' + rowCountSyntom + ']" value="0105">'+
-'                              Encephalopathy/Encephalitis'+
-'                            </label>'+
-'                            <input type="text" id="encephalopathy' + rowCount + '" name="encephalopathy[' + rowCountSyntom + ']" hidden>'+
-'                          </div>'+
-'                        </div>'+
-'                        <div class="form-group">'+
-'                          <div class="col-md-6" id="flaccid_paralysis_' + rowCount + '">'+
-'                            <label>'+
-'                              <input type="checkbox" id="flaccid_paralysis1" name="c_flaccid_paralysis[' + rowCountSyntom + ']" value="0139">'+
-'                              Flaccid paralysis'+
-'                            </label>'+
-'                            <input type="text" id="flaccid_paralysis' + rowCount + '" name="flaccid_paralysis[' + rowCountSyntom + ']" hidden>'+
-'                          </div>'+
-'                          <div class="col-md-6" id="spastic_paralysis_' + rowCount + '">'+
-'                            <label>'+
-'                              <input type="checkbox" id="spastic_paralysis1" name="c_spastic_paralysis[' + rowCountSyntom + ']" value="0775">'+
-'                              Spastic paralysis'+
-'                            </label>'+
-'                            <input type="text" id="spastic_paralysis' + rowCount + '" name="spastic_paralysis[' + rowCountSyntom + ']" hidden>'+
-'                          </div>'+
-'                        </div>'+
-'                      </div>'+
-'                    </div>'+
-'    '+
-'                  </div>'+
-'                  <!-- /.box -->'+
-'                  {{-- คอรั่มภายใน3.3 --}}'+
-'                  <div class="col-md-6">'+
-'                    <!-- general form elements -->'+
-'                    <div class="box box-success">'+
-'                      <!-- /.box-header -->'+
-'                      <!-- form start -->'+
-'    '+
-'                      <div class="box-body">'+
-'                        {{-- input content --}}'+
-'                        <!-- checkbox3.3.1  -->'+
-'                        <div class="form-group">'+
-'                          <div class="col-md-12" id="hhe_' + rowCount + '">'+
-'                            <label>'+
-'                              <input id="hhe1" name="c_hhe[' + rowCountSyntom + ']" type="checkbox" value="1704">'+
-'                              Hypotonic Hyporesponsive episode (HHE)'+
-'                            </label>'+
-'                            <input type="text" id="hhe' + rowCount + '" name="hhe[' + rowCountSyntom + ']" hidden>'+
-'                          </div>'+
-'                          <div class="col-md-12" id="persistent_inconsolable_crying_' + rowCount + '">'+
-'                            <label>'+
-'                              <input id="persistent_inconsolable_crying1" name="c_persistent_inconsolable_crying[' + rowCountSyntom + ']" type="checkbox" value="1">'+
-'                              Persistent inconsolable crying'+
-'                            </label>'+
-'                            <input type="text" id="persistent_inconsolable_crying' + rowCount + '" name="persistent_inconsolable_crying[' + rowCountSyntom + ']" hidden>'+
-'                          </div>'+
-'                          <div class="col-md-12" id="thrombocytopenia_' + rowCount + '">'+
-'                            <label>'+
-'                              <input id="thrombocytopenia1" name="c_thrombocytopenia[' + rowCountSyntom + ']" type="checkbox" value="0594">'+
-'                              Thrombocytopenia'+
-'                            </label>'+
-'                            <input type="text" id="thrombocytopenia' + rowCount + '" name="thrombocytopenia[' + rowCountSyntom + ']" hidden>'+
-'                          </div>'+
-'                          <div class="col-md-12" id="osteomyelitis_' + rowCount + '">'+
-'                            <label>'+
-'                              <input id="osteomyelitis1" name="c_osteomyelitis[' + rowCountSyntom + ']" type="checkbox" value="1184">'+
-'                              Osteitis/Osteomyelitis'+
-'                            </label>'+
-'                            <input type="text" id="osteomyelitis' + rowCount + '" name="osteomyelitis[' + rowCountSyntom + ']" hidden>'+
-'                          </div>'+
-'                          <div class="col-md-12" id="toxic_shock_syndrome_' + rowCount + '">'+
-'                            <label>'+
-'                              <input id="toxic_shock_syndrome1" name="c_toxic_shock_syndrome[' + rowCountSyntom + ']" type="checkbox" value="1">'+
-'                              Toxic shock syndrome'+
-'                            </label>'+
-'                            <input type="text" id="toxic_shock_syndrome' + rowCount + '" name="toxic_shock_syndrome[' + rowCountSyntom + ']" hidden>'+
-'                          </div>'+
-'                          <div class="col-md-12" id="sepsis_' + rowCount + '">'+
-'                            <label>'+
-'                              <input id="sepsis1" name="c_sepsis[' + rowCountSyntom + ']" type="checkbox" value="0744">'+
-'                              Sepsis'+
-'                            </label>'+
-'                            <input type="text" id="sepsis' + rowCount + '" name="sepsis[' + rowCountSyntom + ']" hidden>'+
-'                          </div>'+
-'                          <div class="col-md-12" id="anaphylaxis_' + rowCount + '">'+
-'                            <label>'+
-'                              <input id="anaphylaxis1" name="c_anaphylaxis[' + rowCountSyntom + ']" type="checkbox" value="2237">'+
-'                              Anaphylaxis'+
-'                            </label>'+
-'                            <input type="text" id="anaphylaxis' + rowCount + '" name="anaphylaxis[' + rowCountSyntom + ']" hidden>'+
-'                          </div>'+
-'                          <div class="col-md-12" id="gbs_' + rowCount + '">'+
-'                            <label>'+
-'                              <input id="gbs" name="c_gbs[' + rowCountSyntom + ']" type="checkbox" value="1">'+
-'                              Guillain-Barré syndrome (GBS)'+
-'                            </label>'+
-'                            <input type="text" id="gbs' + rowCount + '" name="gbs[' + rowCountSyntom + ']" hidden>'+
-'                          </div>'+
-'                          <div class="col-md-12" id="transverse_myelitis_' + rowCount + '">'+
-'                            <label>'+
-'                              <input id="transverse myelitis1" name="c_transverse myelitis[' + rowCountSyntom + ']" type="checkbox" value="1">'+
-'                              Transverse myelitis'+
-'                            </label>'+
-'                            <input type="text" id="transverse_myelitis' + rowCount + '" name="transverse_myelitis[' + rowCountSyntom + ']" hidden>'+
-'                          </div>'+
-'                          <div class="col-md-12" id="adem_' + rowCount + '">'+
-'                            <label>'+
-'                              <input id="adem1" name="c_adem[' + rowCountSyntom + ']" type="checkbox" value="1">'+
-'                              Acute disseminated encephalomyelitis (ADEM)'+
-'                            </label>'+
-'                            <input type="text" id="adem' + rowCount + '" name="adem[' + rowCountSyntom + ']" hidden>'+
-'                          </div>'+
-'                          <div class="col-md-12" id="acute_myocardial_' + rowCount + '">'+
-'                            <label>'+
-'                              <input id="acute_myocardial1" name="c_acute_myocardial[' + rowCountSyntom + ']" type="checkbox" value="1">'+
-'                              Acute Myocardial'+
-'                            </label>'+
-'                            <input type="text" id="acute_myocardial' + rowCount + '" name="acute_myocardial[' + rowCountSyntom + ']" hidden>'+
-'                          </div>'+
-'                          <div class="col-md-12" id="ards_' + rowCount + '">'+
-'                            <label>'+
-'                              <input id="ards1" name="c_ards[' + rowCountSyntom + ']" type="checkbox" value="1">'+
-'                               Acute respiratory distress syndrome (ARDS)'+
-'                            </label>'+
-'                            <input type="text" id="ards' + rowCount + '" name="ards[' + rowCountSyntom + ']" hidden>'+
-'                          </div>'+
-'                          <div class="col-md-12" id="symptoms_later_immunized_' + rowCount + '">'+
-'                            <label>'+
-'                              <input id="symptoms_later_immunized" name="c_symptoms_later_immunized[' + rowCountSyntom + ']" type="checkbox" value="9999">'+
-'                              other'+
-'                            </label>'+
-'                            <input type="text" id="symptoms_later_immunized' + rowCount + '" name="symptoms_later_immunized[' + rowCountSyntom + ']" hidden>'+
-'                          </div>'+
-'                          <div class="form-group">'+
-'                            <div class="col-lg-12">'+
-'                              <div id="other_symptoms_later_immunized" style="display: none">'+
-'                                <input type="text" id="other_symptoms_later_immunized_text1" name="other_symptoms_later_immunized[' + rowCountSyntom + ']" class="form-control" placeholder="" hidden="true">'+
+'                {{-- คอรั่มภายใน3.1 --}}'+
+'                                   <div class="col-md-12">'+
+'                                    <!-- general form elements -->'+
+'                                  <div class="box box-success">'+
+'                                    <div class="box-header with-border">'+
+'                                    <label>'+
+'                                          กลุ่มอาการ'+
+'                                      </label>'+
+'                                      <hr>'+
+'                                      <!-- checkbox3.1.1 -->'+
+'                                      <div class="form-group">'+
+'                                        <div class="col-md-4">'+
+'                                        <label>'+
+'                                        <input type="checkbox" name="rash[]' + rowCount + '" value="0027">'+
+'                                      Rash(ผื่น)'+
+'                                    </label>'+
+'                                  </div>'+
+'                                  <div class="col-md-4">'+
+'                                    <label>'+
+'                                    <input type="checkbox" name="erythema[]' + rowCount + '" value="0028">'+
+'                                  Erythema(ผื่นแดง)'+
+'                                </label>'+
 '                              </div>'+
-'                              {{-- <div id="other_symptoms_later_immunized_t" style="display: none">'+
-'                                <input type="text" class="form-control pull-right" id="other_symptoms_later_immunized_text" name="other_symptoms_later_immunized" placeholder="ระบุอาการอื่นๆ">'+
-'                              </div> --}}'+
-'                            </div>'+
-'                          </div>'+
-'                        </div>'+
-'                      </div>'+
-'                    </div>'+
-'                    <!-- /.box -->'+
-'                  </div>'+
-'{{-- คอรั่มภายใน3.3 --}}'+
-'                   <div class="col-md-6">'+
-'                    <!-- general form elements -->'+
-'                    <div class="box box-success">'+
-'                      <!-- /.box-header -->'+
-'                      <!-- form start -->'+
-''+
-'                      <div class="box-body">'+
-'                        {{-- input content --}}'+
-'                        <!-- checkbox3.3.1  -->'+
-'                        <div class="form-group">'+
-'                          <div class="col-md-12" id="chest_pain_' + rowCount + '" >'+
-'                            <label>'+
-'                              <input name="c_chest_pain[' + rowCountSyntom + ']" type="checkbox" value="1">'+
-'                              Chest pain'+
-'                            </label>'+
-'                            <input type="text" id="chest_pain' + rowCount + '" name="chest_pain[' + rowCountSyntom + ']" hidden>'+
-'                          </div>'+
-'                          <div class="col-md-12" id="myocarditis_' + rowCount + '">'+
-'                            <label>'+
-'                              <input name="c_myocarditis[' + rowCountSyntom + ']" type="checkbox" value="1">'+
-'                              Myocarditis'+
-'                            </label>'+
-'                            <input type="text" id="myocarditis' + rowCount + '" name="myocarditis[' + rowCountSyntom + ']" hidden>'+
-'                          </div>'+
-'                          <div class="col-md-12" id="heart_failure_' + rowCount + '">'+
-'                            <label>'+
-'                              <input name="c_heart_failure[' + rowCountSyntom + ']" type="checkbox" value="1">'+
-'                              Heart failure'+
-'                            </label>'+
-'                            <input type="text" id="heart_failure' + rowCount + '" name="heart_failure[' + rowCountSyntom + ']" hidden>'+
-'                          </div>'+
-'                          <div class="col-md-12" id="pericarditis_' + rowCount + '">'+
-'                            <label>'+
-'                              <input name="c_pericarditis[' + rowCountSyntom + ']" type="checkbox" value="1">'+
-'                              Pericarditis'+
-'                            </label>'+
-'                            <input type="text" id="pericarditis' + rowCount + '" name="pericarditis[' + rowCountSyntom + ']" hidden>'+
-'                          </div>'+
-'                          <div class="col-md-12" id="sudden_cardiac_arrest_' + rowCount + '">'+
-'                            <label>'+
-'                              <input name="c_sudden_cardiac_arrest[' + rowCountSyntom + ']" type="checkbox" value="1">'+
-'                              Sudden cardiac arrest'+
-'                            </label>'+
-'                            <input type="text" id="sudden_cardiac_arrest' + rowCount + '" name="sudden_cardiac_arrest[' + rowCountSyntom + ']" hidden>'+
-'                          </div>'+
-'                          <div class="col-md-12" id="covid_19_' + rowCount + '">'+
-'                            <label>'+
-'                              <input name="c_covid_19[' + rowCountSyntom + ']" type="checkbox" value="1">'+
-'                              Covid-19'+
-'                            </label>'+
-'                            <input type="text" id="covid_19' + rowCount + '" name="covid_19[' + rowCountSyntom + ']" hidden>'+
-'                          </div>'+
-'                          <div class="col-md-12" id="ischemic_stroke_' + rowCount + '">'+
-'                            <label>'+
-'                              <input name="c_ischemic_stroke[' + rowCountSyntom + ']" type="checkbox" value="1">'+
-'                              Ischemic stroke'+
-'                            </label>'+
-'                            <input type="text" id="ischemic_stroke' + rowCount + '" name="ischemic_stroke[' + rowCountSyntom + ']" hidden>'+
-'                          </div>'+
-'                          <div class="col-md-12" id="hemorrhagic_stroke_' + rowCount + '">'+
-'                            <label>'+
-'                              <input name="c_hemorrhagic_stroke[' + rowCountSyntom + ']" type="checkbox" value="1">'+
-'                            Hemorrhagic stroke'+
-'                            </label>'+
-'                            <input type="text" id="hemorrhagic_stroke' + rowCount + '" name="hemorrhagic_stroke[' + rowCountSyntom + ']" hidden>'+
-'                          </div>'+
-'                          <div class="col-md-12" id="deep_vein_thrombosis_' + rowCount + '">'+
-'                            <label>'+
-'                              <input name="c_deep_vein_thrombosis[' + rowCountSyntom + ']" type="checkbox" value="1">'+
-'                              Deep vein thrombosis                            '+
-'		                      	</label>'+
-'                            <input type="text" id="deep_vein_thrombosis' + rowCount + '" name="deep_vein_thrombosis[' + rowCountSyntom + ']" hidden>'+
-'                          </div>'+
-'                          <div class="col-md-12" id="pulmonary_embolism_' + rowCount + '">'+
-'                            <label>'+
-'                              <input name="c_pulmonary_embolism[' + rowCountSyntom + ']" type="checkbox" value="1">'+
-'                              Pulmonary embolism'+
-'                            </label>'+
-'                            <input type="text" id="pulmonary_embolism' + rowCount + '" name="pulmonary_embolism[' + rowCountSyntom + ']" hidden>'+
-'                          </div>'+
-'                          <div class="col-md-12" id="hypertension_' + rowCount + '">'+
-'                            <label>'+
-'                              <input name="c_hypertension[' + rowCountSyntom + ']" type="checkbox" value="1">'+
-'                              Hypertension'+
-'                            </label>'+
-'                            <input type="text" id="hypertension' + rowCount + '" name="hypertension[' + rowCountSyntom + ']" hidden>'+
-'                          </div>'+
-'                          <div class="col-md-12" id="hypertensive_urgency_' + rowCount + '">'+
-'                            <label>'+
-'                              <input name="c_hypertensive_urgency[' + rowCountSyntom + ']" type="checkbox" value="1">'+
-'                               Hypertensive urgency'+
-'                            </label>'+
-'                            <input type="text" id="hypertensive_urgency' + rowCount + '" name="hypertensive_urgency[' + rowCountSyntom + ']" hidden>'+
-'                          </div>'+
-'                          <div class="col-md-12" id="bells_palsy_' + rowCount + '">'+
-'                            <label>'+
-'                              <input name="c_bells_palsy[' + rowCountSyntom + ']" type="checkbox" value="1">'+
-'                              Bells palsy'+
-'                            </label>'+
-'                            <input type="text" id="bells_palsy' + rowCount + '" name="bells_palsy[' + rowCountSyntom + ']" hidden>'+
-'                          </div>'+
-''+
-'                          </div>'+
-'                        </div>'+
-''+
-'                    </div>'+
-'                    <!-- /.box -->'+
-'                  </div>'+
+'                              <div class="col-md-4">'+
+                                            '<label>'+
+                                              '<input type="checkbox" name="urticaria[]' + rowCount + '" value="0044">'+
+                                              'Urticaria'+
+                                            '</label>'+
+                                          '</div>'+
+                                        '</div>'+
+                                        '<div class="form-group">'+
+                                          '<div class="col-md-4">'+
+                                            '<label>'+
+                                              '<input type="checkbox" name="itching[]' + rowCount + '" value="0026">'+
+                                              'Itching(อาการคัน)'+
+                                            '</label>'+
+                                          '</div>'+
+                                          '<div class="col-md-4">'+
+                                            '<label>'+
+                                              '<input type="checkbox" name="edema[]' + rowCount + '" value="0003A">'+
+                                             ' Edema'+
+                                            '</label>'+
+                                          '</div>'+
+                                          '<div class="col-md-4">'+
+                                            '<label>'+
+                                              '<input type="checkbox" name="angioedema[]' + rowCount + '" value="0003">'+
+                                              'Angioedema(บวมที่เยื่อบุ)'+
+                                            '</label>'+
+                                          '</div>'+
+                                        '</div>'+
+                                        '{{-- input content --}}'+
+                                        '<!-- checkbox3.1.2  -->'+
+                                        '<div class="form-group">'+
+                                          '<div class="col-md-6" hidden>'+
+                                            '<label>'+
+                                              '<input type="checkbox" name="fainting[]' + rowCount + '" value="1">'+
+                                              'Fainting'+
+                                            '</label>'+
+                                          '</div>'+
+                                          '<div class="col-md-4">'+
+                                            '<label>'+
+                                              '<input type="checkbox" name="hyperventilation[]' + rowCount + '" value="0517">'+
+                                              'Hyperventilation'+
+                                            '</label>'+
+                                          '</div>'+
+                                          '<div class="col-md-4">'+
+                                            '<label>'+
+                                              '<input type="checkbox" name="syncope[]' + rowCount + '" value="0223">'+
+                                              'Syncope(เป็นลม)'+
+                                            '</label>'+
+                                          '</div>'+
+                                          '<div class="col-md-4">'+
+                                            '<label>'+
+                                              '<input type="checkbox" name="headche[]' + rowCount + '" value="1">'+
+                                             ' Headche'+
+                                            '</label>'+
+                                          '</div>'+
+                                          '<div class="col-md-4">'+
+                                          '  <label>'+
+                                              '<input type="checkbox" name="dizziness[]' + rowCount + '" value="0101">'+
+                                              'Dizziness(เวียนศีรษะ)'+
+                                            '</label>'+
+                                          '</div>'+
+                                          '<div class="col-md-4">'+
+                                            '<label>'+
+                                              '<input type="checkbox" name="fatigue[]' + rowCount + '" value="0724">'+
+                                              'Fatigue(อ่อนเพลีย)'+
+                                            '</label>'+
+                                         ' </div>'+
+                                          '<div class="col-md-4">'+
+                                            '<label>'+
+                                              '<input type="checkbox" name="malaise[]' + rowCount + '" value="0728">'+
+                                              'Malaise(ไม่สบายตัว)'+
+                                            '</label>'+
+                                          '</div>'+
+                                        '</div>'+
+                                        '<!-- checkbox3.1.3  -->'+
+                                        '<div class="form-group">'+
+                                          '<div class="col-md-4">'+
+                                            '<label>'+
+                                              '<input type="checkbox" name="dyspepsia[]' + rowCount + '" value="0279">'+
+                                              'Dyspepsia'+
+                                            '</label>'+
+                                          '</div>'+
+                                          '<div class="col-md-4">'+
+                                            '<label>'+
+                                              '<input type="checkbox" name="diarrhea[]' + rowCount + '" value="1">'+
+                                              'Diarrhea(ถ่ายเหลว)'+
+                                            '</label>'+
+                                          '</div>'+
+                                          '<div class="col-md-4">'+
+                                            '<label>'+
+                                              '<input type="checkbox" name="nausea[]' + rowCount + '" value="0308">'+
+                                              'Nausea(คลื่นไส้)'+
+                                            '</label>'+
+                                          '</div>'+
+                                          '<div class="col-md-4">'+
+                                            '<label>'+
+                                              '<input type="checkbox" name="vomiting[]' + rowCount + '" value="0228">'+
+                                              'Vomiting(อาเจียน)'+
+                                            '</label>'+
+                                          '</div>'+
+                                          '<div class="col-md-4">'+
+                                            '<label>'+
+                                              '<input type="checkbox" name="abdominal_pain[]' + rowCount + '" value="0268">'+
+                                              'Abdominal pain(ปวดท้อง)'+
+                                            '</label>'+
+                                          '</div>'+
+                                        '</div>'+
+                                        '<!-- checkbox3.1.4  -->'+
+                                        '<div class="form-group">'+
+                                          '<div class="col-md-4">'+
+                                            '<label>'+
+                                              '<input type="checkbox" name="arthalgia[]' + rowCount + '" value="1">'+
+                                              'Arthalgia(ปวดข้อ)'+
+                                            '</label>'+
+                                          '</div>'+
+                                          '<div class="col-md-4">'+
+                                            '<label>'+
+                                              '<input type="checkbox" name="myalgia[]' + rowCount + '" value="0072">'+
+                                              'Myalgia(ปวดเมื่อยกล้ามเนื้อ)'+
+                                            '</label>'+
+                                          '</div>'+
+                                          '<div class="col-md-4">'+
+                                            '<label>'+
+                                              '<input type="checkbox" name="fever38c[]' + rowCount + '" value="0725">'+
+                                              'Fever >= 38 C (ไข้)'+
+                                            '</label>'+
+                                          '</div>'+
+                                          '<div class="col-md-4">'+
+                                            '<label>'+
+                                              '<input type="checkbox" name="swelling_at_the_injection[]' + rowCount + '" value="1">'+
+                                              'บวมบริเวณที่ฉีดนานเกิน3วัน'+
+                                            '</label>'+
+                                          '</div>'+
+                                          '<div class="col-md-4">'+
+                                            '<label>'+
+                                              '<input type="checkbox" name="swelling_beyond_nearest_joint[]' + rowCount + '" value="1">'+
+                                              'บวมลามไปถึงข้อที่ใกล้ที่สุด'+
+                                            '</label>'+
+                                          '</div>'+
+                                          '<div class="col-md-4">'+
+                                            '<label>'+
+                                              '<input type="checkbox" name="lymphadenopathy[]' + rowCount + '" value="0577">'+
+                                              'Lymphadenopathy'+
+                                            '</label>'+
+                                          '</div>'+
+                                          '<div class="col-md-4">'+
+                                            '<label>'+
+                                              '<input type="checkbox" name="lymphadenitis[]' + rowCount + '" value="0577D">'+
+                                              'Lymphadenitis'+
+                                            '</label>'+
+                                          '</div>'+
+                                          '<div class="col-md-4">'+
+                                            '<label>'+
+                                              '<input type="checkbox" name="sterile_abscess[]' + rowCount + '" value="0051">'+
+                                              'Sterile abscess'+
+                                            '</label>'+
+                                          '</div>'+
+                                          '<div class="col-md-4">'+
+                                            '<label>'+
+                                              '<input type="checkbox" name="bacterial_abscess[]' + rowCount + '" value="1">'+
+                                              'Bacterial abscess'+
+                                            '</label>'+
+                                          '</div>'+
+                                          '<div class="col-md-4">'+
+                                            '<label>'+
+                                              '<input type="checkbox" name="febrile_convulsion[]' + rowCount + '" value="1">'+
+                                              'Febrile convulsion(ชักจากไข้)'+
+                                            '</label>'+
+                                          '</div>'+
+                                          '<div class="col-md-4">'+
+                                            '<label>'+
+                                              '<input type="checkbox" name="afebrile_convulsion[]' + rowCount + '" value="1">'+
+                                              'Afebrile convulsion(ชักจากเหตุอื่น)'+
+                                            '</label>'+
+                                          '</div>'+
+                                          '<div class="col-md-4">'+
+                                            '<label>'+
+                                              '<input type="checkbox" name="flaccid_paralysis[]' + rowCount + '" value="0139">'+
+                                              'Flaccid paralysis'+
+                                            '</label>'+
+                                          '</div>'+
+                                          '<div class="col-md-4">'+
+                                            '<label>'+
+                                              '<input type="checkbox" name="spastic_paralysis[]' + rowCount + '" value="0775">'+
+                                              'Spastic paralysis'+
+                                            '</label>'+
+                                          '</div>'+
+                                          '<div class="col-md-4">'+
+                                            '<label>'+
+                                              '<input name="chest_pain[]' + rowCount + '" type="checkbox" value="1">'+
+                                              'Chest pain'+
+                                            '</label>'+
+                                          '</div>'+
+                                          '<div class="col-md-4">'+
+                                            '<label>'+
+                                              '<input name="sepsis[]' + rowCount + '" type="checkbox" value="0744">'+
+                                              'Sepsis'+
+                                            '</label>'+
+                                          '</div>'+
+                                          '<div class="col-md-4">'+
+                                            '<label>'+
+                                             ' <input name="sudden_cardiac_arrest[]' + rowCount + '" type="checkbox" value="1">'+
+                                              'Sudden cardiac arrest'+
+                                            '</label>'+
+                                          '</div>'+
+                                        '</div>'+
+                                      '</div>'+
+                                    '</div>'+
+                                    '<!-- /.box -->'+
+                                  '</div>'+
+                                  '{{-- คอรั่มภายใน3.3 --}}'+
+                                  '<div class="col-md-12">'+
+                                    '<!-- general form elements -->'+
+                                    '<div class="box box-success">'+
+                                      '<!-- /.box-header -->'+
+                                      '<!-- form start -->'+
+                                      '<div class="box-header with-border">'+
+                                        '<label>'+
+                                        ' กลุ่มโรคร้ายแรง '+
+                                        '</label>'+
+                                        '<hr>'+
+                                      '<div class="box-body">'+
+                                        '{{-- input content --}}'+
+                                        '<!-- checkbox3.3.1  -->'+
+                                        '<div class="form-group">'+
+                                          '<div class="col-md-12">'+
+                                            '<label>'+
+                                              ' Neuro'+
+                                            '</label>'+
+                                          '</div>'+
+                                          '<div class="col-md-4">'+
+                                            '<label>'+
+                                              '<input name="ischemic_stroke[]' + rowCount + '" type="checkbox" value="1">'+
+                                               'stroke'+
+                                            '</label>'+
+                                          '</div>'+
+                                          '<div class="col-md-4">'+
+                                            '<label>'+
+                                              '<input name="hemorrhagic_stroke[]' + rowCount + '" type="checkbox" value="1">'+
+                                            'Hemorrhagic stroke'+
+                                            '</label>'+
+                                          '</div>'+
+                                          '<div class="col-md-4">'+
+                                            '<label>'+
+                                              '<input name="bells_palsy[]' + rowCount + '" type="checkbox" value="1">'+
+                                              'Bells palsy'+
+                                            '</label>'+
+                                          '</div>'+
+                                          '<div class="col-md-4">'+
+                                            '<label>'+
+                                              '<input name="gbs[]' + rowCount + '" type="checkbox" value="1">'+
+                                              'Guillain-Barré syndrome (GBS)'+
+                                            '</label>'+
+                                          '</div>'+
+                                          '<div class="col-md-4">'+
+                                            '<label>'+
+                                              '<input name="transverse myelitis[]' + rowCount + '" type="checkbox" value="1">'+
+                                              'Transverse myelitis'+
+                                            '</label>'+
+                                          '</div>'+
+                                          '<div class="col-md-4">'+
+                                            '<label>'+
+                                              '<input name="adem[]' + rowCount + '" type="checkbox" value="1">'+
+                                              'Acute disseminated encephalomyelitis (ADEM)'+
+                                            '</label>'+
+                                          '</div>'+
+                                          '<div class="col-md-12">'+
+                                            '<hr>'+
+                                          '<label>'+
+                                            ' Cardio'+
+                                          '</label>'+
+                                          '</div>'+
+                                          '<div class="col-md-4">'+
+                                            '<label>'+
+                                              '<input name="myocarditis[]' + rowCount + '" type="checkbox" value="1">'+
+                                              'Myocarditis'+
+                                            '</label>'+
+                                          '</div>'+
+                                          '<div class="col-md-4">'+
+                                            '<label>'+
+                                              '<input name="pericarditis[]' + rowCount + '" type="checkbox" value="1">'+
+                                              'Pericarditis'+
+                                            '</label>'+
+                                          '</div>'+
+                                          '<div class="col-md-4">'+
+                                            '<label>'+
+                                              '<input name="acute_myocardial[]' + rowCount + '" type="checkbox" value="1">'+
+                                              'Acute Myocardial infarction'+
+                                            '</label>'+
+                                          '</div>'+
+                                          '<div class="col-md-4">'+
+                                            '<label>'+
+                                              '<input name="heart_failure[]' + rowCount + '" type="checkbox" value="1">'+
+                                              'Heart failure'+
+                                            '</label>'+
+                                          '</div>'+
+                                          '<div class="col-md-4">'+
+                                            '<label>'+
+                                              '<input name="persistent_inconsolable_crying[]' + rowCount + '" type="checkbox" value="1">'+
+                                              'Persistent inconsolable crying'+
+                                            '</label>'+
+                                          '</div>'+
+                                          '<div class="col-md-4">'+
+                                            '<label>'+
+                                              '<input name="osteomyelitis[]' + rowCount + '" type="checkbox" value="1184">'+
+                                              'Osteitis/Osteomyelitis'+
+                                            '</label>'+
+                                          '</div>'+
+                                          '<div class="col-md-4">'+
+                                            '<label>'+
+                                              '<input name="toxic_shock_syndrome[]' + rowCount + '" type="checkbox" value="1">'+
+                                              'Toxic shock syndrome'+
+                                            '</label>'+
+                                          '</div>'+ 
+                                          '<div class="col-md-4">'+
+                                            '<label>'+
+                                              '<input name="hypertension[]' + rowCount + '" type="checkbox" value="1">'+
+                                              'Hypertension'+
+                                            '</label>'+
+                                          '</div>'+
+                                          '<div class="col-md-4">'+
+                                            '<label>'+
+                                              '<input name="hypertensive_urgency[]' + rowCount + '" type="checkbox" value="1">'+
+                                               'Hypertensive urgency'+
+                                            '</label>'+
+                                          '</div>'+
+                                          '<div class="col-md-12">'+
+                                            '<hr>'+
+                                          '<label>'+
+                                            ' Hemotology'+
+                                          '</label>'+
+                                          '</div>'+
+                                          '<div class="col-md-4">'+
+                                            '<label>'+
+                                              '<input name="thrombocytopenia[]' + rowCount + '" type="checkbox" value="0594">'+
+                                              'Thrombocytopenia(เกล็ดเลือดต่ำ)'+
+                                            '</label>'+
+                                          '</div>'+
+                                          '<div class="col-md-4">'+
+                                            '<label>'+
+                                              '<input name="deep_vein_thrombosis[]' + rowCount + '" type="checkbox" value="1">'+
+                                              'Deep vein thrombosis'+                            
+                                            '</label>'+
+                                          '</div>'+
+                                          '<div class="col-md-4">'+
+                                            '<label>'+
+                                              '<input name="pulmonary_embolism[]' + rowCount + '" type="checkbox" value="1">'+
+                                              'Pulmonary embolism'+
+                                            '</label>'+
+                                          '</div>'+
+                                          '<div class="col-md-12">'+
+                                            '<hr>'+
+                                          '<label>'+
+                                            ' หญิงตั้งครรภ์'+
+                                          '</label>'+
+                                          '</div>'+
+                                          '<div class="col-md-4">'+
+                                            '<label>'+
+                                              '<input name="dfiu[]' + rowCount + '" type="checkbox" value="1">'+
+                                              'DFIU (Dead fetus in utero)'+
+                                            '</label>'+
+                                          '</div>'+
+                                          '<div class="col-md-4">'+
+                                            '<label>'+
+                                              '<input name="abortion[]' + rowCount + '" type="checkbox" value="1">'+
+                                              'Abortion'+
+                                            '</label>'+
+                                          '</div>'+
+                                          '<div class="col-md-4">'+
+                                            '<label>'+
+                                              '<input name="abruptio_placenta[]' + rowCount + '" type="checkbox" value="1">'+
+                                              'Abruptio placenta'+
+                                            '</label>'+
+                                          '</div>'+
+                                          '<div class="col-md-4">'+
+                                            '<label>'+
+                                              '<input name="other_pregnant_symptoms[]' + rowCount + '" type="checkbox" value="9999">'+
+                                              'อื่นๆ'+
+                                            '</label>'+
+                                          '</div>'+
+                                          '<div class="form-group">'+
+                                            '<div class="col-lg-12">'+
+                                              '<div id="other_symptoms_pregnant" style="display: none">'+
+                                                '<input type="text" id="other_pregnant_symptoms_later_immunized_text" name="other_pregnant_symptoms_later_immunized" class="form-control" placeholder="" hidden="true">'+
+                                             ' </div>'+
+                                              '{{-- <div id="other_symptoms_later_immunized_t" style="display: none">'+
+                                                '<input type="text" class="form-control pull-right" id="other_symptoms_later_immunized_text" name="other_symptoms_later_immunized" placeholder="ระบุอาการอื่นๆ">'+
+                                              '</div> --}}'+
+                                            '</div>'+
+                                          '</div>'+
+                                          '<div class="col-md-12">'+
+                                            '<hr>'+
+                                          '<label>'+
+                                             'Other'+
+                                          '</label>'+
+                                          '</div>'+
+                                          '<div class="col-md-4">'+
+                                            '<label>'+
+                                              '<input name="anaphylaxis[]' + rowCount + '" type="checkbox" value="2237">'+
+                                              'Anaphylaxis'+
+                                            '</label>'+
+                                          '</div>'+
+                                          '<div class="col-md-4">'+
+                                            '<label>'+
+                                              '<input name="ards[]' + rowCount + '" type="checkbox" value="1">'+
+                                              ' Acute respiratory distress syndrome (ARDS)'+
+                                            '</label>'+
+                                          '</div>'+
+                                          '<div class="col-md-4">'+
+                                            '<label>'+
+                                              '<input name="hhe[]' + rowCount + '" type="checkbox" value="1704">'+
+                                              'Hypotonic Hyporesponsive episode (HHE)'+
+                                            '</label>'+
+                                          '</div>'+
+                                          '<div class="col-md-4">'+
+                                            '<label>'+
+                                              '<input name="covid_19[]' + rowCount + '" type="checkbox" value="1">'+
+                                              'Covid-19'+
+                                            '</label>'+
+                                          '</div>'+
+                                          '<div class="col-md-4">'+
+                                            '<label>'+
+                                              '<input type="checkbox" name="encephalopathy" value="0105">'+
+                                              'Encephalopathy/Encephalitis'+
+                                            '</label>'+
+                                          '</div>'+
+                                          '<div class="col-md-4">'+
+                                            '<label>'+
+                                              '<input type="checkbox" name="meningitis" value="0105">'+
+                                              'Meningitis'+
+                                            '</label>'+
+                                          '</div>'+
+                                          '<div class="col-md-4">'+
+                                            '<label>'+
+                                              '<input name="symptoms_later_immunized[]' + rowCount + '" type="checkbox" value="9999">'+
+                                              'อื่นๆ'+
+                                            '</label>'+
+                                          '</div>'+
+                                          '<div class="form-group">'+
+                                            '<div class="col-lg-12">'+
+                                              '<div id="other_symptoms_later_immunized" style="display: none">'+
+                                                '<input type="text" id="other_symptoms_later_immunized_text" name="other_symptoms_later_immunized" class="form-control" placeholder="" hidden="true">'+
+                                              '</div>'+
+                                              '{{-- <div id="other_symptoms_later_immunized_t" style="display: none">'+
+                                                '<input type="text" class="form-control pull-right" id="other_symptoms_later_immunized_text" name="other_symptoms_later_immunized" placeholder="ระบุอาการอื่นๆ">'+
+                                              '</div> --}}'+
+                                            '</div>'+
+                                         ' </div>'+
+                                        '</div>'+
+                                      '</div>'+
+                                    '</div>'+
+                                    '<!-- /.box -->'+
+                                  '</div>'+
+'                               </div>'+
 '                  {{-- คอรั่มภายใน3.4 --}}'+
 '                  <div class="col-md-12">'+
 '                    <!-- general form elements -->'+
@@ -2138,17 +2091,29 @@ foreach ($aecode as $value) {
 '                      <div class="box-body">'+
 '                        {{-- input content --}}'+
 '                        <!-- textarea -->'+
+'<div class="form-group">'+
+                          '<div class="col-lg-6">'+
+                            '<label>การวินิจฉัยหลักของแพทย์ :</label>'+
+                            '<input  id="main_diagnosis' + rowCountSyntom + '" type="text" class="form-control" name="main_diagnosis[' + rowCountSyntom + ']">'+
+                            '{{-- <select id="js-example-basic-single3" name="minor_diagnosis[' + rowCountSyntom + ']" class="js-example-basic-single3 form-control" data-dropdown-css-class="select2-danger" required>'+
+                            '</select> --}}'+
+                          '</div>'+
+                        '</div>'+
+                        '<div class="form-group">'+
+                          '<div class="col-lg-6">'+
+                            '<label>การวินิจฉัยรองของแพทย์ :</label>'+
+                            '<input  id="minor_diagnosis' + rowCountSyntom + '" type="text" class="form-control" name="minor_diagnosis[' + rowCountSyntom + ']">'+
+                            '{{-- <select id="js-example-basic-single3" name="minor_diagnosis[' + rowCountSyntom + ']" class="js-example-basic-single3 form-control" data-dropdown-css-class="select2-danger" required>'+
+                            '</select> --}}'+
+                          '</div>'+
+                        '</div>'+
 '                        <div class="form-group">'+
 '                          <div class="col-lg-8">'+
 '                            <label>รายละเอียดอาการและการตรวจสอบ</label>'+
 '                            <input class="form-control" rows="5"  id="Symptoms_details1" name="Symptoms_details[' + rowCountSyntom + ']">'+
 '                          </div>'+
 '                        </div>'+
-'                        <div class="form-group">'+
-'                          <div class="col-lg-8">'+
-'                            <label>วินิจฉัยของแพทย์ :</label><input type="text" id="diagnosis1" name="diagnosis[' + rowCountSyntom + ']" class="form-control" placeholder="">'+
-'                          </div>'+
-'                        </div>'+
+
 '                      </div>'+
 '                    </div>'+
 '                    <!-- /.box -->'+
@@ -2932,6 +2897,40 @@ $('#afebrile_convulsion_' + rowCount + '').change(function() {
       minimumResultsForSearch: 5,
       ajax: {
        url: "{{ route('list-career-json') }}",
+       type: "GET",
+       dataType: 'json',
+       delay: 250,
+       data: function (params) {
+        return {
+          searchTerm: params.term // search term
+        };
+       },
+       processResults: function (response) {
+         return {
+            results: response
+         };
+       },
+       cache: true
+      }
+    });
+    $(".js-example-basic-single3").select2({
+      allowClear: true,
+      language: {
+      inputTooShort: function (args) {
+          return "กรุณาพิมพ์คำค้นหาอย่างน้อย 3 ตัวอักษร";
+      },
+      noResults: function () {
+          return "ไม่พบข้อมูล";
+      },
+      searching: function () {
+          return "กำลังค้นหาข้อมูล...";
+      }
+      },
+      placeholder: "กรุณาพิมพ์ชื่อICD-10",
+      minimumInputLength: 3,
+      minimumResultsForSearch: 5,
+      ajax: {
+       url: "{{ route('list-icd10-json') }}",
        type: "GET",
        dataType: 'json',
        delay: 250,

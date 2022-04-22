@@ -22,6 +22,7 @@
 					if ($count_data_vac != '0') {
 							 $delvac=DB::table('aefi_form_1_vac')->where('id_case', '=', $id_case)->delete();
 							// dd($delvac);
+							
 									$name_of_vaccine = $req ->input('name_of_vaccine');
 									$vaccine_volume = $req ->input('vaccine_volume');
 									$route_of_vaccination = $req ->input('route_of_vaccination');
@@ -86,7 +87,6 @@
 									$text_other_seriousness_symptoms = $req ->input ('text_other_seriousness_symptoms');
 									$symptoms_later_immunized = $req ->input ('symptoms_later_immunized');
 									$other_symptoms_later_immunized = $req ->input ('other_symptoms_later_immunized');
-									$diagnosis = $req ->input ('diagnosis');
 									$seriousness_of_the_symptoms = $req ->input ('seriousness_of_the_symptoms');
 									$seriousness_of_the_symptoms2 = $req ->input ('seriousness_of_the_symptoms2');
 									$other_seriousness_of_the_symptoms = $req ->input ('other_seriousness_of_the_symptoms');
@@ -104,7 +104,6 @@
 									$chest_pain = $req ->input ('chest_pain');
 									$myocarditis = $req ->input ('myocarditis');
 									$heart_failure = $req ->input ('heart_failure');
-									// dd($chest_pain);
 									$pericarditis = $req ->input ('pericarditis');
 									$sudden_cardiac_arrest = $req ->input ('sudden_cardiac_arrest');
 									$covid_19 = $req ->input ('covid_19');
@@ -116,6 +115,8 @@
 									$hypertensive_urgency= $req ->input ('hypertensive_urgency');
 									$bells_palsy= $req ->input ('bells_palsy');
 									$symptom_status= $req ->input ('symptom_status');
+									$dfiu= $req ->input ('dfiu');
+									
 							$x=0;
 								 for ($i=0; $i < count($name_of_vaccine); $i++) {
 									 $data_vac[]  = [
@@ -184,39 +185,39 @@
 									'date_of_treatment'=>$date_of_treatment[$i],
 									'time_of_treatment'=>$time_of_treatment[$i],
 									'Symptoms_details'=>$Symptoms_details[$i],
-									'symptoms_later_immunized'=>$symptoms_later_immunized[$i],
+									'symptoms_later_immunized'=>(isset($symptoms_later_immunized[$i])) ? $symptoms_later_immunized[$i]  : '0',
 									'other_symptoms_later_immunized'=>$other_symptoms_later_immunized[$i],
-									'diagnosis'=>$diagnosis[$i],
 									'seriousness_of_the_symptoms'=>$seriousness_of_the_symptoms[$i],
 									'other_seriousness_of_the_symptoms'=>$other_seriousness_of_the_symptoms[$i],
 									'patient_status'=>$patient_status[$i],
 									'funeral'=>$funeral[$i],
 									'other_address_funeral'=>$other_address_funeral[$i],
-									'transverse_myelitis' => $transverse_myelitis[$i],
-									'adem' => $adem[$i],
-									'acute_myocardial' => $acute_myocardial[$i],
-									'ards' => $ards[$i],
-									'gbs'=>$gbs[$i],
-									'symptomstatus'=>$symptomstatus,
-									'chest_pain'=>$chest_pain[$i],
-									'myocarditis'=>$myocarditis[$i],
-									'heart_failure'=>$heart_failure[$i],
-									'pericarditis'=>$pericarditis[$i],
-									'sudden_cardiac_arrest'=>$sudden_cardiac_arrest[$i],
-									'covid_19'=>$covid_19[$i],
-									'ischemic_stroke'=>$ischemic_stroke[$i],
-									'hemorrhagic_stroke'=>$hemorrhagic_stroke[$i],
-									'deep_vein_thrombosis'=>$deep_vein_thrombosis[$i],
-									'pulmonary_embolism'=>$pulmonary_embolism[$i],
-									'hypertension'=>$hypertension[$i],
-									'hypertensive_urgency'=>$hypertensive_urgency[$i],
-									'bells_palsy'=>$bells_palsy[$i],
+									'transverse_myelitis' => (isset($transverse_myelitis[$i])) ? $transverse_myelitis[$i]  : '0',
+									'adem' => (isset($adem[$i])) ? $adem[$i]  : '0',
+									'acute_myocardial' => (isset($acute_myocardial[$i])) ? $acute_myocardial[$i]  : '0',
+									'ards' => (isset($ards[$i])) ? $ards[$i]  : '0',
+									'gbs'=>(isset($gbs[$i])) ? $gbs[$i]  : '0',
+									'symptomstatus'=>(isset($symptomstatus[$i])) ? $symptomstatus[$i]  : '0',
+									'chest_pain'=>(isset($chest_pain[$i])) ? $chest_pain[$i]  : '0',
+									'myocarditis'=>(isset($myocarditis[$i])) ? $myocarditis[$i]  : '0',
+									'heart_failure'=>(isset($heart_failure[$i])) ? $heart_failure[$i]  : '0',
+									'pericarditis'=>(isset($pericarditis[$i])) ? $pericarditis[$i]  : '0',
+									'sudden_cardiac_arrest'=>(isset($sudden_cardiac_arrest[$i])) ? $sudden_cardiac_arrest[$i]  : '0',
+									'covid_19'=>(isset($covid_19[$i])) ? $covid_19[$i]  : '0',
+									'ischemic_stroke'=>(isset($ischemic_stroke[$i])) ? $ischemic_stroke[$i]  : '0',
+									'hemorrhagic_stroke'=>(isset($hemorrhagic_stroke[$i])) ? $hemorrhagic_stroke[$i]  : '0',
+									'deep_vein_thrombosis'=>(isset($deep_vein_thrombosis[$i])) ? $deep_vein_thrombosis[$i]  : '0',
+									'pulmonary_embolism'=>(isset($pulmonary_embolism[$i])) ? $pulmonary_embolism[$i]  : '0',
+									'hypertension'=>(isset($hypertension[$i])) ? $hypertension[$i]  : '0',
+									'hypertensive_urgency'=>(isset($hypertensive_urgency[$i])) ? $hypertensive_urgency[$i]  : '0',
+									'bells_palsy'=>(isset($bells_palsy[$i])) ? $bells_palsy[$i]  : '0',
 									'date_entry'=>date('Y-m-d H:i:s'),
-									'symptom_status'=>$symptom_status[$i]
+									'symptom_status'=>(isset($symptom_status[$i])) ? $symptom_status[$i]  : '0',
+									'dfiu'=>(isset($dfiu[$i])) ? $dfiu[$i]  : '0',
 									];
 									$x++;
 									}
-								    //  dd($heart_failure);
+								//   dd($data_vac);
 									$res2= DB::table('aefi_form_1_vac')->insert($data_vac);
 						}else {
 							$name_of_vaccine = $req ->input('name_of_vaccine');
@@ -312,6 +313,8 @@
 							$hypertensive_urgency= $req ->input ('hypertensive_urgency');
 							$bells_palsy= $req ->input ('bells_palsy');
 							$symptom_status= $req ->input ('symptom_status');
+							$dfiu= $req ->input ('dfiu');
+							// dd($symptom_status);
 					$x=0;
 						 for ($i=0; $i < count($name_of_vaccine); $i++) {
 							 $data_vac[]  = [
@@ -379,39 +382,40 @@
 							'date_of_treatment'=>$date_of_treatment[$i],
 							'time_of_treatment'=>$time_of_treatment[$i],
 							'Symptoms_details'=>$Symptoms_details[$i],
-							'symptoms_later_immunized'=>$symptoms_later_immunized[$i],
+							'symptoms_later_immunized'=>(isset($symptoms_later_immunized[$i])) ? $symptoms_later_immunized[$i]  : '0',
 							'other_symptoms_later_immunized'=>$other_symptoms_later_immunized[$i],
-							'diagnosis'=>$diagnosis[$i],
+							'diagnosis'=>(isset($diagnosis[$i])) ? $diagnosis[$i]  : '0',
 							'seriousness_of_the_symptoms'=>$seriousness_of_the_symptoms[$i],
 							'other_seriousness_of_the_symptoms'=>$other_seriousness_of_the_symptoms[$i],
 							'patient_status'=>$patient_status[$i],
 							'funeral'=>$funeral[$i],
 							'other_address_funeral'=>$other_address_funeral[$i],
-							'transverse_myelitis' => $transverse_myelitis[$i],
-							'adem' => $adem[$i],
-							'acute_myocardial' => $acute_myocardial[$i],
-							'ards' => $ards[$i],
-							'gbs'=>$gbs[$i],
-							'symptomstatus'=>$symptomstatus,
-							'chest_pain'=>$chest_pain[$i],
-							'myocarditis'=>$myocarditis[$i],
-							'heart_failure'=>$heart_failure[$i],
-							'pericarditis'=>$pericarditis[$i],
-							'sudden_cardiac_arrest'=>$sudden_cardiac_arrest[$i],
-							'covid_19'=>$covid_19[$i],
-							'ischemic_stroke'=>$ischemic_stroke[$i],
-							'hemorrhagic_stroke'=>$hemorrhagic_stroke[$i],
-							'deep_vein_thrombosis'=>$deep_vein_thrombosis[$i],
-							'pulmonary_embolism'=>$pulmonary_embolism[$i],
-							'hypertension'=>$hypertension[$i],
-							'hypertensive_urgency'=>$hypertensive_urgency[$i],
-							'bells_palsy'=>$bells_palsy[$i],
+							'transverse_myelitis' => (isset($transverse_myelitis[$i])) ? $transverse_myelitis[$i]  : '0',
+							'adem' => (isset($adem[$i])) ? $adem[$i]  : '0',
+							'acute_myocardial' => (isset($acute_myocardial[$i])) ? $acute_myocardial[$i]  : '0',
+							'ards' => (isset($ards[$i])) ? $ards[$i]  : '0',
+							'gbs'=>(isset($gbs[$i])) ? $gbs[$i]  : '0',
+							'symptomstatus'=>(isset($symptomstatus[$i])) ? $symptomstatus[$i]  : '0',
+							'chest_pain'=>(isset($chest_pain[$i])) ? $chest_pain[$i]  : '0',
+							'myocarditis'=>(isset($myocarditis[$i])) ? $myocarditis[$i]  : '0',
+							'heart_failure'=>(isset($heart_failure[$i])) ? $heart_failure[$i]  : '0',
+							'pericarditis'=>(isset($pericarditis[$i])) ? $pericarditis[$i]  : '0',
+							'sudden_cardiac_arrest'=>(isset($sudden_cardiac_arrest[$i])) ? $sudden_cardiac_arrest[$i]  : '0',
+							'covid_19'=>(isset($covid_19[$i])) ? $covid_19[$i]  : '0',
+							'ischemic_stroke'=>(isset($ischemic_stroke[$i])) ? $ischemic_stroke[$i]  : '0',
+							'hemorrhagic_stroke'=>(isset($hemorrhagic_stroke[$i])) ? $hemorrhagic_stroke[$i]  : '0',
+							'deep_vein_thrombosis'=>(isset($deep_vein_thrombosis[$i])) ? $deep_vein_thrombosis[$i]  : '0',
+							'pulmonary_embolism'=>(isset($pulmonary_embolism[$i])) ? $pulmonary_embolism[$i]  : '0',
+							'hypertension'=>(isset($hypertension[$i])) ? $hypertension[$i]  : '0',
+							'hypertensive_urgency'=>(isset($hypertensive_urgency[$i])) ? $hypertensive_urgency[$i]  : '0',
+							'bells_palsy'=>(isset($bells_palsy[$i])) ? $bells_palsy[$i]  : '0',
 							'date_entry'=>date('Y-m-d H:i:s'),
-							'symptom_status'=>$symptom_status[$i]
+							'symptom_status'=>(isset($symptom_status[$i])) ? $symptom_status[$i]  : '0',
+							'dfiu'=>(isset($dfiu[$i])) ? $dfiu[$i]  : '0',
 							];
 							$x++;
 							}
-							//   dd($data_vac);
+							  dd($data_vac);
 							$res2= DB::table('aefi_form_1_vac')->insert($data_vac);
 						}
 					$update	= DB::table('aefi_form_1')

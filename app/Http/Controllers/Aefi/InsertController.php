@@ -118,12 +118,11 @@
 		$hospcode_treat = $req ->input ('hospcode_treat');
 		$hospcode_report = $req ->input ('hospcode_report');
 		$hospcode_get_vac = $req ->input ('hospcode_get_vac');
-		$main_diagnosis = $req ->input ('main_diagnosis');
-		$minor_diagnosis = $req ->input ('minor_diagnosis');
 		$num_of_pregnant_text = $req ->input ('num_of_pregnant_text');
 		$other_pregnant_text = $req ->input ('other_pregnant_text');
 		$given_pregnant_text = $req ->input ('given_pregnant_text');
 		$miscarriages_pregnant_text = $req ->input ('miscarriages_pregnant_text');
+
 		$data = array(
 			'id_case'=>$id_case,
 			'hn'=>$hn,
@@ -204,17 +203,9 @@
 			'hospcode_treat'=>$hospcode_treat,
 			'hospcode_report'=>$hospcode_report,
 			'hospcode_get_vac'=>$hospcode_get_vac,
-			'main_diagnosis'=>$main_diagnosis,
-			'minor_diagnosis'=>$minor_diagnosis,
-			'num_of_pregnant_text'=>$num_of_pregnant_text,
-			'other_pregnant_text'=>$other_pregnant_text,
-			'given_pregnant_text'=>$given_pregnant_text,
-			'miscarriages_pregnant_text'=>$miscarriages_pregnant_text
 		);
-	// echo($data);
-	//  $res1 = $data;
+		// dd($data);
 	$res1	= DB::table('aefi_form_1')->insert($data);
-	 // dd($data);
 if ($res1) {
 		$name_of_vaccine = $req ->input('name_of_vaccine');
 		$vaccine_volume = $req ->input('vaccine_volume');
@@ -279,7 +270,6 @@ if ($res1) {
 		$text_other_seriousness_symptoms = $req ->input ('text_other_seriousness_symptoms');
 		$symptoms_later_immunized = $req ->input ('symptoms_later_immunized');
 		$other_symptoms_later_immunized = $req ->input ('other_symptoms_later_immunized');
-		$diagnosis = $req ->input ('diagnosis');
 		$seriousness_of_the_symptoms = $req ->input ('seriousness_of_the_symptoms');
 		$seriousness_of_the_symptoms2 = $req ->input ('seriousness_of_the_symptoms2');
 		$other_seriousness_of_the_symptoms = $req ->input ('other_seriousness_of_the_symptoms');
@@ -308,11 +298,20 @@ if ($res1) {
 		$hypertensive_urgency= $req ->input ('hypertensive_urgency');
 		$bells_palsy= $req ->input ('bells_palsy');
 		$symptom_status= $req ->input ('symptom_status');
-		// $time_of_reconstitution = $req ->input('time_of_reconstitution');
-		// dd($date_of_vaccination,$rash);
+		$other_pregnant_text= $req ->input ('other_pregnant_text');
+		$dfiu= $req ->input ('dfiu');
+		$abortion= $req ->input ('abortion');
+		$abruptio_placenta= $req ->input ('abruptio_placenta');
+		$meningitis= $req ->input ('meningitis');
+		$main_diagnosis = $req ->input ('main_diagnosis');
+		$minor_diagnosis = $req ->input ('minor_diagnosis');
+		$given_pregnant_text = $req ->input ('given_pregnant_text');
+		$miscarriages_pregnant_text = $req ->input ('miscarriages_pregnant_text');
+		$other_symptoms_pregnant_text = $req ->input ('other_symptoms_pregnant_text');
+		$symptom_status= $req ->input ('symptom_status');
 $x=0;
-	 for ($i=0; $i < count($name_of_vaccine); $i++) {
-		 $data_vac[]  = [
+ for ($i=0; $i < count($name_of_vaccine); $i++) {
+ $data_vac[]  = [
 		'id_case'=>$id_case,
 		'name_of_vaccine'=>$name_of_vaccine[$i],
 		'vaccine_volume'=>$vaccine_volume[$i],
@@ -377,35 +376,41 @@ $x=0;
 		'date_of_treatment'=>$date_of_treatment[$i],
 		'time_of_treatment'=>$time_of_treatment[$i],
 		'Symptoms_details'=>$Symptoms_details[$i],
-		'symptoms_later_immunized'=>$symptoms_later_immunized[$i],
-		'other_symptoms_later_immunized'=>$other_symptoms_later_immunized[$i],
-		'diagnosis'=>$diagnosis[$i],
+		'symptoms_later_immunized'=>(isset($symptoms_later_immunized[$i])) ? $symptoms_later_immunized[$i]  : '0',
+		'other_symptoms_later_immunized'=>(isset($other_symptoms_later_immunized[$i])) ? $other_symptoms_later_immunized[$i]  : '0',
 		'seriousness_of_the_symptoms'=>$seriousness_of_the_symptoms[$i],
 		'other_seriousness_of_the_symptoms'=>$other_seriousness_of_the_symptoms[$i],
 		'patient_status'=>$patient_status[$i],
 		'funeral'=>$funeral[$i],
 		'other_address_funeral'=>$other_address_funeral[$i],
-		'transverse_myelitis' => $transverse_myelitis[$i],
-		'adem' => $adem[$i],
-		'acute_myocardial' => $acute_myocardial[$i],
-		'ards' => $ards[$i],
-		'gbs'=>$gbs[$i],
+		'transverse_myelitis' => (isset($other_symptoms_later_immunized[$i])) ? $other_symptoms_later_immunized[$i]  : '0',
+		'adem' => (isset($other_symptoms_later_immunized[$i])) ? $other_symptoms_later_immunized[$i]  : '0',
+		'acute_myocardial' => (isset($other_symptoms_later_immunized[$i])) ? $other_symptoms_later_immunized[$i]  : '0',
+		'ards' => (isset($other_symptoms_later_immunized[$i])) ? $other_symptoms_later_immunized[$i]  : '0',
+		'gbs'=>(isset($other_symptoms_later_immunized[$i])) ? $other_symptoms_later_immunized[$i]  : '0',
 		'date_entry'=>date('Y-m-d'),
 		'symptomstatus'=>$symptomstatus,
-		'chest_pain'=>$chest_pain[$i],
-		'myocarditis'=>$myocarditis[$i],
-		'heart_failure'=>$heart_failure[$i],
-		'pericarditis'=>$pericarditis[$i],
-		'sudden_cardiac_arrest'=>$sudden_cardiac_arrest[$i],
-		'covid_19'=>$covid_19[$i],
-		'ischemic_stroke'=>$ischemic_stroke[$i],
-		'hemorrhagic_stroke'=>$hemorrhagic_stroke[$i],
-		'deep_vein_thrombosis'=>$deep_vein_thrombosis[$i],
-		'pulmonary_embolism'=>$pulmonary_embolism[$i],
-		'hypertension'=>$hypertension[$i],
-		'hypertensive_urgency'=>$hypertensive_urgency[$i],
-		'bells_palsy'=>$bells_palsy[$i],
-		'symptom_status'=>$symptom_status[$i]
+		'chest_pain'=>(isset($chest_pain[$i])) ? $chest_pain[$i]  : '0',
+		'myocarditis'=>(isset($myocarditis[$i])) ? $myocarditis[$i]  : '0',
+		'heart_failure'=>(isset($heart_failure[$i])) ? $heart_failure[$i]  : '0',
+		'pericarditis'=>(isset($pericarditis[$i])) ? $pericarditis[$i]  : '0',
+		'sudden_cardiac_arrest'=>(isset($sudden_cardiac_arrest[$i])) ? $sudden_cardiac_arrest[$i]  : '0',
+		'covid_19'=>(isset($covid_19[$i])) ? $covid_19[$i]  : '0',
+		'ischemic_stroke'=>(isset($ischemic_stroke[$i])) ? $ischemic_stroke[$i]  : '0',
+		'hemorrhagic_stroke'=>(isset($hemorrhagic_stroke[$i])) ? $hemorrhagic_stroke[$i]  : '0',
+		'deep_vein_thrombosis'=>(isset($deep_vein_thrombosis[$i])) ? $deep_vein_thrombosis[$i]  : '0',
+		'pulmonary_embolism'=>(isset($pulmonary_embolism[$i])) ? $pulmonary_embolism[$i]  : '0',
+		'hypertension'=>(isset($hypertension[$i])) ? $hypertension[$i]  : '0',
+		'hypertensive_urgency'=>(isset($hypertensive_urgency[$i])) ? $hypertensive_urgency[$i]  : '0',
+		'bells_palsy'=>(isset($bells_palsy[$i])) ? $bells_palsy[$i]  : '0',
+		'symptom_status'=>(isset($symptom_status[$i])) ? $symptom_status[$i]  : '0',
+		'dfiu'=>(isset($dfiu[$i])) ? $dfiu[$i]  : '0',
+		'abortion'=>(isset($abortion[$i])) ? $abortion[$i]  : '0',
+		'abruptio_placenta'=>(isset($abruptio_placenta[$i])) ? $abruptio_placenta[$i]  : '0',
+		'meningitis'=>(isset($meningitis[$i])) ? $meningitis[$i]  : '0',
+		'main_diagnosis'=>(isset($main_diagnosis[$i])) ? $main_diagnosis[$i]  : '0',
+			'minor_diagnosis'=>(isset($minor_diagnosis[$i])) ? $minor_diagnosis[$i]  : '0',
+
 		];
 		$x++;
 		}
