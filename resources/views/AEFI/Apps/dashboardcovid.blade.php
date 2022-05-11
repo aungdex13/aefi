@@ -147,26 +147,12 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
                         <th>อาการและอาการแสดง</th>
                         <th>Sinovac</th>
                       </tr>
+                      @foreach ($count_vac39 as $row)
                       <tr>
-                        <td>Alfreds Futterkiste</td>
+                        <td>{{$row->rash}}</td>
                         <td>Maria Anders</td>
                       </tr>
-                      <tr>
-                        <td>Berglunds snabbköp</td>
-                        <td>Christina Berglund</td>
-                      </tr>
-                      <tr>
-                        <td>Centro comercial Moctezuma</td>
-                        <td>Francisco Chang</td>
-                      </tr>
-                      <tr>
-                        <td>Ernst Handel</td>
-                        <td>Roland Mendel</td>
-                      </tr>
-                      <tr>
-                        <td>Island Trading</td>
-                        <td>Helen Bennett</td>
-                      </tr>
+                      @endforeach
                     </table>
                     
                   </div>

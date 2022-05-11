@@ -145,8 +145,8 @@ foreach ($aecode as $value) {
                             <label>เลขประจำตัวบัตรประชาชน:</label>
                           </div>
                         </div>
-                        <div class="col-lg-7">
-                          <input type="text" id="id_number" name="id_number" class="form-control" data-inputmask='"mask": "9999999999999"' data-mask>
+                        <div class="col-lg-8">
+                          <input type="text" id="id_number" name="id_number" class="form-control" data-inputmask='"mask": "9999999999999"' data-mask required>
                         </div>
                       </div>
                     </div>
@@ -237,7 +237,7 @@ foreach ($aecode as $value) {
                              วันเดือนปีเกิด:
                           </label>
                         </div>
-                        <div class="col-lg-9">
+                        <div class="col-lg-8">
                           <div class="input-group date">
                             <div class="input-group-addon">
                               <i class="fa fa-calendar"></i>
@@ -274,7 +274,7 @@ foreach ($aecode as $value) {
                           <!-- /input-group -->
                         </div>
                         <!-- /.col-lg-4 -->
-                        <div class="col-lg-3">
+                        <div class="col-lg-2">
                           <textarea class="form-control" name="age_while_sick_day" id="dallage" placeholder="วัน" rows="1"></textarea>
                           {{-- <input type="text" id="age_while_sick_day" name="age_while_sick_day" class="form-control" placeholder="วัน"> --}}
                           <!-- /input-group -->
@@ -495,8 +495,8 @@ foreach ($aecode as $value) {
                         <div class="col-lg-2">
                           <div class="radio">
                             <label>
-                              <input type="radio" name="history_of_vaccine_drug_allergies_of_patient" value="" >
-                              ไม่ระบุ
+                              <input type="radio" name="history_of_vaccine_drug_allergies_of_patient" value="">
+                              ไม่ทราบ
                             </label>
                           </div>
                         </div>
@@ -520,18 +520,17 @@ foreach ($aecode as $value) {
                           <div id="other_vaccination_history" style="display: none">
                             <label>วัคซีนที่แพ้ :</label>
                             <select id="other_vaccination_history_text" name="other_vaccination_history" class="form-control select2" style="width: 100%;">
-                              <option  value="">กรุณาเลือก</option>
-                              <?php
-										  foreach ($arr_history_of_vaccine as $k=>$v) { ?>
-                              <option  value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
-                              <?php } ?>
-                            </select>
+                             <option value="">กรุณาระบุชื่อวัคซีน</option>
+                              @foreach ($vac_list as $row)
+                              <option value="{{$row->VAC_CODE}}">{{$row->VAC_NAME_EN}}</option>
+                              @endforeach                            </select>
                             <label></br>ยาที่แพ้ :</label>
                             <input type="text" name="other_drug_history" id="other_secymptoms_after_vaccination_text" class="form-control" placeholder="ระบุ" hidden="true">
                           </div>
                         </div>
                       </div>
                     </div>
+                    <!-- อาการหลังได้รับวัคซีน -->
                     <!-- อาการหลังได้รับวัคซีน -->
                     <div class="form-group">
                       <div class="row">
@@ -705,6 +704,49 @@ foreach ($aecode as $value) {
                         </div>
                       </div>
                     </div>
+                  </div>
+                                    <!-- /.box-header -->
+                  <!-- ประวัติการป่วยcovid-->
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <div class="control-label">
+                          <label>ตั้งครรภ์อยู่หรือไม่ :</label>
+                        </div>
+                      </div>
+                      <div class="col-lg-2">
+                        <div class="radio">
+                          <label>
+                            <input type="radio" name="pregnant" value="">
+                            ไม่ทราบ
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col-lg-3">
+                        <div class="radio">
+                          <label>
+                            <input type="radio" name="pregnant" value="1">
+                            ไม่
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col-lg-3">
+                        <div class="radio">
+                          <label>
+                            <input type="radio" name="pregnant" value="2">
+                            ใช่
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div id="other_pregnant" style="display: none">
+                           <input type="text" name="num_of_pregnant_text" id="num_of_pregnant_text" class="form-control" placeholder="ครรภ์ที่เท่าไหร่" hidden="true">
+                          <input type="text" name="other_pregnant_text" id="other_pregnant_text" class="form-control" placeholder="ระบุอายุครรภ์" hidden="true">
+                          <input type="text" name="given_pregnant_text" id="given_pregnant_text" class="form-control" placeholder="คลอดบุตรมาแล้วกี่คน" hidden="true">
+                          <input type="text" name="miscarriages_pregnant_text" id="miscarriages_pregnant_text" class="form-control" placeholder="เคยแท้งมาแล้วกี่คน" hidden="true">                        </div>
+                      </div>
+                               
+  </div>
                   </div>
                   <!-- /.box-header -->
                   <!-- form start -->
@@ -921,13 +963,16 @@ foreach ($aecode as $value) {
                             <option value="1">เข็มที่ 1</option>
                             <option value="2">เข็มที่ 2</option>
                             <option value="3">เข็มที่ 3</option>
+                          <option value="4">เข็มที่ 4</option>
+                            <option value="5">เข็มที่ 5</option>
+                          <option value="6">เข็มที่ 6</option>                          
                           </select>
                         </td>
                         <td>
-                          <input type="text" name="date_of_vaccination[]" value="" id="date_of_vaccination1" class="form-control datepicker" data-date-format="yyyy-mm-dd" readonly>
+                          <input type="text" name="date_of_vaccination[]" id="date_of_vaccination1" class="form-control  datepicker readonly" data-date-format="yyyy-mm-dd" required>
                         </td>
                         <td>
-                          <input type="text" id="time_of_vaccination1" name="time_of_vaccination[]" class="form-control">
+                          <input type="time" id="time_of_vaccination1" name="time_of_vaccination[]" class="form-control" required>
                         </td>
                         <td>
                           <input type="radio" id="symptom1_1" name="symptom_status[0]" value="1" data-toggle="modal" data-target="#Symptom1">
@@ -992,21 +1037,16 @@ foreach ($aecode as $value) {
               <div class="box box-warning">
                 <div class="box-header with-border">
                   <!-- form start -->
-                  <div class="col-md-12">
-                    <label>
-                    <div class="form-group">
+                  <div class="form-group">
                     <div class="row">
-                      <div class="box-header with-border">
+                      <div class="col-lg-12">
                         <h3 class="box-title">(4) การตัดสินใจว่ามีความจำเป็นที่จะสอบสวน</h3>
                       </div>
-                      {{-- <div class="col-lg-3">
-                        <h3 class="box-title">(4) การตัดสินใจว่ามีความจำเป็นที่จะสอบสวน</h3>
-                      </div> --}}
                       <div class="col-lg-1">
                         <div class="radio">
                           <label>
-                            <input type="radio" name="necessary_to_investigate" id="necessary_to_investigate1" value="1" >
-                            ไม่มี
+                            <input type="radio" name="necessary_to_investigate" id="necessary_to_investigate1" value="1">
+                              ไม่มี
                           </label>
                         </div>
                       </div>
@@ -1014,30 +1054,23 @@ foreach ($aecode as $value) {
                         <div class="radio">
                           <label>
                             <input type="radio" name="necessary_to_investigate" id="necessary_to_investigate2" value="2">
-                            มี
+                              มี
                           </label>
                         </div>
                       </div>
-                      <div class="col-lg-1">
-                        <div class="radio">
+                    </div>
+                      <div class="row">
+                      <div class="col-lg-3">
                           <label>
-                            วันที่สอบสวน
+                            วันที่สอบสวน :
                           </label>
-                        </div>
-                      </div>
-                      <div class="col-lg-2">
-                        <div class="">
-                          <label>
                             <div class="input-group date">
                               <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                               </div>
                               <input type="text" class="form-control pull-right" id="datepicker_invest" name="necessary_to_investigate_date" data-date-format="yyyy-mm-dd" readonly>
                             </div>
-                          </label>
-                        </div>
                       </div>
-                    </div>
                     </div>
                   </div>
                 <!-- /.box-header -->
@@ -1205,16 +1238,15 @@ foreach ($aecode as $value) {
                             <div class="col-lg-4">
                               <label>หน่วยที่รายงาน :</label>
                               <select id="js-example-basic-single" name="hospcode_report" class="js-example-basic-single form-control" data-dropdown-css-class="select2-danger" required>
-                                <option  value="{{auth()->user()->hospcode}}">{{auth()->user()->hospcode}}</option>
                               </select>
                             </div>
                             <div class="col-lg-4">
                               <label>จังหวัด :</label>
-                              <select id="province_reported" name="province_reported" class="form-control" style="width: 100%;">
-                                <option  value="{{auth()->user()->prov_code}}">{{auth()->user()->prov_code}}</option>
+                              <select id="province_reported" name="province_reported" class="form-control" style="width: 100%;" required>
+				                <option  data-color="info" value=""></option>
                                 <?php
 												  foreach ($arr_provinces as $k=>$v) { ?>
-                                <option  value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
+                                <option  data-color="info" value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
                                 <?php } ?>
                               </select>
                             </div>
@@ -1529,16 +1561,20 @@ foreach ($aecode as $value) {
         '</td>' +
         '<td>' +
           '<select name="dose[]' + rowCount + '" id="dose1' + rowCount + '" class="form-control">'+
-  '<option value="1">เข็มที่ 1</option>'+
+            '<option value="1">เข็มที่ 1</option>'+
   '<option value="2">เข็มที่ 2</option>'+
   '<option value="3">เข็มที่ 3</option>'+
+'<option value="4">เข็มที่ 4</option>'+
+  '<option value="5">เข็มที่ 5</option>'+
+'<option value="6">เข็มที่ 6</option>'+
+
 '</select>'+
 '</td>' +
         '<td>' +
-        '<input type="text" name="date_of_vaccination[]' + rowCount + '" value="" id="date_of_vaccination1' + rowCount + '" class="form-control datepicker" data-date-format="yyyy-mm-dd" readonly>' +
+        '<input type="text" name="date_of_vaccination[]' + rowCount + '" value="" id="date_of_vaccination1' + rowCount + '" class="form-control datepicker" data-date-format="yyyy-mm-dd" readonly required>' +
         '</td>' +
         '<td>' +
-        '<input type="text" id="time_of_vaccination1' + rowCount + '" name="time_of_vaccination[]' + rowCount + '" class="form-control">' +
+        '<input type="time" id="time_of_vaccination1' + rowCount + '" name="time_of_vaccination[]' + rowCount + '" class="form-control" required>' +
         '</td>' +
         '<td>' +
           '<input type="radio" id="symptom' + rowCount + '_1" name="symptom_status[' + rowCountSyntom + ']" value="1" data-toggle="modal" data-target="#Symptom' + rowCount + '">' +
@@ -2048,20 +2084,17 @@ foreach ($aecode as $value) {
 '                            </div>'+
 '                          </div>'+
 '                        </div>'+
-'                        <div class="bootstrap-timepicker">'+
-'                          <div class="form-group">'+
-'                            <div class="col-lg-6">'+
-'                              <label>เวลาที่เกิดอาการ :</label>'+
-'                              <div class="input-group">'+
-'                                <input  id="time_of_symptoms1' + rowCount + '" type="text" class="form-control" name="time_of_symptoms[' + rowCountSyntom + ']">'+
-'    '+
-'                                <div class="input-group-addon">'+
-'                                  <i class="fa fa-clock-o"></i>'+
-'                                </div>'+
-'                              </div>'+
-'                            </div>'+
-'                          </div>'+
-'                        </div>'+
+                        '<div class="form-group">'+
+                          '<div class="col-lg-6">'+
+                            '<label><font style="color:red;">*</font> เวลาที่เกิดอาการ :</label>'+
+                              '<div class="input-group date">'+
+                              '<div class="input-group-addon">'+
+                                '<i class="fa fa-clock-o"></i>'+
+                              '</div>'+
+                              '<input type="time" class="form-control" id="time_of_symptoms1' + rowCount + '"  name="time_of_symptoms[' + rowCountSyntom + ']">'+
+                              '</div>'+
+                            '</div>'+
+                          '</div>'+
 '                        <div class="form-group">'+
 '                          <div class="col-lg-6">'+
 '                            <label>ว/ด/ป ที่รับรักษา :</label>'+

@@ -139,13 +139,42 @@ $(document).ready(function() {
     $('#time_of_treatment').datepicker({
       dateFormat: "yy-mm-dd"
     })
-        $('#time_of_treatment2').datepicker({
+        $('#time_of_treatment10').datepicker({
       dateFormat: "yy-mm-dd"
     })
+    $('#time_of_treatment11').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+    $('#time_of_treatment12').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+    $('#time_of_treatment13').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+    $('#time_of_treatment14').datepicker({
+      dateFormat: "yy-mm-dd"
+    })      
+    $('#time_of_treatment15').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+    $('#time_of_treatment16').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+    $('#time_of_treatment17').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+    $('#time_of_treatment18').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+    $('#time_of_treatment19').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+    $('#time_of_treatment20').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+    
 
-
-
-            //Date picker
+    //Date picker
     $('#date_of_dischrge').datepicker({
       dateFormat: "yy-mm-dd"
     })
@@ -194,11 +223,56 @@ $(document).ready(function() {
       dateFormat: "yy-mm-dd"
     })
             //Date picker
-    $('#date_of_treatment2').datepicker({
+    $('#date_of_treatment1').datepicker({
       dateFormat: "yy-mm-dd"
     })
+                //Date picker
+                $('#date_of_treatment10').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+                //Date picker
+                $('#date_of_treatment11').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+                //Date picker
+                $('#date_of_treatment12').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+                //Date picker
+                $('#date_of_treatment13').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+                //Date picker
+                $('#date_of_treatment14').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+                //Date picker
+                $('#date_of_treatment15').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+                //Date picker
+                $('#date_of_treatment16').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+                //Date picker
+                $('#date_of_treatment17').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+                //Date picker
+                $('#date_of_treatment18').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+                //Date picker
+                $('#date_of_treatment19').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+                //Date picker
+                $('#date_of_treatment20').datepicker({
+      dateFormat: "yy-mm-dd"
+    })
+    
             //Date picker
-            $('#date_of_symptoms').datepicker({
+    $('#date_of_symptoms').datepicker({
       dateFormat: "yy-mm-dd"
     })
     //Date picker
@@ -760,6 +834,23 @@ $(document).ready(function() {
         $('#other_pregnant_symptoms_later_immunized_text').val('');
       }
     });
+    $('input[name="pregnant"]').on('click', function() {
+      if ($(this).val() == '2') {
+        $('#other_pregnant').show();
+      } else {
+        $('#other_pregnant').hide();
+        $('#other_pregnant_text').val('');
+      }
+    });
+    $('input[name="other_pregnant_symptoms"]').on('click', function() {
+      if ($(this).val() == '9999') {
+        $('#other_symptoms_pregnant').show();
+      } else {
+        $('#other_symptoms_pregnant').hide();
+        $('#other_symptoms_pregnant_text').val('');
+      }
+    });
+
   });
 </script>
 <script>

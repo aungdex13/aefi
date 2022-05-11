@@ -116,6 +116,8 @@
 									$bells_palsy= $req ->input ('bells_palsy');
 									$symptom_status= $req ->input ('symptom_status');
 									$dfiu= $req ->input ('dfiu');
+									$main_diagnosis= $req ->input ('main_diagnosis');
+									$minor_diagnosis= $req ->input ('minor_diagnosis');
 									
 							$x=0;
 								 for ($i=0; $i < count($name_of_vaccine); $i++) {
@@ -187,10 +189,10 @@
 									'Symptoms_details'=>$Symptoms_details[$i],
 									'symptoms_later_immunized'=>(isset($symptoms_later_immunized[$i])) ? $symptoms_later_immunized[$i]  : '0',
 									'other_symptoms_later_immunized'=>$other_symptoms_later_immunized[$i],
-									'seriousness_of_the_symptoms'=>$seriousness_of_the_symptoms[$i],
-									'other_seriousness_of_the_symptoms'=>$other_seriousness_of_the_symptoms[$i],
-									'patient_status'=>$patient_status[$i],
-									'funeral'=>$funeral[$i],
+									'seriousness_of_the_symptoms'=>(isset($seriousness_of_the_symptoms[$i])) ? $seriousness_of_the_symptoms[$i]  : '0',
+									'other_seriousness_of_the_symptoms'=>(isset($other_seriousness_of_the_symptoms[$i])) ? $other_seriousness_of_the_symptoms[$i]  : '0',
+									'patient_status'=>(isset($patient_status[$i])) ? $patient_status[$i]  : '0',
+									'funeral'=>(isset($funeral[$i])) ? $funeral[$i]  : '0',
 									'other_address_funeral'=>$other_address_funeral[$i],
 									'transverse_myelitis' => (isset($transverse_myelitis[$i])) ? $transverse_myelitis[$i]  : '0',
 									'adem' => (isset($adem[$i])) ? $adem[$i]  : '0',
@@ -214,6 +216,8 @@
 									'date_entry'=>date('Y-m-d H:i:s'),
 									'symptom_status'=>(isset($symptom_status[$i])) ? $symptom_status[$i]  : '0',
 									'dfiu'=>(isset($dfiu[$i])) ? $dfiu[$i]  : '0',
+									'main_diagnosis'=>$main_diagnosis[$i],
+									'minor_diagnosis'=>$minor_diagnosis[$i],
 									];
 									$x++;
 									}
@@ -314,6 +318,8 @@
 							$bells_palsy= $req ->input ('bells_palsy');
 							$symptom_status= $req ->input ('symptom_status');
 							$dfiu= $req ->input ('dfiu');
+							$main_diagnosis= $req ->input ('main_diagnosis');
+							$minor_diagnosis= $req ->input ('minor_diagnosis');
 							// dd($symptom_status);
 					$x=0;
 						 for ($i=0; $i < count($name_of_vaccine); $i++) {
@@ -385,10 +391,10 @@
 							'symptoms_later_immunized'=>(isset($symptoms_later_immunized[$i])) ? $symptoms_later_immunized[$i]  : '0',
 							'other_symptoms_later_immunized'=>$other_symptoms_later_immunized[$i],
 							'diagnosis'=>(isset($diagnosis[$i])) ? $diagnosis[$i]  : '0',
-							'seriousness_of_the_symptoms'=>$seriousness_of_the_symptoms[$i],
-							'other_seriousness_of_the_symptoms'=>$other_seriousness_of_the_symptoms[$i],
-							'patient_status'=>$patient_status[$i],
-							'funeral'=>$funeral[$i],
+							'seriousness_of_the_symptoms'=>(isset($seriousness_of_the_symptoms[$i])) ? $seriousness_of_the_symptoms[$i]  : '0',
+							'other_seriousness_of_the_symptoms'=>(isset($other_seriousness_of_the_symptoms[$i])) ? $other_seriousness_of_the_symptoms[$i]  : '0',
+							'patient_status'=>(isset($patient_status[$i])) ? $patient_status[$i]  : '0',
+							'funeral'=>(isset($funeral[$i])) ? $funeral[$i]  : '0',
 							'other_address_funeral'=>$other_address_funeral[$i],
 							'transverse_myelitis' => (isset($transverse_myelitis[$i])) ? $transverse_myelitis[$i]  : '0',
 							'adem' => (isset($adem[$i])) ? $adem[$i]  : '0',
@@ -412,10 +418,12 @@
 							'date_entry'=>date('Y-m-d H:i:s'),
 							'symptom_status'=>(isset($symptom_status[$i])) ? $symptom_status[$i]  : '0',
 							'dfiu'=>(isset($dfiu[$i])) ? $dfiu[$i]  : '0',
+							'main_diagnosis'=>$main_diagnosis[$i],
+							'minor_diagnosis'=>$minor_diagnosis[$i],
 							];
 							$x++;
 							}
-							  dd($data_vac);
+							//   dd($data_vac);
 							$res2= DB::table('aefi_form_1_vac')->insert($data_vac);
 						}
 					$update	= DB::table('aefi_form_1')

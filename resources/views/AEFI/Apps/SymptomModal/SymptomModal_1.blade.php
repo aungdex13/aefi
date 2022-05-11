@@ -238,12 +238,32 @@
                                             </label>
                                           </div>
                                           
+                                          <div class="col-md-3">
+                                            <label>
+                                              <input name="symptoms_later_immunized" type="checkbox" value="9999">
+                                                    อื่นๆ
+                                            </label>
+                                          </div>
+                                          
+                                          
+                                          <div class="form-group">
+                                            <div class="col-lg-12">
+                                              <div id="other_symptoms_later_immunized" style="display: none">
+                                                <input type="text" id="other_symptoms_later_immunized_text" name="other_symptoms_later_immunized" class="form-control" placeholder="" hidden="true">
+                                              </div>
+                                              {{-- <div id="other_symptoms_later_immunized_t" style="display: none">
+                                                <input type="text" class="form-control pull-right" id="other_symptoms_later_immunized_text" name="other_symptoms_later_immunized" placeholder="ระบุอาการอื่นๆ">
+                                              </div> --}}
+                                            </div>
+                                          </div>
+                
                                         </div>
                                       </div>
                 
                                     </div>
                                     <!-- /.box -->
                                   </div>
+                                  
                                   
                                   {{-- คอรั่มภายใน3.3 --}}
                                   <div class="col-md-12">
@@ -417,14 +437,16 @@
                                           </div>
                                           <div class="col-md-4">
                                             <label>
-                                              <input name="other_pregnant_symptoms[0]" type="checkbox" value="9999">
-                                              อื่นๆ
+                                              <input name="other_pregnant_symptoms" type="checkbox" value="9999">
+                                                    อื่นๆ
                                             </label>
                                           </div>
+                                          
+                                          
                                           <div class="form-group">
                                             <div class="col-lg-12">
                                               <div id="other_symptoms_pregnant" style="display: none">
-                                                <input type="text" id="other_pregnant_symptoms_later_immunized_text" name="other_pregnant_symptoms_later_immunized[0]" class="form-control" placeholder="" hidden="true">
+                                                <input type="text" id="other_symptoms_pregnant_text" name="other_symptoms_pregnant_text" class="form-control" placeholder="" hidden="true">
                                               </div>
                                               {{-- <div id="other_symptoms_later_immunized_t" style="display: none">
                                                 <input type="text" class="form-control pull-right" id="other_symptoms_later_immunized_text" name="other_symptoms_later_immunized" placeholder="ระบุอาการอื่นๆ">
@@ -473,7 +495,7 @@
                                               Meningitis
                                             </label>
                                           </div>
-                                          <div class="col-md-6">
+                                          {{-- <div class="col-md-6">
                                             <label>
                                               <input name="symptoms_later_immunized[0]" type="checkbox" value="9999">
                                               อื่นๆ
@@ -484,11 +506,11 @@
                                               <div id="other_symptoms_later_immunized" style="display: none">
                                                 <input type="text" id="other_symptoms_later_immunized_text" name="other_symptoms_later_immunized[0]" class="form-control" placeholder="" hidden="true">
                                               </div>
-                                              {{-- <div id="other_symptoms_later_immunized_t" style="display: none">
+                                              <div id="other_symptoms_later_immunized_t" style="display: none">
                                                 <input type="text" class="form-control pull-right" id="other_symptoms_later_immunized_text" name="other_symptoms_later_immunized" placeholder="ระบุอาการอื่นๆ">
-                                              </div> --}}
+                                              </div>
                                             </div>
-                                          </div>
+                                          </div> --}}
                                         </div>
                                       </div>
                                     </div>
@@ -512,20 +534,17 @@
                             </div>
                           </div>
                         </div>
-                        <div class="bootstrap-timepicker">
-                          <div class="form-group">
-                            <div class="col-lg-6">
-                              <label>เวลาที่เกิดอาการ :</label>
-                              <div class="input-group">
-                                <input  id="time_of_symptoms1" type="text" class="form-control" name="time_of_symptoms[0]">
-    
-                                <div class="input-group-addon">
-                                  <i class="fa fa-clock-o"></i>
-                                </div>
+                        <div class="form-group">
+                          <div class="col-lg-6">
+                            <label><font style="color:red;">*</font> เวลาที่เกิดอาการ :</label>
+                              <div class="input-group date">
+                              <div class="input-group-addon">
+                                <i class="fa fa-clock-o"></i>
+                              </div>
+                              <input type="time" class="form-control" id="time_of_symptoms"  name="time_of_symptoms[0]">
                               </div>
                             </div>
                           </div>
-                        </div>
                         <div class="form-group">
                           <div class="col-lg-6">
                             <label>ว/ด/ป ที่รับรักษา :</label>

@@ -1,25 +1,25 @@
-
 <!-- jQuery 3 -->
-<script src="/asset/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="{{ URL::asset('asset/bower_components/jquery/dist/jquery.min.js') }}"></script>
 <!-- Bootstrap 3.3.7 -->
-<script src="/asset/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="{{ URL::asset('asset/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
 <!-- date-range-picker -->
-<script src="/asset/bower_components/moment/min/moment.min.js"></script>
+<script src="{{ URL::asset('asset/bower_components/moment/min/moment.min.js') }}"></script>
 <!-- bootstrap time picker -->
-<script src="/asset/plugins/timepicker/bootstrap-timepicker.min.js"></script>
-<script src="/asset/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+<script src="{{ URL::asset('asset/plugins/timepicker/bootstrap-timepicker.min.js') }}"></script>
+<script src="{{ URL::asset('asset/bower_components/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
 <!-- SlimScroll -->
-<script src="/asset/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script src="{{ URL::asset('asset/bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
 <!-- iCheck 1.0.1 -->
-<script src="/asset/plugins/iCheck/icheck.min.js"></script>
+<script src="{{ URL::asset('asset/plugins/iCheck/icheck.min.js') }}"></script>
 <!-- FastClick -->
-<script src="/asset/bower_components/fastclick/lib/fastclick.js"></script>
+<script src="{{ URL::asset('asset/bower_components/fastclick/lib/fastclick.js') }}"></script>
 <!-- AdminLTE App -->
-<script src="/asset/dist/js/adminlte.min.js"></script>
+<script src="{{ URL::asset('asset/dist/js/adminlte.min.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
-<!-- <script src="/asset/dist/js/demo.js"></script> -->
+<!-- <script src="{{ URL::asset('asset/dist/js/demo.js') }}"></script> -->
 <!-- Page script -->
-<!-- <script  src="/asset/bower_components/1543-image-hover/js/index.js"></script> -->
+<!-- <script  src="{{ URL::asset('asset/bower_components/1543-image-hover/js/index.js') }}"></script> -->
+
 
 <script  src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script  src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
@@ -33,6 +33,7 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
 {{-- content table --}}
 <script>
   $(function () {
@@ -44,7 +45,6 @@
       })
 </script>
 {{-- <script type="text/javascript">
-<script
 $(document).ready(function () {
 $(document).on("click", ".classAdd", function () { //
 	var rowCount = $('.data-contact-person').length + 1;

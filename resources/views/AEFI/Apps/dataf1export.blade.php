@@ -572,6 +572,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
                         <td>{{ isset($list_hos[ $value->hospcode_treat]) ? $list_hos[ $value->hospcode_treat] : ""}}</td>
                        <td>{{ isset($listProvince[ $value->province_reported]) ?$listProvince[ $value->province_reported] : "ไม่ระบุข้อมูล"}}</td>
 			                 <td>{{ isset($value->date_entry) ? $value->date_entry: "-" }}</td>
+                       <td>{{ isset($value->date_entry) ? $value->date_entry: "-" }}</td>
 			                 <td>{{ isset($value->datepicker_resiver) ? $value->datepicker_resiver: "-" }}</td>
                         <td>{{ $value->other_medical_history }}</td>
 
