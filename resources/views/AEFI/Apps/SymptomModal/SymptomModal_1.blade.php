@@ -574,29 +574,30 @@
                       <div class="box-body">
                         {{-- input content --}}
                         <!-- textarea -->
-                        <div class="form-group">
-                          <div class="col-lg-6">
-                            <label>การวินิจฉัยหลักของแพทย์ :</label>
-                            <input  id="main_diagnosis1" type="text" class="form-control" name="main_diagnosis[0]">
-                            {{-- <select id="js-example-basic-single3" name="minor_diagnosis[0]" class="js-example-basic-single3 form-control" data-dropdown-css-class="select2-danger" required>
-                            </select> --}}
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <div class="col-lg-6">
-                            <label>การวินิจฉัยรองของแพทย์ :</label>
-                            <input  id="minor_diagnosis1" type="text" class="form-control" name="minor_diagnosis[0]">
-                            {{-- <select id="js-example-basic-single3" name="minor_diagnosis[0]" class="js-example-basic-single3 form-control" data-dropdown-css-class="select2-danger" required>
-                            </select> --}}
-                          </div>
-                        </div>
-                        
-                        <div class="form-group">
-                          <div class="col-lg-8">
-                            <label>รายละเอียดอาการและการตรวจสอบ</label>
-                            <input class="form-control" rows="5"  id="Symptoms_details1" name="Symptoms_details[0]">
-                          </div>
-                        </div>
+                        {{-- input content --}}
+                   <div class="form-group">
+                    <div class="col-lg-12">
+                      <label>การวินิจฉัยหลักของแพทย์ :</label>
+                      <select  name="main_diagnosis[]" class="js-example-basic-single3 form-control" data-dropdown-css-class="select2-danger" required>
+                      
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-lg-12">
+                      <label>การวินิจฉัยรองของแพทย์ :</label>
+                      {{-- <input  id="minor_diagnosis1{{$i-1}}" type="text" class="form-control" name="minor_diagnosis[{{$i-1}}]"> --}}
+                      <select  name="minor_diagnosis[]" class="js-example-basic-single3 form-control" data-dropdown-css-class="select2-danger" required>
+                
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-lg-8">
+                      <label>รายละเอียดอาการและการตรวจสอบ</label>
+                      <input class="form-control" rows="5"  id="Symptoms_details1" name="Symptoms_details[]">
+                    </div>
+                  </div>
                       </div>
                     </div>
                     <!-- /.box -->

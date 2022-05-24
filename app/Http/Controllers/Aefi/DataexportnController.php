@@ -8,7 +8,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
-class DataexportController extends Controller
+class DataexportnController extends Controller
 {
 	public $result;
 
@@ -273,7 +273,7 @@ $selectgroupprov = DB::table('chospital_new')
 		 $vac_list=$this->vaclist();
 		 $list_icd10=$this->list_icd10();
 		 $vacgrouplist=$this->vacgrouplist();
-		return view('AEFI.Apps.dataf1export',
+		return view('AEFI.Apps.dataf1nexport',
 			[
 				'selectdata'=>$selectdata,
 				'listsubdistrict'=>$listsubdistrict,
@@ -534,7 +534,7 @@ $selectgroupprov = DB::table('chospital_new')
 							 ->whereNull('aefi_form_1.status')
 							//  ->groupBy('aefi_form_1.id_case')
 							 ->orderBy('id')
-							 ->paginate(150);
+							 ->get();
 							 break;
 							 case 'admin-dpc':
 							 $selectdata = $selectcaselstF1
@@ -556,7 +556,7 @@ $selectgroupprov = DB::table('chospital_new')
 		 $vac_list=$this->vaclist();
 		 $list_icd10=$this->list_icd10();
 		 $vacgrouplist=$this->vacgrouplist();
-		return view('AEFI.Apps.dataf1export',
+		return view('AEFI.Apps.dataf1nexport',
 			[
 				'selectdata'=>$selectdata,
 				// 'selectdatas'=>$selectdatas,

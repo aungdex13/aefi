@@ -47,7 +47,7 @@ Route::group(['prefix' => 'Developer','middleware' => ['auth']], function() {
 
 Route::get('/welcome', 'Aefi\AEFIController@welcome');
 /* formaeif link */
-Route::get('/form1', 'Aefi\Form1Controller@index')->name('form1');
+Route::get('/form1n', 'Aefi\Form1nController@index')->name('form1n');
 Route::get('/List-Career', 'Aefi\Form1Controller@Get_Career_All')->name('list-career-json');
 Route::get('/form1group', 'Aefi\Form1Controller@indexform1group')->name('form1group');
 // Route::get('/form1', 'Aefi\Form1Controller@index')->name('form1');
@@ -82,7 +82,7 @@ Route::post('/updateform2', 'Aefi\UpdateController@updateform2')->name('updatefo
 Route::get('/deleteAEFI1', 'Aefi\DeleteController@deletedata1')->name('deleteAEFI1');
 Route::get('/deleteAEFI2', 'Aefi\DeleteController@deletedata2')->name('deleteAEFI2');
 // edit Data
-Route::get('/EditAEFI1', 'Aefi\SelectController@selectalldataAEFI1')->name('EditAEFI1');
+Route::get('/EditAEFI1n', 'Aefi\SelectnController@selectalldataAEFI1')->name('EditAEFI1n');
 Route::get('/EditAEFI2', 'Aefi\SelectController@selectalldataAEFI2')->name('EditAEFI2');
 Route::get('/lstef2', 'Aefi\SelectController@selectdatatableEditcaseAEFI2')->name('lstef2');
 /* loginsys */
@@ -130,3 +130,10 @@ Route::post('/insertaesiform1', 'Aefi\AESIInsertController@insertaesiform1')->na
 Route::post('/updateaesiform1', 'Aefi\AESIInsertController@updateaesiform1')->name('updateaesiform1');
 Route::get('/deleteAESI1', 'Aefi\AESISelectController@deletedata')->name('deleteAESI1');
 Route::get('/ViewAESI1', 'Aefi\ViewAESIController@index')->name('ViewAESI1');
+
+// new export
+Route::get('/aefiexport', 'Aefi\aefiexportController@index')->name('aefiexport');
+Route::post('/aefiexportbtn', 'Aefi\aefiexportController@export')->name('aefiexportbtn');
+
+Route::get('/dataf1nexport', 'Aefi\DataexportnController@dataexport')->name('dataf1nexport');
+Route::post('/dataf1nexport', 'Aefi\DataexportnController@dataexportfrm')->name('dataf1nexport');

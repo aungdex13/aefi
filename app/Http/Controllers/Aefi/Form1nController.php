@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use DB;
 use App\Career;
 use App\ICD10;
-class Form1Controller extends Controller
+class Form1nController extends Controller
 {
 	public $result;
 
@@ -21,7 +21,7 @@ class Form1Controller extends Controller
 		$aecode=$this->aecode();
 		$groupproduct=$this->groupproduct();
 		$vac_list=$this->vaclist();
-		return view('AEFI.Apps.form1',
+		return view('AEFI.Apps.form1n',
 			[
 				'vac_list'=>$vac_list,
 				'list'=>$list ,

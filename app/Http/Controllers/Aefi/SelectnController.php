@@ -11,7 +11,7 @@
 	use DB;
 	use Illuminate\Support\Str;
 	use Carbon\Carbon;
-	class SelectController extends Controller
+	class SelectnController extends Controller
 	{
 		public $result;
 
@@ -441,7 +441,7 @@
 			$list_hos=$this->list_hos();
 			$list_career=$this->list_career();
 						// dd($EditAEFI1vac);
-		 return view('AEFI.Apps.EditAEFI1')
+		 return view('AEFI.Apps.EditAEFI1n')
 		 				->with('data', $EditAEFI1)
 						->with('datavac', $EditAEFI1vac)
 						->with('list', $list)
