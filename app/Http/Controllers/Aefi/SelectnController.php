@@ -161,7 +161,7 @@
 	 $listvac_arr=$this->listvac_arr();
 	 $list_hos=$this->list_hos();
 	 $vacgrouplist=$this->vacgrouplist();
-		 return view('AEFI.Apps.caselstAEFI1')
+		 return view('AEFI.Apps.caselstAEFI1n')
 			->with('listProvince', $listProvince)
 			->with('listDistrict', $listDistrict)
 			->with('listsubdistrict', $listsubdistrict)
@@ -359,7 +359,7 @@
 	 $list_hos=$this->list_hos();
 	 $vacgrouplist=$this->vacgrouplist();
 	// dd("test");
-		 return view('AEFI.Apps.caselstAEFI1')
+		 return view('AEFI.Apps.caselstAEFI1n')
 			->with('listProvince', $listProvince)
 			->with('listDistrict', $listDistrict)
 			->with('listsubdistrict', $listsubdistrict)
@@ -440,6 +440,7 @@
 			$listvac_arr=$this->listvac_arr();
 			$list_hos=$this->list_hos();
 			$list_career=$this->list_career();
+			$list_icd10=$this->list_icd10();
 						// dd($EditAEFI1vac);
 		 return view('AEFI.Apps.EditAEFI1n')
 		 				->with('data', $EditAEFI1)
@@ -452,7 +453,8 @@
 						->with('count_data_vac',$count_data_vac)
 						->with('listvac_arr',$listvac_arr)
 						->with('list_hos',$list_hos)
-						->with('list_career',$list_career);
+						->with('list_career',$list_career)
+						->with('list_icd10',$list_icd10);
 
 		}
 		public function selectalldataAEFI2(Request $req)
@@ -570,6 +572,14 @@
 			}
 			// dd($province_arr);
 			return $vacgroup_arr;
+		}
+		protected function list_icd10(){
+			$arr_icd10 = DB::table('ref_icd10')->select('code','name')->get();
+			foreach ($arr_icd10 as  $value) {
+				$arr_icd10[$value->code] =trim($value->name);
+			}
+			// dd($province_arr);
+			return $arr_icd10;
 		}
 
 }

@@ -1891,7 +1891,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
           <div class="row">
             <div class="col-md-8">
               <div class="chart-responsive">
-                <div id="piechartContainer" style="height: 370px; width: 100%;"></div>
+                <div id="chartContainer" style="height: 450px; width: 120%;"></div>
               </div>
               <!-- ./chart-responsive -->
             </div>
@@ -1958,5 +1958,76 @@ $('#JohnsonnJohnson').DataTable({
        "order": [[ 1, 'desc' ]]
 });
 } );
+
+window.onload = function () {
+
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	theme: "light2",
+	title:{
+		text: ""
+	},
+	data: [{        
+		type: "line",
+      	indexLabelFontSize: 16,
+		dataPoints: [
+			{ y: {{ isset($count_week[0]->count_case) ? $count_week[0]->count_case : "0" }} },
+			{ y: {{ isset($count_week[1]->count_case) ? $count_week[1]->count_case : "0" }} },
+			{ y: {{ isset($count_week[2]->count_case) ? $count_week[2]->count_case : "0" }} },
+			{ y: {{ isset($count_week[3]->count_case) ? $count_week[3]->count_case : "0" }} },
+			{ y: {{ isset($count_week[4]->count_case) ? $count_week[4]->count_case : "0" }} },
+			{ y: {{ isset($count_week[5]->count_case) ? $count_week[5]->count_case : "0" }} },
+			{ y: {{ isset($count_week[6]->count_case) ? $count_week[6]->count_case : "0" }} },
+			{ y: {{ isset($count_week[7]->count_case) ? $count_week[7]->count_case : "0" }} },
+			{ y: {{ isset($count_week[8]->count_case) ? $count_week[8]->count_case : "0" }} },
+			{ y: {{ isset($count_week[9]->count_case) ? $count_week[9]->count_case : "0" }} },
+			{ y: {{ isset($count_week[10]->count_case) ? $count_week[10]->count_case : "0" }} },
+			{ y: {{ isset($count_week[11]->count_case) ? $count_week[11]->count_case : "0" }} },
+      { y: {{ isset($count_week[12]->count_case) ? $count_week[12]->count_case : "0" }} },
+			{ y: {{ isset($count_week[13]->count_case) ? $count_week[13]->count_case : "0" }} },
+			{ y: {{ isset($count_week[14]->count_case) ? $count_week[14]->count_case : "0" }} },
+			{ y: {{ isset($count_week[15]->count_case) ? $count_week[15]->count_case : "0" }} },
+			{ y: {{ isset($count_week[16]->count_case) ? $count_week[16]->count_case : "0" }} },
+			{ y: {{ isset($count_week[17]->count_case) ? $count_week[17]->count_case : "0" }} },
+			{ y: {{ isset($count_week[18]->count_case) ? $count_week[18]->count_case : "0" }} },
+			{ y: {{ isset($count_week[19]->count_case) ? $count_week[19]->count_case : "0" }} },
+			{ y: {{ isset($count_week[20]->count_case) ? $count_week[20]->count_case : "0" }} },
+			{ y: {{ isset($count_week[21]->count_case) ? $count_week[21]->count_case : "0" }} },
+			{ y: {{ isset($count_week[22]->count_case) ? $count_week[22]->count_case : "0" }} },
+			{ y: {{ isset($count_week[23]->count_case) ? $count_week[23]->count_case : "0" }} },
+      { y: {{ isset($count_week[24]->count_case) ? $count_week[24]->count_case : "0" }} },
+      { y: {{ isset($count_week[25]->count_case) ? $count_week[25]->count_case : "0" }} },
+			{ y: {{ isset($count_week[26]->count_case) ? $count_week[26]->count_case : "0" }} },
+			{ y: {{ isset($count_week[27]->count_case) ? $count_week[27]->count_case : "0" }} },
+			{ y: {{ isset($count_week[28]->count_case) ? $count_week[28]->count_case : "0" }} },
+			{ y: {{ isset($count_week[29]->count_case) ? $count_week[29]->count_case : "0" }} },
+			{ y: {{ isset($count_week[30]->count_case) ? $count_week[30]->count_case : "0" }} },
+			{ y: {{ isset($count_week[31]->count_case) ? $count_week[31]->count_case : "0" }} },
+			{ y: {{ isset($count_week[32]->count_case) ? $count_week[32]->count_case : "0" }} },
+			{ y: {{ isset($count_week[33]->count_case) ? $count_week[33]->count_case : "0" }} },
+			{ y: {{ isset($count_week[34]->count_case) ? $count_week[34]->count_case : "0" }} },
+			{ y: {{ isset($count_week[35]->count_case) ? $count_week[35]->count_case : "0" }} },
+			{ y: {{ isset($count_week[36]->count_case) ? $count_week[36]->count_case : "0" }} },
+      { y: {{ isset($count_week[37]->count_case) ? $count_week[37]->count_case : "0" }} },
+			{ y: {{ isset($count_week[38]->count_case) ? $count_week[38]->count_case : "0" }} },
+			{ y: {{ isset($count_week[39]->count_case) ? $count_week[39]->count_case : "0" }} },
+			{ y: {{ isset($count_week[40]->count_case) ? $count_week[40]->count_case : "0" }} },
+			{ y: {{ isset($count_week[41]->count_case) ? $count_week[41]->count_case : "0" }} },
+			{ y: {{ isset($count_week[42]->count_case) ? $count_week[42]->count_case : "0" }} },
+			{ y: {{ isset($count_week[43]->count_case) ? $count_week[43]->count_case : "0" }} },
+			{ y: {{ isset($count_week[44]->count_case) ? $count_week[44]->count_case : "0" }} },
+			{ y: {{ isset($count_week[45]->count_case) ? $count_week[45]->count_case : "0" }} },
+			{ y: {{ isset($count_week[46]->count_case) ? $count_week[46]->count_case : "0" }} },
+			{ y: {{ isset($count_week[47]->count_case) ? $count_week[47]->count_case : "0" }} },
+			{ y: {{ isset($count_week[48]->count_case) ? $count_week[48]->count_case : "0" }} },
+      { y: {{ isset($count_week[49]->count_case) ? $count_week[49]->count_case : "0" }} },
+      { y: {{ isset($count_week[50]->count_case) ? $count_week[50]->count_case : "0" }} },
+      { y: {{ isset($count_week[51]->count_case) ? $count_week[51]->count_case : "0" }} }
+		]
+	}]
+});
+chart.render();
+
+}
  </script>
 @stop

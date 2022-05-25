@@ -499,6 +499,21 @@
 										//  ->orderBy('vac_count','DESC')
 										//  ->take(5)
 										 ->get();
+							$covid_vac = [39, 40, 41,42,43,44];
+							// dd($covid_vac);
+							$count_week = DB::table('aefi_form_1_vac')
+										 ->select(DB::raw('	WEEK(aefi_form_1_vac.date_entry) AS Week,
+										 					COUNT(aefi_form_1_vac.name_of_vaccine)  as count_case
+										 					'))
+										 ->where('status','=',null)
+										 ->whereIn('name_of_vaccine',$covid_vac)
+										 ->whereYear('aefi_form_1_vac.date_entry', '=',$yearnow)
+            							// ->whereMonth('aefi_form_1_vac.date_entry', '=', $monthnow)
+										 ->groupBy('Week')
+										//  ->orderBy('vac_count','DESC')
+										//  ->take(5)
+										 ->get();
+			// dd($count_week);
 			// dd($count_vac39,$count_vac40,$count_vac41,$count_vac42,$count_vac43,$count_vac44);							 
 			return view('AEFI.Apps.dashboardcovid',compact(
 			 'listProvince',
@@ -511,7 +526,8 @@
 			 'count_vac41',
 			 'count_vac42',
 			 'count_vac43',
-			 'count_vac44'
+			 'count_vac44',
+			 'count_week'
 			 
 		 ));
 		}

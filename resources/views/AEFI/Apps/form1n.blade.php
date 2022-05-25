@@ -77,7 +77,7 @@ foreach ($aecode as $value) {
 </section>
 <!-- Main content -->
 <section class="content">
-  <form role="form" action="{{ route('insertform1') }}" method="post">
+  <form role="form" action="{{ route('insertform1n') }}" method="post">
     {{ csrf_field() }}
     <div class="row">
       <!--หัวข้อที่5 -->
@@ -920,101 +920,7 @@ foreach ($aecode as $value) {
                     </thead>
                     <tbody>
                       <tr class="data-contact-person">
-                        <td>
-                          <select type="text" id="name_of_vaccine" name="name_of_vaccine[]" class="form-control" required>
-                            <option value="">กรุณาระบุชื่อวัคซีน</option>
-                            @foreach ($vac_list as $row)
-                            <option value="{{$row->VAC_CODE}}">{{$row->VAC_NAME_EN}}</option>
-                            @endforeach
-                          </select>
-                        </td>
-                        <td>
-                          <select type="text" id="vaccine_volume" name="vaccine_volume[]" class="form-control">
-                            <option value="">กรุณาระบุปริมาณที่ให้</option>
-                            <?php
-                                 foreach ($arr_vaccine_volume as $k=>$v) {
-                                 ?>
-                            <option  value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
-                            <?php } ?>
-                          </select>
-                        </td>
-                        <td>
-                          <select type="text" id="route_of_vaccination1" name="route_of_vaccination[]" class="form-control">
-                            <option value="">กรุณาระบุวิธีที่ให้</option>
-                            <?php
-                                   foreach ($arr_route_of_vaccination as $k=>$v) {
-                               ?>
-                            <option  value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
-                            <?php } ?>
-                          </select>
-                        </td>
-                        <td>
-                          <select type="text" id="vaccination_site1" name="vaccination_site[]" class="form-control">
-                            <option value="">กรุณาระบุวิธีตำแหน่ง</option>
-                            <?php
-                                   foreach ($arr_vaccination_site as $k=>$v) {
-                               ?>
-                            <option  value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
-                            <?php } ?>
-                          </select>
-                        </td>
-                        <td>
-                          <select name="dose[]" id="dose1" class="form-control">
-                            <option value="1">เข็มที่ 1</option>
-                            <option value="2">เข็มที่ 2</option>
-                            <option value="3">เข็มที่ 3</option>
-                          <option value="4">เข็มที่ 4</option>
-                            <option value="5">เข็มที่ 5</option>
-                          <option value="6">เข็มที่ 6</option>                          
-                          </select>
-                        </td>
-                        <td>
-                          <input type="text" name="date_of_vaccination[]" id="date_of_vaccination1" class="form-control  datepicker readonly" data-date-format="yyyy-mm-dd" required>
-                        </td>
-                        <td>
-                          <input type="time" id="time_of_vaccination1" name="time_of_vaccination[]" class="form-control" required>
-                        </td>
-                        <td>
-                          <input type="radio" id="symptom1_1" name="symptom_status[0]" value="1" data-toggle="modal" data-target="#Symptom1">
-                          <label for="age1"> : มีอาการ</label><br>
-                          <input type="radio" id="symptom1_2" name="symptom_status[0]" value="0"  data-toggle="modal" data-target="#nonSymptom1">
-                          <label for="age2"> : ไม่มีอาการ</label><br>
-                        </td>
-                        <td>
-                          <select type="text" id="manufacturer1" name="manufacturer[]" class="form-control">
-                            <option value="">กรุณาระบุชื่อผู้ผลิต</option>
-                            <?php
-                                   foreach ($arr_manufacturer as $k=>$v) {
-                               ?>
-                            <option  value="<?php echo $k ; ?>"><?php echo $v ; ?></option>
-                            <?php } ?>
-                          </select>
-                        </td>
-                        <td>
-                          <input type="text" id="other_manufacturer" name="other_manufacturer[]" class="form-control">
-                        </td>
-                        <td>
-                          <input type="text" id="lot_number1" name="lot_number[]" class="form-control">
-                        </td>
-                        <td>
-                          <input type="text" id="datepicker_expiry_date1" name="expiry_date[]" class="form-control" data-date-format="yyyy-mm-dd" readonly>
-                        </td>
-                        {{-- <td>
-                          <input type="text" id="name_of_diluent1" name="name_of_diluent[]" class="form-control">
-                        </td> --}}
-                        <td>
-                         {{-- <input type="text"  id="rash1" name="rash[]" value="0027"> --}}
-                          <input type="text" id="lot_number_diluent1" name="lot_number_diluent[]" class="form-control">
-                        </td>
-                        <td>
-                          <input type="text" id="datepicker_expiry_date_diluent1" name="expiry_date_diluent[]" class="form-control" data-date-format="yyyy-mm-dd" readonly>
-                        </td>
-                        {{-- <td><input type="text" id="date_of_reconstitution1" name="date_of_reconstitution[]" class="form-control" data-date-format="yyyy-mm-dd"></td> --}}
-                        {{-- <td><input type="text" id="time_of_reconstitution1" name="time_of_reconstitution[]" class="form-control"></td> --}}
-                        {{-- <td><a href='javascript:void(0);' class='remove'><span class='glyphicon glyphicon-remove'></span></a></td> --}}
-                        <td>
-                          <button type="button" id="btnAdd" class="btn btn-m btn-success classAdd">เพิ่มข้อมูลวัคซีน</button>
-                        </td>
+                       
                       </tr>
                     </tbody>
                   </table>
@@ -1024,7 +930,7 @@ foreach ($aecode as $value) {
               </div>
             </div>
           {{-- หัวข้อที่ 3 --}}
-            @include('AEFI.Apps.SymptomModal.SymptomModal_1')
+            {{-- @include('AEFI.Apps.SymptomModal.SymptomModal_1') --}}
             {{-- @include('AEFI.Apps.SymptomModal.nonSymptomModal_1') --}}
             {{-- @include('AEFI.Apps.SymptomModal.SymptomModal_2') --}}
             {{-- @include('AEFI.Apps.SymptomModal.SymptomModal_3')
@@ -1436,8 +1342,7 @@ foreach ($aecode as $value) {
   </div>
   <!-- /.row -->
 </section>
-@include('AEFI.layout.footerScript')
-
+@include('AEFI.layout.footerScriptn')
 <script type="text/javascript">
   $('.provinces').change(function() {
     if ($(this).val() != '') {
@@ -1460,7 +1365,9 @@ foreach ($aecode as $value) {
 <script type="text/javascript">
   $('.amphures').change(function() {
     var selectD = $(this).val();
+    //alert(selectD);
     if ($(this).val() != '') {
+      //var selectD=$(this).val();
       console.log(selectD);
       var _token = $('input[name="_token"]').val();
       $.ajax({
@@ -1517,10 +1424,10 @@ foreach ($aecode as $value) {
   $(document).ready(function() {
     $(document).on("click", ".classAdd", function() { //
       var rowCount = $('.data-contact-person').length + 1;
-      var rowCountSyntom = $('.data-contact-person').length;
+      var rowCountSyntom = $('.data-contact-person').length - 1;
       var contactdiv = '<tr class="data-contact-person">' +
         '<td>' +
-        '<select type="text" id="name_of_vaccine1" name="name_of_vaccine[]' + rowCount + '" class="form-control">' +
+        '<select type="text" id="name_of_vaccine1" name="name_of_vaccine[' + rowCountSyntom + ']" class="form-control" required>' +
         '<option value="">กรุณาระบุชื่อวัคซีน</option>' +
         @foreach($vac_list as $row)
       '<option value="{{$row->VAC_CODE}}">{{$row->VAC_NAME_EN}}</option>' +
@@ -1528,7 +1435,7 @@ foreach ($aecode as $value) {
         '</select>' +
         '</td>' +
         '<td>' +
-        '<select type="text" id="vaccine_volume1" name="vaccine_volume[]' + rowCount + '" class="form-control">' +
+        '<select type="text" id="vaccine_volume1" name="vaccine_volume[' + rowCountSyntom + ']" class="form-control">' +
         '<option value="">กรุณาระบุปริมาณที่ให้</option>' +
         <?php
       foreach($arr_vaccine_volume as $k => $v) {
@@ -1538,7 +1445,7 @@ foreach ($aecode as $value) {
         '</select>' +
         '</td>' +
         '<td>' +
-        '<select type="text" id="route_of_vaccination1" name="route_of_vaccination[]' + rowCount + '" class="form-control">' +
+        '<select type="text" id="route_of_vaccination1" name="route_of_vaccination[' + rowCountSyntom + ']" class="form-control">' +
         '<option value="">กรุณาระบุวิธีที่ให้</option>' +
         <?php
       foreach($arr_route_of_vaccination as $k => $v) {
@@ -1549,7 +1456,7 @@ foreach ($aecode as $value) {
         '</select>' +
         '</td>' +
         '<td>' +
-        '<select type="text" id="vaccination_site1" name="vaccination_site[]' + rowCount + '" class="form-control">' +
+        '<select type="text" id="vaccination_site1" name="vaccination_site[' + rowCountSyntom + ']" class="form-control">' +
         '  <option value="">กรุณาระบุวิธีตำแหน่ง</option>' +
         <?php
       foreach($arr_vaccination_site as $k => $v) {
@@ -1560,21 +1467,20 @@ foreach ($aecode as $value) {
         '</select>' +
         '</td>' +
         '<td>' +
-          '<select name="dose[]' + rowCount + '" id="dose1' + rowCount + '" class="form-control">'+
+          '<select name="dose[' + rowCountSyntom + ']" id="dose1' + rowCount + '" class="form-control">'+
             '<option value="1">เข็มที่ 1</option>'+
   '<option value="2">เข็มที่ 2</option>'+
   '<option value="3">เข็มที่ 3</option>'+
 '<option value="4">เข็มที่ 4</option>'+
   '<option value="5">เข็มที่ 5</option>'+
 '<option value="6">เข็มที่ 6</option>'+
-
 '</select>'+
 '</td>' +
         '<td>' +
-        '<input type="text" name="date_of_vaccination[]' + rowCount + '" value="" id="date_of_vaccination1' + rowCount + '" class="form-control datepicker" data-date-format="yyyy-mm-dd" readonly required>' +
+        '<input type="text" name="date_of_vaccination[' + rowCountSyntom + ']" value="" id="date_of_vaccination1' + rowCount + '" class="form-control datepicker" data-date-format="yyyy-mm-dd" readonly required>' +
         '</td>' +
         '<td>' +
-        '<input type="time" id="time_of_vaccination1' + rowCount + '" name="time_of_vaccination[]' + rowCount + '" class="form-control" required>' +
+        '<input type="time" id="time_of_vaccination1' + rowCount + '" name="time_of_vaccination[' + rowCountSyntom + ']" class="form-control" required>' +
         '</td>' +
         '<td>' +
           '<input type="radio" id="symptom' + rowCount + '_1" name="symptom_status[' + rowCountSyntom + ']" value="1" data-toggle="modal" data-target="#Symptom' + rowCount + '">' +
@@ -1582,7 +1488,7 @@ foreach ($aecode as $value) {
           '<input type="radio" id="symptom' + rowCount + '_2" name="symptom_status[' + rowCountSyntom + ']" value="0" data-toggle="modal" data-target="#nonSymptom' + rowCount + '">' +
           '<label for="symptom2"> : ไม่มีอาการ</label><br>' +
           '<!-- Modal_1 -->'+
-'<div class="modal fade" id="Symptom' + rowCount + '" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">'+
+'<div class="modal fade" id="Symptom' + rowCount + '"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">'+
 '    <div class="modal-dialog modal-lg">'+
 '      <div class="modal-content">'+
 '        <div class="modal-header">'+
@@ -1605,19 +1511,19 @@ foreach ($aecode as $value) {
 '                                      <div class="form-group">'+
 '                                        <div class="col-md-4">'+
 '                                        <label>'+
-'                                        <input type="checkbox" name="rash[]' + rowCount + '" value="0027">'+
+'                                        <input type="checkbox" name="rash[' + rowCountSyntom + ']" value="0027">'+
 '                                      Rash(ผื่น)'+
 '                                    </label>'+
 '                                  </div>'+
 '                                  <div class="col-md-4">'+
 '                                    <label>'+
-'                                    <input type="checkbox" name="erythema[]' + rowCount + '" value="0028">'+
+'                                    <input type="checkbox" name="erythema[' + rowCountSyntom + ']" value="0028">'+
 '                                  Erythema(ผื่นแดง)'+
 '                                </label>'+
 '                              </div>'+
 '                              <div class="col-md-4">'+
                                             '<label>'+
-                                              '<input type="checkbox" name="urticaria[]' + rowCount + '" value="0044">'+
+                                              '<input type="checkbox" name="urticaria[' + rowCountSyntom + ']" value="0044">'+
                                               'Urticaria'+
                                             '</label>'+
                                           '</div>'+
@@ -1625,19 +1531,19 @@ foreach ($aecode as $value) {
                                         '<div class="form-group">'+
                                           '<div class="col-md-4">'+
                                             '<label>'+
-                                              '<input type="checkbox" name="itching[]' + rowCount + '" value="0026">'+
+                                              '<input type="checkbox" name="itching[' + rowCountSyntom + ']" value="0026">'+
                                               'Itching(อาการคัน)'+
                                             '</label>'+
                                           '</div>'+
                                           '<div class="col-md-4">'+
                                             '<label>'+
-                                              '<input type="checkbox" name="edema[]' + rowCount + '" value="0003A">'+
+                                              '<input type="checkbox" name="edema[' + rowCountSyntom + ']" value="0003A">'+
                                              ' Edema'+
                                             '</label>'+
                                           '</div>'+
                                           '<div class="col-md-4">'+
                                             '<label>'+
-                                              '<input type="checkbox" name="angioedema[]' + rowCount + '" value="0003">'+
+                                              '<input type="checkbox" name="angioedema[' + rowCountSyntom + ']" value="0003">'+
                                               'Angioedema(บวมที่เยื่อบุ)'+
                                             '</label>'+
                                           '</div>'+
@@ -1647,43 +1553,43 @@ foreach ($aecode as $value) {
                                         '<div class="form-group">'+
                                           '<div class="col-md-6" hidden>'+
                                             '<label>'+
-                                              '<input type="checkbox" name="fainting[]' + rowCount + '" value="1">'+
+                                              '<input type="checkbox" name="fainting[' + rowCountSyntom + ']" value="1">'+
                                               'Fainting'+
                                             '</label>'+
                                           '</div>'+
                                           '<div class="col-md-4">'+
                                             '<label>'+
-                                              '<input type="checkbox" name="hyperventilation[]' + rowCount + '" value="0517">'+
+                                              '<input type="checkbox" name="hyperventilation[' + rowCountSyntom + ']" value="0517">'+
                                               'Hyperventilation'+
                                             '</label>'+
                                           '</div>'+
                                           '<div class="col-md-4">'+
                                             '<label>'+
-                                              '<input type="checkbox" name="syncope[]' + rowCount + '" value="0223">'+
+                                              '<input type="checkbox" name="syncope[' + rowCountSyntom + ']" value="0223">'+
                                               'Syncope(เป็นลม)'+
                                             '</label>'+
                                           '</div>'+
                                           '<div class="col-md-4">'+
                                             '<label>'+
-                                              '<input type="checkbox" name="headche[]' + rowCount + '" value="1">'+
+                                              '<input type="checkbox" name="headche[' + rowCountSyntom + ']" value="1">'+
                                              ' Headche'+
                                             '</label>'+
                                           '</div>'+
                                           '<div class="col-md-4">'+
                                           '  <label>'+
-                                              '<input type="checkbox" name="dizziness[]' + rowCount + '" value="0101">'+
+                                              '<input type="checkbox" name="dizziness[' + rowCountSyntom + ']" value="0101">'+
                                               'Dizziness(เวียนศีรษะ)'+
                                             '</label>'+
                                           '</div>'+
                                           '<div class="col-md-4">'+
                                             '<label>'+
-                                              '<input type="checkbox" name="fatigue[]' + rowCount + '" value="0724">'+
+                                              '<input type="checkbox" name="fatigue[' + rowCountSyntom + ']" value="0724">'+
                                               'Fatigue(อ่อนเพลีย)'+
                                             '</label>'+
                                          ' </div>'+
                                           '<div class="col-md-4">'+
                                             '<label>'+
-                                              '<input type="checkbox" name="malaise[]' + rowCount + '" value="0728">'+
+                                              '<input type="checkbox" name="malaise[' + rowCountSyntom + ']" value="0728">'+
                                               'Malaise(ไม่สบายตัว)'+
                                             '</label>'+
                                           '</div>'+
@@ -1692,31 +1598,31 @@ foreach ($aecode as $value) {
                                         '<div class="form-group">'+
                                           '<div class="col-md-4">'+
                                             '<label>'+
-                                              '<input type="checkbox" name="dyspepsia[]' + rowCount + '" value="0279">'+
+                                              '<input type="checkbox" name="dyspepsia[' + rowCountSyntom + ']" value="0279">'+
                                               'Dyspepsia'+
                                             '</label>'+
                                           '</div>'+
                                           '<div class="col-md-4">'+
                                             '<label>'+
-                                              '<input type="checkbox" name="diarrhea[]' + rowCount + '" value="1">'+
+                                              '<input type="checkbox" name="diarrhea[' + rowCountSyntom + ']" value="1">'+
                                               'Diarrhea(ถ่ายเหลว)'+
                                             '</label>'+
                                           '</div>'+
                                           '<div class="col-md-4">'+
                                             '<label>'+
-                                              '<input type="checkbox" name="nausea[]' + rowCount + '" value="0308">'+
+                                              '<input type="checkbox" name="nausea[' + rowCountSyntom + ']" value="0308">'+
                                               'Nausea(คลื่นไส้)'+
                                             '</label>'+
                                           '</div>'+
                                           '<div class="col-md-4">'+
                                             '<label>'+
-                                              '<input type="checkbox" name="vomiting[]' + rowCount + '" value="0228">'+
+                                              '<input type="checkbox" name="vomiting[' + rowCountSyntom + ']" value="0228">'+
                                               'Vomiting(อาเจียน)'+
                                             '</label>'+
                                           '</div>'+
                                           '<div class="col-md-4">'+
                                             '<label>'+
-                                              '<input type="checkbox" name="abdominal_pain[]' + rowCount + '" value="0268">'+
+                                              '<input type="checkbox" name="abdominal_pain[' + rowCountSyntom + ']" value="0268">'+
                                               'Abdominal pain(ปวดท้อง)'+
                                             '</label>'+
                                           '</div>'+
@@ -1725,100 +1631,113 @@ foreach ($aecode as $value) {
                                         '<div class="form-group">'+
                                           '<div class="col-md-4">'+
                                             '<label>'+
-                                              '<input type="checkbox" name="arthalgia[]' + rowCount + '" value="1">'+
+                                              '<input type="checkbox" name="arthalgia[' + rowCountSyntom + ']" value="1">'+
                                               'Arthalgia(ปวดข้อ)'+
                                             '</label>'+
                                           '</div>'+
                                           '<div class="col-md-4">'+
                                             '<label>'+
-                                              '<input type="checkbox" name="myalgia[]' + rowCount + '" value="0072">'+
+                                              '<input type="checkbox" name="myalgia[' + rowCountSyntom + ']" value="0072">'+
                                               'Myalgia(ปวดเมื่อยกล้ามเนื้อ)'+
                                             '</label>'+
                                           '</div>'+
                                           '<div class="col-md-4">'+
                                             '<label>'+
-                                              '<input type="checkbox" name="fever38c[]' + rowCount + '" value="0725">'+
+                                              '<input type="checkbox" name="fever38c[' + rowCountSyntom + ']" value="0725">'+
                                               'Fever >= 38 C (ไข้)'+
                                             '</label>'+
                                           '</div>'+
                                           '<div class="col-md-4">'+
                                             '<label>'+
-                                              '<input type="checkbox" name="swelling_at_the_injection[]' + rowCount + '" value="1">'+
+                                              '<input type="checkbox" name="swelling_at_the_injection[' + rowCountSyntom + ']" value="1">'+
                                               'บวมบริเวณที่ฉีดนานเกิน3วัน'+
                                             '</label>'+
                                           '</div>'+
                                           '<div class="col-md-4">'+
                                             '<label>'+
-                                              '<input type="checkbox" name="swelling_beyond_nearest_joint[]' + rowCount + '" value="1">'+
+                                              '<input type="checkbox" name="swelling_beyond_nearest_joint[' + rowCountSyntom + ']" value="1">'+
                                               'บวมลามไปถึงข้อที่ใกล้ที่สุด'+
                                             '</label>'+
                                           '</div>'+
                                           '<div class="col-md-4">'+
                                             '<label>'+
-                                              '<input type="checkbox" name="lymphadenopathy[]' + rowCount + '" value="0577">'+
+                                              '<input type="checkbox" name="lymphadenopathy[' + rowCountSyntom + ']" value="0577">'+
                                               'Lymphadenopathy'+
                                             '</label>'+
                                           '</div>'+
                                           '<div class="col-md-4">'+
                                             '<label>'+
-                                              '<input type="checkbox" name="lymphadenitis[]' + rowCount + '" value="0577D">'+
+                                              '<input type="checkbox" name="lymphadenitis[' + rowCountSyntom + ']" value="0577D">'+
                                               'Lymphadenitis'+
                                             '</label>'+
                                           '</div>'+
                                           '<div class="col-md-4">'+
                                             '<label>'+
-                                              '<input type="checkbox" name="sterile_abscess[]' + rowCount + '" value="0051">'+
+                                              '<input type="checkbox" name="sterile_abscess[' + rowCountSyntom + ']" value="0051">'+
                                               'Sterile abscess'+
                                             '</label>'+
                                           '</div>'+
                                           '<div class="col-md-4">'+
                                             '<label>'+
-                                              '<input type="checkbox" name="bacterial_abscess[]' + rowCount + '" value="1">'+
+                                              '<input type="checkbox" name="bacterial_abscess[' + rowCountSyntom + ']" value="1">'+
                                               'Bacterial abscess'+
                                             '</label>'+
                                           '</div>'+
                                           '<div class="col-md-4">'+
                                             '<label>'+
-                                              '<input type="checkbox" name="febrile_convulsion[]' + rowCount + '" value="1">'+
+                                              '<input type="checkbox" name="febrile_convulsion[' + rowCountSyntom + ']" value="1">'+
                                               'Febrile convulsion(ชักจากไข้)'+
                                             '</label>'+
                                           '</div>'+
                                           '<div class="col-md-4">'+
                                             '<label>'+
-                                              '<input type="checkbox" name="afebrile_convulsion[]' + rowCount + '" value="1">'+
+                                              '<input type="checkbox" name="afebrile_convulsion[' + rowCountSyntom + ']" value="1">'+
                                               'Afebrile convulsion(ชักจากเหตุอื่น)'+
                                             '</label>'+
                                           '</div>'+
                                           '<div class="col-md-4">'+
                                             '<label>'+
-                                              '<input type="checkbox" name="flaccid_paralysis[]' + rowCount + '" value="0139">'+
+                                              '<input type="checkbox" name="flaccid_paralysis[' + rowCountSyntom + ']" value="0139">'+
                                               'Flaccid paralysis'+
                                             '</label>'+
                                           '</div>'+
                                           '<div class="col-md-4">'+
                                             '<label>'+
-                                              '<input type="checkbox" name="spastic_paralysis[]' + rowCount + '" value="0775">'+
+                                              '<input type="checkbox" name="spastic_paralysis[' + rowCountSyntom + ']" value="0775">'+
                                               'Spastic paralysis'+
                                             '</label>'+
                                           '</div>'+
                                           '<div class="col-md-4">'+
                                             '<label>'+
-                                              '<input name="chest_pain[]' + rowCount + '" type="checkbox" value="1">'+
+                                              '<input name="chest_pain[' + rowCountSyntom + ']" type="checkbox" value="1">'+
                                               'Chest pain'+
                                             '</label>'+
                                           '</div>'+
                                           '<div class="col-md-4">'+
                                             '<label>'+
-                                              '<input name="sepsis[]' + rowCount + '" type="checkbox" value="0744">'+
+                                              '<input name="sepsis[' + rowCountSyntom + ']" type="checkbox" value="0744">'+
                                               'Sepsis'+
                                             '</label>'+
                                           '</div>'+
                                           '<div class="col-md-4">'+
                                             '<label>'+
-                                             ' <input name="sudden_cardiac_arrest[]' + rowCount + '" type="checkbox" value="1">'+
+                                             ' <input name="sudden_cardiac_arrest[' + rowCountSyntom + ']" type="checkbox" value="1">'+
                                               'Sudden cardiac arrest'+
                                             '</label>'+
                                           '</div>'+
+                                          '<div class="col-md-3">'+
+                      '<label>'+
+                        '<input name="symptoms_later_immunized[' + rowCountSyntom + ']" type="checkbox" value="9999">'+
+                              'อื่นๆ'+
+                      '</label>'+
+                    '</div>'+
+                    '<div class="form-group">'+
+                      '<div class="col-lg-12">'+
+                        '<div id="other_symptoms_later_immunized">'+
+                          '<input type="text" id="other_symptoms_later_immunized_text" name="other_symptoms_later_immunized[' + rowCountSyntom + ']" class="form-control" placeholder="อื่นๆ">'+
+                        '</div>'+
+                      '</div>'+
+                    '</div>'+
                                         '</div>'+
                                       '</div>'+
                                     '</div>'+
@@ -1846,37 +1765,37 @@ foreach ($aecode as $value) {
                                           '</div>'+
                                           '<div class="col-md-4">'+
                                             '<label>'+
-                                              '<input name="ischemic_stroke[]' + rowCount + '" type="checkbox" value="1">'+
+                                              '<input name="ischemic_stroke[' + rowCountSyntom + ']" type="checkbox" value="1">'+
                                                'stroke'+
                                             '</label>'+
                                           '</div>'+
                                           '<div class="col-md-4">'+
                                             '<label>'+
-                                              '<input name="hemorrhagic_stroke[]' + rowCount + '" type="checkbox" value="1">'+
+                                              '<input name="hemorrhagic_stroke[' + rowCountSyntom + ']" type="checkbox" value="1">'+
                                             'Hemorrhagic stroke'+
                                             '</label>'+
                                           '</div>'+
                                           '<div class="col-md-4">'+
                                             '<label>'+
-                                              '<input name="bells_palsy[]' + rowCount + '" type="checkbox" value="1">'+
+                                              '<input name="bells_palsy[' + rowCountSyntom + ']" type="checkbox" value="1">'+
                                               'Bells palsy'+
                                             '</label>'+
                                           '</div>'+
                                           '<div class="col-md-4">'+
                                             '<label>'+
-                                              '<input name="gbs[]' + rowCount + '" type="checkbox" value="1">'+
+                                              '<input name="gbs[' + rowCountSyntom + ']" type="checkbox" value="1">'+
                                               'Guillain-Barré syndrome (GBS)'+
                                             '</label>'+
                                           '</div>'+
                                           '<div class="col-md-4">'+
                                             '<label>'+
-                                              '<input name="transverse myelitis[]' + rowCount + '" type="checkbox" value="1">'+
+                                              '<input name="transverse myelitis[' + rowCountSyntom + ']" type="checkbox" value="1">'+
                                               'Transverse myelitis'+
                                             '</label>'+
                                           '</div>'+
                                           '<div class="col-md-4">'+
                                             '<label>'+
-                                              '<input name="adem[]' + rowCount + '" type="checkbox" value="1">'+
+                                              '<input name="adem[' + rowCountSyntom + ']" type="checkbox" value="1">'+
                                               'Acute disseminated encephalomyelitis (ADEM)'+
                                             '</label>'+
                                           '</div>'+
@@ -1888,55 +1807,55 @@ foreach ($aecode as $value) {
                                           '</div>'+
                                           '<div class="col-md-4">'+
                                             '<label>'+
-                                              '<input name="myocarditis[]' + rowCount + '" type="checkbox" value="1">'+
+                                              '<input name="myocarditis[' + rowCountSyntom + ']" type="checkbox" value="1">'+
                                               'Myocarditis'+
                                             '</label>'+
                                           '</div>'+
                                           '<div class="col-md-4">'+
                                             '<label>'+
-                                              '<input name="pericarditis[]' + rowCount + '" type="checkbox" value="1">'+
+                                              '<input name="pericarditis[' + rowCountSyntom + ']" type="checkbox" value="1">'+
                                               'Pericarditis'+
                                             '</label>'+
                                           '</div>'+
                                           '<div class="col-md-4">'+
                                             '<label>'+
-                                              '<input name="acute_myocardial[]' + rowCount + '" type="checkbox" value="1">'+
+                                              '<input name="acute_myocardial[' + rowCountSyntom + ']" type="checkbox" value="1">'+
                                               'Acute Myocardial infarction'+
                                             '</label>'+
                                           '</div>'+
                                           '<div class="col-md-4">'+
                                             '<label>'+
-                                              '<input name="heart_failure[]' + rowCount + '" type="checkbox" value="1">'+
+                                              '<input name="heart_failure[' + rowCountSyntom + ']" type="checkbox" value="1">'+
                                               'Heart failure'+
                                             '</label>'+
                                           '</div>'+
                                           '<div class="col-md-4">'+
                                             '<label>'+
-                                              '<input name="persistent_inconsolable_crying[]' + rowCount + '" type="checkbox" value="1">'+
+                                              '<input name="persistent_inconsolable_crying[' + rowCountSyntom + ']" type="checkbox" value="1">'+
                                               'Persistent inconsolable crying'+
                                             '</label>'+
                                           '</div>'+
                                           '<div class="col-md-4">'+
                                             '<label>'+
-                                              '<input name="osteomyelitis[]' + rowCount + '" type="checkbox" value="1184">'+
+                                              '<input name="osteomyelitis[' + rowCountSyntom + ']" type="checkbox" value="1184">'+
                                               'Osteitis/Osteomyelitis'+
                                             '</label>'+
                                           '</div>'+
                                           '<div class="col-md-4">'+
                                             '<label>'+
-                                              '<input name="toxic_shock_syndrome[]' + rowCount + '" type="checkbox" value="1">'+
+                                              '<input name="toxic_shock_syndrome[' + rowCountSyntom + ']" type="checkbox" value="1">'+
                                               'Toxic shock syndrome'+
                                             '</label>'+
                                           '</div>'+ 
                                           '<div class="col-md-4">'+
                                             '<label>'+
-                                              '<input name="hypertension[]' + rowCount + '" type="checkbox" value="1">'+
+                                              '<input name="hypertension[' + rowCountSyntom + ']" type="checkbox" value="1">'+
                                               'Hypertension'+
                                             '</label>'+
                                           '</div>'+
                                           '<div class="col-md-4">'+
                                             '<label>'+
-                                              '<input name="hypertensive_urgency[]' + rowCount + '" type="checkbox" value="1">'+
+                                              '<input name="hypertensive_urgency[' + rowCountSyntom + ']" type="checkbox" value="1">'+
                                                'Hypertensive urgency'+
                                             '</label>'+
                                           '</div>'+
@@ -1948,19 +1867,19 @@ foreach ($aecode as $value) {
                                           '</div>'+
                                           '<div class="col-md-4">'+
                                             '<label>'+
-                                              '<input name="thrombocytopenia[]' + rowCount + '" type="checkbox" value="0594">'+
+                                              '<input name="thrombocytopenia[' + rowCountSyntom + ']" type="checkbox" value="0594">'+
                                               'Thrombocytopenia(เกล็ดเลือดต่ำ)'+
                                             '</label>'+
                                           '</div>'+
                                           '<div class="col-md-4">'+
                                             '<label>'+
-                                              '<input name="deep_vein_thrombosis[]' + rowCount + '" type="checkbox" value="1">'+
+                                              '<input name="deep_vein_thrombosis[' + rowCountSyntom + ']" type="checkbox" value="1">'+
                                               'Deep vein thrombosis'+                            
                                             '</label>'+
                                           '</div>'+
                                           '<div class="col-md-4">'+
                                             '<label>'+
-                                              '<input name="pulmonary_embolism[]' + rowCount + '" type="checkbox" value="1">'+
+                                              '<input name="pulmonary_embolism[' + rowCountSyntom + ']" type="checkbox" value="1">'+
                                               'Pulmonary embolism'+
                                             '</label>'+
                                           '</div>'+
@@ -1972,36 +1891,33 @@ foreach ($aecode as $value) {
                                           '</div>'+
                                           '<div class="col-md-4">'+
                                             '<label>'+
-                                              '<input name="dfiu[]' + rowCount + '" type="checkbox" value="1">'+
+                                              '<input name="dfiu[' + rowCountSyntom + ']" type="checkbox" value="1">'+
                                               'DFIU (Dead fetus in utero)'+
                                             '</label>'+
                                           '</div>'+
                                           '<div class="col-md-4">'+
                                             '<label>'+
-                                              '<input name="abortion[]' + rowCount + '" type="checkbox" value="1">'+
+                                              '<input name="abortion[' + rowCountSyntom + ']" type="checkbox" value="1">'+
                                               'Abortion'+
                                             '</label>'+
                                           '</div>'+
                                           '<div class="col-md-4">'+
                                             '<label>'+
-                                              '<input name="abruptio_placenta[]' + rowCount + '" type="checkbox" value="1">'+
+                                              '<input name="abruptio_placenta[' + rowCountSyntom + ']" type="checkbox" value="1">'+
                                               'Abruptio placenta'+
                                             '</label>'+
                                           '</div>'+
                                           '<div class="col-md-4">'+
                                             '<label>'+
-                                              '<input name="other_pregnant_symptoms[]' + rowCount + '" type="checkbox" value="9999">'+
+                                              '<input name="other_pregnant_symptoms[' + rowCountSyntom + ']" type="checkbox" value="9999">'+
                                               'อื่นๆ'+
                                             '</label>'+
                                           '</div>'+
                                           '<div class="form-group">'+
                                             '<div class="col-lg-12">'+
-                                              '<div id="other_symptoms_pregnant" style="display: none">'+
-                                                '<input type="text" id="other_pregnant_symptoms_later_immunized_text" name="other_pregnant_symptoms_later_immunized" class="form-control" placeholder="" hidden="true">'+
+                                              '<div id="other_symptoms_pregnant">'+
+                                                '<input type="text" id="other_pregnant_symptoms_later_immunized_text" name="other_pregnant_symptoms_later_immunized[' + rowCountSyntom + ']" class="form-control" placeholder="อื่นๆ">'+
                                              ' </div>'+
-                                              '{{-- <div id="other_symptoms_later_immunized_t" style="display: none">'+
-                                                '<input type="text" class="form-control pull-right" id="other_symptoms_later_immunized_text" name="other_symptoms_later_immunized" placeholder="ระบุอาการอื่นๆ">'+
-                                              '</div> --}}'+
                                             '</div>'+
                                           '</div>'+
                                           '<div class="col-md-12">'+
@@ -2012,54 +1928,51 @@ foreach ($aecode as $value) {
                                           '</div>'+
                                           '<div class="col-md-4">'+
                                             '<label>'+
-                                              '<input name="anaphylaxis[]' + rowCount + '" type="checkbox" value="2237">'+
+                                              '<input name="anaphylaxis[' + rowCountSyntom + ']" type="checkbox" value="2237">'+
                                               'Anaphylaxis'+
                                             '</label>'+
                                           '</div>'+
                                           '<div class="col-md-4">'+
                                             '<label>'+
-                                              '<input name="ards[]' + rowCount + '" type="checkbox" value="1">'+
+                                              '<input name="ards[' + rowCountSyntom + ']" type="checkbox" value="1">'+
                                               ' Acute respiratory distress syndrome (ARDS)'+
                                             '</label>'+
                                           '</div>'+
                                           '<div class="col-md-4">'+
                                             '<label>'+
-                                              '<input name="hhe[]' + rowCount + '" type="checkbox" value="1704">'+
+                                              '<input name="hhe[' + rowCountSyntom + ']" type="checkbox" value="1704">'+
                                               'Hypotonic Hyporesponsive episode (HHE)'+
                                             '</label>'+
                                           '</div>'+
                                           '<div class="col-md-4">'+
                                             '<label>'+
-                                              '<input name="covid_19[]' + rowCount + '" type="checkbox" value="1">'+
+                                              '<input name="covid_19[' + rowCountSyntom + ']" type="checkbox" value="1">'+
                                               'Covid-19'+
                                             '</label>'+
                                           '</div>'+
                                           '<div class="col-md-4">'+
                                             '<label>'+
-                                              '<input type="checkbox" name="encephalopathy" value="0105">'+
+                                              '<input type="checkbox" name="encephalopathy[' + rowCountSyntom + ']" value="0105">'+
                                               'Encephalopathy/Encephalitis'+
                                             '</label>'+
                                           '</div>'+
                                           '<div class="col-md-4">'+
                                             '<label>'+
-                                              '<input type="checkbox" name="meningitis" value="0105">'+
+                                              '<input type="checkbox" name="meningitis[' + rowCountSyntom + ']" value="0105">'+
                                               'Meningitis'+
                                             '</label>'+
                                           '</div>'+
                                           '<div class="col-md-4">'+
                                             '<label>'+
-                                              '<input name="symptoms_later_immunized[]' + rowCount + '" type="checkbox" value="9999">'+
+                                              '<input name="symptoms_later_immunized[' + rowCountSyntom + ']" type="checkbox" value="9999">'+
                                               'อื่นๆ'+
                                             '</label>'+
                                           '</div>'+
                                           '<div class="form-group">'+
                                             '<div class="col-lg-12">'+
-                                              '<div id="other_symptoms_later_immunized" style="display: none">'+
-                                                '<input type="text" id="other_symptoms_later_immunized_text" name="other_symptoms_later_immunized" class="form-control" placeholder="" hidden="true">'+
+                                              '<div id="other_symptoms_later_immunized">'+
+                                                '<input type="text" id="other_symptoms_later_immunized_text" name="other_symptoms_later_immunized[' + rowCountSyntom + ']" class="form-control" placeholder="อื่นๆ">'+
                                               '</div>'+
-                                              '{{-- <div id="other_symptoms_later_immunized_t" style="display: none">'+
-                                                '<input type="text" class="form-control pull-right" id="other_symptoms_later_immunized_text" name="other_symptoms_later_immunized" placeholder="ระบุอาการอื่นๆ">'+
-                                              '</div> --}}'+
                                             '</div>'+
                                          ' </div>'+
                                         '</div>'+
@@ -2069,6 +1982,7 @@ foreach ($aecode as $value) {
                                   '</div>'+
 '                               </div>'+
 '                  {{-- คอรั่มภายใน3.4 --}}'+
+'<div class="box-footer">'+
 '                  <div class="col-md-12">'+
 '                    <!-- general form elements -->'+
 '                    <div class="box box-success">'+
@@ -2084,7 +1998,7 @@ foreach ($aecode as $value) {
 '                            </div>'+
 '                          </div>'+
 '                        </div>'+
-                        '<div class="form-group">'+
+'<div class="form-group">'+
                           '<div class="col-lg-6">'+
                             '<label><font style="color:red;">*</font> เวลาที่เกิดอาการ :</label>'+
                               '<div class="input-group date">'+
@@ -2117,41 +2031,36 @@ foreach ($aecode as $value) {
 '                            </div>'+
 '                          </div>'+
 '                        </div>'+
-'                      </div>'+
-'                      <!-- /.box-header -->'+
-'                      <!-- form start -->'+
-'   '+
-'                      <div class="box-body">'+
 '                        {{-- input content --}}'+
 '                        <!-- textarea -->'+
-'<div class="form-group">'+
-                          '<div class="col-lg-6">'+
-                            '<label>การวินิจฉัยหลักของแพทย์ :</label>'+
-                            '<input  id="main_diagnosis' + rowCountSyntom + '" type="text" class="form-control" name="main_diagnosis[' + rowCountSyntom + ']">'+
-                            '{{-- <select id="js-example-basic-single3" name="minor_diagnosis[' + rowCountSyntom + ']" class="js-example-basic-single3 form-control" data-dropdown-css-class="select2-danger" required>'+
-                            '</select> --}}'+
-                          '</div>'+
-                        '</div>'+
-                        '<div class="form-group">'+
-                          '<div class="col-lg-6">'+
-                            '<label>การวินิจฉัยรองของแพทย์ :</label>'+
-                            '<input  id="minor_diagnosis' + rowCountSyntom + '" type="text" class="form-control" name="minor_diagnosis[' + rowCountSyntom + ']">'+
-                            '{{-- <select id="js-example-basic-single3" name="minor_diagnosis[' + rowCountSyntom + ']" class="js-example-basic-single3 form-control" data-dropdown-css-class="select2-danger" required>'+
-                            '</select> --}}'+
-                          '</div>'+
-                        '</div>'+
+'{{-- input content --}}'+
+                   '<div class="form-group">'+
+                    '<div class="col-lg-12">'+
+                      '<label>การวินิจฉัยหลักของแพทย์ :</label>'+
+                      '{{-- <input  id="main_diagnosis1{{$i-1}}" type="text" class="form-control" name="main_diagnosis[{{$i-1}}]"> --}}'+
+                      '<select name="main_diagnosis[' + rowCountSyntom + ']" class="js-example-basic-single33 form-control" data-dropdown-css-class="select2-danger" required>'+
+                      '</select>'+
+                   ' </div>'+
+                  '</div>'+
+                  '<div class="form-group">'+
+                    '<div class="col-lg-12">'+
+                      '<label>การวินิจฉัยรองของแพทย์ :</label>'+
+                      '{{-- <input  id="minor_diagnosis1{{$i-1}}" type="text" class="form-control" name="minor_diagnosis[{{$i-1}}]"> --}}'+
+                      '<select name="minor_diagnosis[' + rowCountSyntom + ']" class="js-example-basic-single33 form-control" data-dropdown-css-class="select2-danger" required>'+
+                      '</select>'+
+                    '</div>'+
+                  '</div>'+
 '                        <div class="form-group">'+
 '                          <div class="col-lg-8">'+
 '                            <label>รายละเอียดอาการและการตรวจสอบ</label>'+
 '                            <input class="form-control" rows="5"  id="Symptoms_details1" name="Symptoms_details[' + rowCountSyntom + ']">'+
 '                          </div>'+
 '                        </div>'+
-
-'                      </div>'+
-'                    </div>'+
+'</div>'+
+'</div>'+
+'</div>'+
+'</div>'+
 '                    <!-- /.box -->'+
-'                  </div>'+
-'                </div>'+
 '                <div class="box-footer">'+
 '                  <div class="form-group">'+
 '                    <div class="col-lg-12">'+
@@ -2166,17 +2075,16 @@ foreach ($aecode as $value) {
 '                      <div class="form-group">'+
 '                        <div class="col-md-2">'+
 '                          <label>'+
-'                            <input type="radio" name="c_seriousness_of_the_symptoms[' + rowCountSyntom + ']"  id="seriousness_of_the_symptoms1" value="1" >'+
+'                            <input type="radio" name="seriousness_of_the_symptoms[' + rowCountSyntom + ']"  id="seriousness_of_the_symptoms1" value="1" >'+
 '                            ไม่ร้ายแรง'+
 '                          </label>'+
 '                        </div>'+
 '                        <div class="col-md-2">'+
 '                          <label>'+
-'                            <input type="radio" name="c_seriousness_of_the_symptoms[' + rowCountSyntom + ']" id="seriousness_of_the_symptoms1" value="2">'+
+'                            <input type="radio" name="seriousness_of_the_symptoms[' + rowCountSyntom + ']" id="seriousness_of_the_symptoms1" value="2">'+
 '                            ร้ายแรง'+
 '                          </label>'+
 '                        </div>'+
-'                        <input type="text" id="seriousness_of_the_symptoms" name="seriousness_of_the_symptoms[' + rowCountSyntom + ']" hidden>'+
 '                      </div>'+
 '                    </div>'+
 '                  </div>'+
@@ -2191,19 +2099,19 @@ foreach ($aecode as $value) {
 '                    <div class="form-group">'+
 '                      <div class="col-md-4">'+
 '                        <label>'+
-'                          <input type="checkbox" name="c_other_seriousness_of_the_symptoms[' + rowCountSyntom + ']" id="other_seriousness_of_the_symptoms1" value="1">'+
+'                          <input type="radio" name="other_seriousness_of_the_symptoms[' + rowCountSyntom + ']" id="other_seriousness_of_the_symptoms1" value="1">'+
 '                          เสียชีวิต'+
 '                        </label>'+
 '                      </div>'+
 '                      <div class="col-md-4">'+
 '                        <label>'+
-'                          <input type="checkbox" name="c_other_seriousness_of_the_symptoms[' + rowCountSyntom + ']" id="other_seriousness_of_the_symptoms1" value="2">'+
+'                          <input type="radio" name="other_seriousness_of_the_symptoms[' + rowCountSyntom + ']" id="other_seriousness_of_the_symptoms1" value="2">'+
 '                          อันตรายถึงชีวิต'+
 '                        </label>'+
 '                      </div>'+
 '                      <div class="col-md-4">'+
 '                        <label>'+
-'                          <input type="checkbox" name="c_other_seriousness_of_the_symptoms[' + rowCountSyntom + ']" id="other_seriousness_of_the_symptoms1" value="3">'+
+'                          <input type="radio" name="other_seriousness_of_the_symptoms[' + rowCountSyntom + ']" id="other_seriousness_of_the_symptoms1" value="3">'+
 '                          พิการ/ไร้ความสามารถ'+
 '                        </label>'+
 '                      </div>'+
@@ -2211,19 +2119,19 @@ foreach ($aecode as $value) {
 '                    <div class="form-group">'+
 '                      <div class="col-md-4">'+
 '                        <label>'+
-'                          <input type="checkbox" name="c_other_seriousness_of_the_symptoms[' + rowCountSyntom + ']" id="other_seriousness_of_the_symptoms1" value="4">'+
+'                          <input type="radio" name="other_seriousness_of_the_symptoms[' + rowCountSyntom + ']" id="other_seriousness_of_the_symptoms1" value="4">'+
 '                          รับไว้รักษาในโรงพยาบาล'+
 '                        </label>'+
 '                      </div>'+
 '                      <div class="col-md-4">'+
 '                        <label>'+
-'                          <input type="checkbox" name="c_other_seriousness_of_the_symptoms[' + rowCountSyntom + ']" id="other_seriousness_of_the_symptoms1" value="5">'+
+'                          <input type="radio" name="other_seriousness_of_the_symptoms[' + rowCountSyntom + ']" id="other_seriousness_of_the_symptoms1" value="5">'+
 '                          ความผิดปกติแต่กำเนิด'+
 '                        </label>'+
 '                      </div>'+
 '                      <div class="col-md-4">'+
 '                        <label>'+
-'                          <input type="checkbox" name="c_other_seriousness_of_the_symptoms[' + rowCountSyntom + ']" id="other_seriousness_of_the_symptoms1" value="6">'+
+'                          <input type="radio" name="other_seriousness_of_the_symptoms[' + rowCountSyntom + ']" id="other_seriousness_of_the_symptoms1" value="6">'+
 '                          อื่นๆที่มีความสำคัญทางการแพทย์'+
 '                        </label>'+
 '                      </div>'+
@@ -2234,7 +2142,6 @@ foreach ($aecode as $value) {
 '                        </div>'+
 '                      </div>'+
 '                    </div>'+
-'                    <input type="text" id="other_seriousness_of_the_symptoms' + rowCount + '" name="other_seriousness_of_the_symptoms[' + rowCountSyntom + ']" hidden>'+
 '                  </div>'+
 '                </div>'+
 '                </div>'+
@@ -2353,7 +2260,7 @@ foreach ($aecode as $value) {
 '  </div>'+
           '</td>' +
         '<td>' +
-        '<select type="text" id="manufacturer1" name="manufacturer[]' + rowCount + '" class="form-control">' +
+        '<select type="text" id="manufacturer1" name="manufacturer[' + rowCountSyntom + ']" class="form-control">' +
         '<option value="">กรุณาระบชื่อผู้ผลิต</option>' +
         <?php
       foreach($arr_manufacturer as $k => $v) {
@@ -2364,26 +2271,26 @@ foreach ($aecode as $value) {
         '</select>' +
         '</td>' +
         '<td>' +
-        '<input type="text" id="other_manufacturer1" name="other_manufacturer[]' + rowCount + '" class="form-control">' +
+        '<input type="text" id="other_manufacturer1" name="other_manufacturer[' + rowCountSyntom + ']" class="form-control">' +
         '</td>' +
         '<td>' +
-        '<input type="text" id="lot_number1" name="lot_number[]' + rowCount + '" class="form-control">' +
+        '<input type="text" id="lot_number1" name="lot_number[' + rowCountSyntom + ']" class="form-control">' +
         '</td>' +
         '<td>' +
-        '<input type="text" id="datepicker_expiry_date1' + rowCount + '" name="expiry_date[]' + rowCount + '" class="form-control" data-date-format="yyyy-mm-dd" readonly>' +
+        '<input type="text" id="datepicker_expiry_date1' + rowCount + '" name="expiry_date[' + rowCountSyntom + ']" class="form-control" data-date-format="yyyy-mm-dd" readonly>' +
         '</td>' +
         // '<td>' +
-        // '<input type="text" id="name_of_diluent1" name="name_of_diluent[]' + rowCount + '" class="form-control">' +
+        // '<input type="text" id="name_of_diluent1" name="name_of_diluent[' + rowCountSyntom + ']" class="form-control">' +
         // '</td>' +
         '<td>' +
-        // '<input type="text"  id="rash1' + rowCount + '" name="rash[]' + rowCount + '" value="0027">'+
-        '<input type="text" id="lot_number_diluent1" name="lot_number_diluent[]' + rowCount + '" class="form-control">' +
+        // '<input type="text"  id="rash1' + rowCount + '" name="rash[' + rowCountSyntom + ']" value="0027">'+
+        '<input type="text" id="lot_number_diluent1" name="lot_number_diluent[' + rowCountSyntom + ']" class="form-control">' +
         '</td>' +
         '<td>' +
-        '<input type="text" id="datepicker_expiry_date_diluent1' + rowCount + '" name="expiry_date_diluent[]' + rowCount + '" class="form-control" data-date-format="yyyy-mm-dd" readonly>' +
+        '<input type="text" id="datepicker_expiry_date_diluent1' + rowCount + '" name="expiry_date_diluent[' + rowCountSyntom + ']" class="form-control" data-date-format="yyyy-mm-dd" readonly>' +
         '</td>' +
-        // '<td><input type="text" id="date_of_reconstitution1' + rowCount + '" name="date_of_reconstitution[]' + rowCount + '" class="form-control datepicker" data-date-format="yyyy-mm-dd"></td>' +
-        // '<td><input type="text" id="time_of_reconstitution1" name="time_of_reconstitution[]' + rowCount + '" class="form-control"></td>' +
+        // '<td><input type="text" id="date_of_reconstitution1' + rowCount + '" name="date_of_reconstitution[' + rowCountSyntom + ']" class="form-control datepicker" data-date-format="yyyy-mm-dd"></td>' +
+        // '<td><input type="text" id="time_of_reconstitution1" name="time_of_reconstitution[' + rowCountSyntom + ']" class="form-control"></td>' +
         '<td><button type="button" id="btnAdd" class="btn btn-m btn-success classAdd">เพิ่มข้อมูลวัคซีน</button>' +
         '<button type="button" id="btnDelete" class="deleteContact btn btn btn-danger btn-m">ลบข้อมูลวัคซีน</button></td>' +
         '</tr>';
@@ -2871,6 +2778,41 @@ $('#afebrile_convulsion_' + rowCount + '').change(function() {
       } else {
         $('#other_address_funeral2' + rowCount + '').hide();
         $('#other_address_funeral_text2' + rowCount + '').val('');
+      }
+    });
+
+    $(".js-example-basic-single33").select2({
+      allowClear: true,
+      language: {
+      inputTooShort: function (args) {
+          return "กรุณาพิมพ์คำค้นหาอย่างน้อย 3 ตัวอักษร";
+      },
+      noResults: function () {
+          return "ไม่พบข้อมูล";
+      },
+      searching: function () {
+          return "กำลังค้นหาข้อมูล...";
+      }
+      },
+      placeholder: "กรุณาพิมพ์ชื่อICD-10",
+      minimumInputLength: 3,
+      minimumResultsForSearch: 5,
+      ajax: {
+       url: "{{ route('list-icd10-json') }}",
+       type: "GET",
+       dataType: 'json',
+       delay: 250,
+       data: function (params) {
+        return {
+          searchTerm: params.term // search term
+        };
+       },
+       processResults: function (response) {
+         return {
+            results: response
+         };
+       },
+       cache: true
       }
     });
     });

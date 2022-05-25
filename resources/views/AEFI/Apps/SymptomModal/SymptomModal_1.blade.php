@@ -517,92 +517,82 @@
                                     <!-- /.box -->
                                   </div>
                                 </div>
-
-                  {{-- คอรั่มภายใน3.4 --}}
-                  <div class="col-md-12">
-                    <!-- general form elements -->
-                    <div class="box box-success">
-                      <div class="box-header with-border">
-                        <div class="form-group">
-                          <div class="col-lg-6">
-                            <label>ว/ด/ป ที่เกิดอาการ :</label>
-                            <div class="input-group date">
-                              <div class="input-group-addon">
-                                <i class="fa fa-calendar"></i>
-                              </div>
-                              <input type="text" class="form-control pull-right" id="date_of_symptoms" name="date_of_symptoms[0]" data-date-format="yyyy-mm-dd" readonly>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <div class="col-lg-6">
-                            <label><font style="color:red;">*</font> เวลาที่เกิดอาการ :</label>
-                              <div class="input-group date">
-                              <div class="input-group-addon">
-                                <i class="fa fa-clock-o"></i>
-                              </div>
-                              <input type="time" class="form-control" id="time_of_symptoms"  name="time_of_symptoms[0]">
-                              </div>
-                            </div>
-                          </div>
-                        <div class="form-group">
-                          <div class="col-lg-6">
-                            <label>ว/ด/ป ที่รับรักษา :</label>
-                            <div class="input-group date">
-                              <div class="input-group-addon">
-                                <i class="fa fa-calendar"></i>
-                              </div>
-                              <input type="text" class="form-control pull-right" id="date_of_treatment" name="date_of_treatment[0]" data-date-format="yyyy-mm-dd" readonly>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <div class="col-lg-6">
-                            <label>ว/ด/ป ที่จำหน่าย :</label>
-                            <div class="input-group date">
-                              <div class="input-group-addon">
-                                <i class="fa fa-calendar"></i>
-                              </div>
-                              <input type="text" class="form-control pull-right" id="time_of_treatment" name="time_of_treatment[0]" data-date-format="yyyy-mm-dd" readonly>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- /.box-header -->
-                      <!-- form start -->
-    
-                      <div class="box-body">
-                        {{-- input content --}}
-                        <!-- textarea -->
-                        {{-- input content --}}
-                   <div class="form-group">
-                    <div class="col-lg-12">
-                      <label>การวินิจฉัยหลักของแพทย์ :</label>
-                      <select  name="main_diagnosis[]" class="js-example-basic-single3 form-control" data-dropdown-css-class="select2-danger" required>
                       
-                      </select>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="col-lg-12">
-                      <label>การวินิจฉัยรองของแพทย์ :</label>
-                      {{-- <input  id="minor_diagnosis1{{$i-1}}" type="text" class="form-control" name="minor_diagnosis[{{$i-1}}]"> --}}
-                      <select  name="minor_diagnosis[]" class="js-example-basic-single3 form-control" data-dropdown-css-class="select2-danger" required>
-                
-                      </select>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="col-lg-8">
-                      <label>รายละเอียดอาการและการตรวจสอบ</label>
-                      <input class="form-control" rows="5"  id="Symptoms_details1" name="Symptoms_details[]">
-                    </div>
-                  </div>
+{{-- คอรั่มภายใน3.4 --}}
+<div class="col-md-12">
+  <!-- general form elements -->
+  <div class="box box-success">
+   <div class="box-header with-border">
+     <div class="form-group">
+       <div class="col-lg-6">
+         <label>ว/ด/ป ที่เกิดอาการ :</label>
+         <div class="input-group date">
+           <div class="input-group-addon">
+             <i class="fa fa-calendar"></i>
+           </div>
+           <input type="text" class="form-control pull-right" id="date_of_symptoms1" name="date_of_symptoms[]" data-date-format="yyyy-mm-dd"  readonly>
+         </div>
+       </div>
+     </div>
+     <div class="form-group">
+      <div class="col-lg-6">
+        <label><font style="color:red;">*</font> เวลาที่เกิดอาการ :</label>
+          <div class="input-group date">
+          <div class="input-group-addon">
+            <i class="fa fa-clock-o"></i>
+          </div>
+          <input type="time" class="form-control" id="time_of_symptoms1"  name="time_of_symptoms[}]">
+          </div>
+        </div>
+      </div>
+     <div class="form-group">
+       <div class="col-lg-6">
+         <label>ว/ด/ป ที่รับรักษา :</label>
+         <div class="input-group date">
+           <div class="input-group-addon">
+             <i class="fa fa-calendar"></i>
+           </div>
+           <input type="text" class="form-control pull-right" id="date_of_treatment1" name="date_of_treatment[]" data-date-format="yyyy-mm-dd" readonly>
+         </div>
+       </div>
+     </div>
+     <div class="form-group">
+       <div class="col-lg-6">
+         <label>ว/ด/ป ที่จำหน่าย :</label>
+         <div class="input-group date">
+           <div class="input-group-addon">
+             <i class="fa fa-calendar"></i>
+           </div>
+           <input type="text" class="form-control pull-right" id="time_of_treatment1" name="time_of_treatment[]" data-date-format="yyyy-mm-dd"  readonly>
+         </div>
+       </div>
+     </div>
+                     {{-- input content --}}
+                     <div class="form-group">
+                      <div class="col-lg-12">
+                        <label>การวินิจฉัยหลักของแพทย์ :</label>
+                        <select  name="main_diagnosis[]" class="js-example-basic-single3 form-control" data-dropdown-css-class="select2-danger" required>
+                        </select>
                       </div>
                     </div>
+                    <div class="form-group">
+                      <div class="col-lg-12">
+                        <label>การวินิจฉัยรองของแพทย์ :</label>
+                        {{-- <input  id="minor_diagnosis1{{$i-1}}" type="text" class="form-control" name="minor_diagnosis[{{$i-1}}]"> --}}
+                        <select  name="minor_diagnosis[]" class="js-example-basic-single3 form-control" data-dropdown-css-class="select2-danger" required>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="col-lg-8">
+                        <label>รายละเอียดอาการและการตรวจสอบ</label>
+                        <input class="form-control" rows="5"  id="Symptoms_details1" name="Symptoms_details[]">
+                      </div>
+                    </div>
+   </div>
+  </div>
+  </div>
                     <!-- /.box -->
-                  </div>
-                </div>
                 <div class="box-footer">
                   <div class="form-group">
                     <div class="col-lg-12">
@@ -795,6 +785,7 @@
     
               </div>
         </div>
+      </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-primary" data-dismiss="modal">เสร็จสิ้น</button>
             {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}

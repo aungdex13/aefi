@@ -76,7 +76,7 @@ foreach ($aecode as $value) {
 </section>
 <!-- Main content -->
 <section class="content">
-  <form role="form" action="{{ route('updateform1') }}" method="post">
+  <form role="form" action="{{ route('updateform1n') }}" method="post">
     {{ csrf_field() }}
     <div class="row">
       <!--หัวข้อที่5 -->
@@ -3103,6 +3103,19 @@ $(function(){
                                               'Sudden cardiac arrest'+
                                             '</label>'+
                                           '</div>'+
+                                          '<div class="col-md-3">'+
+                      '<label>'+
+                        '<input name="symptoms_later_immunized[' + rowCountSyntom + ']" type="checkbox" value="9999">'+
+                              'อื่นๆ'+
+                      '</label>'+
+                    '</div>'+
+                    '<div class="form-group">'+
+                      '<div class="col-lg-12">'+
+                        '<div id="other_symptoms_later_immunized">'+
+                          '<input type="text" id="other_symptoms_later_immunized_text" name="other_symptoms_later_immunized[' + rowCountSyntom + ']" class="form-control" placeholder="อื่นๆ">'+
+                        '</div>'+
+                      '</div>'+
+                    '</div>'+
                                         '</div>'+
                                       '</div>'+
                                     '</div>'+
@@ -3280,12 +3293,9 @@ $(function(){
                                           '</div>'+
                                           '<div class="form-group">'+
                                             '<div class="col-lg-12">'+
-                                              '<div id="other_symptoms_pregnant" style="display: none">'+
-                                                '<input type="text" id="other_pregnant_symptoms_later_immunized_text" name="other_pregnant_symptoms_later_immunized[' + rowCountSyntom + ']" class="form-control" placeholder="" hidden="true">'+
+                                              '<div id="other_symptoms_pregnant">'+
+                                                '<input type="text" id="other_pregnant_symptoms_later_immunized_text" name="other_pregnant_symptoms_later_immunized[' + rowCountSyntom + ']" class="form-control"  placeholder="อื่นๆ">'+
                                              ' </div>'+
-                                              '{{-- <div id="other_symptoms_later_immunized_t" style="display: none">'+
-                                                '<input type="text" class="form-control pull-right" id="other_symptoms_later_immunized_text" name="other_symptoms_later_immunized" placeholder="ระบุอาการอื่นๆ">'+
-                                              '</div> --}}'+
                                             '</div>'+
                                           '</div>'+
                                           '<div class="col-md-12">'+
@@ -3294,43 +3304,43 @@ $(function(){
                                              'Other'+
                                           '</label>'+
                                           '</div>'+
-                                          '<div class="col-md-4">'+
+                                          '<div class="col-md-6">'+
                                             '<label>'+
                                               '<input name="anaphylaxis[' + rowCountSyntom + ']" type="checkbox" value="2237">'+
                                               'Anaphylaxis'+
                                             '</label>'+
                                           '</div>'+
-                                          '<div class="col-md-4">'+
+                                          '<div class="col-md-6">'+
                                             '<label>'+
                                               '<input name="ards[' + rowCountSyntom + ']" type="checkbox" value="1">'+
                                               ' Acute respiratory distress syndrome (ARDS)'+
                                             '</label>'+
                                           '</div>'+
-                                          '<div class="col-md-4">'+
+                                          '<div class="col-md-6">'+
                                             '<label>'+
                                               '<input name="hhe[' + rowCountSyntom + ']" type="checkbox" value="1704">'+
                                               'Hypotonic Hyporesponsive episode (HHE)'+
                                             '</label>'+
                                           '</div>'+
-                                          '<div class="col-md-4">'+
+                                          '<div class="col-md-6">'+
                                             '<label>'+
                                               '<input name="covid_19[' + rowCountSyntom + ']" type="checkbox" value="1">'+
                                               'Covid-19'+
                                             '</label>'+
                                           '</div>'+
-                                          '<div class="col-md-4">'+
+                                          '<div class="col-md-6">'+
                                             '<label>'+
                                               '<input type="checkbox" name="encephalopathy[' + rowCountSyntom + ']" value="0105">'+
                                               'Encephalopathy/Encephalitis'+
                                             '</label>'+
                                           '</div>'+
-                                          '<div class="col-md-4">'+
+                                          '<div class="col-md-6">'+
                                             '<label>'+
                                               '<input type="checkbox" name="meningitis[' + rowCountSyntom + ']" value="0105">'+
                                               'Meningitis'+
                                             '</label>'+
                                           '</div>'+
-                                          '<div class="col-md-4">'+
+                                          '<div class="col-md-6">'+
                                             '<label>'+
                                               '<input name="symptoms_later_immunized[' + rowCountSyntom + ']" type="checkbox" value="9999">'+
                                               'อื่นๆ'+
@@ -3338,12 +3348,9 @@ $(function(){
                                           '</div>'+
                                           '<div class="form-group">'+
                                             '<div class="col-lg-12">'+
-                                              '<div id="other_symptoms_later_immunized" style="display: none">'+
-                                                '<input type="text" id="other_symptoms_later_immunized_text" name="other_symptoms_later_immunized[' + rowCountSyntom + ']" class="form-control" placeholder="" hidden="true">'+
+                                              '<div id="other_symptoms_later_immunized">'+
+                                                '<input type="text" id="other_symptoms_later_immunized_text" name="other_symptoms_later_immunized[' + rowCountSyntom + ']" class="form-control" placeholder="อื่นๆ">'+
                                               '</div>'+
-                                              '{{-- <div id="other_symptoms_later_immunized_t" style="display: none">'+
-                                                '<input type="text" class="form-control pull-right" id="other_symptoms_later_immunized_text" name="other_symptoms_later_immunized" placeholder="ระบุอาการอื่นๆ">'+
-                                              '</div> --}}'+
                                             '</div>'+
                                          ' </div>'+
                                         '</div>'+

@@ -32,6 +32,9 @@
 		<ul class="treeview-menu">
 		  <li><a href="{{ route('lstf1') }}"><i class="fa fa-circle-o"></i> แบบฟอร์ม AEFI</a></li>
 		  @hasrole('admin')
+		  <li><a href="{{ route('lstf1n') }}"><i class="fa fa-circle-o"></i> แบบฟอร์ม AEFI NEW</a></li>
+		  @endhasrole
+		  @hasrole('admin')
 		  <li><a href="{{ route('lstaesi1') }}"><i class="fa fa-circle-o"></i> แบบฟอร์ม AESI</a></li>
 		  @endhasrole
 		  {{-- <li class="treeview">
@@ -56,7 +59,9 @@
     </a>
     <ul class="treeview-menu">
       <li><a href="{{ route('dashboard') }}"><i class="fa fa-circle-o"></i>AEFI 1 </a></li>
+	  @hasrole('admin')
       <li><a href="dashboardcovid"><i class="fa fa-circle-o"></i>COVID 2019</a></li>
+	  @endhasrole
     </ul>
     </li>
 	  {{-- <li>
@@ -73,6 +78,9 @@
 		</a>
 		<ul class="treeview-menu">
 		  <li><a href="{{ route('dataf1export') }}"><i class="fa fa-circle-o"></i>รายงาน AEFI 1 </a></li>
+		  @hasrole('admin')
+		  <li><a href="{{ route('dataf1nexport') }}"><i class="fa fa-circle-o"></i>รายงาน AEFI 1 NEW</a></li>
+		  @endhasrole
 		  @hasrole('admin')
       <li><a href="{{ route('dataaesiexport') }}"><i class="fa fa-circle-o"></i>รายงาน AESI</a></li>
       @endhasrole

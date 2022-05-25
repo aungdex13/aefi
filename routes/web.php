@@ -131,9 +131,16 @@ Route::post('/updateaesiform1', 'Aefi\AESIInsertController@updateaesiform1')->na
 Route::get('/deleteAESI1', 'Aefi\AESISelectController@deletedata')->name('deleteAESI1');
 Route::get('/ViewAESI1', 'Aefi\ViewAESIController@index')->name('ViewAESI1');
 
-// new export
+// ----new export----
 Route::get('/aefiexport', 'Aefi\aefiexportController@index')->name('aefiexport');
 Route::post('/aefiexportbtn', 'Aefi\aefiexportController@export')->name('aefiexportbtn');
-
+// export
 Route::get('/dataf1nexport', 'Aefi\DataexportnController@dataexport')->name('dataf1nexport');
 Route::post('/dataf1nexport', 'Aefi\DataexportnController@dataexportfrm')->name('dataf1nexport');
+// list
+Route::get('/lstf1n', 'Aefi\SelectnController@selectdatatablecaseAEFI1')->name('lstf1n');
+Route::post('/lstf1n', 'Aefi\SelectnController@selectdatatablecaseAEFI1src')->name('lstf1n');
+// insert
+Route::post('/insertform1n', 'Aefi\InsertnController@insertform1')->name('insertform1n');
+// update
+Route::post('/updateform1n', 'Aefi\UpdatenController@updateform1')->name('updateform1n');
