@@ -32,10 +32,8 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
           <div class="box">
             <div class="box-header with-border">
               <div class="col-xs-3">
-              </div>
-              <div class="col-xs-3">
                 <select id="province" name="province" class="form-control" style="width: 100%;">
-                  <option class="badge filter badge-info" data-color="info" value="">ระบุจังหวัดที่ต้องการค้นหา</option>
+                  <option class=" filter" data-color="info" value="">ระบุจังหวัดที่ต้องการค้นหา</option>
                   @foreach ($listProvince as $k => $v)
                   <option value="{{$k}}">{{$v}}</option>
                   @endforeach
@@ -43,13 +41,37 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
                 </div>
               <div class="col-xs-3">
                 <select id="name_of_vaccine" name="name_of_vaccine" class="form-control" style="width: 100%;">
-                  <option class="badge filter badge-info" data-color="info" value="">ระบุวัคซีนที่ต้องการค้นหา</option>
+                  <option class=" filter" data-color="info" value="">ระบุวัคซีนที่ต้องการค้นหา</option>
                   @foreach ($vac_list as $row)
                   <option value="{{$row->ID}}">{{$row->VAC_NAME_EN}}</option>
                   @endforeach
                 </select>
-                    </div>
+              </div>
               <div class="col-xs-3">
+                <select id="year" name="year" class="form-control" style="width: 100%;">
+                  {{-- <option class=" filter" data-color="info" value="">ระบุปีต้องการค้นหา</option> --}}
+                  @foreach ($listyear as $row)
+                  <option value="{{$row->year}}">ปี {{$row->year+543}}</option>
+                  @endforeach
+                </select>
+              </div>
+              <div class="col-xs-3">
+                <select id="region" name="region" class="form-control" style="width: 100%;">
+                  <option class=" filter" data-color="info" value="">ระบุเขตที่ต้องการค้นหา</option>
+                  <option value="01">เขต1</option>
+                  <option value="02">เขต2</option>
+                  <option value="03">เขต3</option>
+                  <option value="04">เขต4</option>
+                  <option value="05">เขต5</option>
+                  <option value="06">เขต6</option>
+                  <option value="07">เขต7</option>
+                  <option value="08">เขต8</option>
+                  <option value="09">เขต9</option>
+                  <option value="10">เขต10</option>
+                  <option value="11">เขต11</option>
+                  <option value="12">เขต12</option>
+                  <option value="13">สปคม.</option>
+                </select>
               </div>
             </div>
             <!-- /.box-header -->
@@ -110,10 +132,11 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
                                   จังหวัด{{ isset($listProvince[$province]) ?$listProvince[$province]:"ทั้งหมด"}}
                                 @endif
                                 @if ($vac_list == null)
-
                                 @else
                                   วัคซีน{{ isset($listvac_arr[$name_of_vaccine]) ?$listvac_arr[$name_of_vaccine]:"ทั้งหมด"}}
-                                @endif</strong>
+                                @endif
+                                เขต{{ isset($region) ? $region:"ทุกเขต"}}
+                              </strong>
                   </p>
 
                   <div class="chart">
@@ -124,9 +147,9 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
                 </div>
                 <!-- /.col -->
                 <div class="col-md-4">
-                  @if ($province == null && $name_of_vaccine == null)
+                  @if ($province == null && $name_of_vaccine == null && $region == null)
                   <p class="text-center">
-                    <strong>จำนวนผู้ป่วยรายภาคปี {{$yearnow+543}}</strong>
+                    <strong>จำนวนผู้ป่วยรายภาค ประจำปี {{$yearnow+543}}</strong>
                   </p>
 
                   <div class="progress-group">
@@ -182,7 +205,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
                       <div class="progress-bar progress-bar-orange" style="width: {{$count_south}}px"></div>
                     </div>
                   </div>
-                @elseif ($province == null && $name_of_vaccine != null)
+                @elseif ($province == null && $name_of_vaccine != null  && $region == null)
                   <p class="text-center">
                     <strong>จำนวนผู้ป่วย วัคซีน{{ isset($listvac_arr[$name_of_vaccine]) ?$listvac_arr[$name_of_vaccine]:"ทั้งหมด"}} รายจังหวัด</strong>
                   </p>
@@ -217,6 +240,41 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
                     <!-- /.table-responsive -->
                   </div>
                   <!-- /.box-body -->
+                @elseif($region != null)
+                <p class="text-center">
+                  <strong>จำนวนผู้ป่วย วัคซีน{{ isset($listvac_arr[$name_of_vaccine]) ?$listvac_arr[$name_of_vaccine]:"ทั้งหมด"}} รายจังหวัด</strong>
+                </p>
+                <div class="box-body">
+                  <div class="table-responsive">
+                    <table class="table no-margin" id="case_lst">
+                      <thead>
+                      <tr>
+                        <th>อำเภอ/เขต</th>
+                        <th>#</th>
+                        <th>จำนวนผู้ป่วย</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                        @foreach ($count_patient_by_region as $row)
+                            @php
+                            $ProvinceRate = ($row->count_patient_prov / $count_all_patient_prov[0]->count_patient_prov)*100 ;
+                              // dd($DistrictRate);
+                            @endphp
+                            <td>{{ isset($listProvince[$row->province]) ? $listProvince[$row->province] : "ไม่ระบุอำเภอ/เขต" }}</td>
+                            <td>
+                              <div class="progress progress-xs progress-striped active">
+                                <div class="progress-bar progress-bar-success" style="width:{{$ProvinceRate}}%"></div>
+                              </div>
+                            </td>
+                            <td><span class="label label-success">{{ $row->count_patient_prov }} คน</span></td>
+                          </tr>
+                        @endforeach
+                      </tbody>
+                    </table>
+                  </div>
+                  <!-- /.table-responsive -->
+                </div>
+                <!-- /.box-body -->
                 @else
                   <p class="text-center">
                     <strong>จำนวนผู้ป่วย วัคซีน{{ isset($listvac_arr[$name_of_vaccine]) ?$listvac_arr[$name_of_vaccine]:"ทั้งหมด"}} รายอำเภอ/เขตของจังหวัด {{ isset($listProvince[$province]) ?$listProvince[$province]:"ทั้งหมด"}}</strong>
@@ -280,6 +338,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
             @else
               วัคซีน{{ isset($listvac_arr[$name_of_vaccine]) ?$listvac_arr[$name_of_vaccine]:"ทั้งหมด"}}
             @endif
+            เขต{{ isset($region) ? $region:"ทุกเขต"}} ประจำปี {{$year+543}}
           </h3>
           <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -354,7 +413,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
     <div class="col-md-6">
       <div class="box box-default">
         <div class="box-header with-border">
-          <h3 class="box-title">จำนวนการรายงานผู้ป่วย AEFI จำแนกรายจังหวัด ของวัคซีน{{ isset($listvac_arr[$name_of_vaccine]) ?$listvac_arr[$name_of_vaccine]:"ทั้งหมด"}}</h3>
+          <h3 class="box-title">จำนวนการรายงานผู้ป่วย AEFI จำแนกรายจังหวัด ของวัคซีน{{ isset($listvac_arr[$name_of_vaccine]) ?$listvac_arr[$name_of_vaccine]:"ทั้งหมด"}} เขต{{ isset($region) ? $region:"ทุกเขต"}} ประจำปี {{$year+543}}</h3>
           <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
             </button>
@@ -366,7 +425,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
           <div class="row">
             <div class="col-md-12">
               <div class="chart-responsive">
-                <div id="regions_div" style="height: 543px; width: 100%;"></div>
+                <div id="chartdivMapMedical" style="height: 543px; width: 100%;"></div>
               </div>
               <!-- ./chart-responsive -->
             </div>
@@ -400,6 +459,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
                                           @else
                                             จังหวัด{{ isset($listProvince[$province]) ?$listProvince[$province]:"ทั้งหมด"}}
                                           @endif
+                                          เขต{{ isset($region) ? $region:"ทุกเขต"}} ประจำปี {{$year+543}}
                                         </h3>
 
           <div class="box-tools pull-right">
@@ -441,7 +501,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
     <div class="col-md-6">
       <div class="box box-default">
         <div class="box-header with-border">
-          <h3 class="box-title">จำนวนผู้ป่วยจำแนกตามกลุ่มอายุ ทั้งหมดในปี {{$yearnow+543}}</h3>
+          <h3 class="box-title">จำนวนผู้ป่วยจำแนกตามกลุ่มอายุ</h3>
           @if ($province == null)
             ในจังหวัดทั้งหมด
           @else
@@ -452,6 +512,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
           @else
             วัคซีน{{ isset($listvac_arr[$name_of_vaccine]) ?$listvac_arr[$name_of_vaccine]:"ทั้งหมด"}}
           @endif
+          เขต{{ isset($region) ? $region:"ทุกเขต"}} ประจำปี {{$year+543}}
           <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
             </button>
@@ -495,7 +556,87 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
 @include('AEFI.layout.footerScriptDash')
 <!-- /.content -->
 <script src="asset/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="{{ asset('asset/bower_components/amcharts4/core.js') }}"></script>
+<script src="{{ asset('asset/bower_components/amcharts4/maps.js') }}"></script>
+<script src="{{ asset('asset/bower_components/amcharts4/geodata/thailandLow.js') }}"></script>
+<script src="{{ asset('asset/bower_components/amcharts4/geodata/lang/TH.js') }}"></script>
+<script src="{{ asset('asset/bower_components/amcharts4/themes/animated.js') }}"></script>
+<script src="{{ asset('asset/bower_components/amcharts4/charts.js') }}"></script>
 <script>
+  am4core.ready(function () {
+
+                // Themes begin
+                am4core.useTheme(am4themes_animated);
+                // Themes end
+                
+                // Create map instance
+                var chart = am4core.create("chartdivMapMedical", am4maps.MapChart);
+
+                // Set map definition
+                chart.geodata = am4geodata_thailandLow;
+                chart.geodataNames = am4geodata_lang_TH;
+                // Set projection
+                // chart.projection = new am4maps.projections.AlbersUsa();
+
+                // Create map polygon series
+                var polygonSeries = chart.series.push(new am4maps.MapPolygonSeries());
+
+                //Set min/max fill color for each area
+                polygonSeries.heatRules.push({
+                    property: "fill",
+                    target: polygonSeries.mapPolygons.template,
+                    min: am4core.color("#7ED321"),
+                    max: am4core.color("#FC7149")
+                });
+
+                // Make map load polygon data (state shapes and names) from GeoJSON
+                polygonSeries.useGeodata = true;
+
+                // Set heatmap values for each state
+                polygonSeries.data = [
+                  @foreach($count_prov as $row)
+                {
+                    id: "TH-{{$row->province}}",
+                    value: {{$row->count_prov}}
+                },
+                    @endforeach
+                ];
+
+                // Set up heat legend
+                let heatLegend = chart.createChild(am4maps.HeatLegend);
+                heatLegend.series = polygonSeries;
+                heatLegend.align = "right";
+                heatLegend.valign = "bottom";
+                heatLegend.width = am4core.percent(30);
+                heatLegend.marginRight = am4core.percent(4);
+                heatLegend.minValue = 0;
+                heatLegend.maxValue = 40000000;
+
+                // Set up custom heat map legend labels using axis ranges
+                var minRange = heatLegend.valueAxis.axisRanges.create();
+                minRange.value = heatLegend.minValue;
+                minRange.label.text = "น้อย";
+                var maxRange = heatLegend.valueAxis.axisRanges.create();
+                maxRange.value = heatLegend.maxValue;
+                maxRange.label.text = "มาก";
+
+                // Blank out internal heat legend value axis labels
+                heatLegend.valueAxis.renderer.labels.template.adapter.add("text", function (labelText) {
+                    return "";
+                });
+
+                // Configure series tooltip
+                var polygonTemplate = polygonSeries.mapPolygons.template;
+                polygonTemplate.tooltipText = "{name}: {value}";
+                polygonTemplate.nonScalingStroke = true;
+                polygonTemplate.strokeWidth = 0.5;
+
+                // Create hover state and set alternative fill color
+                var hs = polygonTemplate.states.create("hover");
+                hs.properties.fill = am4core.color("#00A1D0");
+            // Enable export
+            chart.exporting.menu = new am4core.ExportMenu();
+            });
 $(document).ready(function() {
     $('#case_lst').DataTable({
       "pageLength": 5

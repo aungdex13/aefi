@@ -46,40 +46,40 @@
 					dataPoints: [
 						// @ foreach($count_month as $row)
 						{
-							y: {{isset($count_month_jan[0]->month_jan) ? $count_month_jan[0]->month_jan : 0}}, label: "มกราคม"
+							y: {{($count_month_jan[0]->month_jan == 0 ? "null" : $count_month_jan[0]->month_jan)}}, label: "มกราคม"
 						},
 						{
-							y:  {{isset($count_month_feb[0]->month_feb) ? $count_month_feb[0]->month_feb : 0}}, label: "กุมภาพันธ์"
+							y:  {{($count_month_feb[0]->month_feb == 0 ? "null" : $count_month_feb[0]->month_feb)}}, label: "กุมภาพันธ์"
 						},
 						{
-							y:  {{isset($count_month_mar[0]->month_mar) ? $count_month_mar[0]->month_mar : 0}}, label: "มีนาคม"
+							y:  {{($count_month_mar[0]->month_mar == 0 ? "null" : $count_month_mar[0]->month_mar)}}, label: "มีนาคม"
 						},
 						{
-							y: {{isset($count_month_apr[0]->month_apr) ? $count_month_apr[0]->month_apr : 0}}, label: "เมษายน"
+							y: {{($count_month_apr[0]->month_apr == 0 ? "null" : $count_month_apr[0]->month_apr)}}, label: "เมษายน"
 						},
 						{
-							y:  {{isset($count_month_may[0]->month_may) ? $count_month_may[0]->month_may : 0}}, label: "พฤษภาคม"
+							y:  {{($count_month_may[0]->month_may == 0 ? "null" : $count_month_may[0]->month_may)}}, label: "พฤษภาคม"
 						},
 						{
-							y:  {{isset($count_month_jun[0]->month_jun) ? $count_month_jun[0]->month_jun : 0}}, label: "มิถุนายน"
+							y:  {{($count_month_jun[0]->month_jun == 0 ? "null" : $count_month_jun[0]->month_jun)}}, label: "มิถุนายน"
 						},
 						{
-							y:  {{isset($count_month_jul[0]->month_jul) ? $count_month_jul[0]->month_jul : 0}}, label: "กรกฎาคม"
+							y:  {{($count_month_jul[0]->month_jul == 0 ? "null" : $count_month_jul[0]->month_jul)}}, label: "กรกฎาคม"
 						},
 						{
-							y:  {{isset($count_month_aug[0]->month_aug) ? $count_month_aug[0]->month_aug : 0}}, label: "สิงหาคม"
+							y:  {{($count_month_aug[0]->month_aug == 0 ? "null" : $count_month_aug[0]->month_aug)}}, label: "สิงหาคม"
 						},
 						{
-							y:  {{isset($count_month_sep[0]->month_sep) ? $count_month_sep[0]->month_sep : 0}}, label: "กันยายน"
+							y:  {{($count_month_sep[0]->month_sep == 0 ? "null" : $count_month_sep[0]->month_sep)}}, label: "กันยายน"
 						},
 						{
-							y:  {{isset($count_month_oct[0]->month_oct) ? $count_month_oct[0]->month_oct : 0}}, label: "ตุลาคม"
+							y:  {{($count_month_oct[0]->month_oct == 0 ? "null" : $count_month_oct[0]->month_oct)}}, label: "ตุลาคม"
 						},
 						{
-							y:  {{isset($count_month_nov[0]->month_nov) ? $count_month_nov[0]->month_nov : 0}}, label: "พฤศจิกายน"
+							y:  {{($count_month_nov[0]->month_nov == 0 ? "null" : $count_month_nov[0]->month_nov)}}, label: "พฤศจิกายน"
 						},
 						{
-							y:  {{isset($count_month_dec[0]->month_dec) ? $count_month_dec[0]->month_dec : 0}}, label: "ธันวาคม"
+							y:  {{($count_month_dec[0]->month_dec == 0 ? "null" : $count_month_dec[0]->month_dec)}}, label: "ธันวาคม"
 						}
 						// {
 						// 	x: new Date({ {$yearnow}}, 12),

@@ -513,6 +513,88 @@
 										//  ->orderBy('vac_count','DESC')
 										//  ->take(5)
 										 ->get();
+							$count_week_39 = DB::table('aefi_form_1_vac')
+										 ->select(DB::raw('	WEEK(aefi_form_1_vac.date_entry) AS Week,
+										 					COUNT(aefi_form_1_vac.name_of_vaccine)  as count_case
+										 					'))
+										 ->where('status','=',null)
+										 ->where('name_of_vaccine',39)
+										 ->whereYear('aefi_form_1_vac.date_entry', '=',$yearnow)
+            							// ->whereMonth('aefi_form_1_vac.date_entry', '=', $monthnow)
+										 ->groupBy('Week')
+										//  ->orderBy('vac_count','DESC')
+										//  ->take(5)
+										 ->get();
+							$count_week_40 = DB::table('aefi_form_1_vac')
+										 ->select(DB::raw('	WEEK(aefi_form_1_vac.date_entry) AS Week,
+										 					COUNT(aefi_form_1_vac.name_of_vaccine)  as count_case
+										 					'))
+										 ->where('status','=',null)
+										 ->where('name_of_vaccine',40)
+										 ->whereYear('aefi_form_1_vac.date_entry', '=',$yearnow)
+            							// ->whereMonth('aefi_form_1_vac.date_entry', '=', $monthnow)
+										 ->groupBy('Week')
+										//  ->orderBy('vac_count','DESC')
+										//  ->take(5)
+										 ->get();
+							$count_week_41 = DB::table('aefi_form_1_vac')
+										 ->select(DB::raw('	WEEK(aefi_form_1_vac.date_entry) AS Week,
+										 					COUNT(aefi_form_1_vac.name_of_vaccine)  as count_case
+										 					'))
+										 ->where('status','=',null)
+										 ->where('name_of_vaccine',41)
+										 ->whereYear('aefi_form_1_vac.date_entry', '=',$yearnow)
+            							// ->whereMonth('aefi_form_1_vac.date_entry', '=', $monthnow)
+										 ->groupBy('Week')
+										//  ->orderBy('vac_count','DESC')
+										//  ->take(5)
+										 ->get();
+							$count_week_42 = DB::table('aefi_form_1_vac')
+										 ->select(DB::raw('	WEEK(aefi_form_1_vac.date_entry) AS Week,
+										 					COUNT(aefi_form_1_vac.name_of_vaccine)  as count_case
+										 					'))
+										 ->where('status','=',null)
+										 ->where('name_of_vaccine',42)
+										 ->whereYear('aefi_form_1_vac.date_entry', '=',$yearnow)
+            							// ->whereMonth('aefi_form_1_vac.date_entry', '=', $monthnow)
+										 ->groupBy('Week')
+										//  ->orderBy('vac_count','DESC')
+										//  ->take(5)
+										 ->get();
+							$count_week_43 = DB::table('aefi_form_1_vac')
+										 ->select(DB::raw('	WEEK(aefi_form_1_vac.date_entry) AS Week,
+										 					COUNT(aefi_form_1_vac.name_of_vaccine)  as count_case
+										 					'))
+										 ->where('status','=',null)
+										 ->where('name_of_vaccine',43)
+										 ->whereYear('aefi_form_1_vac.date_entry', '=',$yearnow)
+            							// ->whereMonth('aefi_form_1_vac.date_entry', '=', $monthnow)
+										 ->groupBy('Week')
+										//  ->orderBy('vac_count','DESC')
+										//  ->take(5)
+										 ->get();
+							$count_week_44 = DB::table('aefi_form_1_vac')
+										 ->select(DB::raw('	WEEK(aefi_form_1_vac.date_entry) AS Week,
+										 					COUNT(aefi_form_1_vac.name_of_vaccine)  as count_case
+										 					'))
+										 ->where('status','=',null)
+										 ->where('name_of_vaccine',44)
+										 ->whereYear('aefi_form_1_vac.date_entry', '=',$yearnow)
+            							// ->whereMonth('aefi_form_1_vac.date_entry', '=', $monthnow)
+										 ->groupBy('Week')
+										//  ->orderBy('vac_count','DESC')
+										//  ->take(5)
+										 ->get();
+							$count_prov = DB::table('aefi_form_1')
+										 ->leftJoin('aefi_form_1_vac', 'aefi_form_1.id_case', '=', 'aefi_form_1_vac.id_case')
+										 ->select(DB::raw('count(aefi_form_1.id) as count_prov , aefi_form_1.province , aefi_form_1.date_entry'))
+										 ->where('aefi_form_1.status','=',null)
+									 	 ->whereIn('aefi_form_1_vac.name_of_vaccine',[39, 40, 41, 42, 43, 44])
+										 ->whereYear('aefi_form_1.date_entry' ,$yearnow)
+										 ->groupBy('aefi_form_1.date_entry')
+										 ->orderBy('aefi_form_1.date_entry', 'asc')
+										 ->get();
+			//  dd($count_prov);
 			// dd($count_week);
 			// dd($count_vac39,$count_vac40,$count_vac41,$count_vac42,$count_vac43,$count_vac44);							 
 			return view('AEFI.Apps.dashboardcovid',compact(
@@ -523,11 +605,18 @@
 			 'timenow',
 			 'count_vac39',
 			 'count_vac40',
-			 'count_vac41',
+			 'count_vac41', 
 			 'count_vac42',
 			 'count_vac43',
 			 'count_vac44',
-			 'count_week'
+			 'count_week',
+			 'count_week_39',
+			 'count_week_40',
+			 'count_week_41',
+			 'count_week_42',
+			 'count_week_43',
+			 'count_week_44',
+			 'count_prov'
 			 
 		 ));
 		}

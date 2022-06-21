@@ -20,11 +20,14 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 			$province = null;
 			$date_of_symptoms = null;
 			$name_of_vaccine = null;
+			$region = null;
+			$year = now()->year ;
 			$count_prov = $this->count_prov();
 			$listProvince=$this->listProvince();
 			$listvac_arr=$this->listvac_arr();
 			$count_year=$this->count_year();
 			$yearnow =  now()->year ;
+			// dd($yearnow);
 			$count_north = $this->count_north();
 			$count_northeast = $this->count_northeast();
 			$count_central = $this->count_central();
@@ -42,6 +45,11 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 			$vac_list=$this->vaclist();
 			// $countGender=$this->countGender();
 			$count_all_district_by_province= "0000";
+			$listyear = DB::table('aefi_form_1')
+						->select(DB::raw('YEAR(aefi_form_1.date_entry) year'))
+						->groupBy('year')
+						->orderBy('year','desc')
+						->get(); 
 			$count_month_jan = Cache::remember('month_jan', 1020, function() {
 											return DB::table('aefi_form_1')
 											->leftJoin('aefi_form_1_vac', 'aefi_form_1.id_case', '=', 'aefi_form_1_vac.id_case')
@@ -49,6 +57,7 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 																				count(aefi_form_1.id) as month_jan
 																				 '))
 											->whereMonth('aefi_form_1.date_entry', '=', '01')
+											->whereYear('aefi_form_1.date_entry',now()->year)
 											->where('aefi_form_1.status',null)
 											->get();
       							});
@@ -59,6 +68,7 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 																				count(aefi_form_1.id) as month_feb
 																				 '))
 											->whereMonth('aefi_form_1.date_entry', '=', '02')
+											->whereYear('aefi_form_1.date_entry' ,now()->year)
 										->where('aefi_form_1.status',null)
 										->get();
 										});
@@ -69,6 +79,7 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 																				count(aefi_form_1.id) as month_mar
 																				 '))
 											->whereMonth('aefi_form_1.date_entry', '=', '03')
+											->whereYear('aefi_form_1.date_entry' ,now()->year)
 											->where('aefi_form_1.status',null)
 											->get();
 										});
@@ -80,6 +91,7 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 																			count(aefi_form_1.id) as month_apr
 																			 '))
 										->whereMonth('aefi_form_1.date_entry', '=', '04')
+										->whereYear('aefi_form_1.date_entry' ,now()->year)
 										->where('aefi_form_1.status',null)
 										->get();
 									});
@@ -91,6 +103,7 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 																			count(aefi_form_1.id) as month_may
 																			 '))
 										->whereMonth('aefi_form_1.date_entry', '=', '05')
+										->whereYear('aefi_form_1.date_entry' ,now()->year)
 										->where('aefi_form_1.status',null)
 										->get();
 									});
@@ -102,10 +115,10 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 																			count(aefi_form_1.id) as month_jun
 																			 '))
 										->whereMonth('aefi_form_1.date_entry', '=', '06')
+										->whereYear('aefi_form_1.date_entry' ,now()->year)
 										->where('aefi_form_1.status',null)
 										->get();
 									});
-
 		$count_month_jul = Cache::remember('month_jul', 1020, function() {
 										return DB::table('aefi_form_1')
 										->leftJoin('aefi_form_1_vac', 'aefi_form_1.id_case', '=', 'aefi_form_1_vac.id_case')
@@ -113,6 +126,7 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 																			count(aefi_form_1.id) as month_jul
 																			 '))
 										->whereMonth('aefi_form_1.date_entry', '=', '07')
+										->whereYear('aefi_form_1.date_entry' ,now()->year)
 										->where('aefi_form_1.status',null)
 										->get();
 									});
@@ -124,6 +138,7 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 	  																	count(aefi_form_1.id) as month_aug
 	  																	 '))
 	  								->whereMonth('aefi_form_1.date_entry', '=', '08')
+									  ->whereYear('aefi_form_1.date_entry' ,now()->year)
 	  								->where('aefi_form_1.status',null)
 	  								->get();
 									});
@@ -135,6 +150,7 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 																				count(aefi_form_1.id) as month_sep
 																				 '))
 											->whereMonth('aefi_form_1.date_entry', '=', '09')
+											->whereYear('aefi_form_1.date_entry' ,now()->year)
 											->where('aefi_form_1.status',null)
 											->get();
 										});
@@ -146,6 +162,7 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 																				count(aefi_form_1.id) as month_oct
 																				 '))
 											->whereMonth('aefi_form_1.date_entry', '=', '10')
+											->whereYear('aefi_form_1.date_entry' ,now()->year)
 											->where('aefi_form_1.status',null)
 											->get();
 										});
@@ -157,6 +174,7 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 																					count(aefi_form_1.id) as month_nov
 																					 '))
 												->whereMonth('aefi_form_1.date_entry', '=', '11')
+												->whereYear('aefi_form_1.date_entry' ,now()->year)
 												->where('aefi_form_1.status',null)
 												->get();
 											});
@@ -168,6 +186,7 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 																						count(aefi_form_1.id) as month_dec
 																						'))
 													->whereMonth('aefi_form_1.date_entry', '=', '12')
+													->whereYear('aefi_form_1.date_entry' ,now()->year)
 													->where('aefi_form_1.status',null)
 													->get();
 												});
@@ -207,12 +226,34 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 			 'count_month_oct',
 			 'count_month_nov',
 			 'count_month_dec',
-			 'count_all_district_by_province'
+			 'count_all_district_by_province',
+			 'listyear',
+			 'region',
+			 'year'
 		 ));
 		}
 		public function selectdatadash(Request $req)
 		{
+			// dd($selectgroupprov);
 			$province = $req->input('province');
+			$region = $req->input('region');
+			$year = $req->input('year');
+			if($region==null){
+				$selectgroupprov = null;
+			}else{
+				$selectgroupprov = DB::table('chospital_new')
+				->select('chospital_new.prov_code')
+				->where('region',$region)
+				->groupBy('prov_code')
+				->get()
+				->pluck('prov_code');
+			}
+			// dd($province,$region,$year,$selectgroupprov);
+			$listyear = DB::table('aefi_form_1')
+			->select(DB::raw('YEAR(aefi_form_1.date_entry) year'))
+			->groupBy('year')
+			->orderBy('year','desc')
+			->get(); 
 			$date_of_symptoms = $req->input('date_of_symptoms');
 			$name_of_vaccine = $req->input('name_of_vaccine');
 			$count_prov_se = DB::table('aefi_form_1')
@@ -224,11 +265,22 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 									 									->Where('aefi_form_1_vac.name_of_vaccine',"=",$name_of_vaccine);
 									 	}else{
 									 	}
-									 	if ($province == null || $name_of_vaccine == null) {
-									 		$vac_select = $count_prov_se;
-									 	}else{
-									 	}
-									 			$count_prov = $vac_select
+										if ($selectgroupprov != null) {
+											$vac_select = $count_prov_se
+															->whereIn('aefi_form_1.province',$selectgroupprov);
+										}else{
+										}
+										if ($year != null) {
+											$vac_select = $count_prov_se
+															->whereYear('aefi_form_1.date_entry' ,$year);
+										}else{
+										}
+										if ($province != null) {
+											$vac_select = $count_prov_se
+																		->Where('aefi_form_1.province',"=",$province);
+										}else{
+										}
+									 			$count_prov = $count_prov_se
 												->groupBy('aefi_form_1.province')
 												->get();
 			 // dd($count_prov);
@@ -253,14 +305,20 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 											->Where('aefi_form_1.province',"=",$province);
 			}else{
 			}
-			if ($province == null || $name_of_vaccine == null) {
-				$vac_select = $count_month_jan_se;
+			if ($selectgroupprov != null) {
+				$vac_select = $count_month_jan_se
+								->whereIn('aefi_form_1.province',$selectgroupprov);
 			}else{
 			}
-					$count_month_jan = $vac_select
+			if ($year != null) {
+				$vac_select = $count_month_jan_se
+								->whereYear('aefi_form_1.date_entry' ,$year);
+			}else{
+			}
+				$count_month_jan = $vac_select
 											->where('aefi_form_1.status',null)
 											->get();
-
+											
 			$count_month_feb_se = DB::table('aefi_form_1')
 											->leftJoin('aefi_form_1_vac', 'aefi_form_1.id_case', '=', 'aefi_form_1_vac.id_case')
 											->select(DB::raw('
@@ -277,8 +335,14 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 											->Where('aefi_form_1.province',"=",$province);
 			}else{
 			}
-			if ($province == null || $name_of_vaccine == null) {
-				$vac_select = $count_month_feb_se;
+			if ($selectgroupprov != null) {
+				$vac_select = $count_month_feb_se
+								->whereIn('aefi_form_1.province',$selectgroupprov);
+			}else{
+			}
+			if ($year != null) {
+				$vac_select = $count_month_feb_se
+								->whereYear('aefi_form_1.date_entry' ,$year);
 			}else{
 			}
 				$count_month_feb = $vac_select
@@ -301,8 +365,14 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 											->Where('aefi_form_1.province',"=",$province);
 			}else{
 			}
-			if ($province == null || $name_of_vaccine == null) {
-				$vac_select = $count_month_mar_se;
+			if ($selectgroupprov != null) {
+				$vac_select = $count_month_mar_se
+								->whereIn('aefi_form_1.province',$selectgroupprov);
+			}else{
+			}
+			if ($year != null) {
+				$vac_select = $count_month_mar_se
+								->whereYear('aefi_form_1.date_entry' ,$year);
 			}else{
 			}
 					$count_month_mar = $vac_select
@@ -325,8 +395,14 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 										->Where('aefi_form_1.province',"=",$province);
 		}else{
 		}
-		if ($province == null || $name_of_vaccine == null) {
-			$vac_select = $count_month_apr_se;
+		if ($selectgroupprov != null) {
+			$vac_select = $count_month_apr_se
+							->whereIn('aefi_form_1.province',$selectgroupprov);
+		}else{
+		}
+		if ($year != null) {
+			$vac_select = $count_month_apr_se
+							->whereYear('aefi_form_1.date_entry' ,$year);
 		}else{
 		}
 				$count_month_apr = $vac_select
@@ -349,8 +425,14 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 										->Where('aefi_form_1.province',"=",$province);
 		}else{
 		}
-		if ($province == null || $name_of_vaccine == null) {
-			$vac_select = $count_month_may_se;
+		if ($selectgroupprov != null) {
+			$vac_select = $count_month_may_se
+							->whereIn('aefi_form_1.province',$selectgroupprov);
+		}else{
+		}
+		if ($year != null) {
+			$vac_select = $count_month_may_se
+							->whereYear('aefi_form_1.date_entry' ,$year);
 		}else{
 		}
 				$count_month_may = $vac_select
@@ -373,8 +455,14 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 										->Where('aefi_form_1.province',"=",$province);
 		}else{
 		}
-		if ($province == null || $name_of_vaccine == null) {
-			$vac_select = $count_month_jun_se;
+		if ($selectgroupprov != null) {
+			$vac_select = $count_month_jun_se
+							->whereIn('aefi_form_1.province',$selectgroupprov);
+		}else{
+		}
+		if ($year != null) {
+			$vac_select = $count_month_jun_se
+							->whereYear('aefi_form_1.date_entry' ,$year);
 		}else{
 		}
 				$count_month_jun = $vac_select
@@ -397,8 +485,14 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 										->Where('aefi_form_1.province',"=",$province);
 		}else{
 		}
-		if ($province == null || $name_of_vaccine == null) {
-			$vac_select = $count_month_jul_se;
+		if ($selectgroupprov != null) {
+			$vac_select = $count_month_jul_se
+							->whereIn('aefi_form_1.province',$selectgroupprov);
+		}else{
+		}
+		if ($year != null) {
+			$vac_select = $count_month_jul_se
+							->whereYear('aefi_form_1.date_entry' ,$year);
 		}else{
 		}
 				$count_month_jul = $vac_select
@@ -421,8 +515,14 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 	  								->Where('aefi_form_1.province',"=",$province);
 	  }else{
 	  }
-		if ($province == null || $name_of_vaccine == null) {
-			$vac_select = $count_month_aug_se;
+		if ($selectgroupprov != null) {
+			$vac_select = $count_month_aug_se
+							->whereIn('aefi_form_1.province',$selectgroupprov);
+		}else{
+		}
+		if ($year != null) {
+			$vac_select = $count_month_aug_se
+							->whereYear('aefi_form_1.date_entry' ,$year);
 		}else{
 		}
 	  		$count_month_aug = $vac_select
@@ -445,8 +545,14 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 											->Where('aefi_form_1.province',"=",$province);
 			}else{
 			}
-			if ($province == null || $name_of_vaccine == null) {
-				$vac_select = $count_month_sep_se;
+			if ($selectgroupprov != null) {
+				$vac_select = $count_month_sep_se
+								->whereIn('aefi_form_1.province',$selectgroupprov);
+			}else{
+			}
+			if ($year != null) {
+				$vac_select = $count_month_sep_se
+								->whereYear('aefi_form_1.date_entry' ,$year);
 			}else{
 			}
 					$count_month_sep = $vac_select
@@ -469,8 +575,14 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 											->Where('aefi_form_1.province',"=",$province);
 			}else{
 			}
-			if ($province == null || $name_of_vaccine == null) {
-				$vac_select = $count_month_oct_se;
+			if ($selectgroupprov != null) {
+				$vac_select = $count_month_oct_se
+								->whereIn('aefi_form_1.province',$selectgroupprov);
+			}else{
+			}
+			if ($year != null) {
+				$vac_select = $count_month_oct_se
+								->whereYear('aefi_form_1.date_entry' ,$year);
 			}else{
 			}
 					$count_month_oct = $vac_select
@@ -493,8 +605,14 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 												->Where('aefi_form_1.province',"=",$province);
 				}else{
 				}
-				if ($province == null || $name_of_vaccine == null) {
-					$vac_select = $count_month_nov_se;
+				if ($selectgroupprov != null) {
+					$vac_select = $count_month_nov_se
+									->whereIn('aefi_form_1.province',$selectgroupprov);
+				}else{
+				}
+				if ($year != null) {
+					$vac_select = $count_month_nov_se
+									->whereYear('aefi_form_1.date_entry' ,$year);
 				}else{
 				}
 						$count_month_nov = $vac_select
@@ -517,8 +635,14 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 													->Where('aefi_form_1.province',"=",$province);
 					}else{
 					}
-					if ($province == null || $name_of_vaccine == null) {
-						$vac_select = $count_month_dec_se;
+					if ($selectgroupprov != null) {
+						$vac_select = $count_month_dec_se
+										->whereIn('aefi_form_1.province',$selectgroupprov);
+					}else{
+					}
+					if ($year != null) {
+						$vac_select = $count_month_dec_se
+										->whereYear('aefi_form_1.date_entry' ,$year);
 					}else{
 					}
 							$count_month_dec = $vac_select
@@ -538,14 +662,14 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 											->Where('aefi_form_1.province',"=",$province);
 			}else {
 			}
-			if ($province != null && $name_of_vaccine != null) {
+			if ($selectgroupprov != null) {
 				$vac_select = $count_all_gender_se
-											->Where('aefi_form_1_vac.name_of_vaccine',"=",$name_of_vaccine)
-											->Where('aefi_form_1.province',"=",$province);
+										->whereIn('aefi_form_1.province',$selectgroupprov);
 			}else {
 			}
-			if ($province == null || $name_of_vaccine == null) {
-				$vac_select = $count_all_gender_se;
+			if ($year != null) {
+				$vac_select = $count_all_gender_se
+								->whereYear('aefi_form_1.date_entry' ,$year);
 			}else{
 			}
 					$count_all_gender = $vac_select
@@ -594,16 +718,17 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 							 											->Where('aefi_form_1.province',"=",$province);
 							 			}else {
 							 			}
-							 			if ($province != null && $name_of_vaccine != null) {
-							 				$vac_select = $count_male
-							 											->Where('aefi_form_1_vac.name_of_vaccine',"=",$name_of_vaccine)
-							 											->Where('aefi_form_1.province',"=",$province);
-							 			}else {
-							 			}
-										if ($province == null || $name_of_vaccine == null) {
-											$vac_select = $count_male;
+										if ($selectgroupprov != null) {
+											$vac_select = $count_male
+																	->whereIn('aefi_form_1.province',$selectgroupprov);
+										}else {
+										}
+										if ($year != null) {
+											$vac_select = $count_male
+															->whereYear('aefi_form_1.date_entry' ,$year);
 										}else{
 										}
+
 							 					$count_all_gender_m = $vac_select
 																		->where('gender', '=', '1')
 							 											->where('aefi_form_1.status',null)
@@ -623,16 +748,16 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 												->Where('aefi_form_1.province',"=",$province);
 										 }else {
 										 }
-										 if ($province != null && $name_of_vaccine != null) {
-											 $vac_select = $count_female
-																		 ->Where('aefi_form_1_vac.name_of_vaccine',"=",$name_of_vaccine)
-																		 ->Where('aefi_form_1.province',"=",$province);
-										 }else {
-										 }
-										 if ($province == null || $name_of_vaccine == null) {
-											 $vac_select = $count_female;
-										 }else{
-										 }
+										 if ($selectgroupprov != null) {
+											$vac_select = $count_female
+																	->whereIn('aefi_form_1.province',$selectgroupprov);
+										}else {
+										}
+										if ($year != null) {
+											$vac_select = $count_female
+															->whereYear('aefi_form_1.date_entry' ,$year);
+										}else{
+										}
 												 $count_all_gender_f = $vac_select
 																		 ->where('gender', '=', '2')
 																		 ->where('aefi_form_1.status',null)
@@ -652,14 +777,14 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 																			->Where('aefi_form_1.province',"=",$province);
 															}else {
 															}
-															if ($province != null && $name_of_vaccine != null) {
+															if ($selectgroupprov != null) {
 																$vac_select = $count_gender_other
-																			->Where('aefi_form_1_vac.name_of_vaccine',"=",$name_of_vaccine)
-																			->Where('aefi_form_1.province',"=",$province);
+																						->whereIn('aefi_form_1.province',$selectgroupprov);
 															}else {
 															}
-															if ($province == null || $name_of_vaccine == null) {
-																$vac_select = $count_gender_other;
+															if ($year != null) {
+																$vac_select = $count_gender_other
+																				->whereYear('aefi_form_1.date_entry' ,$year);
 															}else{
 															}
 													$count_all_gender_other = $vac_select
@@ -679,8 +804,7 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 																WHEN aefi_form_1.age_while_sick_year = null THEN "ไม่ระบุ"
 																END AS age_range ,
 																Count(aefi_form_1.id) as countage'))
-										 ->leftJoin('aefi_form_1_vac', 'aefi_form_1.id_case', '=', 'aefi_form_1_vac.id_case')
-										 ->whereYear('aefi_form_1.date_entry', '=', "$yearnow");
+										 ->leftJoin('aefi_form_1_vac', 'aefi_form_1.id_case', '=', 'aefi_form_1_vac.id_case');
 										 if ($name_of_vaccine != null) {
 											$vac_select = $count_groupage_se
 														->Where('aefi_form_1_vac.name_of_vaccine',"=",$name_of_vaccine);
@@ -697,9 +821,19 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 														->Where('aefi_form_1.province',"=",$province);
 										}else {
 										}
-										if ($province == null || $name_of_vaccine == null) {
+										if ($province == null || $name_of_vaccine == null ||  $selectgroupprov == null) {
 											$vac_select = $count_groupage_se;
 										}else{
+										}
+										if ($selectgroupprov != null) {
+										   $vac_select = $count_groupage_se
+																   ->whereIn('aefi_form_1.province',$selectgroupprov);
+									   }else {
+									   }
+									   if ($year != null) {
+										$vac_select = $count_groupage_se
+														->whereYear('aefi_form_1.date_entry' ,$year);
+										}else {
 										}
 								$count_groupage = $vac_select
 														->where('aefi_form_1.status','=',null)
@@ -774,16 +908,50 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 														->Where('aefi_form_1.province',"=",$province);
 										}else {
 										}
-										if ($province == null && $name_of_vaccine == null) {
-											$count_all_district_by_province = "0000";
-										 }else{
-										 }
-										 $count_patient_by_prov=$count_all_patient_by_prov_se
+										// if ($province == null && $name_of_vaccine == null) {
+										// 	$count_all_district_by_province = "0000";
+										//  }else{
+										//  }
+										 if ($year != null) {
+											$vac_select = $count_all_patient_by_prov_se
+															->whereYear('aefi_form_1.date_entry' ,$year);
+										}else{
+										}
+					$count_patient_by_prov=$count_all_patient_by_prov_se
 										 ->where('aefi_form_1.status',null)
 										 ->groupBy('aefi_form_1.province')
 										 ->orderBy('count_patient_prov','desc')
 										 ->get();
 		     // dd($count_patient_by_prov);
+			 $count_all_patient_by_region_se = DB::table('aefi_form_1')
+			 ->leftJoin('aefi_form_1_vac', 'aefi_form_1.id_case', '=', 'aefi_form_1_vac.id_case')
+			->select(DB::raw('count(aefi_form_1.id_case) as count_patient_prov , aefi_form_1.province'));
+			if ($name_of_vaccine != null) {
+				$vac_select = $count_all_patient_by_region_se
+							->Where('aefi_form_1_vac.name_of_vaccine',"=",$name_of_vaccine);
+			}else{
+			}
+			// if ($province != null) {
+			// 	$vac_select = $count_all_patient_by_region_se
+			// 				->Where('aefi_form_1.province',"=",$province);
+			// }else {
+			// }
+			if ($year != null) {
+				$vac_select = $count_all_patient_by_region_se
+								->whereYear('aefi_form_1.date_entry' ,$year);
+			}else{
+			}
+			if ($selectgroupprov != null) {
+				$vac_select = $count_all_patient_by_region_se
+										->whereIn('aefi_form_1.province',$selectgroupprov);
+			}else {
+			}
+	$count_patient_by_region=$count_all_patient_by_region_se
+			->where('aefi_form_1.status',null)
+			->groupBy('aefi_form_1.province')
+			->orderBy('count_patient_prov','desc')
+			->get();
+	// dd($count_patient_by_region);
 					 $count_vacname_se = DB::table('aefi_form_1')
 					 								->leftJoin('aefi_form_1_vac', 'aefi_form_1.id_case', '=', 'aefi_form_1_vac.id_case')
 													->select(DB::raw('count(aefi_form_1_vac.name_of_vaccine) as vac_count, aefi_form_1_vac.name_of_vaccine'));
@@ -797,10 +965,21 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 																 ->Where('aefi_form_1.province',"=",$province);
 												 }else {
 												 }
-												 if ($province == null && $name_of_vaccine == null) {
+												 if ($province == null && $name_of_vaccine == null && $selectgroupprov == null) {
 													 $count_all_district_by_province = "0000";
 													}else{
 													}
+													
+												if ($selectgroupprov != null) {
+													$vac_select = $count_vacname_se
+																			->whereIn('aefi_form_1.province',$selectgroupprov);
+												}else {
+												}
+												if ($year != null) {
+													$vac_select = $count_vacname_se
+																	->whereYear('aefi_form_1.date_entry' ,$year);
+												}else{
+												}
 													$count_vacname=$count_vacname_se
 													->where('aefi_form_1_vac.status','=',null)
 													->groupBy('aefi_form_1_vac.name_of_vaccine')
@@ -811,6 +990,12 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 			$vac_list=$this->vaclist();
 			$vac_list=$this->vaclist();
 			$listDistrict=$this->listDistrict();
+			$count_north = $this->count_north();
+			$count_northeast = $this->count_northeast();
+			$count_central = $this->count_central();
+			$count_eastern = $this->count_eastern();
+			$count_south = $this->count_south();
+			$count_western = $this->count_western();
 						// dd($count_all_seriousness_of_the_symptoms);
 			return view('AEFI.Apps.dashboard',compact(
 			 'count_prov',
@@ -848,7 +1033,17 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 			 'count_all_district_by_province',
 			 'listDistrict',
 			 'count_all_patient_prov',
-			 'count_patient_by_prov'
+			 'count_patient_by_prov',
+			 'count_north',
+			 'count_northeast',
+			 'count_central',
+			 'count_eastern',
+			 'count_south',
+			 'count_western',
+			 'listyear',
+			 'region',
+			 'year',
+			 'count_patient_by_region'
 		 ));
 	 	}
 		protected function count_prov(){
