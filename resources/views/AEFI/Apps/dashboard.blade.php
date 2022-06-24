@@ -31,7 +31,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
         <div class="col-md-12">
           <div class="box">
             <div class="box-header with-border">
-              <div class="col-xs-3">
+              <div class="col-xs-12 col-md-3 col-ls-3">
                 <select id="province" name="province" class="form-control" style="width: 100%;">
                   <option class=" filter" data-color="info" value="">ระบุจังหวัดที่ต้องการค้นหา</option>
                   @foreach ($listProvince as $k => $v)
@@ -39,7 +39,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
                   @endforeach
                 </select>
                 </div>
-              <div class="col-xs-3">
+              <div class="col-xs-12 col-md-3 col-ls-3">
                 <select id="name_of_vaccine" name="name_of_vaccine" class="form-control" style="width: 100%;">
                   <option class=" filter" data-color="info" value="">ระบุวัคซีนที่ต้องการค้นหา</option>
                   @foreach ($vac_list as $row)
@@ -47,7 +47,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
                   @endforeach
                 </select>
               </div>
-              <div class="col-xs-3">
+              <div class="col-xs-12 col-md-3 col-ls-3">
                 <select id="year" name="year" class="form-control" style="width: 100%;">
                   {{-- <option class=" filter" data-color="info" value="">ระบุปีต้องการค้นหา</option> --}}
                   @foreach ($listyear as $row)
@@ -55,7 +55,7 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
                   @endforeach
                 </select>
               </div>
-              <div class="col-xs-3">
+              <div class="col-xs-12 col-md-3 col-ls-3">
                 <select id="region" name="region" class="form-control" style="width: 100%;">
                   <option class=" filter" data-color="info" value="">ระบุเขตที่ต้องการค้นหา</option>
                   <option value="01">เขต1</option>
@@ -76,15 +76,15 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
             </div>
             <!-- /.box-header -->
             <div class="box-header with-border">
-              <div class="col-xs-3">
+              <div class="col-xs-12 col-md-3 col-ls-3">
               </div>
-              <div class="col-xs-3">
+              <div class="col-xs-12 col-md-3 col-ls-3">
                   <a type="button" href="{{ route('dashboard') }}" class="btn btn-block btn-danger">ล้างข้อมูล</a>
               </div>
-              <div class="col-xs-3">
+              <div class="col-xs-12 col-md-3 col-ls-3">
                   <button type="submit" class="btn btn-block btn-success">ค้นหาข้อมูล</button>
               </div>
-              <div class="col-xs-3">
+              <div class="col-xs-12 col-md-3 col-ls-3">
               </div>
             </div>
             <!-- /.box-header -->
@@ -450,105 +450,83 @@ $arr_seriousness_of_the_symptoms = load_seriousness_of_the_symptoms();
       </div>
       <!-- /.box -->
     </div>
-    <div class="col-md-6">
-      <div class="box box-default">
-        <div class="box-header with-border">
-          <h3 class="box-title">จำนวนการรายงานผู้ป่วย AEFI จำแนกตามชนิดของวัคซีน
-                 @if ($province == null)
-                                            จังหวัดทั้งหมด
-                                          @else
-                                            จังหวัด{{ isset($listProvince[$province]) ?$listProvince[$province]:"ทั้งหมด"}}
-                                          @endif
-                                          เขต{{ isset($region) ? $region:"ทุกเขต"}} ประจำปี {{$year+543}}
-                                        </h3>
-
-          <div class="box-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-            </button>
-            {{-- <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button> --}}
-          </div>
-        </div>
-        <!-- /.box-header -->
-        <div class="box-body">
-          <div class="row">
-            <div class="col-md-8">
-              <div class="chart-responsive">
-                <div id="chartVacname" style="height: 370px; width: 150%;"></div>
+        <!-- /.row -->
+        <div class="col-md-6">
+          <div class="box box-default">
+            <div class="box-header with-border">
+                            <h3 class="box-title">
+                                        จำนวนการรายงานผู้ป่วย AEFI จำแนกตามชนิดของวัคซีน
+                                        @if ($province == null)
+                                           จังหวัดทั้งหมด
+                                         @else
+                                           จังหวัด{{ isset($listProvince[$province]) ?$listProvince[$province]:"ทั้งหมด"}}
+                                         @endif
+                                         เขต{{ isset($region) ? $region:"ทุกเขต"}} ประจำปี {{$year+543}}
+                            </h3>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
               </div>
-              <!-- ./chart-responsive -->
             </div>
-            <!-- /.col -->
-            <div class="col-md-4">
-              <ul class="chart-legend clearfix">
-                {{-- <li><i class="fa fa-circle-o text-red"></i> ร้ายแรง</li> --}}
-                {{-- <li><i class="fa fa-circle-o text-green"></i> ตับอักเสบบี</li>
-                <li><i class="fa fa-circle-o text-yellow"></i> บาดทะยัก</li>
-                <li><i class="fa fa-circle-o text-aqua"></i> โปลิโอ</li> --}}
-                {{-- <li><i class="fa fa-circle-o text-light-blue"></i> ไม่ร้ายแรง</li> --}}
-                {{-- <li><i class="fa fa-circle-o text-gray"></i> โรคไข้กาฬหลังแอ่น</li> --}}
-              </ul>
-            </div>
-            <!-- /.col -->
-          </div>
-          <!-- /.row -->
-        </div>
-        <!-- /.box-body -->
-
-        <!-- /.footer -->
-      </div>
-      <!-- /.box -->
-    </div>
-    <div class="col-md-6">
-      <div class="box box-default">
-        <div class="box-header with-border">
-          <h3 class="box-title">จำนวนผู้ป่วยจำแนกตามกลุ่มอายุ</h3>
-          @if ($province == null)
-            ในจังหวัดทั้งหมด
-          @else
-            ในจังหวัด{{ isset($listProvince[$province]) ?$listProvince[$province]:"ทั้งหมด"}}
-          @endif
-          @if ($vac_list == null)
-
-          @else
-            วัคซีน{{ isset($listvac_arr[$name_of_vaccine]) ?$listvac_arr[$name_of_vaccine]:"ทั้งหมด"}}
-          @endif
-          เขต{{ isset($region) ? $region:"ทุกเขต"}} ประจำปี {{$year+543}}
-          <div class="box-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-            </button>
-            {{-- <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button> --}}
-          </div>
-        </div>
-        <!-- /.box-header -->
-        <div class="box-body">
-          <div class="row">
-            <div class="col-md-8">
-              <div class="chart-responsive">
-                <div id="agegroup" style="height: 370px; width: 150%;"></div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="chart-responsive">
+                    <div id="chartVacname" style="height: 410px; width: 100%;"></div>
+                  </div>
+                  <!-- ./chart-responsive -->
+                </div>
+                <!-- /.col -->
               </div>
-              <!-- ./chart-responsive -->
+              <!-- /.row -->
             </div>
-            <!-- /.col -->
-            <div class="col-md-4">
-              <ul class="chart-legend clearfix">
-                {{-- <li><i class="fa fa-circle-o text-red"></i> ร้ายแรง</li> --}}
-                {{-- <li><i class="fa fa-circle-o text-green"></i> ตับอักเสบบี</li>
-                <li><i class="fa fa-circle-o text-yellow"></i> บาดทะยัก</li>
-                <li><i class="fa fa-circle-o text-aqua"></i> โปลิโอ</li> --}}
-                {{-- <li><i class="fa fa-circle-o text-light-blue"></i> ไม่ร้ายแรง</li> --}}
-                {{-- <li><i class="fa fa-circle-o text-gray"></i> โรคไข้กาฬหลังแอ่น</li> --}}
-              </ul>
-            </div>
-            <!-- /.col -->
+            <!-- /.box-body -->
+            <!-- /.footer -->
           </div>
-          <!-- /.row -->
+          <!-- /.box -->
         </div>
-        <!-- /.box-body -->
 
-        <!-- /.footer -->
-      </div>
-      <!-- /.box -->
-    </div>
+        <div class="col-md-6">
+          <div class="box box-default">
+            <div class="box-header with-border">
+              <h3 class="box-title">จำนวนผู้ป่วยจำแนกตามกลุ่มอายุ
+                @if ($province == null)
+                  ในจังหวัดทั้งหมด
+                @else
+                  ในจังหวัด{{ isset($listProvince[$province]) ?$listProvince[$province]:"ทั้งหมด"}}
+                @endif
+                @if ($vac_list == null)
+      
+                @else
+                  วัคซีน{{ isset($listvac_arr[$name_of_vaccine]) ?$listvac_arr[$name_of_vaccine]:"ทั้งหมด"}}
+                @endif
+                เขต{{ isset($region) ? $region:"ทุกเขต"}} ประจำปี {{$year+543}}
+              </h3>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="chart-responsive">
+                    <div id="agegroup" style="height: 410px; width: 100%;"></div>
+                  </div>
+                  <!-- ./chart-responsive -->
+                </div>
+                <!-- /.col -->
+              </div>
+              <!-- /.row -->
+            </div>
+            <!-- /.box-body -->
+            <!-- /.footer -->
+          </div>
+          <!-- /.box -->
+        </div>
+
     <!-- /.box -->
   </div>
 </section>
